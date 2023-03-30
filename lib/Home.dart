@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'Guest_Account/Dashboard/Guest_Home/UI_Home/Guest_Home.dart' as Guest_Home;
-import 'Guest_Account/Dashboard/Guest_Account/UI_Account/Guest_Acc.dart' as Guest_Acc;
+import 'package:usea_app/Guest_Dashboard/Guest_Account/UI_Account/Guest_Acc.dart';
+import 'package:usea_app/Guest_Dashboard/Guest_Home/UI_Home/Guest_Home.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -14,8 +14,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   late TabController controller;
 
   List pages = [
-    Guest_Home.Guest_Home(),
-    Guest_Acc.Guest_Acc(),
+    Guest_Home(),
+    Guest_Acc(),
   ];
 
   int currentIndex = 0;
