@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -122,7 +124,7 @@ class _Guest_HomeState extends State<Guest_Home> {
       appBar: AppBar(
         leading: Image.asset(
           'assets/image/usea_logo.png',
-          scale: 45,
+          scale: 30,
         ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -134,13 +136,13 @@ class _Guest_HomeState extends State<Guest_Home> {
                   'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
                   style: TextStyle(
                       color: Colors.indigo[900],
-                      fontSize: 10,
+                      fontSize: 12,
                       fontFamily: 'KhmerOSmuol'),
                 ),
                 Text('UNIVERSITY OF SOUTH-EAST ASIA',
                     style: TextStyle(
                         color: Colors.indigo[900],
-                        fontSize: 11.7,
+                        fontSize: 14,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500)),
               ],
@@ -228,7 +230,7 @@ class _Guest_HomeState extends State<Guest_Home> {
               crossAxisCount: 2,
               mainAxisSpacing: 3,
               crossAxisSpacing: 3,
-              childAspectRatio: 1.95,
+              childAspectRatio: 1.90,
               padding: EdgeInsets.symmetric(vertical: 0, horizontal: 6),
               children: List.generate(
                   home_screen.length,
