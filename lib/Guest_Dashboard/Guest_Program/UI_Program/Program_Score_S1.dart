@@ -15,7 +15,7 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
     return Scaffold(
       backgroundColor: Color(0xF5F5F7FE),
       body: Card(
-        elevation: 3,
+        elevation: 2,
         shadowColor: Colors.grey[200],
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         margin: EdgeInsets.all(10),
@@ -33,7 +33,7 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                       'មុខវិជ្ជា'.tr,
                       style: TextStyle(
                           color: Colors.indigo[900],
-                          fontSize: 12,
+                          fontSize: 14,
                           fontFamily: 'KhmerOSbattambang',
                           fontWeight: FontWeight.w600),
                     ),
@@ -44,7 +44,7 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                         child: Text('ម៉ោង'.tr,
                             style: TextStyle(
                                 color: Colors.indigo[900],
-                                fontSize: 12,
+                                fontSize: 14,
                                 fontFamily: 'KhmerOSbattambang',
                                 fontWeight: FontWeight.w600)),
                       ),
@@ -55,7 +55,7 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                         child: Text('ក្រេឌីត'.tr,
                             style: TextStyle(
                                 color: Colors.indigo[900],
-                                fontSize: 12,
+                                fontSize: 14,
                                 fontFamily: 'KhmerOSbattambang',
                                 fontWeight: FontWeight.w600)),
                       )
@@ -67,59 +67,63 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
               padding: EdgeInsets.all(5),
               width: double.infinity,
               color: Colors.white,
-              child: ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: class_program_score_s1.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Column(children: [
-                          Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Container(
-                                  width: 250,
-                                  child: Text(
-                                    class_program_score_s1[index].subject,
-                                    style: TextStyle(
-                                        fontSize: 12,
-                                        fontFamily: 'KhmerOSbattambang',
-                                        fontWeight: FontWeight.w500),
+              child: Expanded(
+                child: ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: class_program_score_s1.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          child:
+                              Column(mainAxisSize: MainAxisSize.min, children: [
+                            Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    width: 250,
+                                    child: Text(
+                                      class_program_score_s1[index].subject,
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: 'KhmerOSbattambang',
+                                          fontWeight: FontWeight.w500),
+                                    ),
                                   ),
-                                ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Container(
-                                      child: Text(
-                                          class_program_score_s1[index]
-                                              .hour
-                                              .toString(),
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            fontFamily: 'Poppins',
-                                          )),
-                                    ),
-                                    SizedBox(
-                                      width: 35,
-                                    ),
-                                    Container(
-                                      margin: EdgeInsets.only(right: 10),
-                                      child: Text(
-                                          class_program_score_s1[index]
-                                              .credit
-                                              .toString(),
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            fontFamily: 'Poppins',
-                                          )),
-                                    ),
-                                  ],
-                                )
-                              ]),
-                        ]));
-                  })),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Container(
+                                        child: Text(
+                                            class_program_score_s1[index]
+                                                .hour
+                                                .toString(),
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontFamily: 'Poppins',
+                                            )),
+                                      ),
+                                      SizedBox(
+                                        width: 35,
+                                      ),
+                                      Container(
+                                        margin: EdgeInsets.only(right: 10),
+                                        child: Text(
+                                            class_program_score_s1[index]
+                                                .credit
+                                                .toString(),
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontFamily: 'Poppins',
+                                            )),
+                                      ),
+                                    ],
+                                  )
+                                ]),
+                          ]));
+                    }),
+              )),
           Container(
             padding: EdgeInsets.all(5),
             width: double.infinity,
@@ -131,7 +135,7 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                       'សរុប'.tr,
                       style: TextStyle(
                         color: Colors.indigo[900],
-                        fontSize: 12,
+                        fontSize: 14,
                         fontFamily: 'KhmerOSbattambang',
                       ),
                     ),
@@ -147,7 +151,7 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                                 .toString(),
                             style: TextStyle(
                               color: Colors.indigo[900],
-                              fontSize: 12,
+                              fontSize: 14,
                               fontFamily: 'Poppins',
                             )),
                       ),
@@ -163,7 +167,7 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                                 .toString(),
                             style: TextStyle(
                               color: Colors.indigo[900],
-                              fontSize: 12,
+                              fontSize: 14,
                               fontFamily: 'Poppins',
                             )),
                       ),

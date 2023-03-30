@@ -40,7 +40,7 @@ class Up_Event_Detail extends StatelessWidget {
           children: [
             Container(
               width: double.maxFinite,
-              height: 150,
+              height: 175,
               child: Image.asset(
                 data.img,
                 fit: BoxFit.fitWidth,
@@ -67,17 +67,17 @@ class Up_Event_Detail extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 15,
+              height: 10,
             ),
             Container(
               width: double.infinity,
-              margin: EdgeInsets.symmetric(vertical: 0, horizontal: 15),
+              margin: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
               child: Align(
                 child: Text(
                   data.detail_description,
                   textAlign: TextAlign.justify,
                   style:
-                      TextStyle(fontSize: 11, fontFamily: 'KhmerOSbattambang'),
+                      TextStyle(fontSize: 12, fontFamily: 'KhmerOSbattambang'),
                 ),
               ),
             ),

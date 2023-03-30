@@ -39,7 +39,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Container(
-                          height: 125,
+                          height: 150,
                           width: double.maxFinite,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(10),
@@ -64,7 +64,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                   up_news_event[index].title,
                                   textAlign: TextAlign.justify,
                                   style: TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 14,
                                       fontWeight: FontWeight.w500,
                                       fontFamily: 'KhmerOSBattambang'),
                                 ),
@@ -78,7 +78,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                   up_news_event[index].description,
                                   textAlign: TextAlign.justify,
                                   style: TextStyle(
-                                      fontSize: 10,
+                                      fontSize: 12,
                                       fontWeight: FontWeight.w500,
                                       fontFamily: 'KhmerOSBattambang'),
                                 ),
@@ -87,11 +87,12 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                 height: 5,
                               ),
                               Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
                                     child: Image.asset(
                                       up_news_event[index].icon1,
-                                      width: 12,
+                                      width: 14,
                                     ),
                                   ),
                                   SizedBox(
@@ -101,7 +102,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                     child: Text(
                                       up_news_event[index].txt_date,
                                       style: TextStyle(
-                                          fontSize: 8,
+                                          fontSize: 10,
                                           fontWeight: FontWeight.w500,
                                           fontFamily: 'KhmerOSBattambang',
                                           color: Colors.indigo[900]),
@@ -113,7 +114,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                   Container(
                                     child: Image.asset(
                                       up_news_event[index].icon2,
-                                      width: 12,
+                                      width: 14,
                                     ),
                                   ),
                                   SizedBox(
@@ -123,7 +124,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                     child: Text(
                                       up_news_event[index].txt_time,
                                       style: TextStyle(
-                                          fontSize: 8,
+                                          fontSize: 10,
                                           fontWeight: FontWeight.w500,
                                           fontFamily: 'KhmerOSBattambang',
                                           color: Colors.indigo[900]),

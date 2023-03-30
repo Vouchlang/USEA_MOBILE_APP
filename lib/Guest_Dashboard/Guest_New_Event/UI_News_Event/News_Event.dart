@@ -52,10 +52,10 @@ class _New_EventState extends State<New_Event> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: 62,
+                height: 67,
                 // alignment: Alignment.center,
                 child: ListView.builder(
-                    physics: ScrollPhysics(),
+                    physics: NeverScrollableScrollPhysics(),
                     itemCount: tab_txt.length,
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
@@ -71,9 +71,10 @@ class _New_EventState extends State<New_Event> {
                             },
                             child: AnimatedContainer(
                               duration: Duration(milliseconds: 300),
-                              margin: EdgeInsets.all(10),
+                              margin: EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 5),
                               padding: EdgeInsets.all(10),
-                              width: 160,
+                              width: 180,
                               decoration: BoxDecoration(
                                   color: current == index
                                       ? Colors.indigo[900]
@@ -93,7 +94,7 @@ class _New_EventState extends State<New_Event> {
                                         ? Colors.white
                                         : Colors.black,
                                     fontFamily: 'KhmerOSbattambang',
-                                    fontSize: 12),
+                                    fontSize: 14),
                               ),
                             ),
                           ),

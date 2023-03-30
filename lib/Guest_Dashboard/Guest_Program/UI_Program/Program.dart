@@ -104,7 +104,7 @@ class ProgramWidget extends StatelessWidget {
                     title,
                     textAlign: TextAlign.justify,
                     style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 14,
                         fontFamily: 'KhmerOSbattambang',
                         color: Colors.black),
                   ),
@@ -135,10 +135,10 @@ class ProgramWidget extends StatelessWidget {
               title: Row(children: [
                 Image.asset(
                   image,
-                  scale: 7,
+                  scale: 6,
                 ),
                 SizedBox(
-                  width: 5,
+                  width: 10,
                 ),
                 Container(
                   width: 225,
@@ -146,7 +146,7 @@ class ProgramWidget extends StatelessWidget {
                     title,
                     textAlign: TextAlign.left,
                     style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 14,
                         fontFamily: 'KhmerOSbattambang',
                         fontWeight: FontWeight.w600,
                         color: Colors.black),

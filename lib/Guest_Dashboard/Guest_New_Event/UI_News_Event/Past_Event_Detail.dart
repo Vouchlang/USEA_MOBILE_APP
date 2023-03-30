@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_New_Event/Class_News_Event/Class_Past_News_Event.dart';
 
 class Past_Event_Detail extends StatelessWidget {
@@ -12,7 +13,7 @@ class Past_Event_Detail extends StatelessWidget {
       backgroundColor: Color(0xF5F5F7FE),
       appBar: AppBar(
         centerTitle: false,
-        title: Text('ព្រឹត្តិការណ៍',
+        title: Text('ព្រឹត្តិការណ៍'.tr,
             style: TextStyle(
               color: Colors.indigo[900],
               fontSize: 16,
@@ -39,7 +40,7 @@ class Past_Event_Detail extends StatelessWidget {
           children: [
             Container(
               width: double.maxFinite,
-              height: 150,
+              height: 175,
               child: Image.asset(
                 data.img,
                 fit: BoxFit.fitWidth,
@@ -66,17 +67,17 @@ class Past_Event_Detail extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 15,
+              height: 10,
             ),
             Container(
               width: double.infinity,
-              margin: EdgeInsets.symmetric(vertical: 0, horizontal: 15),
+              margin: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
               child: Align(
                 child: Text(
                   data.detail_description,
                   textAlign: TextAlign.justify,
                   style:
-                      TextStyle(fontSize: 11, fontFamily: 'KhmerOSbattambang'),
+                      TextStyle(fontSize: 12, fontFamily: 'KhmerOSbattambang'),
                 ),
               ),
             ),

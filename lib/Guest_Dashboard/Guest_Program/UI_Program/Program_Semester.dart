@@ -39,9 +39,9 @@ class _Program_SemesterState extends State<Program_Semester> {
               _searchQuery = value;
             });
           },
-          style: TextStyle(fontSize: 12, fontFamily: 'KhmerOSbattambang'),
+          style: TextStyle(fontSize: 14, fontFamily: 'KhmerOSbattambang'),
           textAlign: TextAlign.left,
-          decoration: InputDecoration.collapsed(hintText: "\tSearch"),
+          decoration: InputDecoration.collapsed(hintText: "\t\tស្វែងរក"),
           cursorColor: Colors.black,
           cursorWidth: 1.5,
         ),
@@ -79,7 +79,7 @@ class _Program_SemesterState extends State<Program_Semester> {
                         child: Text(
                           filteredMajor[index].title,
                           style: TextStyle(
-                              fontSize: 12, fontFamily: 'KhmerOSbattambang'),
+                              fontSize: 14, fontFamily: 'KhmerOSbattambang'),
                         )),
                   ),
                 );

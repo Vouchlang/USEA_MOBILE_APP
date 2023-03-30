@@ -57,7 +57,7 @@ class _Program_Major_DetailState extends State<Program_Major_Detail_Main> {
             mainAxisAlignment: MainAxisAlignment.center,
             children:[
               Container(
-                height:62,
+                height:67,
                 child: ListView.builder(
                     physics: ScrollPhysics(),
                     itemCount: tab_txt.length,
@@ -75,9 +75,9 @@ class _Program_Major_DetailState extends State<Program_Major_Detail_Main> {
                             },
                             child: AnimatedContainer(
                               duration: Duration(milliseconds: 300),
-                              margin: EdgeInsets.all(10),
+                              margin: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                               padding: EdgeInsets.all(10),
-                              width: 150,
+                              width: 180,
                               decoration: BoxDecoration(
                                   color: current == index
                                       ? Colors.indigo[900]
@@ -97,7 +97,7 @@ class _Program_Major_DetailState extends State<Program_Major_Detail_Main> {
                                 style: TextStyle(
                                     color: current == index ? Colors.white : Colors.black,
                                     fontFamily: 'KhmerOSbattambang',
-                                    fontSize: 12
+                                    fontSize: 14
                                 ),
                               ),
                             ),

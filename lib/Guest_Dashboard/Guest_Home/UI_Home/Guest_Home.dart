@@ -119,40 +119,46 @@ class _Guest_HomeState extends State<Guest_Home> {
     return Scaffold(
       backgroundColor: Color(0xF5F5F7FE),
       appBar: AppBar(
-        leading: Image.asset(
-          'assets/image/usea_logo.png',
-          scale: 30,
-        ),
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+            Row(
               children: [
-                Text(
-                  'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
-                  style: TextStyle(
-                      color: Colors.indigo[900],
-                      fontSize: 12,
-                      fontFamily: 'KhmerOSmuol'),
+                Container(
+                  child: Image.asset(
+                    'assets/image/usea_logo.png',
+                    scale: 28,
+                  ),
                 ),
-                Text('UNIVERSITY OF SOUTH-EAST ASIA',
-                    style: TextStyle(
-                        color: Colors.indigo[900],
-                        fontSize: 14,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500)),
+                SizedBox(
+                  width: 5,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
+                      style: TextStyle(
+                          color: Colors.indigo[900],
+                          fontSize: 12,
+                          fontFamily: 'KhmerOSmuol'),
+                    ),
+                    Text('UNIVERSITY OF SOUTH-EAST ASIA',
+                        style: TextStyle(
+                            color: Colors.indigo[900],
+                            fontSize: 14,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w500)),
+                  ],
+                ),
               ],
             ),
-          ],
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: Container(
-                width: 35,
+            Container(
+                width: 40,
+                height: 40,
+                alignment: Alignment.center,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
+                    borderRadius: BorderRadius.circular(50),
                     color: Colors.grey[200]),
                 child: Center(
                   child: IconButton(
@@ -167,11 +173,12 @@ class _Guest_HomeState extends State<Guest_Home> {
                       icon: Icon(
                         Icons.notifications,
                         color: Colors.indigo[900],
-                        size: 20,
+                        size: 24,
                       )),
                 )),
-          ),
-        ],
+          ],
+        ),
+        toolbarHeight: 75,
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 1,
@@ -182,7 +189,7 @@ class _Guest_HomeState extends State<Guest_Home> {
           height: 10,
         ),
         Container(
-          height: 200,
+          height: 175,
           width: double.infinity,
           child: Padding(
               padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
@@ -239,10 +246,6 @@ class _Guest_HomeState extends State<Guest_Home> {
                         ),
                         child: InkWell(
                           onTap: () {
-                            // Navigator.push(context, MaterialPageRoute(
-                            //     builder: (BuildContext context) {
-                            //   return home_screen[index].screen;
-                            // }));
                             showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
@@ -257,14 +260,14 @@ class _Guest_HomeState extends State<Guest_Home> {
                               children: [
                                 Image.asset(
                                   home_screen[index].img,
-                                  scale: 7,
+                                  scale: 6,
                                 ),
                                 SizedBox(
                                   height: 5,
                                 ),
                                 Text(home_screen[index].name.tr,
                                     style: TextStyle(
-                                        fontSize: 12,
+                                        fontSize: 14,
                                         fontFamily: 'KhmerOSbattambang'))
                               ],
                             ),

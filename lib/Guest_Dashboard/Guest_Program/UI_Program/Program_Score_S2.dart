@@ -15,7 +15,7 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
     return Scaffold(
       backgroundColor: Color(0xF5F5F7FE),
       body: Card(
-        elevation: 3,
+        elevation: 2,
         shadowColor: Colors.grey[200],
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         margin: EdgeInsets.all(10),
@@ -33,7 +33,7 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
                       'មុខវិជ្ជា'.tr,
                       style: TextStyle(
                           color: Colors.indigo[900],
-                          fontSize: 12,
+                          fontSize: 14,
                           fontFamily: 'KhmerOSbattambang',
                           fontWeight: FontWeight.w600),
                     ),
@@ -44,7 +44,7 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
                         child: Text('ម៉ោង'.tr,
                             style: TextStyle(
                                 color: Colors.indigo[900],
-                                fontSize: 12,
+                                fontSize: 14,
                                 fontFamily: 'KhmerOSbattambang',
                                 fontWeight: FontWeight.w600)),
                       ),
@@ -55,7 +55,7 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
                         child: Text('ក្រេឌីត'.tr,
                             style: TextStyle(
                                 color: Colors.indigo[900],
-                                fontSize: 12,
+                                fontSize: 14,
                                 fontFamily: 'KhmerOSbattambang',
                                 fontWeight: FontWeight.w600)),
                       )
@@ -83,7 +83,7 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
                                   child: Text(
                                     class_program_score_s2[index].subject,
                                     style: TextStyle(
-                                        fontSize: 12,
+                                        fontSize: 14,
                                         fontFamily: 'KhmerOSbattambang',
                                         fontWeight: FontWeight.w500),
                                   ),
@@ -97,7 +97,7 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
                                               .hour
                                               .toString(),
                                           style: TextStyle(
-                                            fontSize: 12,
+                                            fontSize: 14,
                                             fontFamily: 'Poppins',
                                           )),
                                     ),
@@ -111,7 +111,7 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
                                               .credit
                                               .toString(),
                                           style: TextStyle(
-                                            fontSize: 12,
+                                            fontSize: 14,
                                             fontFamily: 'Poppins',
                                           )),
                                     ),
@@ -131,7 +131,7 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
                       'សរុប'.tr,
                       style: TextStyle(
                         color: Colors.indigo[900],
-                        fontSize: 12,
+                        fontSize: 14,
                         fontFamily: 'KhmerOSbattambang',
                       ),
                     ),
@@ -147,7 +147,7 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
                                 .toString(),
                             style: TextStyle(
                               color: Colors.indigo[900],
-                              fontSize: 12,
+                              fontSize: 14,
                               fontFamily: 'Poppins',
                             )),
                       ),
@@ -163,7 +163,7 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
                                 .toString(),
                             style: TextStyle(
                               color: Colors.indigo[900],
-                              fontSize: 12,
+                              fontSize: 14,
                               fontFamily: 'Poppins',
                             )),
                       ),

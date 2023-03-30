@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_Program/Class_Program/Class_Program_Bachelor.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_Program/Class_Program/Class_Program_Major_Detail.dart';
 
-
 class Program_Bachelor extends StatefulWidget {
   const Program_Bachelor({Key? key}) : super(key: key);
 
@@ -25,7 +24,7 @@ class _Program_BachelorState extends State<Program_Bachelor> {
               child: Text(
                 'បន្ទាប់ពីបញ្ចប់ការសិក្សាបរិញ្ញាបត្រវិទ្យាសាស្ត្រ មុខជំនាញព័ត៌មានវិទ្យា​ និស្សិតទទួលបាន សមត្ថភាពមូលដ្ឋាន និងសមត្ថភាពស្នូលដោយចែកចេញជា៖ ',
                 textAlign: TextAlign.justify,
-                style: TextStyle(fontSize: 12, fontFamily: 'KhmerOSbattambang'),
+                style: TextStyle(fontSize: 14, fontFamily: 'KhmerOSbattambang'),
               ),
             ),
             Container(
@@ -51,23 +50,26 @@ class _Program_BachelorState extends State<Program_Bachelor> {
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                       color: Colors.indigo[900],
-                                      fontSize: 12,
+                                      fontSize: 14,
                                       fontFamily: 'KhmerOSbattambang',
                                       fontWeight: FontWeight.w600),
                                 ),
                               ),
-                              animatedWidgetFollowingHeader: Icon(Icons.keyboard_arrow_down_rounded, size: 17, color: Colors.indigo[900],),
+                              animatedWidgetFollowingHeader: Icon(
+                                Icons.keyboard_arrow_down_rounded,
+                                size: 25,
+                                color: Colors.indigo[900],
+                              ),
                               childrenBody: Container(
                                 padding: EdgeInsets.symmetric(horizontal: 15),
                                 child: Text(
                                   program_major_detail[index].description,
                                   textAlign: TextAlign.justify,
                                   style: TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 14,
                                       fontFamily: 'KhmerOSbattambang'),
                                 ),
-                              )
-                          ),
+                              )),
                         )
                       ],
                     ),
@@ -77,21 +79,21 @@ class _Program_BachelorState extends State<Program_Bachelor> {
             ),
             Container(
                 child: Column(
-                  children: [
-                    SizedBox(
-                      height: 10,
-                    ),
-                    GridView.count(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 3,
-                      crossAxisSpacing: 3,
-                      childAspectRatio: 1.95,
-                      // padding: EdgeInsets.symmetric(vertical: 0, horizontal: 6),
-                      children: List.generate(
-                          pro_bach_year.length,
-                              (index) => Card(
+              children: [
+                SizedBox(
+                  height: 10,
+                ),
+                GridView.count(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 3,
+                  crossAxisSpacing: 3,
+                  childAspectRatio: 1.90,
+                  // padding: EdgeInsets.symmetric(vertical: 0, horizontal: 6),
+                  children: List.generate(
+                      pro_bach_year.length,
+                      (index) => Card(
                             elevation: 3,
                             color: Colors.white,
                             shadowColor: Colors.grey[200],
@@ -101,8 +103,8 @@ class _Program_BachelorState extends State<Program_Bachelor> {
                               onTap: () {
                                 Navigator.push(context, MaterialPageRoute(
                                     builder: (BuildContext context) {
-                                      return pro_bach_year[index].screen;
-                                    }));
+                                  return pro_bach_year[index].screen;
+                                }));
                               },
                               child: Container(
                                 child: Column(
@@ -114,7 +116,7 @@ class _Program_BachelorState extends State<Program_Bachelor> {
                                     Text(
                                       pro_bach_year[index].name,
                                       style: TextStyle(
-                                          fontSize: 12,
+                                          fontSize: 14,
                                           fontFamily: 'KhmerOSbattambang'),
                                     )
                                   ],
@@ -122,9 +124,9 @@ class _Program_BachelorState extends State<Program_Bachelor> {
                               ),
                             ),
                           )),
-                    ),
-                  ],
-                ))
+                ),
+              ],
+            ))
           ],
         ),
       ),

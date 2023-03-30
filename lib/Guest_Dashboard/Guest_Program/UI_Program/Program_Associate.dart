@@ -24,7 +24,7 @@ class _Program_AssociateState extends State<Program_Associate> {
               child: Text(
                 'បន្ទាប់ពីបញ្ចប់ការសិក្សាបរិញ្ញាបត្រវិទ្យាសាស្ត្រ មុខជំនាញព័ត៌មានវិទ្យា​ និស្សិតទទួលបាន សមត្ថភាពមូលដ្ឋាន និងសមត្ថភាពស្នូលដោយចែកចេញជា៖ ',
                 textAlign: TextAlign.justify,
-                style: TextStyle(fontSize: 12, fontFamily: 'KhmerOSbattambang'),
+                style: TextStyle(fontSize: 14, fontFamily: 'KhmerOSbattambang'),
               ),
             ),
             Container(
@@ -50,14 +50,14 @@ class _Program_AssociateState extends State<Program_Associate> {
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                       color: Colors.indigo[900],
-                                      fontSize: 12,
+                                      fontSize: 14,
                                       fontFamily: 'KhmerOSbattambang',
                                       fontWeight: FontWeight.w600),
                                 ),
                               ),
                               animatedWidgetFollowingHeader: Icon(
                                 Icons.keyboard_arrow_down_rounded,
-                                size: 17,
+                                size: 25,
                                 color: Colors.indigo[900],
                               ),
                               childrenBody: Container(
@@ -66,7 +66,7 @@ class _Program_AssociateState extends State<Program_Associate> {
                                   program_major_detail[index].description,
                                   textAlign: TextAlign.justify,
                                   style: TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 14,
                                       fontFamily: 'KhmerOSbattambang'),
                                 ),
                               )),
@@ -89,7 +89,7 @@ class _Program_AssociateState extends State<Program_Associate> {
                   crossAxisCount: 2,
                   mainAxisSpacing: 3,
                   crossAxisSpacing: 3,
-                  childAspectRatio: 1.95,
+                  childAspectRatio: 1.90,
                   // padding: EdgeInsets.symmetric(vertical: 0, horizontal: 6),
                   children: List.generate(
                       pro_asso_year.length,
@@ -117,7 +117,7 @@ class _Program_AssociateState extends State<Program_Associate> {
                                     Text(
                                       pro_asso_year[index].name,
                                       style: TextStyle(
-                                          fontSize: 12,
+                                          fontSize: 14,
                                           fontFamily: 'KhmerOSbattambang'),
                                     )
                                   ],
