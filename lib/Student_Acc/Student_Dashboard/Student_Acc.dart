@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../Guest_Acc/Guest_Dashboard/Notification/Notifications.dart';
+import '../../Guest_Account/Dashboard/Guest_Notification/UI_Notification/Notifications.dart';
 
 class Student_Acc extends StatefulWidget {
   const Student_Acc({super.key});

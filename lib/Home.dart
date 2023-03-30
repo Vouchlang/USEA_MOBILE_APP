@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '/Guest_Acc/Guest_Dashboard/Guest_Home.dart' as Guest_Home;
-import '/Guest_Acc/Guest_Dashboard/Guest_Acc.dart' as Guest_Acc;
+import 'Guest_Account/Dashboard/Guest_Home/UI_Home/Guest_Home.dart' as Guest_Home;
+import 'Guest_Account/Dashboard/Guest_Account/UI_Account/Guest_Acc.dart' as Guest_Acc;
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
