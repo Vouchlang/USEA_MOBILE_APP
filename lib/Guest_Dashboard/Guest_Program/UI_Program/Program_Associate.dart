@@ -43,7 +43,7 @@ class _Program_AssociateState extends State<Program_Associate> {
                               .copyWith(dividerColor: Colors.transparent),
                           child: ConfigurableExpansionTile(
                               header: Container(
-                                width: 323,
+                                width: 315,
                                 alignment: Alignment.centerLeft,
                                 child: Text(
                                   program_major_detail[index].title,
@@ -61,7 +61,7 @@ class _Program_AssociateState extends State<Program_Associate> {
                                 color: Colors.indigo[900],
                               ),
                               childrenBody: Container(
-                                padding: EdgeInsets.symmetric(horizontal: 15),
+                                padding: EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   program_major_detail[index].description,
                                   textAlign: TextAlign.justify,

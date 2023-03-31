@@ -66,9 +66,10 @@ class _AboutUSState extends State<AboutUS> {
                           ),
                           SizedBox(width: 10,),
                           Container(
-                            width: 275,
+                            width: 265,
                             child: Text(
                               aboutUS[index].text.tr,
+                              textAlign: TextAlign.left,
                               style: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'KhmerOSbattambang',

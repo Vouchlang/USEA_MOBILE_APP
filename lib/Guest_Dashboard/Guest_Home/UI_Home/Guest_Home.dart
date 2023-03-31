@@ -140,13 +140,13 @@ class _Guest_HomeState extends State<Guest_Home> {
                       'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
                       style: TextStyle(
                           color: Colors.indigo[900],
-                          fontSize: 12,
+                          fontSize: 11,
                           fontFamily: 'KhmerOSmuol'),
                     ),
                     Text('UNIVERSITY OF SOUTH-EAST ASIA',
                         style: TextStyle(
                             color: Colors.indigo[900],
-                            fontSize: 14,
+                            fontSize: 13,
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500)),
                   ],
