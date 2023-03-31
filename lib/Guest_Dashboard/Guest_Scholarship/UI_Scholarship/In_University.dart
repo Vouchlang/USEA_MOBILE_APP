@@ -93,6 +93,7 @@ class _In_UniversityState extends State<In_University> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Container(
+                              width: 75,
                               alignment: Alignment.center,
                               padding:
                               EdgeInsets.symmetric(vertical: 5, horizontal: 5),

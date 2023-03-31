@@ -42,17 +42,18 @@ class _Program_BachelorState extends State<Program_Bachelor> {
                           data: Theme.of(context)
                               .copyWith(dividerColor: Colors.transparent),
                           child: ConfigurableExpansionTile(
-                              header: Container(
-                                width: 323,
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  program_major_detail[index].title,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                      color: Colors.indigo[900],
-                                      fontSize: 14,
-                                      fontFamily: 'KhmerOSbattambang',
-                                      fontWeight: FontWeight.w600),
+                              header: Expanded(
+                                child: Container(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    program_major_detail[index].title,
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                        color: Colors.indigo[900],
+                                        fontSize: 14,
+                                        fontFamily: 'KhmerOSbattambang',
+                                        fontWeight: FontWeight.w600),
+                                  ),
                                 ),
                               ),
                               animatedWidgetFollowingHeader: Icon(
@@ -61,7 +62,7 @@ class _Program_BachelorState extends State<Program_Bachelor> {
                                 color: Colors.indigo[900],
                               ),
                               childrenBody: Container(
-                                padding: EdgeInsets.symmetric(horizontal: 15),
+                                padding: EdgeInsets.symmetric(horizontal: 10),
                                 child: Text(
                                   program_major_detail[index].description,
                                   textAlign: TextAlign.justify,

@@ -192,7 +192,6 @@ class _VisionState extends State<Vision> {
                                 width: 5,
                               ),
                               Container(
-                                width: 300,
                                 child: Text(
                                   'Enjoy lifelong learning and research',
                                   textAlign: TextAlign.justify,
@@ -245,14 +244,16 @@ class _VisionState extends State<Vision> {
                               SizedBox(
                                 width: 5,
                               ),
-                              Container(
-                                width: 300,
-                                child: Text(
-                                  'Knowledge of foreign languages that can be used officially',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
+                              Expanded
+                              (
+                                child: Container(
+                                  child: Text(
+                                    'Knowledge of foreign languages that can be used officially',
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontFamily: 'Poppins',
+                                    ),
                                   ),
                                 ),
                               )
@@ -299,6 +300,7 @@ class _VisionState extends State<Vision> {
                   Container(
                     child: Text(
                       '4.2. Skills',
+                      textAlign: TextAlign.justify,
                       style: TextStyle(
                           fontSize: 14,
                           color: Colors.indigo[900],
@@ -324,14 +326,15 @@ class _VisionState extends State<Vision> {
                               SizedBox(
                                 width: 5,
                               ),
-                              Container(
-                                width: 300,
-                                child: Text(
-                                  'High commitment and responsibility to perform the work',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
+                              Expanded(
+                                child: Container(
+                                  child: Text(
+                                    'High commitment and responsibility to perform the work',
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontFamily: 'Poppins',
+                                    ),
                                   ),
                                 ),
                               )
@@ -351,14 +354,16 @@ class _VisionState extends State<Vision> {
                               SizedBox(
                                 width: 5,
                               ),
-                              Container(
-                                width: 300,
-                                child: Text(
-                                  'High commitment and responsibility in teaching',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
+                              Expanded(
+                                child: Container(
+                                  // width: 300,
+                                  child: Text(
+                                    'High commitment and responsibility in teaching',
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontFamily: 'Poppins',
+                                    ),
                                   ),
                                 ),
                               )
@@ -378,14 +383,15 @@ class _VisionState extends State<Vision> {
                               SizedBox(
                                 width: 5,
                               ),
-                              Container(
-                                width: 300,
-                                child: Text(
-                                  'High commitment and responsibility in study and research',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
+                              Expanded(
+                                child: Container(
+                                  child: Text(
+                                    'High commitment and responsibility in study and research',
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontFamily: 'Poppins',
+                                    ),
                                   ),
                                 ),
                               )
@@ -405,14 +411,15 @@ class _VisionState extends State<Vision> {
                               SizedBox(
                                 width: 5,
                               ),
-                              Container(
-                                width: 300,
-                                child: Text(
-                                  'Honesty, virtue, accountability, open communication and teamwork',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
+                              Expanded(
+                                child: Container(
+                                  child: Text(
+                                    'Honesty, virtue, accountability, open communication and teamwork',
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontFamily: 'Poppins',
+                                    ),
                                   ),
                                 ),
                               )
@@ -511,14 +518,15 @@ class _VisionState extends State<Vision> {
                               SizedBox(
                                 width: 5,
                               ),
-                              Container(
-                                width: 300,
-                                child: Text(
-                                  'Preservation and protection of national culture and traditions',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
+                              Expanded(
+                                child: Container(
+                                  child: Text(
+                                    'Preservation and protection of national culture and traditions',
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontFamily: 'Poppins',
+                                    ),
                                   ),
                                 ),
                               )
@@ -617,14 +625,15 @@ class _VisionState extends State<Vision> {
                               SizedBox(
                                 width: 5,
                               ),
-                              Container(
-                                width: 300,
-                                child: Text(
-                                  'Improving the quality of education to national and international standards',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
+                              Expanded(
+                                child: Container(
+                                  child: Text(
+                                    'Improving the quality of education to national and international standards',
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontFamily: 'Poppins',
+                                    ),
                                   ),
                                 ),
                               )
@@ -671,14 +680,15 @@ class _VisionState extends State<Vision> {
                               SizedBox(
                                 width: 5,
                               ),
-                              Container(
-                                width: 300,
-                                child: Text(
-                                  'International Communication and Cooperation',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
+                              Expanded(
+                                child: Container(
+                                  child: Text(
+                                    'International Communication and Cooperation',
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontFamily: 'Poppins',
+                                    ),
                                   ),
                                 ),
                               )
@@ -698,14 +708,15 @@ class _VisionState extends State<Vision> {
                               SizedBox(
                                 width: 5,
                               ),
-                              Container(
-                                width: 300,
-                                child: Text(
-                                  'Recognition of quality of education nationally and internationally',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
+                              Expanded(
+                                child: Container(
+                                  child: Text(
+                                    'Recognition of quality of education nationally and internationally',
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontFamily: 'Poppins',
+                                    ),
                                   ),
                                 ),
                               )

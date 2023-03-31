@@ -62,6 +62,7 @@ class _Past_EventState extends State<Past_Event> {
                                 alignment: Alignment.center,
                                 child: Text(
                                   past_news_event[index].title,
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,

@@ -85,13 +85,17 @@ class _HistoryState extends State<History> {
                             ),
                             margin: EdgeInsets.only(top: 10),
                           ),
-                          Container(
-                            width: 360,
-                            child: Text(
-                              'The picture of the golden rice panicles around the circle symbolizes the university’s strength, development and sustainability.',
-                              textAlign: TextAlign.justify,
-                              style: TextStyle(
-                                  fontSize: 14, fontFamily: 'Poppins'),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Expanded(
+                            child: Container(
+                              child: Text(
+                                'The picture of the golden rice panicles around the circle symbolizes the university’s strength, development and sustainability.',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                    fontSize: 14, fontFamily: 'Poppins'),
+                              ),
                             ),
                           ),
                         ]),
@@ -108,13 +112,17 @@ class _HistoryState extends State<History> {
                             ),
                             margin: EdgeInsets.only(top: 10),
                           ),
-                          Container(
-                            width: 360,
-                            child: Text(
-                              'The dark blue phrases written in both Khmer and English around the circle and the word USEA with the light blue color on the book symbolize the name of the University of South-East Asia.',
-                              textAlign: TextAlign.justify,
-                              style: TextStyle(
-                                  fontSize: 14, fontFamily: 'Poppins'),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Expanded(
+                            child: Container(
+                              child: Text(
+                                'The dark blue phrases written in both Khmer and English around the circle and the word USEA with the light blue color on the book symbolize the name of the University of South-East Asia.',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                    fontSize: 14, fontFamily: 'Poppins'),
+                              ),
                             ),
                           ),
                         ]),
@@ -131,13 +139,17 @@ class _HistoryState extends State<History> {
                             ),
                             margin: EdgeInsets.only(top: 10),
                           ),
-                          Container(
-                            width: 360,
-                            child: Text(
-                              'The picture of the light blue globe inside the circle represents fame, national and international recognition, and regional and global integration.',
-                              textAlign: TextAlign.justify,
-                              style: TextStyle(
-                                  fontSize: 14, fontFamily: 'Poppins'),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Expanded(
+                            child: Container(
+                              child: Text(
+                                'The picture of the light blue globe inside the circle represents fame, national and international recognition, and regional and global integration.',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                    fontSize: 14, fontFamily: 'Poppins'),
+                              ),
                             ),
                           ),
                         ]),
@@ -154,14 +166,18 @@ class _HistoryState extends State<History> {
                             ),
                             margin: EdgeInsets.only(top: 10),
                           ),
-                          Container(
-                            width: 360,
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'The pictures of the blue hat and spearhead on the book symbolize high quality education and research, resulting in excellent leadership with professional ethics, creativity, social understanding, and commitment to promoting national. ',
-                              textAlign: TextAlign.justify,
-                              style: TextStyle(
-                                  fontSize: 14, fontFamily: 'Poppins'),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'The pictures of the blue hat and spearhead on the book symbolize high quality education and research, resulting in excellent leadership with professional ethics, creativity, social understanding, and commitment to promoting national. ',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                    fontSize: 14, fontFamily: 'Poppins'),
+                              ),
                             ),
                           ),
                         ]),

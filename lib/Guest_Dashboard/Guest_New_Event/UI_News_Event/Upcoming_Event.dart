@@ -62,7 +62,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                 alignment: Alignment.center,
                                 child: Text(
                                   up_news_event[index].title,
-                                  textAlign: TextAlign.justify,
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
