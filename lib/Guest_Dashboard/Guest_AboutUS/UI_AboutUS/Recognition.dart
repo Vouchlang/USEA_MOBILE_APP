@@ -44,53 +44,55 @@ class _RecognitionState extends State<Recognition> {
             return Column(
               children: [
                 Container(
-                  margin: EdgeInsets.fromLTRB(10, 10, 10, 5),
+                  margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        height: 175,
-                        width: 125,
+                        height: 200,
+                        width: 150,
                         child: Image.asset(recognition[index].image, fit: BoxFit.cover,),
                       ),
                       SizedBox(
                         width: 10,
                       ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Container(
-                            width: 205,
-                            child: Text(recognition[index].description,
-                              textAlign: TextAlign.justify,
-                              style: TextStyle(fontSize: 12, fontFamily: 'Poppins'),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          InkWell(
-                            onTap: () => launchUrlString(recognition[index].link),
-                            child: Container(
-                              alignment: Alignment.center,
-                              padding:
-                              EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: Color(0x142D74F5)),
-                              child: Text(
-                                'អានបន្ថែម'.tr, style: TextStyle(
-                                  fontSize: 10,
-                                  fontFamily: 'KhmerOSbattambang',
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.indigo[900]
-                              ),
+                      Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Container(
+                              width: 213,
+                              child: Text(recognition[index].description,
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(fontSize: 14, fontFamily: 'Poppins'),
                               ),
                             ),
-                          ),
-                        ],
+                            SizedBox(
+                              height: 10,
+                            ),
+                            InkWell(
+                              onTap: () => launchUrlString(recognition[index].link),
+                              child: Container(
+                                alignment: Alignment.center,
+                                padding:
+                                EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: Color(0x142D74F5)),
+                                child: Text(
+                                  'អានបន្ថែម'.tr, style: TextStyle(
+                                    fontSize: 12,
+                                    fontFamily: 'KhmerOSbattambang',
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.indigo[900]
+                                ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       )
                     ],
                   ),

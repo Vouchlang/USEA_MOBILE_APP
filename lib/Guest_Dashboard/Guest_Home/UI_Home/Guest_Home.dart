@@ -263,7 +263,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                                   scale: 6,
                                 ),
                                 SizedBox(
-                                  height: 5,
+                                  height: 7,
                                 ),
                                 Text(home_screen[index].name.tr,
                                     style: TextStyle(

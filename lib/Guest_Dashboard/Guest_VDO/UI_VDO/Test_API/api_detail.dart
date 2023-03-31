@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'api_model.dart';
 
 class Upcoming_Event extends StatelessWidget {
@@ -13,7 +14,27 @@ class Upcoming_Event extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Color(0xF5F5F7FE),
-      appBar: AppBar(title: Text('API Detail')),
+      appBar: AppBar(
+        centerTitle: false,
+        title: Text('ព្រឹត្តិការណ៍'.tr,
+            style: TextStyle(
+              color: Colors.indigo[900],
+              fontSize: 16,
+              fontFamily: 'KhmerOSbattambang',
+              fontWeight: FontWeight.w600,
+            )),
+        backgroundColor: Colors.white,
+        elevation: 1,
+        iconTheme: IconThemeData.fallback(),
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.indigo[900],
+            size: 15,
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+      ),
       body: Container(
         margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
         child: Column(
@@ -22,7 +43,7 @@ class Upcoming_Event extends StatelessWidget {
           children: [
             Container(
               width: double.maxFinite,
-              height: 150,
+              height: 175,
               child: InteractiveViewer(
                 child: Image.network(
                   getImageUrl(data.upcoming_image),
@@ -37,7 +58,7 @@ class Upcoming_Event extends StatelessWidget {
                       BorderRadius.vertical(bottom: Radius.circular(10)),
                   boxShadow: [
                     BoxShadow(
-                        offset: Offset(0, 1), color: Colors.grey, blurRadius: 2)
+                        offset: Offset(0, 1), color: Colors.grey, blurRadius: 1)
                   ]),
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
               alignment: Alignment.center,
@@ -46,22 +67,23 @@ class Upcoming_Event extends StatelessWidget {
                 data.upcoming_title,
                 textAlign: TextAlign.justify,
                 style: TextStyle(
+                  fontSize: 14,
                     fontWeight: FontWeight.w600,
                     fontFamily: 'KhmerOSbattambang'),
               ),
             ),
             SizedBox(
-              height: 15,
+              height: 10,
             ),
             Container(
               width: double.infinity,
-              margin: EdgeInsets.symmetric(vertical: 0, horizontal: 15),
+              margin: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
               child: Align(
                 child: Text(
                   data.upcoming_detail,
                   textAlign: TextAlign.justify,
                   style:
-                      TextStyle(fontSize: 11, fontFamily: 'KhmerOSbattambang'),
+                      TextStyle(fontSize: 12, fontFamily: 'KhmerOSbattambang'),
                 ),
               ),
             ),

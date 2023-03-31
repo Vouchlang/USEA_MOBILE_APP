@@ -57,7 +57,7 @@ class _VideoState extends State<Video_UI> {
                       MaterialPageRoute(builder: ((context) => DemoApi())));
                 },
                 child: Container(
-                  padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                  padding: EdgeInsets.fromLTRB(10, 15, 10, 0),
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -68,8 +68,8 @@ class _VideoState extends State<Video_UI> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              width: 125,
-                              height: 75,
+                              width: 150,
+                              height: 100,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
                                 image: DecorationImage(
@@ -79,7 +79,7 @@ class _VideoState extends State<Video_UI> {
                               ),
                             ),
                             SizedBox(
-                              width: 15,
+                              width: 10,
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,7 +91,7 @@ class _VideoState extends State<Video_UI> {
                                   child: Text(video_home[index].title,
                                       textAlign: TextAlign.justify,
                                       style: TextStyle(
-                                        fontSize: 10,
+                                        fontSize: 14,
                                         fontFamily: 'KhmerOSbattambang',
                                         fontWeight: FontWeight.w500,
                                       )),
@@ -112,7 +112,7 @@ class _VideoState extends State<Video_UI> {
                                     lessStyle:
                                         TextStyle(color: Colors.grey[700]),
                                     style: TextStyle(
-                                      fontSize: 8,
+                                      fontSize: 12,
                                       fontFamily: 'KhmerOSbattambang',
                                       fontWeight: FontWeight.w500,
                                     ),

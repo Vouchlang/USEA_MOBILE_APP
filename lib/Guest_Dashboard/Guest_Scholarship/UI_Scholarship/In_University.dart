@@ -39,7 +39,7 @@ class _In_UniversityState extends State<In_University> {
                           child: Text(
                             i_scholarship[index].i_school_name,
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
                               fontFamily: 'KhmerOSbattambang',
                               fontWeight: FontWeight.w600,
                             ),
@@ -50,7 +50,7 @@ class _In_UniversityState extends State<In_University> {
                           child: Text(
                             i_scholarship[index].i_educational_level,
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
                               fontFamily: 'KhmerOSbattambang',
                               fontWeight: FontWeight.w600,
                             ),
@@ -61,7 +61,7 @@ class _In_UniversityState extends State<In_University> {
                           child: Text(
                             i_scholarship[index].i_major,
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
                               fontFamily: 'KhmerOSbattambang',
                               fontWeight: FontWeight.w600,
                             ),
@@ -72,7 +72,7 @@ class _In_UniversityState extends State<In_University> {
                           child: Text(
                             i_scholarship[index].i_expire,
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
                               fontFamily: 'KhmerOSbattambang',
                               fontWeight: FontWeight.w600,
                             ),
@@ -83,7 +83,7 @@ class _In_UniversityState extends State<In_University> {
                           child: Text(
                             i_scholarship[index].i_expire_date,
                             style: TextStyle(
-                              fontSize: 10,
+                              fontSize: 12,
                               fontFamily: 'KhmerOSbattambang',
                               fontWeight: FontWeight.w500,
                             ),
@@ -106,7 +106,7 @@ class _In_UniversityState extends State<In_University> {
                                 child: Text(
                                   'អានបន្ថែម'.tr,
                                   style: TextStyle(
-                                      fontSize: 10,
+                                      fontSize: 12,
                                       fontFamily: 'KhmerOSbattambang',
                                       fontWeight: FontWeight.w600,
                                       color: Colors.indigo[900]),

@@ -59,7 +59,7 @@ class _FAQState extends State<FAQ> {
                           faq[index].question,
                           textAlign: TextAlign.left,
                           style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
                               fontFamily: 'KhmerOSbattambang',
                               color: Colors.black),
                         ),
@@ -74,7 +74,7 @@ class _FAQState extends State<FAQ> {
                               faq[index].answer,
                               textAlign: TextAlign.justify,
                               style: TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 14,
                                   fontFamily: 'KhmerOSbattambang'),
                             ),
                           )

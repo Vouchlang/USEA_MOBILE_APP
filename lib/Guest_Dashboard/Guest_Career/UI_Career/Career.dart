@@ -33,45 +33,64 @@ class _CareerState extends State<Career> {
             color: Colors.indigo[900],
             size: 15,
           ),
-          onPressed: ()=> Navigator.of(context).pop(),),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
       ),
       body: Container(
-        margin: EdgeInsets.all(10),
+        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         child: ListView.builder(
-          itemCount: career.length,
-        itemBuilder: (context, index){
-          return InkWell(
-            onTap: () => launchUrlString(career[index].link),
-            child: Container(
-              child: Column(
-                children: [
-                  Row(
-                  children: [
-                    CircleAvatar(
-                      backgroundImage: AssetImage(career[index].logo),
-                      radius: 35,
-                    ),
-                    SizedBox(width: 15,),
-                    Column(
-                      children: [
-                        Container(width: 200, child: Text( career[index].position , style: TextStyle(
-                          fontSize: 12,
-                          fontFamily: 'KhmerOSbattambang',
-                          fontWeight: FontWeight.w500,)),),
-                        SizedBox(height: 5,),
-                        Container(width: 200, child: Text( career[index].organization , style: TextStyle(
-                          fontSize: 10,
-                          fontFamily: 'KhmerOSbattambang',
-                          fontWeight: FontWeight.w500,)),)
-                      ],
-                    ),
-                  ],
+            itemCount: career.length,
+            itemBuilder: (context, index) {
+              return Container(
+                padding: EdgeInsets.only(top: 5),
+                child: InkWell(
+                  onTap: () => launchUrlString(career[index].link),
+                  child: Container(
+                    child: Column(children: [
+                      Row(
+                        children: [
+                          CircleAvatar(
+                            backgroundImage: AssetImage(career[index].logo),
+                            radius: 40,
+                          ),
+                          SizedBox(
+                            width: 15,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 258,
+                                child: Text(career[index].position,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontFamily: 'KhmerOSbattambang',
+                                      fontWeight: FontWeight.w500,
+                                    )),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Container(
+                                width: 258,
+                                child: Text(career[index].organization,
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontFamily: 'KhmerOSbattambang',
+                                      fontWeight: FontWeight.w500,
+                                    )),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 5,),
+                      Divider()
+                    ]),
+                  ),
                 ),
-                  Divider()
-                ]
-              ),
-    ),
-          );}),
+              );
+            }),
       ),
     );
   }

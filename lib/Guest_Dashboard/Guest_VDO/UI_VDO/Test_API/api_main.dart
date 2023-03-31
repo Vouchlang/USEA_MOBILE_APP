@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 import 'api_detail.dart';
@@ -50,7 +51,27 @@ class _DemoApiState extends State<DemoApi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Test')),
+      appBar: AppBar(
+        centerTitle: false,
+        title: Text('ព្រឹត្តិការណ៍'.tr,
+            style: TextStyle(
+              color: Colors.indigo[900],
+              fontSize: 16,
+              fontFamily: 'KhmerOSbattambang',
+              fontWeight: FontWeight.w600,
+            )),
+        backgroundColor: Colors.white,
+        elevation: 1,
+        iconTheme: IconThemeData.fallback(),
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.indigo[900],
+            size: 15,
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+      ),
       body: Center(
           child: isLoading
               ? const CircularProgressIndicator()
@@ -59,7 +80,6 @@ class _DemoApiState extends State<DemoApi> {
                   itemBuilder: (context, index) {
                     var event = events[index];
                     return Container(
-                      margin: EdgeInsets.only(top: 10),
                       child: Card(
                         margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
                         elevation: 3,
@@ -80,7 +100,7 @@ class _DemoApiState extends State<DemoApi> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Container(
-                                  height: 125,
+                                  height: 150,
                                   width: double.maxFinite,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
@@ -105,7 +125,7 @@ class _DemoApiState extends State<DemoApi> {
                                           event.upcoming_title,
                                           textAlign: TextAlign.justify,
                                           style: TextStyle(
-                                              fontSize: 12,
+                                              fontSize: 14,
                                               fontWeight: FontWeight.w500,
                                               fontFamily: 'KhmerOSBattambang'),
                                         ),
@@ -119,7 +139,7 @@ class _DemoApiState extends State<DemoApi> {
                                           event.upcoming_detail,
                                           textAlign: TextAlign.justify,
                                           style: TextStyle(
-                                              fontSize: 10,
+                                              fontSize: 12,
                                               fontWeight: FontWeight.w500,
                                               fontFamily: 'KhmerOSBattambang'),
                                         ),
@@ -132,7 +152,7 @@ class _DemoApiState extends State<DemoApi> {
                                           Container(
                                             child: Image.asset(
                                               'assets/image/Event_Date.png',
-                                              width: 12,
+                                              width: 14,
                                             ),
                                           ),
                                           SizedBox(
@@ -142,7 +162,7 @@ class _DemoApiState extends State<DemoApi> {
                                             child: Text(
                                               'ថ្ងៃ' + event.upcoming_day,
                                               style: TextStyle(
-                                                  fontSize: 8,
+                                                  fontSize: 10,
                                                   fontWeight: FontWeight.w500,
                                                   fontFamily:
                                                       'KhmerOSBattambang',
@@ -156,7 +176,7 @@ class _DemoApiState extends State<DemoApi> {
                                             child: Text(
                                               'ទី' + event.upcoming_date,
                                               style: TextStyle(
-                                                  fontSize: 8,
+                                                  fontSize: 10,
                                                   fontWeight: FontWeight.w500,
                                                   fontFamily:
                                                       'KhmerOSBattambang',
@@ -170,7 +190,7 @@ class _DemoApiState extends State<DemoApi> {
                                             child: Text(
                                               'ខែ' + event.upcoming_month,
                                               style: TextStyle(
-                                                  fontSize: 8,
+                                                  fontSize: 10,
                                                   fontWeight: FontWeight.w500,
                                                   fontFamily:
                                                       'KhmerOSBattambang',
@@ -184,7 +204,7 @@ class _DemoApiState extends State<DemoApi> {
                                             child: Text(
                                               'ឆ្នាំ' + event.upcoming_year,
                                               style: TextStyle(
-                                                  fontSize: 8,
+                                                  fontSize: 10,
                                                   fontWeight: FontWeight.w500,
                                                   fontFamily:
                                                       'KhmerOSBattambang',
@@ -197,7 +217,7 @@ class _DemoApiState extends State<DemoApi> {
                                           Container(
                                             child: Image.asset(
                                               'assets/image/Event_Time.png',
-                                              width: 12,
+                                              width: 14,
                                             ),
                                           ),
                                           SizedBox(
@@ -207,7 +227,7 @@ class _DemoApiState extends State<DemoApi> {
                                             child: Text(
                                               event.upcoming_time,
                                               style: TextStyle(
-                                                  fontSize: 8,
+                                                  fontSize: 10,
                                                   fontWeight: FontWeight.w500,
                                                   fontFamily:
                                                       'KhmerOSBattambang',

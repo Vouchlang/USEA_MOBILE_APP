@@ -34,7 +34,6 @@ class CardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     updateLanguage(Locale locale) {
       Get.back();
       Get.updateLocale(locale);
@@ -53,22 +52,27 @@ class CardWidget extends StatelessWidget {
             Text(
               'ភាសា'.tr,
               style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 16,
                   fontFamily: 'KhmerOSbattambang',
                   fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 5,),
+            SizedBox(
+              height: 5,
+            ),
             Text(
               'សូមជ្រើសរើសភាសា'.tr,
               style: TextStyle(
-                fontSize: 10,
+                fontSize: 14,
                 fontFamily: 'KhmerOSbattambang',
               ),
             ),
+            SizedBox(
+              height: 5,
+            ),
             Container(
-              height: 65,
+              height: 75,
               padding: EdgeInsets.all(5),
-              alignment: Alignment.bottomCenter,
+              alignment: Alignment.center,
               child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
@@ -76,8 +80,8 @@ class CardWidget extends StatelessWidget {
                     return InkWell(
                       child: Container(
                         // color: Colors.amber,
-                        height: 50,
-                        width: 75,
+                        height: 75,
+                        width: 100,
                         alignment: Alignment.center,
                         child: Column(
                             mainAxisSize: MainAxisSize.min,
@@ -86,7 +90,7 @@ class CardWidget extends StatelessWidget {
                             children: [
                               Image.asset(
                                 locale[index]['logo'],
-                                scale: 5,
+                                scale: 4,
                               ),
                               SizedBox(
                                 height: 5,
@@ -94,7 +98,7 @@ class CardWidget extends StatelessWidget {
                               Text(
                                 locale[index]['name'.tr],
                                 style: TextStyle(
-                                    fontSize: 10,
+                                    fontSize: 14,
                                     fontFamily: 'KhmerOSbattambang'),
                               ),
                             ]),

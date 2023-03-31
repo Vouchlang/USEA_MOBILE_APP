@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:usea_app/Guest_Dashboard/Guest_New_Event/UI_News_Event/Up_Event_Detail.dart';
 
-
 const apiEndpoint =
     'http://192.168.3.34/hosting_api/Guest/fetch_guest_event_upcoming.php';
 

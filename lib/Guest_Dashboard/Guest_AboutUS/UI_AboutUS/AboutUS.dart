@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 import '../Class_AboutUS/Class_AboutUS.dart';
 
@@ -56,20 +55,20 @@ class _AboutUSState extends State<AboutUS> {
                               builder: (ctx) => aboutUS[index].screen));
                     },
                     child: Container(
-                      padding: EdgeInsets.all(10),
+                      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Image.asset(
                             aboutUS[index].img,
-                            scale: 7,
+                            scale: 6,
                           ),
                           Container(
-                            width: 250,
+                            width: 290,
                             child: Text(
                               aboutUS[index].text.tr,
                               style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 16,
                                   fontFamily: 'KhmerOSbattambang',
                                   fontWeight: FontWeight.w600),
                             ),
