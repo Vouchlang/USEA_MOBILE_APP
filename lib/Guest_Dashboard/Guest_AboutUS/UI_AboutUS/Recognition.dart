@@ -50,8 +50,8 @@ class _RecognitionState extends State<Recognition> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        height: 200,
-                        width: 150,
+                        height: 175,
+                        width: 125,
                         child: Image.asset(recognition[index].image, fit: BoxFit.cover,),
                       ),
                       SizedBox(
@@ -63,7 +63,7 @@ class _RecognitionState extends State<Recognition> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Container(
-                              width: 213,
+                              width: 235,
                               child: Text(recognition[index].description,
                                 textAlign: TextAlign.justify,
                                 style: TextStyle(fontSize: 14, fontFamily: 'Poppins'),

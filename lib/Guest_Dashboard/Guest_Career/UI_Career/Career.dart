@@ -60,7 +60,7 @@ class _CareerState extends State<Career> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                width: 258,
+                                width: 225,
                                 child: Text(career[index].position,
                                     style: TextStyle(
                                       fontSize: 14,
@@ -72,7 +72,7 @@ class _CareerState extends State<Career> {
                                 height: 5,
                               ),
                               Container(
-                                width: 258,
+                                width: 225,
                                 child: Text(career[index].organization,
                                     style: TextStyle(
                                       fontSize: 12,

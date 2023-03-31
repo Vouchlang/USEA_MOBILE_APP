@@ -156,6 +156,7 @@ class _HistoryState extends State<History> {
                           ),
                           Container(
                             width: 360,
+                            alignment: Alignment.centerLeft,
                             child: Text(
                               'The pictures of the blue hat and spearhead on the book symbolize high quality education and research, resulting in excellent leadership with professional ethics, creativity, social understanding, and commitment to promoting national. ',
                               textAlign: TextAlign.justify,

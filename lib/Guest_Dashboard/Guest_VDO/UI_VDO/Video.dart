@@ -87,11 +87,11 @@ class _VideoState extends State<Video_UI> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Container(
-                                  width: 200,
+                                  width: 180,
                                   child: Text(video_home[index].title,
                                       textAlign: TextAlign.justify,
                                       style: TextStyle(
-                                        fontSize: 14,
+                                        fontSize: 13,
                                         fontFamily: 'KhmerOSbattambang',
                                         fontWeight: FontWeight.w500,
                                       )),
@@ -101,7 +101,7 @@ class _VideoState extends State<Video_UI> {
                                 ),
                                 SingleChildScrollView(
                                     child: Container(
-                                  width: 200,
+                                  width: 180,
                                   child: ReadMoreText(
                                     video_home[index].caption,
                                     trimLines: 1,

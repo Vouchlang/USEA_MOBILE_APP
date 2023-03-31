@@ -127,7 +127,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                 Container(
                   child: Image.asset(
                     'assets/image/usea_logo.png',
-                    scale: 28,
+                    scale: 30,
                   ),
                 ),
                 SizedBox(
@@ -154,8 +154,8 @@ class _Guest_HomeState extends State<Guest_Home> {
               ],
             ),
             Container(
-                width: 40,
-                height: 40,
+                width: 36,
+                height: 36,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
@@ -173,7 +173,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                       icon: Icon(
                         Icons.notifications,
                         color: Colors.indigo[900],
-                        size: 24,
+                        size: 20,
                       )),
                 )),
           ],

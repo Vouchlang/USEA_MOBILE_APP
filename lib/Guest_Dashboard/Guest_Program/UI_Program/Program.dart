@@ -141,7 +141,7 @@ class ProgramWidget extends StatelessWidget {
                   width: 10,
                 ),
                 Container(
-                  width: 225,
+                  width: 220,
                   child: Text(
                     title,
                     textAlign: TextAlign.left,

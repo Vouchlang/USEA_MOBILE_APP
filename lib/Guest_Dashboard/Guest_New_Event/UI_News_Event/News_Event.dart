@@ -52,6 +52,7 @@ class _New_EventState extends State<New_Event> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
+                margin: EdgeInsets.all(0),
                 height: 67,
                 // alignment: Alignment.center,
                 child: ListView.builder(

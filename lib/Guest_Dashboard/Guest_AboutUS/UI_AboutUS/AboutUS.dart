@@ -59,12 +59,14 @@ class _AboutUSState extends State<AboutUS> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Image.asset(
+                          Row(children: [
+                            Image.asset(
                             aboutUS[index].img,
                             scale: 6,
                           ),
+                          SizedBox(width: 10,),
                           Container(
-                            width: 290,
+                            width: 275,
                             child: Text(
                               aboutUS[index].text.tr,
                               style: TextStyle(
@@ -73,6 +75,7 @@ class _AboutUSState extends State<AboutUS> {
                                   fontWeight: FontWeight.w600),
                             ),
                           ),
+                          ],),
                           Container(
                             child: Image.asset(
                               'assets/image/Right_Arrow.png',

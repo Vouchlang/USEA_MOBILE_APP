@@ -110,7 +110,7 @@ class CardWidget extends StatelessWidget {
                   },
                   separatorBuilder: (context, index) {
                     return VerticalDivider(
-                      width: 50,
+                      width: 40,
                     );
                   },
                   itemCount: locale.length),
@@ -121,39 +121,4 @@ class CardWidget extends StatelessWidget {
     );
   }
 }
-
-// class CustomDialog extends StatelessWidget {
-//   const CustomDialog({Key? key}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Dialog(
-//         child: Stack(
-//           children: [
-//             CardWidget(),
-//             Positioned(
-//               height: 20,
-//               width: 20,
-//               child: OutlinedButton(
-//                 onPressed: () {
-//                   Navigator.pop(context);
-//                 },
-//                 child: Icon(
-//                   Icons.close,
-//                   color: Colors.white,
-//                   size: 20,
-//                 ),
-//                 style: OutlinedButton.styleFrom(
-//                     padding: EdgeInsets.all(0),
-//                     backgroundColor: Colors.indigo[900],
-//                     shape: CircleBorder(),
-//                     shadowColor: Colors.transparent),
-//               ),
-//               top: 0,
-//               right: 0,
-//             )
-//           ],
-//         ));
-//   }
-// }
 
