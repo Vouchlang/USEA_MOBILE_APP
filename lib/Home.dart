@@ -33,7 +33,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             height: 100,
             child: Center(
               child: BottomNavigationBar(
-                elevation: 1,
+                elevation: 0,
                 onTap: onTap,
                 currentIndex: currentIndex,
                 selectedItemColor: Colors.indigo[900],

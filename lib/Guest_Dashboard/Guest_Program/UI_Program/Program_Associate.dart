@@ -1,5 +1,6 @@
 import 'package:configurable_expansion_tile_null_safety/configurable_expansion_tile_null_safety.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_Program/Class_Program/Class_Program_Major_Detail.dart';
 import '../Class_Program/Class_Program_Associate.dart';
 
@@ -116,7 +117,7 @@ class _Program_AssociateState extends State<Program_Associate> {
                                       height: 7,
                                     ),
                                     Text(
-                                      pro_asso_year[index].name,
+                                      pro_asso_year[index].name.tr,
                                       style: TextStyle(
                                           fontSize: 14,
                                           fontFamily: 'KhmerOSbattambang'),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_Program/UI_Program/Program_Semester.dart';
+import 'package:usea_app/Guest_Dashboard/Guest_Program/UI_Program/Program_Search_Major.dart';
 import '../Class_Program/Class_Program.dart';
 import 'Program_Major_Detail_Main.dart';
 

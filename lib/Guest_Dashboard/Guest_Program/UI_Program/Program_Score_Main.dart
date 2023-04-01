@@ -55,7 +55,7 @@ class _Program_Score_MainState extends State<Program_Score_Main> {
                 height: 67,
                 // alignment: Alignment.center,
                 child: ListView.builder(
-                    physics: ScrollPhysics(),
+                    physics: NeverScrollableScrollPhysics(),
                     itemCount: tab_txt.length,
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
@@ -71,7 +71,8 @@ class _Program_Score_MainState extends State<Program_Score_Main> {
                             },
                             child: AnimatedContainer(
                               duration: Duration(milliseconds: 300),
-                              margin: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                              margin: EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 5),
                               padding: EdgeInsets.all(10),
                               width: 180,
                               decoration: BoxDecoration(

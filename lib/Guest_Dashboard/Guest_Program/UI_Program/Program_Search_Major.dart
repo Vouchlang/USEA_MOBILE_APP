@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_Program/UI_Program/Program_Major_Detail_Main.dart';
+import '/Guest_Dashboard/Guest_Program/UI_Program/Program_Major_Detail_Main.dart';
 import '../Class_Program/Class_Program.dart';
-import '../Class_Program/Class_Program_Associate.dart';
 
 class Program_Semester extends StatefulWidget {
   const Program_Semester({
@@ -41,7 +40,7 @@ class _Program_SemesterState extends State<Program_Semester> {
           },
           style: TextStyle(fontSize: 14, fontFamily: 'KhmerOSbattambang'),
           textAlign: TextAlign.left,
-          decoration: InputDecoration.collapsed(hintText: "\t\tស្វែងរក"),
+          decoration: InputDecoration.collapsed(hintText: "\t\tស្វែងរក".tr),
           cursorColor: Colors.black,
           cursorWidth: 1.5,
         ),

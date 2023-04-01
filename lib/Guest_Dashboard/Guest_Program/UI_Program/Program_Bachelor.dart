@@ -1,5 +1,6 @@
 import 'package:configurable_expansion_tile_null_safety/configurable_expansion_tile_null_safety.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_Program/Class_Program/Class_Program_Bachelor.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_Program/Class_Program/Class_Program_Major_Detail.dart';
 
@@ -115,7 +116,7 @@ class _Program_BachelorState extends State<Program_Bachelor> {
                                       height: 7,
                                     ),
                                     Text(
-                                      pro_bach_year[index].name,
+                                      pro_bach_year[index].name.tr,
                                       style: TextStyle(
                                           fontSize: 14,
                                           fontFamily: 'KhmerOSbattambang'),

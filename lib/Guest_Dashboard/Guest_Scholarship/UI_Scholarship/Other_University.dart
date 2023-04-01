@@ -39,7 +39,7 @@ class _Out_UniversityState extends State<Out_University> {
                           child: Text(
                             o_scholarship[index].o_school_name,
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
                               fontFamily: 'KhmerOSbattambang',
                               fontWeight: FontWeight.w600,
                             ),
@@ -95,15 +95,15 @@ class _Out_UniversityState extends State<Out_University> {
                             Container(
                               width: 75,
                               alignment: Alignment.center,
-                              padding:
-                              EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 5, horizontal: 5),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
                                 color: Color(0x142D74F5),
                               ),
                               child: InkWell(
-                                onTap: () =>
-                                    launchUrlString(o_scholarship[index].o_link),
+                                onTap: () => launchUrlString(
+                                    o_scholarship[index].o_link),
                                 child: Text(
                                   'អានបន្ថែម'.tr,
                                   style: TextStyle(
