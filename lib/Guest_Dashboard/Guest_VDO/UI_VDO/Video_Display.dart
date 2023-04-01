@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:readmore/readmore.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
+import '../../../Custom_AppBar.dart';
 import '../Class_VDO/Class_Video_Home.dart';
 import '../Class_VDO/Class_Video_Playlist.dart';
 
@@ -14,27 +15,7 @@ class Video_Display extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xF5F5F7FE),
-      appBar: AppBar(
-        centerTitle: false,
-        title: Text('វីដេអូ'.tr,
-            style: TextStyle(
-              color: Colors.indigo[900],
-              fontSize: 16,
-              fontFamily: 'KhmerOSbattambang',
-              fontWeight: FontWeight.w600,
-            )),
-        backgroundColor: Colors.white,
-        elevation: 1,
-        iconTheme: IconThemeData.fallback(),
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: Colors.indigo[900],
-            size: 15,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
+      appBar: Custom_AppBar(title: 'វីដេអូ'.tr),
       body: Container(
         child: Column(
           children: [

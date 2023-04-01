@@ -192,18 +192,16 @@ class _Guest_HomeState extends State<Guest_Home> {
           height: 175,
           width: double.infinity,
           child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+              padding: EdgeInsets.symmetric(vertical: 0, horizontal: 5),
               child: ClipRRect(
-                // borderRadius: BorderRadius.circular(10),
                 child: Flexible(
                   child: CarouselSlider.builder(
                       options: CarouselOptions(
                         height: double.infinity,
-                        // autoPlay: true,
                         pageSnapping: true,
                         enableInfiniteScroll: true,
                         autoPlayInterval: Duration(seconds: 3),
-                        // viewportFraction: 1,
+                        viewportFraction: 1,
                         enlargeCenterPage: true,
                         enlargeStrategy: CenterPageEnlargeStrategy.zoom,
                         onPageChanged: ((index, reason) =>
@@ -232,10 +230,10 @@ class _Guest_HomeState extends State<Guest_Home> {
               shrinkWrap: true,
               physics: ScrollPhysics(),
               crossAxisCount: 2,
-              mainAxisSpacing: 3,
+              mainAxisSpacing: 3.5,
               crossAxisSpacing: 3,
               childAspectRatio: 1.90,
-              padding: EdgeInsets.symmetric(vertical: 0, horizontal: 6),
+              padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
               children: List.generate(
                   home_screen.length,
                   (index) => Card(

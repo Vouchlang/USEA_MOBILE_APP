@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../../Custom_AppBar.dart';
 import 'api_detail.dart';
 import 'api_model.dart';
 
@@ -51,27 +52,7 @@ class _DemoApiState extends State<DemoApi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: false,
-        title: Text('ព្រឹត្តិការណ៍'.tr,
-            style: TextStyle(
-              color: Colors.indigo[900],
-              fontSize: 16,
-              fontFamily: 'KhmerOSbattambang',
-              fontWeight: FontWeight.w600,
-            )),
-        backgroundColor: Colors.white,
-        elevation: 1,
-        iconTheme: IconThemeData.fallback(),
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: Colors.indigo[900],
-            size: 15,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
+      appBar: Custom_AppBar(title: 'ព្រឹត្តិការណ៍'.tr),
       body: Center(
           child: isLoading
               ? const CircularProgressIndicator()

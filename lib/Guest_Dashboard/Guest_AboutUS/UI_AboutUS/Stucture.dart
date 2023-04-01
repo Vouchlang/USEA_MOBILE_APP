@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../Custom_AppBar.dart';
+
 class Structure extends StatefulWidget {
   const Structure({Key? key}) : super(key: key);
 
@@ -13,27 +15,7 @@ class _StructureState extends State<Structure> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color(0xF5F5F7FE),
-        appBar: AppBar(
-          centerTitle: false,
-          title: Text('រចនាសម្ព័ន្ធរបស់សាកលវិទ្យាល័យ'.tr,
-              style: TextStyle(
-                color: Colors.indigo[900],
-                fontSize: 16,
-                fontFamily: 'KhmerOSbattambang',
-                fontWeight: FontWeight.w600,
-              )),
-          backgroundColor: Colors.white,
-          elevation: 1,
-          iconTheme: IconThemeData.fallback(),
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back_ios,
-              color: Colors.indigo[900],
-              size: 15,
-            ),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-        ),
+        appBar: Custom_AppBar(title: 'រចនាសម្ព័ន្ធរបស់សាកលវិទ្យាល័យ'.tr),
         body: Container(
           child: Column(
             children: [

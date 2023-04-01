@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../Custom_AppBar.dart';
 import 'In_University.dart';
 import 'Other_University.dart';
 
@@ -30,27 +31,7 @@ class _ScholarshipState extends State<Scholarship> {
     return Scaffold(
       // extendBodyBehindAppBar: true,
       backgroundColor: Color(0xF5F5F7FE),
-      appBar: AppBar(
-        centerTitle: false,
-        title: Text('អាហារូបករណ៍'.tr,
-            style: TextStyle(
-              color: Colors.indigo[900],
-              fontSize: 16,
-              fontFamily: 'KhmerOSbattambang',
-              fontWeight: FontWeight.w600,
-            )),
-        backgroundColor: Colors.white,
-        elevation: 1,
-        iconTheme: IconThemeData.fallback(),
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: Colors.indigo[900],
-            size: 15,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
+      appBar: Custom_AppBar(title: 'អាហារូបករណ៍'.tr),
       body: Center(
         child: Column(
             mainAxisSize: MainAxisSize.min,

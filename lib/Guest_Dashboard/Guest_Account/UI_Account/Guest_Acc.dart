@@ -3,6 +3,8 @@ import 'package:usea_app/Guest_Dashboard/Guest_Account/Class_Account/Class_Accou
 import 'package:usea_app/Guest_Dashboard/Guest_New_Event/UI_News_Event/News_Event.dart';
 import 'package:usea_app/Student_Acc/Student_Dashboard/Student_Acc.dart';
 
+import '../../../Student_Acc/Student_Dashboard/Student_LogIn.dart';
+
 class Guest_Acc extends StatefulWidget {
   const Guest_Acc({Key? key}) : super(key: key);
 
@@ -15,7 +17,7 @@ class _Guest_AccState extends State<Guest_Acc> {
     Account_Screen(
         name: 'គណនីនិស្សិត',
         img: 'assets/image/Acc_Student.png',
-        screen: Student_Acc()),
+        screen: Student_LogIn()),
     Account_Screen(
         name: 'គណនីអាណាព្យាបាល',
         img: 'assets/image/Acc_Guardian.png',

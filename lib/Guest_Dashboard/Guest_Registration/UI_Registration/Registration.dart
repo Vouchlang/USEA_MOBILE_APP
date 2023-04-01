@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../Custom_AppBar.dart';
 import '../Class_Registration/Class_Registration.dart';
 
 class Registration extends StatefulWidget {
@@ -14,27 +15,7 @@ class _RegistrationState extends State<Registration> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color(0xF5F5F7FE),
-        appBar: AppBar(
-          centerTitle: false,
-          title: Text('ការចុះឈ្មោះ'.tr,
-              style: TextStyle(
-                color: Colors.indigo[900],
-                fontSize: 16,
-                fontFamily: 'KhmerOSbattambang',
-                fontWeight: FontWeight.w600,
-              )),
-          backgroundColor: Colors.white,
-          elevation: 1,
-          iconTheme: IconThemeData.fallback(),
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back_ios,
-              color: Colors.indigo[900],
-              size: 15,
-            ),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-        ),
+        appBar: Custom_AppBar(title: 'ការចុះឈ្មោះ'.tr),
         body: Container(
             padding: EdgeInsets.all(10),
             child: ListView.builder(

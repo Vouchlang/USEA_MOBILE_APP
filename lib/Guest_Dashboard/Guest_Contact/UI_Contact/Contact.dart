@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import '../../../Custom_AppBar.dart';
 import '../Class_Contact/Class_Contact.dart';
 
 class Contact extends StatefulWidget {
@@ -15,27 +16,7 @@ class _ContactState extends State<Contact> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xF5F5F7FE),
-      appBar: AppBar(
-        centerTitle: false,
-        title: Text('ទំនាក់ទំនង'.tr,
-            style: TextStyle(
-              color: Colors.indigo[900],
-              fontSize: 16,
-              fontFamily: 'KhmerOSbattambang',
-              fontWeight: FontWeight.w600,
-            )),
-        backgroundColor: Colors.white,
-        elevation: 1,
-        iconTheme: IconThemeData.fallback(),
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: Colors.indigo[900],
-            size: 15,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
+      appBar: Custom_AppBar(title: 'ទំនាក់ទំនង'.tr),
       body: Container(
         child: ListView(
             children: [

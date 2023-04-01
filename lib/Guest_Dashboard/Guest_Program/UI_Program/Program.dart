@@ -21,7 +21,7 @@ class _ProgramState extends State<Program> {
           title: Text('កម្មវិធីសិក្សា'.tr,
               style: TextStyle(
                 color: Colors.indigo[900],
-                fontSize: 16,
+                fontSize: 18,
                 fontFamily: 'KhmerOSbattambang',
                 fontWeight: FontWeight.w600,
               )),
@@ -32,7 +32,7 @@ class _ProgramState extends State<Program> {
             icon: Icon(
               Icons.arrow_back_ios,
               color: Colors.indigo[900],
-              size: 15,
+              size: 18,
             ),
             onPressed: () => Navigator.of(context).pop(),
           ),

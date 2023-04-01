@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../Custom_AppBar.dart';
 import 'api_model.dart';
 
 class Upcoming_Event extends StatelessWidget {
@@ -14,27 +15,7 @@ class Upcoming_Event extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Color(0xF5F5F7FE),
-      appBar: AppBar(
-        centerTitle: false,
-        title: Text('ព្រឹត្តិការណ៍'.tr,
-            style: TextStyle(
-              color: Colors.indigo[900],
-              fontSize: 16,
-              fontFamily: 'KhmerOSbattambang',
-              fontWeight: FontWeight.w600,
-            )),
-        backgroundColor: Colors.white,
-        elevation: 1,
-        iconTheme: IconThemeData.fallback(),
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: Colors.indigo[900],
-            size: 15,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
+      appBar: Custom_AppBar(title: 'ព្រឹត្តិការណ៍'.tr),
       body: Container(
         margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
         child: Column(

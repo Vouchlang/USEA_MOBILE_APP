@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_Program/UI_Program/Program_Bachelor.dart';
+import '../../../Custom_AppBar.dart';
 import 'Program_Associate.dart';
 
 class Program_Major_Detail_Main extends StatefulWidget {
@@ -25,27 +26,7 @@ class _Program_Major_DetailState extends State<Program_Major_Detail_Main> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xF5F5F7FE),
-      appBar: AppBar(
-        centerTitle: false,
-        title: Text('កម្មវិធីសិក្សា'.tr,
-            style: TextStyle(
-              color: Colors.indigo[900],
-              fontSize: 16,
-              fontFamily: 'KhmerOSbattambang',
-              fontWeight: FontWeight.w600,
-            )),
-        backgroundColor: Colors.white,
-        elevation: 1,
-        iconTheme: IconThemeData.fallback(),
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: Colors.indigo[900],
-            size: 15,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
+      appBar: Custom_AppBar(title: 'កម្មវិធីសិក្សា'.tr),
       body: Center(
         child: Column(
             mainAxisSize: MainAxisSize.min,

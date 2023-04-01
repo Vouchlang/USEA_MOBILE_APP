@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../Custom_AppBar.dart';
 import '../Class_FAQ/Class_FAQ.dart';
 
 class FAQ extends StatefulWidget {
@@ -13,27 +14,7 @@ class _FAQState extends State<FAQ> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xF5F5F7FE),
-      appBar: AppBar(
-        centerTitle: false,
-        title: Text('FAQ',
-            style: TextStyle(
-              color: Colors.indigo[900],
-              fontSize: 16,
-              fontFamily: 'KhmerOSbattambang',
-              fontWeight: FontWeight.w600,
-            )),
-        backgroundColor: Colors.white,
-        elevation: 1,
-        iconTheme: IconThemeData.fallback(),
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: Colors.indigo[900],
-            size: 15,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
+      appBar: Custom_AppBar(title: 'FAQ'),
       body: Container(
         margin: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
         width: double.infinity,

@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_New_Event/UI_News_Event/Past_Event.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_New_Event/UI_News_Event/Upcoming_Event.dart';
 
+import '../../../Custom_AppBar.dart';
+
 class New_Event extends StatefulWidget {
   const New_Event({Key? key}) : super(key: key);
 
@@ -22,30 +24,9 @@ class _New_EventState extends State<New_Event> {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    Scaffold(
+    return Scaffold(
       backgroundColor: Color(0xF5F5F7FE),
-      appBar: AppBar(
-        centerTitle: false,
-        title: Text('ព្រឹត្តិការណ៍'.tr,
-            style: TextStyle(
-              color: Colors.indigo[900],
-              fontSize: 16,
-              fontFamily: 'KhmerOSbattambang',
-              fontWeight: FontWeight.w600,
-            )),
-        backgroundColor: Colors.white,
-        elevation: 1,
-        iconTheme: IconThemeData.fallback(),
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: Colors.indigo[900],
-            size: 15,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
+      appBar: Custom_AppBar(title: 'ព្រឹត្តិការណ៍'.tr),
       body: Center(
         child: Column(
             mainAxisSize: MainAxisSize.min,

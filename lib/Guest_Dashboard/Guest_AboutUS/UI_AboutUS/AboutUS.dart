@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../Custom_AppBar.dart';
 import '../Class_AboutUS/Class_AboutUS.dart';
 
 class AboutUS extends StatefulWidget {
@@ -15,27 +16,7 @@ class _AboutUSState extends State<AboutUS> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xF5F5F7FE),
-      appBar: AppBar(
-        centerTitle: false,
-        title: Text('អំពីយើង'.tr,
-            style: TextStyle(
-              color: Colors.indigo[900],
-              fontSize: 16,
-              fontFamily: 'KhmerOSbattambang',
-              fontWeight: FontWeight.w600,
-            )),
-        backgroundColor: Colors.white,
-        elevation: 1,
-        iconTheme: IconThemeData.fallback(),
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: Colors.indigo[900],
-            size: 15,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
+      appBar: Custom_AppBar(title: 'អំពីយើង'.tr),
       body: Container(
         child: ListView.builder(
             itemCount: aboutUS.length,
@@ -55,28 +36,33 @@ class _AboutUSState extends State<AboutUS> {
                               builder: (ctx) => aboutUS[index].screen));
                     },
                     child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(children: [
-                            Image.asset(
-                            aboutUS[index].img,
-                            scale: 6,
+                          Row(
+                            children: [
+                              Image.asset(
+                                aboutUS[index].img,
+                                scale: 6,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Container(
+                                width: 265,
+                                child: Text(
+                                  aboutUS[index].text.tr,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontFamily: 'KhmerOSbattambang',
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                            ],
                           ),
-                          SizedBox(width: 10,),
-                          Container(
-                            width: 265,
-                            child: Text(
-                              aboutUS[index].text.tr,
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontFamily: 'KhmerOSbattambang',
-                                  fontWeight: FontWeight.w600),
-                            ),
-                          ),
-                          ],),
                           Container(
                             child: Image.asset(
                               'assets/image/Right_Arrow.png',

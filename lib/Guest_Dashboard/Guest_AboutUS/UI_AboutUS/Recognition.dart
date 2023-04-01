@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_AboutUS/Class_AboutUS/Class_Recognition.dart';
 
+import '../../../Custom_AppBar.dart';
+
 class Recognition extends StatefulWidget {
   const Recognition({Key? key}) : super(key: key);
 
@@ -15,27 +17,7 @@ class _RecognitionState extends State<Recognition> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xF5F5F7FE),
-      appBar: AppBar(
-        centerTitle: false,
-        title: Text('ការទទួលស្គាល់'.tr,
-            style: TextStyle(
-              color: Colors.indigo[900],
-              fontSize: 16,
-              fontFamily: 'KhmerOSbattambang',
-              fontWeight: FontWeight.w600,
-            )),
-        backgroundColor: Colors.white,
-        elevation: 1,
-        iconTheme: IconThemeData.fallback(),
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: Colors.indigo[900],
-            size: 15,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
+      appBar: Custom_AppBar(title: 'ការទទួលស្គាល់'.tr),
       body: Container(
         child: ListView.builder(
           itemCount: recognition.length,
