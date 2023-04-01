@@ -36,260 +36,259 @@ class _RegistrationState extends State<Registration> {
           ),
         ),
         body: Container(
-          padding: EdgeInsets.all(10),
-            child: buildList()
-        ));
-  }
-  Widget buildList(){
-    return ListView.builder(
-        itemCount: registration.length,
-        itemBuilder: (context, index) {
-          return Card(
-            // margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
-            elevation: 3,
-            shadowColor: Colors.grey[200],
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10)),
-            child: Container(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      registration[index].title,
-                      textAlign: TextAlign.justify,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontFamily: 'KhmerOSbattambang',
-                        fontWeight: FontWeight.w600,
-
-
+            padding: EdgeInsets.all(10),
+            child: ListView.builder(
+                itemCount: registration.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    elevation: 3,
+                    shadowColor: Colors.grey[200],
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Container(
+                      padding: EdgeInsets.all(10),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              registration[index].title,
+                              textAlign: TextAlign.justify,
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: 'KhmerOSbattambang',
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: double.infinity,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 20,
+                                  height: 20,
+                                  child:
+                                      Image.asset('assets/image/date_time.png'),
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    child: Text(
+                                      registration[index].date,
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontFamily: 'KhmerOSbattambang',
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(left: 15),
+                            width: double.infinity,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 20,
+                                  height: 20,
+                                  child: Image.asset(
+                                    'assets/image/detail.png',
+                                    scale: 14,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Container(
+                                  width: 270,
+                                  child: Text(
+                                    registration[index].bachelor1,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontFamily: 'KhmerOSbattambang',
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(left: 35),
+                            width: double.infinity,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    child: Text(
+                                      registration[index].detail1,
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                        fontFamily: 'KhmerOSbattambang',
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(left: 15),
+                            width: double.infinity,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 20,
+                                  height: 20,
+                                  child: Image.asset(
+                                    'assets/image/detail.png',
+                                    scale: 14,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    child: Text(
+                                      registration[index].bachelor1,
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontFamily: 'KhmerOSbattambang',
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(left: 35),
+                            width: double.infinity,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    child: Text(
+                                      registration[index].detail2,
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                        fontFamily: 'KhmerOSbattambang',
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            width: double.infinity,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 20,
+                                  height: 20,
+                                  child:
+                                      Image.asset('assets/image/date_time.png'),
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    child: Text(
+                                      registration[index].time,
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontFamily: 'KhmerOSbattambang',
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(left: 35),
+                            width: double.infinity,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    child: Text(
+                                      registration[index].detail3,
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                        fontFamily: 'KhmerOSbattambang',
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 20,
-                          height: 20,
-                          child: Image.asset(
-                              'assets/image/date_time.png'),
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Container(
-                          width: 285,
-                          child: Text(
-                            registration[index].date,
-                            textAlign: TextAlign.justify,
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontFamily: 'KhmerOSbattambang',
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                    width: double.infinity,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Container(
-                          width: 20,
-                          height: 20,
-                          child: Image.asset(
-                            'assets/image/detail.png',
-                            scale: 15,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Container(
-                          width: 270,
-                          child: Text(
-                            registration[index].bachelor1,
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontFamily: 'KhmerOSbattambang',
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(35, 0, 0, 0),
-                    width: double.infinity,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Container(
-                          width: 240,
-                          child: Text(
-                            registration[index].detail1,
-                            style: TextStyle(
-                              fontSize: 11,
-                              fontFamily: 'KhmerOSbattambang',
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                    width: double.infinity,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Container(
-                          width: 20,
-                          height: 20,
-                          child: Image.asset(
-                            'assets/image/detail.png',
-                            scale: 15,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Container(
-                          width: 270,
-                          child: Text(
-                            registration[index].bachelor1,
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontFamily: 'KhmerOSbattambang',
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(35, 0, 0, 0),
-                    width: double.infinity,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Container(
-                          width: 240,
-                          child: Text(
-                            registration[index].detail2,
-                            style: TextStyle(
-                              fontSize: 11,
-                              fontFamily: 'KhmerOSbattambang',
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Container(
-                    width: double.infinity,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 20,
-                          height: 20,
-                          child: Image.asset(
-                              'assets/image/date_time.png'),
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Container(
-                          width: 285,
-                          child: Text(
-                            registration[index].time,
-                            textAlign: TextAlign.justify,
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontFamily: 'KhmerOSbattambang',
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(35, 0, 0, 0),
-                    width: double.infinity,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Container(
-                          width: 210,
-                          child: Text(
-                            registration[index].detail3,
-                            style: TextStyle(
-                              fontSize: 11,
-                              fontFamily: 'KhmerOSbattambang',
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
-        });
+                  );
+                })));
   }
 }

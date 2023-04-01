@@ -246,11 +246,21 @@ class _Guest_HomeState extends State<Guest_Home> {
                         ),
                         child: InkWell(
                           onTap: () {
-                            showDialog(
+                            if (index.isEqual(8)) {
+                              showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
-                                  return home_screen[index].screen;
-                                });
+                                  return Change_Language();
+                                },
+                              );
+                            } else {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        home_screen[index].screen),
+                              );
+                            }
                           },
                           child: Container(
                             padding: EdgeInsets.only(left: 15),
@@ -287,65 +297,72 @@ class _Guest_HomeState extends State<Guest_Home> {
             borderRadius: BorderRadius.circular(10),
           ),
           margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
-          child: Row(
-            // crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              IconButton(
-                onPressed: () {
-                  launchUrl(urlFb);
-                },
-                icon: Image.asset('assets/image/SM_Facebook.png'),
-              ),
-              IconButton(
-                onPressed: () {
-                  launchUrl(urlIg);
-                },
-                icon: Image.asset('assets/image/SM_IG.png'),
-              ),
-              IconButton(
-                onPressed: () {
-                  launchUrl(urlYt);
-                },
-                icon: Image.asset('assets/image/SM_Yt.png'),
-              ),
-              IconButton(
-                onPressed: () {
-                  launchUrl(urlTel);
-                },
-                icon: Image.asset('assets/image/SM_Telegram.png'),
-              ),
-              IconButton(
-                onPressed: () {
-                  launchUrl(urlWeb);
-                },
-                icon: Image.asset('assets/image/SM_Website.png'),
-              ),
-            ],
+          child: Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      launchUrl(urlFb);
+                    },
+                    child: Image.asset(
+                      'assets/image/SM_Facebook.png',
+                      scale: 4.5,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      launchUrl(urlIg);
+                    },
+                    child: Image.asset(
+                      'assets/image/SM_IG.png',
+                      scale: 4.5,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      launchUrl(urlYt);
+                    },
+                    child: Image.asset(
+                      'assets/image/SM_Yt.png',
+                      scale: 4.5,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      launchUrl(urlTel);
+                    },
+                    child: Image.asset(
+                      'assets/image/SM_Telegram.png',
+                      scale: 4.5,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      launchUrl(urlWeb);
+                    },
+                    child: Image.asset(
+                      'assets/image/SM_Website.png',
+                      scale: 4.5,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ])),
     );
   }
 }
-
-// child: ImageSlideshow(
-//   children: [
-//     Image.asset(
-//       'assets/image/1.jpg',
-//       fit: BoxFit.cover,
-//     ),
-//     Image.asset(
-//       'assets/image/2.jpg',
-//       fit: BoxFit.cover,
-//     ),
-//     Image.asset(
-//       'assets/image/3.jpg',
-//       fit: BoxFit.cover,
-//     ),
-//     Image.asset(
-//       'assets/image/4.jpg',
-//       fit: BoxFit.cover,
-//     ),
-//   ],
-// ),

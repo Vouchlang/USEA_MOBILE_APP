@@ -22,7 +22,8 @@ class _New_EventState extends State<New_Event> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return 
+    Scaffold(
       backgroundColor: Color(0xF5F5F7FE),
       appBar: AppBar(
         centerTitle: false,
@@ -54,7 +55,6 @@ class _New_EventState extends State<New_Event> {
               Container(
                 margin: EdgeInsets.all(0),
                 height: 67,
-                // alignment: Alignment.center,
                 child: ListView.builder(
                     physics: NeverScrollableScrollPhysics(),
                     itemCount: tab_txt.length,
@@ -62,7 +62,6 @@ class _New_EventState extends State<New_Event> {
                     shrinkWrap: true,
                     itemBuilder: (ctx, index) {
                       return Column(
-                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GestureDetector(
                             onTap: () {

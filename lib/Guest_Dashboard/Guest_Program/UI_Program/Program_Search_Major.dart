@@ -50,7 +50,8 @@ class _Program_SemesterState extends State<Program_Semester> {
           Expanded(
             child: ListView.builder(
               itemCount: program_List
-                  .where((program) => program.majors.any((major) => major.title
+                  .where((program) => program.majors.any((major) => major
+                      .title.tr
                       .toLowerCase()
                       .contains(_searchQuery.toLowerCase())))
                   .expand((program) => program.majors)
@@ -59,7 +60,7 @@ class _Program_SemesterState extends State<Program_Semester> {
               itemBuilder: (context, index) {
                 final filteredMajor = program_List
                     .where((program) => program.majors.any((major) => major
-                        .title
+                        .title.tr
                         .toLowerCase()
                         .contains(_searchQuery.toLowerCase())))
                     .expand((program) => program.majors)
@@ -76,7 +77,7 @@ class _Program_SemesterState extends State<Program_Semester> {
                                       Program_Major_Detail_Main()));
                         },
                         child: Text(
-                          filteredMajor[index].title,
+                          filteredMajor[index].title.tr,
                           style: TextStyle(
                               fontSize: 14, fontFamily: 'KhmerOSbattambang'),
                         )),

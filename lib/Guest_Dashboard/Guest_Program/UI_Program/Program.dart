@@ -101,7 +101,7 @@ class ProgramWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    title,
+                    title.tr,
                     textAlign: TextAlign.justify,
                     style: TextStyle(
                         fontSize: 14,
@@ -143,7 +143,7 @@ class ProgramWidget extends StatelessWidget {
                 Container(
                   width: 220,
                   child: Text(
-                    title,
+                    title.tr,
                     textAlign: TextAlign.left,
                     style: TextStyle(
                         fontSize: 14,
