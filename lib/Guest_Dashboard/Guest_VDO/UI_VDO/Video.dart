@@ -62,44 +62,44 @@ class _VideoState extends State<Video_UI> {
                             SizedBox(
                               width: 10,
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Container(
-                                  width: 180,
-                                  child: Text(video_home[index].title,
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Container(
+                                    child: Text(video_home[index].title,
+                                        textAlign: TextAlign.justify,
+                                        style: TextStyle(
+                                          fontSize: 13,
+                                          fontFamily: 'KhmerOSbattambang',
+                                          fontWeight: FontWeight.w500,
+                                        )),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  SingleChildScrollView(
+                                      child: Container(
+                                    child: ReadMoreText(
+                                      video_home[index].caption,
+                                      trimLines: 1,
                                       textAlign: TextAlign.justify,
+                                      trimMode: TrimMode.Line,
+                                      moreStyle:
+                                          TextStyle(color: Colors.grey[700]),
+                                      lessStyle:
+                                          TextStyle(color: Colors.grey[700]),
                                       style: TextStyle(
-                                        fontSize: 13,
+                                        fontSize: 12,
                                         fontFamily: 'KhmerOSbattambang',
                                         fontWeight: FontWeight.w500,
-                                      )),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                SingleChildScrollView(
-                                    child: Container(
-                                  width: 180,
-                                  child: ReadMoreText(
-                                    video_home[index].caption,
-                                    trimLines: 1,
-                                    textAlign: TextAlign.justify,
-                                    trimMode: TrimMode.Line,
-                                    moreStyle:
-                                        TextStyle(color: Colors.grey[700]),
-                                    lessStyle:
-                                        TextStyle(color: Colors.grey[700]),
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontFamily: 'KhmerOSbattambang',
-                                      fontWeight: FontWeight.w500,
+                                      ),
                                     ),
-                                  ),
-                                ))
-                              ],
+                                  ))
+                                ],
+                              ),
                             ),
                           ],
                         ),

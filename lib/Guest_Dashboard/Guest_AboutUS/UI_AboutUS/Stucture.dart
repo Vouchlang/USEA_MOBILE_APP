@@ -16,12 +16,15 @@ class _StructureState extends State<Structure> {
     return Scaffold(
         backgroundColor: Color(0xF5F5F7FE),
         appBar: Custom_AppBar(title: 'រចនាសម្ព័ន្ធរបស់សាកលវិទ្យាល័យ'.tr),
-        body: Container(
+        body: SingleChildScrollView(
           child: Column(
             children: [
               Container(
                 height: 200,
-                child: Image.asset('assets/image/usea_structure.jpg', fit: BoxFit.cover,),
+                child: Image.asset(
+                  'assets/image/usea_structure.jpg',
+                  fit: BoxFit.cover,
+                ),
               ),
               Container(
                 margin: EdgeInsets.all(10),

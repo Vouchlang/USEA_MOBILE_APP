@@ -13,16 +13,12 @@ class Scholarship extends StatefulWidget {
 }
 
 class _ScholarshipState extends State<Scholarship> {
-
   List<String> tab_txt = [
     "ក្នុងសាកលវិទ្យាល័យ",
     "ក្រៅសាកលវិទ្យាល័យ",
   ];
 
-  List pages=[
-    In_University(),
-    Out_University()
-  ];
+  List pages = [In_University(), Out_University()];
 
   int current = 0;
 
@@ -37,11 +33,11 @@ class _ScholarshipState extends State<Scholarship> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
-            children:[
+            children: [
               Container(
-                height:67,
+                height: 67,
                 child: ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: ScrollPhysics(),
                     itemCount: tab_txt.length,
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
@@ -57,7 +53,8 @@ class _ScholarshipState extends State<Scholarship> {
                             },
                             child: AnimatedContainer(
                               duration: Duration(milliseconds: 300),
-                              margin: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                              margin: EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 5),
                               padding: EdgeInsets.all(10),
                               width: 180,
                               decoration: BoxDecoration(
@@ -69,18 +66,17 @@ class _ScholarshipState extends State<Scholarship> {
                                     BoxShadow(
                                         blurRadius: 1,
                                         color: Colors.grey,
-                                        offset: Offset(0, 1)
-                                    )
-                                  ]
-                              ),
+                                        offset: Offset(0, 1))
+                                  ]),
                               child: Text(
                                 tab_txt[index].tr,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    color: current == index ? Colors.white : Colors.black,
+                                    color: current == index
+                                        ? Colors.white
+                                        : Colors.black,
                                     fontFamily: 'KhmerOSbattambang',
-                                    fontSize: 14
-                                ),
+                                    fontSize: 14),
                               ),
                             ),
                           ),
@@ -89,9 +85,7 @@ class _ScholarshipState extends State<Scholarship> {
                     }),
               ),
               Flexible(child: pages[current])
-            ]
-
-        ),
+            ]),
       ),
     );
   }

@@ -130,89 +130,112 @@ class _DemoApiState extends State<DemoApi> {
                                       ),
                                       Row(
                                         children: [
-                                          Container(
-                                            child: Image.asset(
-                                              'assets/image/Event_Date.png',
-                                              width: 14,
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 5,
-                                          ),
-                                          Container(
-                                            child: Text(
-                                              'ថ្ងៃ' + event.upcoming_day,
-                                              style: TextStyle(
-                                                  fontSize: 10,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontFamily:
-                                                      'KhmerOSBattambang',
-                                                  color: Colors.indigo[900]),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 2,
-                                          ),
-                                          Container(
-                                            child: Text(
-                                              'ទី' + event.upcoming_date,
-                                              style: TextStyle(
-                                                  fontSize: 10,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontFamily:
-                                                      'KhmerOSBattambang',
-                                                  color: Colors.indigo[900]),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 2,
-                                          ),
-                                          Container(
-                                            child: Text(
-                                              'ខែ' + event.upcoming_month,
-                                              style: TextStyle(
-                                                  fontSize: 10,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontFamily:
-                                                      'KhmerOSBattambang',
-                                                  color: Colors.indigo[900]),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 2,
-                                          ),
-                                          Container(
-                                            child: Text(
-                                              'ឆ្នាំ' + event.upcoming_year,
-                                              style: TextStyle(
-                                                  fontSize: 10,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontFamily:
-                                                      'KhmerOSBattambang',
-                                                  color: Colors.indigo[900]),
+                                          Expanded(
+                                            child: Row(
+                                              children: [
+                                                Container(
+                                                  child: Image.asset(
+                                                    'assets/image/Event_Date.png',
+                                                    width: 14,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Container(
+                                                  child: Text(
+                                                    'ថ្ងៃ' + event.upcoming_day,
+                                                    style: TextStyle(
+                                                        fontSize: 10,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontFamily:
+                                                            'KhmerOSBattambang',
+                                                        color:
+                                                            Colors.indigo[900]),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 2,
+                                                ),
+                                                Container(
+                                                  child: Text(
+                                                    'ទី' + event.upcoming_date,
+                                                    style: TextStyle(
+                                                        fontSize: 10,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontFamily:
+                                                            'KhmerOSBattambang',
+                                                        color:
+                                                            Colors.indigo[900]),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 2,
+                                                ),
+                                                Container(
+                                                  child: Text(
+                                                    'ខែ' + event.upcoming_month,
+                                                    style: TextStyle(
+                                                        fontSize: 10,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontFamily:
+                                                            'KhmerOSBattambang',
+                                                        color:
+                                                            Colors.indigo[900]),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 2,
+                                                ),
+                                                Container(
+                                                  child: Text(
+                                                    'ឆ្នាំ' +
+                                                        event.upcoming_year,
+                                                    style: TextStyle(
+                                                        fontSize: 10,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontFamily:
+                                                            'KhmerOSBattambang',
+                                                        color:
+                                                            Colors.indigo[900]),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ),
                                           SizedBox(
                                             width: 15,
                                           ),
-                                          Container(
-                                            child: Image.asset(
-                                              'assets/image/Event_Time.png',
-                                              width: 14,
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 5,
-                                          ),
-                                          Container(
-                                            child: Text(
-                                              event.upcoming_time,
-                                              style: TextStyle(
-                                                  fontSize: 10,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontFamily:
-                                                      'KhmerOSBattambang',
-                                                  color: Colors.indigo[900]),
+                                          Expanded(
+                                            child: Row(
+                                              children: [
+                                                Container(
+                                                  child: Image.asset(
+                                                    'assets/image/Event_Time.png',
+                                                    width: 14,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Container(
+                                                  child: Text(
+                                                    event.upcoming_time,
+                                                    style: TextStyle(
+                                                        fontSize: 10,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontFamily:
+                                                            'KhmerOSBattambang',
+                                                        color:
+                                                            Colors.indigo[900]),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ),
                                         ],

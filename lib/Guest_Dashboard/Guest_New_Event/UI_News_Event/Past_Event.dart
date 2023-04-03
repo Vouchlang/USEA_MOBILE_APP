@@ -87,46 +87,60 @@ class _Past_EventState extends State<Past_Event> {
                                 height: 5,
                               ),
                               Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Container(
-                                    child: Image.asset(
-                                      past_news_event[index].icon1,
-                                      width: 14,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Container(
-                                    child: Text(
-                                      past_news_event[index].txt_date,
-                                      style: TextStyle(
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w500,
-                                          fontFamily: 'KhmerOSBattambang',
-                                          color: Colors.indigo[900]),
+                                  Expanded(
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          child: Image.asset(
+                                            past_news_event[index].icon1,
+                                            width: 14,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Container(
+                                          child: Text(
+                                            past_news_event[index].txt_date,
+                                            style: TextStyle(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w500,
+                                                fontFamily: 'KhmerOSBattambang',
+                                                color: Colors.indigo[900]),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                   SizedBox(
                                     width: 15,
                                   ),
-                                  Container(
-                                    child: Image.asset(
-                                      past_news_event[index].icon2,
-                                      width: 14,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Container(
-                                    child: Text(
-                                      past_news_event[index].txt_time,
-                                      style: TextStyle(
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w500,
-                                          fontFamily: 'KhmerOSBattambang',
-                                          color: Colors.indigo[900]),
+                                  Expanded(
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          child: Image.asset(
+                                            past_news_event[index].icon2,
+                                            width: 14,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Container(
+                                          child: Text(
+                                            past_news_event[index].txt_time,
+                                            style: TextStyle(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w500,
+                                                fontFamily: 'KhmerOSBattambang',
+                                                color: Colors.indigo[900]),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ],

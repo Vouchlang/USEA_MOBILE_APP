@@ -46,9 +46,9 @@ class _HistoryState extends State<History> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image.asset('assets/image/logo1.png'),
-                    Image.asset('assets/image/logo2.png'),
-                    Image.asset('assets/image/logo3.png'),
+                    Expanded(child: Image.asset('assets/image/logo1.png')),
+                    Expanded(child: Image.asset('assets/image/logo2.png')),
+                    Expanded(child: Image.asset('assets/image/logo3.png')),
                   ],
                 ),
               ),
@@ -71,13 +71,11 @@ class _HistoryState extends State<History> {
                             width: 5,
                           ),
                           Expanded(
-                            child: Container(
-                              child: Text(
-                                'The picture of the golden rice panicles around the circle symbolizes the university’s strength, development and sustainability.',
-                                textAlign: TextAlign.justify,
-                                style: TextStyle(
-                                    fontSize: 14, fontFamily: 'Poppins'),
-                              ),
+                            child: Text(
+                              'The picture of the golden rice panicles around the circle symbolizes the university’s strength, development and sustainability.',
+                              textAlign: TextAlign.justify,
+                              style: TextStyle(
+                                  fontSize: 14, fontFamily: 'Poppins'),
                             ),
                           ),
                         ]),
@@ -98,13 +96,11 @@ class _HistoryState extends State<History> {
                             width: 5,
                           ),
                           Expanded(
-                            child: Container(
-                              child: Text(
-                                'The dark blue phrases written in both Khmer and English around the circle and the word USEA with the light blue color on the book symbolize the name of the University of South-East Asia.',
-                                textAlign: TextAlign.justify,
-                                style: TextStyle(
-                                    fontSize: 14, fontFamily: 'Poppins'),
-                              ),
+                            child: Text(
+                              'The dark blue phrases written in both Khmer and English around the circle and the word USEA with the light blue color on the book symbolize the name of the University of South-East Asia.',
+                              textAlign: TextAlign.justify,
+                              style: TextStyle(
+                                  fontSize: 14, fontFamily: 'Poppins'),
                             ),
                           ),
                         ]),
@@ -125,13 +121,11 @@ class _HistoryState extends State<History> {
                             width: 5,
                           ),
                           Expanded(
-                            child: Container(
-                              child: Text(
-                                'The picture of the light blue globe inside the circle represents fame, national and international recognition, and regional and global integration.',
-                                textAlign: TextAlign.justify,
-                                style: TextStyle(
-                                    fontSize: 14, fontFamily: 'Poppins'),
-                              ),
+                            child: Text(
+                              'The picture of the light blue globe inside the circle represents fame, national and international recognition, and regional and global integration.',
+                              textAlign: TextAlign.justify,
+                              style: TextStyle(
+                                  fontSize: 14, fontFamily: 'Poppins'),
                             ),
                           ),
                         ]),

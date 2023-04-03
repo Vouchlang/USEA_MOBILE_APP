@@ -122,36 +122,40 @@ class _Guest_HomeState extends State<Guest_Home> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
-              children: [
-                Container(
-                  child: Image.asset(
-                    'assets/image/usea_logo.png',
-                    scale: 30,
-                  ),
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
-                      style: TextStyle(
-                          color: Colors.indigo[900],
-                          fontSize: 11,
-                          fontFamily: 'KhmerOSmuol'),
+            Expanded(
+              child: Row(
+                children: [
+                  Container(
+                    child: Image.asset(
+                      'assets/image/usea_logo.png',
+                      scale: 30,
                     ),
-                    Text('UNIVERSITY OF SOUTH-EAST ASIA',
-                        style: TextStyle(
-                            color: Colors.indigo[900],
-                            fontSize: 13,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w500)),
-                  ],
-                ),
-              ],
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
+                          style: TextStyle(
+                              color: Colors.indigo[900],
+                              fontSize: 11,
+                              fontFamily: 'KhmerOSmuol'),
+                        ),
+                        Text('UNIVERSITY OF SOUTH-EAST ASIA',
+                            style: TextStyle(
+                                color: Colors.indigo[900],
+                                fontSize: 13,
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w500)),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
             Container(
                 width: 36,
@@ -308,7 +312,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                     },
                     child: Image.asset(
                       'assets/image/SM_Facebook.png',
-                      scale: 4.5,
+                      scale: 4.75,
                     ),
                   ),
                 ),
@@ -319,7 +323,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                     },
                     child: Image.asset(
                       'assets/image/SM_IG.png',
-                      scale: 4.5,
+                      scale: 4.75,
                     ),
                   ),
                 ),
@@ -330,7 +334,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                     },
                     child: Image.asset(
                       'assets/image/SM_Yt.png',
-                      scale: 4.5,
+                      scale: 4.75,
                     ),
                   ),
                 ),
@@ -341,7 +345,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                     },
                     child: Image.asset(
                       'assets/image/SM_Telegram.png',
-                      scale: 4.5,
+                      scale: 4.75,
                     ),
                   ),
                 ),
@@ -352,7 +356,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                     },
                     child: Image.asset(
                       'assets/image/SM_Website.png',
-                      scale: 4.5,
+                      scale: 4.75,
                     ),
                   ),
                 ),

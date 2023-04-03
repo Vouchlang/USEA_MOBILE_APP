@@ -140,8 +140,7 @@ class ProgramWidget extends StatelessWidget {
                 SizedBox(
                   width: 10,
                 ),
-                Container(
-                  width: 220,
+                Expanded(
                   child: Text(
                     title.tr,
                     textAlign: TextAlign.left,

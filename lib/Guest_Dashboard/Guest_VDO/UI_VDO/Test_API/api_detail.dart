@@ -16,59 +16,63 @@ class Upcoming_Event extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xF5F5F7FE),
       appBar: Custom_AppBar(title: 'ព្រឹត្តិការណ៍'.tr),
-      body: Container(
-        margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: double.maxFinite,
-              height: 175,
-              child: InteractiveViewer(
-                child: Image.network(
-                  getImageUrl(data.upcoming_image),
-                  fit: BoxFit.fitWidth,
+      body: SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: double.maxFinite,
+                height: 175,
+                child: InteractiveViewer(
+                  child: Image.network(
+                    getImageUrl(data.upcoming_image),
+                    fit: BoxFit.fitWidth,
+                  ),
                 ),
               ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius:
-                      BorderRadius.vertical(bottom: Radius.circular(10)),
-                  boxShadow: [
-                    BoxShadow(
-                        offset: Offset(0, 1), color: Colors.grey, blurRadius: 1)
-                  ]),
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-              alignment: Alignment.center,
-              width: double.maxFinite,
-              child: Text(
-                data.upcoming_title,
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                  fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'KhmerOSbattambang'),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              width: double.infinity,
-              margin: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-              child: Align(
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius:
+                        BorderRadius.vertical(bottom: Radius.circular(10)),
+                    boxShadow: [
+                      BoxShadow(
+                          offset: Offset(0, 1),
+                          color: Colors.grey,
+                          blurRadius: 1)
+                    ]),
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                alignment: Alignment.center,
+                width: double.maxFinite,
                 child: Text(
-                  data.upcoming_detail,
+                  data.upcoming_title,
                   textAlign: TextAlign.justify,
-                  style:
-                      TextStyle(fontSize: 12, fontFamily: 'KhmerOSbattambang'),
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'KhmerOSbattambang'),
                 ),
               ),
-            ),
-          ],
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                child: Align(
+                  child: Text(
+                    data.upcoming_detail,
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                        fontSize: 12, fontFamily: 'KhmerOSbattambang'),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

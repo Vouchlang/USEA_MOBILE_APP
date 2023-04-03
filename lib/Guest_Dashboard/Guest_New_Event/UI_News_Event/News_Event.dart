@@ -37,7 +37,7 @@ class _New_EventState extends State<New_Event> {
                 margin: EdgeInsets.all(0),
                 height: 67,
                 child: ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: ScrollPhysics(),
                     itemCount: tab_txt.length,
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,

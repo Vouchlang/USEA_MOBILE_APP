@@ -37,35 +37,37 @@ class _CareerState extends State<Career> {
                           SizedBox(
                             width: 15,
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 225,
-                                child: Text(career[index].position,
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: 'KhmerOSbattambang',
-                                      fontWeight: FontWeight.w500,
-                                    )),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Container(
-                                width: 225,
-                                child: Text(career[index].organization,
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontFamily: 'KhmerOSbattambang',
-                                      fontWeight: FontWeight.w500,
-                                    )),
-                              ),
-                            ],
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  child: Text(career[index].position,
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontFamily: 'KhmerOSbattambang',
+                                        fontWeight: FontWeight.w500,
+                                      )),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  child: Text(career[index].organization,
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        fontFamily: 'KhmerOSbattambang',
+                                        fontWeight: FontWeight.w500,
+                                      )),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
-                      SizedBox(height: 5,),
+                      SizedBox(
+                        height: 5,
+                      ),
                       Divider()
                     ]),
                   ),
