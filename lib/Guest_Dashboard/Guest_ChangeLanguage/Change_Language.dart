@@ -79,9 +79,8 @@ class CardWidget extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return InkWell(
                       child: Container(
-                        // color: Colors.amber,
                         height: 75,
-                        width: 100,
+                        width: 95,
                         alignment: Alignment.center,
                         child: Column(
                             mainAxisSize: MainAxisSize.min,
@@ -121,4 +120,3 @@ class CardWidget extends StatelessWidget {
     );
   }
 }
-

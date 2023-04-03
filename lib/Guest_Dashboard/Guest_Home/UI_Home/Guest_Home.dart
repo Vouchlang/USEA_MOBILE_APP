@@ -195,29 +195,25 @@ class _Guest_HomeState extends State<Guest_Home> {
         Container(
           height: 175,
           width: double.infinity,
-          child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 0, horizontal: 5),
-              child: ClipRRect(
-                child: Flexible(
-                  child: CarouselSlider.builder(
-                      options: CarouselOptions(
-                        height: double.infinity,
-                        pageSnapping: true,
-                        enableInfiniteScroll: true,
-                        autoPlayInterval: Duration(seconds: 3),
-                        viewportFraction: 1,
-                        enlargeCenterPage: true,
-                        enlargeStrategy: CenterPageEnlargeStrategy.zoom,
-                        onPageChanged: ((index, reason) =>
-                            setState(() => activeIndex = index)),
-                      ),
-                      itemCount: image_slides.length,
-                      itemBuilder: (context, index, realIndex) {
-                        final image_slide = image_slides[index];
-                        return buildImage(image_slide, index);
-                      }),
-                ),
-              )),
+          padding: EdgeInsets.symmetric(vertical: 0, horizontal: 5),
+          child: CarouselSlider.builder(
+            options: CarouselOptions(
+              height: double.infinity,
+              pageSnapping: true,
+              enableInfiniteScroll: true,
+              autoPlayInterval: Duration(seconds: 3),
+              viewportFraction: 1,
+              enlargeCenterPage: true,
+              enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+              onPageChanged: ((index, reason) =>
+                  setState(() => activeIndex = index)),
+            ),
+            itemCount: image_slides.length,
+            itemBuilder: (context, index, realIndex) {
+              final image_slide = image_slides[index];
+              return buildImage(image_slide, index);
+            },
+          ),
         ),
         SizedBox(
           height: 7,
@@ -228,64 +224,61 @@ class _Guest_HomeState extends State<Guest_Home> {
         SizedBox(
           height: 7,
         ),
-        Container(
-          child: Expanded(
-            child: GridView.count(
-              shrinkWrap: true,
-              physics: ScrollPhysics(),
-              crossAxisCount: 2,
-              mainAxisSpacing: 3.5,
-              crossAxisSpacing: 3,
-              childAspectRatio: 1.90,
-              padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
-              children: List.generate(
-                  home_screen.length,
-                  (index) => Card(
-                        elevation: 3,
-                        shadowColor: Colors.grey[200],
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+        Expanded(
+          child: GridView.count(
+            shrinkWrap: true,
+            physics: ScrollPhysics(),
+            crossAxisCount: 2,
+            mainAxisSpacing: 3.5,
+            crossAxisSpacing: 3,
+            childAspectRatio: 1.90,
+            padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
+            children: List.generate(
+              home_screen.length,
+              (index) => Card(
+                elevation: 3,
+                shadowColor: Colors.grey[200],
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: InkWell(
+                  onTap: () {
+                    if (index.isEqual(8)) {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Change_Language();
+                        },
+                      );
+                    } else {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => home_screen[index].screen),
+                      );
+                    }
+                  },
+                  child: Container(
+                    padding: EdgeInsets.only(left: 15),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.asset(
+                          home_screen[index].img,
+                          scale: 6,
                         ),
-                        child: InkWell(
-                          onTap: () {
-                            if (index.isEqual(8)) {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return Change_Language();
-                                },
-                              );
-                            } else {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        home_screen[index].screen),
-                              );
-                            }
-                          },
-                          child: Container(
-                            padding: EdgeInsets.only(left: 15),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Image.asset(
-                                  home_screen[index].img,
-                                  scale: 6,
-                                ),
-                                SizedBox(
-                                  height: 7,
-                                ),
-                                Text(home_screen[index].name.tr,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: 'KhmerOSbattambang'))
-                              ],
-                            ),
-                          ),
+                        SizedBox(
+                          height: 7,
                         ),
-                      )),
+                        Text(home_screen[index].name.tr,
+                            style: TextStyle(
+                                fontSize: 14, fontFamily: 'KhmerOSbattambang'))
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
         ),

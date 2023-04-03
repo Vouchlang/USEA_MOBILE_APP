@@ -9,6 +9,10 @@ void main() {
     SystemUiOverlayStyle(statusBarColor: Colors.white),
   );
   runApp(new GetMaterialApp(
+    theme: ThemeData(
+      primaryColor: Colors.indigo[900],
+      visualDensity: VisualDensity.adaptivePlatformDensity,
+    ),
     home: new Splash_Screen(),
     translations: LocaleString(),
     locale: Locale('km', 'KH'),

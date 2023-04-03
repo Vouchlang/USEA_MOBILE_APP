@@ -36,7 +36,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 elevation: 0,
                 onTap: onTap,
                 currentIndex: currentIndex,
-                selectedItemColor: Colors.indigo[900],
+                selectedItemColor: Theme.of(context).primaryColor,
                 unselectedItemColor: Colors.grey,
                 selectedFontSize: 11,
                 unselectedFontSize: 11,
