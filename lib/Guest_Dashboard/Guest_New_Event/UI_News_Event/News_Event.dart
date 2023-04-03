@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_New_Event/UI_News_Event/Past_Event.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_New_Event/UI_News_Event/Upcoming_Event.dart';
 
 import '../../../Custom_AppBar.dart';
+import 'Upcoming_Event.dart';
 
 class New_Event extends StatefulWidget {
   const New_Event({Key? key}) : super(key: key);

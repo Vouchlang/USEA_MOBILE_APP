@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_New_Event/Class_News_Event/Class_Past_News_Event.dart';
+import 'package:usea_app/Guest_Dashboard/Guest_New_Event/Class_News_Event/Class_Past_News_Events.dart';
 
 import '../../../Custom_AppBar.dart';
 
 class Past_Event_Detail extends StatelessWidget {
-  final Past_News_Event data;
+  final Class_Past_Event data;
 
   const Past_Event_Detail({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String getImageUrl(String imageName) {
+      return 'http://192.168.3.34/hosting_api/Guest/event_image/$imageName';
+    }
+
     return Scaffold(
       backgroundColor: Color(0xF5F5F7FE),
       appBar: Custom_AppBar(title: 'ព្រឹត្តិការណ៍'.tr),
@@ -24,9 +28,11 @@ class Past_Event_Detail extends StatelessWidget {
               Container(
                 width: double.maxFinite,
                 height: 175,
-                child: Image.asset(
-                  data.img,
-                  fit: BoxFit.fitWidth,
+                child: InteractiveViewer(
+                  child: Image.network(
+                    getImageUrl(data.past_image),
+                    fit: BoxFit.fitWidth,
+                  ),
                 ),
               ),
               Container(
@@ -38,15 +44,16 @@ class Past_Event_Detail extends StatelessWidget {
                       BoxShadow(
                           offset: Offset(0, 1),
                           color: Colors.grey,
-                          blurRadius: 2)
+                          blurRadius: 1)
                     ]),
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                 alignment: Alignment.center,
                 width: double.maxFinite,
                 child: Text(
-                  data.title,
+                  data.past_title,
                   textAlign: TextAlign.justify,
                   style: TextStyle(
+                      fontSize: 14,
                       fontWeight: FontWeight.w600,
                       fontFamily: 'KhmerOSbattambang'),
                 ),
@@ -59,7 +66,7 @@ class Past_Event_Detail extends StatelessWidget {
                 margin: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
                 child: Align(
                   child: Text(
-                    data.detail_description,
+                    data.past_detail,
                     textAlign: TextAlign.justify,
                     style: TextStyle(
                         fontSize: 12, fontFamily: 'KhmerOSbattambang'),

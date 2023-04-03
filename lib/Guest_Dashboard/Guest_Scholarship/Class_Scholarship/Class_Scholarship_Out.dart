@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'Class_Scholarship_Out.g.dart';
 
-
+@JsonSerializable()
 class O_Scholarship {
   late final String o_school_name;
   late final String o_educational_level;
@@ -11,26 +12,13 @@ class O_Scholarship {
 
   O_Scholarship(
       {required this.o_school_name,
-        required this.o_educational_level,
-        required this.o_major,
-        required this.o_expire,
-        required this.o_expire_date,
-        required this.o_link});
-}
+      required this.o_educational_level,
+      required this.o_major,
+      required this.o_expire,
+      required this.o_expire_date,
+      required this.o_link});
 
-List<O_Scholarship> o_scholarship = [
-  O_Scholarship(
-      o_school_name: 'បណ្ដាសាកលវិទ្យាល័យនៅប្រទេសចិន',
-      o_educational_level: 'ថ្នាក់បរិញ្ញាបត្រ និងបរិញ្ញាបត្រជាន់ខ្ពស់',
-      o_major: 'គ្រប់មុខជំនាញ',
-      o_expire: 'ផុតកំណត់៖',
-      o_expire_date: 'ថ្ងៃទី០៧ ខែកុម្ភៈ ឆ្នាំ២០២៣ វេលាម៉ោង១៧ និង៣០នាទី',
-      o_link: 'https://www.usea.edu.kh/en/ButtomPages/scholarship.php'),
-  O_Scholarship(
-      o_school_name: 'បណ្ដាសាកលវិទ្យាល័យនៅប្រទេសចិន',
-      o_educational_level: 'ថ្នាក់បរិញ្ញាបត្រ និងបរិញ្ញាបត្រជាន់ខ្ពស់',
-      o_major: 'គ្រប់មុខជំនាញ',
-      o_expire: 'ផុតកំណត់៖',
-      o_expire_date: 'ថ្ងៃទី០៧ ខែកុម្ភៈ ឆ្នាំ២០២៣ វេលាម៉ោង១៧ និង៣០នាទី',
-      o_link: 'https://www.usea.edu.kh/en/Pages/index.php'),
-];
+  factory O_Scholarship.fromJson(Map<String, dynamic> json) =>
+      _$O_ScholarshipFromJson(json);
+  Map<String, dynamic> toJson() => _$O_ScholarshipToJson(this);
+}
