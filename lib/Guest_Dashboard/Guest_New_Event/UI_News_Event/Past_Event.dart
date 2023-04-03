@@ -116,7 +116,7 @@ class _Past_EventState extends State<Past_Event> {
                                     ),
                                   ),
                                   SizedBox(
-                                    width: 15,
+                                    width: 10,
                                   ),
                                   Expanded(
                                     child: Row(

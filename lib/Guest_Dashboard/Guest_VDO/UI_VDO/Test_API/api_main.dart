@@ -208,7 +208,7 @@ class _DemoApiState extends State<DemoApi> {
                                             ),
                                           ),
                                           SizedBox(
-                                            width: 15,
+                                            width: 10,
                                           ),
                                           Expanded(
                                             child: Row(

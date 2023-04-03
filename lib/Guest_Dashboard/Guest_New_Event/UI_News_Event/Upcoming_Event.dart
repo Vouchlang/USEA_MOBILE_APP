@@ -88,8 +88,6 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                   height: 5,
                                 ),
                                 Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Expanded(
                                       child: Row(
@@ -118,7 +116,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                       ),
                                     ),
                                     SizedBox(
-                                      width: 15,
+                                      width: 10,
                                     ),
                                     Expanded(
                                       child: Row(

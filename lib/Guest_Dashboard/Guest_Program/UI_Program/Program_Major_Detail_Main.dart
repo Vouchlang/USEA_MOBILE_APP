@@ -36,13 +36,12 @@ class _Program_Major_DetailState extends State<Program_Major_Detail_Main> {
               Container(
                 height: 67,
                 child: ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: ScrollPhysics(),
                     itemCount: tab_txt.length,
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
                     itemBuilder: (ctx, index) {
                       return Column(
-                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GestureDetector(
                             onTap: () {

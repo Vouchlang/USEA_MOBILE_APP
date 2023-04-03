@@ -36,13 +36,12 @@ class _Program_Score_MainState extends State<Program_Score_Main> {
                 height: 67,
                 // alignment: Alignment.center,
                 child: ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: ScrollPhysics(),
                     itemCount: tab_txt.length,
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
                     itemBuilder: (ctx, index) {
                       return Column(
-                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GestureDetector(
                             onTap: () {
