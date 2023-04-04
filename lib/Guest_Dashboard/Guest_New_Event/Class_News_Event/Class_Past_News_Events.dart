@@ -6,6 +6,7 @@ class Class_Past_Event {
   final String past_image;
   final String past_title;
   final String past_detail;
+  final String past_desc;
   final String past_day;
   final String past_date;
   final String past_month;
@@ -16,6 +17,7 @@ class Class_Past_Event {
       {required this.past_image,
       required this.past_title,
       required this.past_detail,
+      required this.past_desc,
       required this.past_day,
       required this.past_date,
       required this.past_month,

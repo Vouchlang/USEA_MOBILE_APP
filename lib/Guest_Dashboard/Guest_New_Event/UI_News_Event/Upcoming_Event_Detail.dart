@@ -66,7 +66,7 @@ class Up_Event_Detail extends StatelessWidget {
                 margin: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
                 child: Align(
                   child: Text(
-                    data.upcoming_detail,
+                    data.upcoming_desc,
                     textAlign: TextAlign.justify,
                     style: TextStyle(
                         fontSize: 12, fontFamily: 'KhmerOSbattambang'),

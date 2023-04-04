@@ -6,6 +6,7 @@ class Class_Upcoming_Event {
   final String upcoming_image;
   final String upcoming_title;
   final String upcoming_detail;
+  final String upcoming_desc;
   final String upcoming_day;
   final String upcoming_date;
   final String upcoming_month;
@@ -16,6 +17,7 @@ class Class_Upcoming_Event {
       {required this.upcoming_image,
       required this.upcoming_title,
       required this.upcoming_detail,
+      required this.upcoming_desc,
       required this.upcoming_day,
       required this.upcoming_date,
       required this.upcoming_month,
