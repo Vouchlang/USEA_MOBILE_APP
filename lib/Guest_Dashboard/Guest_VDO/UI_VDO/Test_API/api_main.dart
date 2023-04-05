@@ -1,256 +1,188 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-import '../../../../Custom_AppBar.dart';
-import 'api_detail.dart';
-import 'api_model.dart';
+import '../../../Guest_Program/UI_Program/Program_Major_Detail_Main.dart';
+import '../../../Guest_Program/UI_Program/Program_Search_Major.dart';
 
-class DemoApi extends StatefulWidget {
-  const DemoApi({Key? key});
-
+class FacultyList extends StatefulWidget {
   @override
-  _DemoApiState createState() => _DemoApiState();
+  _FacultyListState createState() => _FacultyListState();
 }
 
-class _DemoApiState extends State<DemoApi> {
-  List<Event> events = [];
-  bool isLoading = true;
+class _FacultyListState extends State<FacultyList> {
+  bool isLoading = false;
+  List facultyData = [];
 
-  Future<void> getData() async {
-    try {
-      var res = await http.get(Uri.parse(
-          "http://192.168.3.34/hosting_api/Guest/fetch_guest_event_upcoming.php"));
-      var r = json.decode(res.body);
-      if (r is List<dynamic>) {
-        events = r.map((e) => Event.fromJson(e)).toList();
-      } else {
-        events = [Event.fromJson(r)];
+  Future<void> fetchData() async {
+    setState(() {
+      isLoading = true;
+    });
+    final response = await http
+        .get(Uri.parse('http://192.168.3.34/hosting_api/Guest/demo_major.php'));
+    if (response.statusCode == 200) {
+      try {
+        final jsonData = jsonDecode(response.body) as List<dynamic>;
+        setState(() {
+          facultyData = jsonData;
+          isLoading = false;
+        });
+      } catch (e) {
+        setState(() {
+          isLoading = false;
+        });
+        throw Exception('Error occurred while parsing data');
       }
-    } catch (e) {
-      print('Error fetching data: $e');
-      // handle the error here
-    } finally {
+    } else {
       setState(() {
         isLoading = false;
       });
+      throw Exception('Failed to load data');
     }
-  }
-
-  String getImageUrl(String imageName) {
-    return 'http://192.168.3.34/hosting_api/Guest/event_image/$imageName';
   }
 
   @override
   void initState() {
     super.initState();
-    getData();
+    fetchData();
+  }
+
+  String getImageUrl(String imageName) {
+    return 'http://192.168.3.34/hosting_api/Guest/fac_icon/$imageName';
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Custom_AppBar(title: 'ព្រឹត្តិការណ៍'.tr),
-      body: Center(
-          child: isLoading
-              ? const CircularProgressIndicator()
-              : ListView.builder(
-                  itemCount: events.length,
-                  itemBuilder: (context, index) {
-                    var event = events[index];
-                    return Container(
-                      child: Card(
-                        margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                        elevation: 3,
-                        shadowColor: Colors.grey[200],
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (ctx) => Upcoming_Event(
-                                          data: event,
-                                        )));
-                          },
-                          child: Container(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Container(
-                                  height: 150,
-                                  width: double.maxFinite,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
-                                    child: Image.network(
-                                      getImageUrl(event.upcoming_image),
-                                      width: double.maxFinite,
-                                      fit: BoxFit.cover,
+      backgroundColor: Color(0xF5F5F7FE),
+      appBar: AppBar(
+        centerTitle: false,
+        title: Text('កម្មវិធីសិក្សា'.tr,
+            style: TextStyle(
+              color: Colors.indigo[900],
+              fontSize: 18,
+              fontFamily: 'KhmerOSbattambang',
+              fontWeight: FontWeight.w600,
+            )),
+        backgroundColor: Colors.white,
+        elevation: 1,
+        iconTheme: IconThemeData.fallback(),
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.indigo[900],
+            size: 18,
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        actions: [
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: Container(
+                child: Center(
+              child: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (ctx) => Program_Semester()));
+                    });
+                  },
+                  icon: Icon(
+                    Icons.search,
+                    color: Colors.indigo[900],
+                    size: 20,
+                  )),
+            )),
+          ),
+        ],
+      ),
+      body: isLoading
+          ? Center(child: CircularProgressIndicator())
+          : ListView.builder(
+              itemCount: facultyData.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Card(
+                  color: Colors.white,
+                  margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                  elevation: 3,
+                  shadowColor: Colors.grey[200],
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Theme(
+                    data: Theme.of(context)
+                        .copyWith(dividerColor: Colors.transparent),
+                    child: ExpansionTile(
+                      collapsedIconColor: Colors.indigo[900],
+                      iconColor: Colors.indigo[900],
+                      textColor: Colors.black,
+                      leading: Image.network(
+                        getImageUrl(facultyData[index]['fac_icon']),
+                        scale: 6,
+                      ),
+                      title: Text(
+                        facultyData[index]['fac_name'],
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontFamily: 'KhmerOSbattambang',
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black),
+                      ),
+                      children: <Widget>[
+                        Column(
+                          children: facultyData[index]['majors']
+                              .map<Widget>(
+                                (major) => Container(
+                                  padding: EdgeInsets.fromLTRB(15, 0, 15, 10),
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (ctx) =>
+                                                  Program_Major_Detail_Main()));
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                          border: Border.all(
+                                              color: Color(0xEEEEEEFF))),
+                                      padding: EdgeInsets.all(5),
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              major,
+                                              textAlign: TextAlign.justify,
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontFamily:
+                                                      'KhmerOSbattambang',
+                                                  color: Colors.black),
+                                            ),
+                                            Icon(
+                                              Icons.arrow_forward_ios,
+                                              size: 14,
+                                              color: Colors.indigo[900],
+                                            )
+                                          ]),
                                     ),
                                   ),
                                 ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Container(
-                                  padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        width: double.infinity,
-                                        alignment: Alignment.center,
-                                        child: Text(
-                                          event.upcoming_title,
-                                          textAlign: TextAlign.justify,
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500,
-                                              fontFamily: 'KhmerOSBattambang'),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Container(
-                                        width: double.infinity,
-                                        child: Text(
-                                          event.upcoming_detail,
-                                          textAlign: TextAlign.justify,
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500,
-                                              fontFamily: 'KhmerOSBattambang'),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: Row(
-                                              children: [
-                                                Container(
-                                                  child: Image.asset(
-                                                    'assets/image/Event_Date.png',
-                                                    width: 14,
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  width: 5,
-                                                ),
-                                                Container(
-                                                  child: Text(
-                                                    'ថ្ងៃ' + event.upcoming_day,
-                                                    style: TextStyle(
-                                                        fontSize: 10,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontFamily:
-                                                            'KhmerOSBattambang',
-                                                        color:
-                                                            Colors.indigo[900]),
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  width: 2,
-                                                ),
-                                                Container(
-                                                  child: Text(
-                                                    'ទី' + event.upcoming_date,
-                                                    style: TextStyle(
-                                                        fontSize: 10,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontFamily:
-                                                            'KhmerOSBattambang',
-                                                        color:
-                                                            Colors.indigo[900]),
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  width: 2,
-                                                ),
-                                                Container(
-                                                  child: Text(
-                                                    'ខែ' + event.upcoming_month,
-                                                    style: TextStyle(
-                                                        fontSize: 10,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontFamily:
-                                                            'KhmerOSBattambang',
-                                                        color:
-                                                            Colors.indigo[900]),
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  width: 2,
-                                                ),
-                                                Container(
-                                                  child: Text(
-                                                    'ឆ្នាំ' +
-                                                        event.upcoming_year,
-                                                    style: TextStyle(
-                                                        fontSize: 10,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontFamily:
-                                                            'KhmerOSBattambang',
-                                                        color:
-                                                            Colors.indigo[900]),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          Expanded(
-                                            child: Row(
-                                              children: [
-                                                Container(
-                                                  child: Image.asset(
-                                                    'assets/image/Event_Time.png',
-                                                    width: 14,
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  width: 5,
-                                                ),
-                                                Container(
-                                                  child: Text(
-                                                    event.upcoming_time,
-                                                    style: TextStyle(
-                                                        fontSize: 10,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontFamily:
-                                                            'KhmerOSBattambang',
-                                                        color:
-                                                            Colors.indigo[900]),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
+                              )
+                              .toList(),
                         ),
-                      ),
-                    );
-                  },
-                )),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
     );
   }
 }

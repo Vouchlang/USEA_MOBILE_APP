@@ -35,7 +35,7 @@ class _VideoState extends State<Video_UI> {
                   //     MaterialPageRoute(builder: ((context) => Testing())));
                   // --------------------------------
                   Navigator.push(context,
-                      MaterialPageRoute(builder: ((context) => DemoApi())));
+                      MaterialPageRoute(builder: ((context) => FacultyList())));
                 },
                 child: Container(
                   padding: EdgeInsets.fromLTRB(10, 15, 10, 0),
