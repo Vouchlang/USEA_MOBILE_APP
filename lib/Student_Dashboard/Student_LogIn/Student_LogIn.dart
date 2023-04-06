@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../Custom_AppBar.dart';
 
@@ -12,6 +13,6 @@ class _Student_LogInState extends State<Student_LogIn> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color(0xF5F5F7FE),
-        appBar: Custom_AppBar(title: 'title'));
+        appBar: Custom_AppBar(title: 'Student Account'.tr));
   }
 }
