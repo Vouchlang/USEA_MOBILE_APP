@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import '../../../Guest_Program/UI_Program/Program_Major_Detail_Main.dart';
-import '../../../Guest_Program/UI_Program/Program_Search_Major.dart';
+import 'api_detail.dart';
 
 class FacultyList extends StatefulWidget {
   @override
@@ -84,10 +84,8 @@ class _FacultyListState extends State<FacultyList> {
               child: IconButton(
                   onPressed: () {
                     setState(() {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (ctx) => Program_Semester()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (ctx) => ProgramSearch()));
                     });
                   },
                   icon: Icon(
