@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:usea_app/Guest_Dashboard/Guest_VDO/UI_VDO/Test_API/test_api_search.dart';
 import 'dart:convert';
 
 import '../../../Guest_Program/UI_Program/Program_Major_Detail_Main.dart';
@@ -85,7 +86,7 @@ class _FacultyListState extends State<FacultyList> {
                   onPressed: () {
                     setState(() {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (ctx) => MySearchApp()));
+                          MaterialPageRoute(builder: (ctx) => TestSearchAPI()));
                     });
                   },
                   icon: Icon(

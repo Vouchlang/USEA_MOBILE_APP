@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '/Guest_Dashboard/Guest_Program/UI_Program/Program_Major_Detail_Main.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import '../../../Guest_Program/UI_Program/Program_Major_Detail_Main.dart';
 import 'api_major.dart';
 
-class MySearchApp extends StatefulWidget {
+class TestSearchAPI extends StatefulWidget {
+  const TestSearchAPI({Key? key}) : super(key: key);
+
   @override
-  _MySearchAppState createState() => _MySearchAppState();
+  State<TestSearchAPI> createState() => _TestSearchAPIState();
 }
 
-class _MySearchAppState extends State<MySearchApp> {
+class _TestSearchAPIState extends State<TestSearchAPI> {
   String _searchQuery = '';
   List data = [];
   List filteredData = [];
 
   Future<String> getData() async {
     var response = await http.get(
-      Uri.parse('http://192.168.3.34/hosting_api/Guest/demo_major.php'),
+      Uri.parse('http://192.168.3.34/hosting_api/Guest/demo_major_list.php'),
       headers: {"Accept": "application/json"},
     );
 
@@ -45,8 +47,8 @@ class _MySearchAppState extends State<MySearchApp> {
 
     List filtered = [];
     data.forEach((item) {
-      if (item['majors'] != null &&
-          item['majors']
+      if (item['major_name'] != null &&
+          item['major_name']
               .toString()
               .toLowerCase()
               .contains(query.toLowerCase())) {
@@ -69,7 +71,7 @@ class _MySearchAppState extends State<MySearchApp> {
           icon: Icon(
             Icons.arrow_back_ios,
             color: Colors.indigo[900],
-            size: 15,
+            size: 18,
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
@@ -85,50 +87,37 @@ class _MySearchAppState extends State<MySearchApp> {
         ),
       ),
       body: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Expanded(
             child: ListView.builder(
+              padding: EdgeInsets.symmetric(vertical: 8.0),
+              shrinkWrap: true,
               itemCount: filteredData == null ? 0 : filteredData.length,
               itemBuilder: (BuildContext context, int index) {
                 return Container(
+                  height: 35,
                   child: ListTile(
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        InkWell(
-                          // onTap: () {
-                          //   Navigator.push(
-                          //       context,
-                          //       MaterialPageRoute(
-                          //           builder: (BuildContext context) =>
-                          //               Program_Major_Detail_Main()));
-                          // },
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (BuildContext context) => Major_Screen(
-                                  majorName:
-                                      filteredData[index]['majors'].toString(),
-                                ),
-                              ),
-                            );
-                          },
-
-                          child: Container(
-                            width: double.infinity,
-                            color: Colors.amber,
-                            child: Text(
-                              filteredData[index]['majors']
-                                  .join("\n")
-                                  .toString(),
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  fontFamily: 'KhmerOSbattambang'),
+                    dense: true,
+                    title: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => Major_Screen(
+                              majorName: filteredData[index]['major_name'],
                             ),
                           ),
+                        );
+                      },
+                      child: Text(
+                        filteredData[index]['major_name'].toString(),
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontFamily: 'KhmerOSbattambang',
+                          color: Colors.black,
                         ),
-                      ],
+                      ),
                     ),
                   ),
                 );

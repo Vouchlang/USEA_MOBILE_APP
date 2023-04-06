@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:usea_app/Custom_AppBar.dart';
 
 class Major_Screen extends StatelessWidget {
   final String majorName; //
@@ -6,8 +7,6 @@ class Major_Screen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(majorName)),
-    );
+    return Scaffold(appBar: Custom_AppBar(title: majorName));
   }
 }
