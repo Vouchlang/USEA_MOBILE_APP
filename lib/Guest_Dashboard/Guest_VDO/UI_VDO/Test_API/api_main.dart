@@ -85,7 +85,7 @@ class _FacultyListState extends State<FacultyList> {
                   onPressed: () {
                     setState(() {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (ctx) => ProgramSearch()));
+                          MaterialPageRoute(builder: (ctx) => MySearchApp()));
                     });
                   },
                   icon: Icon(
