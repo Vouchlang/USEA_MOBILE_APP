@@ -1,79 +1,130 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../Custom_AppBar.dart';
-import 'api_model.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-class Upcoming_Event extends StatelessWidget {
-  final Event data;
-  const Upcoming_Event({Key? key, required this.data}) : super(key: key);
+import '../../../Guest_Program/UI_Program/Program_Major_Detail_Main.dart';
+
+class ProgramSearch extends StatefulWidget {
+  const ProgramSearch({Key? key}) : super(key: key);
+
+  @override
+  _ProgramSearchState createState() => _ProgramSearchState();
+}
+
+class _ProgramSearchState extends State<ProgramSearch> {
+  bool isLoading = false;
+  List facultyData = [];
+
+  Future<void> fetchData() async {
+    setState(() {
+      isLoading = true;
+    });
+    final response = await http
+        .get(Uri.parse('http://192.168.3.34/hosting_api/Guest/demo_major.php'));
+    if (response.statusCode == 200) {
+      try {
+        final jsonData = jsonDecode(response.body) as List<dynamic>;
+        setState(() {
+          facultyData = jsonData;
+          isLoading = false;
+        });
+      } catch (e) {
+        setState(() {
+          isLoading = false;
+        });
+        throw Exception('Error occurred while parsing data');
+      }
+    } else {
+      setState(() {
+        isLoading = false;
+      });
+      throw Exception('Failed to load data');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  String _searchQuery = '';
 
   @override
   Widget build(BuildContext context) {
-    String getImageUrl(String imageName) {
-      return 'http://192.168.3.34/hosting_api/Guest/event_image/$imageName';
-    }
-
     return Scaffold(
-      backgroundColor: Color(0xF5F5F7FE),
-      appBar: Custom_AppBar(title: 'ព្រឹត្តិការណ៍'.tr),
-      body: SingleChildScrollView(
-        child: Container(
-          margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: double.maxFinite,
-                height: 175,
-                child: InteractiveViewer(
-                  child: Image.network(
-                    getImageUrl(data.upcoming_image),
-                    fit: BoxFit.fitWidth,
-                  ),
-                ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius:
-                        BorderRadius.vertical(bottom: Radius.circular(10)),
-                    boxShadow: [
-                      BoxShadow(
-                          offset: Offset(0, 1),
-                          color: Colors.grey,
-                          blurRadius: 1)
-                    ]),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-                alignment: Alignment.center,
-                width: double.maxFinite,
-                child: Text(
-                  data.upcoming_title,
-                  textAlign: TextAlign.justify,
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: 'KhmerOSbattambang'),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                width: double.infinity,
-                margin: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-                child: Align(
-                  child: Text(
-                    data.upcoming_detail,
-                    textAlign: TextAlign.justify,
-                    style: TextStyle(
-                        fontSize: 12, fontFamily: 'KhmerOSbattambang'),
-                  ),
-                ),
-              ),
-            ],
+      body: Column(
+        children: [
+          TextField(
+            onChanged: (value) {
+              setState(() {
+                _searchQuery = value;
+              });
+            },
+            decoration: InputDecoration(
+              hintText: 'Search',
+            ),
           ),
-        ),
+          Expanded(
+            child: isLoading
+                ? Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : ListView.builder(
+                    itemCount: facultyData
+                        .where((program) =>
+                            program['majors']?.any((major) =>
+                                (major['majors'] != null) &&
+                                    (major['majors'] as List?)
+                                        ?.map((m) => m.toLowerCase())
+                                        ?.contains(
+                                            _searchQuery.toLowerCase()) ??
+                                false) ??
+                            false)
+                        .fold<int>(
+                            0,
+                            (prev, program) =>
+                                prev + (program['majors'] as List).length),
+                    itemBuilder: (context, index) {
+                      final filteredPrograms = facultyData
+                          .where((program) => program['majors'].any((major) =>
+                              major['majors']
+                                  .toLowerCase()
+                                  .contains(_searchQuery.toLowerCase())))
+                          .toList();
+
+                      final filteredMajors = filteredPrograms
+                          .expand((program) => program['majors'])
+                          .toList();
+
+                      final filteredMajor = filteredMajors[index];
+                      return Container(
+                        height: 35,
+                        child: ListTile(
+                          title: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      Program_Major_Detail_Main(),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              filteredMajor['majors'],
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'KhmerOSbattambang'),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+          ),
+        ],
       ),
     );
   }
