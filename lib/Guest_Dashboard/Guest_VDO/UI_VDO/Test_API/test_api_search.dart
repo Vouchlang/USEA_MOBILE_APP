@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '/Guest_Dashboard/Guest_Program/UI_Program/Program_Major_Detail_Main.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
-import 'api_major.dart';
+import 'api_major_search_detail.dart';
+import 'api_model.dart';
 
 class TestSearchAPI extends StatefulWidget {
   const TestSearchAPI({Key? key}) : super(key: key);
@@ -15,8 +14,8 @@ class TestSearchAPI extends StatefulWidget {
 
 class _TestSearchAPIState extends State<TestSearchAPI> {
   String _searchQuery = '';
-  List data = [];
-  List filteredData = [];
+  List<Major_Detail> filteredData = [];
+  List<Major_Detail> major_detail = [];
 
   Future<String> getData() async {
     var response = await http.get(
@@ -27,8 +26,8 @@ class _TestSearchAPIState extends State<TestSearchAPI> {
     if (response.statusCode == 200) {
       List jsonData = json.decode(response.body);
       setState(() {
-        data = jsonData;
-        filteredData = jsonData;
+        major_detail =
+            jsonData.map((data) => Major_Detail.fromJson(data)).toList();
       });
       return "Success!";
     } else {
@@ -43,12 +42,12 @@ class _TestSearchAPIState extends State<TestSearchAPI> {
   }
 
   void _filterData(String query) {
-    if (data == null || data.isEmpty) return;
+    if (major_detail == null || major_detail.isEmpty) return;
 
-    List filtered = [];
-    data.forEach((item) {
-      if (item['major_name'] != null &&
-          item['major_name']
+    List<Major_Detail> filtered = [];
+    major_detail.forEach((item) {
+      if (item.major_name != null &&
+          item.major_name
               .toString()
               .toLowerCase()
               .contains(query.toLowerCase())) {
@@ -77,6 +76,9 @@ class _TestSearchAPIState extends State<TestSearchAPI> {
         ),
         title: TextField(
           onChanged: (value) {
+            setState(() {
+              _searchQuery = value;
+            });
             _filterData(value);
           },
           style: TextStyle(fontSize: 14, fontFamily: 'KhmerOSbattambang'),
@@ -90,39 +92,88 @@ class _TestSearchAPIState extends State<TestSearchAPI> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Expanded(
-            child: ListView.builder(
-              padding: EdgeInsets.symmetric(vertical: 8.0),
-              shrinkWrap: true,
-              itemCount: filteredData == null ? 0 : filteredData.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  height: 35,
-                  child: ListTile(
-                    dense: true,
-                    title: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (BuildContext context) => Major_Screen(
-                              majorName: filteredData[index]['major_name'],
+            child: (_searchQuery.isEmpty &&
+                    major_detail != null &&
+                    major_detail.isNotEmpty)
+                ? ListView.builder(
+                    padding: EdgeInsets.symmetric(vertical: 8.0),
+                    shrinkWrap: true,
+                    itemCount: major_detail.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        height: 35,
+                        child: ListTile(
+                          dense: true,
+                          title: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      Major_Search_Screen(
+                                    majorName: major_detail[index],
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              major_detail[index].major_name.toString(),
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontFamily: 'KhmerOSbattambang',
+                                color: Colors.black,
+                              ),
                             ),
                           ),
-                        );
-                      },
-                      child: Text(
-                        filteredData[index]['major_name'].toString(),
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontFamily: 'KhmerOSbattambang',
-                          color: Colors.black,
+                        ),
+                      );
+                    },
+                  )
+                : filteredData.isNotEmpty
+                    ? ListView.builder(
+                        padding: EdgeInsets.symmetric(vertical: 8.0),
+                        shrinkWrap: true,
+                        itemCount: filteredData.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Container(
+                            height: 35,
+                            child: ListTile(
+                              dense: true,
+                              title: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          Major_Search_Screen(
+                                        majorName: filteredData[index],
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  filteredData[index].major_name.toString(),
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontFamily: 'KhmerOSbattambang',
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      )
+                    : Center(
+                        child: Text(
+                          "No major found",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey[600],
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                );
-              },
-            ),
           ),
         ],
       ),

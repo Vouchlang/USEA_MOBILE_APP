@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:readmore/readmore.dart';
+import 'package:usea_app/Guest_Dashboard/Guest_VDO/UI_VDO/Test_API/Demo_Lite/api_main_lite.dart';
 import '../../../Custom_AppBar.dart';
 import '../Class_VDO/Class_Video_Home.dart';
 import 'Test_API/api_main.dart';
@@ -35,7 +36,7 @@ class _VideoState extends State<Video_UI> {
                   //     MaterialPageRoute(builder: ((context) => Testing())));
                   // --------------------------------
                   Navigator.push(context,
-                      MaterialPageRoute(builder: ((context) => FacultyList())));
+                      MaterialPageRoute(builder: ((context) => Main_Lite())));
                 },
                 child: Container(
                   padding: EdgeInsets.fromLTRB(10, 15, 10, 0),

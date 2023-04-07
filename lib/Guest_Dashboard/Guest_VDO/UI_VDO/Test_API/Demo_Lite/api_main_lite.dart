@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:usea_app/Guest_Dashboard/Guest_VDO/UI_VDO/Test_API/test_api_search.dart';
 import 'dart:convert';
+import 'api_major_detail.dart';
 
-import '../../../Guest_Program/UI_Program/Program_Major_Detail_Main.dart';
-
-class FacultyList extends StatefulWidget {
+class Main_Lite extends StatefulWidget {
   @override
-  _FacultyListState createState() => _FacultyListState();
+  _Main_LiteState createState() => _Main_LiteState();
 }
 
-class _FacultyListState extends State<FacultyList> {
+class _Main_LiteState extends State<Main_Lite> {
   bool isLoading = false;
   List facultyData = [];
 
@@ -25,7 +22,7 @@ class _FacultyListState extends State<FacultyList> {
       try {
         final jsonData = jsonDecode(response.body) as List<dynamic>;
         setState(() {
-          facultyData = jsonData;
+          facultyData = jsonData.map((e) => Faculty.fromJson(e)).toList();
           isLoading = false;
         });
       } catch (e) {
@@ -56,47 +53,6 @@ class _FacultyListState extends State<FacultyList> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xF5F5F7FE),
-      appBar: AppBar(
-        centerTitle: false,
-        title: Text('កម្មវិធីសិក្សា'.tr,
-            style: TextStyle(
-              color: Colors.indigo[900],
-              fontSize: 18,
-              fontFamily: 'KhmerOSbattambang',
-              fontWeight: FontWeight.w600,
-            )),
-        backgroundColor: Colors.white,
-        elevation: 1,
-        iconTheme: IconThemeData.fallback(),
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: Colors.indigo[900],
-            size: 18,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: Container(
-                child: Center(
-              child: IconButton(
-                  onPressed: () {
-                    setState(() {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (ctx) => TestSearchAPI()));
-                    });
-                  },
-                  icon: Icon(
-                    Icons.search,
-                    color: Colors.indigo[900],
-                    size: 20,
-                  )),
-            )),
-          ),
-        ],
-      ),
       body: isLoading
           ? Center(child: CircularProgressIndicator())
           : ListView.builder(
@@ -117,11 +73,11 @@ class _FacultyListState extends State<FacultyList> {
                       iconColor: Colors.indigo[900],
                       textColor: Colors.black,
                       leading: Image.network(
-                        getImageUrl(facultyData[index]['fac_icon']),
+                        getImageUrl(facultyData[index].fac_icon),
                         scale: 6,
                       ),
                       title: Text(
-                        facultyData[index]['fac_name'],
+                        facultyData[index].fac_name,
                         textAlign: TextAlign.left,
                         style: TextStyle(
                             fontSize: 14,
@@ -131,7 +87,7 @@ class _FacultyListState extends State<FacultyList> {
                       ),
                       children: <Widget>[
                         Column(
-                          children: facultyData[index]['majors']
+                          children: facultyData[index].majors
                               .map<Widget>(
                                 (major) => Container(
                                   padding: EdgeInsets.fromLTRB(15, 0, 15, 10),
@@ -141,7 +97,9 @@ class _FacultyListState extends State<FacultyList> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (ctx) =>
-                                                  Program_Major_Detail_Main()));
+                                                  Major_Detail_Lite(
+                                                      majorName:
+                                                          facultyData[index])));
                                     },
                                     child: Container(
                                       decoration: BoxDecoration(
@@ -181,6 +139,28 @@ class _FacultyListState extends State<FacultyList> {
                 );
               },
             ),
+    );
+  }
+}
+
+class Faculty {
+  final int id;
+  final String facName;
+  final String facIcon;
+  final List<String> majors;
+
+  Faculty(
+      {required this.id,
+      required this.facName,
+      required this.facIcon,
+      required this.majors});
+
+  factory Faculty.fromJson(Map<String, dynamic> json) {
+    return Faculty(
+      id: json['id'],
+      facName: json['fac_name'],
+      facIcon: json['fac_icon'],
+      majors: List<String>.from(json['majors']),
     );
   }
 }

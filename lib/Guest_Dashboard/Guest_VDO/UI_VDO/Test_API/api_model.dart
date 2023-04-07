@@ -2,26 +2,28 @@ import 'package:json_annotation/json_annotation.dart';
 part 'api_model.g.dart';
 
 @JsonSerializable()
-class Event {
-  final String upcoming_image;
-  final String upcoming_title;
-  final String upcoming_detail;
-  final String upcoming_day;
-  final String upcoming_date;
-  final String upcoming_month;
-  final String upcoming_year;
-  final String upcoming_time;
+class Major_Detail {
+  final String major_name;
+  final String knowledge_title;
+  final String knowledge_desc;
+  final String cognitive_title;
+  final String cognitive_desc;
+  final String skill_title;
+  final String skill_desc;
+  final String numerical_title;
+  final String numerical_desc;
 
-  Event(
-      {required this.upcoming_image,
-      required this.upcoming_title,
-      required this.upcoming_detail,
-      required this.upcoming_day,
-      required this.upcoming_date,
-      required this.upcoming_month,
-      required this.upcoming_year,
-      required this.upcoming_time});
+  Major_Detail(
+      {required this.major_name,
+      required this.knowledge_title,
+      required this.knowledge_desc,
+      required this.cognitive_title,
+      required this.cognitive_desc,
+      required this.skill_title,
+      required this.skill_desc,
+      required this.numerical_title,
+      required this.numerical_desc});
 
-  factory Event.fromJson(Map<String, dynamic> json) => _$EventFromJson(json);
-  Map<String, dynamic> toJson() => _$EventToJson(this);
+  factory Major_Detail.fromJson(Map<String, dynamic> json) => _$Major_DetailFromJson(json);
+  Map<String, dynamic> toJson() => _$Major_DetailToJson(this);
 }
