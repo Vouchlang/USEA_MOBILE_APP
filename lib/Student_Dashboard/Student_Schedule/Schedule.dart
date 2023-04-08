@@ -13,7 +13,7 @@ class _ScheduleState extends State<Schedule> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Custom_AppBar(title: 'Schedule'.tr),
+      appBar: Custom_AppBar(title: 'កាលវិភាគ'.tr),
     );
   }
 }

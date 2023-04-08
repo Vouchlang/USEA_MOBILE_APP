@@ -13,7 +13,7 @@ class _Job_HistoryState extends State<Job_History> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Custom_AppBar(title: 'Jos History'.tr),
+      appBar: Custom_AppBar(title: 'ប្រវត្តិការងារ'.tr),
     );
   }
 }

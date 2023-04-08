@@ -53,12 +53,12 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
           child: isLoading
               ? const CircularProgressIndicator()
               : ListView.builder(
+                  padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
                   itemCount: up_events.length,
                   itemBuilder: (context, index) {
                     var up_event = up_events[index];
                     return Container(
                       child: Card(
-                        margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
                         elevation: 3,
                         shadowColor: Colors.grey[200],
                         shape: RoundedRectangleBorder(

@@ -39,6 +39,7 @@ class _FacultyListState extends State<FacultyList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xF5F5F7FE),
       appBar: AppBar(
         centerTitle: false,
         title: Text('កម្មវិធីសិក្សា'.tr,
@@ -87,6 +88,7 @@ class _FacultyListState extends State<FacultyList> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return ListView.builder(
+                    padding: EdgeInsets.only(bottom: 10),
                     itemCount: snapshot.data!.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Card(

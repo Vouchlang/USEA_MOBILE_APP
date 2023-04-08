@@ -157,6 +157,9 @@ class _Guest_HomeState extends State<Guest_Home> {
                 ],
               ),
             ),
+            SizedBox(
+              width: 15,
+            ),
             Container(
                 width: 36,
                 height: 36,

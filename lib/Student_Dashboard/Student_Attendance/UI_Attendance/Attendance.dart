@@ -13,7 +13,7 @@ class _AttendanceState extends State<Attendance> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Custom_AppBar(title: 'Attendance'.tr),
+      appBar: Custom_AppBar(title: 'វត្តមាន'.tr),
     );
   }
 }

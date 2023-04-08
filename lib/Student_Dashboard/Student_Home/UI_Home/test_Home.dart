@@ -6,16 +6,15 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_ChangeLanguage/Change_Language.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_Home/Class_Home/Class_Home_Screen.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_New_Event/UI_News_Event/News_Event.dart';
-import '../../../Guest_Dashboard/Guest_AboutUS/UI_AboutUS/AboutUS.dart';
-import '../../../Guest_Dashboard/Guest_Career/UI_Career/Career.dart';
+import 'package:usea_app/Student_Dashboard/Student_Achievements/UI_Achievements/Achievements.dart';
+import 'package:usea_app/Student_Dashboard/Student_Attendance/UI_Attendance/Attendance.dart';
+import 'package:usea_app/Student_Dashboard/Student_JobHistory/UI_JobHistory/JosHistory.dart';
+import 'package:usea_app/Student_Dashboard/Student_Payment/UI_Payment/Payment.dart';
+import 'package:usea_app/Student_Dashboard/Student_Performance/UI_Perfomance/Performance.dart';
+import 'package:usea_app/Student_Dashboard/Student_Schedule/Schedule.dart';
+import 'package:usea_app/Student_Dashboard/Student_StudyInfo/UI_StudyInfo/StudyInfo.dart';
 import '../../../Guest_Dashboard/Guest_Contact/UI_Contact/Contact.dart';
-// import '../../../Guest_Dashboard/Guest_FAQ/UI_FAQ/FAQ.dart';
 import '../../../Guest_Dashboard/Guest_Notification/UI_Notification/Notifications.dart';
-import '../../../Guest_Dashboard/Guest_Program/UI_Program/Program.dart';
-import '../../../Guest_Dashboard/Guest_Registration/UI_Registration/Registration.dart';
-import '../../../Guest_Dashboard/Guest_Scholarship/UI_Scholarship/Scholarship.dart';
-import '../../../Guest_Dashboard/Guest_VDO/UI_VDO/Video.dart';
 
 class Student_Home1 extends StatefulWidget {
   const Student_Home1({Key? key}) : super(key: key);
@@ -27,86 +26,54 @@ class Student_Home1 extends StatefulWidget {
 List<Home_Screen> home_screen = [
   Home_Screen(
     name: 'កាលវិភាគ',
-    img: 'assets/image/stu_event.png',
-    screen: New_Event(),
+    img: 'assets/image/Stu_Schedule.png',
+    screen: Schedule(),
   ),
   Home_Screen(
     name: 'ដំណើរការសិក្សា',
-    img: 'assets/image/stu_process.png',
-    screen: Registration(),
+    img: 'assets/image/Stu_Performance.png',
+    screen: Performance(),
   ),
   Home_Screen(
     name: 'វត្តមាន',
-    img: 'assets/image/stu_attendance.png',
-    screen: Program(),
+    img: 'assets/image/Stu_Attendance.png',
+    screen: Attendance(),
   ),
   Home_Screen(
     name: 'ការបង់ប្រាក់',
-    img: 'assets/image/stu_wallet.png',
-    screen: Scholarship(),
+    img: 'assets/image/Stu_Payment.png',
+    screen: Payment(),
   ),
   Home_Screen(
     name: 'ប្រវត្តិការងារ',
-    img: 'assets/image/stu_history.png',
-    screen: Career(),
+    img: 'assets/image/Stu_Job_History.png',
+    screen: Job_History(),
   ),
   Home_Screen(
-    name: 'ព័ត៍មានការសិក្សា',
-    img: 'assets/image/stu_info.png',
-    screen: Video_UI(),
+    name: 'ព័ត៌មានការសិក្សា',
+    img: 'assets/image/Stu_Study_Info.png',
+    screen: Study_Info(),
   ),
   Home_Screen(
     name: 'មតិកែលម្អ',
-    img: 'assets/image/stu_servay.png',
-    screen: Contact(),
+    img: 'assets/image/Stu_Survey.png',
+    screen: InkWell(
+      onTap: () {},
+    ),
   ),
   Home_Screen(
     name: 'សម្មិទ្ធផល',
-    img: 'assets/image/student_result.png',
-    screen: AboutUS(),
+    img: 'assets/image/Stu_Achievement.png',
+    screen: Achievements(),
   ),
 ];
 
 class _Student_Home1State extends State<Student_Home1> {
-  final Uri urlFb = Uri.parse("https://www.facebook.com/usea.edu.kh");
-  final Uri urlIg =
-      Uri.parse("https://ww3.read-onepiece.net/manga/one-piece-chapter-1059/");
-  final Uri urlYt =
-      Uri.parse("https://www.youtube.com/@universityofsouth-eastasia8619");
-  final Uri urlTel = Uri.parse("https://t.me/cpsteamsports");
-  final Uri urlWeb = Uri.parse("http://www.usea.edu.kh/");
-
   int activeIndex = 0;
+  final Uri urlFb = Uri.parse("https://www.facebook.com/usea.edu.kh");
 
   @override
   Widget build(BuildContext context) {
-    final image_slides = [
-      'assets/image/1.jpg',
-      'assets/image/2.jpg',
-      'assets/image/3.jpg',
-      'assets/image/4.jpg',
-      'assets/image/5.jpg',
-    ];
-
-    Widget buildImage(String image_slide, int index) => Container(
-          margin: EdgeInsets.symmetric(horizontal: 5),
-          color: Colors.grey[200],
-          width: double.infinity,
-          child: Image.asset(
-            image_slide,
-            fit: BoxFit.cover,
-          ),
-        );
-
-    Widget buildIndicator() => AnimatedSmoothIndicator(
-        activeIndex: activeIndex,
-        count: image_slides.length,
-        effect: WormEffect(
-            activeDotColor: Color(0xFF1A237E),
-            dotColor: Colors.grey,
-            dotHeight: 8,
-            dotWidth: 8));
-
     return Scaffold(
       backgroundColor: Color(0xF5F5F7FE),
       appBar: AppBar(
@@ -193,7 +160,6 @@ class _Student_Home1State extends State<Student_Home1> {
             ),
             Container(
               height: 175,
-              // width: double.infinity,
               padding: EdgeInsets.symmetric(vertical: 0, horizontal: 5),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -230,9 +196,6 @@ class _Student_Home1State extends State<Student_Home1> {
             SizedBox(
               height: 7,
             ),
-            // Center(
-            //   child: buildIndicator(),
-            // ),
             SizedBox(
               height: 7,
             ),
@@ -255,13 +218,8 @@ class _Student_Home1State extends State<Student_Home1> {
                     ),
                     child: InkWell(
                       onTap: () {
-                        if (index.isEqual(8)) {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return Change_Language();
-                            },
-                          );
+                        if (index.isEqual(6)) {
+                          launchUrl(urlFb);
                         } else {
                           Navigator.push(
                             context,

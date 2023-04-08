@@ -13,7 +13,7 @@ class _Study_InfoState extends State<Study_Info> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Custom_AppBar(title: 'Study Info'.tr),
+      appBar: Custom_AppBar(title: 'ព័ត៌មានការសិក្សា'.tr),
     );
   }
 }

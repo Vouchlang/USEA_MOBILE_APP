@@ -14,7 +14,7 @@ class _AchievementsState extends State<Achievements> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Custom_AppBar(title: 'Achievemetns'.tr),
+      appBar: Custom_AppBar(title: 'សម្មិទ្ធផល'.tr),
     );
   }
 }

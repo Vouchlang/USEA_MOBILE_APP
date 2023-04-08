@@ -80,11 +80,21 @@ class LocaleString extends Translations {
           'ចក្ខុវិស័យ បេសកកម្ម និងគុណតម្លៃ': 'ចក្ខុវិស័យ បេសកកម្ម និងគុណតម្លៃ',
           'ការទទួលស្គាល់': 'ការទទួលស្គាល់',
 
-          //Change Language
+          // Change Language
           'ភាសា': 'ភាសា',
           'សូមជ្រើសរើសភាសា': 'សូមជ្រើសរើសភាសា',
           'ភាសាខ្មែរ': 'ភាសាខ្មែរ',
           'ភាសាអង់គ្លេស': 'ភាសាអង់គ្លេស',
+
+          // Student Dashboard
+          'កាលវិភាគ': 'កាលវិភាគ',
+          'ដំណើរការសិក្សា': 'ដំណើរការសិក្សា',
+          'វត្តមាន': 'វត្តមាន',
+          'ការបង់ប្រាក់': 'ការបង់ប្រាក់',
+          'ប្រវត្តិការងារ': 'ប្រវត្តិការងារ',
+          'ព័ត៍មានការសិក្សា': 'ព័ត៍មានការសិក្សា',
+          'មតិកែលម្អ': 'មតិកែលម្អ',
+          'សម្មិទ្ធផល': 'សម្មិទ្ធផល',
         },
         'en_US': {
           // Guest Dashboard
@@ -162,11 +172,21 @@ class LocaleString extends Translations {
           'ចក្ខុវិស័យ បេសកកម្ម និងគុណតម្លៃ': 'Vision Mission and Core Value',
           'ការទទួលស្គាល់': 'Recognition',
 
-          //Change Language
+          // Change Language
           'ភាសា': 'Language',
           'សូមជ្រើសរើសភាសា': 'Please select the language',
           'ភាសាខ្មែរ': 'KHMER',
           'ភាសាអង់គ្លេស': 'ENGLISH',
+
+          // Student Dashboard
+          'កាលវិភាគ': 'Schedule',
+          'ដំណើរការសិក្សា': 'Performance',
+          'វត្តមាន': 'Attendance',
+          'ការបង់ប្រាក់': 'Payment',
+          'ប្រវត្តិការងារ': 'Job History',
+          'ព័ត៌មានការសិក្សា': 'Study Info',
+          'មតិកែលម្អ': 'Feedback',
+          'សម្មិទ្ធផល': 'Achievements',
         },
       };
 }

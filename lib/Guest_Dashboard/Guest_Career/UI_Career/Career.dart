@@ -55,69 +55,66 @@ class _CareerState extends State<Career> {
       body: Center(
         child: isLoading
             ? const CircularProgressIndicator()
-            : Container(
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                child: ListView.builder(
-                  itemCount: career.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      padding: EdgeInsets.only(top: 5),
-                      child: InkWell(
-                        onTap: () => launchUrlString(career[index].link),
-                        child: Container(
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  CircleAvatar(
-                                    backgroundImage: NetworkImage(
-                                        getLogo(career[index].logo)),
-                                    radius: 40,
+            : ListView.builder(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                itemCount: career.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    padding: EdgeInsets.only(top: 5),
+                    child: InkWell(
+                      onTap: () => launchUrlString(career[index].link),
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                CircleAvatar(
+                                  backgroundImage:
+                                      NetworkImage(getLogo(career[index].logo)),
+                                  radius: 40,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        child: Text(career[index].position,
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontFamily: 'KhmerOSbattambang',
+                                              fontWeight: FontWeight.w500,
+                                            )),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Container(
+                                        child: Text(career[index].organization,
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              fontFamily: 'KhmerOSbattambang',
+                                              fontWeight: FontWeight.w500,
+                                            )),
+                                      ),
+                                    ],
                                   ),
-                                  SizedBox(
-                                    width: 15,
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          child: Text(career[index].position,
-                                              style: TextStyle(
-                                                fontSize: 14,
-                                                fontFamily: 'KhmerOSbattambang',
-                                                fontWeight: FontWeight.w500,
-                                              )),
-                                        ),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Container(
-                                          child: Text(
-                                              career[index].organization,
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                fontFamily: 'KhmerOSbattambang',
-                                                fontWeight: FontWeight.w500,
-                                              )),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Divider()
-                            ],
-                          ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Divider()
+                          ],
                         ),
                       ),
-                    );
-                  },
-                ),
+                    ),
+                  );
+                },
               ),
       ),
     );

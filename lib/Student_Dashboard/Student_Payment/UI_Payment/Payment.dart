@@ -13,7 +13,7 @@ class _PaymentState extends State<Payment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Custom_AppBar(title: 'Payment'.tr),
+      appBar: Custom_AppBar(title: 'ការបង់ប្រាក់'.tr),
     );
   }
 }
