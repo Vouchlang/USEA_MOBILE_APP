@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'Splash_Screen.dart';
+// import 'Splash_Screen.dart';
+import 'Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
 import 'localeString.dart';
 
 void main() {
@@ -13,7 +14,7 @@ void main() {
       primaryColor: Colors.indigo[900],
       visualDensity: VisualDensity.adaptivePlatformDensity,
     ),
-    home: new Splash_Screen(),
+    home: new St_Home(),
     translations: LocaleString(),
     locale: Locale('km', 'KH'),
     debugShowCheckedModeBanner: false,
