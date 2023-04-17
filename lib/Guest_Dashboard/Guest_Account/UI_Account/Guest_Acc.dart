@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
-import '../../../Student_Dashboard/Student_Home/UI_Home/test_Home.dart';
+import '../../../Student_Dashboard/Student_LogIn/Student_LogIn.dart';
 import '/Guest_Dashboard/Guest_Account/Class_Account/Class_Account_Screen.dart';
 import '/Guest_Dashboard/Guest_New_Event/UI_News_Event/News_Event.dart';
-import '../../../Student_Dashboard/Student_Home/UI_Home/Student_Home.dart';
 
 class Guest_Acc extends StatefulWidget {
   const Guest_Acc({Key? key}) : super(key: key);
@@ -17,8 +16,8 @@ class _Guest_AccState extends State<Guest_Acc> {
     Account_Screen(
       name: 'គណនីនិស្សិត',
       img: 'assets/image/Acc_Student.png',
-      // screen: Student_Home(),
-      screen: St_Home(),
+      screen: Student_LogIn(),
+      // screen: St_Home(),
     ),
     Account_Screen(
         name: 'គណនីអាណាព្យាបាល',
@@ -75,6 +74,11 @@ class _Guest_AccState extends State<Guest_Acc> {
                                     builder: (BuildContext context) {
                                   return account_screen[index].screen;
                                 }));
+                                // Navigator.pushReplacement(context,
+                                //     MaterialPageRoute(
+                                //         builder: (BuildContext context) {
+                                //   return account_screen[index].screen;
+                                // }));
                               },
                               child: Container(
                                 child: Column(
