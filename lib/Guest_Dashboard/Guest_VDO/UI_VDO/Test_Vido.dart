@@ -85,7 +85,7 @@ class _TestingState extends State<Testing> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xF5F5F7FE),
+        backgroundColor: Theme.of(context).secondaryHeaderColor,
         body: _isLoading
             ? const Center(child: CircularProgressIndicator())
             : _data.isEmpty
@@ -187,8 +187,8 @@ class _TestingState extends State<Testing> {
                                                           FontWeight.w500,
                                                       fontFamily:
                                                           'KhmerOSBattambang',
-                                                      color:
-                                                          Colors.indigo[900]),
+                                                      color: Theme.of(context)
+                                                          .primaryColor),
                                                 ),
                                               ),
                                               SizedBox(
@@ -203,8 +203,8 @@ class _TestingState extends State<Testing> {
                                                           FontWeight.w500,
                                                       fontFamily:
                                                           'KhmerOSBattambang',
-                                                      color:
-                                                          Colors.indigo[900]),
+                                                      color: Theme.of(context)
+                                                          .primaryColor),
                                                 ),
                                               ),
                                               SizedBox(
@@ -219,8 +219,8 @@ class _TestingState extends State<Testing> {
                                                           FontWeight.w500,
                                                       fontFamily:
                                                           'KhmerOSBattambang',
-                                                      color:
-                                                          Colors.indigo[900]),
+                                                      color: Theme.of(context)
+                                                          .primaryColor),
                                                 ),
                                               ),
                                               SizedBox(
@@ -236,8 +236,8 @@ class _TestingState extends State<Testing> {
                                                           FontWeight.w500,
                                                       fontFamily:
                                                           'KhmerOSBattambang',
-                                                      color:
-                                                          Colors.indigo[900]),
+                                                      color: Theme.of(context)
+                                                          .primaryColor),
                                                 ),
                                               ),
                                               SizedBox(
@@ -261,8 +261,8 @@ class _TestingState extends State<Testing> {
                                                           FontWeight.w500,
                                                       fontFamily:
                                                           'KhmerOSBattambang',
-                                                      color:
-                                                          Colors.indigo[900]),
+                                                      color: Theme.of(context)
+                                                          .primaryColor),
                                                 ),
                                               ),
                                             ],

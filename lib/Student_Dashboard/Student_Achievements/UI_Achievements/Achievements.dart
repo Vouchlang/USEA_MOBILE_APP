@@ -14,6 +14,7 @@ class _AchievementsState extends State<Achievements> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'សម្មិទ្ធផល'.tr),
     );
   }

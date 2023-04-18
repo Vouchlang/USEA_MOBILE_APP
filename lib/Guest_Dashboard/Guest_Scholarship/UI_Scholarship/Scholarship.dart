@@ -26,7 +26,7 @@ class _ScholarshipState extends State<Scholarship> {
   Widget build(BuildContext context) {
     return Scaffold(
       // extendBodyBehindAppBar: true,
-      backgroundColor: Color(0xF5F5F7FE),
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'អាហារូបករណ៍'.tr),
       body: Center(
         child: Column(
@@ -59,7 +59,7 @@ class _ScholarshipState extends State<Scholarship> {
                               width: 180,
                               decoration: BoxDecoration(
                                   color: current == index
-                                      ? Colors.indigo[900]
+                                      ? Theme.of(context).primaryColor
                                       : Colors.white,
                                   borderRadius: BorderRadius.circular(5),
                                   boxShadow: [

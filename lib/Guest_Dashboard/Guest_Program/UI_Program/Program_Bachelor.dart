@@ -15,7 +15,7 @@ class _Program_BachelorState extends State<Program_Bachelor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xF5F5F7FE),
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       body: Container(
         padding: EdgeInsets.all(10),
         child: ListView(
@@ -50,7 +50,7 @@ class _Program_BachelorState extends State<Program_Bachelor> {
                                     program_major_detail[index].title,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
-                                        color: Colors.indigo[900],
+                                        color: Theme.of(context).primaryColor,
                                         fontSize: 14,
                                         fontFamily: 'KhmerOSbattambang',
                                         fontWeight: FontWeight.w600),
@@ -60,7 +60,7 @@ class _Program_BachelorState extends State<Program_Bachelor> {
                               animatedWidgetFollowingHeader: Icon(
                                 Icons.keyboard_arrow_down_rounded,
                                 size: 25,
-                                color: Colors.indigo[900],
+                                color: Theme.of(context).primaryColor,
                               ),
                               childrenBody: Container(
                                 padding: EdgeInsets.symmetric(horizontal: 10),

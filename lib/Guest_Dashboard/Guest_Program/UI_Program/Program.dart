@@ -15,12 +15,12 @@ class _ProgramState extends State<Program> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xF5F5F7FE),
+        backgroundColor: Theme.of(context).secondaryHeaderColor,
         appBar: AppBar(
           centerTitle: false,
           title: Text('កម្មវិធីសិក្សា'.tr,
               style: TextStyle(
-                color: Colors.indigo[900],
+                color: Theme.of(context).primaryColor,
                 fontSize: 18,
                 fontFamily: 'KhmerOSbattambang',
                 fontWeight: FontWeight.w600,
@@ -31,7 +31,7 @@ class _ProgramState extends State<Program> {
           leading: IconButton(
             icon: Icon(
               Icons.arrow_back_ios,
-              color: Colors.indigo[900],
+              color: Theme.of(context).primaryColor,
               size: 18,
             ),
             onPressed: () => Navigator.of(context).pop(),
@@ -52,7 +52,7 @@ class _ProgramState extends State<Program> {
                     },
                     icon: Icon(
                       Icons.search,
-                      color: Colors.indigo[900],
+                      color: Theme.of(context).primaryColor,
                       size: 20,
                     )),
               )),
@@ -111,7 +111,7 @@ class ProgramWidget extends StatelessWidget {
                   Icon(
                     Icons.arrow_forward_ios,
                     size: 14,
-                    color: Colors.indigo[900],
+                    color: Theme.of(context).primaryColor,
                   )
                 ]),
           ),
@@ -128,8 +128,8 @@ class ProgramWidget extends StatelessWidget {
           child: Theme(
             data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
             child: ExpansionTile(
-              collapsedIconColor: Colors.indigo[900],
-              iconColor: Colors.indigo[900],
+              collapsedIconColor: Theme.of(context).primaryColor,
+              iconColor: Theme.of(context).primaryColor,
               textColor: Colors.black,
               key: PageStorageKey(title),
               title: Row(children: [

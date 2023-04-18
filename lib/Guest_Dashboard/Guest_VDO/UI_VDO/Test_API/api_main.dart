@@ -39,12 +39,12 @@ class _FacultyListState extends State<FacultyList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xF5F5F7FE),
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: AppBar(
         centerTitle: false,
         title: Text('កម្មវិធីសិក្សា'.tr,
             style: TextStyle(
-              color: Colors.indigo[900],
+              color: Theme.of(context).primaryColor,
               fontSize: 18,
               fontFamily: 'KhmerOSbattambang',
               fontWeight: FontWeight.w600,
@@ -55,7 +55,7 @@ class _FacultyListState extends State<FacultyList> {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
-            color: Colors.indigo[900],
+            color: Theme.of(context).primaryColor,
             size: 18,
           ),
           onPressed: () => Navigator.of(context).pop(),
@@ -74,7 +74,7 @@ class _FacultyListState extends State<FacultyList> {
                   },
                   icon: Icon(
                     Icons.search,
-                    color: Colors.indigo[900],
+                    color: Theme.of(context).primaryColor,
                     size: 20,
                   )),
             )),
@@ -102,8 +102,8 @@ class _FacultyListState extends State<FacultyList> {
                           data: Theme.of(context)
                               .copyWith(dividerColor: Colors.transparent),
                           child: ExpansionTile(
-                            collapsedIconColor: Colors.indigo[900],
-                            iconColor: Colors.indigo[900],
+                            collapsedIconColor: Theme.of(context).primaryColor,
+                            iconColor: Theme.of(context).primaryColor,
                             textColor: Colors.black,
                             leading: Image.network(
                               getImageUrl(snapshot.data![index].facIcon),
@@ -164,7 +164,8 @@ class _FacultyListState extends State<FacultyList> {
                                                     Icon(
                                                       Icons.arrow_forward_ios,
                                                       size: 14,
-                                                      color: Colors.indigo[900],
+                                                      color: Theme.of(context)
+                                                          .primaryColor,
                                                     )
                                                   ]),
                                             ),

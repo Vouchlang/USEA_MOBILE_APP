@@ -12,7 +12,7 @@ class _Student_HomeState extends State<Student_Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xF5F5F7FE),
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: AppBar(
         leading: Image.asset(
           'assets/image/usea_logo.png',
@@ -27,13 +27,13 @@ class _Student_HomeState extends State<Student_Home> {
                 Text(
                   'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
                   style: TextStyle(
-                      color: Colors.indigo[900],
+                      color: Theme.of(context).primaryColor,
                       fontSize: 10,
                       fontFamily: 'KhmerOSmuol'),
                 ),
                 Text('UNIVERSITY OF SOUTH-EAST ASIA',
                     style: TextStyle(
-                        color: Colors.indigo[900],
+                        color: Theme.of(context).primaryColor,
                         fontSize: 11.7,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500)),

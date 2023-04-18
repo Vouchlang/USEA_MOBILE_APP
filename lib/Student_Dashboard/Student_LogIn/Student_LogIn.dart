@@ -22,10 +22,11 @@ class _Student_LogInState extends State<Student_LogIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xF5F5F7FE),
-      appBar: Custom_AppBar(title: 'Student Account'.tr),
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      appBar: Custom_AppBar(title: 'គណនីនិសិ្សត'.tr),
       body: Container(
-        alignment: Alignment.center,
+        alignment: Alignment.topCenter,
+        margin: EdgeInsets.only(top: 20),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -42,14 +43,14 @@ class _Student_LogInState extends State<Student_LogIn> {
               'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
               style: TextStyle(
                   fontFamily: 'KhmerOSmuol',
-                  color: Colors.indigo[900],
+                  color: Theme.of(context).primaryColor,
                   fontSize: 16),
             ),
             Text(
               'UNIVERSITY OF SOUTH-EAST ASIA',
               style: TextStyle(
                   fontFamily: 'Poppins',
-                  color: Colors.indigo[900],
+                  color: Theme.of(context).primaryColor,
                   fontSize: 16,
                   fontWeight: FontWeight.w500),
             ),
@@ -60,11 +61,10 @@ class _Student_LogInState extends State<Student_LogIn> {
               padding: EdgeInsets.only(left: 30),
               alignment: Alignment.centerLeft,
               child: Text(
-                'អត្តលេខនិស្សិត',
+                'អត្តលេខនិស្សិត'.tr,
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   fontFamily: 'KhmerOSbattambang',
-                  color: Colors.grey[700],
                   fontSize: 12,
                 ),
               ),
@@ -76,9 +76,10 @@ class _Student_LogInState extends State<Student_LogIn> {
                 controller: _textControllerUsername,
                 cursorColor: Colors.grey,
                 cursorWidth: 1,
+                cursorHeight: 20,
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.all(10),
-                  hintText: '\t\tបញ្ចូលអត្តលេខ',
+                  hintText: '\t\tបញ្ចូលអត្តលេខ'.tr,
                   hintStyle: TextStyle(
                       fontSize: 10,
                       color: Colors.grey,
@@ -96,8 +97,9 @@ class _Student_LogInState extends State<Student_LogIn> {
                   focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.grey)),
                   suffixIconColor: Colors.grey,
-                  errorText:
-                      _validateUsername ? 'Username cannot be null' : null,
+                  errorStyle:
+                      TextStyle(fontFamily: 'KhmerOSbattambang', fontSize: 10),
+                  errorText: _validateUsername ? 'សូមបញ្ចូលអត្តលេខ'.tr : null,
                 ),
               ),
             ),
@@ -105,10 +107,9 @@ class _Student_LogInState extends State<Student_LogIn> {
               padding: EdgeInsets.only(left: 30),
               alignment: Alignment.centerLeft,
               child: Text(
-                'ពាក្យសម្ងាត់',
+                'ពាក្យសម្ងាត់'.tr,
                 style: TextStyle(
                   fontFamily: 'KhmerOSbattambang',
-                  color: Colors.grey[700],
                   fontSize: 12,
                 ),
               ),
@@ -121,9 +122,10 @@ class _Student_LogInState extends State<Student_LogIn> {
                 controller: _textControllerPsw,
                 cursorColor: Colors.grey,
                 cursorWidth: 1,
+                cursorHeight: 20,
                 decoration: InputDecoration(
                     contentPadding: EdgeInsets.all(10),
-                    hintText: '\t\tបញ្ចូលពាក្យសម្ងាត់',
+                    hintText: '\t\tបញ្ចូលពាក្យសម្ងាត់'.tr,
                     hintStyle: TextStyle(
                         fontSize: 10,
                         color: Colors.grey,
@@ -143,8 +145,10 @@ class _Student_LogInState extends State<Student_LogIn> {
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.grey)),
                     suffixIconColor: Colors.grey,
+                    errorStyle: TextStyle(
+                        fontFamily: 'KhmerOSbattambang', fontSize: 10),
                     errorText:
-                        _validatePassword ? 'Password cannot be null' : null),
+                        _validatePassword ? 'សូមបញ្ចូលពាក្យសម្ងាត់'.tr : null),
               ),
             ),
             SizedBox(
@@ -156,7 +160,7 @@ class _Student_LogInState extends State<Student_LogIn> {
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
-                color: Colors.indigo[900],
+                color: Theme.of(context).primaryColor,
               ),
               child: InkWell(
                 onTap: () {
@@ -189,7 +193,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                   );
                 },
                 child: Text(
-                  'ចូល',
+                  'ចូល'.tr,
                   style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'KhmerOSbattambang',

@@ -16,7 +16,7 @@ class Up_Event_Detail extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: Color(0xF5F5F7FE),
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'ព្រឹត្តិការណ៍'.tr),
       body: SingleChildScrollView(
         child: Container(

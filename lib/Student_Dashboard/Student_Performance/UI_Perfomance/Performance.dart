@@ -13,6 +13,7 @@ class _PerformanceState extends State<Performance> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'ដំណើរការសិក្សា'.tr),
     );
   }

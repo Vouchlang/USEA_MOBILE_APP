@@ -10,7 +10,7 @@ class Custom_AppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: false,
       title: Text(title,
           style: TextStyle(
-            color: Colors.indigo[900],
+            color: Theme.of(context).primaryColor,
             fontSize: 18,
             fontFamily: 'KhmerOSbattambang',
             fontWeight: FontWeight.w600,
@@ -21,7 +21,7 @@ class Custom_AppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: IconButton(
         icon: Icon(
           Icons.arrow_back_ios,
-          color: Colors.indigo[900],
+          color: Theme.of(context).primaryColor,
           size: 18,
         ),
         onPressed: () => Navigator.of(context).pop(),

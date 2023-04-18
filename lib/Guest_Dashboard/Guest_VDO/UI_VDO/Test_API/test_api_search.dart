@@ -62,6 +62,7 @@ class _TestSearchAPIState extends State<TestSearchAPI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: AppBar(
         centerTitle: false,
         backgroundColor: Colors.white,
@@ -69,7 +70,7 @@ class _TestSearchAPIState extends State<TestSearchAPI> {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
-            color: Colors.indigo[900],
+            color: Theme.of(context).primaryColor,
             size: 18,
           ),
           onPressed: () => Navigator.of(context).pop(),

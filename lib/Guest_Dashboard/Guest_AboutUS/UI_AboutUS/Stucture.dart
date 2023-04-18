@@ -14,7 +14,7 @@ class _StructureState extends State<Structure> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xF5F5F7FE),
+        backgroundColor: Theme.of(context).secondaryHeaderColor,
         appBar: Custom_AppBar(title: 'រចនាសម្ព័ន្ធរបស់សាកលវិទ្យាល័យ'.tr),
         body: SingleChildScrollView(
           child: Column(

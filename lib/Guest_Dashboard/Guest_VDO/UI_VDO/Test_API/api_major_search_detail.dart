@@ -11,6 +11,7 @@ class Major_Search_Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: majorName.major_name),
       body: Container(
         padding: EdgeInsets.all(10),
@@ -40,7 +41,7 @@ class Major_Search_Screen extends StatelessWidget {
                               majorName.knowledge_title,
                               textAlign: TextAlign.left,
                               style: TextStyle(
-                                  color: Colors.indigo[900],
+                                  color: Theme.of(context).primaryColor,
                                   fontSize: 14,
                                   fontFamily: 'KhmerOSbattambang',
                                   fontWeight: FontWeight.w600),
@@ -50,7 +51,7 @@ class Major_Search_Screen extends StatelessWidget {
                         animatedWidgetFollowingHeader: Icon(
                           Icons.keyboard_arrow_down_rounded,
                           size: 25,
-                          color: Colors.indigo[900],
+                          color: Theme.of(context).primaryColor,
                         ),
                         childrenBody: Container(
                           padding: EdgeInsets.symmetric(horizontal: 10),
@@ -73,7 +74,7 @@ class Major_Search_Screen extends StatelessWidget {
                               majorName.cognitive_title,
                               textAlign: TextAlign.left,
                               style: TextStyle(
-                                  color: Colors.indigo[900],
+                                  color: Theme.of(context).primaryColor,
                                   fontSize: 14,
                                   fontFamily: 'KhmerOSbattambang',
                                   fontWeight: FontWeight.w600),
@@ -83,7 +84,7 @@ class Major_Search_Screen extends StatelessWidget {
                         animatedWidgetFollowingHeader: Icon(
                           Icons.keyboard_arrow_down_rounded,
                           size: 25,
-                          color: Colors.indigo[900],
+                          color: Theme.of(context).primaryColor,
                         ),
                         childrenBody: Container(
                           padding: EdgeInsets.symmetric(horizontal: 10),
@@ -106,7 +107,7 @@ class Major_Search_Screen extends StatelessWidget {
                               majorName.skill_title,
                               textAlign: TextAlign.left,
                               style: TextStyle(
-                                  color: Colors.indigo[900],
+                                  color: Theme.of(context).primaryColor,
                                   fontSize: 14,
                                   fontFamily: 'KhmerOSbattambang',
                                   fontWeight: FontWeight.w600),
@@ -116,7 +117,7 @@ class Major_Search_Screen extends StatelessWidget {
                         animatedWidgetFollowingHeader: Icon(
                           Icons.keyboard_arrow_down_rounded,
                           size: 25,
-                          color: Colors.indigo[900],
+                          color: Theme.of(context).primaryColor,
                         ),
                         childrenBody: Container(
                           padding: EdgeInsets.symmetric(horizontal: 10),
@@ -139,7 +140,7 @@ class Major_Search_Screen extends StatelessWidget {
                               majorName.numerical_title,
                               textAlign: TextAlign.left,
                               style: TextStyle(
-                                  color: Colors.indigo[900],
+                                  color: Theme.of(context).primaryColor,
                                   fontSize: 14,
                                   fontFamily: 'KhmerOSbattambang',
                                   fontWeight: FontWeight.w600),
@@ -149,7 +150,7 @@ class Major_Search_Screen extends StatelessWidget {
                         animatedWidgetFollowingHeader: Icon(
                           Icons.keyboard_arrow_down_rounded,
                           size: 25,
-                          color: Colors.indigo[900],
+                          color: Theme.of(context).primaryColor,
                         ),
                         childrenBody: Container(
                           padding: EdgeInsets.symmetric(horizontal: 10),

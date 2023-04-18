@@ -16,7 +16,7 @@ class _RecognitionState extends State<Recognition> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xF5F5F7FE),
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'ការទទួលស្គាល់'.tr),
       body: Container(
         child: ListView.builder(
@@ -74,7 +74,7 @@ class _RecognitionState extends State<Recognition> {
                                       fontSize: 12,
                                       fontFamily: 'KhmerOSbattambang',
                                       fontWeight: FontWeight.w600,
-                                      color: Colors.indigo[900]),
+                                      color: Theme.of(context).primaryColor),
                                 ),
                               ),
                             ),

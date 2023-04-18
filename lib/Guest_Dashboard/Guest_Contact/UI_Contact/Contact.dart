@@ -15,7 +15,7 @@ class _ContactState extends State<Contact> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xF5F5F7FE),
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'ទំនាក់ទំនង'.tr),
       body: ListView(padding: EdgeInsets.all(10), children: [
         Expanded(

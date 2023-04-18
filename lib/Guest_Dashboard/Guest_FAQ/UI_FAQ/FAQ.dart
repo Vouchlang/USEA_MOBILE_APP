@@ -44,7 +44,7 @@ class _FAQState extends State<FAQ> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xF5F5F7FE),
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'FAQ'),
       body: Center(
         child: isLoading
@@ -68,8 +68,9 @@ class _FAQState extends State<FAQ> {
                               data: Theme.of(context)
                                   .copyWith(dividerColor: Colors.transparent),
                               child: ExpansionTile(
-                                collapsedIconColor: Colors.indigo[900],
-                                iconColor: Colors.indigo[900],
+                                collapsedIconColor:
+                                    Theme.of(context).primaryColor,
+                                iconColor: Theme.of(context).primaryColor,
                                 title: Text(
                                   faq[index].question,
                                   textAlign: TextAlign.left,

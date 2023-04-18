@@ -25,7 +25,7 @@ class _New_EventState extends State<New_Event> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xF5F5F7FE),
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'ព្រឹត្តិការណ៍'.tr),
       body: Center(
         child: Column(
@@ -58,7 +58,7 @@ class _New_EventState extends State<New_Event> {
                               width: 180,
                               decoration: BoxDecoration(
                                   color: current == index
-                                      ? Colors.indigo[900]
+                                      ? Theme.of(context).primaryColor
                                       : Colors.white,
                                   borderRadius: BorderRadius.circular(5),
                                   boxShadow: [

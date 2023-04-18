@@ -14,7 +14,7 @@ class _VisionState extends State<Vision> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xF5F5F7FE),
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'ចក្ខុវិស័យ បេសកកម្ម និងគុណតម្លៃ'.tr),
       body: Container(
         child: ListView(
@@ -30,7 +30,7 @@ class _VisionState extends State<Vision> {
                       '1. Vision ',
                       style: TextStyle(
                           fontSize: 14,
-                          color: Colors.indigo[900],
+                          color: Theme.of(context).primaryColor,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w500),
                     ),
@@ -60,7 +60,7 @@ class _VisionState extends State<Vision> {
                       '2. Mission',
                       style: TextStyle(
                           fontSize: 14,
-                          color: Colors.indigo[900],
+                          color: Theme.of(context).primaryColor,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w500),
                     ),
@@ -90,7 +90,7 @@ class _VisionState extends State<Vision> {
                       '3. Educational Philosophy',
                       style: TextStyle(
                           fontSize: 14,
-                          color: Colors.indigo[900],
+                          color: Theme.of(context).primaryColor,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w500),
                     ),
@@ -120,7 +120,7 @@ class _VisionState extends State<Vision> {
                       '4. Core Value',
                       style: TextStyle(
                           fontSize: 14,
-                          color: Colors.indigo[900],
+                          color: Theme.of(context).primaryColor,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w500),
                     ),
@@ -150,7 +150,7 @@ class _VisionState extends State<Vision> {
                       '4.1. Knowledge',
                       style: TextStyle(
                           fontSize: 14,
-                          color: Colors.indigo[900],
+                          color: Theme.of(context).primaryColor,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w500),
                     ),
@@ -280,7 +280,7 @@ class _VisionState extends State<Vision> {
                       textAlign: TextAlign.justify,
                       style: TextStyle(
                           fontSize: 14,
-                          color: Colors.indigo[900],
+                          color: Theme.of(context).primaryColor,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w500),
                     ),
@@ -409,7 +409,7 @@ class _VisionState extends State<Vision> {
                       '4.4. Social',
                       style: TextStyle(
                           fontSize: 14,
-                          color: Colors.indigo[900],
+                          color: Theme.of(context).primaryColor,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w500),
                     ),
@@ -538,7 +538,7 @@ class _VisionState extends State<Vision> {
                       '5. Goal & Objective',
                       style: TextStyle(
                           fontSize: 14,
-                          color: Colors.indigo[900],
+                          color: Theme.of(context).primaryColor,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w500),
                     ),

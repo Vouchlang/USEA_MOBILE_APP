@@ -87,6 +87,7 @@ class LocaleString extends Translations {
           'ភាសាអង់គ្លេស': 'ភាសាអង់គ្លេស',
 
           // Student Dashboard
+          'ព័ត៌មានលម្អិតរបស់និស្សិត': 'ព័ត៌មានលម្អិតរបស់និស្សិត',
           'កាលវិភាគ': 'កាលវិភាគ',
           'ដំណើរការសិក្សា': 'ដំណើរការសិក្សា',
           'វត្តមាន': 'វត្តមាន',
@@ -95,6 +96,16 @@ class LocaleString extends Translations {
           'ព័ត៍មានការសិក្សា': 'ព័ត៍មានការសិក្សា',
           'មតិកែលម្អ': 'មតិកែលម្អ',
           'សម្មិទ្ធផល': 'សម្មិទ្ធផល',
+
+          // Student Login
+          'គណនីនិសិ្សត': 'គណនីនិសិ្សត',
+          'អត្តលេខនិស្សិត': 'អត្តលេខនិស្សិត',
+          '\t\tបញ្ចូលអត្តលេខ': '\t\tបញ្ចូលអត្តលេខ',
+          'សូមបញ្ចូលអត្តលេខ': 'សូមបញ្ចូលអត្តលេខ',
+          'ពាក្យសម្ងាត់': 'ពាក្យសម្ងាត់',
+          '\t\tបញ្ចូលពាក្យសម្ងាត់': '\t\tបញ្ចូលពាក្យសម្ងាត់',
+          'សូមបញ្ចូលពាក្យសម្ងាត់': 'សូមបញ្ចូលពាក្យសម្ងាត់',
+          'ចូល': 'ចូល',
         },
         'en_US': {
           // Guest Dashboard
@@ -179,6 +190,7 @@ class LocaleString extends Translations {
           'ភាសាអង់គ្លេស': 'ENGLISH',
 
           // Student Dashboard
+          'ព័ត៌មានលម្អិតរបស់និស្សិត': 'Student Detail',
           'កាលវិភាគ': 'Schedule',
           'ដំណើរការសិក្សា': 'Performance',
           'វត្តមាន': 'Attendance',
@@ -187,6 +199,16 @@ class LocaleString extends Translations {
           'ព័ត៌មានការសិក្សា': 'Study Info',
           'មតិកែលម្អ': 'Feedback',
           'សម្មិទ្ធផល': 'Achievements',
+
+          // Student Login
+          'គណនីនិសិ្សត': 'Student Account',
+          'អត្តលេខនិស្សិត': 'Student ID',
+          '\t\tបញ្ចូលអត្តលេខ': '\t\tInput Student ID',
+          'សូមបញ្ចូលអត្តលេខ': 'Please Input Student ID',
+          'ពាក្យសម្ងាត់': 'Password',
+          '\t\tបញ្ចូលពាក្យសម្ងាត់': '\t\tInput Password',
+          'សូមបញ្ចូលពាក្យសម្ងាត់': 'Please Input Password',
+          'ចូល': 'Log In',
         },
       };
 }

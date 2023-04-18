@@ -45,7 +45,7 @@ class _Out_UniversityState extends State<Out_University> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xF5F5F7FE),
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       body: Center(
         child: isLoading
             ? const CircularProgressIndicator()
@@ -144,7 +144,8 @@ class _Out_UniversityState extends State<Out_University> {
                                               fontSize: 12,
                                               fontFamily: 'KhmerOSbattambang',
                                               fontWeight: FontWeight.w600,
-                                              color: Colors.indigo[900]),
+                                              color: Theme.of(context)
+                                                  .primaryColor),
                                         ),
                                       ),
                                     ),

@@ -27,39 +27,43 @@ class _St_HomeState extends State<St_Home> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
         body: pages[currentIndex],
         bottomNavigationBar: Container(
-            height: 100,
-            child: Center(
-              child: BottomNavigationBar(
-                elevation: 0,
-                onTap: onTap,
-                currentIndex: currentIndex,
-                selectedItemColor: Theme.of(context).primaryColor,
-                unselectedItemColor: Colors.grey,
-                selectedFontSize: 11,
-                unselectedFontSize: 11,
-                selectedLabelStyle: TextStyle(fontFamily: 'KhmerOSbattambang'),
-                unselectedLabelStyle:
-                    TextStyle(fontFamily: 'KhmerOSbattambang'),
-                items: [
-                  BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.home,
-                      size: 20,
-                    ),
-                    label: 'ទំព័រដើម'.tr,
+          height: 100,
+          child: Center(
+            child: BottomNavigationBar(
+              elevation: 0,
+              onTap: onTap,
+              currentIndex: currentIndex,
+              selectedItemColor: Theme.of(context).primaryColor,
+              unselectedItemColor: Colors.grey,
+              selectedFontSize: 11,
+              unselectedFontSize: 11,
+              selectedLabelStyle: TextStyle(fontFamily: 'KhmerOSbattambang'),
+              unselectedLabelStyle: TextStyle(fontFamily: 'KhmerOSbattambang'),
+              items: [
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.home,
+                    size: 20,
                   ),
-                  BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.account_box,
-                      size: 20,
-                    ),
-                    label: 'ចូលគណនី'.tr,
-                  )
-                ],
-              ),
-            )));
+                  label: 'ទំព័រដើម'.tr,
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.account_box,
+                    size: 20,
+                  ),
+                  label: 'ចូលគណនី'.tr,
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

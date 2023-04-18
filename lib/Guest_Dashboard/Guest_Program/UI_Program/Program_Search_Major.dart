@@ -19,7 +19,7 @@ class _Program_SemesterState extends State<Program_Semester> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xF5F5F7FE),
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: AppBar(
         centerTitle: false,
         backgroundColor: Colors.white,
@@ -27,7 +27,7 @@ class _Program_SemesterState extends State<Program_Semester> {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
-            color: Colors.indigo[900],
+            color: Theme.of(context).primaryColor,
             size: 15,
           ),
           onPressed: () => Navigator.of(context).pop(),

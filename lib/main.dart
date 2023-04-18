@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-// import 'Splash_Screen.dart';
-import 'Guest_Dashboard/Guest_Home/UI_Home/Guest_Home.dart';
+import 'Splash_Screen.dart';
 import 'Home.dart';
 import 'Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
 import 'localeString.dart';
@@ -13,7 +12,10 @@ void main() {
   );
   runApp(new GetMaterialApp(
     theme: ThemeData(
-      primaryColor: Colors.indigo[900],
+      primaryColor: Color(0xFF002060),
+      secondaryHeaderColor: Color(
+        (0xFFF5F7FE),
+      ),
       visualDensity: VisualDensity.adaptivePlatformDensity,
     ),
     home: new Home(),

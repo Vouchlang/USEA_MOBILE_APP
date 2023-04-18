@@ -26,7 +26,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xF5F5F7FE),
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -47,7 +47,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
                 style: TextStyle(
                     fontSize: 15,
                     fontFamily: 'KhmerOSmuol',
-                    color: Colors.indigo[900]),
+                    color: Theme.of(context).primaryColor),
               ),
             ),
             Text(
@@ -56,7 +56,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
               style: TextStyle(
                   fontSize: 17.5,
                   // letterSpacing: 2.4,
-                  color: Colors.indigo[900],
+                  color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Poppins'),
             ),
@@ -64,7 +64,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
               height: 5,
             ),
             // SpinKitThreeBounce(
-            //   color: Colors.indigo[900],
+            //   color: Theme.of(context).primaryColor,
             //   size: 15,
             // ),
             Lottie.network(

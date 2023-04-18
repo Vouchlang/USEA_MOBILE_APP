@@ -8,10 +8,11 @@ import 'package:usea_app/Guest_Dashboard/Guest_ChangeLanguage/Change_Language.da
 import 'package:usea_app/Guest_Dashboard/Guest_Home/Class_Home/Class_Home_Screen.dart';
 import 'package:usea_app/Student_Dashboard/Student_Achievements/UI_Achievements/Achievements.dart';
 import 'package:usea_app/Student_Dashboard/Student_Attendance/UI_Attendance/Attendance.dart';
+import 'package:usea_app/Student_Dashboard/Student_Detail/UI_Detail/St_Detail.dart';
 import 'package:usea_app/Student_Dashboard/Student_JobHistory/UI_JobHistory/JosHistory.dart';
 import 'package:usea_app/Student_Dashboard/Student_Payment/UI_Payment/Payment.dart';
 import 'package:usea_app/Student_Dashboard/Student_Performance/UI_Perfomance/Performance.dart';
-import 'package:usea_app/Student_Dashboard/Student_Schedule/Schedule.dart';
+import 'package:usea_app/Student_Dashboard/Student_Schedule/UI_Schedule/Schedule.dart';
 import 'package:usea_app/Student_Dashboard/Student_StudyInfo/UI_StudyInfo/StudyInfo.dart';
 import '../../../Guest_Dashboard/Guest_Contact/UI_Contact/Contact.dart';
 import '../../../Guest_Dashboard/Guest_Notification/UI_Notification/Notifications.dart';
@@ -75,8 +76,9 @@ class _Student_Home1State extends State<Student_Home1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xF5F5F7FE),
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -99,13 +101,13 @@ class _Student_Home1State extends State<Student_Home1> {
                         Text(
                           'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
                           style: TextStyle(
-                              color: Colors.indigo[900],
+                              color: Theme.of(context).primaryColor,
                               fontSize: 11,
                               fontFamily: 'KhmerOSmuol'),
                         ),
                         Text('UNIVERSITY OF SOUTH-EAST ASIA',
                             style: TextStyle(
-                                color: Colors.indigo[900],
+                                color: Theme.of(context).primaryColor,
                                 fontSize: 13,
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w500)),
@@ -115,33 +117,21 @@ class _Student_Home1State extends State<Student_Home1> {
                 ],
               ),
             ),
-            Container(
-              width: 36,
-              height: 36,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: Colors.grey[200]),
-              child: Center(
-                child: IconButton(
-                  onPressed: () {
-                    setState(
-                      () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (ctx) => Notifications(),
-                          ),
-                        );
-                      },
-                    );
-                  },
-                  icon: Icon(
-                    Icons.search,
-                    color: Colors.indigo[900],
-                    size: 20,
-                  ),
-                ),
+            SizedBox(
+              width: 15,
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => Student_Detail()));
+              },
+              child: Container(
+                width: 50,
+                height: 50,
+                alignment: Alignment.center,
+                child: Image.asset('assets/image/logo3.png'),
               ),
             ),
           ],

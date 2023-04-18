@@ -40,11 +40,12 @@ class _MyAppStateState extends State<MyAppState> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: AppBar(
         centerTitle: false,
         title: Text('កម្មវិធីសិក្សា'.tr,
             style: TextStyle(
-              color: Colors.indigo[900],
+              color: Theme.of(context).primaryColor,
               fontSize: 18,
               fontFamily: 'KhmerOSbattambang',
               fontWeight: FontWeight.w600,
@@ -55,7 +56,7 @@ class _MyAppStateState extends State<MyAppState> {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
-            color: Colors.indigo[900],
+            color: Theme.of(context).primaryColor,
             size: 18,
           ),
           onPressed: () => Navigator.of(context).pop(),
@@ -74,7 +75,7 @@ class _MyAppStateState extends State<MyAppState> {
                   },
                   icon: Icon(
                     Icons.search,
-                    color: Colors.indigo[900],
+                    color: Theme.of(context).primaryColor,
                     size: 20,
                   )),
             )),
@@ -101,8 +102,8 @@ class _MyAppStateState extends State<MyAppState> {
                           data: Theme.of(context)
                               .copyWith(dividerColor: Colors.transparent),
                           child: ExpansionTile(
-                            collapsedIconColor: Colors.indigo[900],
-                            iconColor: Colors.indigo[900],
+                            collapsedIconColor: Theme.of(context).primaryColor,
+                            iconColor: Theme.of(context).primaryColor,
                             textColor: Colors.black,
                             leading: Image.network(
                               getImageUrl(snapshot.data![index].facIcon),
@@ -163,7 +164,8 @@ class _MyAppStateState extends State<MyAppState> {
                                                     Icon(
                                                       Icons.arrow_forward_ios,
                                                       size: 14,
-                                                      color: Colors.indigo[900],
+                                                      color: Theme.of(context)
+                                                          .primaryColor,
                                                     )
                                                   ]),
                                             ),

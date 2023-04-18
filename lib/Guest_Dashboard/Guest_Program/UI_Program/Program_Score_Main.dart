@@ -24,7 +24,7 @@ class _Program_Score_MainState extends State<Program_Score_Main> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xF5F5F7FE),
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'កម្មវិធីសិក្សា'.tr),
       body: Center(
         child: Column(
@@ -57,7 +57,7 @@ class _Program_Score_MainState extends State<Program_Score_Main> {
                               width: 180,
                               decoration: BoxDecoration(
                                   color: current == index
-                                      ? Colors.indigo[900]
+                                      ? Theme.of(context).primaryColor
                                       : Colors.white,
                                   borderRadius: BorderRadius.circular(5),
                                   boxShadow: [

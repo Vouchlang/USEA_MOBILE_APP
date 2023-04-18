@@ -13,6 +13,7 @@ class _Job_HistoryState extends State<Job_History> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'ប្រវត្តិការងារ'.tr),
     );
   }

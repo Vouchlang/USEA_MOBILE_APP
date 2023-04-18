@@ -50,6 +50,7 @@ class _Past_EventState extends State<Past_Event> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       body: Center(
           child: isLoading
               ? const CircularProgressIndicator()
@@ -148,8 +149,8 @@ class _Past_EventState extends State<Past_Event> {
                                                             FontWeight.w500,
                                                         fontFamily:
                                                             'KhmerOSBattambang',
-                                                        color:
-                                                            Colors.indigo[900]),
+                                                        color: Theme.of(context)
+                                                            .primaryColor),
                                                   ),
                                                 ),
                                                 SizedBox(
@@ -164,8 +165,8 @@ class _Past_EventState extends State<Past_Event> {
                                                             FontWeight.w500,
                                                         fontFamily:
                                                             'KhmerOSBattambang',
-                                                        color:
-                                                            Colors.indigo[900]),
+                                                        color: Theme.of(context)
+                                                            .primaryColor),
                                                   ),
                                                 ),
                                                 SizedBox(
@@ -181,8 +182,8 @@ class _Past_EventState extends State<Past_Event> {
                                                             FontWeight.w500,
                                                         fontFamily:
                                                             'KhmerOSBattambang',
-                                                        color:
-                                                            Colors.indigo[900]),
+                                                        color: Theme.of(context)
+                                                            .primaryColor),
                                                   ),
                                                 ),
                                                 SizedBox(
@@ -198,8 +199,8 @@ class _Past_EventState extends State<Past_Event> {
                                                             FontWeight.w500,
                                                         fontFamily:
                                                             'KhmerOSBattambang',
-                                                        color:
-                                                            Colors.indigo[900]),
+                                                        color: Theme.of(context)
+                                                            .primaryColor),
                                                   ),
                                                 ),
                                               ],
@@ -229,8 +230,8 @@ class _Past_EventState extends State<Past_Event> {
                                                             FontWeight.w500,
                                                         fontFamily:
                                                             'KhmerOSBattambang',
-                                                        color:
-                                                            Colors.indigo[900]),
+                                                        color: Theme.of(context)
+                                                            .primaryColor),
                                                   ),
                                                 ),
                                               ],

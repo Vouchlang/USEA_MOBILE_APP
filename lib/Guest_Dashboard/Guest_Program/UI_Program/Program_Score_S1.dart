@@ -13,7 +13,7 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xF5F5F7FE),
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       body: SingleChildScrollView(
         child: Card(
           elevation: 2,
@@ -26,7 +26,11 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
             Container(
               padding: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
               width: double.infinity,
-              color: Color.fromRGBO(232, 240, 254, 100),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.horizontal(
+                    left: Radius.circular(10), right: Radius.circular(10)),
+                color: Color(0xFFE8F0FE),
+              ),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -34,7 +38,7 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                       child: Text(
                         'មុខវិជ្ជា'.tr,
                         style: TextStyle(
-                            color: Colors.indigo[900],
+                            color: Theme.of(context).primaryColor,
                             fontSize: 14,
                             fontFamily: 'KhmerOSbattambang',
                             fontWeight: FontWeight.w600),
@@ -45,7 +49,7 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                         Container(
                           child: Text('ម៉ោង'.tr,
                               style: TextStyle(
-                                  color: Colors.indigo[900],
+                                  color: Theme.of(context).primaryColor,
                                   fontSize: 14,
                                   fontFamily: 'KhmerOSbattambang',
                                   fontWeight: FontWeight.w600)),
@@ -56,7 +60,7 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                         Container(
                           child: Text('ក្រេឌីត'.tr,
                               style: TextStyle(
-                                  color: Colors.indigo[900],
+                                  color: Theme.of(context).primaryColor,
                                   fontSize: 14,
                                   fontFamily: 'KhmerOSbattambang',
                                   fontWeight: FontWeight.w600)),
@@ -133,7 +137,7 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                       child: Text(
                         'សរុប'.tr,
                         style: TextStyle(
-                          color: Colors.indigo[900],
+                          color: Theme.of(context).primaryColor,
                           fontSize: 14,
                           fontFamily: 'KhmerOSbattambang',
                         ),
@@ -149,7 +153,7 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                                   .fold(0, (sum, data) => sum + data.hour)
                                   .toString(),
                               style: TextStyle(
-                                color: Colors.indigo[900],
+                                color: Theme.of(context).primaryColor,
                                 fontSize: 14,
                                 fontFamily: 'Poppins',
                               )),
@@ -165,7 +169,7 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                                   .fold(0, (sum, data) => sum + data.credit)
                                   .toString(),
                               style: TextStyle(
-                                color: Colors.indigo[900],
+                                color: Theme.of(context).primaryColor,
                                 fontSize: 14,
                                 fontFamily: 'Poppins',
                               )),

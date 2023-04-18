@@ -18,7 +18,7 @@ class _VideoState extends State<Video_UI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xF5F5F7FE),
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'វីដេអូ'.tr),
       body: ListView.builder(
           padding: EdgeInsets.all(10),

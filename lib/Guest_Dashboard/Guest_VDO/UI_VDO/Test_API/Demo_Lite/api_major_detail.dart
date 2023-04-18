@@ -17,6 +17,7 @@ class Major_Detail_Lite extends StatelessWidget {
     final selectedMajor = majorData.majors[index];
 
     return Scaffold(
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: selectedMajor),
       body: Center(
         child: Text(majorData.facName),

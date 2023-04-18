@@ -111,14 +111,15 @@ class _Guest_HomeState extends State<Guest_Home> {
         activeIndex: activeIndex,
         count: image_slides.length,
         effect: WormEffect(
-            activeDotColor: Color(0xFF1A237E),
+            activeDotColor: Theme.of(context).primaryColor,
             dotColor: Colors.grey,
             dotHeight: 8,
             dotWidth: 8));
 
     return Scaffold(
-      backgroundColor: Color(0xF5F5F7FE),
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -141,13 +142,13 @@ class _Guest_HomeState extends State<Guest_Home> {
                         Text(
                           'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
                           style: TextStyle(
-                              color: Colors.indigo[900],
+                              color: Theme.of(context).primaryColor,
                               fontSize: 11,
                               fontFamily: 'KhmerOSmuol'),
                         ),
                         Text('UNIVERSITY OF SOUTH-EAST ASIA',
                             style: TextStyle(
-                                color: Colors.indigo[900],
+                                color: Theme.of(context).primaryColor,
                                 fontSize: 13,
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w500)),
@@ -179,7 +180,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                       },
                       icon: Icon(
                         Icons.notifications,
-                        color: Colors.indigo[900],
+                        color: Theme.of(context).primaryColor,
                         size: 20,
                       )),
                 )),
