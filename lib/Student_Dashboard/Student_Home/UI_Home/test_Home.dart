@@ -1,10 +1,9 @@
-import 'package:carousel_slider/carousel_slider.dart';
+// import 'package:carousel_slider/carousel_slider.dart';
 import 'package:d_chart/d_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_ChangeLanguage/Change_Language.dart';
+// import 'package:usea_app/Guest_Dashboard/Guest_ChangeLanguage/Change_Language.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_Home/Class_Home/Class_Home_Screen.dart';
 import 'package:usea_app/Student_Dashboard/Student_Achievements/UI_Achievements/Achievements.dart';
 import 'package:usea_app/Student_Dashboard/Student_Attendance/UI_Attendance/Attendance.dart';
@@ -14,6 +13,8 @@ import 'package:usea_app/Student_Dashboard/Student_Payment/UI_Payment/Payment.da
 import 'package:usea_app/Student_Dashboard/Student_Performance/UI_Perfomance/Performance.dart';
 import 'package:usea_app/Student_Dashboard/Student_Schedule/UI_Schedule/Schedule.dart';
 import 'package:usea_app/Student_Dashboard/Student_StudyInfo/UI_StudyInfo/StudyInfo.dart';
+// import '../../../Guest_Dashboard/Guest_Contact/UI_Contact/Contact.dart';
+// import '../../../Guest_Dashboard/Guest_Notification/UI_Notification/Notifications.dart';
 
 class Student_Home1 extends StatelessWidget {
   final dynamic dataDetail;
@@ -61,10 +62,8 @@ class Student_Home1 extends StatelessWidget {
                         ),
                         Text('UNIVERSITY OF SOUTH-EAST ASIA',
                             style: TextStyle(
-                                letterSpacing: 0.5,
-                                wordSpacing: 5,
                                 color: Theme.of(context).primaryColor,
-                                fontSize: 11,
+                                fontSize: 13,
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w500)),
                       ],
@@ -79,9 +78,11 @@ class Student_Home1 extends StatelessWidget {
             InkWell(
               onTap: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) => Student_Detail()));
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => Student_Detail(),
+                  ),
+                );
               },
               child: CircleAvatar(
                 backgroundImage:
@@ -96,7 +97,7 @@ class Student_Home1 extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 1,
       ),
-      body: Center(
+      body: Container(
         child: ListView(
           shrinkWrap: true,
           children: [
@@ -104,18 +105,19 @@ class Student_Home1 extends StatelessWidget {
               height: 10,
             ),
             Container(
+              alignment: Alignment.center,
               height: 175,
               padding: EdgeInsets.symmetric(vertical: 0, horizontal: 5),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Expanded(
                     child: DChartPie(
                       data: [
-                        {'domain': 'Flutter', 'measure': 28},
-                        {'domain': 'React Native', 'measure': 27},
-                        {'domain': 'Ionic', 'measure': 20},
-                        {'domain': 'Cordova', 'measure': 15},
+                        {'domain': 'Flutter', 'measure': 78},
+                        {'domain': 'React Native', 'measure': 20},
+                        // {'domain': 'Ionic', 'measure': 20},
+                        // {'domain': 'Cordova', 'measure': 15},
                       ],
                       fillColor: (pieData, index) =>
                           Color.fromARGB(255, 14, 31, 124),
@@ -125,12 +127,32 @@ class Student_Home1 extends StatelessWidget {
                   ),
                   Expanded(
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          child: const Text('data one'),
+                        Row(
+                          children: [
+                            Container(
+                              child: Icon(
+                                Icons.circle,
+                                color: Colors.orange,
+                              ),
+                            ),
+                            Text('ចំនួនក្រឌីតសរុប'),
+                          ],
                         ),
-                        Container(
-                          child: const Text('data two'),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              child: Icon(
+                                Icons.circle,
+                                color: Colors.blue[900],
+                              ),
+                            ),
+                            Text('ចំនួនក្រឌីតបានបំពេញ'),
+                          ],
                         ),
                       ],
                     ),
@@ -139,10 +161,7 @@ class Student_Home1 extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 7,
-            ),
-            SizedBox(
-              height: 7,
+              height: 10,
             ),
             Expanded(
               child: GridView.count(
