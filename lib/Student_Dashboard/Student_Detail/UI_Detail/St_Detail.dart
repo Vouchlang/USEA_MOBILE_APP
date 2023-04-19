@@ -15,6 +15,7 @@ class _Student_DetailState extends State<Student_Detail> {
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'ព័ត៌មានលម្អិតរបស់និស្សិត'.tr),
+      body: Container(),
     );
   }
 }

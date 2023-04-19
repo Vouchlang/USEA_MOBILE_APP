@@ -148,8 +148,10 @@ class _Guest_HomeState extends State<Guest_Home> {
                         ),
                         Text('UNIVERSITY OF SOUTH-EAST ASIA',
                             style: TextStyle(
+                                letterSpacing: 0.5,
+                                wordSpacing: 5,
                                 color: Theme.of(context).primaryColor,
-                                fontSize: 13,
+                                fontSize: 11,
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w500)),
                       ],

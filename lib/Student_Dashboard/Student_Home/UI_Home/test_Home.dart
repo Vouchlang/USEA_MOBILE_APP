@@ -14,64 +14,18 @@ import 'package:usea_app/Student_Dashboard/Student_Payment/UI_Payment/Payment.da
 import 'package:usea_app/Student_Dashboard/Student_Performance/UI_Perfomance/Performance.dart';
 import 'package:usea_app/Student_Dashboard/Student_Schedule/UI_Schedule/Schedule.dart';
 import 'package:usea_app/Student_Dashboard/Student_StudyInfo/UI_StudyInfo/StudyInfo.dart';
-import '../../../Guest_Dashboard/Guest_Contact/UI_Contact/Contact.dart';
-import '../../../Guest_Dashboard/Guest_Notification/UI_Notification/Notifications.dart';
 
-class Student_Home1 extends StatefulWidget {
-  const Student_Home1({Key? key}) : super(key: key);
+class Student_Home1 extends StatelessWidget {
+  final dynamic dataDetail;
+  Student_Home1({Key? key, required this.dataDetail}) : super(key: key);
 
-  @override
-  State<Student_Home1> createState() => _Student_Home1State();
-}
-
-List<Home_Screen> home_screen = [
-  Home_Screen(
-    name: 'កាលវិភាគ',
-    img: 'assets/image/Stu_Schedule.png',
-    screen: Schedule(),
-  ),
-  Home_Screen(
-    name: 'ដំណើរការសិក្សា',
-    img: 'assets/image/Stu_Performance.png',
-    screen: Performance(),
-  ),
-  Home_Screen(
-    name: 'វត្តមាន',
-    img: 'assets/image/Stu_Attendance.png',
-    screen: Attendance(),
-  ),
-  Home_Screen(
-    name: 'ការបង់ប្រាក់',
-    img: 'assets/image/Stu_Payment.png',
-    screen: Payment(),
-  ),
-  Home_Screen(
-    name: 'ប្រវត្តិការងារ',
-    img: 'assets/image/Stu_Job_History.png',
-    screen: Job_History(),
-  ),
-  Home_Screen(
-    name: 'ព័ត៌មានការសិក្សា',
-    img: 'assets/image/Stu_Study_Info.png',
-    screen: Study_Info(),
-  ),
-  Home_Screen(
-    name: 'មតិកែលម្អ',
-    img: 'assets/image/Stu_Survey.png',
-    screen: InkWell(
-      onTap: () {},
-    ),
-  ),
-  Home_Screen(
-    name: 'សម្មិទ្ធផល',
-    img: 'assets/image/Stu_Achievement.png',
-    screen: Achievements(),
-  ),
-];
-
-class _Student_Home1State extends State<Student_Home1> {
   int activeIndex = 0;
+
   final Uri urlFb = Uri.parse("https://www.facebook.com/usea.edu.kh");
+
+  String getImage(String image) {
+    return 'http://192.168.3.34/hosting_api/Student/profile_pic/$image';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -107,8 +61,10 @@ class _Student_Home1State extends State<Student_Home1> {
                         ),
                         Text('UNIVERSITY OF SOUTH-EAST ASIA',
                             style: TextStyle(
+                                letterSpacing: 0.5,
+                                wordSpacing: 5,
                                 color: Theme.of(context).primaryColor,
-                                fontSize: 13,
+                                fontSize: 11,
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w500)),
                       ],
@@ -127,11 +83,10 @@ class _Student_Home1State extends State<Student_Home1> {
                     MaterialPageRoute(
                         builder: (BuildContext context) => Student_Detail()));
               },
-              child: Container(
-                width: 50,
-                height: 50,
-                alignment: Alignment.center,
-                child: Image.asset('assets/image/logo3.png'),
+              child: CircleAvatar(
+                backgroundImage:
+                    NetworkImage(getImage(dataDetail[0]['profile_pic'])),
+                radius: 25,
               ),
             ),
           ],
@@ -253,3 +208,48 @@ class _Student_Home1State extends State<Student_Home1> {
     );
   }
 }
+
+List<Home_Screen> home_screen = [
+  Home_Screen(
+    name: 'កាលវិភាគ',
+    img: 'assets/image/Stu_Schedule.png',
+    screen: Schedule(),
+  ),
+  Home_Screen(
+    name: 'ដំណើរការសិក្សា',
+    img: 'assets/image/Stu_Performance.png',
+    screen: Performance(),
+  ),
+  Home_Screen(
+    name: 'វត្តមាន',
+    img: 'assets/image/Stu_Attendance.png',
+    screen: Attendance(),
+  ),
+  Home_Screen(
+    name: 'ការបង់ប្រាក់',
+    img: 'assets/image/Stu_Payment.png',
+    screen: Payment(),
+  ),
+  Home_Screen(
+    name: 'ប្រវត្តិការងារ',
+    img: 'assets/image/Stu_Job_History.png',
+    screen: Job_History(),
+  ),
+  Home_Screen(
+    name: 'ព័ត៌មានការសិក្សា',
+    img: 'assets/image/Stu_Study_Info.png',
+    screen: Study_Info(),
+  ),
+  Home_Screen(
+    name: 'មតិកែលម្អ',
+    img: 'assets/image/Stu_Survey.png',
+    screen: InkWell(
+      onTap: () {},
+    ),
+  ),
+  Home_Screen(
+    name: 'សម្មិទ្ធផល',
+    img: 'assets/image/Stu_Achievement.png',
+    screen: Achievements(),
+  ),
+];

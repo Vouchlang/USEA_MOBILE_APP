@@ -4,19 +4,15 @@ import 'package:usea_app/Guest_Dashboard/Guest_Home/UI_Home/Guest_Home.dart';
 import 'package:usea_app/Student_Dashboard/Student_Home/UI_Home/test_Home.dart';
 
 class St_Home extends StatefulWidget {
-  const St_Home({Key? key}) : super(key: key);
+  final dynamic data;
+  const St_Home({Key? key, required this.data}) : super(key: key);
 
   @override
   State<St_Home> createState() => _St_HomeState();
 }
 
-class _St_HomeState extends State<St_Home> with SingleTickerProviderStateMixin {
+class _St_HomeState extends State<St_Home> {
   late TabController controller;
-
-  List pages = [
-    Guest_Home(),
-    Student_Home1(),
-  ];
 
   int currentIndex = 1;
   void onTap(int index) {
@@ -27,6 +23,10 @@ class _St_HomeState extends State<St_Home> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    List pages = [
+      Guest_Home(),
+      Student_Home1(dataDetail: widget.data),
+    ];
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(

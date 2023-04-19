@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../Student_Dashboard/Student_LogIn/Student_LogIn.dart';
 import '../../../Student_Dashboard/Student_LogIn/testing_log.dart';
 import '/Guest_Dashboard/Guest_Account/Class_Account/Class_Account_Screen.dart';
@@ -74,11 +75,6 @@ class _Guest_AccState extends State<Guest_Acc> {
                                     builder: (BuildContext context) {
                                   return account_screen[index].screen;
                                 }));
-                                // Navigator.pushReplacement(context,
-                                //     MaterialPageRoute(
-                                //         builder: (BuildContext context) {
-                                //   return account_screen[index].screen;
-                                // }));
                               },
                               child: Container(
                                 child: Column(
@@ -92,7 +88,7 @@ class _Guest_AccState extends State<Guest_Acc> {
                                       height: 7,
                                     ),
                                     Text(
-                                      account_screen[index].name,
+                                      account_screen[index].name.tr,
                                       style: TextStyle(
                                           fontSize: 12,
                                           fontFamily: 'KhmerOSbattambang'),
