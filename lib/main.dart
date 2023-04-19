@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'Splash_Screen.dart';
 import 'Home.dart';
 import 'Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
+import 'Student_Dashboard/Student_Home/UI_Home/test_Home.dart';
 import 'localeString.dart';
 
 void main() {
@@ -18,7 +19,7 @@ void main() {
       ),
       visualDensity: VisualDensity.adaptivePlatformDensity,
     ),
-    home: new Home(),
+    home: new Student_Home1(),
     translations: LocaleString(),
     locale: Locale('km', 'KH'),
     debugShowCheckedModeBanner: false,
