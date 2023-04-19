@@ -19,7 +19,7 @@ void main() {
       ),
       visualDensity: VisualDensity.adaptivePlatformDensity,
     ),
-    home: new Student_Home1(),
+    home: new Home(),
     translations: LocaleString(),
     locale: Locale('km', 'KH'),
     debugShowCheckedModeBanner: false,

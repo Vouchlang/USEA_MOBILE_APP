@@ -144,7 +144,7 @@ class _MyAppStateState extends State<MyAppState> {
                                                       BorderRadius.circular(5),
                                                   border: Border.all(
                                                       color:
-                                                          Color(0xEEEEEEFF))),
+                                                          Color(0xEDEEEEFF))),
                                               padding: EdgeInsets.all(5),
                                               child: Row(
                                                   mainAxisAlignment:

@@ -7,14 +7,13 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_Home/Class_Home/Class_Home_Screen.dart';
 import 'package:usea_app/Student_Dashboard/Student_Achievements/UI_Achievements/Achievements.dart';
 import 'package:usea_app/Student_Dashboard/Student_Attendance/UI_Attendance/Attendance.dart';
+import 'package:usea_app/Student_Dashboard/Student_Detail/Class_Detail/Class_St_Detail2.dart';
 import 'package:usea_app/Student_Dashboard/Student_Detail/UI_Detail/St_Detail.dart';
 import 'package:usea_app/Student_Dashboard/Student_JobHistory/UI_JobHistory/JosHistory.dart';
 import 'package:usea_app/Student_Dashboard/Student_Payment/UI_Payment/Payment.dart';
 import 'package:usea_app/Student_Dashboard/Student_Performance/UI_Perfomance/Performance.dart';
 import 'package:usea_app/Student_Dashboard/Student_Schedule/UI_Schedule/Schedule.dart';
 import 'package:usea_app/Student_Dashboard/Student_StudyInfo/UI_StudyInfo/StudyInfo.dart';
-// import '../../../Guest_Dashboard/Guest_Contact/UI_Contact/Contact.dart';
-// import '../../../Guest_Dashboard/Guest_Notification/UI_Notification/Notifications.dart';
 
 class Student_Home1 extends StatelessWidget {
   final dynamic dataDetail;
@@ -80,7 +79,9 @@ class Student_Home1 extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (BuildContext context) => Student_Detail(),
+                    builder: (BuildContext context) => Student_Detail(
+                      dataDetail: dataDetail,
+                    ),
                   ),
                 );
               },
@@ -114,13 +115,14 @@ class Student_Home1 extends StatelessWidget {
                   Expanded(
                     child: DChartPie(
                       data: [
-                        {'domain': 'Flutter', 'measure': 78},
+                        {'domain': 'Flutter', 'measure': 58},
                         {'domain': 'React Native', 'measure': 20},
+                        {'domain': 'React JS', 'measure': 22},
                         // {'domain': 'Ionic', 'measure': 20},
                         // {'domain': 'Cordova', 'measure': 15},
                       ],
                       fillColor: (pieData, index) =>
-                          Color.fromARGB(255, 14, 31, 124),
+                          Theme.of(context).copyWith().primaryColor,
                       donutWidth: 30,
                       labelColor: Colors.white,
                     ),
