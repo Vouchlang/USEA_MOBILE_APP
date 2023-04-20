@@ -1,13 +1,11 @@
-// import 'package:carousel_slider/carousel_slider.dart';
 import 'package:d_chart/d_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
-// import 'package:usea_app/Guest_Dashboard/Guest_ChangeLanguage/Change_Language.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_Home/Class_Home/Class_Home_Screen.dart';
 import 'package:usea_app/Student_Dashboard/Student_Achievements/UI_Achievements/Achievements.dart';
 import 'package:usea_app/Student_Dashboard/Student_Attendance/UI_Attendance/Attendance.dart';
-import 'package:usea_app/Student_Dashboard/Student_Detail/Class_Detail/Class_St_Detail2.dart';
 import 'package:usea_app/Student_Dashboard/Student_Detail/UI_Detail/St_Detail.dart';
 import 'package:usea_app/Student_Dashboard/Student_JobHistory/UI_JobHistory/JosHistory.dart';
 import 'package:usea_app/Student_Dashboard/Student_Payment/UI_Payment/Payment.dart';
@@ -15,16 +13,39 @@ import 'package:usea_app/Student_Dashboard/Student_Performance/UI_Perfomance/Per
 import 'package:usea_app/Student_Dashboard/Student_Schedule/UI_Schedule/Schedule.dart';
 import 'package:usea_app/Student_Dashboard/Student_StudyInfo/UI_StudyInfo/StudyInfo.dart';
 
-class Student_Home1 extends StatelessWidget {
+class Student_Home1 extends StatefulWidget {
   final dynamic dataDetail;
   Student_Home1({Key? key, required this.dataDetail}) : super(key: key);
 
+  @override
+  State<Student_Home1> createState() => _Student_Home1State();
+}
+
+class _Student_Home1State extends State<Student_Home1> {
   int activeIndex = 0;
 
   final Uri urlFb = Uri.parse("https://www.facebook.com/usea.edu.kh");
 
   String getImage(String image) {
     return 'http://192.168.3.34/hosting_api/Student/profile_pic/$image';
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _initSharedPreferences();
+  }
+
+  late SharedPreferences _preferences;
+  late final String? _studentId;
+  late final String? _pwd;
+
+  void _initSharedPreferences() async {
+    _preferences = await SharedPreferences.getInstance();
+    setState(() {
+      _studentId = _preferences.getString('student_id') ?? '';
+      _pwd = _preferences.getString('pwd') ?? '';
+    });
   }
 
   @override
@@ -80,14 +101,14 @@ class Student_Home1 extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (BuildContext context) => Student_Detail(
-                      dataDetail: dataDetail,
+                      dataDetail: widget.dataDetail,
                     ),
                   ),
                 );
               },
               child: CircleAvatar(
                 backgroundImage:
-                    NetworkImage(getImage(dataDetail[0]['profile_pic'])),
+                    NetworkImage(getImage(widget.dataDetail[0]['profile_pic'])),
                 radius: 25,
               ),
             ),

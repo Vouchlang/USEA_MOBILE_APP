@@ -9,21 +9,20 @@ class Guest_Acc extends StatefulWidget {
   const Guest_Acc({Key? key}) : super(key: key);
 
   @override
-  State<Guest_Acc> createState() => _Guest_AccState();
+  State<Guest_Acc> createState() => Guest_AccState();
 }
 
-class _Guest_AccState extends State<Guest_Acc> {
+class Guest_AccState extends State<Guest_Acc> {
   final List<Account_Screen> account_screen = [
     Account_Screen(
       name: 'គណនីនិស្សិត',
       img: 'assets/image/Acc_Student.png',
       screen: Student_LogIn(),
-      // screen: St_Home(),
     ),
     Account_Screen(
         name: 'គណនីអាណាព្យាបាល',
         img: 'assets/image/Acc_Guardian.png',
-        screen: testing_log()),
+        screen: LoginPage()),
     Account_Screen(
         name: 'គណនីបុគ្គលិក',
         img: 'assets/image/Acc_Staff.png',
@@ -41,7 +40,6 @@ class _Guest_AccState extends State<Guest_Acc> {
       physics: NeverScrollableScrollPhysics(),
       children: [
         Container(
-            // height: double.infinity,
             height: 600,
             decoration: BoxDecoration(
                 image: DecorationImage(
@@ -71,6 +69,7 @@ class _Guest_AccState extends State<Guest_Acc> {
                                 borderRadius: BorderRadius.circular(10)),
                             child: InkWell(
                               onTap: () {
+                                // whereToGO();
                                 Navigator.push(context, MaterialPageRoute(
                                     builder: (BuildContext context) {
                                   return account_screen[index].screen;

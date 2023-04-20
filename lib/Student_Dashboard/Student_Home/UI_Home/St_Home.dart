@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_Home/UI_Home/Guest_Home.dart';
 import 'package:usea_app/Student_Dashboard/Student_Home/UI_Home/test_Home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../Student_LogIn/testing_log_detail_a.dart';
 
 class St_Home extends StatefulWidget {
   final dynamic data;
@@ -13,6 +16,9 @@ class St_Home extends StatefulWidget {
 
 class _St_HomeState extends State<St_Home> {
   late TabController controller;
+  late SharedPreferences _preferences;
+  late final String? _studentId;
+  late final String? _pwd;
 
   int currentIndex = 1;
   void onTap(int index) {
@@ -22,10 +28,25 @@ class _St_HomeState extends State<St_Home> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _initSharedPreferences();
+  }
+
+  void _initSharedPreferences() async {
+    _preferences = await SharedPreferences.getInstance();
+    setState(() {
+      _studentId = _preferences.getString('student_id') ?? '';
+      _pwd = _preferences.getString('pwd') ?? '';
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     List pages = [
       Guest_Home(),
       Student_Home1(dataDetail: widget.data),
+      // SampleScreen()
     ];
     return WillPopScope(
       onWillPop: () async => false,
