@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../../Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
 import '../../../Student_Dashboard/Student_LogIn/Student_LogIn.dart';
 import '../../../Student_Dashboard/Student_LogIn/testing_log.dart';
 import '/Guest_Dashboard/Guest_Account/Class_Account/Class_Account_Screen.dart';
@@ -13,6 +15,8 @@ class Guest_Acc extends StatefulWidget {
 }
 
 class Guest_AccState extends State<Guest_Acc> {
+  static const String KEYLOGIN = 'login';
+  var studentLogIn = Student_LogIn();
   final List<Account_Screen> account_screen = [
     Account_Screen(
       name: 'គណនីនិស្សិត',
@@ -32,6 +36,38 @@ class Guest_AccState extends State<Guest_Acc> {
         img: 'assets/image/Acc_Lecturer.png',
         screen: New_Event()),
   ];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // sharePref();
+  }
+
+  void sharePref() async {
+    var sharePref = await SharedPreferences.getInstance();
+    var isLoggedIn = sharePref.getBool(KEYLOGIN);
+
+    if (isLoggedIn != null) {
+      if (isLoggedIn) {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (BuildContext context) =>
+                    St_Home(data: Student_LogIn)));
+      } else {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (BuildContext context) => Student_LogIn()));
+      }
+    } else {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (BuildContext context) => Student_LogIn()));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,11 +105,14 @@ class Guest_AccState extends State<Guest_Acc> {
                                 borderRadius: BorderRadius.circular(10)),
                             child: InkWell(
                               onTap: () {
-                                // whereToGO();
-                                Navigator.push(context, MaterialPageRoute(
-                                    builder: (BuildContext context) {
-                                  return account_screen[index].screen;
-                                }));
+                                if (index.isEqual(0)) {
+                                  sharePref();
+                                } else {
+                                  Navigator.push(context, MaterialPageRoute(
+                                      builder: (BuildContext context) {
+                                    return account_screen[index].screen;
+                                  }));
+                                }
                               },
                               child: Container(
                                 child: Column(

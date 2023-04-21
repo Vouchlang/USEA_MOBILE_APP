@@ -5,6 +5,8 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:usea_app/Student_Dashboard/Student_LogIn/testing_log_detail_a.dart';
 
+import '../../Guest_Dashboard/Guest_Account/UI_Account/Guest_Acc.dart';
+
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -46,10 +48,12 @@ class _LoginPageState extends State<LoginPage> {
     return isLoggedIn;
   }
 
-  void _submitForm() {
+  void _submitForm() async {
     if (_formKey.currentState!.validate()) {
       // Assume the user is successfully logged in
-      _saveLoginStatus(true);
+      // _saveLoginStatus(true);
+      var sharedPref = await SharedPreferences.getInstance();
+      sharedPref.setBool(Guest_AccState.KEYLOGIN, true);
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => TestHP()),

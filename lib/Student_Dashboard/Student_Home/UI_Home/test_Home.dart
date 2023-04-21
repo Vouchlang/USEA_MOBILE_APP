@@ -31,24 +31,6 @@ class _Student_Home1State extends State<Student_Home1> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    _initSharedPreferences();
-  }
-
-  late SharedPreferences _preferences;
-  late final String? _studentId;
-  late final String? _pwd;
-
-  void _initSharedPreferences() async {
-    _preferences = await SharedPreferences.getInstance();
-    setState(() {
-      _studentId = _preferences.getString('student_id') ?? '';
-      _pwd = _preferences.getString('pwd') ?? '';
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,

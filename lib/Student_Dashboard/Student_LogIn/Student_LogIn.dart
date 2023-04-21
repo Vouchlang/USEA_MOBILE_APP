@@ -6,6 +6,7 @@ import 'package:usea_app/Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Custom_AppBar.dart';
+import '../../Guest_Dashboard/Guest_Account/UI_Account/Guest_Acc.dart';
 
 class Student_LogIn extends StatefulWidget {
   @override
@@ -17,20 +18,11 @@ class _Student_LogInState extends State<Student_LogIn> {
   final _textControllerUsername = TextEditingController();
   final _textControllerPsw = TextEditingController();
   bool _obscureText = true;
-  late SharedPreferences _preferences;
+  var data;
 
   @override
   void initState() {
     super.initState();
-    _initSharedPreferences();
-  }
-
-  void _initSharedPreferences() async {
-    try {
-      _preferences = await SharedPreferences.getInstance();
-    } catch (e) {
-      print('Failed to initialize SharedPreferences: $e');
-    }
   }
 
   @override
@@ -46,12 +38,10 @@ class _Student_LogInState extends State<Student_LogIn> {
             });
 
         if (response.statusCode == 200) {
-          final data = jsonDecode(response.body);
-          _preferences = await SharedPreferences.getInstance();
-          _preferences.setString('student_id', _textControllerUsername.text);
-          _preferences.setString('pwd', _textControllerPsw.text);
+          data = jsonDecode(response.body);
 
-          // Navigate to next screen and pass data
+          var sharedPref = await SharedPreferences.getInstance();
+          sharedPref.setBool(Guest_AccState.KEYLOGIN, true);
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => St_Home(data: data)));
         } else {
