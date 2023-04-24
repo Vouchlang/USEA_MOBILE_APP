@@ -105,14 +105,18 @@ class Guest_AccState extends State<Guest_Acc> {
                                 borderRadius: BorderRadius.circular(10)),
                             child: InkWell(
                               onTap: () {
-                                if (index.isEqual(0)) {
-                                  sharePref();
-                                } else {
-                                  Navigator.push(context, MaterialPageRoute(
-                                      builder: (BuildContext context) {
-                                    return account_screen[index].screen;
-                                  }));
-                                }
+                                // if (index.isEqual(0)) {
+                                //   sharePref();
+                                // } else {
+                                //   Navigator.push(context, MaterialPageRoute(
+                                //       builder: (BuildContext context) {
+                                //     return account_screen[index].screen;
+                                //   }));
+                                // }
+                                Navigator.push(context, MaterialPageRoute(
+                                    builder: (BuildContext context) {
+                                  return account_screen[index].screen;
+                                }));
                               },
                               child: Container(
                                 child: Column(
