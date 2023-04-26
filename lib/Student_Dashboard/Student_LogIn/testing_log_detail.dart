@@ -7,29 +7,15 @@ class TestCredential extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String name = profileData['position'] ?? '';
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Test Credentials'),
+        title: Text("Profile"),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Welcome ${profileData['name']}!',
-              style: const TextStyle(fontSize: 24),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              'Student ID: ${profileData['student_id']}',
-              style: const TextStyle(fontSize: 18),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              'Email: ${profileData['email']}',
-              style: const TextStyle(fontSize: 18),
-            ),
-          ],
+        child: Text(
+          'Name: $name',
+          style: TextStyle(fontSize: 24),
         ),
       ),
     );
