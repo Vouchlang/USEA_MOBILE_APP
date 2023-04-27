@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
 
-class TestCredential extends StatelessWidget {
-  final Map<String, dynamic> profileData;
+class TTT extends StatelessWidget {
+  final dynamic user;
 
-  const TestCredential({Key? key, required this.profileData}) : super(key: key);
+  TTT({required this.user});
 
   @override
   Widget build(BuildContext context) {
-    final String name = profileData['position'] ?? '';
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile"),
+        title: Text('Home'),
       ),
       body: Center(
-        child: Text(
-          'Name: $name',
-          style: TextStyle(fontSize: 24),
-        ),
+        child: Text('Welcome ${user['name_en']} to the Home screen!'),
       ),
     );
   }
