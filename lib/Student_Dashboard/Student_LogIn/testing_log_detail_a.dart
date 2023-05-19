@@ -1,61 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-class TestHP extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
+import '../Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
 
-class _HomePageState extends State<TestHP> {
-  bool _isLoggedIn = false;
+class DataPage1 extends StatelessWidget {
+  final List<JobHistory> data_jobhistory;
 
-  @override
-  void initState() {
-    super.initState();
-    _checkLoginStatus();
-  }
-
-  Future<void> _checkLoginStatus() async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
-    });
-  }
-
-  void _logout() async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setBool('isLoggedIn', false);
-    setState(() {
-      _isLoggedIn = false;
-    });
-  }
+  DataPage1({required this.data_jobhistory});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Page'),
+        title: Text('Data Page'),
       ),
-      body: Center(
-        child: _isLoggedIn
-            ? Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'You are logged in!',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: _logout,
-                    child: Text('Logout'),
-                  ),
-                ],
-              )
-            : Text(
-                'You are not logged in!',
-                style: TextStyle(fontSize: 20),
-              ),
+      body: ListView.builder(
+        itemCount: data_jobhistory.length,
+        itemBuilder: (context, index) {
+          final item = data_jobhistory[index];
+          return ListTile(
+            title: Text(item.dateStartWork),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(item.status_name),
+                Text(item.workPlace),
+                Text(item.position),
+                Text(item.salary),
+              ],
+            ),
+          );
+        },
       ),
     );
   }

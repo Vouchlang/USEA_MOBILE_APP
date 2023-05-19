@@ -39,11 +39,16 @@ class _Student_LogInState extends State<Student_LogIn> {
 
         if (response.statusCode == 200) {
           data = jsonDecode(response.body);
-
+          print(data);
           var sharedPref = await SharedPreferences.getInstance();
           sharedPref.setBool(Guest_AccState.KEYLOGIN, true);
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => St_Home(data: data)));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => St_Home(
+                        data: data,
+                        data_jobhistory: data, data_stdetail: data,
+                      )));
         } else {
           showDialog(
             context: context,

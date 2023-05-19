@@ -8,14 +8,25 @@ import 'package:usea_app/Student_Dashboard/Student_Achievements/UI_Achievements/
 import 'package:usea_app/Student_Dashboard/Student_Attendance/UI_Attendance/Attendance.dart';
 import 'package:usea_app/Student_Dashboard/Student_Detail/UI_Detail/St_Detail.dart';
 import 'package:usea_app/Student_Dashboard/Student_JobHistory/UI_JobHistory/JosHistory.dart';
+import 'package:usea_app/Student_Dashboard/Student_LogIn/testing_log_detail_b.dart';
 import 'package:usea_app/Student_Dashboard/Student_Payment/UI_Payment/Payment.dart';
 import 'package:usea_app/Student_Dashboard/Student_Performance/UI_Perfomance/Performance.dart';
 import 'package:usea_app/Student_Dashboard/Student_Schedule/UI_Schedule/Schedule.dart';
 import 'package:usea_app/Student_Dashboard/Student_StudyInfo/UI_StudyInfo/StudyInfo.dart';
 
+import '../../Student_Detail/Class_Detail/Class_St_Detail1.dart';
+import '../../Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
+
 class Student_Home1 extends StatefulWidget {
   final dynamic dataDetail;
-  Student_Home1({Key? key, required this.dataDetail}) : super(key: key);
+  final List<JobHistory> data_jobhistory;
+  final List<StDetail> data_stdetail;
+  Student_Home1(
+      {Key? key,
+      required this.dataDetail,
+      required this.data_jobhistory,
+      required this.data_stdetail})
+      : super(key: key);
 
   @override
   State<Student_Home1> createState() => _Student_Home1State();
@@ -83,14 +94,15 @@ class _Student_Home1State extends State<Student_Home1> {
                   context,
                   MaterialPageRoute(
                     builder: (BuildContext context) => Student_Detail(
-                      dataDetail: widget.dataDetail,
+                      dataDetail: widget.data_stdetail,
                     ),
                   ),
                 );
               },
+              // child: Text('Hello'),
               child: CircleAvatar(
                 backgroundImage:
-                    NetworkImage(getImage(widget.dataDetail[0]['profile_pic'])),
+                    NetworkImage(getImage(widget.data_stdetail[0].profile_pic)),
                 radius: 25,
               ),
             ),
@@ -189,6 +201,13 @@ class _Student_Home1State extends State<Student_Home1> {
                       onTap: () {
                         if (index.isEqual(6)) {
                           launchUrl(urlFb);
+                        } else if (index.isEqual(4)) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Job_History(
+                                    data_jobhistory: widget.data_jobhistory)),
+                          );
                         } else {
                           Navigator.push(
                             context,
@@ -257,7 +276,9 @@ List<Home_Screen> home_screen = [
   Home_Screen(
     name: 'ប្រវត្តិការងារ',
     img: 'assets/image/Stu_Job_History.png',
-    screen: Job_History(),
+    screen: InkWell(
+      onTap: () {},
+    ),
   ),
   Home_Screen(
     name: 'ព័ត៌មានការសិក្សា',

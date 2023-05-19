@@ -1,83 +1,99 @@
-import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
+import 'package:flutter/material.dart';
 import 'package:usea_app/Student_Dashboard/Student_LogIn/testing_log_detail.dart';
 
-class User {
-  final String student_id;
-  final String pwd;
+class ApiService {
+  static const baseUrl = 'http://192.168.3.34/hosting_api/Student';
 
-  User({
-    required this.student_id,
-    required this.pwd,
-  });
-
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
-      student_id: json['student_id'],
-      pwd: json['pwd'],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
+  static Future<http.Response> login(String student_id, String pwd) async {
+    final response =
+        await http.post(Uri.parse('$baseUrl/st_login_demo.php'), body: {
       'student_id': student_id,
       'pwd': pwd,
-    };
+    });
+    return response;
+  }
+
+  static Future<http.Response> getPosts() async {
+    final response =
+        await http.get(Uri.parse('$baseUrl/st_workplace_demo.php'));
+    return response;
+  }
+
+  // Add additional API requests as needed
+}
+
+class AuthService {
+  static final _storage = FlutterSecureStorage();
+
+  static Future<String?> getToken() async {
+    return await _storage.read(key: 'access_token');
+  }
+
+  static Future<void> setToken(String access_token) async {
+    await _storage.write(key: 'access_token', value: access_token);
+  }
+
+  static Future<bool> isLoggedIn() async {
+    final access_token = await getToken();
+    return access_token != null;
+  }
+
+  static Future<void> logout() async {
+    await _storage.delete(key: 'access_token');
   }
 }
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginPage> {
-  final TextEditingController _student_idController = TextEditingController();
-  final TextEditingController _pwdController = TextEditingController();
+  final _student_idController = TextEditingController();
+  final _pwdController = TextEditingController();
 
   bool _isLoading = false;
-  String _errorMessage = '';
 
-  Future<void> _login() async {
+  void _login() async {
     setState(() {
       _isLoading = true;
-      _errorMessage = '';
     });
 
-    final user = User(
-      student_id: _student_idController.text,
-      pwd: _pwdController.text,
-    );
+    final student_id = _student_idController.text;
+    final pwd = _pwdController.text;
 
-    final apiUrl = 'http://192.168.3.34/hosting_api/Student/st_login.php';
-    final headers = {'Content-Type': 'application/json'};
-
-    // Make API login request with user data
-    final response = await http.post(Uri.parse(apiUrl),
-        headers: headers, body: jsonEncode(user.toJson()));
+    final response = await ApiService.login(student_id, pwd);
 
     if (response.statusCode == 200) {
-      final responseData = jsonDecode(response.body);
-      final token = responseData['access_token'];
-
-      // Save token to local storage using SharedPreferences
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setString('access_token', token);
-
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (BuildContext context) => TTT(
-                    user: responseData,
-                  )));
+      final access_token = response.body;
+      print('Access Token: $access_token'); // Print access_token in console
+      await AuthService.setToken(access_token);
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (BuildContext context) => LoginPage()));
     } else {
-      setState(() {
-        _isLoading = false;
-        _errorMessage = 'Failed to log in. Please try again later.';
-      });
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Error'),
+          content: Text('Invalid student_id or pwd'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text('OK'),
+            ),
+          ],
+        ),
+      );
     }
+
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   @override
@@ -87,35 +103,29 @@ class _LoginScreenState extends State<LoginPage> {
         title: Text('Login'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TextFormField(
               controller: _student_idController,
-              decoration: InputDecoration(labelText: 'Email'),
+              decoration: InputDecoration(
+                labelText: 'Student ID',
+              ),
             ),
             SizedBox(height: 16.0),
             TextFormField(
               controller: _pwdController,
-              decoration: InputDecoration(labelText: 'Password'),
               obscureText: false,
+              decoration: InputDecoration(
+                labelText: 'Password',
+              ),
             ),
             SizedBox(height: 32.0),
-            if (_isLoading)
-              Center(
-                child: CircularProgressIndicator(),
-              )
-            else
-              ElevatedButton(
-                onPressed: _login,
-                child: Text('Log in'),
-              ),
-            if (_errorMessage.isNotEmpty)
-              Text(
-                _errorMessage,
-                style: TextStyle(color: Colors.red),
-              ),
+            ElevatedButton(
+              onPressed: _isLoading ? null : _login,
+              child: _isLoading ? CircularProgressIndicator() : Text('Login'),
+            ),
           ],
         ),
       ),

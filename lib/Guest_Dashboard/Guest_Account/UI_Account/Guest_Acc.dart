@@ -4,6 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
 import '../../../Student_Dashboard/Student_LogIn/Student_LogIn.dart';
 import '../../../Student_Dashboard/Student_LogIn/testing_log.dart';
+import '../../../Student_Dashboard/Student_LogIn/testing_log_detail.dart';
+import '../../../Student_Dashboard/Student_LogIn/testing_log_detail_copy.dart';
 import '/Guest_Dashboard/Guest_Account/Class_Account/Class_Account_Screen.dart';
 import '/Guest_Dashboard/Guest_New_Event/UI_News_Event/News_Event.dart';
 
@@ -26,7 +28,7 @@ class Guest_AccState extends State<Guest_Acc> {
     Account_Screen(
         name: 'គណនីអាណាព្យាបាល',
         img: 'assets/image/Acc_Guardian.png',
-        screen: LoginPage()),
+        screen: LoginPage1()),
     Account_Screen(
         name: 'គណនីបុគ្គលិក',
         img: 'assets/image/Acc_Staff.png',
@@ -53,8 +55,10 @@ class Guest_AccState extends State<Guest_Acc> {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-                builder: (BuildContext context) =>
-                    St_Home(data: Student_LogIn)));
+                builder: (BuildContext context) => St_Home(
+                      data: Student_LogIn,
+                      data_jobhistory: [], data_stdetail: [],
+                    )));
       } else {
         Navigator.push(
             context,
