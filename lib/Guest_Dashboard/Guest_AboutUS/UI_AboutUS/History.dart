@@ -46,17 +46,24 @@ class _HistoryState extends State<History> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Expanded(child: Image.asset('assets/image/logo1.png')),
-                    Expanded(child: Image.asset('assets/image/logo2.png')),
-                    Expanded(child: Image.asset('assets/image/logo3.png')),
+                    Expanded(
+                      child: Image.asset('assets/image/logo1.png'),
+                    ),
+                    Expanded(
+                      child: Image.asset('assets/image/logo2.png'),
+                    ),
+                    Expanded(
+                      child: Image.asset('assets/image/logo3.png'),
+                    ),
                   ],
                 ),
               ),
               Container(
                 margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                child: Column(children: [
-                  Container(
-                    child: Row(
+                child: Column(
+                  children: [
+                    Container(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -78,10 +85,11 @@ class _HistoryState extends State<History> {
                                   fontSize: 14, fontFamily: 'Poppins'),
                             ),
                           ),
-                        ]),
-                  ),
-                  Container(
-                    child: Row(
+                        ],
+                      ),
+                    ),
+                    Container(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -103,10 +111,11 @@ class _HistoryState extends State<History> {
                                   fontSize: 14, fontFamily: 'Poppins'),
                             ),
                           ),
-                        ]),
-                  ),
-                  Container(
-                    child: Row(
+                        ],
+                      ),
+                    ),
+                    Container(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -128,10 +137,11 @@ class _HistoryState extends State<History> {
                                   fontSize: 14, fontFamily: 'Poppins'),
                             ),
                           ),
-                        ]),
-                  ),
-                  Container(
-                    child: Row(
+                        ],
+                      ),
+                    ),
+                    Container(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -156,9 +166,11 @@ class _HistoryState extends State<History> {
                               ),
                             ),
                           ),
-                        ]),
-                  ),
-                ]),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

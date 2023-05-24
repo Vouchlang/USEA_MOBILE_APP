@@ -156,115 +156,116 @@ class _VisionState extends State<Vision> {
                     ),
                   ),
                   Container(
-                      margin: EdgeInsets.only(left: 12),
-                      child: Column(
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: Image.asset(
-                                  'assets/image/dot.png',
-                                  width: 4,
-                                ),
-                                margin: EdgeInsets.only(top: 10),
+                    margin: EdgeInsets.only(left: 12),
+                    child: Column(
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Image.asset(
+                                'assets/image/dot.png',
+                                width: 4,
                               ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  'Enjoy lifelong learning and research',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
-                                  ),
+                              margin: EdgeInsets.only(top: 10),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Expanded(
+                              child: Text(
+                                'Enjoy lifelong learning and research',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'Poppins',
                                 ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: Image.asset(
-                                  'assets/image/dot.png',
-                                  width: 4,
-                                ),
-                                margin: EdgeInsets.only(top: 10),
                               ),
-                              SizedBox(
-                                width: 5,
+                            )
+                          ],
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Image.asset(
+                                'assets/image/dot.png',
+                                width: 4,
                               ),
-                              Expanded(
-                                child: Text(
-                                  'Extensive knowledge',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
-                                  ),
+                              margin: EdgeInsets.only(top: 10),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Expanded(
+                              child: Text(
+                                'Extensive knowledge',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'Poppins',
                                 ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: Image.asset(
-                                  'assets/image/dot.png',
-                                  width: 4,
-                                ),
-                                margin: EdgeInsets.only(top: 10),
                               ),
-                              SizedBox(
-                                width: 5,
+                            )
+                          ],
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Image.asset(
+                                'assets/image/dot.png',
+                                width: 4,
                               ),
-                              Expanded(
-                                child: Text(
-                                  'Knowledge of foreign languages that can be used officially',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
-                                  ),
+                              margin: EdgeInsets.only(top: 10),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Expanded(
+                              child: Text(
+                                'Knowledge of foreign languages that can be used officially',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'Poppins',
                                 ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: Image.asset(
-                                  'assets/image/dot.png',
-                                  width: 4,
-                                ),
-                                margin: EdgeInsets.only(top: 10),
                               ),
-                              SizedBox(
-                                width: 5,
+                            )
+                          ],
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Image.asset(
+                                'assets/image/dot.png',
+                                width: 4,
                               ),
-                              Expanded(
-                                child: Text(
-                                  'Self-confidence',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
-                                  ),
+                              margin: EdgeInsets.only(top: 10),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Expanded(
+                              child: Text(
+                                'Self-confidence',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'Poppins',
                                 ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ))
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
@@ -286,115 +287,116 @@ class _VisionState extends State<Vision> {
                     ),
                   ),
                   Container(
-                      margin: EdgeInsets.only(left: 12),
-                      child: Column(
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: Image.asset(
-                                  'assets/image/dot.png',
-                                  width: 4,
-                                ),
-                                margin: EdgeInsets.only(top: 10),
+                    margin: EdgeInsets.only(left: 12),
+                    child: Column(
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Image.asset(
+                                'assets/image/dot.png',
+                                width: 4,
                               ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  'High commitment and responsibility to perform the work',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
-                                  ),
+                              margin: EdgeInsets.only(top: 10),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Expanded(
+                              child: Text(
+                                'High commitment and responsibility to perform the work',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'Poppins',
                                 ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: Image.asset(
-                                  'assets/image/dot.png',
-                                  width: 4,
-                                ),
-                                margin: EdgeInsets.only(top: 10),
                               ),
-                              SizedBox(
-                                width: 5,
+                            )
+                          ],
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Image.asset(
+                                'assets/image/dot.png',
+                                width: 4,
                               ),
-                              Expanded(
-                                child: Text(
-                                  'High commitment and responsibility in teaching',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
-                                  ),
+                              margin: EdgeInsets.only(top: 10),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Expanded(
+                              child: Text(
+                                'High commitment and responsibility in teaching',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'Poppins',
                                 ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: Image.asset(
-                                  'assets/image/dot.png',
-                                  width: 4,
-                                ),
-                                margin: EdgeInsets.only(top: 10),
                               ),
-                              SizedBox(
-                                width: 5,
+                            )
+                          ],
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Image.asset(
+                                'assets/image/dot.png',
+                                width: 4,
                               ),
-                              Expanded(
-                                child: Text(
-                                  'High commitment and responsibility in study and research',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
-                                  ),
+                              margin: EdgeInsets.only(top: 10),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Expanded(
+                              child: Text(
+                                'High commitment and responsibility in study and research',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'Poppins',
                                 ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: Image.asset(
-                                  'assets/image/dot.png',
-                                  width: 4,
-                                ),
-                                margin: EdgeInsets.only(top: 10),
                               ),
-                              SizedBox(
-                                width: 5,
+                            )
+                          ],
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Image.asset(
+                                'assets/image/dot.png',
+                                width: 4,
                               ),
-                              Expanded(
-                                child: Text(
-                                  'Honesty, virtue, accountability, open communication and teamwork',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
-                                  ),
+                              margin: EdgeInsets.only(top: 10),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Expanded(
+                              child: Text(
+                                'Honesty, virtue, accountability, open communication and teamwork',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'Poppins',
                                 ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ))
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
@@ -415,115 +417,116 @@ class _VisionState extends State<Vision> {
                     ),
                   ),
                   Container(
-                      margin: EdgeInsets.only(left: 12),
-                      child: Column(
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: Image.asset(
-                                  'assets/image/dot.png',
-                                  width: 4,
-                                ),
-                                margin: EdgeInsets.only(top: 10),
+                    margin: EdgeInsets.only(left: 12),
+                    child: Column(
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Image.asset(
+                                'assets/image/dot.png',
+                                width: 4,
                               ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  'National Consciousness',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
-                                  ),
+                              margin: EdgeInsets.only(top: 10),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Expanded(
+                              child: Text(
+                                'National Consciousness',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'Poppins',
                                 ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: Image.asset(
-                                  'assets/image/dot.png',
-                                  width: 4,
-                                ),
-                                margin: EdgeInsets.only(top: 10),
                               ),
-                              SizedBox(
-                                width: 5,
+                            )
+                          ],
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Image.asset(
+                                'assets/image/dot.png',
+                                width: 4,
                               ),
-                              Expanded(
-                                child: Text(
-                                  'Participate in social activities',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
-                                  ),
+                              margin: EdgeInsets.only(top: 10),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Expanded(
+                              child: Text(
+                                'Participate in social activities',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'Poppins',
                                 ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: Image.asset(
-                                  'assets/image/dot.png',
-                                  width: 4,
-                                ),
-                                margin: EdgeInsets.only(top: 10),
                               ),
-                              SizedBox(
-                                width: 5,
+                            )
+                          ],
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Image.asset(
+                                'assets/image/dot.png',
+                                width: 4,
                               ),
-                              Expanded(
-                                child: Text(
-                                  'Preservation and protection of national culture and traditions',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
-                                  ),
+                              margin: EdgeInsets.only(top: 10),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Expanded(
+                              child: Text(
+                                'Preservation and protection of national culture and traditions',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'Poppins',
                                 ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: Image.asset(
-                                  'assets/image/dot.png',
-                                  width: 4,
-                                ),
-                                margin: EdgeInsets.only(top: 10),
                               ),
-                              SizedBox(
-                                width: 5,
+                            )
+                          ],
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Image.asset(
+                                'assets/image/dot.png',
+                                width: 4,
                               ),
-                              Expanded(
-                                child: Text(
-                                  'Maintain and protect the environment',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
-                                  ),
+                              margin: EdgeInsets.only(top: 10),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Expanded(
+                              child: Text(
+                                'Maintain and protect the environment',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'Poppins',
                                 ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ))
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
@@ -544,141 +547,142 @@ class _VisionState extends State<Vision> {
                     ),
                   ),
                   Container(
-                      margin: EdgeInsets.only(left: 12),
-                      child: Column(
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: Image.asset(
-                                  'assets/image/dot.png',
-                                  width: 4,
-                                ),
-                                margin: EdgeInsets.only(top: 10),
+                    margin: EdgeInsets.only(left: 12),
+                    child: Column(
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Image.asset(
+                                'assets/image/dot.png',
+                                width: 4,
                               ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  'Good management and governance',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
-                                  ),
+                              margin: EdgeInsets.only(top: 10),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Expanded(
+                              child: Text(
+                                'Good management and governance',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'Poppins',
                                 ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: Image.asset(
-                                  'assets/image/dot.png',
-                                  width: 4,
-                                ),
-                                margin: EdgeInsets.only(top: 10),
                               ),
-                              SizedBox(
-                                width: 5,
+                            )
+                          ],
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Image.asset(
+                                'assets/image/dot.png',
+                                width: 4,
                               ),
-                              Expanded(
-                                child: Text(
-                                  'Improving the quality of education to national and international standards',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
-                                  ),
+                              margin: EdgeInsets.only(top: 10),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Expanded(
+                              child: Text(
+                                'Improving the quality of education to national and international standards',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'Poppins',
                                 ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: Image.asset(
-                                  'assets/image/dot.png',
-                                  width: 4,
-                                ),
-                                margin: EdgeInsets.only(top: 10),
                               ),
-                              SizedBox(
-                                width: 5,
+                            )
+                          ],
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Image.asset(
+                                'assets/image/dot.png',
+                                width: 4,
                               ),
-                              Expanded(
-                                child: Text(
-                                  'Promoting research and development',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
-                                  ),
+                              margin: EdgeInsets.only(top: 10),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Expanded(
+                              child: Text(
+                                'Promoting research and development',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'Poppins',
                                 ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: Image.asset(
-                                  'assets/image/dot.png',
-                                  width: 4,
-                                ),
-                                margin: EdgeInsets.only(top: 10),
                               ),
-                              SizedBox(
-                                width: 5,
+                            )
+                          ],
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Image.asset(
+                                'assets/image/dot.png',
+                                width: 4,
                               ),
-                              Expanded(
-                                child: Text(
-                                  'International Communication and Cooperation',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
-                                  ),
+                              margin: EdgeInsets.only(top: 10),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Expanded(
+                              child: Text(
+                                'International Communication and Cooperation',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'Poppins',
                                 ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: Image.asset(
-                                  'assets/image/dot.png',
-                                  width: 4,
-                                ),
-                                margin: EdgeInsets.only(top: 10),
                               ),
-                              SizedBox(
-                                width: 5,
+                            )
+                          ],
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Image.asset(
+                                'assets/image/dot.png',
+                                width: 4,
                               ),
-                              Expanded(
-                                child: Text(
-                                  'Recognition of quality of education nationally and internationally',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
-                                  ),
+                              margin: EdgeInsets.only(top: 10),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Expanded(
+                              child: Text(
+                                'Recognition of quality of education nationally and internationally',
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'Poppins',
                                 ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ))
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_Notification/UI_Notification/Notifications.dart';
 
-class Student_Home extends StatefulWidget {
-  const Student_Home({super.key});
+class Student_Home2 extends StatefulWidget {
+  const Student_Home2({super.key});
 
   @override
-  State<Student_Home> createState() => _Student_HomeState();
+  State<Student_Home2> createState() => _Student_HomeState();
 }
 
-class _Student_HomeState extends State<Student_Home> {
+class _Student_HomeState extends State<Student_Home2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

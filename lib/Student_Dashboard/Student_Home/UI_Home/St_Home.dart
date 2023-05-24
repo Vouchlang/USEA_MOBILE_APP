@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_Home/UI_Home/Guest_Home.dart';
-import 'package:usea_app/Student_Dashboard/Student_Home/UI_Home/test_Home.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:usea_app/Student_Dashboard/Student_LogIn/testing_log_detail_b.dart';
 
-import '../../Student_Detail/Class_Detail/Class_St_Detail1.dart';
+import '../../Student_Detail/Class_Detail/Class_St_Detail.dart';
 import '../../Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
+import 'Student_Dashboard.dart';
 
 class St_Home extends StatefulWidget {
   final dynamic data;
@@ -28,21 +26,22 @@ class _St_HomeState extends State<St_Home> {
 
   int currentIndex = 1;
   void onTap(int index) {
-    setState(() {
-      currentIndex = index;
-    });
+    setState(
+      () {
+        currentIndex = index;
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     List pages = [
       Guest_Home(),
-      Student_Home1(
+      Student_Home(
         dataDetail: widget.data,
         data_jobhistory: widget.data_jobhistory,
         data_stdetail: widget.data_stdetail,
       ),
-      // SampleScreen()
     ];
     return WillPopScope(
       onWillPop: () async => false,

@@ -16,7 +16,9 @@ class Job_History extends StatelessWidget {
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'ព័ត៌មានការងារ'.tr),
       body: data_jobhistory.isEmpty
-          ? Center(child: CircularProgressIndicator())
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
           : ListView.builder(
               padding: EdgeInsets.all(9),
               itemCount: data_jobhistory.length,
@@ -34,7 +36,8 @@ class Job_History extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              'កាលបរិច្ឆេទចូលបម្រើការងារ​\t\t\t\t\t${data_jobhistory[index].dateStartWork}',
+                              'កាលបរិច្ឆេទចូលបម្រើការងារ​\t\t\t\t\t'.tr +
+                                  '${data_jobhistory[index].date_start_work}',
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
@@ -49,7 +52,7 @@ class Job_History extends StatelessWidget {
                             Container(
                               width: 125,
                               child: Text(
-                                'ស្ថានភាពការងារ',
+                                'ស្ថានភាពការងារ'.tr,
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontFamily: 'KhmerOSbattambang',
@@ -71,7 +74,7 @@ class Job_History extends StatelessWidget {
                             Container(
                               width: 125,
                               child: Text(
-                                'ស្ថាប័ន',
+                                'ស្ថាប័ន'.tr,
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontFamily: 'KhmerOSbattambang',
@@ -95,7 +98,7 @@ class Job_History extends StatelessWidget {
                             Container(
                               width: 125,
                               child: Text(
-                                'មុខតំណែង',
+                                'មុខតំណែង'.tr,
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontFamily: 'KhmerOSbattambang',
@@ -119,7 +122,7 @@ class Job_History extends StatelessWidget {
                             Container(
                               width: 125,
                               child: Text(
-                                'ប្រាក់បៀវត្ស',
+                                'ប្រាក់បៀវត្ស'.tr,
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontFamily: 'KhmerOSbattambang',

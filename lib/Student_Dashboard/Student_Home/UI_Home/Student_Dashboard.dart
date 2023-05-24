@@ -1,27 +1,25 @@
 import 'package:d_chart/d_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_Home/Class_Home/Class_Home_Screen.dart';
 import 'package:usea_app/Student_Dashboard/Student_Achievements/UI_Achievements/Achievements.dart';
 import 'package:usea_app/Student_Dashboard/Student_Attendance/UI_Attendance/Attendance.dart';
 import 'package:usea_app/Student_Dashboard/Student_Detail/UI_Detail/St_Detail.dart';
-import 'package:usea_app/Student_Dashboard/Student_JobHistory/UI_JobHistory/JosHistory.dart';
-import 'package:usea_app/Student_Dashboard/Student_LogIn/testing_log_detail_b.dart';
+import 'package:usea_app/Student_Dashboard/Student_JobHistory/UI_JobHistory/St_JobHistory.dart';
 import 'package:usea_app/Student_Dashboard/Student_Payment/UI_Payment/Payment.dart';
 import 'package:usea_app/Student_Dashboard/Student_Performance/UI_Perfomance/Performance.dart';
 import 'package:usea_app/Student_Dashboard/Student_Schedule/UI_Schedule/Schedule.dart';
 import 'package:usea_app/Student_Dashboard/Student_StudyInfo/UI_StudyInfo/StudyInfo.dart';
 
-import '../../Student_Detail/Class_Detail/Class_St_Detail1.dart';
+import '../../Student_Detail/Class_Detail/Class_St_Detail.dart';
 import '../../Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
 
-class Student_Home1 extends StatefulWidget {
+class Student_Home extends StatefulWidget {
   final dynamic dataDetail;
   final List<JobHistory> data_jobhistory;
   final List<StDetail> data_stdetail;
-  Student_Home1(
+  Student_Home(
       {Key? key,
       required this.dataDetail,
       required this.data_jobhistory,
@@ -29,10 +27,57 @@ class Student_Home1 extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<Student_Home1> createState() => _Student_Home1State();
+  State<Student_Home> createState() => _Student_HomeState();
 }
 
-class _Student_Home1State extends State<Student_Home1> {
+List<Home_Screen> home_screen = [
+  Home_Screen(
+    name: 'កាលវិភាគ',
+    img: 'assets/image/Stu_Schedule.png',
+    screen: Schedule(),
+  ),
+  Home_Screen(
+    name: 'ដំណើរការសិក្សា',
+    img: 'assets/image/Stu_Performance.png',
+    screen: Performance(),
+  ),
+  Home_Screen(
+    name: 'វត្តមាន',
+    img: 'assets/image/Stu_Attendance.png',
+    screen: Attendance(),
+  ),
+  Home_Screen(
+    name: 'ការបង់ប្រាក់',
+    img: 'assets/image/Stu_Payment.png',
+    screen: Payment(),
+  ),
+  Home_Screen(
+    name: 'ប្រវត្តិការងារ',
+    img: 'assets/image/Stu_Job_History.png',
+    screen: InkWell(
+      onTap: () {},
+    ),
+  ),
+  Home_Screen(
+    name: 'ព័ត៌មានការសិក្សា',
+    img: 'assets/image/Stu_Study_Info.png',
+    screen: Study_Info(),
+  ),
+  Home_Screen(
+    name: 'មតិកែលម្អ',
+    img: 'assets/image/Stu_Survey.png',
+    screen: InkWell(
+      onTap: () {},
+    ),
+  ),
+  Home_Screen(
+    name: 'សម្មិទ្ធផល',
+    img: 'assets/image/Stu_Achievement.png',
+    screen: Achievements(),
+  ),
+];
+
+class _Student_HomeState extends State<Student_Home> {
   int activeIndex = 0;
 
   final Uri urlFb = Uri.parse("https://www.facebook.com/usea.edu.kh");
@@ -73,12 +118,14 @@ class _Student_Home1State extends State<Student_Home1> {
                               fontSize: 11,
                               fontFamily: 'KhmerOSmuol'),
                         ),
-                        Text('UNIVERSITY OF SOUTH-EAST ASIA',
-                            style: TextStyle(
-                                color: Theme.of(context).primaryColor,
-                                fontSize: 13,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w500)),
+                        Text(
+                          'UNIVERSITY OF SOUTH-EAST ASIA',
+                          style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontSize: 13,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w500),
+                        ),
                       ],
                     ),
                   ),
@@ -99,10 +146,10 @@ class _Student_Home1State extends State<Student_Home1> {
                   ),
                 );
               },
-              // child: Text('Hello'),
               child: CircleAvatar(
-                backgroundImage:
-                    NetworkImage(getImage(widget.data_stdetail[0].profile_pic)),
+                backgroundImage: NetworkImage(
+                  getImage(widget.data_stdetail[0].profile_pic),
+                ),
                 radius: 25,
               ),
             ),
@@ -133,8 +180,6 @@ class _Student_Home1State extends State<Student_Home1> {
                         {'domain': 'Flutter', 'measure': 58},
                         {'domain': 'React Native', 'measure': 20},
                         {'domain': 'React JS', 'measure': 22},
-                        // {'domain': 'Ionic', 'measure': 20},
-                        // {'domain': 'Cordova', 'measure': 15},
                       ],
                       fillColor: (pieData, index) =>
                           Theme.of(context).copyWith().primaryColor,
@@ -205,8 +250,9 @@ class _Student_Home1State extends State<Student_Home1> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Job_History(
-                                    data_jobhistory: widget.data_jobhistory)),
+                              builder: (context) => Job_History(
+                                  data_jobhistory: widget.data_jobhistory),
+                            ),
                           );
                         } else {
                           Navigator.push(
@@ -230,10 +276,12 @@ class _Student_Home1State extends State<Student_Home1> {
                             SizedBox(
                               height: 7,
                             ),
-                            Text(home_screen[index].name.tr,
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'KhmerOSbattambang'))
+                            Text(
+                              home_screen[index].name.tr,
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'KhmerOSbattambang'),
+                            )
                           ],
                         ),
                       ),
@@ -251,50 +299,3 @@ class _Student_Home1State extends State<Student_Home1> {
     );
   }
 }
-
-List<Home_Screen> home_screen = [
-  Home_Screen(
-    name: 'កាលវិភាគ',
-    img: 'assets/image/Stu_Schedule.png',
-    screen: Schedule(),
-  ),
-  Home_Screen(
-    name: 'ដំណើរការសិក្សា',
-    img: 'assets/image/Stu_Performance.png',
-    screen: Performance(),
-  ),
-  Home_Screen(
-    name: 'វត្តមាន',
-    img: 'assets/image/Stu_Attendance.png',
-    screen: Attendance(),
-  ),
-  Home_Screen(
-    name: 'ការបង់ប្រាក់',
-    img: 'assets/image/Stu_Payment.png',
-    screen: Payment(),
-  ),
-  Home_Screen(
-    name: 'ប្រវត្តិការងារ',
-    img: 'assets/image/Stu_Job_History.png',
-    screen: InkWell(
-      onTap: () {},
-    ),
-  ),
-  Home_Screen(
-    name: 'ព័ត៌មានការសិក្សា',
-    img: 'assets/image/Stu_Study_Info.png',
-    screen: Study_Info(),
-  ),
-  Home_Screen(
-    name: 'មតិកែលម្អ',
-    img: 'assets/image/Stu_Survey.png',
-    screen: InkWell(
-      onTap: () {},
-    ),
-  ),
-  Home_Screen(
-    name: 'សម្មិទ្ធផល',
-    img: 'assets/image/Stu_Achievement.png',
-    screen: Achievements(),
-  ),
-];

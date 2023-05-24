@@ -37,15 +37,15 @@ class Up_Event_Detail extends StatelessWidget {
               ),
               Container(
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius:
-                        BorderRadius.vertical(bottom: Radius.circular(10)),
-                    boxShadow: [
-                      BoxShadow(
-                          offset: Offset(0, 1),
-                          color: Colors.grey,
-                          blurRadius: 1)
-                    ]),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.vertical(
+                    bottom: Radius.circular(10),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                        offset: Offset(0, 1), color: Colors.grey, blurRadius: 1)
+                  ],
+                ),
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                 alignment: Alignment.center,
                 width: double.maxFinite,

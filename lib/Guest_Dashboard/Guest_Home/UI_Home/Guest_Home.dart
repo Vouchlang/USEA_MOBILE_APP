@@ -108,13 +108,14 @@ class _Guest_HomeState extends State<Guest_Home> {
         );
 
     Widget buildIndicator() => AnimatedSmoothIndicator(
-        activeIndex: activeIndex,
-        count: image_slides.length,
-        effect: WormEffect(
-            activeDotColor: Theme.of(context).primaryColor,
-            dotColor: Colors.grey,
-            dotHeight: 8,
-            dotWidth: 8));
+          activeIndex: activeIndex,
+          count: image_slides.length,
+          effect: WormEffect(
+              activeDotColor: Theme.of(context).primaryColor,
+              dotColor: Colors.grey,
+              dotHeight: 8,
+              dotWidth: 8),
+        );
 
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
@@ -146,12 +147,14 @@ class _Guest_HomeState extends State<Guest_Home> {
                               fontSize: 11,
                               fontFamily: 'KhmerOSmuol'),
                         ),
-                        Text('UNIVERSITY OF SOUTH-EAST ASIA',
-                            style: TextStyle(
-                                color: Theme.of(context).primaryColor,
-                                fontSize: 13,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w500)),
+                        Text(
+                          'UNIVERSITY OF SOUTH-EAST ASIA',
+                          style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontSize: 13,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w500),
+                        ),
                       ],
                     ),
                   ),
@@ -162,28 +165,34 @@ class _Guest_HomeState extends State<Guest_Home> {
               width: 15,
             ),
             Container(
-                width: 36,
-                height: 36,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: Colors.grey[200]),
-                child: Center(
-                  child: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (ctx) => Notifications()));
-                        });
+              width: 36,
+              height: 36,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: Colors.grey[200]),
+              child: Center(
+                child: IconButton(
+                  onPressed: () {
+                    setState(
+                      () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (ctx) => Notifications(),
+                          ),
+                        );
                       },
-                      icon: Icon(
-                        Icons.notifications,
-                        color: Theme.of(context).primaryColor,
-                        size: 20,
-                      )),
-                )),
+                    );
+                  },
+                  icon: Icon(
+                    Icons.notifications,
+                    color: Theme.of(context).primaryColor,
+                    size: 20,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
         toolbarHeight: 75,
@@ -192,176 +201,184 @@ class _Guest_HomeState extends State<Guest_Home> {
         elevation: 1,
       ),
       body: Center(
-          child: ListView(shrinkWrap: true, children: [
-        SizedBox(
-          height: 10,
-        ),
-        Container(
-          height: 175,
-          width: double.infinity,
-          padding: EdgeInsets.symmetric(vertical: 0, horizontal: 5),
-          child: CarouselSlider.builder(
-            options: CarouselOptions(
-              height: double.infinity,
-              pageSnapping: true,
-              enableInfiniteScroll: true,
-              autoPlayInterval: Duration(seconds: 3),
-              viewportFraction: 1,
-              enlargeCenterPage: true,
-              enlargeStrategy: CenterPageEnlargeStrategy.zoom,
-              onPageChanged: ((index, reason) =>
-                  setState(() => activeIndex = index)),
+        child: ListView(
+          shrinkWrap: true,
+          children: [
+            SizedBox(
+              height: 10,
             ),
-            itemCount: image_slides.length,
-            itemBuilder: (context, index, realIndex) {
-              final image_slide = image_slides[index];
-              return buildImage(image_slide, index);
-            },
-          ),
-        ),
-        SizedBox(
-          height: 7,
-        ),
-        Center(
-          child: buildIndicator(),
-        ),
-        SizedBox(
-          height: 7,
-        ),
-        Expanded(
-          child: GridView.count(
-            shrinkWrap: true,
-            physics: ScrollPhysics(),
-            crossAxisCount: 2,
-            mainAxisSpacing: 3.5,
-            crossAxisSpacing: 3,
-            childAspectRatio: 1.90,
-            padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
-            children: List.generate(
-              home_screen.length,
-              (index) => Card(
-                elevation: 3,
-                shadowColor: Colors.grey[200],
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+            Container(
+              height: 175,
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(vertical: 0, horizontal: 5),
+              child: CarouselSlider.builder(
+                options: CarouselOptions(
+                  height: double.infinity,
+                  pageSnapping: true,
+                  enableInfiniteScroll: true,
+                  autoPlayInterval: Duration(seconds: 3),
+                  viewportFraction: 1,
+                  enlargeCenterPage: true,
+                  enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+                  onPageChanged: ((index, reason) =>
+                      setState(() => activeIndex = index)),
                 ),
-                child: InkWell(
-                  onTap: () {
-                    if (index.isEqual(8)) {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return Change_Language();
-                        },
-                      );
-                    } else {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => home_screen[index].screen),
-                      );
-                    }
-                  },
-                  child: Container(
-                    padding: EdgeInsets.only(left: 15),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          home_screen[index].img,
-                          scale: 6,
+                itemCount: image_slides.length,
+                itemBuilder: (context, index, realIndex) {
+                  final image_slide = image_slides[index];
+                  return buildImage(image_slide, index);
+                },
+              ),
+            ),
+            SizedBox(
+              height: 7,
+            ),
+            Center(
+              child: buildIndicator(),
+            ),
+            SizedBox(
+              height: 7,
+            ),
+            Expanded(
+              child: GridView.count(
+                shrinkWrap: true,
+                physics: ScrollPhysics(),
+                crossAxisCount: 2,
+                mainAxisSpacing: 3.5,
+                crossAxisSpacing: 3,
+                childAspectRatio: 1.90,
+                padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
+                children: List.generate(
+                  home_screen.length,
+                  (index) => Card(
+                    elevation: 3,
+                    shadowColor: Colors.grey[200],
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: InkWell(
+                      onTap: () {
+                        if (index.isEqual(8)) {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return Change_Language();
+                            },
+                          );
+                        } else {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    home_screen[index].screen),
+                          );
+                        }
+                      },
+                      child: Container(
+                        padding: EdgeInsets.only(left: 15),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                              home_screen[index].img,
+                              scale: 6,
+                            ),
+                            SizedBox(
+                              height: 7,
+                            ),
+                            Text(
+                              home_screen[index].name.tr,
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'KhmerOSbattambang'),
+                            ),
+                          ],
                         ),
-                        SizedBox(
-                          height: 7,
-                        ),
-                        Text(home_screen[index].name.tr,
-                            style: TextStyle(
-                                fontSize: 14, fontFamily: 'KhmerOSbattambang'))
-                      ],
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-        ),
-        SizedBox(
-          height: 7,
-        ),
-        Card(
-          elevation: 3,
-          shadowColor: Colors.grey[200],
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
-          child: Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Expanded(
-                  child: InkWell(
-                    onTap: () {
-                      launchUrl(urlFb);
-                    },
-                    child: Image.asset(
-                      'assets/image/SM_Facebook.png',
-                      scale: 4.75,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: InkWell(
-                    onTap: () {
-                      launchUrl(urlIg);
-                    },
-                    child: Image.asset(
-                      'assets/image/SM_IG.png',
-                      scale: 4.75,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: InkWell(
-                    onTap: () {
-                      launchUrl(urlYt);
-                    },
-                    child: Image.asset(
-                      'assets/image/SM_Yt.png',
-                      scale: 4.75,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: InkWell(
-                    onTap: () {
-                      launchUrl(urlTel);
-                    },
-                    child: Image.asset(
-                      'assets/image/SM_Telegram.png',
-                      scale: 4.75,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: InkWell(
-                    onTap: () {
-                      launchUrl(urlWeb);
-                    },
-                    child: Image.asset(
-                      'assets/image/SM_Website.png',
-                      scale: 4.75,
-                    ),
-                  ),
-                ),
-              ],
+            SizedBox(
+              height: 7,
             ),
-          ),
+            Card(
+              elevation: 3,
+              shadowColor: Colors.grey[200],
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          launchUrl(urlFb);
+                        },
+                        child: Image.asset(
+                          'assets/image/SM_Facebook.png',
+                          scale: 4.75,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          launchUrl(urlIg);
+                        },
+                        child: Image.asset(
+                          'assets/image/SM_IG.png',
+                          scale: 4.75,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          launchUrl(urlYt);
+                        },
+                        child: Image.asset(
+                          'assets/image/SM_Yt.png',
+                          scale: 4.75,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          launchUrl(urlTel);
+                        },
+                        child: Image.asset(
+                          'assets/image/SM_Telegram.png',
+                          scale: 4.75,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          launchUrl(urlWeb);
+                        },
+                        child: Image.asset(
+                          'assets/image/SM_Website.png',
+                          scale: 4.75,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
-      ])),
+      ),
     );
   }
 }

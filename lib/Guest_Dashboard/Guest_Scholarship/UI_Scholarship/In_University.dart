@@ -18,21 +18,30 @@ class _In_UniversityState extends State<In_University> {
 
   Future<void> getData() async {
     try {
-      var res = await http.get(Uri.parse(
-          "http://192.168.3.34/hosting_api/Guest/fetch_guest_scholarship_i.php"));
+      var res = await http.get(
+        Uri.parse(
+            "http://192.168.3.34/hosting_api/Guest/fetch_guest_scholarship_i.php"),
+      );
       var r = json.decode(res.body);
       if (r is List<dynamic>) {
-        i_scholarship = r.map((e) => I_Scholarship.fromJson(e)).toList();
+        i_scholarship = r
+            .map(
+              (e) => I_Scholarship.fromJson(e),
+            )
+            .toList();
       } else {
-        i_scholarship = [I_Scholarship.fromJson(r)];
+        i_scholarship = [
+          I_Scholarship.fromJson(r),
+        ];
       }
     } catch (e) {
       print('Error fetching data: $e');
-      // handle the error here
     } finally {
-      setState(() {
-        isLoading = false;
-      });
+      setState(
+        () {
+          isLoading = false;
+        },
+      );
     }
   }
 
@@ -63,7 +72,7 @@ class _In_UniversityState extends State<In_University> {
                         ),
                         child: Container(
                           padding: EdgeInsets.all(10),
-                          child: (Column(
+                          child: Column(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.end,
                             crossAxisAlignment: CrossAxisAlignment.end,
@@ -152,7 +161,7 @@ class _In_UniversityState extends State<In_University> {
                                 ],
                               ),
                             ],
-                          )),
+                          ),
                         ),
                       ),
                     );

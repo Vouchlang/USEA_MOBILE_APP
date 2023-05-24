@@ -18,7 +18,10 @@ class _Program_Major_DetailState extends State<Program_Major_Detail_Main> {
     "ថ្នាក់បរិញ្ញាបត្រ",
   ];
 
-  List pages = [Program_Associate(), Program_Bachelor()];
+  List pages = [
+    Program_Associate(),
+    Program_Bachelor(),
+  ];
 
   int current = 0;
 
@@ -29,61 +32,69 @@ class _Program_Major_DetailState extends State<Program_Major_Detail_Main> {
       appBar: Custom_AppBar(title: 'កម្មវិធីសិក្សា'.tr),
       body: Center(
         child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                height: 67,
-                child: ListView.builder(
-                    physics: ScrollPhysics(),
-                    itemCount: tab_txt.length,
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    itemBuilder: (ctx, index) {
-                      return Column(
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                current = index;
-                              });
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              height: 67,
+              child: ListView.builder(
+                physics: ScrollPhysics(),
+                itemCount: tab_txt.length,
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                itemBuilder: (ctx, index) {
+                  return Column(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          setState(
+                            () {
+                              current = index;
                             },
-                            child: AnimatedContainer(
-                              duration: Duration(milliseconds: 300),
-                              margin: EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 5),
-                              padding: EdgeInsets.all(10),
-                              width: 180,
-                              decoration: BoxDecoration(
-                                  color: current == index
-                                      ? Theme.of(context).primaryColor
-                                      : Colors.white,
-                                  borderRadius: BorderRadius.circular(5),
-                                  boxShadow: [
-                                    BoxShadow(
-                                        blurRadius: 1,
-                                        color: Colors.grey,
-                                        offset: Offset(0, 1))
-                                  ]),
-                              child: Text(
-                                tab_txt[index].tr,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: current == index
-                                        ? Colors.white
-                                        : Colors.black,
-                                    fontFamily: 'KhmerOSbattambang',
-                                    fontSize: 14),
-                              ),
-                            ),
+                          );
+                        },
+                        child: AnimatedContainer(
+                          duration: Duration(milliseconds: 300),
+                          margin:
+                              EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                          padding: EdgeInsets.all(10),
+                          width: 180,
+                          decoration: BoxDecoration(
+                            color: current == index
+                                ? Theme.of(context).primaryColor
+                                : Colors.white,
+                            borderRadius: BorderRadius.circular(5),
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 1,
+                                color: Colors.grey,
+                                offset: Offset(0, 1),
+                              )
+                            ],
                           ),
-                        ],
-                      );
-                    }),
+                          child: Text(
+                            tab_txt[index].tr,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: current == index
+                                    ? Colors.white
+                                    : Colors.black,
+                                fontFamily: 'KhmerOSbattambang',
+                                fontSize: 14),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
-              Flexible(child: pages[current])
-            ]),
+            ),
+            Flexible(
+              child: pages[current],
+            ),
+          ],
+        ),
       ),
     );
   }

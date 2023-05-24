@@ -3,13 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../../Student_Dashboard/Student_Detail/Class_Detail/Class_St_Detail1.dart';
+import '../../../Student_Dashboard/Student_Detail/Class_Detail/Class_St_Detail.dart';
 import '../../../Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
 import '../../../Student_Dashboard/Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
 import '../../../Student_Dashboard/Student_LogIn/Student_LogIn.dart';
-import '../../../Student_Dashboard/Student_LogIn/testing_log.dart';
 import '../../../Student_Dashboard/Student_LogIn/testing_log_detail.dart';
-import '../../../Student_Dashboard/Student_LogIn/testing_log_detail_copy.dart';
 import '/Guest_Dashboard/Guest_Account/Class_Account/Class_Account_Screen.dart';
 import '/Guest_Dashboard/Guest_New_Event/UI_News_Event/News_Event.dart';
 
@@ -33,17 +31,20 @@ class Guest_AccState extends State<Guest_Acc> {
       screen: Student_LogIn(),
     ),
     Account_Screen(
-        name: 'គណនីអាណាព្យាបាល',
-        img: 'assets/image/Acc_Guardian.png',
-        screen: LoginPage1()),
+      name: 'គណនីអាណាព្យាបាល',
+      img: 'assets/image/Acc_Guardian.png',
+      screen: LoginPage1(),
+    ),
     Account_Screen(
-        name: 'គណនីបុគ្គលិក',
-        img: 'assets/image/Acc_Staff.png',
-        screen: New_Event()),
+      name: 'គណនីបុគ្គលិក',
+      img: 'assets/image/Acc_Staff.png',
+      screen: New_Event(),
+    ),
     Account_Screen(
-        name: 'គណនីសាស្ត្រាចារ្យ',
-        img: 'assets/image/Acc_Lecturer.png',
-        screen: New_Event()),
+      name: 'គណនីសាស្ត្រាចារ្យ',
+      img: 'assets/image/Acc_Lecturer.png',
+      screen: New_Event(),
+    ),
   ];
 
   @override
@@ -64,9 +65,6 @@ class Guest_AccState extends State<Guest_Acc> {
         if (dataJobHistory.isNotEmpty && dataStDetail.isNotEmpty) {
           navigateToJobHistoryScreen(dataJobHistory, dataStDetail);
         }
-        // else {
-        //   navigateToLoginPage();
-        // }
       }
     }
   }
@@ -107,30 +105,29 @@ class Guest_AccState extends State<Guest_Acc> {
 
   void navigateToJobHistoryScreen(
       List<JobHistory> jobHistory, List<StDetail> stDetail) {
-    Get.off(St_Home(
-      data: stDetail,
-      data_jobhistory: jobHistory,
-      data_stdetail: stDetail,
-    ));
+    Get.off(
+      St_Home(
+        data: stDetail,
+        data_jobhistory: jobHistory,
+        data_stdetail: stDetail,
+      ),
+    );
   }
-
-  // void navigateToLoginPage() {
-  //   Get.off(LoginPage1());
-  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView(
-      physics: NeverScrollableScrollPhysics(),
-      children: [
-        Container(
+      body: ListView(
+        physics: NeverScrollableScrollPhysics(),
+        children: [
+          Container(
             height: 600,
             decoration: BoxDecoration(
-                image: DecorationImage(
-              image: AssetImage('assets/image/usea_bg.jpg'),
-              fit: BoxFit.cover,
-            )),
+              image: DecorationImage(
+                image: AssetImage('assets/image/usea_bg.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
             child: Column(
               children: [
                 SizedBox(
@@ -145,54 +142,54 @@ class Guest_AccState extends State<Guest_Acc> {
                   childAspectRatio: 1.95,
                   padding: EdgeInsets.symmetric(vertical: 0, horizontal: 6),
                   children: List.generate(
-                      account_screen.length,
-                      (index) => Card(
-                            elevation: 3,
-                            color: Colors.white,
-                            shadowColor: Colors.grey[200],
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            child: InkWell(
-                              onTap: () {
-                                // if (index.isEqual(0)) {
-                                //   sharePref();
-                                // } else {
-                                //   Navigator.push(context, MaterialPageRoute(
-                                //       builder: (BuildContext context) {
-                                //     return account_screen[index].screen;
-                                //   }));
-                                // }
-                                Navigator.push(context, MaterialPageRoute(
-                                    builder: (BuildContext context) {
-                                  return account_screen[index].screen;
-                                }));
+                    account_screen.length,
+                    (index) => Card(
+                      elevation: 3,
+                      color: Colors.white,
+                      shadowColor: Colors.grey[200],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) {
+                                return account_screen[index].screen;
                               },
-                              child: Container(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Image.asset(
-                                      account_screen[index].img,
-                                      scale: 7,
-                                    ),
-                                    SizedBox(
-                                      height: 7,
-                                    ),
-                                    Text(
-                                      account_screen[index].name.tr,
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontFamily: 'KhmerOSbattambang'),
-                                    )
-                                  ],
-                                ),
-                              ),
                             ),
-                          )),
+                          );
+                        },
+                        child: Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                account_screen[index].img,
+                                scale: 7,
+                              ),
+                              SizedBox(
+                                height: 7,
+                              ),
+                              Text(
+                                account_screen[index].name.tr,
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    fontFamily: 'KhmerOSbattambang'),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ],
-            )),
-      ],
-    ));
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

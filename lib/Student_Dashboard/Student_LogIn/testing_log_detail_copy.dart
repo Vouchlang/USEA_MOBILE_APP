@@ -6,7 +6,7 @@ import 'package:usea_app/Student_Dashboard/Student_LogIn/testing_log_detail_a.da
 import 'package:usea_app/Student_Dashboard/Student_LogIn/testing_log_detail_b.dart';
 import 'package:usea_app/Student_Dashboard/Student_LogIn/testing_log_detail_more.dart';
 
-import '../Student_Detail/Class_Detail/Class_St_Detail1.dart';
+import '../Student_Detail/Class_Detail/Class_St_Detail.dart';
 
 class LoginPage1_M extends StatefulWidget {
   @override
@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage1_M> {
         List<JobHistory> dataList1 = [];
         for (var item in jobHistoryData) {
           JobHistory dataModel = JobHistory(
-            dateStartWork: item['date_start_work'],
+            date_start_work: item['date_start_work'],
             workPlace: item['work_place'],
             position: item['position'],
             salary: item['salary'],

@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Class_Program_Score_S2 {
   late final String subject;
   late final int hour;

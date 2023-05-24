@@ -17,9 +17,11 @@ class _ContactState extends State<Contact> {
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'ទំនាក់ទំនង'.tr),
-      body: ListView(padding: EdgeInsets.all(10), children: [
-        Expanded(
-          child: ListView.builder(
+      body: ListView(
+        padding: EdgeInsets.all(10),
+        children: [
+          Expanded(
+            child: ListView.builder(
               shrinkWrap: true,
               physics: ScrollPhysics(),
               itemCount: contact.length,
@@ -69,21 +71,23 @@ class _ContactState extends State<Contact> {
                     ),
                   ),
                 );
-              }),
-        ),
-        Container(
-          height: 200,
-          color: Colors.grey,
-          child: InkWell(
-            onTap: () => launchUrlString(
-                'https://www.google.com/maps/place/University+of+South-East+Asia/@13.35045,103.863545,19z/data=!4m14!1m7!3m6!1s0x311017b78db22261:0x5f0e53c2eeaa7c81!2sThe+university+of+south+east+Asia!8m2!3d13.3632533!4d103.856403!16s%2Fg%2F11sjz02kw7!3m5!1s0x311017793e991fc3:0x106790c63625b714!8m2!3d13.3505943!4d103.863927!16s%2Fm%2F0cp4m02'),
-            child: Image.asset(
-              'assets/image/Map.png',
-              fit: BoxFit.cover,
+              },
             ),
           ),
-        ),
-      ]),
+          Container(
+            height: 200,
+            color: Colors.grey,
+            child: InkWell(
+              onTap: () => launchUrlString(
+                  'https://www.google.com/maps/place/University+of+South-East+Asia/@13.35045,103.863545,19z/data=!4m14!1m7!3m6!1s0x311017b78db22261:0x5f0e53c2eeaa7c81!2sThe+university+of+south+east+Asia!8m2!3d13.3632533!4d103.856403!16s%2Fg%2F11sjz02kw7!3m5!1s0x311017793e991fc3:0x106790c63625b714!8m2!3d13.3505943!4d103.863927!16s%2Fm%2F0cp4m02'),
+              child: Image.asset(
+                'assets/image/Map.png',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

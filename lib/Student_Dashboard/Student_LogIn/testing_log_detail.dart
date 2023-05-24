@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:usea_app/Student_Dashboard/Student_LogIn/testing_log_detail_b.dart';
 
 import '../../Custom_AppBar.dart';
-import '../Student_Detail/Class_Detail/Class_St_Detail1.dart';
+import '../Student_Detail/Class_Detail/Class_St_Detail.dart';
 import '../Student_Home/UI_Home/St_Home.dart';
 import '../Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
 
@@ -46,7 +46,7 @@ class _LoginPageState extends State<LoginPage1> {
         List<JobHistory> dataList_JobHistory = [];
         for (var item in jobHistoryData) {
           JobHistory dataModel1 = JobHistory(
-            dateStartWork: item['date_start_work'],
+            date_start_work: item['date_start_work'],
             status_name: item['status_name'],
             workPlace: item['work_place'],
             position: item['position'],
@@ -227,27 +227,29 @@ class _LoginPageState extends State<LoginPage1> {
                       cursorWidth: 1,
                       cursorHeight: 20,
                       decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10),
-                          hintText: '\t\tបញ្ចូលអត្តលេខ'.tr,
-                          hintStyle: TextStyle(
-                              fontSize: 10,
-                              color: Colors.grey,
-                              fontFamily: 'KhmerOSbattambang'),
-                          border: OutlineInputBorder(),
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              _textControllerUsername.clear();
-                            },
-                            icon: Icon(
-                              Icons.clear,
-                              size: 15,
-                            ),
+                        contentPadding: EdgeInsets.all(10),
+                        hintText: '\t\tបញ្ចូលអត្តលេខ'.tr,
+                        hintStyle: TextStyle(
+                            fontSize: 10,
+                            color: Colors.grey,
+                            fontFamily: 'KhmerOSbattambang'),
+                        border: OutlineInputBorder(),
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            _textControllerUsername.clear();
+                          },
+                          icon: Icon(
+                            Icons.clear,
+                            size: 15,
                           ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey)),
-                          suffixIconColor: Colors.grey,
-                          errorStyle: TextStyle(
-                              fontSize: 10, fontFamily: 'KhmerOSbattambang')),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                        ),
+                        suffixIconColor: Colors.grey,
+                        errorStyle: TextStyle(
+                            fontSize: 10, fontFamily: 'KhmerOSbattambang'),
+                      ),
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'សូមបញ្ចូលអត្តលេខ'.tr;
@@ -277,31 +279,35 @@ class _LoginPageState extends State<LoginPage1> {
                       cursorWidth: 1,
                       cursorHeight: 20,
                       decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10),
-                          hintText: '\t\tបញ្ចូលពាក្យសម្ងាត់'.tr,
-                          hintStyle: TextStyle(
-                              fontSize: 10,
-                              color: Colors.grey,
-                              fontFamily: 'KhmerOSbattambang'),
-                          border: OutlineInputBorder(),
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              setState(() {
+                        contentPadding: EdgeInsets.all(10),
+                        hintText: '\t\tបញ្ចូលពាក្យសម្ងាត់'.tr,
+                        hintStyle: TextStyle(
+                            fontSize: 10,
+                            color: Colors.grey,
+                            fontFamily: 'KhmerOSbattambang'),
+                        border: OutlineInputBorder(),
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(
+                              () {
                                 _obscureText = !_obscureText;
-                              });
-                            },
-                            icon: Icon(
-                              _obscureText
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                              size: 15,
-                            ),
+                              },
+                            );
+                          },
+                          icon: Icon(
+                            _obscureText
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            size: 15,
                           ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey)),
-                          suffixIconColor: Colors.grey,
-                          errorStyle: TextStyle(
-                              fontSize: 10, fontFamily: 'KhmerOSbattambang')),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                        ),
+                        suffixIconColor: Colors.grey,
+                        errorStyle: TextStyle(
+                            fontSize: 10, fontFamily: 'KhmerOSbattambang'),
+                      ),
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'សូមបញ្ចូលពាក្យសម្ងាត់'.tr;

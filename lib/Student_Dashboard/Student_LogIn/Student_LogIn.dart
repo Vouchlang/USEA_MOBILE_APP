@@ -6,8 +6,7 @@ import 'package:usea_app/Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Custom_AppBar.dart';
-import '../../Guest_Dashboard/Guest_Account/UI_Account/Guest_Acc.dart';
-import '../Student_Detail/Class_Detail/Class_St_Detail1.dart';
+import '../Student_Detail/Class_Detail/Class_St_Detail.dart';
 import '../Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
 
 class Student_LogIn extends StatefulWidget {
@@ -32,10 +31,13 @@ class _Student_LogInState extends State<Student_LogIn> {
     final String password = _textControllerPsw.text;
 
     final url = 'http://192.168.3.34/hosting_api/Student/login_test.php';
-    final response = await http.post(Uri.parse(url), body: {
-      'student_id': studentId,
-      'pwd': password,
-    });
+    final response = await http.post(
+      Uri.parse(url),
+      body: {
+        'student_id': studentId,
+        'pwd': password,
+      },
+    );
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
@@ -46,7 +48,7 @@ class _Student_LogInState extends State<Student_LogIn> {
         List<JobHistory> dataList_JobHistory = [];
         for (var item in jobHistoryData) {
           JobHistory dataModel1 = JobHistory(
-            dateStartWork: item['date_start_work'],
+            date_start_work: item['date_start_work'],
             status_name: item['status_name'],
             workPlace: item['work_place'],
             position: item['position'],
@@ -86,11 +88,13 @@ class _Student_LogInState extends State<Student_LogIn> {
         saveJobHistory(sharedPref, dataList_JobHistory);
         saveStDetail(sharedPref, dataList_StDetail);
 
-        Get.off(St_Home(
-          data: null,
-          data_jobhistory: dataList_JobHistory,
-          data_stdetail: dataList_StDetail,
-        ));
+        Get.off(
+          St_Home(
+            data: null,
+            data_jobhistory: dataList_JobHistory,
+            data_stdetail: dataList_StDetail,
+          ),
+        );
       } else {
         print('Error');
       }
@@ -130,16 +134,17 @@ class _Student_LogInState extends State<Student_LogIn> {
                   InkWell(
                     onTap: () => Navigator.pop(context),
                     child: Container(
-                        alignment: Alignment.center,
-                        width: double.infinity,
-                        child: Text(
-                          'OK',
-                          style: TextStyle(
-                              color: Theme.of(context).copyWith().primaryColor,
-                              fontSize: 14,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w500),
-                        )),
+                      alignment: Alignment.center,
+                      width: double.infinity,
+                      child: Text(
+                        'OK',
+                        style: TextStyle(
+                            color: Theme.of(context).copyWith().primaryColor,
+                            fontSize: 14,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
                   )
                 ],
               ),
@@ -227,27 +232,29 @@ class _Student_LogInState extends State<Student_LogIn> {
                       cursorWidth: 1,
                       cursorHeight: 20,
                       decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10),
-                          hintText: '\t\tបញ្ចូលអត្តលេខ'.tr,
-                          hintStyle: TextStyle(
-                              fontSize: 10,
-                              color: Colors.grey,
-                              fontFamily: 'KhmerOSbattambang'),
-                          border: OutlineInputBorder(),
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              _textControllerUsername.clear();
-                            },
-                            icon: Icon(
-                              Icons.clear,
-                              size: 15,
-                            ),
+                        contentPadding: EdgeInsets.all(10),
+                        hintText: '\t\tបញ្ចូលអត្តលេខ'.tr,
+                        hintStyle: TextStyle(
+                            fontSize: 10,
+                            color: Colors.grey,
+                            fontFamily: 'KhmerOSbattambang'),
+                        border: OutlineInputBorder(),
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            _textControllerUsername.clear();
+                          },
+                          icon: Icon(
+                            Icons.clear,
+                            size: 15,
                           ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey)),
-                          suffixIconColor: Colors.grey,
-                          errorStyle: TextStyle(
-                              fontSize: 10, fontFamily: 'KhmerOSbattambang')),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                        ),
+                        suffixIconColor: Colors.grey,
+                        errorStyle: TextStyle(
+                            fontSize: 10, fontFamily: 'KhmerOSbattambang'),
+                      ),
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'សូមបញ្ចូលអត្តលេខ'.tr;
@@ -277,31 +284,35 @@ class _Student_LogInState extends State<Student_LogIn> {
                       cursorWidth: 1,
                       cursorHeight: 20,
                       decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10),
-                          hintText: '\t\tបញ្ចូលពាក្យសម្ងាត់'.tr,
-                          hintStyle: TextStyle(
-                              fontSize: 10,
-                              color: Colors.grey,
-                              fontFamily: 'KhmerOSbattambang'),
-                          border: OutlineInputBorder(),
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              setState(() {
+                        contentPadding: EdgeInsets.all(10),
+                        hintText: '\t\tបញ្ចូលពាក្យសម្ងាត់'.tr,
+                        hintStyle: TextStyle(
+                            fontSize: 10,
+                            color: Colors.grey,
+                            fontFamily: 'KhmerOSbattambang'),
+                        border: OutlineInputBorder(),
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(
+                              () {
                                 _obscureText = !_obscureText;
-                              });
-                            },
-                            icon: Icon(
-                              _obscureText
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                              size: 15,
-                            ),
+                              },
+                            );
+                          },
+                          icon: Icon(
+                            _obscureText
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            size: 15,
                           ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey)),
-                          suffixIconColor: Colors.grey,
-                          errorStyle: TextStyle(
-                              fontSize: 10, fontFamily: 'KhmerOSbattambang')),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                        ),
+                        suffixIconColor: Colors.grey,
+                        errorStyle: TextStyle(
+                            fontSize: 10, fontFamily: 'KhmerOSbattambang'),
+                      ),
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'សូមបញ្ចូលពាក្យសម្ងាត់'.tr;

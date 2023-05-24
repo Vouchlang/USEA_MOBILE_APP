@@ -8,13 +8,15 @@ class Custom_AppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: false,
-      title: Text(title,
-          style: TextStyle(
-            color: Theme.of(context).primaryColor,
-            fontSize: 18,
-            fontFamily: 'KhmerOSbattambang',
-            fontWeight: FontWeight.w600,
-          )),
+      title: Text(
+        title,
+        style: TextStyle(
+          color: Theme.of(context).primaryColor,
+          fontSize: 18,
+          fontFamily: 'KhmerOSbattambang',
+          fontWeight: FontWeight.w600,
+        ),
+      ),
       backgroundColor: Colors.white,
       elevation: 1,
       iconTheme: IconThemeData.fallback(),

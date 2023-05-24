@@ -20,7 +20,6 @@ class Change_Language extends StatefulWidget {
 }
 
 class _Change_LanguageState extends State<Change_Language> {
-  // final List locale = [
   @override
   Widget build(BuildContext context) {
     return CardWidget();
@@ -81,27 +80,30 @@ class CardWidget extends StatelessWidget {
                         width: 95,
                         alignment: Alignment.center,
                         child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                locale[index]['logo'],
-                                scale: 4,
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                locale[index]['name'.tr],
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'KhmerOSbattambang'),
-                              ),
-                            ]),
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              locale[index]['logo'],
+                              scale: 4,
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              locale[index]['name'.tr],
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'KhmerOSbattambang'),
+                            ),
+                          ],
+                        ),
                       ),
                       onTap: () {
-                        updateLanguage(locale[index]['locale']);
+                        updateLanguage(
+                          locale[index]['locale'],
+                        );
                       },
                     );
                   },

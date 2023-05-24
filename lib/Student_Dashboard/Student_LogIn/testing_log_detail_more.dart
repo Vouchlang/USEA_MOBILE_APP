@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:usea_app/Student_Dashboard/Student_LogIn/testing_log_detail_a.dart';
 import 'package:usea_app/Student_Dashboard/Student_LogIn/testing_log_detail_b.dart';
 
-import '../Student_Detail/Class_Detail/Class_St_Detail1.dart';
+import '../Student_Detail/Class_Detail/Class_St_Detail.dart';
 import '../Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
 
 class DataPage extends StatelessWidget {

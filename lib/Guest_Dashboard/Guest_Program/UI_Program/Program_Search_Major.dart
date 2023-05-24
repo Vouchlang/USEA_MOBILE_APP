@@ -34,9 +34,11 @@ class _Program_SemesterState extends State<Program_Semester> {
         ),
         title: TextField(
           onChanged: (value) {
-            setState(() {
-              _searchQuery = value;
-            });
+            setState(
+              () {
+                _searchQuery = value;
+              },
+            );
           },
           style: TextStyle(fontSize: 14, fontFamily: 'KhmerOSbattambang'),
           textAlign: TextAlign.left,
@@ -50,37 +52,46 @@ class _Program_SemesterState extends State<Program_Semester> {
           Expanded(
             child: ListView.builder(
               itemCount: program_List
-                  .where((program) => program.majors.any((major) => major
-                      .title.tr
-                      .toLowerCase()
-                      .contains(_searchQuery.toLowerCase())))
+                  .where(
+                    (program) => program.majors.any(
+                      (major) => major.title.tr.toLowerCase().contains(
+                            _searchQuery.toLowerCase(),
+                          ),
+                    ),
+                  )
                   .expand((program) => program.majors)
                   .toList()
                   .length,
               itemBuilder: (context, index) {
                 final filteredMajor = program_List
-                    .where((program) => program.majors.any((major) => major
-                        .title.tr
-                        .toLowerCase()
-                        .contains(_searchQuery.toLowerCase())))
+                    .where(
+                      (program) => program.majors.any(
+                        (major) => major.title.tr.toLowerCase().contains(
+                              _searchQuery.toLowerCase(),
+                            ),
+                      ),
+                    )
                     .expand((program) => program.majors)
                     .toList();
                 return Container(
                   height: 35,
                   child: ListTile(
                     title: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      Program_Major_Detail_Main()));
-                        },
-                        child: Text(
-                          filteredMajor[index].title.tr,
-                          style: TextStyle(
-                              fontSize: 14, fontFamily: 'KhmerOSbattambang'),
-                        )),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                Program_Major_Detail_Main(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        filteredMajor[index].title.tr,
+                        style: TextStyle(
+                            fontSize: 14, fontFamily: 'KhmerOSbattambang'),
+                      ),
+                    ),
                   ),
                 );
               },

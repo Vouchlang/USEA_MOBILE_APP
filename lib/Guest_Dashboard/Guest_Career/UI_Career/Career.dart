@@ -19,8 +19,10 @@ class _CareerState extends State<Career> {
 
   Future<void> getData() async {
     try {
-      var res = await http.get(Uri.parse(
-          "http://192.168.3.34/hosting_api/Guest/fetch_guest_career.php"));
+      var res = await http.get(
+        Uri.parse(
+            "http://192.168.3.34/hosting_api/Guest/fetch_guest_career.php"),
+      );
       var r = json.decode(res.body);
       if (r is List<dynamic>) {
         career = r.map((e) => Class_Career.fromJson(e)).toList();
@@ -31,9 +33,11 @@ class _CareerState extends State<Career> {
       print('Error fetching data: $e');
       // handle the error here
     } finally {
-      setState(() {
-        isLoading = false;
-      });
+      setState(
+        () {
+          isLoading = false;
+        },
+      );
     }
   }
 
@@ -69,8 +73,9 @@ class _CareerState extends State<Career> {
                             Row(
                               children: [
                                 CircleAvatar(
-                                  backgroundImage:
-                                      NetworkImage(getLogo(career[index].logo)),
+                                  backgroundImage: NetworkImage(
+                                    getLogo(career[index].logo),
+                                  ),
                                   radius: 40,
                                 ),
                                 SizedBox(
@@ -82,23 +87,27 @@ class _CareerState extends State<Career> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Container(
-                                        child: Text(career[index].position,
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                              fontFamily: 'KhmerOSbattambang',
-                                              fontWeight: FontWeight.w500,
-                                            )),
+                                        child: Text(
+                                          career[index].position,
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontFamily: 'KhmerOSbattambang',
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
                                       ),
                                       SizedBox(
                                         height: 5,
                                       ),
                                       Container(
-                                        child: Text(career[index].organization,
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              fontFamily: 'KhmerOSbattambang',
-                                              fontWeight: FontWeight.w500,
-                                            )),
+                                        child: Text(
+                                          career[index].organization,
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            fontFamily: 'KhmerOSbattambang',
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
                                       ),
                                     ],
                                   ),

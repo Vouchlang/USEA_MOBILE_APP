@@ -29,9 +29,11 @@ class _FAQState extends State<FAQ> {
       print('Error fetching data: $e');
       // handle the error here
     } finally {
-      setState(() {
-        isLoading = false;
-      });
+      setState(
+        () {
+          isLoading = false;
+        },
+      );
     }
   }
 

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:lottie/lottie.dart';
 import 'package:usea_app/Home.dart';
 
 class Splash_Screen extends StatefulWidget {
@@ -17,10 +16,17 @@ class _Splash_ScreenState extends State<Splash_Screen> {
     // TODO: implement initState
     super.initState();
 
-    Future.delayed(Duration(seconds: 2)).then((value) {
-      Navigator.of(context)
-          .pushReplacement(CupertinoPageRoute(builder: (ctx) => Home()));
-    });
+    Future.delayed(
+      Duration(seconds: 2),
+    ).then(
+      (value) {
+        Navigator.of(context).pushReplacement(
+          CupertinoPageRoute(
+            builder: (ctx) => Home(),
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -55,7 +61,6 @@ class _Splash_ScreenState extends State<Splash_Screen> {
               textAlign: TextAlign.justify,
               style: TextStyle(
                   fontSize: 17.5,
-                  // letterSpacing: 2.4,
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Poppins'),
@@ -67,9 +72,6 @@ class _Splash_ScreenState extends State<Splash_Screen> {
               color: Theme.of(context).primaryColor,
               size: 15,
             ),
-            // Lottie.network(
-            //     'https://assets3.lottiefiles.com/packages/lf20_jNwmgH.json',
-            //     height: 150)
           ],
         ),
       ),

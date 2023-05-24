@@ -15,55 +15,60 @@ class _ProgramState extends State<Program> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Theme.of(context).secondaryHeaderColor,
-        appBar: AppBar(
-          centerTitle: false,
-          title: Text('កម្មវិធីសិក្សា'.tr,
-              style: TextStyle(
-                color: Theme.of(context).primaryColor,
-                fontSize: 18,
-                fontFamily: 'KhmerOSbattambang',
-                fontWeight: FontWeight.w600,
-              )),
-          backgroundColor: Colors.white,
-          elevation: 1,
-          iconTheme: IconThemeData.fallback(),
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back_ios,
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      appBar: AppBar(
+        centerTitle: false,
+        title: Text('កម្មវិធីសិក្សា'.tr,
+            style: TextStyle(
               color: Theme.of(context).primaryColor,
-              size: 18,
-            ),
-            onPressed: () => Navigator.of(context).pop(),
+              fontSize: 18,
+              fontFamily: 'KhmerOSbattambang',
+              fontWeight: FontWeight.w600,
+            )),
+        backgroundColor: Colors.white,
+        elevation: 1,
+        iconTheme: IconThemeData.fallback(),
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: Theme.of(context).primaryColor,
+            size: 18,
           ),
-          actions: [
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: Container(
-                  child: Center(
-                child: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (ctx) => Program_Semester()));
-                      });
-                    },
-                    icon: Icon(
-                      Icons.search,
-                      color: Theme.of(context).primaryColor,
-                      size: 20,
-                    )),
-              )),
-            ),
-          ],
+          onPressed: () => Navigator.of(context).pop(),
         ),
-        body: ListView(
-          padding: EdgeInsets.only(bottom: 10),
-          children:
-              program_List.map((major) => ProgramWidget(major: major)).toList(),
-        ));
+        actions: [
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: Container(
+              child: Center(
+                child: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (ctx) => Program_Semester(),
+                        ),
+                      );
+                    });
+                  },
+                  icon: Icon(
+                    Icons.search,
+                    color: Theme.of(context).primaryColor,
+                    size: 20,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+      body: ListView(
+        padding: EdgeInsets.only(bottom: 10),
+        children:
+            program_List.map((major) => ProgramWidget(major: major)).toList(),
+      ),
+    );
   }
 }
 
@@ -83,37 +88,42 @@ class ProgramWidget extends StatelessWidget {
 
     if (majors.isEmpty) {
       return Container(
-        // margin: EdgeInsets.all(5),
         padding: EdgeInsets.fromLTRB(15, 0, 15, 10),
         child: InkWell(
           onTap: () {
             Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (ctx) => Program_Major_Detail_Main()));
+              context,
+              MaterialPageRoute(
+                builder: (ctx) => Program_Major_Detail_Main(),
+              ),
+            );
           },
           child: Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                border: Border.all(color: Color(0xEEEEEEFF))),
+              borderRadius: BorderRadius.circular(5),
+              border: Border.all(
+                color: Color(0xEEEEEEFF),
+              ),
+            ),
             padding: EdgeInsets.all(5),
             child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    title.tr,
-                    textAlign: TextAlign.justify,
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontFamily: 'KhmerOSbattambang',
-                        color: Colors.black),
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 14,
-                    color: Theme.of(context).primaryColor,
-                  )
-                ]),
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  title.tr,
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: 'KhmerOSbattambang',
+                      color: Colors.black),
+                ),
+                Icon(
+                  Icons.arrow_forward_ios,
+                  size: 14,
+                  color: Theme.of(context).primaryColor,
+                )
+              ],
+            ),
           ),
         ),
       );
@@ -123,7 +133,9 @@ class ProgramWidget extends StatelessWidget {
         margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
         elevation: 3,
         shadowColor: Colors.grey[200],
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
         child: Container(
           child: Theme(
             data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
@@ -132,28 +144,33 @@ class ProgramWidget extends StatelessWidget {
               iconColor: Theme.of(context).primaryColor,
               textColor: Colors.black,
               key: PageStorageKey(title),
-              title: Row(children: [
-                Image.asset(
-                  image,
-                  scale: 6,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Expanded(
-                  child: Text(
-                    title.tr,
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontFamily: 'KhmerOSbattambang',
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black),
+              title: Row(
+                children: [
+                  Image.asset(
+                    image,
+                    scale: 6,
                   ),
-                ),
-              ]),
-              children:
-                  majors.map((major) => ProgramWidget(major: major)).toList(),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: Text(
+                      title.tr,
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontFamily: 'KhmerOSbattambang',
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black),
+                    ),
+                  ),
+                ],
+              ),
+              children: majors
+                  .map(
+                    (major) => ProgramWidget(major: major),
+                  )
+                  .toList(),
             ),
           ),
         ),

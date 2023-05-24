@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:usea_app/Custom_AppBar.dart';
-
-import '../../../Guest_Dashboard/Guest_Account/UI_Account/Guest_Acc.dart';
 import '../../../Home.dart';
-import '../Class_Detail/Class_St_Detail1.dart';
+import '../Class_Detail/Class_St_Detail.dart';
 
 class Student_Detail extends StatefulWidget {
   final List<StDetail> dataDetail;
@@ -57,50 +54,49 @@ class _Student_DetailState extends State<Student_Detail> {
                   height: 5,
                 ),
                 Container(
-                    height: 50,
-                    padding: EdgeInsets.all(5),
-                    alignment: Alignment.center,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        TextButton(
-                          child: Text(
-                            'បោះបង់',
-                            style: TextStyle(
-                              color: Theme.of(context).primaryColor,
-                              fontFamily: 'KhmerOSbattambang',
-                            ),
+                  height: 50,
+                  padding: EdgeInsets.all(5),
+                  alignment: Alignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      TextButton(
+                        child: Text(
+                          'បោះបង់',
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                            fontFamily: 'KhmerOSbattambang',
                           ),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
                         ),
-                        VerticalDivider(
-                            // thickness: 1,
-                            ),
-                        TextButton(
-                          child: Text(
-                            'ចាកចេញ',
-                            style: TextStyle(
-                              color: Colors.red,
-                              fontFamily: 'KhmerOSbattambang',
-                            ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                      VerticalDivider(),
+                      TextButton(
+                        child: Text(
+                          'ចាកចេញ',
+                          style: TextStyle(
+                            color: Colors.red,
+                            fontFamily: 'KhmerOSbattambang',
                           ),
-                          onPressed: () async {
-                            SharedPreferences prefs =
-                                await SharedPreferences.getInstance();
-                            await prefs.clear();
+                        ),
+                        onPressed: () async {
+                          SharedPreferences prefs =
+                              await SharedPreferences.getInstance();
+                          await prefs.clear();
 
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (BuildContext context) => Home(),
-                              ),
-                            );
-                          },
-                        ),
-                      ],
-                    )),
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => Home(),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
@@ -143,7 +139,6 @@ class _Student_DetailState extends State<Student_Detail> {
               size: 18,
             ),
             onPressed: () {
-              // Perform logout action here
               _logout();
             },
           ),
@@ -165,7 +160,8 @@ class _Student_DetailState extends State<Student_Detail> {
                         children: [
                           CircleAvatar(
                             backgroundImage: NetworkImage(
-                                getImage(widget.dataDetail[index].profile_pic)),
+                              getImage(widget.dataDetail[index].profile_pic),
+                            ),
                             radius: 50,
                           ),
                           SizedBox(
@@ -226,7 +222,6 @@ class _Student_DetailState extends State<Student_Detail> {
                     Divider(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      // crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -234,7 +229,7 @@ class _Student_DetailState extends State<Student_Detail> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              'ឆ្នាំ',
+                              'ឆ្នាំ'.tr,
                               style: TextStyle(
                                   fontFamily: 'KhmerOSbattambang',
                                   fontSize: 12,
@@ -263,7 +258,7 @@ class _Student_DetailState extends State<Student_Detail> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              'ឆមាស',
+                              'ឆមាស'.tr,
                               style: TextStyle(
                                   fontFamily: 'KhmerOSbattambang',
                                   fontSize: 12,
@@ -292,7 +287,7 @@ class _Student_DetailState extends State<Student_Detail> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              'ជំនាន់',
+                              'ជំនាន់'.tr,
                               style: TextStyle(
                                   fontFamily: 'KhmerOSbattambang',
                                   fontSize: 12,
@@ -321,7 +316,7 @@ class _Student_DetailState extends State<Student_Detail> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              'វគ្គ',
+                              'វគ្គ'.tr,
                               style: TextStyle(
                                   fontFamily: 'KhmerOSbattambang',
                                   fontSize: 12,
@@ -350,7 +345,7 @@ class _Student_DetailState extends State<Student_Detail> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              'ឆ្នាំមូលដ្ឋាន',
+                              'ឆ្នាំមូលដ្ឋាន'.tr,
                               style: TextStyle(
                                   fontFamily: 'KhmerOSbattambang',
                                   fontSize: 12,
@@ -375,334 +370,336 @@ class _Student_DetailState extends State<Student_Detail> {
                       margin:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                       child: Flexible(
-                          child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Image.asset(
-                                'assets/image/Stu_Faculty.png',
-                                scale: 5,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'មហាវិទ្យាល័យ',
-                                    style: TextStyle(
-                                        color: Theme.of(context)
-                                            .copyWith()
-                                            .primaryColor,
-                                        fontSize: 12,
-                                        fontFamily: 'KhmerOSbattambang'),
-                                  ),
-                                  Text(
-                                    widget.dataDetail[index].faculty_name,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: 'KhmerOSbattambang'),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                          Divider(),
-                          Row(
-                            children: [
-                              Image.asset(
-                                'assets/image/Stu_Degree.png',
-                                scale: 5,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'កម្រិតសិក្សា',
-                                    style: TextStyle(
-                                        color: Theme.of(context)
-                                            .copyWith()
-                                            .primaryColor,
-                                        fontSize: 12,
-                                        fontFamily: 'KhmerOSbattambang'),
-                                  ),
-                                  Text(
-                                    widget.dataDetail[index].degree_name,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: 'KhmerOSbattambang'),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                          Divider(),
-                          Row(
-                            children: [
-                              Image.asset(
-                                'assets/image/Stu_Major.png',
-                                scale: 5,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'មុខជំនាញ',
-                                    style: TextStyle(
-                                        color: Theme.of(context)
-                                            .copyWith()
-                                            .primaryColor,
-                                        fontSize: 12,
-                                        fontFamily: 'KhmerOSbattambang'),
-                                  ),
-                                  Text(
-                                    widget.dataDetail[index].major_name,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: 'KhmerOSbattambang'),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                          Divider(),
-                          Row(
-                            children: [
-                              Image.asset(
-                                'assets/image/Stu_Room.png',
-                                scale: 5,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'បន្ទប់សិក្សា',
-                                    style: TextStyle(
-                                        color: Theme.of(context)
-                                            .copyWith()
-                                            .primaryColor,
-                                        fontSize: 12,
-                                        fontFamily: 'KhmerOSbattambang'),
-                                  ),
-                                  Text(
-                                    widget.dataDetail[index].room_name,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: 'KhmerOSbattambang'),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                          Divider(),
-                          Row(
-                            children: [
-                              Image.asset(
-                                'assets/image/Stu_Shift.png',
-                                scale: 5,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'វេនសិក្សា',
-                                    style: TextStyle(
-                                        color: Theme.of(context)
-                                            .copyWith()
-                                            .primaryColor,
-                                        fontSize: 12,
-                                        fontFamily: 'KhmerOSbattambang'),
-                                  ),
-                                  Text(
-                                    widget.dataDetail[index].shift_name,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: 'KhmerOSbattambang'),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                          Divider(),
-                          Row(
-                            children: [
-                              Image.asset(
-                                'assets/image/Stu_Status.png',
-                                scale: 5,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'ស្ថានភាពសិក្សា',
-                                    style: TextStyle(
-                                        color: Theme.of(context)
-                                            .copyWith()
-                                            .primaryColor,
-                                        fontSize: 12,
-                                        fontFamily: 'KhmerOSbattambang'),
-                                  ),
-                                  Text(
-                                    widget.dataDetail[index].status_name,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: 'KhmerOSbattambang'),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                          Divider(),
-                          Row(
-                            children: [
-                              Image.asset(
-                                'assets/image/Stu_DOB.png',
-                                scale: 5,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'ថ្ងៃកំណើត',
-                                    style: TextStyle(
-                                        color: Theme.of(context)
-                                            .copyWith()
-                                            .primaryColor,
-                                        fontSize: 12,
-                                        fontFamily: 'KhmerOSbattambang'),
-                                  ),
-                                  Text(
-                                    widget.dataDetail[index].date_of_birth,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: 'KhmerOSbattambang'),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                          Divider(),
-                          Row(
-                            children: [
-                              Image.asset(
-                                'assets/image/Stu_Tel.png',
-                                scale: 5,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'លេខទូរស័ព្ទ',
-                                    style: TextStyle(
-                                        color: Theme.of(context)
-                                            .copyWith()
-                                            .primaryColor,
-                                        fontSize: 12,
-                                        fontFamily: 'KhmerOSbattambang'),
-                                  ),
-                                  Text(
-                                    widget.dataDetail[index].phone_number,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: 'KhmerOSbattambang'),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                          Divider(),
-                          Row(
-                            children: [
-                              Image.asset(
-                                'assets/image/Stu_Job.png',
-                                scale: 5,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'មុខតំណែង',
-                                    style: TextStyle(
-                                        color: Theme.of(context)
-                                            .copyWith()
-                                            .primaryColor,
-                                        fontSize: 12,
-                                        fontFamily: 'KhmerOSbattambang'),
-                                  ),
-                                  Text(
-                                    widget.dataDetail[index].job,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: 'KhmerOSbattambang'),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                          Divider(),
-                          Row(
-                            children: [
-                              Image.asset(
-                                'assets/image/Stu_Workplace.png',
-                                scale: 5,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'ស្ថាប័ន',
-                                    style: TextStyle(
-                                        color: Theme.of(context)
-                                            .copyWith()
-                                            .primaryColor,
-                                        fontSize: 12,
-                                        fontFamily: 'KhmerOSbattambang'),
-                                  ),
-                                  Text(
-                                    widget.dataDetail[index].work_place,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: 'KhmerOSbattambang'),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                          Divider(),
-                        ],
-                      )),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Image.asset(
+                                  'assets/image/Stu_Faculty.png',
+                                  scale: 5,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'មហាវិទ្យាល័យ'.tr,
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .copyWith()
+                                              .primaryColor,
+                                          fontSize: 12,
+                                          fontFamily: 'KhmerOSbattambang'),
+                                    ),
+                                    Text(
+                                      widget.dataDetail[index].faculty_name,
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: 'KhmerOSbattambang'),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Divider(),
+                            Row(
+                              children: [
+                                Image.asset(
+                                  'assets/image/Stu_Degree.png',
+                                  scale: 5,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'កម្រិតសិក្សា'.tr,
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .copyWith()
+                                              .primaryColor,
+                                          fontSize: 12,
+                                          fontFamily: 'KhmerOSbattambang'),
+                                    ),
+                                    Text(
+                                      widget.dataDetail[index].degree_name,
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: 'KhmerOSbattambang'),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Divider(),
+                            Row(
+                              children: [
+                                Image.asset(
+                                  'assets/image/Stu_Major.png',
+                                  scale: 5,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'មុខជំនាញ'.tr,
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .copyWith()
+                                              .primaryColor,
+                                          fontSize: 12,
+                                          fontFamily: 'KhmerOSbattambang'),
+                                    ),
+                                    Text(
+                                      widget.dataDetail[index].major_name,
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: 'KhmerOSbattambang'),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Divider(),
+                            Row(
+                              children: [
+                                Image.asset(
+                                  'assets/image/Stu_Room.png',
+                                  scale: 5,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'បន្ទប់សិក្សា'.tr,
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .copyWith()
+                                              .primaryColor,
+                                          fontSize: 12,
+                                          fontFamily: 'KhmerOSbattambang'),
+                                    ),
+                                    Text(
+                                      widget.dataDetail[index].room_name,
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: 'KhmerOSbattambang'),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Divider(),
+                            Row(
+                              children: [
+                                Image.asset(
+                                  'assets/image/Stu_Shift.png',
+                                  scale: 5,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'វេនសិក្សា'.tr,
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .copyWith()
+                                              .primaryColor,
+                                          fontSize: 12,
+                                          fontFamily: 'KhmerOSbattambang'),
+                                    ),
+                                    Text(
+                                      widget.dataDetail[index].shift_name,
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: 'KhmerOSbattambang'),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Divider(),
+                            Row(
+                              children: [
+                                Image.asset(
+                                  'assets/image/Stu_Status.png',
+                                  scale: 5,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'ស្ថានភាពសិក្សា'.tr,
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .copyWith()
+                                              .primaryColor,
+                                          fontSize: 12,
+                                          fontFamily: 'KhmerOSbattambang'),
+                                    ),
+                                    Text(
+                                      widget.dataDetail[index].status_name,
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: 'KhmerOSbattambang'),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Divider(),
+                            Row(
+                              children: [
+                                Image.asset(
+                                  'assets/image/Stu_DOB.png',
+                                  scale: 5,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'ថ្ងៃកំណើត'.tr,
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .copyWith()
+                                              .primaryColor,
+                                          fontSize: 12,
+                                          fontFamily: 'KhmerOSbattambang'),
+                                    ),
+                                    Text(
+                                      widget.dataDetail[index].date_of_birth,
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: 'KhmerOSbattambang'),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Divider(),
+                            Row(
+                              children: [
+                                Image.asset(
+                                  'assets/image/Stu_Tel.png',
+                                  scale: 5,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'លេខទូរស័ព្ទ'.tr,
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .copyWith()
+                                              .primaryColor,
+                                          fontSize: 12,
+                                          fontFamily: 'KhmerOSbattambang'),
+                                    ),
+                                    Text(
+                                      widget.dataDetail[index].phone_number,
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: 'KhmerOSbattambang'),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Divider(),
+                            Row(
+                              children: [
+                                Image.asset(
+                                  'assets/image/Stu_Job.png',
+                                  scale: 5,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'មុខតំណែង'.tr,
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .copyWith()
+                                              .primaryColor,
+                                          fontSize: 12,
+                                          fontFamily: 'KhmerOSbattambang'),
+                                    ),
+                                    Text(
+                                      widget.dataDetail[index].job,
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: 'KhmerOSbattambang'),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Divider(),
+                            Row(
+                              children: [
+                                Image.asset(
+                                  'assets/image/Stu_Workplace.png',
+                                  scale: 5,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'ស្ថាប័ន'.tr,
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .copyWith()
+                                              .primaryColor,
+                                          fontSize: 12,
+                                          fontFamily: 'KhmerOSbattambang'),
+                                    ),
+                                    Text(
+                                      widget.dataDetail[index].work_place,
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: 'KhmerOSbattambang'),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Divider(),
+                          ],
+                        ),
+                      ),
                     )
                   ],
                 );
-              }),
+              },
+            ),
     );
   }
 }

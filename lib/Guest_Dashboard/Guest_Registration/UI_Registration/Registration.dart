@@ -18,21 +18,26 @@ class _RegistrationState extends State<Registration> {
 
   Future<void> getData() async {
     try {
-      var res = await http.get(Uri.parse(
-          "http://192.168.3.34/hosting_api/Guest/fetch_guest_registration.php"));
+      var res = await http.get(
+        Uri.parse(
+            "http://192.168.3.34/hosting_api/Guest/fetch_guest_registration.php"),
+      );
       var r = json.decode(res.body);
       if (r is List<dynamic>) {
         registration = r.map((e) => Class_Registration.fromJson(e)).toList();
       } else {
-        registration = [Class_Registration.fromJson(r)];
+        registration = [
+          Class_Registration.fromJson(r),
+        ];
       }
     } catch (e) {
       print('Error fetching data: $e');
-      // handle the error here
     } finally {
-      setState(() {
-        isLoading = false;
-      });
+      setState(
+        () {
+          isLoading = false;
+        },
+      );
     }
   }
 
@@ -58,7 +63,8 @@ class _RegistrationState extends State<Registration> {
                     elevation: 3,
                     shadowColor: Colors.grey[200],
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                     child: Container(
                       padding: EdgeInsets.all(10),
                       child: Column(

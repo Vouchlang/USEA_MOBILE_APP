@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../Student_Detail/Class_Detail/Class_St_Detail1.dart';
+import '../Student_Detail/Class_Detail/Class_St_Detail.dart';
 
 
 class DataPage2 extends StatelessWidget {

@@ -66,8 +66,9 @@ class _RecognitionState extends State<Recognition> {
                                 padding: EdgeInsets.symmetric(
                                     vertical: 5, horizontal: 5),
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: Color(0x142D74F5)),
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Color(0x142D74F5),
+                                ),
                                 child: Text(
                                   'អានបន្ថែម'.tr,
                                   style: TextStyle(

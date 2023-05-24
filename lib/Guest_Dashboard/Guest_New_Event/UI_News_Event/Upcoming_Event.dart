@@ -28,11 +28,12 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
       }
     } catch (e) {
       print('Error fetching data: $e');
-      // handle the error here
     } finally {
-      setState(() {
-        isLoading = false;
-      });
+      setState(
+        () {
+          isLoading = false;
+        },
+      );
     }
   }
 
@@ -51,205 +52,207 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       body: Center(
-          child: isLoading
-              ? const CircularProgressIndicator()
-              : ListView.builder(
-                  padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                  itemCount: up_events.length,
-                  itemBuilder: (context, index) {
-                    var up_event = up_events[index];
-                    return Container(
-                      child: Card(
-                        elevation: 3,
-                        shadowColor: Colors.grey[200],
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (ctx) =>
-                                        Up_Event_Detail(data: up_event)));
-                          },
-                          child: Container(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Container(
-                                  height: 150,
-                                  width: double.maxFinite,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(10),
-                                    child: Image.network(
-                                      getImageUrl(up_event.upcoming_image),
-                                      width: double.maxFinite,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Container(
-                                  padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        width: double.infinity,
-                                        alignment: Alignment.center,
-                                        child: Text(
-                                          up_event.upcoming_title,
-                                          textAlign: TextAlign.justify,
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500,
-                                              fontFamily: 'KhmerOSBattambang'),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Container(
-                                        width: double.infinity,
-                                        child: Text(
-                                          up_event.upcoming_detail,
-                                          textAlign: TextAlign.justify,
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500,
-                                              fontFamily: 'KhmerOSBattambang'),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: Row(
-                                              children: [
-                                                Container(
-                                                  child: Image.asset(
-                                                    'assets/image/Event_Date.png',
-                                                    width: 14,
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  width: 5,
-                                                ),
-                                                Container(
-                                                  child: Text(
-                                                    'ថ្ងៃ' +
-                                                        up_event.upcoming_day,
-                                                    style: TextStyle(
-                                                        fontSize: 10,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontFamily:
-                                                            'KhmerOSBattambang',
-                                                        color: Theme.of(context)
-                                                            .primaryColor),
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  width: 2,
-                                                ),
-                                                Container(
-                                                  child: Text(
-                                                    'ទី' +
-                                                        up_event.upcoming_date,
-                                                    style: TextStyle(
-                                                        fontSize: 10,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontFamily:
-                                                            'KhmerOSBattambang',
-                                                        color: Theme.of(context)
-                                                            .primaryColor),
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  width: 2,
-                                                ),
-                                                Container(
-                                                  child: Text(
-                                                    'ខែ' +
-                                                        up_event.upcoming_month,
-                                                    style: TextStyle(
-                                                        fontSize: 10,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontFamily:
-                                                            'KhmerOSBattambang',
-                                                        color: Theme.of(context)
-                                                            .primaryColor),
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  width: 2,
-                                                ),
-                                                Container(
-                                                  child: Text(
-                                                    'ឆ្នាំ' +
-                                                        up_event.upcoming_year,
-                                                    style: TextStyle(
-                                                        fontSize: 10,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontFamily:
-                                                            'KhmerOSBattambang',
-                                                        color: Theme.of(context)
-                                                            .primaryColor),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          Expanded(
-                                            child: Row(
-                                              children: [
-                                                Container(
-                                                  child: Image.asset(
-                                                    'assets/image/Event_Time.png',
-                                                    width: 14,
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  width: 5,
-                                                ),
-                                                Container(
-                                                  child: Text(
-                                                    up_event.upcoming_time,
-                                                    style: TextStyle(
-                                                        fontSize: 10,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontFamily:
-                                                            'KhmerOSBattambang',
-                                                        color: Theme.of(context)
-                                                            .primaryColor),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
+        child: isLoading
+            ? const CircularProgressIndicator()
+            : ListView.builder(
+                padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                itemCount: up_events.length,
+                itemBuilder: (context, index) {
+                  var up_event = up_events[index];
+                  return Container(
+                    child: Card(
+                      elevation: 3,
+                      shadowColor: Colors.grey[200],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (ctx) => Up_Event_Detail(data: up_event),
                             ),
+                          );
+                        },
+                        child: Container(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                height: 150,
+                                width: double.maxFinite,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.network(
+                                    getImageUrl(up_event.upcoming_image),
+                                    width: double.maxFinite,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Container(
+                                padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      width: double.infinity,
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        up_event.upcoming_title,
+                                        textAlign: TextAlign.justify,
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500,
+                                            fontFamily: 'KhmerOSBattambang'),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Container(
+                                      width: double.infinity,
+                                      child: Text(
+                                        up_event.upcoming_detail,
+                                        textAlign: TextAlign.justify,
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w500,
+                                            fontFamily: 'KhmerOSBattambang'),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                child: Image.asset(
+                                                  'assets/image/Event_Date.png',
+                                                  width: 14,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 5,
+                                              ),
+                                              Container(
+                                                child: Text(
+                                                  'ថ្ងៃ' +
+                                                      up_event.upcoming_day,
+                                                  style: TextStyle(
+                                                      fontSize: 10,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontFamily:
+                                                          'KhmerOSBattambang',
+                                                      color: Theme.of(context)
+                                                          .primaryColor),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 2,
+                                              ),
+                                              Container(
+                                                child: Text(
+                                                  'ទី' + up_event.upcoming_date,
+                                                  style: TextStyle(
+                                                      fontSize: 10,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontFamily:
+                                                          'KhmerOSBattambang',
+                                                      color: Theme.of(context)
+                                                          .primaryColor),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 2,
+                                              ),
+                                              Container(
+                                                child: Text(
+                                                  'ខែ' +
+                                                      up_event.upcoming_month,
+                                                  style: TextStyle(
+                                                      fontSize: 10,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontFamily:
+                                                          'KhmerOSBattambang',
+                                                      color: Theme.of(context)
+                                                          .primaryColor),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 2,
+                                              ),
+                                              Container(
+                                                child: Text(
+                                                  'ឆ្នាំ' +
+                                                      up_event.upcoming_year,
+                                                  style: TextStyle(
+                                                      fontSize: 10,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontFamily:
+                                                          'KhmerOSBattambang',
+                                                      color: Theme.of(context)
+                                                          .primaryColor),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Expanded(
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                child: Image.asset(
+                                                  'assets/image/Event_Time.png',
+                                                  width: 14,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 5,
+                                              ),
+                                              Container(
+                                                child: Text(
+                                                  up_event.upcoming_time,
+                                                  style: TextStyle(
+                                                      fontSize: 10,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontFamily:
+                                                          'KhmerOSBattambang',
+                                                      color: Theme.of(context)
+                                                          .primaryColor),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
                           ),
                         ),
                       ),
-                    );
-                  },
-                )),
+                    ),
+                  );
+                },
+              ),
+      ),
     );
   }
 }

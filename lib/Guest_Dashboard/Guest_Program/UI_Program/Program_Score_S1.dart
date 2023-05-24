@@ -22,16 +22,20 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           margin: EdgeInsets.all(10),
           color: Colors.white,
-          child: Column(mainAxisSize: MainAxisSize.min, children: [
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.horizontal(
-                    left: Radius.circular(10), right: Radius.circular(10)),
-                color: Color(0xFFE8F0FE),
-              ),
-              child: Row(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.horizontal(
+                    left: Radius.circular(10),
+                    right: Radius.circular(10),
+                  ),
+                  color: Color(0xFFE8F0FE),
+                ),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
@@ -47,90 +51,102 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                     Row(
                       children: [
                         Container(
-                          child: Text('ម៉ោង'.tr,
-                              style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontSize: 14,
-                                  fontFamily: 'KhmerOSbattambang',
-                                  fontWeight: FontWeight.w600)),
+                          child: Text(
+                            'ម៉ោង'.tr,
+                            style: TextStyle(
+                                color: Theme.of(context).primaryColor,
+                                fontSize: 14,
+                                fontFamily: 'KhmerOSbattambang',
+                                fontWeight: FontWeight.w600),
+                          ),
                         ),
                         SizedBox(
                           width: 15,
                         ),
                         Container(
-                          child: Text('ក្រេឌីត'.tr,
-                              style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontSize: 14,
-                                  fontFamily: 'KhmerOSbattambang',
-                                  fontWeight: FontWeight.w600)),
+                          child: Text(
+                            'ក្រេឌីត'.tr,
+                            style: TextStyle(
+                                color: Theme.of(context).primaryColor,
+                                fontSize: 14,
+                                fontFamily: 'KhmerOSbattambang',
+                                fontWeight: FontWeight.w600),
+                          ),
                         )
                       ],
                     )
-                  ]),
-            ),
-            Container(
-              padding: EdgeInsets.all(5),
-              width: double.infinity,
-              color: Colors.white,
-              child: ListView.builder(
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(5),
+                width: double.infinity,
+                color: Colors.white,
+                child: ListView.builder(
                   physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: class_program_score_s1.length,
                   itemBuilder: (context, index) {
                     return Container(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child:
-                            Column(mainAxisSize: MainAxisSize.min, children: [
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
                           Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    class_program_score_s1[index].subject,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: 'KhmerOSbattambang',
-                                        fontWeight: FontWeight.w500),
-                                  ),
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  class_program_score_s1[index].subject,
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontFamily: 'KhmerOSbattambang',
+                                      fontWeight: FontWeight.w500),
                                 ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Container(
-                                      child: Text(
-                                          class_program_score_s1[index]
-                                              .hour
-                                              .toString(),
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            fontFamily: 'Poppins',
-                                          )),
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Container(
+                                    child: Text(
+                                      class_program_score_s1[index]
+                                          .hour
+                                          .toString(),
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontFamily: 'Poppins',
+                                      ),
                                     ),
-                                    SizedBox(
-                                      width: 35,
+                                  ),
+                                  SizedBox(
+                                    width: 35,
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(right: 10),
+                                    child: Text(
+                                      class_program_score_s1[index]
+                                          .credit
+                                          .toString(),
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontFamily: 'Poppins',
+                                      ),
                                     ),
-                                    Container(
-                                      margin: EdgeInsets.only(right: 10),
-                                      child: Text(
-                                          class_program_score_s1[index]
-                                              .credit
-                                              .toString(),
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            fontFamily: 'Poppins',
-                                          )),
-                                    ),
-                                  ],
-                                )
-                              ]),
-                        ]));
-                  }),
-            ),
-            Container(
-              padding: EdgeInsets.all(5),
-              width: double.infinity,
-              child: Row(
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(5),
+                width: double.infinity,
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
@@ -149,14 +165,15 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                           width: 30,
                           alignment: Alignment.center,
                           child: Text(
-                              class_program_score_s1
-                                  .fold(0, (sum, data) => sum + data.hour)
-                                  .toString(),
-                              style: TextStyle(
-                                color: Theme.of(context).primaryColor,
-                                fontSize: 14,
-                                fontFamily: 'Poppins',
-                              )),
+                            class_program_score_s1
+                                .fold(0, (sum, data) => sum + data.hour)
+                                .toString(),
+                            style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontSize: 14,
+                              fontFamily: 'Poppins',
+                            ),
+                          ),
                         ),
                         SizedBox(
                           width: 15,
@@ -165,20 +182,23 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                           width: 30,
                           alignment: Alignment.center,
                           child: Text(
-                              class_program_score_s1
-                                  .fold(0, (sum, data) => sum + data.credit)
-                                  .toString(),
-                              style: TextStyle(
-                                color: Theme.of(context).primaryColor,
-                                fontSize: 14,
-                                fontFamily: 'Poppins',
-                              )),
+                            class_program_score_s1
+                                .fold(0, (sum, data) => sum + data.credit)
+                                .toString(),
+                            style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontSize: 14,
+                              fontFamily: 'Poppins',
+                            ),
+                          ),
                         ),
                       ],
                     )
-                  ]),
-            ),
-          ]),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

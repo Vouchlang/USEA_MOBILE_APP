@@ -1,28 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'Splash_Screen.dart';
 import 'Home.dart';
-import 'Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
-import 'Student_Dashboard/Student_Home/UI_Home/test_Home.dart';
 import 'localeString.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(statusBarColor: Colors.white),
   );
-  runApp(new GetMaterialApp(
-    theme: ThemeData(
-      primaryColor: Color(0xFF002060),
-      secondaryHeaderColor: Color(
-        (0xFFF5F7FE),
+  runApp(
+    new GetMaterialApp(
+      theme: ThemeData(
+        primaryColor: Color(0xFF002060),
+        secondaryHeaderColor: Color(
+          (0xFFF5F7FE),
+        ),
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      visualDensity: VisualDensity.adaptivePlatformDensity,
+      home: new Home(),
+      translations: LocaleString(),
+      locale: Locale('km', 'KH'),
+      debugShowCheckedModeBanner: false,
     ),
-    home: new Home(),
-    translations: LocaleString(),
-    locale: Locale('km', 'KH'),
-    debugShowCheckedModeBanner: false,
-  ));
+  );
 }

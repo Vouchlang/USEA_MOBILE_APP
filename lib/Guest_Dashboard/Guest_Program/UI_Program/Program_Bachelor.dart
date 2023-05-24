@@ -43,35 +43,36 @@ class _Program_BachelorState extends State<Program_Bachelor> {
                           data: Theme.of(context)
                               .copyWith(dividerColor: Colors.transparent),
                           child: ConfigurableExpansionTile(
-                              header: Expanded(
-                                child: Container(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    program_major_detail[index].title,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                        color: Theme.of(context).primaryColor,
-                                        fontSize: 14,
-                                        fontFamily: 'KhmerOSbattambang',
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                ),
-                              ),
-                              animatedWidgetFollowingHeader: Icon(
-                                Icons.keyboard_arrow_down_rounded,
-                                size: 25,
-                                color: Theme.of(context).primaryColor,
-                              ),
-                              childrenBody: Container(
-                                padding: EdgeInsets.symmetric(horizontal: 10),
+                            header: Expanded(
+                              child: Container(
+                                alignment: Alignment.centerLeft,
                                 child: Text(
-                                  program_major_detail[index].description,
-                                  textAlign: TextAlign.justify,
+                                  program_major_detail[index].title,
+                                  textAlign: TextAlign.left,
                                   style: TextStyle(
+                                      color: Theme.of(context).primaryColor,
                                       fontSize: 14,
-                                      fontFamily: 'KhmerOSbattambang'),
+                                      fontFamily: 'KhmerOSbattambang',
+                                      fontWeight: FontWeight.w600),
                                 ),
-                              )),
+                              ),
+                            ),
+                            animatedWidgetFollowingHeader: Icon(
+                              Icons.keyboard_arrow_down_rounded,
+                              size: 25,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            childrenBody: Container(
+                              padding: EdgeInsets.symmetric(horizontal: 10),
+                              child: Text(
+                                program_major_detail[index].description,
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontFamily: 'KhmerOSbattambang'),
+                              ),
+                            ),
+                          ),
                         )
                       ],
                     ),
@@ -80,55 +81,61 @@ class _Program_BachelorState extends State<Program_Bachelor> {
               ),
             ),
             Container(
-                child: Column(
-              children: [
-                SizedBox(
-                  height: 10,
-                ),
-                GridView.count(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 3,
-                  crossAxisSpacing: 3,
-                  childAspectRatio: 1.90,
-                  // padding: EdgeInsets.symmetric(vertical: 0, horizontal: 6),
-                  children: List.generate(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 10,
+                  ),
+                  GridView.count(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 3,
+                    crossAxisSpacing: 3,
+                    childAspectRatio: 1.90,
+                    children: List.generate(
                       pro_bach_year.length,
                       (index) => Card(
-                            elevation: 3,
-                            color: Colors.white,
-                            shadowColor: Colors.grey[200],
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.push(context, MaterialPageRoute(
-                                    builder: (BuildContext context) {
+                        elevation: 3,
+                        color: Colors.white,
+                        shadowColor: Colors.grey[200],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (BuildContext context) {
                                   return pro_bach_year[index].screen;
-                                }));
-                              },
-                              child: Container(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SizedBox(
-                                      height: 7,
-                                    ),
-                                    Text(
-                                      pro_bach_year[index].name.tr,
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontFamily: 'KhmerOSbattambang'),
-                                    )
-                                  ],
-                                ),
+                                },
                               ),
+                            );
+                          },
+                          child: Container(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  height: 7,
+                                ),
+                                Text(
+                                  pro_bach_year[index].name.tr,
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontFamily: 'KhmerOSbattambang'),
+                                )
+                              ],
                             ),
-                          )),
-                ),
-              ],
-            ))
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
