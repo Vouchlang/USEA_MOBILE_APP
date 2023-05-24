@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../../Student_Dashboard/Student_Detail/Class_Detail/Class_St_Detail1.dart';
 import '../../../Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
+import '../../../Student_Dashboard/Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
 import '../../../Student_Dashboard/Student_LogIn/Student_LogIn.dart';
 import '../../../Student_Dashboard/Student_LogIn/testing_log.dart';
 import '../../../Student_Dashboard/Student_LogIn/testing_log_detail.dart';
@@ -18,6 +22,9 @@ class Guest_Acc extends StatefulWidget {
 
 class Guest_AccState extends State<Guest_Acc> {
   static const String KEYLOGIN = 'login';
+  static const String KEYJOBHISTORY = 'job_history';
+  static const String KEYSTDETAIL = 'student_detail';
+
   var studentLogIn = Student_LogIn();
   final List<Account_Screen> account_screen = [
     Account_Screen(
@@ -43,35 +50,73 @@ class Guest_AccState extends State<Guest_Acc> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    // sharePref();
+    whereToGo();
   }
 
-  void sharePref() async {
+  void whereToGo() async {
     var sharePref = await SharedPreferences.getInstance();
     var isLoggedIn = sharePref.getBool(KEYLOGIN);
 
     if (isLoggedIn != null) {
       if (isLoggedIn) {
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-                builder: (BuildContext context) => St_Home(
-                      data: Student_LogIn,
-                      data_jobhistory: [], data_stdetail: [],
-                    )));
-      } else {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (BuildContext context) => Student_LogIn()));
+        List<JobHistory> dataJobHistory = getSavedJobHistory(sharePref);
+        List<StDetail> dataStDetail = getSavedStDetail(sharePref);
+        if (dataJobHistory.isNotEmpty && dataStDetail.isNotEmpty) {
+          navigateToJobHistoryScreen(dataJobHistory, dataStDetail);
+        }
+        // else {
+        //   navigateToLoginPage();
+        // }
       }
-    } else {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (BuildContext context) => Student_LogIn()));
     }
   }
+
+  List<JobHistory> getSavedJobHistory(SharedPreferences sharedPreferences) {
+    final jobHistoryString = sharedPreferences.getString(KEYJOBHISTORY);
+    if (jobHistoryString != null) {
+      final jsonData = json.decode(jobHistoryString);
+      List<JobHistory> jobHistoryList = [];
+
+      for (var item in jsonData) {
+        JobHistory jobHistory = JobHistory.fromJson(item);
+        jobHistoryList.add(jobHistory);
+      }
+
+      return jobHistoryList;
+    } else {
+      return [];
+    }
+  }
+
+  List<StDetail> getSavedStDetail(SharedPreferences sharedPreferences) {
+    final stDetailString = sharedPreferences.getString(KEYSTDETAIL);
+    if (stDetailString != null) {
+      final jsonData = json.decode(stDetailString);
+      List<StDetail> stDetailList = [];
+
+      for (var item in jsonData) {
+        StDetail stDetail = StDetail.fromJson(item);
+        stDetailList.add(stDetail);
+      }
+
+      return stDetailList;
+    } else {
+      return [];
+    }
+  }
+
+  void navigateToJobHistoryScreen(
+      List<JobHistory> jobHistory, List<StDetail> stDetail) {
+    Get.off(St_Home(
+      data: stDetail,
+      data_jobhistory: jobHistory,
+      data_stdetail: stDetail,
+    ));
+  }
+
+  // void navigateToLoginPage() {
+  //   Get.off(LoginPage1());
+  // }
 
   @override
   Widget build(BuildContext context) {

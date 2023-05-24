@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:usea_app/Student_Dashboard/Student_LogIn/testing_log_detail_b.dart';
 
 import '../../Custom_AppBar.dart';
@@ -79,18 +80,17 @@ class _LoginPageState extends State<LoginPage1> {
           );
           dataList_StDetail.add(dataModel);
         }
-        print(dataList_StDetail);
 
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => St_Home(
-              data: dataList_StDetail,
-              data_jobhistory: dataList_JobHistory,
-              data_stdetail: dataList_StDetail,
-            ),
-          ),
-        );
+        SharedPreferences sharedPref = await SharedPreferences.getInstance();
+        sharedPref.setBool('login', true);
+        saveJobHistory(sharedPref, dataList_JobHistory);
+        saveStDetail(sharedPref, dataList_StDetail);
+
+        Get.off(St_Home(
+          data: null,
+          data_jobhistory: dataList_JobHistory,
+          data_stdetail: dataList_StDetail,
+        ));
       } else {
         print('Error');
       }
@@ -148,6 +148,19 @@ class _LoginPageState extends State<LoginPage1> {
         },
       );
     }
+  }
+
+  void saveJobHistory(
+      SharedPreferences sharedPreferences, List<JobHistory> jobHistoryList) {
+    final jsonData =
+        jobHistoryList.map((jobHistory) => jobHistory.toJson()).toList();
+    sharedPreferences.setString('job_history', json.encode(jsonData));
+  }
+
+  void saveStDetail(
+      SharedPreferences sharedPreferences, List<StDetail> stDetailList) {
+    final jsonData = stDetailList.map((stDetail) => stDetail.toJson()).toList();
+    sharedPreferences.setString('student_detail', json.encode(jsonData));
   }
 
   @override

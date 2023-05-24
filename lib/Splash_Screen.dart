@@ -63,13 +63,13 @@ class _Splash_ScreenState extends State<Splash_Screen> {
             SizedBox(
               height: 5,
             ),
-            // SpinKitThreeBounce(
-            //   color: Theme.of(context).primaryColor,
-            //   size: 15,
-            // ),
-            Lottie.network(
-                'https://assets3.lottiefiles.com/packages/lf20_jNwmgH.json',
-                height: 150)
+            SpinKitThreeBounce(
+              color: Theme.of(context).primaryColor,
+              size: 15,
+            ),
+            // Lottie.network(
+            //     'https://assets3.lottiefiles.com/packages/lf20_jNwmgH.json',
+            //     height: 150)
           ],
         ),
       ),
