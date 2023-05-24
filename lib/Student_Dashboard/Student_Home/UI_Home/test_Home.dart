@@ -48,7 +48,7 @@ class _Student_Home1State extends State<Student_Home1> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Expanded(
               child: Row(

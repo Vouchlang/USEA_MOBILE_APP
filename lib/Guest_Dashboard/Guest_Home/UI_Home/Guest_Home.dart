@@ -121,7 +121,7 @@ class _Guest_HomeState extends State<Guest_Home> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Expanded(
               child: Row(

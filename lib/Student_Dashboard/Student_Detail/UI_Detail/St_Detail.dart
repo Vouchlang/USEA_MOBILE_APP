@@ -166,7 +166,7 @@ class _Student_DetailState extends State<Student_Detail> {
                           CircleAvatar(
                             backgroundImage: NetworkImage(
                                 getImage(widget.dataDetail[index].profile_pic)),
-                            radius: 40,
+                            radius: 50,
                           ),
                           SizedBox(
                             width: 20,
@@ -177,6 +177,8 @@ class _Student_DetailState extends State<Student_Detail> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Container(
+                                height: 25,
+                                alignment: Alignment.center,
                                 child: Text(
                                   widget.dataDetail[index].name_kh,
                                   style: TextStyle(
@@ -184,11 +186,13 @@ class _Student_DetailState extends State<Student_Detail> {
                                           .copyWith()
                                           .primaryColor,
                                       fontFamily: 'KhmerOSbattambang',
-                                      fontSize: 14,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
                               Container(
+                                height: 25,
+                                alignment: Alignment.center,
                                 child: Text(
                                   widget.dataDetail[index].name_en,
                                   style: TextStyle(
@@ -196,11 +200,13 @@ class _Student_DetailState extends State<Student_Detail> {
                                           .copyWith()
                                           .primaryColor,
                                       fontFamily: 'Poppins',
-                                      fontSize: 14,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.w500),
                                 ),
                               ),
                               Container(
+                                height: 25,
+                                alignment: Alignment.center,
                                 child: Text(
                                   widget.dataDetail[index].student_id,
                                   style: TextStyle(
@@ -208,7 +214,7 @@ class _Student_DetailState extends State<Student_Detail> {
                                           .copyWith()
                                           .primaryColor,
                                       fontFamily: 'Poppins',
-                                      fontSize: 12,
+                                      fontSize: 14,
                                       fontWeight: FontWeight.w400),
                                 ),
                               ),
