@@ -136,7 +136,7 @@ class _Out_UniversityState extends State<Out_University> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Container(
-                                    width: 75,
+                                    width: 80,
                                     alignment: Alignment.center,
                                     padding: EdgeInsets.symmetric(
                                         vertical: 5, horizontal: 5),
@@ -151,7 +151,6 @@ class _Out_UniversityState extends State<Out_University> {
                                         'អានបន្ថែម'.tr,
                                         style: TextStyle(
                                             fontSize: 12,
-                                            fontFamily: 'KhmerOSbattambang',
                                             fontWeight: FontWeight.w600,
                                             color:
                                                 Theme.of(context).primaryColor),

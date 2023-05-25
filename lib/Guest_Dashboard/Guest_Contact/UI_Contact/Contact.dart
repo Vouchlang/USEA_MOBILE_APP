@@ -35,7 +35,6 @@ class _ContactState extends State<Contact> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              // margin: EdgeInsets.only(top: 5),
                               width: 30,
                               height: 30,
                               child: Image.asset(
@@ -51,12 +50,13 @@ class _ContactState extends State<Contact> {
                                 onTap: () =>
                                     launchUrlString(contact[index].link),
                                 child: Container(
+                                  padding: EdgeInsets.only(top: 4),
                                   child: Text(
                                     contact[index].text.tr,
                                     textAlign: TextAlign.justify,
                                     style: TextStyle(
                                         fontSize: 14,
-                                        fontFamily: 'KhmerOSbattambang',
+                                        // fontFamily: 'KhmerOSbattambang',
                                         fontWeight: FontWeight.w500),
                                   ),
                                 ),

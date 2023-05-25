@@ -14,12 +14,23 @@ final List locale = [
   },
 ];
 
-class Change_Language extends StatefulWidget {
-  @override
-  State<Change_Language> createState() => _Change_LanguageState();
-}
+class Change_Language extends StatelessWidget {
+  void updateFont(Locale locale) {
+    String font = 'KhmerOSbattambang';
+    if (locale.languageCode == 'en') {
+      font = 'Poppins';
+    }
+    Get.changeTheme(
+      ThemeData(
+          primaryColor: Color(0xFF002060),
+          secondaryHeaderColor: Color(
+            (0xFFF5F7FE),
+          ),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          fontFamily: font),
+    );
+  }
 
-class _Change_LanguageState extends State<Change_Language> {
   @override
   Widget build(BuildContext context) {
     return CardWidget();
@@ -29,11 +40,18 @@ class _Change_LanguageState extends State<Change_Language> {
 class CardWidget extends StatelessWidget {
   const CardWidget({Key? key}) : super(key: key);
 
+  // void updateLanguage(Locale locale) {
+  //   Get.back();
+  //   Get.updateLocale(locale);
+  //   Change_Language().updateFont(locale);
+  // }
+
   @override
   Widget build(BuildContext context) {
     updateLanguage(Locale locale) {
       Get.back();
       Get.updateLocale(locale);
+      Change_Language().updateFont(locale);
     }
 
     return Dialog(

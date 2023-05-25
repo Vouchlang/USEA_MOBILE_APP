@@ -80,7 +80,6 @@ class _Program_Major_DetailState extends State<Program_Major_Detail_Main> {
                                 color: current == index
                                     ? Colors.white
                                     : Colors.black,
-                                fontFamily: 'KhmerOSbattambang',
                                 fontSize: 14),
                           ),
                         ),

@@ -59,7 +59,6 @@ class _AboutUSState extends State<AboutUS> {
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                         fontSize: 16,
-                                        fontFamily: 'KhmerOSbattambang',
                                         fontWeight: FontWeight.w600),
                                   ),
                                 ),

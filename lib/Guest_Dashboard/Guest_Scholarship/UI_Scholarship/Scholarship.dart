@@ -80,7 +80,6 @@ class _ScholarshipState extends State<Scholarship> {
                                 color: current == index
                                     ? Colors.white
                                     : Colors.black,
-                                fontFamily: 'KhmerOSbattambang',
                                 fontSize: 14),
                           ),
                         ),

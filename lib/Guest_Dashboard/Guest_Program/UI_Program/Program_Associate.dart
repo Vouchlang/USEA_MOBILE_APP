@@ -121,8 +121,8 @@ class _Program_AssociateState extends State<Program_Associate> {
                                 Text(
                                   pro_asso_year[index].name.tr,
                                   style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: 'KhmerOSbattambang'),
+                                    fontSize: 14,
+                                  ),
                                 )
                               ],
                             ),

@@ -119,9 +119,10 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                         up_event.upcoming_detail,
                                         textAlign: TextAlign.justify,
                                         style: TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w500,
-                                            fontFamily: 'KhmerOSBattambang'),
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w500,
+                                          fontFamily: 'KhmerOSBattambang',
+                                        ),
                                       ),
                                     ),
                                     SizedBox(

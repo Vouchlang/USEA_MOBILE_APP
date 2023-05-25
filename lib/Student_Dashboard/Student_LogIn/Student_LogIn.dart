@@ -116,10 +116,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                 children: [
                   Text(
                     'គណនីនិស្សិត'.tr,
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontFamily: 'KhmerOSbattambang',
-                        fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 10.0),
                   Text(
@@ -127,7 +124,8 @@ class _Student_LogInState extends State<Student_LogIn> {
                         .tr,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: 13.5, fontFamily: 'KhmerOSbattambang'),
+                      fontSize: 13.5,
+                    ),
                   ),
                   SizedBox(height: 20.0),
                   Divider(),
@@ -218,7 +216,6 @@ class _Student_LogInState extends State<Student_LogIn> {
                       'អត្តលេខនិស្សិត'.tr,
                       textAlign: TextAlign.left,
                       style: TextStyle(
-                        fontFamily: 'KhmerOSbattambang',
                         fontSize: 12,
                       ),
                     ),
@@ -235,9 +232,9 @@ class _Student_LogInState extends State<Student_LogIn> {
                         contentPadding: EdgeInsets.all(10),
                         hintText: '\t\tបញ្ចូលអត្តលេខ'.tr,
                         hintStyle: TextStyle(
-                            fontSize: 10,
-                            color: Colors.grey,
-                            fontFamily: 'KhmerOSbattambang'),
+                          fontSize: 10,
+                          color: Colors.grey,
+                        ),
                         border: OutlineInputBorder(),
                         suffixIcon: IconButton(
                           onPressed: () {
@@ -269,7 +266,6 @@ class _Student_LogInState extends State<Student_LogIn> {
                     child: Text(
                       'ពាក្យសម្ងាត់'.tr,
                       style: TextStyle(
-                        fontFamily: 'KhmerOSbattambang',
                         fontSize: 12,
                       ),
                     ),
@@ -287,9 +283,9 @@ class _Student_LogInState extends State<Student_LogIn> {
                         contentPadding: EdgeInsets.all(10),
                         hintText: '\t\tបញ្ចូលពាក្យសម្ងាត់'.tr,
                         hintStyle: TextStyle(
-                            fontSize: 10,
-                            color: Colors.grey,
-                            fontFamily: 'KhmerOSbattambang'),
+                          fontSize: 10,
+                          color: Colors.grey,
+                        ),
                         border: OutlineInputBorder(),
                         suffixIcon: IconButton(
                           onPressed: () {
@@ -339,10 +335,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                 ),
                 child: Text(
                   'ចូល'.tr,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'KhmerOSbattambang',
-                      fontSize: 14),
+                  style: TextStyle(color: Colors.white, fontSize: 14),
                 ),
               ),
             ),

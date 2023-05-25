@@ -44,7 +44,6 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                         style: TextStyle(
                             color: Theme.of(context).primaryColor,
                             fontSize: 14,
-                            fontFamily: 'KhmerOSbattambang',
                             fontWeight: FontWeight.w600),
                       ),
                     ),
@@ -56,7 +55,6 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                             style: TextStyle(
                                 color: Theme.of(context).primaryColor,
                                 fontSize: 14,
-                                fontFamily: 'KhmerOSbattambang',
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -69,7 +67,6 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                             style: TextStyle(
                                 color: Theme.of(context).primaryColor,
                                 fontSize: 14,
-                                fontFamily: 'KhmerOSbattambang',
                                 fontWeight: FontWeight.w600),
                           ),
                         )
@@ -155,7 +152,6 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                         style: TextStyle(
                           color: Theme.of(context).primaryColor,
                           fontSize: 14,
-                          fontFamily: 'KhmerOSbattambang',
                         ),
                       ),
                     ),

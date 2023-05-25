@@ -123,8 +123,8 @@ class _Program_BachelorState extends State<Program_Bachelor> {
                                 Text(
                                   pro_bach_year[index].name.tr,
                                   style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: 'KhmerOSbattambang'),
+                                    fontSize: 14,
+                                  ),
                                 )
                               ],
                             ),

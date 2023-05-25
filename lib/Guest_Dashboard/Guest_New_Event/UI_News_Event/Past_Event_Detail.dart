@@ -53,9 +53,10 @@ class Past_Event_Detail extends StatelessWidget {
                   data.past_title,
                   textAlign: TextAlign.justify,
                   style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: 'KhmerOSbattambang'),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'KhmerOSbattambang',
+                  ),
                 ),
               ),
               SizedBox(
@@ -69,7 +70,9 @@ class Past_Event_Detail extends StatelessWidget {
                     data.past_desc,
                     textAlign: TextAlign.justify,
                     style: TextStyle(
-                        fontSize: 12, fontFamily: 'KhmerOSbattambang'),
+                      fontSize: 12,
+                      fontFamily: 'KhmerOSbattambang',
+                    ),
                   ),
                 ),
               ),

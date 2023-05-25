@@ -12,6 +12,7 @@ void main() {
   runApp(
     new GetMaterialApp(
       theme: ThemeData(
+        fontFamily: 'KhmerOSbattambang',
         primaryColor: Color(0xFF002060),
         secondaryHeaderColor: Color(
           (0xFFF5F7FE),

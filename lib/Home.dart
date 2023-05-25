@@ -42,8 +42,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             unselectedItemColor: Colors.grey,
             selectedFontSize: 11,
             unselectedFontSize: 11,
-            selectedLabelStyle: TextStyle(fontFamily: 'KhmerOSbattambang'),
-            unselectedLabelStyle: TextStyle(fontFamily: 'KhmerOSbattambang'),
             items: [
               BottomNavigationBarItem(
                 icon: Icon(

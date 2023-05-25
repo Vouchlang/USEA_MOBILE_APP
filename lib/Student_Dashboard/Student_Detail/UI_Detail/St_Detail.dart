@@ -34,20 +34,16 @@ class _Student_DetailState extends State<Student_Detail> {
               children: [
                 Text(
                   'ចាកចេញ'.tr,
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'KhmerOSbattambang',
-                      fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   height: 5,
                 ),
                 Text(
-                  'តើអ្នកប្រាកដថាអ្នកនឹងចាកចេញពីគណនីសិស្សដែរឬទេ?'.tr,
+                  'តើអ្នកប្រាកដថាអ្នកនឹងចាកចេញពីគណនីនិសិ្សតដែរឬទេ?'.tr,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 14,
-                    fontFamily: 'KhmerOSbattambang',
                   ),
                 ),
                 SizedBox(
@@ -62,10 +58,9 @@ class _Student_DetailState extends State<Student_Detail> {
                     children: [
                       TextButton(
                         child: Text(
-                          'បោះបង់',
+                          'បោះបង់'.tr,
                           style: TextStyle(
                             color: Theme.of(context).primaryColor,
-                            fontFamily: 'KhmerOSbattambang',
                           ),
                         ),
                         onPressed: () {
@@ -75,10 +70,9 @@ class _Student_DetailState extends State<Student_Detail> {
                       VerticalDivider(),
                       TextButton(
                         child: Text(
-                          'ចាកចេញ',
+                          'ចាកចេញ'.tr,
                           style: TextStyle(
                             color: Colors.red,
-                            fontFamily: 'KhmerOSbattambang',
                           ),
                         ),
                         onPressed: () async {
@@ -116,7 +110,6 @@ class _Student_DetailState extends State<Student_Detail> {
           style: TextStyle(
             color: Theme.of(context).primaryColor,
             fontSize: 18,
-            fontFamily: 'KhmerOSbattambang',
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -231,7 +224,6 @@ class _Student_DetailState extends State<Student_Detail> {
                             Text(
                               'ឆ្នាំ'.tr,
                               style: TextStyle(
-                                  fontFamily: 'KhmerOSbattambang',
                                   fontSize: 12,
                                   color: Theme.of(context)
                                       .copyWith()
@@ -260,7 +252,6 @@ class _Student_DetailState extends State<Student_Detail> {
                             Text(
                               'ឆមាស'.tr,
                               style: TextStyle(
-                                  fontFamily: 'KhmerOSbattambang',
                                   fontSize: 12,
                                   color: Theme.of(context)
                                       .copyWith()
@@ -289,7 +280,6 @@ class _Student_DetailState extends State<Student_Detail> {
                             Text(
                               'ជំនាន់'.tr,
                               style: TextStyle(
-                                  fontFamily: 'KhmerOSbattambang',
                                   fontSize: 12,
                                   color: Theme.of(context)
                                       .copyWith()
@@ -318,7 +308,6 @@ class _Student_DetailState extends State<Student_Detail> {
                             Text(
                               'វគ្គ'.tr,
                               style: TextStyle(
-                                  fontFamily: 'KhmerOSbattambang',
                                   fontSize: 12,
                                   color: Theme.of(context)
                                       .copyWith()
@@ -347,7 +336,6 @@ class _Student_DetailState extends State<Student_Detail> {
                             Text(
                               'ឆ្នាំមូលដ្ឋាន'.tr,
                               style: TextStyle(
-                                  fontFamily: 'KhmerOSbattambang',
                                   fontSize: 12,
                                   color: Theme.of(context)
                                       .copyWith()
@@ -387,11 +375,11 @@ class _Student_DetailState extends State<Student_Detail> {
                                     Text(
                                       'មហាវិទ្យាល័យ'.tr,
                                       style: TextStyle(
-                                          color: Theme.of(context)
-                                              .copyWith()
-                                              .primaryColor,
-                                          fontSize: 12,
-                                          fontFamily: 'KhmerOSbattambang'),
+                                        color: Theme.of(context)
+                                            .copyWith()
+                                            .primaryColor,
+                                        fontSize: 12,
+                                      ),
                                     ),
                                     Text(
                                       widget.dataDetail[index].faculty_name,
@@ -419,11 +407,11 @@ class _Student_DetailState extends State<Student_Detail> {
                                     Text(
                                       'កម្រិតសិក្សា'.tr,
                                       style: TextStyle(
-                                          color: Theme.of(context)
-                                              .copyWith()
-                                              .primaryColor,
-                                          fontSize: 12,
-                                          fontFamily: 'KhmerOSbattambang'),
+                                        color: Theme.of(context)
+                                            .copyWith()
+                                            .primaryColor,
+                                        fontSize: 12,
+                                      ),
                                     ),
                                     Text(
                                       widget.dataDetail[index].degree_name,
@@ -451,11 +439,11 @@ class _Student_DetailState extends State<Student_Detail> {
                                     Text(
                                       'មុខជំនាញ'.tr,
                                       style: TextStyle(
-                                          color: Theme.of(context)
-                                              .copyWith()
-                                              .primaryColor,
-                                          fontSize: 12,
-                                          fontFamily: 'KhmerOSbattambang'),
+                                        color: Theme.of(context)
+                                            .copyWith()
+                                            .primaryColor,
+                                        fontSize: 12,
+                                      ),
                                     ),
                                     Text(
                                       widget.dataDetail[index].major_name,
@@ -483,11 +471,11 @@ class _Student_DetailState extends State<Student_Detail> {
                                     Text(
                                       'បន្ទប់សិក្សា'.tr,
                                       style: TextStyle(
-                                          color: Theme.of(context)
-                                              .copyWith()
-                                              .primaryColor,
-                                          fontSize: 12,
-                                          fontFamily: 'KhmerOSbattambang'),
+                                        color: Theme.of(context)
+                                            .copyWith()
+                                            .primaryColor,
+                                        fontSize: 12,
+                                      ),
                                     ),
                                     Text(
                                       widget.dataDetail[index].room_name,
@@ -515,11 +503,11 @@ class _Student_DetailState extends State<Student_Detail> {
                                     Text(
                                       'វេនសិក្សា'.tr,
                                       style: TextStyle(
-                                          color: Theme.of(context)
-                                              .copyWith()
-                                              .primaryColor,
-                                          fontSize: 12,
-                                          fontFamily: 'KhmerOSbattambang'),
+                                        color: Theme.of(context)
+                                            .copyWith()
+                                            .primaryColor,
+                                        fontSize: 12,
+                                      ),
                                     ),
                                     Text(
                                       widget.dataDetail[index].shift_name,
@@ -547,11 +535,11 @@ class _Student_DetailState extends State<Student_Detail> {
                                     Text(
                                       'ស្ថានភាពសិក្សា'.tr,
                                       style: TextStyle(
-                                          color: Theme.of(context)
-                                              .copyWith()
-                                              .primaryColor,
-                                          fontSize: 12,
-                                          fontFamily: 'KhmerOSbattambang'),
+                                        color: Theme.of(context)
+                                            .copyWith()
+                                            .primaryColor,
+                                        fontSize: 12,
+                                      ),
                                     ),
                                     Text(
                                       widget.dataDetail[index].status_name,
@@ -579,11 +567,11 @@ class _Student_DetailState extends State<Student_Detail> {
                                     Text(
                                       'ថ្ងៃកំណើត'.tr,
                                       style: TextStyle(
-                                          color: Theme.of(context)
-                                              .copyWith()
-                                              .primaryColor,
-                                          fontSize: 12,
-                                          fontFamily: 'KhmerOSbattambang'),
+                                        color: Theme.of(context)
+                                            .copyWith()
+                                            .primaryColor,
+                                        fontSize: 12,
+                                      ),
                                     ),
                                     Text(
                                       widget.dataDetail[index].date_of_birth,
@@ -611,11 +599,11 @@ class _Student_DetailState extends State<Student_Detail> {
                                     Text(
                                       'លេខទូរស័ព្ទ'.tr,
                                       style: TextStyle(
-                                          color: Theme.of(context)
-                                              .copyWith()
-                                              .primaryColor,
-                                          fontSize: 12,
-                                          fontFamily: 'KhmerOSbattambang'),
+                                        color: Theme.of(context)
+                                            .copyWith()
+                                            .primaryColor,
+                                        fontSize: 12,
+                                      ),
                                     ),
                                     Text(
                                       widget.dataDetail[index].phone_number,
@@ -643,11 +631,11 @@ class _Student_DetailState extends State<Student_Detail> {
                                     Text(
                                       'មុខតំណែង'.tr,
                                       style: TextStyle(
-                                          color: Theme.of(context)
-                                              .copyWith()
-                                              .primaryColor,
-                                          fontSize: 12,
-                                          fontFamily: 'KhmerOSbattambang'),
+                                        color: Theme.of(context)
+                                            .copyWith()
+                                            .primaryColor,
+                                        fontSize: 12,
+                                      ),
                                     ),
                                     Text(
                                       widget.dataDetail[index].job,
@@ -675,11 +663,11 @@ class _Student_DetailState extends State<Student_Detail> {
                                     Text(
                                       'ស្ថាប័ន'.tr,
                                       style: TextStyle(
-                                          color: Theme.of(context)
-                                              .copyWith()
-                                              .primaryColor,
-                                          fontSize: 12,
-                                          fontFamily: 'KhmerOSbattambang'),
+                                        color: Theme.of(context)
+                                            .copyWith()
+                                            .primaryColor,
+                                        fontSize: 12,
+                                      ),
                                     ),
                                     Text(
                                       widget.dataDetail[index].work_place,
