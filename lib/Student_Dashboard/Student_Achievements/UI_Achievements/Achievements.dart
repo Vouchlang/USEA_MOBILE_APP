@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../Custom_AppBar.dart';
+import 'Components/Card_achievements.dart';
 
 class Achievements extends StatefulWidget {
   const Achievements({super.key});
@@ -16,6 +17,17 @@ class _AchievementsState extends State<Achievements> {
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'សម្មិទ្ធផល'.tr),
+      body: ListView(
+        shrinkWrap: true,
+        physics: ScrollPhysics(),
+        children: [
+          Column(
+            children: [
+              const CardAchievements(),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

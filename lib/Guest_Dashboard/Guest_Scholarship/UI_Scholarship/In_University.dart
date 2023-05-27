@@ -143,6 +143,11 @@ class _In_UniversityState extends State<In_University> {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       color: Color(0x142D74F5),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Color(0x142D74F5),
+                                        ),
+                                      ],
                                     ),
                                     child: InkWell(
                                       onTap: () => launchUrlString(

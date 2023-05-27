@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usea_app/Custom_AppBar.dart';
 
+import 'Components/Card_studyinfo.dart';
+
 class Study_Info extends StatefulWidget {
   const Study_Info({super.key});
 
@@ -15,6 +17,17 @@ class _Study_InfoState extends State<Study_Info> {
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'ព័ត៌មានការសិក្សា'.tr),
+      body: ListView(
+        children: [
+          Column(
+            children: [
+              SizedBox(
+                child: const StudyInformationCards(),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
