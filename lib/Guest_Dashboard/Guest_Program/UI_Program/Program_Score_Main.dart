@@ -79,7 +79,7 @@ class _Program_Score_MainState extends State<Program_Score_Main> {
                                 color: current == index
                                     ? Colors.white
                                     : Colors.black,
-                                fontFamily: 'KhmerOSbattambang',
+                                // fontFamily: 'KhmerOSbattambang',
                                 fontSize: 14),
                           ),
                         ),

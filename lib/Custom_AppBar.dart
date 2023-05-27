@@ -13,7 +13,7 @@ class Custom_AppBar extends StatelessWidget implements PreferredSizeWidget {
         style: TextStyle(
           color: Theme.of(context).primaryColor,
           fontSize: 18,
-          fontFamily: 'KhmerOSbattambang',
+          // fontFamily: 'KhmerOSbattambang',
           fontWeight: FontWeight.w600,
         ),
       ),

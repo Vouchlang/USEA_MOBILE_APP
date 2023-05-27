@@ -22,7 +22,6 @@ class _ProgramState extends State<Program> {
             style: TextStyle(
               color: Theme.of(context).primaryColor,
               fontSize: 18,
-              fontFamily: 'KhmerOSbattambang',
               fontWeight: FontWeight.w600,
             )),
         backgroundColor: Colors.white,
@@ -112,10 +111,7 @@ class ProgramWidget extends StatelessWidget {
                 Text(
                   title.tr,
                   textAlign: TextAlign.justify,
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: 'KhmerOSbattambang',
-                      color: Colors.black),
+                  style: TextStyle(fontSize: 14, color: Colors.black),
                 ),
                 Icon(
                   Icons.arrow_forward_ios,
@@ -159,7 +155,6 @@ class ProgramWidget extends StatelessWidget {
                       textAlign: TextAlign.left,
                       style: TextStyle(
                           fontSize: 14,
-                          fontFamily: 'KhmerOSbattambang',
                           fontWeight: FontWeight.w600,
                           color: Colors.black),
                     ),

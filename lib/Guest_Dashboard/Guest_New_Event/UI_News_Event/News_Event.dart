@@ -80,7 +80,6 @@ class _New_EventState extends State<New_Event> {
                                 color: current == index
                                     ? Colors.white
                                     : Colors.black,
-                                fontFamily: 'KhmerOSbattambang',
                                 fontSize: 14),
                           ),
                         ),

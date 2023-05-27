@@ -279,8 +279,8 @@ class _Student_HomeState extends State<Student_Home> {
                             Text(
                               home_screen[index].name.tr,
                               style: TextStyle(
-                                  fontSize: 14,
-                                  fontFamily: 'KhmerOSbattambang'),
+                                fontSize: 14,
+                              ),
                             )
                           ],
                         ),

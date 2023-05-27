@@ -61,7 +61,7 @@ class _RecognitionState extends State<Recognition> {
                               onTap: () =>
                                   launchUrlString(recognition[index].link),
                               child: Container(
-                                width: 75,
+                                width: 80,
                                 alignment: Alignment.center,
                                 padding: EdgeInsets.symmetric(
                                     vertical: 5, horizontal: 5),
@@ -73,7 +73,6 @@ class _RecognitionState extends State<Recognition> {
                                   'អានបន្ថែម'.tr,
                                   style: TextStyle(
                                       fontSize: 12,
-                                      fontFamily: 'KhmerOSbattambang',
                                       fontWeight: FontWeight.w600,
                                       color: Theme.of(context).primaryColor),
                                 ),

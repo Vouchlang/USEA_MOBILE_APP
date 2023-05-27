@@ -86,6 +86,9 @@ class LocaleString extends Translations {
           'ភាសាខ្មែរ': 'ភាសាខ្មែរ',
           'ភាសាអង់គ្លេស': 'ភាសាអង់គ្លេស',
 
+          // Notification
+          'ព័ត៌មានថ្មីៗ': 'ព័ត៌មានថ្មីៗ',
+
           // Account
           'គណនីនិស្សិត': 'គណនីនិស្សិត',
           'គណនីអាណាព្យាបាល': 'គណនីអាណាព្យាបាល',
@@ -132,12 +135,16 @@ class LocaleString extends Translations {
           'មុខតំណែង': 'មុខតំណែង',
           'ស្ថាប័ន': 'ស្ថាប័ន',
 
+          // Student Log out
+          'ចាកចេញ': 'ចាកចេញ',
+          'តើអ្នកប្រាកដថាអ្នកនឹងចាកចេញពីគណនីនិសិ្សតដែរឬទេ?':
+              'តើអ្នកប្រាកដថាអ្នកនឹងចាកចេញពីគណនីនិសិ្សតដែរឬទេ?',
+          'បោះបង់': 'បោះបង់',
+
           // Student Job History
           'កាលបរិច្ឆេទចូលបម្រើការងារ​\t\t\t\t\t':
               'កាលបរិច្ឆេទចូលបម្រើការងារ​\t\t\t\t\t',
           'ស្ថានភាពការងារ': 'ស្ថានភាពការងារ',
-          'ស្ថាប័ន': 'ស្ថាប័ន',
-          'មុខតំណែង': 'មុខតំណែង',
           'ប្រាក់បៀវត្ស': 'ប្រាក់បៀវត្ស',
         },
         'en_US': {
@@ -222,6 +229,9 @@ class LocaleString extends Translations {
           'ភាសាខ្មែរ': 'KHMER',
           'ភាសាអង់គ្លេស': 'ENGLISH',
 
+          // Notification
+          'ព័ត៌មានថ្មីៗ': 'Notification',
+
           // Account
           'គណនីនិស្សិត': 'Student Account',
           'គណនីអាណាព្យាបាល': 'Guardian Account',
@@ -268,11 +278,15 @@ class LocaleString extends Translations {
           'មុខតំណែង': 'Position',
           'ស្ថាប័ន': 'Institutions',
 
+          // Student Log out
+          'ចាកចេញ': 'Log out',
+          'តើអ្នកប្រាកដថាអ្នកនឹងចាកចេញពីគណនីនិសិ្សតដែរឬទេ?':
+              'Are you sure you want to log out student account?',
+          'បោះបង់': 'Cancel',
+
           // Student Job History
           'កាលបរិច្ឆេទចូលបម្រើការងារ​\t\t\t\t\t': 'Date of entry\t\t\t\t\t',
           'ស្ថានភាពការងារ': 'Working Status',
-          'ស្ថាប័ន': 'Institutions',
-          'មុខតំណែង': 'Position',
           'ប្រាក់បៀវត្ស': 'Salary',
         },
       };

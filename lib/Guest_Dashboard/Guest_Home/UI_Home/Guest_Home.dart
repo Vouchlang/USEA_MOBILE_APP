@@ -290,8 +290,8 @@ class _Guest_HomeState extends State<Guest_Home> {
                             Text(
                               home_screen[index].name.tr,
                               style: TextStyle(
-                                  fontSize: 14,
-                                  fontFamily: 'KhmerOSbattambang'),
+                                fontSize: 14,
+                              ),
                             ),
                           ],
                         ),

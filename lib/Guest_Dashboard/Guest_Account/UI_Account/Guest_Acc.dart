@@ -175,8 +175,8 @@ class Guest_AccState extends State<Guest_Acc> {
                               Text(
                                 account_screen[index].name.tr,
                                 style: TextStyle(
-                                    fontSize: 12,
-                                    fontFamily: 'KhmerOSbattambang'),
+                                  fontSize: 12,
+                                ),
                               )
                             ],
                           ),

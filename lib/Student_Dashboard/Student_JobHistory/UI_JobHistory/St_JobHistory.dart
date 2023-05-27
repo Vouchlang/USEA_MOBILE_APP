@@ -41,7 +41,7 @@ class Job_History extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
-                                fontFamily: 'KhmerOSbattambang',
+                                // fontFamily: 'KhmerOSbattambang',
                               ),
                             ),
                           ],
@@ -55,7 +55,7 @@ class Job_History extends StatelessWidget {
                                 'ស្ថានភាពការងារ'.tr,
                                 style: TextStyle(
                                   fontSize: 14,
-                                  fontFamily: 'KhmerOSbattambang',
+                                  // fontFamily: 'KhmerOSbattambang',
                                 ),
                               ),
                             ),
@@ -77,7 +77,7 @@ class Job_History extends StatelessWidget {
                                 'ស្ថាប័ន'.tr,
                                 style: TextStyle(
                                   fontSize: 14,
-                                  fontFamily: 'KhmerOSbattambang',
+                                  // fontFamily: 'KhmerOSbattambang',
                                 ),
                               ),
                             ),
@@ -101,7 +101,7 @@ class Job_History extends StatelessWidget {
                                 'មុខតំណែង'.tr,
                                 style: TextStyle(
                                   fontSize: 14,
-                                  fontFamily: 'KhmerOSbattambang',
+                                  // fontFamily: 'KhmerOSbattambang',
                                 ),
                               ),
                             ),
@@ -125,7 +125,7 @@ class Job_History extends StatelessWidget {
                                 'ប្រាក់បៀវត្ស'.tr,
                                 style: TextStyle(
                                   fontSize: 14,
-                                  fontFamily: 'KhmerOSbattambang',
+                                  // fontFamily: 'KhmerOSbattambang',
                                 ),
                               ),
                             ),
