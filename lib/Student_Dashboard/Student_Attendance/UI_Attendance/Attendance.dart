@@ -42,13 +42,12 @@ class _AttendanceState extends State<Attendance> {
                         color: Colors.green,
                         size: 13.0,
                       ),
-                      label: const Text(
+                      label: Text(
                         'វត្តមាន',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 13,
-                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
@@ -59,7 +58,7 @@ class _AttendanceState extends State<Attendance> {
                         size: 13.0,
                         color: Colors.orangeAccent,
                       ),
-                      label: const Text(
+                      label: Text(
                         'យឺត',
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -136,7 +135,8 @@ class _AttendanceState extends State<Attendance> {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xffE8F0FE),
+                        backgroundColor:
+                            Theme.of(context).copyWith().secondaryHeaderColor,
                       ),
                       child: const Text(
                         'មើលទាំងអស់',

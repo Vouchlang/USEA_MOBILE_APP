@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../Custom_AppBar.dart';
 
+import '../../../Custom_Widget/CustomText.dart';
+import '../../../theme_builder.dart';
 import '../Class_JobHistory/Class_Job_History.dart';
 
 class Job_History extends StatelessWidget {
@@ -41,7 +43,6 @@ class Job_History extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
-                                // fontFamily: 'KhmerOSbattambang',
                               ),
                             ),
                           ],
@@ -55,7 +56,6 @@ class Job_History extends StatelessWidget {
                                 'ស្ថានភាពការងារ'.tr,
                                 style: TextStyle(
                                   fontSize: 14,
-                                  // fontFamily: 'KhmerOSbattambang',
                                 ),
                               ),
                             ),
@@ -77,7 +77,6 @@ class Job_History extends StatelessWidget {
                                 'ស្ថាប័ន'.tr,
                                 style: TextStyle(
                                   fontSize: 14,
-                                  // fontFamily: 'KhmerOSbattambang',
                                 ),
                               ),
                             ),
@@ -101,7 +100,6 @@ class Job_History extends StatelessWidget {
                                 'មុខតំណែង'.tr,
                                 style: TextStyle(
                                   fontSize: 14,
-                                  // fontFamily: 'KhmerOSbattambang',
                                 ),
                               ),
                             ),
@@ -109,9 +107,8 @@ class Job_History extends StatelessWidget {
                               child: Text(
                                 data_jobhistory[index].position,
                                 style: TextStyle(
-                                  fontSize: 14,
-                                  fontFamily: 'KhmerOSbattambang',
-                                ),
+                                    fontSize: 14,
+                                    fontFamily: 'KhmerOSbattambang'),
                               ),
                             ),
                           ],
@@ -125,7 +122,6 @@ class Job_History extends StatelessWidget {
                                 'ប្រាក់បៀវត្ស'.tr,
                                 style: TextStyle(
                                   fontSize: 14,
-                                  // fontFamily: 'KhmerOSbattambang',
                                 ),
                               ),
                             ),
@@ -133,7 +129,6 @@ class Job_History extends StatelessWidget {
                               data_jobhistory[index].salary,
                               style: TextStyle(
                                 fontSize: 14,
-                                fontFamily: 'KhmerOSbattambang',
                               ),
                             ),
                           ],
