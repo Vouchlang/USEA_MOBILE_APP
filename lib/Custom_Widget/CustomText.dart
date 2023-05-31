@@ -24,6 +24,29 @@ class TitleTheme extends StatelessWidget {
   }
 }
 
+class NormalTitleTheme extends StatelessWidget {
+  final String text;
+
+  const NormalTitleTheme({
+    super.key,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text(
+        text,
+        style: const TextStyle(
+          fontSize: UTitleSize,
+          fontWeight: UTitleWeight,
+          color: UTextColor,
+        ),
+      ),
+    );
+  }
+}
+
 class BodyTheme extends StatelessWidget {
   final String text;
 
