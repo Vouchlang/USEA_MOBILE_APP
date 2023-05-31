@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usea_app/Custom_AppBar.dart';
+import 'package:usea_app/theme_builder.dart';
 
 import 'Components/Card_payment.dart';
 
@@ -12,6 +13,30 @@ class Payment extends StatefulWidget {
 }
 
 class _PaymentState extends State<Payment> {
+  Widget buildTitle(String text, Widget widget) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+          child: Container(
+            child: Text(
+              text.tr,
+              style: TextStyle(
+                color: UPrimaryColor,
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          child: widget,
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,95 +44,11 @@ class _PaymentState extends State<Payment> {
       appBar: Custom_AppBar(title: 'ការបង់ប្រាក់'.tr),
       body: ListView(
         children: [
-          /// ! ការបង់ថ្លៃឈ្នួលសិក្សា
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  child: Text(
-                    'ការបង់ថ្លៃឈ្នួលសិក្សា',
-                    style: TextStyle(
-                      color: Color(0xff002060),
-                      fontSize: 14,
-                      fontFamily: 'KhmerOSbattambang',
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                child: const PaymentCards(),
-              ),
-            ],
-          ),
-
-          /// ! ការបង់ថ្លៃឈ្នួលប្រឡងឡើងវិញ
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  child: Text(
-                    'ការបង់ថ្លៃឈ្នួលប្រឡងឡើងវិញ',
-                    style: TextStyle(
-                      color: Color(0xff002060),
-                      fontSize: 14,
-                      fontFamily: 'KhmerOSbattambang',
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                child: const PaymentCards2(),
-              ),
-            ],
-          ),
-
-          /// ! ការបង់ថ្លៃឈ្នួលរៀនបំពេញក្រេឌីត
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                margin: EdgeInsets.all(10),
-                child: Text(
-                  'ការបង់ថ្លៃឈ្នួលរៀនបំពេញក្រេឌីត',
-                  style: TextStyle(
-                    color: Color(0xff002060),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-              SizedBox(
-                child: const PaymentCards3(),
-              ),
-            ],
-          ),
-
-          /// ! ការបង់ថ្លៃឈ្នួលដកលិខិតបញ្ជាក់ការសិក្សាផ្សេងៗ
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                margin: EdgeInsets.all(10),
-                child: Text(
-                  'ការបង់ថ្លៃឈ្នួលដកលិខិតបញ្ជាក់ការសិក្សាផ្សេងៗ',
-                  style: TextStyle(
-                    color: Color(0xff002060),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-              SizedBox(
-                child: const PaymentCards4(),
-              ),
-            ],
-          ),
+          buildTitle('ការបង់ថ្លៃឈ្នួលសិក្សា', PaymentCards()),
+          buildTitle('ការបង់ថ្លៃឈ្នួលប្រឡងឡើងវិញ', PaymentCards2()),
+          buildTitle('ការបង់ថ្លៃឈ្នួលរៀនបំពេញក្រេឌីត', PaymentCards3()),
+          buildTitle(
+              'ការបង់ថ្លៃឈ្នួលដកលិខិតបញ្ជាក់ការសិក្សាផ្សេងៗ', PaymentCards4()),
         ],
       ),
     );

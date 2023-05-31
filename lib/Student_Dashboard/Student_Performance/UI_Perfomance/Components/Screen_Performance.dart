@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../Data/Data_performance.dart';
 import 'Dialog_performance.dart';
 
@@ -50,52 +51,44 @@ class Card_learning_pro_1 extends StatelessWidget {
                       children: [
                         Container(
                           child: Text(
-                            "ឆមាសទី ១",
+                            "ឆមាសទី ១".tr,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Color(0xff002060),
                               fontSize: 16,
-                              fontFamily: 'KhmerOSbattambang',
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 140,
                         ),
                         Container(
-                          child: Text(
-                            'វត្តមាន',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Color(0xff002060),
-                              fontSize: 16,
-                              fontFamily: 'KhmerOSbattambang',
-                              fontWeight: FontWeight.w600,
-                            ),
+                          padding: EdgeInsets.only(right: 15),
+                          child: Row(
+                            children: [
+                              Text(
+                                'វត្តមាន'.tr,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Color(0xff002060),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              VerticalDivider(
+                                color: Colors.grey,
+                                width: 25,
+                              ),
+                              Text(
+                                'ពិន្ទុ'.tr,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Color(0xff002060),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                        VerticalDivider(
-                          color: Colors.black,
-                          width: 0,
-                          thickness: 0.5,
-                        ),
-                        Container(
-                          margin: EdgeInsets.symmetric(
-                            horizontal: 8.0,
-                            vertical: 0.0,
-                          ),
-                          child: Text(
-                            'ពិន្ទុ',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Color(0xff002060),
-                              fontSize: 16,
-                              fontFamily: 'KhmerOSbattambang',
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
+                        )
                       ],
                     ),
                   ),

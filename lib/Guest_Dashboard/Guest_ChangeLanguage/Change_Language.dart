@@ -81,12 +81,12 @@ class ChangeLanguage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Language',
+              'ភាសា'.tr,
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 5),
             Text(
-              'Please select a language',
+              'សូមជ្រើសរើសភាសា'.tr,
               style: TextStyle(fontSize: 14),
             ),
             SizedBox(height: 5),

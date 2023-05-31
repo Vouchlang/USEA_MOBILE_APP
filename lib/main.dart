@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'Splash_Screen.dart';
 import 'Home.dart';
 import 'Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
+import 'Student_Dashboard/Student_Attendance/UI_Attendance/Attendance.dart';
+import 'Student_Dashboard/Student_Payment/UI_Payment/Payment.dart';
 import 'localeString.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -27,6 +29,7 @@ void main() async {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: new Home(),
+      // home: new Payment(),
       translations: LocaleString(),
       locale: Locale(languageCode),
       fallbackLocale: Locale('en', 'US'),

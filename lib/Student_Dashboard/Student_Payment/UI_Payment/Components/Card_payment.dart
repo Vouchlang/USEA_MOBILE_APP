@@ -1,8 +1,40 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:usea_app/theme_builder.dart';
 
-import '../Data/Data_payment.dart';
+import '../../../Student_Performance/UI_Perfomance/Components/Dialog_performance.dart';
+import '../../Class_Payment/Class_Payment.dart';
+
+Widget buildHeaderTitle(double num, String text) {
+  return SizedBox(
+    width: num,
+    child: Text(
+      text.tr,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        color: UPrimaryColor,
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+      ),
+    ),
+  );
+}
+
+Widget buildBody(double num, String text, Color color) {
+  return SizedBox(
+    width: num,
+    child: Text(
+      textAlign: TextAlign.center,
+      text.tr,
+      style: TextStyle(
+        fontSize: 12,
+        color: color,
+      ),
+    ),
+  );
+}
 
 /// ! card one
 class PaymentCards extends StatelessWidget {
@@ -11,11 +43,12 @@ class PaymentCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
+        Container(
+          padding: const EdgeInsets.all(5.0),
           child: Card(
-            elevation: 2,
+            elevation: 1,
             shape: RoundedRectangleBorder(
               side: BorderSide(
                 color: Color.fromARGB(255, 209, 209, 209),
@@ -28,86 +61,36 @@ class PaymentCards extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 IntrinsicHeight(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
+                  child: Container(
+                    padding: EdgeInsets.all(10.0),
 
                     /// ! Header Title
                     child: Row(
-                      children: const [
-                        SizedBox(
-                          width: 40,
-                          child: Text(
-                            'ឆ្នាំ',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontFamily: 'KhmerOSbattambang',
-                              color: Color(0xff002060),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        buildHeaderTitle(45, 'ឆ្នាំ'),
                         VerticalDivider(
                           thickness: 0.5,
                           color: Colors.grey,
-                          width: 45,
                         ),
-                        SizedBox(
-                          width: 55,
-                          child: Text(
-                            'ទឹកប្រាក់ត្រូវបង់',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontFamily: 'KhmerOSbattambang',
-                              color: Color(0xff002060),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
+                        buildHeaderTitle(55, 'ទឹកប្រាក់ត្រូវបង់'),
                         VerticalDivider(
                           thickness: 0.5,
                           color: Colors.grey,
-                          width: 45,
                         ),
-                        SizedBox(
-                          width: 55,
-                          child: Text(
-                            'ទឹកប្រាក់បានបង់',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontFamily: 'KhmerOSbattambang',
-                              color: Color(0xff002060),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
+                        buildHeaderTitle(55, 'ទឹកប្រាក់បានបង់'),
                         VerticalDivider(
                           thickness: 0.5,
                           color: Colors.grey,
-                          width: 45,
                         ),
-                        SizedBox(
-                          width: 55,
-                          child: Text(
-                            'ទឹកប្រាក់នៅសល់',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontFamily: 'KhmerOSbattambang',
-                              color: Color(0xff002060),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
+                        buildHeaderTitle(55, 'ទឹកប្រាក់នៅសល់'),
                       ],
                     ),
                   ),
                 ),
 
                 Divider(
-                  thickness: 0.3,
+                  thickness: 0.5,
                   color: Colors.grey,
                 ),
 
@@ -123,100 +106,57 @@ class PaymentCards extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.all(8.0),
                             child: IntrinsicHeight(
                               child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 children: [
-                                  /// ! Year
-                                  SizedBox(
-                                    width: 50,
-                                    child: Text(
-                                      textAlign: TextAlign.center,
-                                      paymentData[index].yearPayment,
-                                      style: TextStyle(
-                                        fontFamily: 'KhmerOSbattambang',
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 14,
-                                        color: Color(0xff000000),
-                                      ),
-                                    ),
-                                  ),
-
-                                  Container(
-                                    margin: EdgeInsets.symmetric(
-                                        horizontal: 14, vertical: 0),
-                                    height: 30,
-                                    width: 1,
+                                  buildBody(45, paymentData[index].yearPayment,
+                                      UTextColor),
+                                  VerticalDivider(
+                                    thickness: 0.5,
                                     color: Colors.grey,
                                   ),
-
-                                  /// ! Amount to be pay
-                                  SizedBox(
-                                    width: 65,
-                                    child: Text(
-                                      textAlign: TextAlign.center,
-                                      paymentData[index].amountToPaid,
-                                      style: TextStyle(
-                                        fontFamily: 'KhmerOSbattambang',
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 14,
-                                        color: Color(0xff000000),
-                                      ),
-                                    ),
-                                  ),
-
-                                  Container(
-                                    margin: EdgeInsets.symmetric(
-                                        horizontal: 20, vertical: 0),
-                                    height: 30,
-                                    width: 1,
+                                  buildBody(55, paymentData[index].amountToPaid,
+                                      UTextColor),
+                                  VerticalDivider(
+                                    thickness: 0.5,
                                     color: Colors.grey,
                                   ),
-
-                                  /// ! Amount paid
-                                  SizedBox(
-                                    width: 60,
-                                    child: Text(
-                                      textAlign: TextAlign.center,
-                                      paymentData[index].amountPaid,
-                                      style: TextStyle(
-                                        fontFamily: 'KhmerOSbattambang',
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 14,
-                                        color: Color(0xff000000),
-                                      ),
-                                    ),
-                                  ),
-
-                                  Container(
-                                    margin: EdgeInsets.symmetric(
-                                        horizontal: 20, vertical: 0),
-                                    height: 30,
-                                    width: 1,
+                                  buildBody(55, paymentData[index].amountPaid,
+                                      UTextColor),
+                                  VerticalDivider(
+                                    thickness: 0.5,
                                     color: Colors.grey,
                                   ),
-
-                                  /// ! Amount balance
-                                  Container(
-                                    alignment: Alignment.center,
-                                    width: 50,
+                                  InkWell(
+                                    onTap: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) =>
+                                            const CustomDialogWidget(),
+                                      );
+                                    },
                                     child: Container(
-                                      decoration: BoxDecoration(
-                                        border: Border(
-                                          bottom: BorderSide(
-                                            color: Colors.red,
-                                            width: 1.0,
+                                      alignment: Alignment.center,
+                                      width: 55,
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          border: Border(
+                                            bottom: BorderSide(
+                                              color: Colors.red,
+                                              width: 1.0,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      child: Text(
-                                        paymentData[index].balance,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontFamily: 'KhmerOSbattambang',
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: Color(0xffff0000),
+                                        child: Text(
+                                          paymentData[index].balance,
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: URedColor,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -253,7 +193,7 @@ class PaymentCards2 extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(7.0),
+          padding: const EdgeInsets.all(5.0),
           child: Card(
             elevation: 2,
             shape: RoundedRectangleBorder(
@@ -264,110 +204,41 @@ class PaymentCards2 extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: IntrinsicHeight(
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-
-                      /// ! Header Title2
-                      child: Row(
-                        children: const [
-                          SizedBox(
-                            width: 70,
-                            child: Text(
-                              'កាលបរិច្ឆេទ',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: 'KhmerOSbattambang',
-                                color: Color(0xff002060),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                          VerticalDivider(
-                            thickness: 0.5,
-                            color: Colors.grey,
-                            width: 10,
-                          ),
-                          SizedBox(
-                            width: 90,
-                            child: Text(
-                              textAlign: TextAlign.center,
-                              'លេខវិក័យបត្រ',
-                              style: TextStyle(
-                                fontFamily: 'KhmerOSbattambang',
-                                color: Color(0xff002060),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                          VerticalDivider(
-                            thickness: 0.5,
-                            color: Colors.grey,
-                            width: 10,
-                          ),
-                          SizedBox(
-                            width: 50,
-                            child: Text(
-                              'ទឹកប្រាក់ត្រូវបង់',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: 'KhmerOSbattambang',
-                                color: Color(0xff002060),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                          VerticalDivider(
-                            thickness: 0.5,
-                            color: Colors.grey,
-                            width: 10,
-                          ),
-                          SizedBox(
-                            width: 50,
-                            child: Text(
-                              textAlign: TextAlign.center,
-                              'ទឹកប្រាក់បានបង់',
-                              style: TextStyle(
-                                fontFamily: 'KhmerOSbattambang',
-                                color: Color(0xff002060),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                          VerticalDivider(
-                            thickness: 0.5,
-                            color: Colors.grey,
-                            width: 10,
-                          ),
-                          SizedBox(
-                            width: 50,
-                            child: Text(
-                              textAlign: TextAlign.center,
-                              'ទឹកប្រាក់នៅសល់',
-                              style: TextStyle(
-                                fontFamily: 'KhmerOSbattambang',
-                                color: Color(0xff002060),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                IntrinsicHeight(
+                  child: Padding(
+                    padding: EdgeInsets.all(5.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        buildHeaderTitle(65, 'កាលបរិច្ឆេទ'),
+                        VerticalDivider(
+                          width: 5,
+                          color: Colors.grey,
+                        ),
+                        buildHeaderTitle(75, 'លេខវិក័យបត្រ'),
+                        VerticalDivider(
+                          width: 5,
+                          color: Colors.grey,
+                        ),
+                        buildHeaderTitle(45, 'ទឹកប្រាក់ត្រូវបង់'),
+                        VerticalDivider(
+                          width: 5,
+                          color: Colors.grey,
+                        ),
+                        buildHeaderTitle(45, 'ទឹកប្រាក់បានបង់'),
+                        VerticalDivider(
+                          width: 5,
+                          color: Colors.grey,
+                        ),
+                        buildHeaderTitle(50, 'ទឹកប្រាក់នៅសល់'),
+                      ],
                     ),
                   ),
                 ),
                 Divider(
-                  thickness: 0.3,
                   color: Colors.grey,
                 ),
 
@@ -382,128 +253,54 @@ class PaymentCards2 extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(0.0),
-                            child: IntrinsicHeight(
-                              child: Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                child: Row(
-                                  children: [
-                                    /// ! datePayment
-                                    SizedBox(
-                                      width: 71,
-                                      child: Text(
-                                        textAlign: TextAlign.center,
-                                        paymentData2[index].datePayment,
-                                        style: TextStyle(
-                                          fontFamily: 'KhmerOSbattambang',
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: Color(0xff000000),
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      margin: EdgeInsets.symmetric(
-                                          horizontal: 10, vertical: 0),
-                                      height: 40,
-                                      width: 1,
-                                      color: Colors.grey,
-                                    ),
+                          IntrinsicHeight(
+                            child: Container(
+                              alignment: Alignment.center,
+                              padding: EdgeInsets.all(5),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  /// ! datePayment
+                                  buildBody(
+                                      65,
+                                      paymentData2[index].datePayment2,
+                                      UTextColor),
 
-                                    /// ! invoiceNum
-                                    SizedBox(
-                                      width: 80,
-                                      child: Text(
-                                        textAlign: TextAlign.center,
-                                        paymentData2[index].invoiceNum,
-                                        style: TextStyle(
-                                          fontFamily: 'KhmerOSbattambang',
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: Color(0xff000000),
-                                        ),
-                                      ),
-                                    ),
+                                  VerticalDivider(
+                                    width: 5,
+                                    color: Colors.grey,
+                                  ),
+                                  buildBody(75, paymentData2[index].invoiceNum2,
+                                      UTextColor),
 
-                                    Container(
-                                      margin: EdgeInsets.symmetric(
-                                          horizontal: 10, vertical: 0),
-                                      height: 40,
-                                      width: 1,
-                                      color: Colors.grey,
-                                    ),
+                                  VerticalDivider(
+                                    width: 5,
+                                    color: Colors.grey,
+                                  ),
+                                  buildBody(
+                                      45,
+                                      paymentData2[index].amountToPaid2,
+                                      UTextColor),
 
-                                    /// ! amountToPaid
-                                    SizedBox(
-                                      width: 28,
-                                      child: Text(
-                                        textAlign: TextAlign.center,
-                                        paymentData2[index].amountToPaid,
-                                        style: TextStyle(
-                                          fontFamily: 'KhmerOSbattambang',
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: Color(0xff000000),
-                                        ),
-                                      ),
-                                    ),
-
-                                    Container(
-                                      margin: EdgeInsets.symmetric(
-                                          horizontal: 20, vertical: 0),
-                                      height: 40,
-                                      width: 1,
-                                      color: Colors.grey,
-                                    ),
-
-                                    /// ! Amount paid
-                                    SizedBox(
-                                      width: 20,
-                                      child: Text(
-                                        textAlign: TextAlign.center,
-                                        paymentData2[index].amountPaid,
-                                        style: TextStyle(
-                                          fontFamily: 'KhmerOSbattambang',
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: Color(0xff000000),
-                                        ),
-                                      ),
-                                    ),
-
-                                    Container(
-                                      margin: EdgeInsets.symmetric(
-                                          horizontal: 20, vertical: 0),
-                                      height: 40,
-                                      width: 1,
-                                      color: Colors.grey,
-                                    ),
-
-                                    /// ! Amount balance
-                                    Container(
-                                      alignment: Alignment.center,
-                                      width: 30,
-                                      child: Text(
-                                        textAlign: TextAlign.center,
-                                        paymentData2[index].balance,
-                                        style: TextStyle(
-                                          fontFamily: 'KhmerOSbattambang',
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: Color(0xffff0000),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  VerticalDivider(
+                                    width: 5,
+                                    color: Colors.grey,
+                                  ),
+                                  buildBody(45, paymentData2[index].amountPaid2,
+                                      UTextColor),
+                                  VerticalDivider(
+                                    width: 5,
+                                    color: Colors.grey,
+                                  ),
+                                  buildBody(50, paymentData2[index].balance2,
+                                      UTextColor),
+                                ],
                               ),
                             ),
                           ),
                           Divider(
-                            thickness: 0.3,
                             color: Colors.grey,
-                            height: 10,
                           ),
                         ],
                       ),
@@ -528,7 +325,7 @@ class PaymentCards3 extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(7.0),
+          padding: const EdgeInsets.all(5.0),
           child: Card(
             elevation: 2,
             shape: RoundedRectangleBorder(
@@ -539,246 +336,103 @@ class PaymentCards3 extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: IntrinsicHeight(
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-
-                      /// ! Header Title3
-                      child: Row(
-                        children: const [
-                          SizedBox(
-                            width: 70,
-                            child: Text(
-                              textAlign: TextAlign.center,
-                              'កាលបរិច្ឆេទ',
-                              style: TextStyle(
-                                fontFamily: 'KhmerOSbattambang',
-                                color: Color(0xff002060),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                          VerticalDivider(
-                            thickness: 0.5,
-                            color: Colors.grey,
-                            width: 10,
-                          ),
-                          SizedBox(
-                            width: 90,
-                            child: Text(
-                              textAlign: TextAlign.center,
-                              'លេខវិក័យបត្រ',
-                              style: TextStyle(
-                                fontFamily: 'KhmerOSbattambang',
-                                color: Color(0xff002060),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                          VerticalDivider(
-                            thickness: 0.5,
-                            color: Colors.grey,
-                            width: 10,
-                          ),
-                          SizedBox(
-                            width: 50,
-                            child: Text(
-                              'ទឹកប្រាក់ត្រូវបង់',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: 'KhmerOSbattambang',
-                                color: Color(0xff002060),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                          VerticalDivider(
-                            thickness: 0.5,
-                            color: Colors.grey,
-                            width: 10,
-                          ),
-                          SizedBox(
-                            width: 50,
-                            child: Text(
-                              textAlign: TextAlign.center,
-                              'ទឹកប្រាក់បានបង់',
-                              style: TextStyle(
-                                fontFamily: 'KhmerOSbattambang',
-                                color: Color(0xff002060),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                          VerticalDivider(
-                            thickness: 0.5,
-                            color: Colors.grey,
-                            width: 10,
-                          ),
-                          SizedBox(
-                            width: 50,
-                            child: Text(
-                              textAlign: TextAlign.center,
-                              'ទឹកប្រាក់នៅសល់',
-                              style: TextStyle(
-                                fontFamily: 'KhmerOSbattambang',
-                                color: Color(0xff002060),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                IntrinsicHeight(
+                  child: Padding(
+                    padding: EdgeInsets.all(5.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        buildHeaderTitle(65, 'កាលបរិច្ឆេទ'),
+                        VerticalDivider(
+                          width: 5,
+                          color: Colors.grey,
+                        ),
+                        buildHeaderTitle(75, 'លេខវិក័យបត្រ'),
+                        VerticalDivider(
+                          width: 5,
+                          color: Colors.grey,
+                        ),
+                        buildHeaderTitle(45, 'ទឹកប្រាក់ត្រូវបង់'),
+                        VerticalDivider(
+                          width: 5,
+                          color: Colors.grey,
+                        ),
+                        buildHeaderTitle(45, 'ទឹកប្រាក់បានបង់'),
+                        VerticalDivider(
+                          width: 5,
+                          color: Colors.grey,
+                        ),
+                        buildHeaderTitle(50, 'ទឹកប្រាក់នៅសល់'),
+                      ],
                     ),
                   ),
                 ),
                 Divider(
-                  thickness: 0.3,
                   color: Colors.grey,
                 ),
 
-                /// ! Body Content​3
+                /// ! Body Content​2
                 ListView.builder(
                   shrinkWrap: true,
                   physics: ScrollPhysics(),
-                  itemCount: paymentData3.length,
+                  itemCount: paymentData4.length,
                   itemBuilder: (context, index) {
                     return IntrinsicHeight(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(0.0),
-                            child: IntrinsicHeight(
-                              child: Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                child: Row(
-                                  children: [
-                                    /// ! datePayment
-                                    SizedBox(
-                                      width: 71,
-                                      child: Text(
-                                        textAlign: TextAlign.center,
-                                        paymentData3[index].datePayment3,
-                                        style: TextStyle(
-                                          fontFamily: 'KhmerOSbattambang',
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: Color(0xff000000),
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      margin: EdgeInsets.symmetric(
-                                          horizontal: 10, vertical: 0),
-                                      height: 40,
-                                      width: 1,
-                                      color: Colors.grey,
-                                    ),
+                          IntrinsicHeight(
+                            child: Container(
+                              alignment: Alignment.center,
+                              padding: EdgeInsets.all(5),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  /// ! datePayment
+                                  buildBody(
+                                      65,
+                                      paymentData4[index].datePayment4,
+                                      UTextColor),
 
-                                    /// ! invoiceNum
-                                    SizedBox(
-                                      width: 80,
-                                      child: Text(
-                                        textAlign: TextAlign.center,
-                                        paymentData3[index].invoiceNum3,
-                                        style: TextStyle(
-                                          fontFamily: 'KhmerOSbattambang',
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: Color(0xff000000),
-                                        ),
-                                      ),
-                                    ),
+                                  VerticalDivider(
+                                    width: 5,
+                                    color: Colors.grey,
+                                  ),
+                                  buildBody(75, paymentData4[index].invoiceNum4,
+                                      UTextColor),
 
-                                    Container(
-                                      margin: EdgeInsets.symmetric(
-                                          horizontal: 10, vertical: 0),
-                                      height: 40,
-                                      width: 1,
-                                      color: Colors.grey,
-                                    ),
+                                  VerticalDivider(
+                                    width: 5,
+                                    color: Colors.grey,
+                                  ),
+                                  buildBody(
+                                      45,
+                                      paymentData4[index].amountToPaid4,
+                                      UTextColor),
 
-                                    /// ! amountToPaid
-                                    SizedBox(
-                                      width: 28,
-                                      child: Text(
-                                        textAlign: TextAlign.center,
-                                        paymentData3[index].amountToPaid3,
-                                        style: TextStyle(
-                                          fontFamily: 'KhmerOSbattambang',
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: Color(0xff000000),
-                                        ),
-                                      ),
-                                    ),
-
-                                    Container(
-                                      margin: EdgeInsets.symmetric(
-                                          horizontal: 20, vertical: 0),
-                                      height: 40,
-                                      width: 1,
-                                      color: Colors.grey,
-                                    ),
-
-                                    /// ! Amount paid
-                                    SizedBox(
-                                      width: 20,
-                                      child: Text(
-                                        textAlign: TextAlign.center,
-                                        paymentData3[index].amountPaid3,
-                                        style: TextStyle(
-                                          fontFamily: 'KhmerOSbattambang',
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: Color(0xff000000),
-                                        ),
-                                      ),
-                                    ),
-
-                                    Container(
-                                      margin: EdgeInsets.symmetric(
-                                          horizontal: 20, vertical: 0),
-                                      height: 40,
-                                      width: 1,
-                                      color: Colors.grey,
-                                    ),
-
-                                    /// ! Amount balance
-                                    Container(
-                                      alignment: Alignment.center,
-                                      width: 30,
-                                      child: Text(
-                                        textAlign: TextAlign.center,
-                                        paymentData3[index].balance3,
-                                        style: TextStyle(
-                                          fontFamily: 'KhmerOSbattambang',
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: Color(0xffff0000),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  VerticalDivider(
+                                    width: 5,
+                                    color: Colors.grey,
+                                  ),
+                                  buildBody(45, paymentData4[index].amountPaid4,
+                                      UTextColor),
+                                  VerticalDivider(
+                                    width: 5,
+                                    color: Colors.grey,
+                                  ),
+                                  buildBody(50, paymentData4[index].balance4,
+                                      UTextColor),
+                                ],
                               ),
                             ),
                           ),
                           Divider(
-                            thickness: 0.3,
                             color: Colors.grey,
-                            height: 10,
                           ),
                         ],
                       ),
@@ -803,7 +457,7 @@ class PaymentCards4 extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(7.0),
+          padding: const EdgeInsets.all(5.0),
           child: Card(
             elevation: 2,
             shape: RoundedRectangleBorder(
@@ -814,246 +468,103 @@ class PaymentCards4 extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: IntrinsicHeight(
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-
-                      /// ! Header Title4
-                      child: Row(
-                        children: const [
-                          SizedBox(
-                            width: 70,
-                            child: Text(
-                              textAlign: TextAlign.center,
-                              'កាលបរិច្ឆេទ',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontFamily: 'KhmerOSbattambang',
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff002060),
-                              ),
-                            ),
-                          ),
-                          VerticalDivider(
-                            thickness: 0.5,
-                            color: Colors.grey,
-                            width: 10,
-                          ),
-                          SizedBox(
-                            width: 90,
-                            child: Text(
-                              textAlign: TextAlign.center,
-                              'លេខវិក័យបត្រ',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontFamily: 'KhmerOSbattambang',
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff002060),
-                              ),
-                            ),
-                          ),
-                          VerticalDivider(
-                            thickness: 0.5,
-                            color: Colors.grey,
-                            width: 10,
-                          ),
-                          SizedBox(
-                            width: 50,
-                            child: Text(
-                              'ទឹកប្រាក់ត្រូវបង់',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontFamily: 'KhmerOSbattambang',
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff002060),
-                              ),
-                            ),
-                          ),
-                          VerticalDivider(
-                            thickness: 0.5,
-                            color: Colors.grey,
-                            width: 10,
-                          ),
-                          SizedBox(
-                            width: 50,
-                            child: Text(
-                              textAlign: TextAlign.center,
-                              'ទឹកប្រាក់បានបង់',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontFamily: 'KhmerOSbattambang',
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff002060),
-                              ),
-                            ),
-                          ),
-                          VerticalDivider(
-                            thickness: 0.5,
-                            color: Colors.grey,
-                            width: 10,
-                          ),
-                          SizedBox(
-                            width: 50,
-                            child: Text(
-                              textAlign: TextAlign.center,
-                              'ទឹកប្រាក់នៅសល់',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontFamily: 'KhmerOSbattambang',
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff002060),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                IntrinsicHeight(
+                  child: Padding(
+                    padding: EdgeInsets.all(5.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        buildHeaderTitle(65, 'កាលបរិច្ឆេទ'),
+                        VerticalDivider(
+                          width: 5,
+                          color: Colors.grey,
+                        ),
+                        buildHeaderTitle(75, 'លេខវិក័យបត្រ'),
+                        VerticalDivider(
+                          width: 5,
+                          color: Colors.grey,
+                        ),
+                        buildHeaderTitle(45, 'ទឹកប្រាក់ត្រូវបង់'),
+                        VerticalDivider(
+                          width: 5,
+                          color: Colors.grey,
+                        ),
+                        buildHeaderTitle(45, 'ទឹកប្រាក់បានបង់'),
+                        VerticalDivider(
+                          width: 5,
+                          color: Colors.grey,
+                        ),
+                        buildHeaderTitle(50, 'ទឹកប្រាក់នៅសល់'),
+                      ],
                     ),
                   ),
                 ),
                 Divider(
-                  thickness: 0.3,
                   color: Colors.grey,
                 ),
 
-                /// ! Body Content​4
+                /// ! Body Content​2
                 ListView.builder(
                   shrinkWrap: true,
                   physics: ScrollPhysics(),
-                  itemCount: paymentData4.length,
+                  itemCount: paymentData3.length,
                   itemBuilder: (context, index) {
                     return IntrinsicHeight(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(0.0),
-                            child: IntrinsicHeight(
-                              child: Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                child: Row(
-                                  children: [
-                                    /// ! datePayment
-                                    SizedBox(
-                                      width: 71,
-                                      child: Text(
-                                        textAlign: TextAlign.center,
-                                        paymentData4[index].datePayment4,
-                                        style: TextStyle(
-                                          fontFamily: 'KhmerOSbattambang',
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: Color(0xff000000),
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      margin: EdgeInsets.symmetric(
-                                          horizontal: 10, vertical: 0),
-                                      height: 40,
-                                      width: 1,
-                                      color: Colors.grey,
-                                    ),
+                          IntrinsicHeight(
+                            child: Container(
+                              alignment: Alignment.center,
+                              padding: EdgeInsets.all(5),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  /// ! datePayment
+                                  buildBody(
+                                      65,
+                                      paymentData3[index].datePayment3,
+                                      UTextColor),
 
-                                    /// ! invoiceNum
-                                    SizedBox(
-                                      width: 80,
-                                      child: Text(
-                                        textAlign: TextAlign.center,
-                                        paymentData4[index].invoiceNum4,
-                                        style: TextStyle(
-                                          fontFamily: 'KhmerOSbattambang',
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: Color(0xff000000),
-                                        ),
-                                      ),
-                                    ),
+                                  VerticalDivider(
+                                    width: 5,
+                                    color: Colors.grey,
+                                  ),
+                                  buildBody(75, paymentData3[index].invoiceNum3,
+                                      UTextColor),
 
-                                    Container(
-                                      margin: EdgeInsets.symmetric(
-                                          horizontal: 10, vertical: 0),
-                                      height: 40,
-                                      width: 1,
-                                      color: Colors.grey,
-                                    ),
+                                  VerticalDivider(
+                                    width: 5,
+                                    color: Colors.grey,
+                                  ),
+                                  buildBody(
+                                      45,
+                                      paymentData3[index].amountToPaid3,
+                                      UTextColor),
 
-                                    /// ! amountToPaid
-                                    SizedBox(
-                                      width: 28,
-                                      child: Text(
-                                        textAlign: TextAlign.center,
-                                        paymentData4[index].amountToPaid4,
-                                        style: TextStyle(
-                                          fontFamily: 'KhmerOSbattambang',
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: Color(0xff000000),
-                                        ),
-                                      ),
-                                    ),
-
-                                    Container(
-                                      margin: EdgeInsets.symmetric(
-                                          horizontal: 20, vertical: 0),
-                                      height: 40,
-                                      width: 1,
-                                      color: Colors.grey,
-                                    ),
-
-                                    /// ! Amount paid
-                                    SizedBox(
-                                      width: 20,
-                                      child: Text(
-                                        textAlign: TextAlign.center,
-                                        paymentData4[index].amountPaid4,
-                                        style: TextStyle(
-                                          fontFamily: 'KhmerOSbattambang',
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: Color(0xff000000),
-                                        ),
-                                      ),
-                                    ),
-
-                                    Container(
-                                      margin: EdgeInsets.symmetric(
-                                          horizontal: 20, vertical: 0),
-                                      height: 40,
-                                      width: 1,
-                                      color: Colors.grey,
-                                    ),
-
-                                    /// ! Amount balance
-                                    Container(
-                                      alignment: Alignment.center,
-                                      width: 30,
-                                      child: Text(
-                                        textAlign: TextAlign.center,
-                                        paymentData4[index].balance4,
-                                        style: TextStyle(
-                                          fontFamily: 'KhmerOSbattambang',
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: Color(0xffff0000),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  VerticalDivider(
+                                    width: 5,
+                                    color: Colors.grey,
+                                  ),
+                                  buildBody(45, paymentData3[index].amountPaid3,
+                                      UTextColor),
+                                  VerticalDivider(
+                                    width: 5,
+                                    color: Colors.grey,
+                                  ),
+                                  buildBody(50, paymentData3[index].balance3,
+                                      UTextColor),
+                                ],
                               ),
                             ),
                           ),
                           Divider(
-                            thickness: 0.3,
                             color: Colors.grey,
-                            height: 10,
                           ),
                         ],
                       ),
