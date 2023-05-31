@@ -28,7 +28,7 @@ class _AttendanceState extends State<Attendance> {
         Text(
           text.tr,
           style: TextStyle(
-            color: Colors.black,
+            color: UTextColor,
             fontSize: 12,
           ),
         ),

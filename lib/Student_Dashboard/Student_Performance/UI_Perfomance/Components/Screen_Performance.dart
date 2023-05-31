@@ -143,7 +143,6 @@ class Card_learning_pro_1 extends StatelessWidget {
 
                                         /// Close button
                                         child: InkWell(
-                                          ///
                                           /// ShowDialog
                                           onTap: () {
                                             showDialog(

@@ -26,10 +26,12 @@ class TitleTheme extends StatelessWidget {
 
 class NormalTitleTheme extends StatelessWidget {
   final String text;
+  final double size;
 
   const NormalTitleTheme({
     super.key,
     required this.text,
+    required this.size,
   });
 
   @override
@@ -37,11 +39,11 @@ class NormalTitleTheme extends StatelessWidget {
     return Container(
       child: Text(
         text,
-        style: const TextStyle(
-          fontSize: UTitleSize,
-          fontWeight: UTitleWeight,
-          color: UTextColor,
-        ),
+        style: TextStyle(
+            fontSize: size,
+            fontWeight: UTitleWeight,
+            color: UTextColor,
+            fontFamily: 'KhmerOSbattambang'),
       ),
     );
   }
@@ -49,10 +51,12 @@ class NormalTitleTheme extends StatelessWidget {
 
 class BodyTheme extends StatelessWidget {
   final String text;
+  final double size;
 
   const BodyTheme({
     super.key,
     required this.text,
+    required this.size,
   });
 
   @override
@@ -60,9 +64,7 @@ class BodyTheme extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontSize: UTitleSize,
-        color: UTextColor,
-      ),
+          fontSize: size, color: UTextColor, fontFamily: 'KhmerOSbattambang'),
     );
   }
 }
