@@ -21,8 +21,9 @@ class _Study_InfoState extends State<Study_Info> {
         children: [
           Column(
             children: [
-              SizedBox(
-                child: const StudyInformationCards(),
+              SingleChildScrollView(
+                padding: EdgeInsets.all(5),
+                child: StudyInformationCards(),
               ),
             ],
           ),

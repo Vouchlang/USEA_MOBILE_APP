@@ -6,6 +6,7 @@ import 'Home.dart';
 import 'Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
 import 'Student_Dashboard/Student_Attendance/UI_Attendance/Attendance.dart';
 import 'Student_Dashboard/Student_Payment/UI_Payment/Payment.dart';
+import 'Student_Dashboard/Student_StudyInfo/UI_StudyInfo/StudyInfo.dart';
 import 'localeString.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -28,8 +29,8 @@ void main() async {
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: new Home(),
-      // home: new Payment(),
+      // home: new Home(),
+      home: new Study_Info(),
       translations: LocaleString(),
       locale: Locale(languageCode),
       fallbackLocale: Locale('en', 'US'),
