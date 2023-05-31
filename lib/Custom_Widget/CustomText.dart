@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import '../theme_builder.dart';
 
+// *@ Title
 class TitleTheme extends StatelessWidget {
   final String text;
 
@@ -24,6 +25,7 @@ class TitleTheme extends StatelessWidget {
   }
 }
 
+// *@ Normal Title
 class NormalTitleTheme extends StatelessWidget {
   final String text;
   final double size;
@@ -49,6 +51,32 @@ class NormalTitleTheme extends StatelessWidget {
   }
 }
 
+// *@ Center Title
+class NormalTitleCenterTheme extends StatelessWidget {
+  final String text;
+
+  const NormalTitleCenterTheme({
+    super.key,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text(
+        text,
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+          fontSize: UTitleSize,
+          fontWeight: UTitleWeight,
+          color: UTextColor,
+        ),
+      ),
+    );
+  }
+}
+
+// *@ Body
 class BodyTheme extends StatelessWidget {
   final String text;
   final double size;
@@ -69,12 +97,12 @@ class BodyTheme extends StatelessWidget {
   }
 }
 
-class CustomBodyText extends StatelessWidget {
+class CustomTextTheme extends StatelessWidget {
   final String text;
   final double size;
   final FontWeight fontWeight;
 
-  const CustomBodyText({
+  const CustomTextTheme({
     super.key,
     required this.text,
     required this.size,

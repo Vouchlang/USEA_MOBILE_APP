@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:usea_app/Custom_Widget/CustomText.dart';
 
 import '../Data/Data_achievements.dart';
 
@@ -53,15 +54,8 @@ class CardAchievements extends StatelessWidget {
                       Image.asset(achievements[index].image),
                       SizedBox(
                         width: 100,
-                        child: Text(
-                          achievements[index].semesterTitle,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontFamily: 'KhmerOSbattambang',
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black,
-                          ),
+                        child: NormalTitleCenterTheme(
+                          text: achievements[index].semesterTitle,
                         ),
                       )
                     ],
