@@ -1,8 +1,10 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:usea_app/theme_builder.dart';
 
-import '../Data/Data_attendance.dart';
+import '../../Class_Attendance/Class_Attendance.dart';
 import 'Card_all_attendance.dart';
 
 class Major_Attendance extends StatefulWidget {
@@ -13,138 +15,108 @@ class Major_Attendance extends StatefulWidget {
 }
 
 class _Major_AttendanceState extends State<Major_Attendance> {
+  Widget buildCHText(String text) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: 10,
+      ),
+    );
+  }
+
+  Widget buildNum(String text, Color color) {
+    return Text(
+      text,
+      style: TextStyle(
+        color: color,
+        fontSize: 14,
+      ),
+    );
+  }
+
+  Widget buildDivider() {
+    return Container(
+      width: 0.5,
+      height: 15,
+      color: Colors.grey,
+      margin: const EdgeInsets.only(right: 5, left: 5),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ListView.builder(
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        itemCount: attendance_data.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            elevation: 1,
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: InkWell(
-                onTap: () {
-                  setState(() {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const All_info_major(),
-                      ),
-                    );
-                  });
-                },
-                child: IntrinsicHeight(
-                  child: Row(
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: 150,
-                            child: Text(
-                              attendance_data[index].subject,
-                              style: const TextStyle(
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      itemCount: attendance_data.length,
+      itemBuilder: (BuildContext context, int index) {
+        return Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          elevation: 1,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(10, 10, 15, 10),
+            child: InkWell(
+              onTap: () {
+                setState(() {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => All_info_major(),
+                    ),
+                  );
+                });
+              },
+              child: IntrinsicHeight(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: 175,
+                          child: Text(
+                            attendance_data[index].subject,
+                            style: const TextStyle(
                                 fontSize: 14,
-                                fontFamily: 'KhmerOSbattambang',
-                                fontWeight: FontWeight.w600,
                                 color: Colors.black,
-                              ),
+                                fontFamily: 'KhmerOSbattambang'),
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            buildCHText(
+                              attendance_data[index].hour.toString(),
                             ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                attendance_data[index].hour.toString(),
-                              ),
-                              const Text('\tក្រេឌីត\t'),
-                              Text(
-                                attendance_data[index].credit.toString(),
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontFamily: 'KhmerOSbattambang',
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              const Text('\tម៉ោង'),
-                            ],
-                          )
-                        ],
-                      ),
-                      const SizedBox(
-                        width: 40,
-                      ),
-                      const Text(
-                        '0',
-                        style: TextStyle(
-                          color: Colors.orangeAccent,
-                          fontSize: 18,
-                          fontFamily: 'KhmerOSbattambang',
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      Container(
-                        width: 0.6,
-                        height: 20,
-                        color: Colors.grey,
-                        margin: const EdgeInsets.only(right: 15, left: 15),
-                      ),
-                      const Text(
-                        '5',
-                        style: TextStyle(
-                          color: Colors.deepOrange,
-                          fontSize: 18,
-                          fontFamily: 'KhmerOSbattambang',
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      Container(
-                        width: 0.6,
-                        height: 20,
-                        color: Colors.grey,
-                        margin: const EdgeInsets.only(right: 15, left: 15),
-                      ),
-                      const Text(
-                        '2',
-                        style: TextStyle(
-                          color: Colors.red,
-                          fontSize: 18,
-                          fontFamily: 'KhmerOSbattambang',
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      Container(
-                        width: 0.6,
-                        height: 20,
-                        color: Colors.grey,
-                        margin: const EdgeInsets.only(right: 15, left: 15),
-                      ),
-                      const Text(
-                        '15',
-                        style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 18,
-                          fontFamily: 'KhmerOSbattambang',
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                  ),
+                            buildCHText(
+                              '\tក្រេឌីត\t'.tr,
+                            ),
+                            buildCHText(
+                              attendance_data[index].hour.toString(),
+                            ),
+                            buildCHText(
+                              '\tម៉ោង'.tr,
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                    buildNum('0', USecondaryColor),
+                    buildDivider(),
+                    buildNum('5', UOrangeColor),
+                    buildDivider(),
+                    buildNum('2', URedColor),
+                    buildDivider(),
+                    buildNum('12', UScoreColor),
+                  ],
                 ),
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

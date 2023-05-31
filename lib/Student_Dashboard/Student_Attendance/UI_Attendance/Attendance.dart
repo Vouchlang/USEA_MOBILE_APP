@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usea_app/Custom_AppBar.dart';
 
+import '../../../theme_builder.dart';
 import 'Components/Card_attendacne.dart';
 import 'Components/Screen_view_all_attendance.dart';
 
@@ -13,6 +14,28 @@ class Attendance extends StatefulWidget {
 }
 
 class _AttendanceState extends State<Attendance> {
+  Widget buildAttList(String text, Color color) {
+    return Row(
+      children: [
+        Icon(
+          Icons.circle,
+          color: color,
+          size: 12,
+        ),
+        SizedBox(
+          width: 5,
+        ),
+        Text(
+          text.tr,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 12,
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,133 +44,61 @@ class _AttendanceState extends State<Attendance> {
       body: SingleChildScrollView(
         child: Container(
           child: Padding(
-            padding: const EdgeInsets.all(5.0),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
             child: Column(
               children: [
-                /// Comments Points
-                /** 
-               * * =========
-               * ! Menu horizontal 
-               * */
+                Padding(
+                  padding: EdgeInsets.fromLTRB(3, 0, 3, 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      buildAttList('វត្តមាន\t', UScoreColor),
+                      buildAttList('យឺត', USecondaryColor),
+                      buildAttList('អវត្តមានមានច្បាប់', UOrangeColor),
+                      buildAttList('អវត្តមាន', URedColor),
+                    ],
+                  ),
+                ),
+                Major_Attendance(),
+                SizedBox(
+                  height: 10,
+                ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    const SizedBox(
-                      width: 0,
-                      height: 50,
-                    ),
-                    TextButton.icon(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.circle,
-                        color: Colors.green,
-                        size: 13.0,
+                    Container(
+                      alignment: Alignment.center,
+                      padding:
+                          EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: Color(0x142D74F5),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0x142D74F5),
+                          ),
+                        ],
                       ),
-                      label: Text(
-                        'វត្តមាន',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 13,
-                        ),
-                      ),
-                    ),
-                    TextButton.icon(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.circle,
-                        size: 13.0,
-                        color: Colors.orangeAccent,
-                      ),
-                      label: Text(
-                        'យឺត',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                    TextButton.icon(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.circle,
-                        size: 13.0,
-                        color: Colors.deepOrange,
-                      ),
-                      label: const Text(
-                        'អវត្តមានមានច្បាប់',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                    TextButton.icon(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.circle,
-                        size: 13.0,
-                        color: Colors.red,
-                      ),
-                      label: const Text(
-                        'អវត្តមានឥតច្បាប់',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w500,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const All_Attendance_of_Year(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          'មើលទាំងអស់'.tr,
+                          style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                              color: Theme.of(context).primaryColor),
                         ),
                       ),
                     ),
                   ],
-                ),
-
-                /// Comments Points
-                /** 
-               * * =============
-               * ! Body ListView
-               * */
-                Container(
-                  child: const Major_Attendance(),
-                ),
-
-                /// Comments Points
-                /** 
-               * * ===============
-               * ! Button View All
-               * */
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 14.0, vertical: 0.0),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                const All_Attendance_of_Year(),
-                          ),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            Theme.of(context).copyWith().secondaryHeaderColor,
-                      ),
-                      child: const Text(
-                        'មើលទាំងអស់',
-                        style: TextStyle(
-                          color: Color(0xff002060),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ),
                 ),
               ],
             ),

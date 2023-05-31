@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../Custom_AppBar.dart';
+import '../../../../theme_builder.dart';
 import 'Card_attendacne.dart';
 
 // ignore: camel_case_types
@@ -26,9 +27,30 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
 
   @override
   Widget build(BuildContext context) {
+    Widget buildAttList(String text, Color color) {
+      return Row(
+        children: [
+          Icon(
+            Icons.circle,
+            color: color,
+            size: 12,
+          ),
+          SizedBox(
+            width: 5,
+          ),
+          Text(
+            text.tr,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 12,
+            ),
+          ),
+        ],
+      );
+    }
+
     return Scaffold(
-      backgroundColor: Theme.of(context)
-          .secondaryHeaderColor, // backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'វត្តមាន'.tr),
       body: SingleChildScrollView(
         child: Container(
@@ -39,14 +61,8 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
                 const SizedBox(
                   height: 5,
                 ),
-
-                /// Comments Points
-                /** 
-               * * =========
-               * ! Menu horizontal 
-               * */
                 SizedBox(
-                  height: 60,
+                  height: 50,
                   width: double.infinity,
                   child: ListView.builder(
                     physics: const BouncingScrollPhysics(),
@@ -66,28 +82,20 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
                           color: current == index
                               ? const Color(0xff002060)
                               : const Color(0xffFFFFFF),
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(8),
-                              topRight: Radius.circular(8),
-                              bottomLeft: Radius.circular(8),
-                              bottomRight: Radius.circular(8)),
+                          borderRadius: BorderRadius.circular(5),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey.withOpacity(0.3),
-                              spreadRadius: 1,
-                              blurRadius: 2,
-                              offset:
-                                  Offset(0, 1), // changes position of shadow
-                            ),
+                                blurRadius: 1,
+                                color: Colors.grey,
+                                offset: Offset(0, 1))
                           ],
                         ),
                         margin: EdgeInsets.all(5),
                         child: Center(
                           child: Text(
-                            items[index],
+                            items[index].toString().tr,
                             style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
                               color: current == index
                                   ? Color(0xffFFFFFF)
                                   : Color(0xff000000),
@@ -101,154 +109,63 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
                 const SizedBox(
                   height: 5,
                 ),
-
-                /// Comments Points
-                /** 
-               * * =========
-               * ! category horizontal 
-               * */
-                Row(
-                  children: [
-                    TextButton.icon(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.circle,
-                        color: Colors.green,
-                        size: 14.0,
-                      ),
-                      label: const Text(
-                        'វត្តមាន',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 12,
-                          fontFamily: 'KhmerOSbattambang',
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                    TextButton.icon(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.circle,
-                        size: 14.0,
-                        color: Colors.orangeAccent,
-                      ),
-                      label: const Text(
-                        'យឺត',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 12,
-                          fontFamily: 'KhmerOSbattambang',
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                    TextButton.icon(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.circle,
-                        size: 14.0,
-                        color: Colors.deepOrange,
-                      ),
-                      label: const Text(
-                        'អវត្តមានមានច្បាប់',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 12,
-                          fontFamily: 'KhmerOSbattambang',
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                    TextButton.icon(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.circle,
-                        size: 14.0,
-                        color: Colors.red,
-                      ),
-                      label: const Text(
-                        'អវត្តមានឥតច្បាប់',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 12,
-                          fontFamily: 'KhmerOSbattambang',
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      buildAttList('វត្តមាន\t', UScoreColor),
+                      buildAttList('យឺត', USecondaryColor),
+                      buildAttList('អវត្តមានមានច្បាប់', UOrangeColor),
+                      buildAttList('អវត្តមាន', URedColor),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
                   child: Container(
-                    height: 70,
+                    height: 65,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        topRight: Radius.circular(10),
-                        bottomLeft: Radius.circular(10),
-                        bottomRight: Radius.circular(10),
-                      ),
-                      color: Color(0xffE9F2FF),
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color(0x142D74F5),
                     ),
                     child: Center(
                       child: Text(
-                        'ឆមាសទី ១',
+                        'ឆមាសទី ១'.tr,
                         style: TextStyle(
                           color: Color(0xff002060),
-                          fontSize: 16,
-                          fontFamily: 'KhmerOSbattambang',
+                          fontSize: 14,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
                   ),
                 ),
-
-                /// Comments Points
-                /** 
-               * * =============
-               * ! Body ListView Semester 1
-               * */
                 Container(
                   child: const Major_Attendance(),
                 ),
-
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.fromLTRB(5, 10, 5, 5),
                   child: Container(
                     height: 70,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          topRight: Radius.circular(10),
-                          bottomLeft: Radius.circular(10),
-                          bottomRight: Radius.circular(10)),
+                      borderRadius: BorderRadius.circular(10),
                       color: Color(0xffE9F2FF),
                     ),
                     child: Center(
                       child: Text(
-                        'ឆមាសទី ២',
+                        'ឆមាសទី ២'.tr,
                         style: TextStyle(
                           color: Color(0xff002060),
-                          fontSize: 16,
-                          fontFamily: 'KhmerOSbattambang',
+                          fontSize: 14,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
                   ),
                 ),
-
-                /// Comments Points
-                /** 
-               * * =============
-               * ! Body ListView Semester 1
-               * */
                 Container(
                   child: const Major_Attendance(),
                 ),

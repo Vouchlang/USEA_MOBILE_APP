@@ -136,10 +136,9 @@ class _In_UniversityState extends State<In_University> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Container(
-                                    width: 80,
                                     alignment: Alignment.center,
                                     padding: EdgeInsets.symmetric(
-                                        vertical: 5, horizontal: 5),
+                                        vertical: 5, horizontal: 10),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       color: Color(0x142D74F5),

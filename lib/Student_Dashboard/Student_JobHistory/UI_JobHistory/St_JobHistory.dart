@@ -5,6 +5,7 @@ import '../../../Custom_AppBar.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
 import '../Class_JobHistory/Class_Job_History.dart';
+import 'package:styled_divider/styled_divider.dart';
 
 class Job_History extends StatelessWidget {
   final List<JobHistory> data_jobhistory;
@@ -126,7 +127,7 @@ class Job_History extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              data_jobhistory[index].salary,
+                              data_jobhistory[index].salary.tr,
                               style: TextStyle(
                                 fontSize: 14,
                               ),

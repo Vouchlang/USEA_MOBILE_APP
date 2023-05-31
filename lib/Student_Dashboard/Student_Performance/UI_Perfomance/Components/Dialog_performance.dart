@@ -1,6 +1,8 @@
 // ignore_for_file: avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:usea_app/theme_builder.dart';
 
 import '../Data/Attendacne_performance.dart';
 
@@ -41,7 +43,7 @@ class _CustomDialogWidgetState extends State<CustomDialogWidget> {
               },
               child: Image.asset(
                 'assets/image/close.png',
-                height: 50,
+                scale: 8,
               ),
             ),
           ),
@@ -63,8 +65,6 @@ class _CustomDialogWidgetState extends State<CustomDialogWidget> {
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10.0),
                 topRight: Radius.circular(10.0),
-                bottomRight: Radius.circular(0),
-                bottomLeft: Radius.circular(0),
               ),
               color: Color(0xFEE8F0FE),
             ),
@@ -76,8 +76,8 @@ class _CustomDialogWidgetState extends State<CustomDialogWidget> {
                   child: Text(
                     "សេដ្ឋកិច្ចវិទ្យា",
                     style: TextStyle(
-                      color: Color(0xff002060),
-                      fontSize: 16,
+                      color: UPrimaryColor,
+                      fontSize: 14,
                       fontFamily: 'KhmerOSbattambang',
                       fontWeight: FontWeight.w600,
                     ),
@@ -104,32 +104,21 @@ class _CustomDialogWidgetState extends State<CustomDialogWidget> {
                     children: [
                       IntrinsicHeight(
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Expanded(
-                              child: Text(
-                                attendance[index].type,
-                                style: const TextStyle(
-                                  color: Color(0xff000000),
-                                  fontSize: 14,
-                                  fontFamily: 'KhmerOSbattambang',
-                                  fontWeight: FontWeight.w600,
-                                ),
+                            Text(
+                              attendance[index].type.tr,
+                              style: const TextStyle(
+                                color: Color(0xff000000),
+                                fontSize: 14,
                               ),
                             ),
-                            Row(
-                              children: [
-                                Container(
-                                  child: Text(
-                                    attendance[index].num_count.toString(),
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      fontFamily: 'KhmerOSbattambang',
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.orange,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                            Text(
+                              attendance[index].num_count.toString(),
+                              style: const TextStyle(
+                                fontSize: 14,
+                                color: Colors.orange,
+                              ),
                             ),
                           ],
                         ),

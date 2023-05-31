@@ -13,14 +13,12 @@ class TitleTheme extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text(
-        text,
-        style: const TextStyle(
-          fontSize: UTitleSize,
-          fontWeight: UTitleWeight,
-          color: UPrimaryColor,
-        ),
+    return Text(
+      text,
+      style: const TextStyle(
+        fontSize: UTitleSize,
+        fontWeight: UTitleWeight,
+        color: UPrimaryColor,
       ),
     );
   }
@@ -36,14 +34,11 @@ class BodyTheme extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text(
-        text,
-        style: TextStyle(
-          fontSize: UTitleSize,
-          fontWeight: UTitleWeight,
-          color: UPrimaryColor,
-        ),
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: UTitleSize,
+        color: UTextColor,
       ),
     );
   }
@@ -63,14 +58,12 @@ class CustomBodyText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text(
-        text,
-        style: TextStyle(
-          fontSize: size,
-          fontWeight: fontWeight,
-          color: UTextColor,
-        ),
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: size,
+        fontWeight: fontWeight,
+        color: UTextColor,
       ),
     );
   }
