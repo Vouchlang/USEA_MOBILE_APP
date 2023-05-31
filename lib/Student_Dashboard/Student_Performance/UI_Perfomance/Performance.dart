@@ -28,15 +28,13 @@ class _PerformanceState extends State<Performance> {
       appBar: Custom_AppBar(title: 'ដំណើរការសិក្សា'.tr),
       body: Container(
         child: SingleChildScrollView(
-          ///
-          /// CARDS
           child: Column(
             children: [
               SizedBox(
-                height: 10,
+                height: 5,
               ),
               SizedBox(
-                height: 60,
+                height: 50,
                 width: double.infinity,
                 child: ListView.builder(
                   physics: const BouncingScrollPhysics(),
@@ -50,35 +48,29 @@ class _PerformanceState extends State<Performance> {
                     },
                     child: AnimatedContainer(
                       duration: Duration(milliseconds: 300),
+                      height: 50,
                       width: 100,
                       decoration: BoxDecoration(
                         color: current == index
-                            ? Theme.of(context).primaryColor
-                            : Colors.white,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(8),
-                            topRight: Radius.circular(8),
-                            bottomLeft: Radius.circular(8),
-                            bottomRight: Radius.circular(8)),
+                            ? const Color(0xff002060)
+                            : const Color(0xffFFFFFF),
+                        borderRadius: BorderRadius.circular(5),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            blurRadius: 2,
-                            offset: Offset(0, 1), // changes position of shadow
-                          ),
+                              blurRadius: 1,
+                              color: Colors.grey,
+                              offset: Offset(0, 1))
                         ],
                       ),
                       margin: EdgeInsets.all(5),
                       child: Center(
                         child: Text(
-                          items[index],
+                          items[index].toString().tr,
                           style: TextStyle(
                             fontSize: 14,
-                            fontWeight: FontWeight.w500,
                             color: current == index
                                 ? Color(0xffFFFFFF)
                                 : Color(0xff000000),
-                            fontFamily: 'KhmerOSbattambang',
                           ),
                         ),
                       ),

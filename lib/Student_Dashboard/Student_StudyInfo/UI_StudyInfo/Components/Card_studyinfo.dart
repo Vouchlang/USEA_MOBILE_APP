@@ -19,14 +19,16 @@ class StudyInformationCards extends StatelessWidget {
           return Card(
             elevation: 2,
             shadowColor: Colors.black,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             color: Colors.white,
             child: Padding(
               padding: EdgeInsets.all(5),
               child: IntrinsicHeight(
                 child: Row(
+                  mainAxisSize: MainAxisSize.max,
                   children: [
                     Container(
-                      width: 50,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -44,15 +46,15 @@ class StudyInformationCards extends StatelessWidget {
                     ),
                     VerticalDivider(),
                     Container(
-                      width: 250,
-                      padding: EdgeInsets.only(left: 8.0),
                       child: IntrinsicWidth(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            NormalTitleTheme(
-                              text: studyInformationData[index].semesterTitle,
-                              size: 16,
+                            Expanded(
+                              child: NormalTitleTheme(
+                                text: studyInformationData[index].semesterTitle,
+                                size: 16,
+                              ),
                             ),
                             Divider(),
                             Row(
@@ -62,13 +64,14 @@ class StudyInformationCards extends StatelessWidget {
                                   text: 'មុខវិជ្ជា\t',
                                   size: 14,
                                 ),
-                                Container(
-                                  width: 190,
-                                  alignment: Alignment.centerLeft,
-                                  child: BodyTheme(
-                                    text:
-                                        studyInformationData[index].majorTitle,
-                                    size: 14,
+                                Expanded(
+                                  child: Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: BodyTheme(
+                                      text: studyInformationData[index]
+                                          .majorTitle,
+                                      size: 14,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -80,12 +83,14 @@ class StudyInformationCards extends StatelessWidget {
                                   text: 'បន្ទប់\t',
                                   size: 14,
                                 ),
-                                Container(
-                                  width: 190,
-                                  alignment: Alignment.centerLeft,
-                                  child: BodyTheme(
-                                    text: studyInformationData[index].roomTitle,
-                                    size: 14,
+                                Expanded(
+                                  child: Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: BodyTheme(
+                                      text:
+                                          studyInformationData[index].roomTitle,
+                                      size: 14,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -97,12 +102,14 @@ class StudyInformationCards extends StatelessWidget {
                                   text: 'ម៉ោង\t',
                                   size: 14,
                                 ),
-                                Container(
-                                  width: 190,
-                                  alignment: Alignment.centerLeft,
-                                  child: BodyTheme(
-                                    text: studyInformationData[index].timeExam,
-                                    size: 14,
+                                Expanded(
+                                  child: Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: BodyTheme(
+                                      text:
+                                          studyInformationData[index].timeExam,
+                                      size: 14,
+                                    ),
                                   ),
                                 ),
                               ],

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:usea_app/theme_builder.dart';
 import '../Data/Data_performance.dart';
 import 'Dialog_performance.dart';
 
@@ -55,35 +56,40 @@ class Card_learning_pro_1 extends StatelessWidget {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Color(0xff002060),
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.only(right: 15),
                           child: Row(
                             children: [
-                              Text(
-                                'វត្តមាន'.tr,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Color(0xff002060),
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
+                              Container(
+                                width: 100,
+                                alignment: Alignment.centerRight,
+                                child: Text(
+                                  'វត្តមាន'.tr,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Color(0xff002060),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ),
                               VerticalDivider(
                                 color: Colors.grey,
-                                width: 25,
                               ),
-                              Text(
-                                'ពិន្ទុ'.tr,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Color(0xff002060),
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
+                              Container(
+                                width: 50,
+                                child: Text(
+                                  'Score'.tr,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Color(0xff002060),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ),
                             ],
@@ -114,36 +120,25 @@ class Card_learning_pro_1 extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Expanded(
-                                    child: Text(
-                                      class_program_Score_s1[index].subject,
-                                      style: TextStyle(
-                                        color: Color(0xff000000),
-                                        fontSize: 16,
-                                        fontFamily: 'KhmerOSbattambang',
-                                        fontWeight: FontWeight.w500,
+                                    child: Container(
+                                      child: Text(
+                                        class_program_Score_s1[index].subject,
+                                        style: TextStyle(
+                                          color: UTextColor,
+                                          fontSize: 14,
+                                          fontFamily: 'KhmerOSbattambang',
+                                        ),
                                       ),
                                     ),
                                   ),
-
-                                  /// វត្តមាន & ពិន្ទុ
                                   Row(
-                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      ///
-                                      /// វត្តមាន
                                       Container(
-                                        decoration: BoxDecoration(
-                                          border: Border(
-                                            bottom: BorderSide(
-                                              color: Colors.green,
-                                              width: 1.0,
-                                            ),
-                                          ),
-                                        ),
-
-                                        /// Close button
+                                        width: 50,
+                                        alignment: Alignment.center,
                                         child: InkWell(
-                                          /// ShowDialog
                                           onTap: () {
                                             showDialog(
                                               context: context,
@@ -156,35 +151,22 @@ class Card_learning_pro_1 extends StatelessWidget {
                                                 .hour
                                                 .toString(),
                                             style: TextStyle(
-                                              color: Colors.green,
-                                              fontSize: 16,
-                                              fontFamily: 'KhmerOSbattambang',
-                                              fontWeight: FontWeight.w600,
-                                            ),
+                                                color: Colors.green,
+                                                fontSize: 14,
+                                                fontFamily: 'KhmerOSbattambang',
+                                                fontWeight: FontWeight.w600,
+                                                decoration:
+                                                    TextDecoration.underline),
                                           ),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        width: 3,
                                       ),
                                       VerticalDivider(
-                                        color: Colors.black,
-                                        width: 50,
-                                        thickness: 0.3,
+                                        color: Colors.grey,
+                                        thickness: 0.5,
                                       ),
-
-                                      ///
-                                      /// ពិន្ទុ
                                       Container(
-                                        margin: EdgeInsets.only(right: 10),
-                                        decoration: BoxDecoration(
-                                          border: Border(
-                                            bottom: BorderSide(
-                                              color: Colors.green,
-                                              width: 1.0,
-                                            ),
-                                          ),
-                                        ),
+                                        width: 50,
+                                        alignment: Alignment.center,
                                         child: InkWell(
                                           onTap: () {
                                             showDialog(
@@ -198,11 +180,12 @@ class Card_learning_pro_1 extends StatelessWidget {
                                                 .credit
                                                 .toString(),
                                             style: TextStyle(
-                                              color: Colors.green,
-                                              fontSize: 16,
-                                              fontFamily: 'KhmerOSbattambang',
-                                              fontWeight: FontWeight.w600,
-                                            ),
+                                                color: Colors.green,
+                                                fontSize: 14,
+                                                fontFamily: 'KhmerOSbattambang',
+                                                fontWeight: FontWeight.w600,
+                                                decoration:
+                                                    TextDecoration.underline),
                                           ),
                                         ),
                                       ),
@@ -386,9 +369,8 @@ class Card_learning_pro_1 extends StatelessWidget {
                                         width: 3,
                                       ),
                                       VerticalDivider(
-                                        color: Colors.black,
-                                        width: 50,
-                                        thickness: 0.3,
+                                        color: Colors.grey,
+                                        thickness: 0.5,
                                       ),
 
                                       ///
