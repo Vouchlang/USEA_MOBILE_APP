@@ -11,7 +11,7 @@ class CardAchievements extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 10,
+          height: 10.0,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -24,32 +24,30 @@ class CardAchievements extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Unlocked',
-                style: TextStyle(
-                  fontSize: 14,
-                  fontFamily: 'KhmerOSbattambang',
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xff002060),
-                ),
+              child: TitleTheme(
+                text: 'Unlocked',
               ),
             ),
           ],
         ),
-        GridView.count(
-          childAspectRatio: 1.50,
-          crossAxisCount: 2,
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          children: List.generate(
-            achievements.length,
-            (index) => Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Card(
-                elevation: 2,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: GridView.count(
+            primary: false,
+            mainAxisSpacing: 5.0,
+            crossAxisSpacing: 5.0,
+            crossAxisCount: 2,
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            children: List.generate(
+              achievements.length,
+              (index) => Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  elevation: 2,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Image.asset(achievements[index].image),
                       SizedBox(
@@ -79,14 +77,8 @@ class CardAchievements extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Locked',
-                style: TextStyle(
-                  fontSize: 14,
-                  fontFamily: 'KhmerOSbattambang',
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xff002060),
-                ),
+              child: TitleTheme(
+                text: 'Locked',
               ),
             ),
           ],
