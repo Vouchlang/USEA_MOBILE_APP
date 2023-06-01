@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:usea_app/theme_builder.dart';
 
 import '../Data/Data_Carlendar.dart';
 
@@ -9,6 +10,17 @@ class CardCalendarList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget buildText(String text, double size) {
+      return Text(
+        text,
+        style: TextStyle(
+          fontSize: size,
+          fontFamily: 'KhmerOSbattambang',
+          color: UTextColor,
+        ),
+      );
+    }
+
     return Expanded(
       child: ListView.builder(
         physics: ScrollPhysics(),
@@ -18,110 +30,73 @@ class CardCalendarList extends StatelessWidget {
           return Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 5),
                 child: Card(
                   elevation: 2,
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
+                  child: Container(
+                    padding: EdgeInsets.all(10.0),
                     child: IntrinsicHeight(
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(
-                                datacalendar[index].weekday,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontFamily: 'KhmerOSbattambang',
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                datacalendar[index].date,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontFamily: 'KhmerOSbattambang',
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
+                              buildText(datacalendar[index].weekday, 16),
+                              buildText(datacalendar[index].date, 16),
                             ],
                           ),
                           VerticalDivider(
                             thickness: 0.5,
                             color: Colors.grey,
-                            width: 40,
+                            width: 30,
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                width: 100,
-                                child: Text(
-                                  datacalendar[index].majorTitle,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'KhmerOSbattambang',
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.black,
+                          Expanded(
+                            child: Container(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    datacalendar[index].majorTitle,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontFamily: 'KhmerOSbattambang',
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.black,
+                                    ),
                                   ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              SizedBox(
-                                width: 90,
-                                child: Text(
-                                  datacalendar[index].classroom,
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontFamily: 'KhmerOSbattambang',
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.black,
+                                  SizedBox(
+                                    height: 5,
                                   ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 90,
-                                child: Text(
-                                  datacalendar[index].teacherName,
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontFamily: 'KhmerOSbattambang',
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.black,
+                                  buildText(datacalendar[index].classroom, 12),
+                                  Expanded(
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            child: buildText(
+                                                datacalendar[index].teacherName,
+                                                12),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 0,
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            alignment: Alignment.topRight,
+                                            child: buildText(
+                                                datacalendar[index].tel, 12),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
+                                ],
                               ),
-                            ],
-                          ),
-                          SizedBox(
-                            width: 70,
-                          ),
-                          Column(
-                            children: [
-                              SizedBox(
-                                height: 50,
-                              ),
-                              SizedBox(
-                                width: 90,
-                                child: Text(
-                                  datacalendar[index].tel,
-                                  textAlign: TextAlign.end,
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontFamily: 'KhmerOSbattambang',
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
                         ],
                       ),

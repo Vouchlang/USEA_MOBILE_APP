@@ -6,6 +6,7 @@ import 'package:usea_app/theme_builder.dart';
 
 import '../../../Student_Performance/UI_Perfomance/Components/Dialog_performance.dart';
 import '../../Class_Payment/Class_Payment.dart';
+import 'Dialog_payment.dart';
 
 Widget buildHeaderTitle(double num, String text) {
   return SizedBox(
@@ -135,7 +136,7 @@ class PaymentCards extends StatelessWidget {
                                       showDialog(
                                         context: context,
                                         builder: (context) =>
-                                            const CustomDialogWidget(),
+                                            const PaymentDialog(),
                                       );
                                     },
                                     child: Container(
@@ -294,7 +295,7 @@ class PaymentCards2 extends StatelessWidget {
                                     color: Colors.grey,
                                   ),
                                   buildBody(50, paymentData2[index].balance2,
-                                      UTextColor),
+                                      URedColor),
                                 ],
                               ),
                             ),
@@ -426,7 +427,7 @@ class PaymentCards3 extends StatelessWidget {
                                     color: Colors.grey,
                                   ),
                                   buildBody(50, paymentData4[index].balance4,
-                                      UTextColor),
+                                      URedColor),
                                 ],
                               ),
                             ),
@@ -558,7 +559,7 @@ class PaymentCards4 extends StatelessWidget {
                                     color: Colors.grey,
                                   ),
                                   buildBody(50, paymentData3[index].balance3,
-                                      UTextColor),
+                                      URedColor),
                                 ],
                               ),
                             ),

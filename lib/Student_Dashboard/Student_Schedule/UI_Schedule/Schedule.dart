@@ -20,26 +20,24 @@ class _ScheduleState extends State<Schedule> {
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'កាលវិភាគ'.tr),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
+        padding: EdgeInsets.symmetric(vertical: 5),
         children: [
           SizedBox(
-            child: const CardCalendar(),
+            child: CardCalendar(),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
               'កាលវិភាគសិក្សា',
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 16,
                 fontFamily: 'KhmerOSbattambang',
-                fontWeight: FontWeight.w600,
                 color: Color(0xff002060),
               ),
             ),
           ),
-          const CardCalendarList(),
+          CardCalendarList(),
         ],
       ),
     );

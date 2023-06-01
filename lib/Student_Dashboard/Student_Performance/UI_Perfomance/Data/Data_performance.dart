@@ -3,7 +3,7 @@
 class Class_Program_Score_s1 {
   /// contructor
   final String subject;
-  final int credit, hour;
+  final double credit, hour;
 
   Class_Program_Score_s1({
     required this.subject,
@@ -16,7 +16,7 @@ List<Class_Program_Score_s1> class_program_Score_s1 = [
   Class_Program_Score_s1(
     subject: "សេដ្ឋកិច្ចវិទ្យា",
     hour: 45,
-    credit: 99,
+    credit: 99.99,
   ),
   Class_Program_Score_s1(
     subject: "ប្រវត្តិ និងវប្បធម៍អាស៊ីគ្នេយ៍",
