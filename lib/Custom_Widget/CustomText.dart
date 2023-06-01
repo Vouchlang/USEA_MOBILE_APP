@@ -42,10 +42,11 @@ class NormalTitleTheme extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-            fontSize: size,
-            fontWeight: UTitleWeight,
-            color: UTextColor,
-            fontFamily: 'KhmerOSbattambang'),
+          fontSize: size,
+          fontWeight: UTitleWeight,
+          color: UTextColor,
+          fontFamily: 'KhmerOSbattambang',
+        ),
       ),
     );
   }

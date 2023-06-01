@@ -8,41 +8,39 @@ class CardAchievements extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: 10.0,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              'assets/image/unlocked.png',
-              width: 16,
-              height: 18,
-              fit: BoxFit.fill,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TitleTheme(
-                text: 'Unlocked',
+    return Container(
+      margin: EdgeInsets.all(2.0),
+      child: Column(
+        children: [
+          SizedBox(
+            height: 10.0,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/image/unlocked.png',
+                width: 16,
+                height: 18,
+                fit: BoxFit.fill,
               ),
-            ),
-          ],
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: GridView.count(
-            primary: false,
-            mainAxisSpacing: 5.0,
-            crossAxisSpacing: 5.0,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TitleTheme(
+                  text: 'Unlocked',
+                ),
+              ),
+            ],
+          ),
+          GridView.count(
+            childAspectRatio: 1.50,
             crossAxisCount: 2,
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             children: List.generate(
               achievements.length,
               (index) => Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(2.0),
                 child: Card(
                   elevation: 2,
                   child: Column(
@@ -51,7 +49,7 @@ class CardAchievements extends StatelessWidget {
                     children: [
                       Image.asset(achievements[index].image),
                       SizedBox(
-                        width: 100,
+                        width: 130,
                         child: NormalTitleCenterTheme(
                           text: achievements[index].semesterTitle,
                         ),
@@ -62,54 +60,46 @@ class CardAchievements extends StatelessWidget {
               ),
             ),
           ),
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              'assets/image/locked.png',
-              width: 16,
-              height: 18,
-              fit: BoxFit.fill,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TitleTheme(
-                text: 'Locked',
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/image/locked.png',
+                width: 16,
+                height: 18,
+                fit: BoxFit.fill,
               ),
-            ),
-          ],
-        ),
-        GridView.count(
-          childAspectRatio: 1.50,
-          crossAxisCount: 2,
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          children: List.generate(
-            achievements.length,
-            (index) => Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Card(
-                elevation: 2,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TitleTheme(
+                  text: 'Locked',
+                ),
+              ),
+            ],
+          ),
+          GridView.count(
+            childAspectRatio: 1.50,
+            crossAxisCount: 2,
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            children: List.generate(
+              achievements.length,
+              (index) => Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: Card(
+                  elevation: 2,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Image.asset(achievements[index].image),
                       SizedBox(
-                        width: 100,
-                        child: Text(
-                          achievements[index].semesterTitle,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontFamily: 'KhmerOSbattambang',
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black,
-                          ),
+                        width: 130,
+                        child: NormalTitleCenterTheme(
+                          text: achievements[index].semesterTitle,
                         ),
                       )
                     ],
@@ -118,8 +108,8 @@ class CardAchievements extends StatelessWidget {
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
