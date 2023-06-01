@@ -16,7 +16,7 @@ List<DataCalendar> datacalendar = [
   DataCalendar(
     weekday: 'ចន្ទ',
     date: '១៦',
-    majorTitle: 'សេដ្ធកិច្ចវិទ្យា',
+    majorTitle: 'សេដ្ឋកិច្ចវិទ្យា',
     classroom: 'ប្រាសាទព្រះខ័ន',
     teacherName: 'លោក​ ឃ្លាំង មង្គល',
     tel: '099 999 9999',
@@ -24,7 +24,7 @@ List<DataCalendar> datacalendar = [
   DataCalendar(
     weekday: 'អង្គ',
     date: '១៧',
-    majorTitle: 'សេដ្ធកិច្ចវិទ្យា',
+    majorTitle: 'សេដ្ឋកិច្ចវិទ្យា',
     classroom: 'ប្រាសាទព្រះខ័ន',
     teacherName: 'លោក​ ឃ្លាំង មង្គល',
     tel: '099 999 9999',
@@ -32,7 +32,7 @@ List<DataCalendar> datacalendar = [
   DataCalendar(
     weekday: 'ពុធ',
     date: '១៨',
-    majorTitle: 'សេដ្ធកិច្ចវិទ្យា',
+    majorTitle: 'សេដ្ឋកិច្ចវិទ្យា',
     classroom: 'ប្រាសាទព្រះខ័ន',
     teacherName: 'លោក​ ឃ្លាំង មង្គល',
     tel: '099 999 9999',
@@ -40,7 +40,7 @@ List<DataCalendar> datacalendar = [
   DataCalendar(
     weekday: 'ព្រហ',
     date: '១៩',
-    majorTitle: 'សេដ្ធកិច្ចវិទ្យា',
+    majorTitle: 'សេដ្ឋកិច្ចវិទ្យា',
     classroom: 'ប្រាសាទព្រះខ័ន',
     teacherName: 'លោក​ ឃ្លាំង មង្គល',
     tel: '099 999 9999',
@@ -48,7 +48,7 @@ List<DataCalendar> datacalendar = [
   DataCalendar(
     weekday: 'សុក្រ',
     date: '២០',
-    majorTitle: 'សេដ្ធកិច្ចវិទ្យា',
+    majorTitle: 'សេដ្ឋកិច្ចវិទ្យា',
     classroom: 'ប្រាសាទព្រះខ័ន',
     teacherName: 'លោក​ ឃ្លាំង មង្គល',
     tel: '099 999 9999',
@@ -56,7 +56,7 @@ List<DataCalendar> datacalendar = [
   DataCalendar(
     weekday: 'សៅរ៏',
     date: '២១',
-    majorTitle: 'សេដ្ធកិច្ចវិទ្យា',
+    majorTitle: 'សេដ្ឋកិច្ចវិទ្យា',
     classroom: 'ប្រាសាទព្រះខ័ន',
     teacherName: 'លោក​ ឃ្លាំង មង្គល',
     tel: '099 999 9999',
