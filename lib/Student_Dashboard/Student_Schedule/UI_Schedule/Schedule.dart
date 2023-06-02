@@ -29,7 +29,7 @@ class _ScheduleState extends State<Schedule> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              'កាលវិភាគសិក្សា',
+              'កាលវិភាគសិក្សា'.tr,
               style: TextStyle(
                 fontSize: 16,
                 fontFamily: 'KhmerOSbattambang',

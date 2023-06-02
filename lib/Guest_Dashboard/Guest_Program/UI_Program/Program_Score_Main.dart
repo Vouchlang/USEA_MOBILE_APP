@@ -36,7 +36,7 @@ class _Program_Score_MainState extends State<Program_Score_Main> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              height: 67,
+              height: 70,
               child: ListView.builder(
                 physics: ScrollPhysics(),
                 itemCount: tab_txt.length,

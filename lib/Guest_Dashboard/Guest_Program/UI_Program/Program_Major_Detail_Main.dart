@@ -37,7 +37,7 @@ class _Program_Major_DetailState extends State<Program_Major_Detail_Main> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              height: 67,
+              height: 70,
               child: ListView.builder(
                 physics: ScrollPhysics(),
                 itemCount: tab_txt.length,

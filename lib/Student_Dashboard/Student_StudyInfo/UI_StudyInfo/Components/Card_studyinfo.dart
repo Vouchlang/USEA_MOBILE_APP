@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../Custom_Widget/CustomText.dart';
-import '../Data/Data_studyinfo.dart';
+import '../../Class_StudyInfo/Class_Study_Info.dart';
 
 class StudyInformationCards extends StatelessWidget {
   const StudyInformationCards({super.key});

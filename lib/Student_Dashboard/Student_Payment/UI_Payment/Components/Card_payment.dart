@@ -214,24 +214,24 @@ class PaymentCards2 extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        buildHeaderTitle(65, 'កាលបរិច្ឆេទ'),
+                        buildHeaderTitle(75, 'កាលបរិច្ឆេទ'),
                         VerticalDivider(
                           width: 5,
                           color: Colors.grey,
                         ),
                         buildHeaderTitle(75, 'លេខវិក័យបត្រ'),
                         VerticalDivider(
-                          width: 5,
+                          width: 2,
                           color: Colors.grey,
                         ),
                         buildHeaderTitle(45, 'ទឹកប្រាក់ត្រូវបង់'),
                         VerticalDivider(
-                          width: 5,
+                          width: 2,
                           color: Colors.grey,
                         ),
                         buildHeaderTitle(45, 'ទឹកប្រាក់បានបង់'),
                         VerticalDivider(
-                          width: 5,
+                          width: 2,
                           color: Colors.grey,
                         ),
                         buildHeaderTitle(50, 'ទឹកប្រាក់នៅសល់'),
@@ -264,7 +264,7 @@ class PaymentCards2 extends StatelessWidget {
                                 children: [
                                   /// ! datePayment
                                   buildBody(
-                                      65,
+                                      75,
                                       paymentData2[index].datePayment2,
                                       UTextColor),
 
@@ -276,7 +276,7 @@ class PaymentCards2 extends StatelessWidget {
                                       UTextColor),
 
                                   VerticalDivider(
-                                    width: 5,
+                                    width: 2,
                                     color: Colors.grey,
                                   ),
                                   buildBody(
@@ -285,13 +285,13 @@ class PaymentCards2 extends StatelessWidget {
                                       UTextColor),
 
                                   VerticalDivider(
-                                    width: 5,
+                                    width: 2,
                                     color: Colors.grey,
                                   ),
                                   buildBody(45, paymentData2[index].amountPaid2,
                                       UTextColor),
                                   VerticalDivider(
-                                    width: 5,
+                                    width: 2,
                                     color: Colors.grey,
                                   ),
                                   buildBody(50, paymentData2[index].balance2,
@@ -346,7 +346,7 @@ class PaymentCards3 extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        buildHeaderTitle(65, 'កាលបរិច្ឆេទ'),
+                        buildHeaderTitle(75, 'កាលបរិច្ឆេទ'),
                         VerticalDivider(
                           width: 5,
                           color: Colors.grey,
@@ -396,7 +396,7 @@ class PaymentCards3 extends StatelessWidget {
                                 children: [
                                   /// ! datePayment
                                   buildBody(
-                                      65,
+                                      75,
                                       paymentData4[index].datePayment4,
                                       UTextColor),
 
@@ -408,7 +408,7 @@ class PaymentCards3 extends StatelessWidget {
                                       UTextColor),
 
                                   VerticalDivider(
-                                    width: 5,
+                                    width: 2,
                                     color: Colors.grey,
                                   ),
                                   buildBody(
@@ -417,13 +417,13 @@ class PaymentCards3 extends StatelessWidget {
                                       UTextColor),
 
                                   VerticalDivider(
-                                    width: 5,
+                                    width: 2,
                                     color: Colors.grey,
                                   ),
                                   buildBody(45, paymentData4[index].amountPaid4,
                                       UTextColor),
                                   VerticalDivider(
-                                    width: 5,
+                                    width: 2,
                                     color: Colors.grey,
                                   ),
                                   buildBody(50, paymentData4[index].balance4,
@@ -478,7 +478,7 @@ class PaymentCards4 extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        buildHeaderTitle(65, 'កាលបរិច្ឆេទ'),
+                        buildHeaderTitle(75, 'កាលបរិច្ឆេទ'),
                         VerticalDivider(
                           width: 5,
                           color: Colors.grey,
@@ -528,7 +528,7 @@ class PaymentCards4 extends StatelessWidget {
                                 children: [
                                   /// ! datePayment
                                   buildBody(
-                                      65,
+                                      75,
                                       paymentData3[index].datePayment3,
                                       UTextColor),
 
@@ -540,7 +540,7 @@ class PaymentCards4 extends StatelessWidget {
                                       UTextColor),
 
                                   VerticalDivider(
-                                    width: 5,
+                                    width: 2,
                                     color: Colors.grey,
                                   ),
                                   buildBody(
@@ -549,13 +549,13 @@ class PaymentCards4 extends StatelessWidget {
                                       UTextColor),
 
                                   VerticalDivider(
-                                    width: 5,
+                                    width: 2,
                                     color: Colors.grey,
                                   ),
                                   buildBody(45, paymentData3[index].amountPaid3,
                                       UTextColor),
                                   VerticalDivider(
-                                    width: 5,
+                                    width: 2,
                                     color: Colors.grey,
                                   ),
                                   buildBody(50, paymentData3[index].balance3,

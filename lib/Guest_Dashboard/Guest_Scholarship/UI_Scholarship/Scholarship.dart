@@ -37,7 +37,7 @@ class _ScholarshipState extends State<Scholarship> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              height: 67,
+              height: 70,
               child: ListView.builder(
                 physics: ScrollPhysics(),
                 itemCount: tab_txt.length,
