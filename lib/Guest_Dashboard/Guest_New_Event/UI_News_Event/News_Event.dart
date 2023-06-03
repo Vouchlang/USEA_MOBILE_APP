@@ -38,7 +38,7 @@ class _New_EventState extends State<New_Event> {
           children: [
             Container(
               margin: EdgeInsets.all(0),
-              height: 67,
+              height: 70,
               child: ListView.builder(
                 physics: ScrollPhysics(),
                 itemCount: tab_txt.length,

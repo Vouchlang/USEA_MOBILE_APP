@@ -141,6 +141,15 @@ class LocaleString extends Translations {
               'តើអ្នកប្រាកដថាអ្នកនឹងចាកចេញពីគណនីនិសិ្សតដែរឬទេ?',
           'បោះបង់': 'បោះបង់',
 
+          // Student Schedule
+          'កាលវិភាគសិក្សា': 'កាលវិភាគសិក្សា',
+
+          // Student Schedule
+          'លំហាត់': 'លំហាត់',
+          'កិច្ចការផ្ទះ': 'កិច្ចការផ្ទះ',
+          'កិច្ចការក្រុម': 'កិច្ចការក្រុម',
+          'ពាក់កណ្ដាលឆមាស': 'ពាក់កណ្ដាលឆមាស',
+
           // Student Attendance
           'វត្តមាន\t': 'វត្តមាន\t',
           'យឺត': 'យឺត',
@@ -310,6 +319,15 @@ class LocaleString extends Translations {
           'តើអ្នកប្រាកដថាអ្នកនឹងចាកចេញពីគណនីនិសិ្សតដែរឬទេ?':
               'Are you sure you want to log out student account?',
           'បោះបង់': 'Cancel',
+
+          // Student Schedule
+          'កាលវិភាគសិក្សា': 'Schedule',
+
+          // Student Schedule
+          'លំហាត់': 'Exercises',
+          'កិច្ចការផ្ទះ': 'Homework',
+          'កិច្ចការក្រុម': 'Assignment',
+          'ពាក់កណ្ដាលឆមាស': 'Mid-term',
 
           // Student Attendance
           'វត្តមាន\t': 'Present',

@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usea_app/theme_builder.dart';
-import '../Data/Data_performance.dart';
+import '../Class_Performance/Class_Data_performance.dart';
 import 'Dialog_performance.dart';
 
 class Card_learning_pro_1 extends StatelessWidget {
@@ -39,7 +39,7 @@ class Card_learning_pro_1 extends StatelessWidget {
             );
           },
           child: Text(
-            text,
+            text.tr,
             style: TextStyle(
                 color: UScoreColor,
                 fontSize: 14,
@@ -47,6 +47,17 @@ class Card_learning_pro_1 extends StatelessWidget {
                 fontWeight: FontWeight.w600,
                 decoration: TextDecoration.underline),
           ),
+        ),
+      );
+    }
+
+    Widget buildScoreTotal(String text) {
+      return Container(
+        width: 50,
+        alignment: Alignment.centerRight,
+        child: Text(
+          text,
+          style: TextStyle(color: UPrimaryColor),
         ),
       );
     }
@@ -152,8 +163,8 @@ class Card_learning_pro_1 extends StatelessWidget {
                                     children: [
                                       buildAttScore(
                                         class_program_Score_s1[index]
-                                            .hour
-                                            .toString(),
+                                            .att
+                                            .toStringAsFixed(2),
                                         CustomAttDialog(),
                                       ),
                                       VerticalDivider(
@@ -162,8 +173,8 @@ class Card_learning_pro_1 extends StatelessWidget {
                                       ),
                                       buildAttScore(
                                         class_program_Score_s1[index]
-                                            .credit
-                                            .toString(),
+                                            .score
+                                            .toStringAsFixed(2),
                                         CustomScoreDialog(),
                                       ),
                                     ],
@@ -177,14 +188,60 @@ class Card_learning_pro_1 extends StatelessWidget {
                     },
                   ),
                 ),
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text('មធ្យមភាគៈ', style: TextStyle(color: UPrimaryColor)),
+                      buildScoreTotal(
+                        class_program_Score_s1
+                            .fold(
+                                0.0,
+                                (sum, data) =>
+                                    sum +
+                                    (data.score) /
+                                        class_program_Score_s1.length)
+                            .toString()
+                            .substring(0, 5),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  alignment: Alignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        'ចំណាត់ថ្នាក់ប្រចាំថ្នាក់ៈ',
+                        style: TextStyle(color: UPrimaryColor),
+                      ),
+                      buildScoreTotal(
+                        (class_program_Score_s1.indexWhere((data) =>
+                                    data.score ==
+                                    class_program_Score_s1[0].score) +
+                                1)
+                            .toString(),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  alignment: Alignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text('GPA:', style: TextStyle(color: UPrimaryColor)),
+                      buildScoreTotal('9.99'),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
-        ),
-
-        /// ! SizeBox
-        SizedBox(
-          height: 10,
         ),
 
         /// ! Semester 02
@@ -198,7 +255,7 @@ class Card_learning_pro_1 extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(10),
             ),
-            margin: EdgeInsets.all(10),
+            margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
             color: Colors.white,
 
             /// BODY CONTENT
@@ -288,8 +345,8 @@ class Card_learning_pro_1 extends StatelessWidget {
                                     children: [
                                       buildAttScore(
                                         class_program_Score_s1[index]
-                                            .hour
-                                            .toString(),
+                                            .att
+                                            .toStringAsFixed(2),
                                         CustomAttDialog(),
                                       ),
                                       VerticalDivider(
@@ -298,8 +355,8 @@ class Card_learning_pro_1 extends StatelessWidget {
                                       ),
                                       buildAttScore(
                                         class_program_Score_s1[index]
-                                            .credit
-                                            .toString(),
+                                            .score
+                                            .toStringAsFixed(2),
                                         CustomScoreDialog(),
                                       ),
                                     ],
@@ -311,6 +368,57 @@ class Card_learning_pro_1 extends StatelessWidget {
                         ),
                       );
                     },
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text('មធ្យមភាគៈ', style: TextStyle(color: UPrimaryColor)),
+                      buildScoreTotal(
+                        class_program_Score_s1
+                            .fold(
+                                0.0,
+                                (sum, data) =>
+                                    sum +
+                                    (data.score) /
+                                        class_program_Score_s1.length)
+                            .toString()
+                            .substring(0, 5),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  alignment: Alignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        'ចំណាត់ថ្នាក់ប្រចាំថ្នាក់ៈ',
+                        style: TextStyle(color: UPrimaryColor),
+                      ),
+                      buildScoreTotal(
+                        (class_program_Score_s1.indexWhere((data) =>
+                                    data.score ==
+                                    class_program_Score_s1[0].score) +
+                                1)
+                            .toString(),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  alignment: Alignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text('GPA:', style: TextStyle(color: UPrimaryColor)),
+                      buildScoreTotal('9.99'),
+                    ],
                   ),
                 ),
               ],

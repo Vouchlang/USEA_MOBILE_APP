@@ -89,6 +89,7 @@ class _All_info_majorState extends State<All_info_major> {
                               Container(
                                 margin: EdgeInsets.symmetric(horizontal: 15),
                                 child: VerticalDivider(
+                                  thickness: 0.5,
                                   color: Colors.grey,
                                 ),
                               ),
@@ -96,6 +97,7 @@ class _All_info_majorState extends State<All_info_major> {
                               Container(
                                 margin: EdgeInsets.symmetric(horizontal: 15),
                                 child: VerticalDivider(
+                                  thickness: 0.5,
                                   color: Colors.grey,
                                 ),
                               ),
@@ -106,42 +108,52 @@ class _All_info_majorState extends State<All_info_major> {
                       ),
                     ),
                     Divider(
+                      thickness: 0.5,
                       color: Colors.grey,
                     ),
                     Row_Data_List(),
                     Divider(
+                      thickness: 0.5,
                       color: Colors.grey,
                     ),
                     Row_Data_List(),
                     Divider(
+                      thickness: 0.5,
                       color: Colors.grey,
                     ),
                     Row_Data_List(),
                     Divider(
+                      thickness: 0.5,
                       color: Colors.grey,
                     ),
                     Row_Data_List(),
                     Divider(
+                      thickness: 0.5,
                       color: Colors.grey,
                     ),
                     Row_Data_List(),
                     Divider(
+                      thickness: 0.5,
                       color: Colors.grey,
                     ),
                     Row_Data_List(),
                     Divider(
+                      thickness: 0.5,
                       color: Colors.grey,
                     ),
                     Row_Data_List(),
                     Divider(
+                      thickness: 0.5,
                       color: Colors.grey,
                     ),
                     Row_Data_List(),
                     Divider(
+                      thickness: 0.5,
                       color: Colors.grey,
                     ),
                     Row_Data_List(),
                     Divider(
+                      thickness: 0.5,
                       color: Colors.grey,
                     ),
                     Row_Data_List(),

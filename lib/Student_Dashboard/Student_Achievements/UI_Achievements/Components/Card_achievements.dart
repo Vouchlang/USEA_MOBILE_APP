@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:usea_app/Custom_Widget/CustomText.dart';
 
-import '../Data/Data_achievements.dart';
+import '../../../../theme_builder.dart';
+import '../../Class_Achievements/Class_Achievements.dart';
 
 class CardAchievements extends StatelessWidget {
   const CardAchievements({super.key});
@@ -20,9 +21,7 @@ class CardAchievements extends StatelessWidget {
             children: [
               Image.asset(
                 'assets/image/unlocked.png',
-                width: 16,
-                height: 18,
-                fit: BoxFit.fill,
+                scale: 8,
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -33,28 +32,29 @@ class CardAchievements extends StatelessWidget {
             ],
           ),
           GridView.count(
-            childAspectRatio: 1.50,
-            crossAxisCount: 2,
             shrinkWrap: true,
+            crossAxisCount: 2,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
+            childAspectRatio: 1.90,
+            padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
             physics: NeverScrollableScrollPhysics(),
             children: List.generate(
               achievements.length,
-              (index) => Padding(
-                padding: const EdgeInsets.all(2.0),
+              (index) => Container(
                 child: Card(
-                  elevation: 2,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Image.asset(achievements[index].image),
-                      SizedBox(
-                        width: 130,
-                        child: NormalTitleCenterTheme(
-                          text: achievements[index].semesterTitle,
-                        ),
-                      )
-                    ],
+                  shadowColor: Colors.grey[200],
+                  color: Colors.amber,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  margin: EdgeInsets.all(0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.asset(
+                      achievements[index].image,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
@@ -68,9 +68,7 @@ class CardAchievements extends StatelessWidget {
             children: [
               Image.asset(
                 'assets/image/locked.png',
-                width: 16,
-                height: 18,
-                fit: BoxFit.fill,
+                scale: 8,
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -81,28 +79,29 @@ class CardAchievements extends StatelessWidget {
             ],
           ),
           GridView.count(
-            childAspectRatio: 1.50,
-            crossAxisCount: 2,
             shrinkWrap: true,
+            crossAxisCount: 2,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
+            childAspectRatio: 1.90,
+            padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
             physics: NeverScrollableScrollPhysics(),
             children: List.generate(
               achievements.length,
-              (index) => Padding(
-                padding: const EdgeInsets.all(2.0),
+              (index) => Container(
                 child: Card(
-                  elevation: 2,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Image.asset(achievements[index].image),
-                      SizedBox(
-                        width: 130,
-                        child: NormalTitleCenterTheme(
-                          text: achievements[index].semesterTitle,
-                        ),
-                      )
-                    ],
+                  shadowColor: Colors.grey[200],
+                  color: Colors.amber,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  margin: EdgeInsets.all(0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.asset(
+                      achievements[index].image,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),

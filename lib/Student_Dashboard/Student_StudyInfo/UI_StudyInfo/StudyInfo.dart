@@ -4,7 +4,7 @@ import 'package:usea_app/Custom_AppBar.dart';
 
 import '../../../Custom_Widget/CustomText.dart';
 import 'Components/Card_studyinfo.dart';
-import 'Data/Data_studyinfo.dart';
+import '../Class_StudyInfo/Class_Study_Info.dart';
 
 class Study_Info extends StatefulWidget {
   const Study_Info({super.key});
@@ -47,14 +47,20 @@ class _Study_InfoState extends State<Study_Info> {
                               NormalTitleTheme(
                                 text: studyInformationData[index].days,
                               ),
-                              Divider(),
+                              Divider(
+                                color: Colors.grey,
+                                thickness: 0.5,
+                              ),
                               NormalTitleTheme(
                                 text: studyInformationData[index].months,
                               ),
                             ],
                           ),
                         ),
-                        VerticalDivider(),
+                        VerticalDivider(
+                          color: Colors.grey,
+                          thickness: 0.5,
+                        ),
                         Container(
                           padding: EdgeInsets.only(left: 8.0),
                           child: IntrinsicWidth(
@@ -68,7 +74,10 @@ class _Study_InfoState extends State<Study_Info> {
                                         .semesterTitle,
                                   ),
                                 ),
-                                Divider(),
+                                Divider(
+                                  thickness: 0.5,
+                                  color: Colors.grey,
+                                ),
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [

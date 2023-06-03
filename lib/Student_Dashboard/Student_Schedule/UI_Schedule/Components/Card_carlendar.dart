@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:intl/intl.dart';
 
 class CardCalendar extends StatefulWidget {
-  const CardCalendar({super.key});
+  const CardCalendar({Key? key}) : super(key: key);
 
   @override
-  State<CardCalendar> createState() => _CardCalendarState();
+  _CardCalendarState createState() => _CardCalendarState();
 }
 
 class _CardCalendarState extends State<CardCalendar> {
@@ -20,7 +21,7 @@ class _CardCalendarState extends State<CardCalendar> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       child: Column(
         children: [
           Container(
@@ -35,9 +36,18 @@ class _CardCalendarState extends State<CardCalendar> {
               borderRadius: BorderRadius.circular(10),
             ),
             child: TableCalendar(
+              daysOfWeekHeight: 20,
+              daysOfWeekStyle: DaysOfWeekStyle(
+                dowTextFormatter: (date, locale) =>
+                    DateFormat.E(locale).format(date).substring(0, 2),
+              ),
               calendarStyle: CalendarStyle(
                 todayTextStyle: TextStyle(
+                  fontWeight: FontWeight.bold,
                   color: Colors.green,
+                ),
+                todayDecoration: BoxDecoration(
+                  color: Color.fromARGB(0, 255, 255, 255),
                 ),
                 selectedTextStyle: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -45,7 +55,7 @@ class _CardCalendarState extends State<CardCalendar> {
                   decoration: TextDecoration.underline,
                 ),
                 selectedDecoration: BoxDecoration(
-                  color: Color.fromARGB(0, 255, 255, 255),
+                  color: Colors.transparent,
                 ),
               ),
               headerStyle: HeaderStyle(
@@ -63,6 +73,7 @@ class _CardCalendarState extends State<CardCalendar> {
               calendarBuilders: CalendarBuilders(
                 defaultBuilder: (context, date, _) {
                   return Container(
+                    margin: const EdgeInsets.all(4.0),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: isSameDay(date, today)

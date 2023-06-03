@@ -91,7 +91,7 @@ class ChangeLanguage extends StatelessWidget {
             ),
             SizedBox(height: 5),
             Container(
-              height: 75,
+              height: 80,
               padding: EdgeInsets.all(5),
               alignment: Alignment.center,
               child: ListView.separated(
@@ -100,7 +100,7 @@ class ChangeLanguage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return InkWell(
                     child: Container(
-                      height: 75,
+                      height: 80,
                       width: 95,
                       alignment: Alignment.center,
                       child: Column(

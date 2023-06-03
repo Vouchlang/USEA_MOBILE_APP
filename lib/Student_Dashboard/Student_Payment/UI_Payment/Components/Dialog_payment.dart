@@ -71,7 +71,7 @@ class _PaymentDialogState extends State<PaymentDialog> {
               children: [
                 Container(
                   child: Text(
-                    "ឆ្នាំទី ១",
+                    "ឆ្នាំទី​ ១".tr,
                     style: TextStyle(
                       color: UPrimaryColor,
                       fontSize: 14,
@@ -99,7 +99,7 @@ class _PaymentDialogState extends State<PaymentDialog> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            buildHeaderTitle(65, 'កាលបរិច្ឆេទ'),
+                            buildHeaderTitle(75, 'កាលបរិច្ឆេទ'),
                             VerticalDivider(
                               width: 5,
                               color: Colors.grey,
@@ -149,7 +149,7 @@ class _PaymentDialogState extends State<PaymentDialog> {
                                     children: [
                                       /// ! datePayment
                                       buildBody(
-                                          65,
+                                          75,
                                           paymentData2[index].datePayment2,
                                           UTextColor),
 

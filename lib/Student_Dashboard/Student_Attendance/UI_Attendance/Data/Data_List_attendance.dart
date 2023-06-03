@@ -30,6 +30,7 @@ class Row_Data_List extends StatelessWidget {
           children: [
             buildTextBody('15/02/2023'.tr, UTextColor),
             VerticalDivider(
+              thickness: 0.5,
               color: Colors.grey,
             ),
             Column(
@@ -46,6 +47,7 @@ class Row_Data_List extends StatelessWidget {
               ],
             ),
             VerticalDivider(
+              thickness: 0.5,
               color: Colors.grey,
             ),
             Column(

@@ -28,8 +28,13 @@ class _ScheduleState extends State<Schedule> {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: PriColorTitleSize16Theme(
-              text: 'កាលវិភាគសិក្សា',
+            child: Text(
+              'កាលវិភាគសិក្សា',
+              style: TextStyle(
+                fontSize: 16,
+                fontFamily: 'KhmerOSbattambang',
+                color: Color(0xff002060),
+              ),
             ),
           ),
           CardCalendarList(),

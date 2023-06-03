@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:usea_app/Custom_Widget/CustomText.dart';
 
-import '../Data/Data_Carlendar.dart';
+import '../../Class_Schedule/Class_Schedule.dart';
 
 class CardCalendarList extends StatelessWidget {
   const CardCalendarList({super.key});
@@ -22,6 +22,8 @@ class CardCalendarList extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 5),
                 child: Card(
                   elevation: 2,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
                   child: Container(
                     padding: EdgeInsets.all(10.0),
                     child: IntrinsicHeight(
