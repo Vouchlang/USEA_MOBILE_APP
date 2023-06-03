@@ -34,12 +34,10 @@ class StudyInformationCards extends StatelessWidget {
                         children: [
                           NormalTitleTheme(
                             text: studyInformationData[index].days,
-                            size: 14,
                           ),
                           Divider(),
                           NormalTitleTheme(
                             text: studyInformationData[index].months,
-                            size: 14,
                           ),
                         ],
                       ),
@@ -51,9 +49,8 @@ class StudyInformationCards extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Expanded(
-                              child: NormalTitleTheme(
+                              child: TitleSize16_Theme(
                                 text: studyInformationData[index].semesterTitle,
-                                size: 16,
                               ),
                             ),
                             Divider(),
@@ -62,7 +59,6 @@ class StudyInformationCards extends StatelessWidget {
                               children: [
                                 BodyTheme(
                                   text: 'មុខវិជ្ជា\t',
-                                  size: 14,
                                 ),
                                 Expanded(
                                   child: Container(
@@ -70,7 +66,6 @@ class StudyInformationCards extends StatelessWidget {
                                     child: BodyTheme(
                                       text: studyInformationData[index]
                                           .majorTitle,
-                                      size: 14,
                                     ),
                                   ),
                                 ),
@@ -81,7 +76,6 @@ class StudyInformationCards extends StatelessWidget {
                               children: [
                                 BodyTheme(
                                   text: 'បន្ទប់\t',
-                                  size: 14,
                                 ),
                                 Expanded(
                                   child: Container(
@@ -89,7 +83,6 @@ class StudyInformationCards extends StatelessWidget {
                                     child: BodyTheme(
                                       text:
                                           studyInformationData[index].roomTitle,
-                                      size: 14,
                                     ),
                                   ),
                                 ),
@@ -100,7 +93,6 @@ class StudyInformationCards extends StatelessWidget {
                               children: [
                                 BodyTheme(
                                   text: 'ម៉ោង\t',
-                                  size: 14,
                                 ),
                                 Expanded(
                                   child: Container(
@@ -108,7 +100,6 @@ class StudyInformationCards extends StatelessWidget {
                                     child: BodyTheme(
                                       text:
                                           studyInformationData[index].timeExam,
-                                      size: 14,
                                     ),
                                   ),
                                 ),

@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:usea_app/theme_builder.dart';
+import 'package:usea_app/Custom_Widget/CustomText.dart';
 
 import '../Data/Data_Carlendar.dart';
 
@@ -10,17 +10,6 @@ class CardCalendarList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget buildText(String text, double size) {
-      return Text(
-        text,
-        style: TextStyle(
-          fontSize: size,
-          fontFamily: 'KhmerOSbattambang',
-          color: UTextColor,
-        ),
-      );
-    }
-
     return Expanded(
       child: ListView.builder(
         physics: ScrollPhysics(),
@@ -42,53 +31,56 @@ class CardCalendarList extends StatelessWidget {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              buildText(datacalendar[index].weekday, 16),
-                              buildText(datacalendar[index].date, 16),
+                              NormalTitleTheme(
+                                text: datacalendar[index].weekday,
+                              ),
+                              NormalTitleTheme(
+                                text: datacalendar[index].date,
+                              ),
                             ],
                           ),
+
+                          // *@ VerticalDivider
                           VerticalDivider(
                             thickness: 0.5,
                             color: Colors.grey,
                             width: 30,
                           ),
+                          // *@ End Vertical Divider
+
                           Expanded(
                             child: Container(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    datacalendar[index].majorTitle,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontFamily: 'KhmerOSbattambang',
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.black,
-                                    ),
+                                  TitleSize16_Theme(
+                                    text: datacalendar[index].majorTitle,
                                   ),
                                   SizedBox(
                                     height: 5,
                                   ),
-                                  buildText(datacalendar[index].classroom, 12),
+                                  BodyTheme(
+                                    text: datacalendar[index].classroom,
+                                  ),
                                   Expanded(
                                     child: Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
                                         Expanded(
                                           child: Container(
-                                            child: buildText(
-                                                datacalendar[index].teacherName,
-                                                12),
+                                            child: BodyTheme(
+                                              text: datacalendar[index]
+                                                  .teacherName,
+                                            ),
                                           ),
-                                        ),
-                                        SizedBox(
-                                          width: 0,
                                         ),
                                         Expanded(
                                           child: Container(
                                             alignment: Alignment.topRight,
-                                            child: buildText(
-                                                datacalendar[index].tel, 12),
+                                            child: BodyTheme(
+                                              text: datacalendar[index].tel,
+                                            ),
                                           ),
                                         ),
                                       ],

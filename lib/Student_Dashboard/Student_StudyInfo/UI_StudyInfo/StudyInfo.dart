@@ -46,12 +46,10 @@ class _Study_InfoState extends State<Study_Info> {
                             children: [
                               NormalTitleTheme(
                                 text: studyInformationData[index].days,
-                                size: 14,
                               ),
                               Divider(),
                               NormalTitleTheme(
                                 text: studyInformationData[index].months,
-                                size: 14,
                               ),
                             ],
                           ),
@@ -65,10 +63,9 @@ class _Study_InfoState extends State<Study_Info> {
                               children: [
                                 Container(
                                   width: 250,
-                                  child: NormalTitleTheme(
+                                  child: TitleSize16_Theme(
                                     text: studyInformationData[index]
                                         .semesterTitle,
-                                    size: 16,
                                   ),
                                 ),
                                 Divider(),
@@ -77,7 +74,6 @@ class _Study_InfoState extends State<Study_Info> {
                                   children: [
                                     BodyTheme(
                                       text: 'មុខវិជ្ជា\t',
-                                      size: 14,
                                     ),
                                     Container(
                                       width: 200,
@@ -85,7 +81,6 @@ class _Study_InfoState extends State<Study_Info> {
                                       child: BodyTheme(
                                         text: studyInformationData[index]
                                             .majorTitle,
-                                        size: 14,
                                       ),
                                     ),
                                   ],
@@ -95,7 +90,6 @@ class _Study_InfoState extends State<Study_Info> {
                                   children: [
                                     BodyTheme(
                                       text: 'បន្ទប់\t',
-                                      size: 14,
                                     ),
                                     Container(
                                       width: 200,
@@ -103,7 +97,6 @@ class _Study_InfoState extends State<Study_Info> {
                                       child: BodyTheme(
                                         text: studyInformationData[index]
                                             .roomTitle,
-                                        size: 14,
                                       ),
                                     ),
                                   ],
@@ -113,7 +106,6 @@ class _Study_InfoState extends State<Study_Info> {
                                   children: [
                                     BodyTheme(
                                       text: 'ម៉ោង\t',
-                                      size: 14,
                                     ),
                                     Container(
                                       width: 200,
@@ -121,7 +113,6 @@ class _Study_InfoState extends State<Study_Info> {
                                       child: BodyTheme(
                                         text: studyInformationData[index]
                                             .timeExam,
-                                        size: 14,
                                       ),
                                     ),
                                   ],
