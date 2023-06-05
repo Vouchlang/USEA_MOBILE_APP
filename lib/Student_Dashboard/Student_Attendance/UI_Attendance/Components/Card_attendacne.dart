@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usea_app/theme_builder.dart';
 
+import '../../../../Custom_Widget/CustomText.dart';
 import '../../Class_Attendance/Class_Attendance.dart';
 import 'Card_all_attendance.dart';
 
@@ -15,34 +16,6 @@ class Major_Attendance extends StatefulWidget {
 }
 
 class _Major_AttendanceState extends State<Major_Attendance> {
-  Widget buildCHText(String text) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: 10,
-      ),
-    );
-  }
-
-  Widget buildNum(String text, Color color) {
-    return Text(
-      text,
-      style: TextStyle(
-        color: color,
-        fontSize: 14,
-      ),
-    );
-  }
-
-  Widget buildDivider() {
-    return Container(
-      width: 0.5,
-      height: 15,
-      color: Colors.grey,
-      margin: const EdgeInsets.only(right: 5, left: 5),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -52,19 +25,22 @@ class _Major_AttendanceState extends State<Major_Attendance> {
       itemBuilder: (BuildContext context, int index) {
         return Card(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(URoundedLarge),
           ),
           elevation: 1,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(10, 10, 15, 10),
+            padding: const EdgeInsets.fromLTRB(
+              UPd_Mg_Medium,
+              UPd_Mg_Medium,
+              UPd_Mg_Extra,
+              UPd_Mg_Medium,
+            ),
             child: InkWell(
               onTap: () {
                 setState(() {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => All_info_major(),
-                    ),
+                    MaterialPageRoute(builder: (context) => All_info_major()),
                   );
                 });
               },
@@ -77,28 +53,15 @@ class _Major_AttendanceState extends State<Major_Attendance> {
                       children: [
                         Container(
                           width: 175,
-                          child: Text(
-                            attendance_data[index].subject,
-                            style: const TextStyle(
-                                fontSize: 14,
-                                color: Colors.black,
-                                fontFamily: 'KhmerOSbattambang'),
-                          ),
+                          child: NormalTitleTheme(
+                              text: attendance_data[index].subject),
                         ),
                         Row(
                           children: [
-                            buildCHText(
-                              attendance_data[index].hour.toString(),
-                            ),
-                            buildCHText(
-                              '\tក្រេឌីត\t'.tr,
-                            ),
-                            buildCHText(
-                              attendance_data[index].hour.toString(),
-                            ),
-                            buildCHText(
-                              '\tម៉ោង'.tr,
-                            ),
+                            buildCHText(attendance_data[index].hour.toString()),
+                            buildCHText('\tក្រេឌីត\t'.tr),
+                            buildCHText(attendance_data[index].hour.toString()),
+                            buildCHText('\tម៉ោង'.tr),
                           ],
                         )
                       ],

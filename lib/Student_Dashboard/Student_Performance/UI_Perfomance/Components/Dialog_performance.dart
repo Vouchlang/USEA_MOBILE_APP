@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usea_app/theme_builder.dart';
+import 'package:usea_app/Custom_Widget/CustomText.dart';
 
 import '../Class_Performance/Class_Attendacne_performance.dart';
 
@@ -18,11 +19,11 @@ class _CustomAttDialogState extends State<CustomAttDialog> {
   Widget build(BuildContext context) {
     return Dialog(
       elevation: 5,
-      backgroundColor: Colors.white,
-      insetPadding: EdgeInsets.all(10),
+      backgroundColor: UBackgroundColor,
+      insetPadding: EdgeInsets.all(UPd_Mg_Medium),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(10.0),
+          Radius.circular(URoundedLarge),
         ),
       ),
       child: Stack(
@@ -55,46 +56,40 @@ class _CustomAttDialogState extends State<CustomAttDialog> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            width: double.infinity,
+            padding: const EdgeInsets.all(UPd_Mg_Medium),
+            width: UFullWidth,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10.0),
-                topRight: Radius.circular(10.0),
+                topLeft: Radius.circular(URoundedLarge),
+                topRight: Radius.circular(URoundedLarge),
               ),
-              color: Color(0xFEE8F0FE),
+              color: UBGLightBlue,
             ),
 
-            /// ! Header Table
-            child: Row(
-              children: [
-                Container(
-                  child: Text(
-                    "សេដ្ឋកិច្ចវិទ្យា",
-                    style: TextStyle(
-                      color: UPrimaryColor,
-                      fontSize: 14,
-                      fontFamily: 'KhmerOSbattambang',
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ],
+            // ! Header Table
+            child: Text(
+              'សេដ្ឋកិច្ចវិទ្យា',
+              style: TextStyle(
+                fontFamily: UFontFamily,
+                fontSize: UTitleSize,
+                fontWeight: UTitleWeight,
+                color: UPrimaryColor,
+              ),
             ),
           ),
-          const SizedBox(
+          SizedBox(
             height: 4,
           ),
           Container(
-            padding: const EdgeInsets.all(8.0),
-            width: double.infinity,
+            padding: EdgeInsets.all(UPd_Mg_Small),
+            width: UFullWidth,
             child: ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
+              physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: attendance.length,
               itemBuilder: (context, index) {
                 return Container(
-                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  padding: EdgeInsets.symmetric(vertical: UPd_Mg_ExtraSmall),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -102,19 +97,17 @@ class _CustomAttDialogState extends State<CustomAttDialog> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              attendance[index].type.tr,
-                              style: const TextStyle(
-                                color: Color(0xff000000),
-                                fontSize: 14,
-                              ),
+                            CustomTextTheme(
+                              text: attendance[index].type.tr,
+                              fontWeight: UBodyWeight,
+                              size: UTitleSize,
+                              color: UTextColor,
                             ),
-                            Text(
-                              attendance[index].num_count.toString(),
-                              style: const TextStyle(
-                                fontSize: 14,
-                                color: USecondaryColor,
-                              ),
+                            CustomTextTheme(
+                              text: attendance[index].num_count.toString(),
+                              fontWeight: UBodyWeight,
+                              size: UTitleSize,
+                              color: USecondaryColor,
                             ),
                           ],
                         ),
@@ -131,6 +124,7 @@ class _CustomAttDialogState extends State<CustomAttDialog> {
   }
 }
 
+// ! Score Dailog
 class CustomScoreDialog extends StatefulWidget {
   const CustomScoreDialog({super.key});
 
@@ -143,11 +137,11 @@ class _CustomScoreDialogState extends State<CustomScoreDialog> {
   Widget build(BuildContext context) {
     return Dialog(
       elevation: 5,
-      backgroundColor: Colors.white,
-      insetPadding: EdgeInsets.all(10),
+      backgroundColor: UBackgroundColor,
+      insetPadding: EdgeInsets.all(UPd_Mg_Medium),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(10.0),
+          Radius.circular(URoundedLarge),
         ),
       ),
       child: Stack(
@@ -180,46 +174,43 @@ class _CustomScoreDialogState extends State<CustomScoreDialog> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            width: double.infinity,
+            padding: const EdgeInsets.symmetric(
+              vertical: UPd_Mg_Medium,
+              horizontal: UPd_Mg_Medium,
+            ),
+            width: UFullWidth,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10.0),
-                topRight: Radius.circular(10.0),
+                topLeft: Radius.circular(URoundedLarge),
+                topRight: Radius.circular(URoundedLarge),
               ),
-              color: Color(0xFEE8F0FE),
+              color: UBGLightBlue,
             ),
 
             /// ! Header Table
-            child: Row(
-              children: [
-                Container(
-                  child: Text(
-                    "សេដ្ឋកិច្ចវិទ្យា",
-                    style: TextStyle(
-                      color: UPrimaryColor,
-                      fontSize: 14,
-                      fontFamily: 'KhmerOSbattambang',
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ],
+            child: Text(
+              'សេដ្ឋកិច្ចវិទ្យា',
+              style: TextStyle(
+                fontFamily: UFontFamily,
+                fontSize: UTitleSize,
+                fontWeight: UTitleWeight,
+                color: UPrimaryColor,
+              ),
             ),
           ),
           const SizedBox(
             height: 4,
           ),
           Container(
-            padding: const EdgeInsets.all(8.0),
-            width: double.infinity,
+            padding: const EdgeInsets.all(UPd_Mg_Small),
+            width: UFullWidth,
             child: ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: score.length,
               itemBuilder: (context, index) {
                 return Container(
-                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  padding: EdgeInsets.symmetric(vertical: UPd_Mg_ExtraSmall),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -227,19 +218,17 @@ class _CustomScoreDialogState extends State<CustomScoreDialog> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              score[index].type.tr,
-                              style: const TextStyle(
-                                color: Color(0xff000000),
-                                fontSize: 14,
-                              ),
+                            CustomTextTheme(
+                              text: score[index].type.tr,
+                              color: UTextColor,
+                              fontWeight: UBodyWeight,
+                              size: UTitleSize,
                             ),
-                            Text(
-                              score[index].num_count.toString(),
-                              style: const TextStyle(
-                                fontSize: 14,
-                                color: UScoreColor,
-                              ),
+                            CustomTextTheme(
+                              text: score[index].num_count.toString(),
+                              color: UScoreColor,
+                              fontWeight: UBodyWeight,
+                              size: UTitleSize,
                             ),
                           ],
                         ),

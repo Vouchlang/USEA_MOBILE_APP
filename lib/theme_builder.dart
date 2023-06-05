@@ -3,25 +3,35 @@
 import 'package:flutter/material.dart';
 
 // * @ Colors Theme
-
 const UPrimaryColor = Color(0xff002060);
 const USecondaryColor = Color(0xffE4AC40);
 const UScoreColor = Color(0xff38920D);
+const UBackgroundColor = Color(0xffFFFFFF);
 const UOrangeColor = Color(0xffDF713F);
 const URedColor = Color(0xffD71818);
 const UTextColor = Color(0xff000000);
+const UGreyColor = Colors.grey;
+const UBtnColor = Color(0x142D74F5);
+
+const UZeroPixel = 0.0;
 
 //  * @ FontSize & Weight Theme
+const UTitleSize16 = 16.0;
 const UTitleSize = 14.0;
 const UBodySize = 12.0;
 
 const FontWeight UTitleWeight = FontWeight.w600;
 const FontWeight UBodyWeight = FontWeight.w500;
 
+// * @ FontFamily
+const UFontFamily = "KhmerOSbattambang";
+
 //  * @ Padding & Margin Theme
-const UPaddingMedium = 8.0;
-const UPaddingLarge = 12.0;
-const UPaddingExtra = 16.0;
+const UPd_Mg_ExtraSmall = 5.0;
+const UPd_Mg_Small = 8.0;
+const UPd_Mg_Medium = 10.0;
+const UPd_Mg_Large = 12.0;
+const UPd_Mg_Extra = 15.0;
 
 //  * @ Background Color
 const UBGLightBlue = Color(0xffE9F2FF);
@@ -43,3 +53,6 @@ const UBoxShadow = Shadow(
   offset: Offset(0.0, 0.2),
   color: Color.fromARGB(10, 0, 0, 0),
 );
+
+// *@ Width and Height
+const UFullWidth = double.infinity;

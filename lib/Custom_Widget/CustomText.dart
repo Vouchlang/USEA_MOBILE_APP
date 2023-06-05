@@ -1,6 +1,7 @@
-// ignore_for_file: file_names, avoid_unnecessary_containers
+// ignore_for_file: file_names, avoid_unnecessary_containers, must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../theme_builder.dart';
 
 // *@ Title
@@ -16,7 +17,7 @@ class TitleTheme extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: const TextStyle(
+      style: TextStyle(
         fontSize: UTitleSize,
         fontWeight: UTitleWeight,
         color: UPrimaryColor,
@@ -40,10 +41,10 @@ class NormalTitleTheme extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-          fontSize: 14,
+          fontSize: UTitleSize,
           fontWeight: UTitleWeight,
           color: UTextColor,
-          fontFamily: 'KhmerOSbattambang',
+          fontFamily: UFontFamily,
         ),
       ),
     );
@@ -65,10 +66,10 @@ class TitleSize16_Theme extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-          fontSize: 16,
+          fontSize: UTitleSize16,
           fontWeight: UTitleWeight,
           color: UTextColor,
-          fontFamily: 'KhmerOSbattambang',
+          fontFamily: UFontFamily,
         ),
       ),
     );
@@ -90,17 +91,17 @@ class PriColorTitleSize16Theme extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-          fontSize: 16,
+          fontSize: UTitleSize16,
           fontWeight: UTitleWeight,
           color: UPrimaryColor,
-          fontFamily: 'KhmerOSbattambang',
+          fontFamily: UFontFamily,
         ),
       ),
     );
   }
 }
 
-// *@ Center Title
+// *@ Center Title Pri_color
 class NormalTitleCenterTheme extends StatelessWidget {
   final String text;
 
@@ -125,7 +126,7 @@ class NormalTitleCenterTheme extends StatelessWidget {
   }
 }
 
-// *@ Body
+// *@ Body text
 class BodyTheme extends StatelessWidget {
   final String text;
 
@@ -139,7 +140,7 @@ class BodyTheme extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontSize: 14,
+        fontSize: UBodySize,
         color: UTextColor,
         fontFamily: 'KhmerOSbattambang',
       ),
@@ -151,12 +152,14 @@ class BodyTheme extends StatelessWidget {
 class CustomTextTheme extends StatelessWidget {
   final String text;
   final double size;
+  final Color color;
   final FontWeight fontWeight;
 
   const CustomTextTheme({
     super.key,
     required this.text,
     required this.size,
+    required this.color,
     required this.fontWeight,
   });
 
@@ -167,8 +170,175 @@ class CustomTextTheme extends StatelessWidget {
       style: TextStyle(
         fontSize: size,
         fontWeight: fontWeight,
-        color: UTextColor,
+        color: color,
       ),
     );
   }
 }
+
+// *@ Screen_Performance widget
+Widget buildTitleContainer(double width, String text, Alignment align) {
+  return Container(
+    width: width,
+    alignment: align,
+    child: Text(
+      text.tr,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        color: UPrimaryColor,
+        fontSize: UTitleSize,
+        fontWeight: UTitleWeight,
+      ),
+    ),
+  );
+}
+
+// *@ ScoreTotal
+Widget buildScoreTotal(String text) {
+  return Container(
+    width: 50,
+    alignment: Alignment.centerRight,
+    child: Text(
+      text,
+      style: TextStyle(color: UPrimaryColor),
+    ),
+  );
+}
+
+// *@ Attendance score
+class BuildAttScore extends StatelessWidget {
+  String text;
+  Widget customDialog;
+  BuildAttScore({
+    super.key,
+    required this.text,
+    required this.customDialog,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 50,
+      alignment: Alignment.center,
+      child: InkWell(
+        onTap: () {
+          showDialog(
+            context: context,
+            builder: (context) => customDialog,
+          );
+        },
+        child: Text(
+          text.tr,
+          style: TextStyle(
+            color: UScoreColor,
+            fontSize: UTitleSize,
+            fontFamily: UFontFamily,
+            fontWeight: UTitleWeight,
+            decoration: TextDecoration.underline,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// *@ Attendance Score Type
+Widget buildAttList(String text, Color color) {
+  return Row(
+    children: [
+      Icon(
+        Icons.circle,
+        color: color,
+        size: UBodySize,
+      ),
+      SizedBox(
+        width: 5,
+      ),
+      Text(
+        text.tr,
+        style: TextStyle(
+          color: UTextColor,
+          fontSize: UBodySize,
+        ),
+      ),
+    ],
+  );
+}
+
+// *@ Card Attendance
+Widget buildCHText(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: 10,
+    ),
+  );
+}
+
+Widget buildNum(String text, Color color) {
+  return Text(
+    text,
+    style: TextStyle(
+      color: color,
+      fontSize: 14,
+    ),
+  );
+}
+
+Widget buildDivider() {
+  return Container(
+    width: 0.5,
+    height: 15,
+    color: Colors.grey,
+    margin: const EdgeInsets.only(right: 5, left: 5),
+  );
+}
+
+Widget buildHeader(String text) {
+  return Container(
+    width: 75,
+    child: Text(
+      text.tr,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        color: UPrimaryColor,
+        fontSize: UBodySize,
+        fontWeight: UTitleWeight,
+      ),
+    ),
+  );
+}
+
+Widget buildDividerAtt() {
+  return Container(
+    child: Divider(
+      thickness: 0.5,
+      color: UGreyColor,
+    ),
+  );
+}
+
+Widget buildVerticalDividerAtt() {
+  return Container(
+    child: VerticalDivider(
+      thickness: 0.5,
+      color: UGreyColor,
+    ),
+  );
+}
+
+Widget buildTextBody(String text, Color color) {
+  return Container(
+    width: 75,
+    child: Text(
+      text,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: UBodySize,
+        color: color,
+      ),
+    ),
+  );
+}
+    
+// *@ End Card Attendance

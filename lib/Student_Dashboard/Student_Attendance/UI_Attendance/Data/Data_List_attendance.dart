@@ -4,35 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usea_app/theme_builder.dart';
 
+import '../../../../Custom_Widget/CustomText.dart';
+
 class Row_Data_List extends StatelessWidget {
   const Row_Data_List({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Widget buildTextBody(String text, Color color) {
-      return Container(
-        width: 75,
-        child: Text(
-          text,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 12,
-            color: color,
-          ),
-        ),
-      );
-    }
-
     return Container(
       child: IntrinsicHeight(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             buildTextBody('15/02/2023'.tr, UTextColor),
-            VerticalDivider(
-              thickness: 0.5,
-              color: Colors.grey,
-            ),
+            buildVerticalDividerAtt(),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -40,16 +25,16 @@ class Row_Data_List extends StatelessWidget {
                 Container(
                   width: 70,
                   height: 0.5,
-                  color: Colors.grey,
-                  margin: EdgeInsets.only(bottom: 5, top: 5),
+                  color: UGreyColor,
+                  margin: EdgeInsets.only(
+                    bottom: UPd_Mg_ExtraSmall,
+                    top: UPd_Mg_ExtraSmall,
+                  ),
                 ),
                 buildTextBody('Session 2'.tr, UTextColor),
               ],
             ),
-            VerticalDivider(
-              thickness: 0.5,
-              color: Colors.grey,
-            ),
+            buildVerticalDividerAtt(),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -57,8 +42,11 @@ class Row_Data_List extends StatelessWidget {
                 Container(
                   width: 50,
                   height: 0.5,
-                  color: Colors.grey,
-                  margin: const EdgeInsets.only(bottom: 5, top: 5),
+                  color: UGreyColor,
+                  margin: EdgeInsets.only(
+                    bottom: UPd_Mg_ExtraSmall,
+                    top: UPd_Mg_ExtraSmall,
+                  ),
                 ),
                 buildTextBody('វត្តមាន\t'.tr, UScoreColor),
               ],

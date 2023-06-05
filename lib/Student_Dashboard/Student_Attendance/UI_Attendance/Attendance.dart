@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usea_app/Custom_AppBar.dart';
 
+import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
 import 'Components/Card_attendacne.dart';
 import 'Components/Screen_view_all_attendance.dart';
@@ -14,28 +15,6 @@ class Attendance extends StatefulWidget {
 }
 
 class _AttendanceState extends State<Attendance> {
-  Widget buildAttList(String text, Color color) {
-    return Row(
-      children: [
-        Icon(
-          Icons.circle,
-          color: color,
-          size: 12,
-        ),
-        SizedBox(
-          width: 5,
-        ),
-        Text(
-          text.tr,
-          style: TextStyle(
-            color: UTextColor,
-            fontSize: 12,
-          ),
-        ),
-      ],
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +23,10 @@ class _AttendanceState extends State<Attendance> {
       body: SingleChildScrollView(
         child: Container(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+            padding: EdgeInsets.symmetric(
+              horizontal: UPd_Mg_Medium,
+              vertical: UPd_Mg_Extra,
+            ),
             child: Column(
               children: [
                 Padding(
@@ -59,6 +41,7 @@ class _AttendanceState extends State<Attendance> {
                     ],
                   ),
                 ),
+                // ? Attendance List Card
                 Major_Attendance(),
                 SizedBox(
                   height: 10,
@@ -68,33 +51,28 @@ class _AttendanceState extends State<Attendance> {
                   children: [
                     Container(
                       alignment: Alignment.center,
-                      padding:
-                          EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                      padding: EdgeInsets.symmetric(
+                        vertical: UPd_Mg_ExtraSmall,
+                        horizontal: UPd_Mg_Medium,
+                      ),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: Color(0x142D74F5),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0x142D74F5),
-                          ),
-                        ],
+                        borderRadius: BorderRadius.circular(URoundedMedium),
+                        color: UBtnColor,
+                        boxShadow: [BoxShadow(color: UBtnColor)],
                       ),
                       child: InkWell(
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>
-                                  const All_Attendance_of_Year(),
-                            ),
+                                builder: (context) => All_Attendance_of_Year()),
                           );
                         },
-                        child: Text(
-                          'មើលទាំងអស់'.tr,
-                          style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              color: Theme.of(context).primaryColor),
+                        child: CustomTextTheme(
+                          text: 'មើលទាំងអស់'.tr,
+                          color: UPrimaryColor,
+                          fontWeight: UTitleWeight,
+                          size: UBodySize,
                         ),
                       ),
                     ),

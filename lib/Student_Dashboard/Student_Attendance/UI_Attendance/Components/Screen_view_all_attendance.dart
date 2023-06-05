@@ -1,9 +1,10 @@
-// ignore_for_file: avoid_unnecessary_containers, camel_case_types, prefer_const_constructors
+// ignore_for_file: avoid_unnecessary_containers, camel_case_types, prefer_const_constructors, duplicate_ignore
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../Custom_AppBar.dart';
+import '../../../../Custom_Widget/CustomText.dart';
 import '../../../../theme_builder.dart';
 import 'Card_attendacne.dart';
 
@@ -27,45 +28,21 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
 
   @override
   Widget build(BuildContext context) {
-    Widget buildAttList(String text, Color color) {
-      return Row(
-        children: [
-          Icon(
-            Icons.circle,
-            color: color,
-            size: 12,
-          ),
-          SizedBox(
-            width: 5,
-          ),
-          Text(
-            text.tr,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 12,
-            ),
-          ),
-        ],
-      );
-    }
-
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'វត្តមាន'.tr),
       body: SingleChildScrollView(
         child: Container(
           child: Padding(
-            padding: const EdgeInsets.all(5.0),
+            padding: EdgeInsets.all(UPd_Mg_ExtraSmall),
             child: Column(
               children: [
-                const SizedBox(
-                  height: 5,
-                ),
+                SizedBox(height: 5),
                 SizedBox(
                   height: 50,
-                  width: double.infinity,
+                  width: UFullWidth,
                   child: ListView.builder(
-                    physics: const BouncingScrollPhysics(),
+                    physics: BouncingScrollPhysics(),
                     itemCount: items.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) => GestureDetector(
@@ -80,25 +57,26 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
                         width: 100,
                         decoration: BoxDecoration(
                           color: current == index
-                              ? const Color(0xff002060)
-                              : const Color(0xffFFFFFF),
-                          borderRadius: BorderRadius.circular(5),
+                              ? UPrimaryColor
+                              : UBackgroundColor,
+                          borderRadius: BorderRadius.circular(URoundedMedium),
                           boxShadow: [
                             BoxShadow(
-                                blurRadius: 1,
-                                color: Colors.grey,
-                                offset: Offset(0, 1))
+                              blurRadius: 1,
+                              color: UGreyColor,
+                              offset: Offset(0, 1),
+                            )
                           ],
                         ),
-                        margin: EdgeInsets.all(5),
+                        margin: EdgeInsets.all(UPd_Mg_ExtraSmall),
                         child: Center(
                           child: Text(
                             items[index].toString().tr,
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: UTitleSize,
                               color: current == index
-                                  ? Color(0xffFFFFFF)
-                                  : Color(0xff000000),
+                                  ? UBackgroundColor
+                                  : UTextColor,
                             ),
                           ),
                         ),
@@ -106,11 +84,12 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 5,
-                ),
+                SizedBox(height: 5),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: UPd_Mg_Medium,
+                    vertical: UPd_Mg_ExtraSmall,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -122,53 +101,38 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(5.0),
+                  padding: EdgeInsets.all(UPd_Mg_ExtraSmall),
                   child: Container(
                     height: 65,
-                    width: double.infinity,
+                    width: UFullWidth,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Color(0x142D74F5),
+                      borderRadius: BorderRadius.circular(URoundedLarge),
+                      color: UBtnColor,
                     ),
-                    child: Center(
-                      child: Text(
-                        'ឆមាសទី ១'.tr,
-                        style: TextStyle(
-                          color: Color(0xff002060),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
+                    child: Center(child: TitleTheme(text: 'ឆមាសទី ១'.tr)),
                   ),
                 ),
-                Container(
-                  child: const Major_Attendance(),
-                ),
+                // ? Attendance List Card
+                Major_Attendance(),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(5, 10, 5, 5),
+                  padding: EdgeInsets.fromLTRB(
+                    UPd_Mg_ExtraSmall,
+                    UPd_Mg_Medium,
+                    UPd_Mg_ExtraSmall,
+                    UPd_Mg_ExtraSmall,
+                  ),
                   child: Container(
                     height: 70,
-                    width: double.infinity,
+                    width: UFullWidth,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Color(0xffE9F2FF),
+                      borderRadius: BorderRadius.circular(URoundedLarge),
+                      color: UBGLightBlue,
                     ),
-                    child: Center(
-                      child: Text(
-                        'ឆមាសទី ២'.tr,
-                        style: TextStyle(
-                          color: Color(0xff002060),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
+                    child: Center(child: TitleTheme(text: 'ឆមាសទី ២'.tr)),
                   ),
                 ),
-                Container(
-                  child: const Major_Attendance(),
-                ),
+                // ? Attendance List Card
+                Major_Attendance(),
               ],
             ),
           ),

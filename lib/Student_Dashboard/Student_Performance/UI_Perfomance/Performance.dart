@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usea_app/Custom_AppBar.dart';
+import 'package:usea_app/theme_builder.dart';
 
 import 'Components/Screen_Performance.dart';
 
@@ -35,7 +36,7 @@ class _PerformanceState extends State<Performance> {
               ),
               SizedBox(
                 height: 65,
-                width: double.infinity,
+                width: UFullWidth,
                 child: ListView.builder(
                   physics: const BouncingScrollPhysics(),
                   itemCount: items.length,
@@ -51,26 +52,26 @@ class _PerformanceState extends State<Performance> {
                       height: 65,
                       width: 115,
                       decoration: BoxDecoration(
-                        color: current == index
-                            ? const Color(0xff002060)
-                            : const Color(0xffFFFFFF),
-                        borderRadius: BorderRadius.circular(5),
+                        color:
+                            current == index ? UPrimaryColor : UBackgroundColor,
+                        borderRadius: BorderRadius.circular(URoundedMedium),
                         boxShadow: [
                           BoxShadow(
-                              blurRadius: 1,
-                              color: Colors.grey,
-                              offset: Offset(0, 1))
+                            blurRadius: 1,
+                            color: Colors.grey,
+                            offset: Offset(0, 1),
+                          ),
                         ],
                       ),
-                      margin: EdgeInsets.all(5),
+                      margin: EdgeInsets.all(5.0),
                       child: Center(
                         child: Text(
                           items[index].toString().tr,
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: UTitleSize,
                             color: current == index
-                                ? Color(0xffFFFFFF)
-                                : Color(0xff000000),
+                                ? UBackgroundColor
+                                : UTextColor,
                           ),
                         ),
                       ),

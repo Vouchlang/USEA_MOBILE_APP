@@ -144,7 +144,8 @@ class LocaleString extends Translations {
           // Student Schedule
           'កាលវិភាគសិក្សា': 'កាលវិភាគសិក្សា',
 
-          // Student Schedule
+          // Student Perfomance
+          'ពិន្ទុ': 'ពិន្ទុ',
           'លំហាត់': 'លំហាត់',
           'កិច្ចការផ្ទះ': 'កិច្ចការផ្ទះ',
           'កិច្ចការក្រុម': 'កិច្ចការក្រុម',
@@ -166,7 +167,7 @@ class LocaleString extends Translations {
           'ឆមាសទី ២': 'ឆមាសទី ២',
           'កាលបរិច្ឆេទ': 'កាលបរិច្ឆេទ',
 
-          // Student Attendance
+          // Student Payment
           'ការបង់ថ្លៃឈ្នួលសិក្សា': 'ការបង់ថ្លៃឈ្នួលសិក្សា',
           'ការបង់ថ្លៃឈ្នួលប្រឡងឡើងវិញ': 'ការបង់ថ្លៃឈ្នួលប្រឡងឡើងវិញ',
           'ការបង់ថ្លៃឈ្នួលរៀនបំពេញក្រេឌីត': 'ការបង់ថ្លៃឈ្នួលរៀនបំពេញក្រេឌីត',
@@ -323,7 +324,8 @@ class LocaleString extends Translations {
           // Student Schedule
           'កាលវិភាគសិក្សា': 'Schedule',
 
-          // Student Schedule
+          // Student Performance
+          'ពិន្ទុ': 'Score',
           'លំហាត់': 'Exercises',
           'កិច្ចការផ្ទះ': 'Homework',
           'កិច្ចការក្រុម': 'Assignment',
