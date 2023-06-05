@@ -4,6 +4,7 @@ import 'package:readmore/readmore.dart';
 import '../../../Custom_AppBar.dart';
 import '../Class_VDO/Class_Video_Home.dart';
 import 'Test_API/api_main.dart';
+import 'Video_Display.dart';
 
 class Video_UI extends StatefulWidget {
   const Video_UI({Key? key}) : super(key: key);
@@ -27,78 +28,77 @@ class _VideoState extends State<Video_UI> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: ((context) => FacultyList()),
+                  builder: ((context) => Video_Display(
+                        data: video_home[index],
+                      )),
                 ),
               );
             },
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: 150,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        image: DecorationImage(
-                            image: NetworkImage(
-                                video_home[index].youtube_thumbnail),
-                            fit: BoxFit.cover),
+            child: Container(
+              margin: EdgeInsets.only(bottom: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 150,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          image: DecorationImage(
+                              image: NetworkImage(
+                                  video_home[index].youtube_thumbnail),
+                              fit: BoxFit.cover),
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Container(
-                            child: Text(video_home[index].title,
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              child: Text(
+                                video_home[index].title,
                                 textAlign: TextAlign.justify,
+                                maxLines: 3,
+                                overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
-                                  fontSize: 13,
+                                  fontSize: 14,
                                   fontFamily: 'KhmerOSbattambang',
-                                  fontWeight: FontWeight.w500,
-                                )),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          SingleChildScrollView(
-                            child: Container(
-                              child: ReadMoreText(
-                                video_home[index].caption,
-                                trimLines: 1,
-                                textAlign: TextAlign.justify,
-                                trimMode: TrimMode.Line,
-                                moreStyle: TextStyle(
-                                  color: Colors.grey[700],
-                                ),
-                                lessStyle: TextStyle(
-                                  color: Colors.grey[700],
-                                ),
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontFamily: 'KhmerOSbattambang',
-                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
-                          )
-                        ],
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Container(
+                              child: Text(
+                                video_home[index].caption,
+                                textAlign: TextAlign.justify,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  fontFamily: 'KhmerOSbattambang',
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
           );
         },

@@ -1,175 +1,253 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:readmore/readmore.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../../Custom_AppBar.dart';
 import '../Class_VDO/Class_Video_Home.dart';
-import '../Class_VDO/Class_Video_Playlist.dart';
 
-class Video_Display extends StatelessWidget {
+class Video_Display extends StatefulWidget {
   final Video data;
+
   const Video_Display({Key? key, required this.data}) : super(key: key);
 
   @override
+  _Video_DisplayState createState() => _Video_DisplayState();
+}
+
+class _Video_DisplayState extends State<Video_Display> {
+  late YoutubePlayerController _controller;
+  bool _isFullScreen = false;
+  int? _hiddenVideoIndex;
+  int? _currentVideoIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = YoutubePlayerController(
+      initialVideoId: YoutubePlayer.convertUrlToId(widget.data.link)!,
+      flags: YoutubePlayerFlags(
+        autoPlay: false,
+      ),
+    );
+    _hiddenVideoIndex = video_home.indexOf(widget.data);
+    _currentVideoIndex = _hiddenVideoIndex;
+  }
+
+  void updateVideo(
+      String videoLink, String thumbnail, String caption, int index) {
+    setState(() {
+      String videoId = YoutubePlayer.convertUrlToId(videoLink)!;
+      _controller.load(videoId);
+      _controller.play();
+
+      int videoIndex =
+          video_home.indexWhere((video) => video.link == videoLink);
+      if (videoIndex != -1) {
+        Video updatedVideo = Video(
+          link: videoLink,
+          youtube_thumbnail: thumbnail,
+          title: video_home[index].title,
+          caption: caption,
+        );
+        video_home[videoIndex] = updatedVideo;
+      }
+
+      _currentVideoIndex = index;
+    });
+  }
+
+  void _enterFullScreen() {
+    SystemChrome.setEnabledSystemUIOverlays([]);
+    _isFullScreen = true;
+  }
+
+  void _exitFullScreen() {
+    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+    _isFullScreen = false;
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'វីដេអូ'.tr),
-      body: Container(
-        child: Column(
-          children: [
-            Container(
-              height: 200,
-              child: YoutubePlayer(
-                controller: YoutubePlayerController(
-                  initialVideoId: YoutubePlayer.convertUrlToId(data.link)!,
-                  flags: YoutubePlayerFlags(
-                    autoPlay: false,
+      body: Column(
+        children: [
+          Container(
+            height: _isFullScreen ? screenHeight : 200,
+            child: YoutubePlayer(
+              controller: _controller,
+              showVideoProgressIndicator: true,
+              bottomActions: [
+                CurrentPosition(),
+                ProgressBar(
+                  isExpanded: true,
+                  colors: ProgressBarColors(
+                    playedColor: Colors.red,
+                    bufferedColor: Colors.white,
+                    handleColor: Colors.red,
+                    backgroundColor: Colors.grey,
                   ),
                 ),
-                showVideoProgressIndicator: true,
-                bottomActions: [
-                  CurrentPosition(),
-                  ProgressBar(
-                    isExpanded: true,
-                  ),
-                  PlaybackSpeedButton(),
-                  FullScreenButton()
-                ],
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(10),
+                RemainingDuration(),
+                PlaybackSpeedButton(),
+                FullScreenButton(
+                  controller: _controller,
+                  // onFullScreen: () {
+                  //   if (!_isFullScreen) {
+                  //     _enterFullScreen();
+                  //   } else {
+                  //     _exitFullScreen();
+                  //   }
+                  // },
                 ),
-                boxShadow: [
-                  BoxShadow(
-                      offset: Offset(0, 1), color: Colors.grey, blurRadius: 2)
-                ],
-              ),
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              width: double.infinity,
-              alignment: Alignment.center,
-              child: Text(
-                data.title,
-                style: TextStyle(
-                    fontSize: 12,
-                    fontFamily: 'KhmerOSbattambang',
-                    fontWeight: FontWeight.w600),
-              ),
+              ],
             ),
-            SizedBox(
-              height: 5,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(10),
+              ),
+              boxShadow: [
+                BoxShadow(
+                  offset: Offset(0, 1),
+                  color: Colors.grey,
+                  blurRadius: 2,
+                ),
+              ],
             ),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              width: double.infinity,
-              child: Text(
-                data.caption,
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                    fontSize: 10,
-                    fontFamily: 'KhmerOSbattambang',
-                    fontWeight: FontWeight.w500),
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            width: double.infinity,
+            alignment: Alignment.center,
+            child: Text(
+              video_home[_currentVideoIndex!].title,
+              textAlign: TextAlign.justify,
+              style: TextStyle(
+                fontSize: 16,
+                fontFamily: 'KhmerOSbattambang',
+                fontWeight: FontWeight.w600,
               ),
             ),
-            SizedBox(
-              height: 5,
+          ),
+          SizedBox(height: 5),
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            width: double.infinity,
+            child: Text(
+              video_home[_currentVideoIndex!].caption,
+              textAlign: TextAlign.justify,
+              style: TextStyle(
+                fontSize: 14,
+                fontFamily: 'KhmerOSbattambang',
+              ),
             ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: video_playlist.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    padding: EdgeInsets.all(10),
+          ),
+          SizedBox(height: 5),
+          Expanded(
+            child: ListView.builder(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              itemCount: video_home.length,
+              itemBuilder: (context, index) {
+                Video video = video_home[index];
+
+                if (index == _hiddenVideoIndex) {
+                  return Container(); // Return an empty container for hidden video
+                }
+
+                return InkWell(
+                  onTap: () {
+                    updateVideo(video.link, video.youtube_thumbnail,
+                        video.caption, index);
+                    hideVideo(index);
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(bottom: 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        InkWell(
-                          onTap: () {
-                            print("Video Link: " +
-                                video_playlist[index].youtube_thumbnail);
-                          },
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 125,
-                                height: 75,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                        video_playlist[index].youtube_thumbnail,
-                                      ),
-                                      fit: BoxFit.cover),
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 150,
+                              height: 100,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    video_home[index].youtube_thumbnail,
+                                  ),
+                                  fit: BoxFit.cover,
                                 ),
                               ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Column(
+                            ),
+                            SizedBox(width: 10),
+                            Expanded(
+                              child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Container(
-                                    width: 200,
                                     child: Text(
-                                      video_playlist[index].title,
+                                      video_home[index].title,
                                       textAlign: TextAlign.justify,
+                                      maxLines: 3,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontFamily: 'KhmerOSbattambang',
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 5),
+                                  Container(
+                                    child: Text(
+                                      video_home[index].caption,
+                                      textAlign: TextAlign.justify,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                         fontSize: 10,
                                         fontFamily: 'KhmerOSbattambang',
-                                        fontWeight: FontWeight.w500,
                                       ),
                                     ),
                                   ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  SingleChildScrollView(
-                                    child: Container(
-                                      width: 200,
-                                      child: ReadMoreText(
-                                        video_playlist[index].caption,
-                                        trimLines: 1,
-                                        textAlign: TextAlign.justify,
-                                        trimMode: TrimMode.Line,
-                                        moreStyle: TextStyle(
-                                          color: Colors.grey[700],
-                                        ),
-                                        lessStyle: TextStyle(
-                                          color: Colors.grey[700],
-                                        ),
-                                        style: TextStyle(
-                                          fontSize: 8,
-                                          fontFamily: 'KhmerOSbattambang',
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ),
-                                  )
                                 ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  );
-                },
-              ),
-            )
-          ],
-        ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
+  }
+
+  void hideVideo(int index) {
+    setState(() {
+      _hiddenVideoIndex = index;
+    });
+  }
+
+  @override
+  void dispose() {
+    // Dispose the controller
+    _controller.dispose();
+    super.dispose();
   }
 }
