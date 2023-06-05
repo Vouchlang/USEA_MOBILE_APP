@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usea_app/Custom_AppBar.dart';
-
+import 'package:usea_app/Custom_Widget/CustomText.dart';
 import 'Components/Card_carlendar.dart';
 import 'Components/Card_carlendar_list.dart';
 
@@ -29,7 +29,7 @@ class _ScheduleState extends State<Schedule> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              'កាលវិភាគសិក្សា'.tr,
+              'កាលវិភាគសិក្សា',
               style: TextStyle(
                 fontSize: 16,
                 fontFamily: 'KhmerOSbattambang',

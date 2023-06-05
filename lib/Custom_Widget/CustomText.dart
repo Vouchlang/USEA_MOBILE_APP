@@ -28,12 +28,10 @@ class TitleTheme extends StatelessWidget {
 // *@ Normal Title
 class NormalTitleTheme extends StatelessWidget {
   final String text;
-  final double size;
 
   const NormalTitleTheme({
     super.key,
     required this.text,
-    required this.size,
   });
 
   @override
@@ -42,9 +40,59 @@ class NormalTitleTheme extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-          fontSize: size,
+          fontSize: 14,
           fontWeight: UTitleWeight,
           color: UTextColor,
+          fontFamily: 'KhmerOSbattambang',
+        ),
+      ),
+    );
+  }
+}
+
+// *@ Normal Title 16px UTextColor
+class TitleSize16_Theme extends StatelessWidget {
+  final String text;
+
+  const TitleSize16_Theme({
+    super.key,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: 16,
+          fontWeight: UTitleWeight,
+          color: UTextColor,
+          fontFamily: 'KhmerOSbattambang',
+        ),
+      ),
+    );
+  }
+}
+
+// *@ Normal Title 16px UPrimaryColor
+class PriColorTitleSize16Theme extends StatelessWidget {
+  final String text;
+
+  const PriColorTitleSize16Theme({
+    super.key,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: 16,
+          fontWeight: UTitleWeight,
+          color: UPrimaryColor,
           fontFamily: 'KhmerOSbattambang',
         ),
       ),
@@ -80,12 +128,10 @@ class NormalTitleCenterTheme extends StatelessWidget {
 // *@ Body
 class BodyTheme extends StatelessWidget {
   final String text;
-  final double size;
 
   const BodyTheme({
     super.key,
     required this.text,
-    required this.size,
   });
 
   @override
@@ -93,11 +139,15 @@ class BodyTheme extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-          fontSize: size, color: UTextColor, fontFamily: 'KhmerOSbattambang'),
+        fontSize: 14,
+        color: UTextColor,
+        fontFamily: 'KhmerOSbattambang',
+      ),
     );
   }
 }
 
+// *@ General custom text
 class CustomTextTheme extends StatelessWidget {
   final String text;
   final double size;

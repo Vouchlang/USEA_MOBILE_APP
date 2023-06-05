@@ -47,7 +47,7 @@ class _CardCalendarState extends State<CardCalendar> {
                   color: Colors.green,
                 ),
                 todayDecoration: BoxDecoration(
-                  color: Colors.transparent,
+                  color: Color.fromARGB(0, 255, 255, 255),
                 ),
                 selectedTextStyle: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -74,10 +74,8 @@ class _CardCalendarState extends State<CardCalendar> {
                 defaultBuilder: (context, date, _) {
                   return Container(
                     margin: const EdgeInsets.all(4.0),
-                    padding: const EdgeInsets.all(2.0),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      shape: BoxShape.circle,
                       color: isSameDay(date, today)
                           ? Colors.green
                           : Colors.transparent,
