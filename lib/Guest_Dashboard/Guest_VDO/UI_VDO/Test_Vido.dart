@@ -1,293 +1,97 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:usea_app/Guest_Dashboard/Guest_New_Event/UI_News_Event/Upcoming_Event_Detail.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-const apiEndpoint =
-    'http://192.168.3.34/hosting_api/Guest/fetch_guest_event_upcoming.php';
+class CustomVolumeSlider extends StatefulWidget {
+  final YoutubePlayerController controller;
 
-Future<List<dynamic>> fetchData() async {
-  final response = await http.get(
-    Uri.parse(apiEndpoint),
-  );
-
-  if (response.statusCode == 200) {
-    final jsonBody = json.decode(response.body);
-
-    if (jsonBody is List) {
-      return jsonBody;
-    } else if (jsonBody is Map) {
-      return [jsonBody];
-    } else {
-      throw Exception('Invalid API response');
-    }
-  } else {
-    throw Exception('Failed to load data: ${response.statusCode}');
-  }
-}
-
-class Testing extends StatefulWidget {
-  const Testing({Key? key}) : super(key: key);
+  CustomVolumeSlider(
+      {required this.controller,
+      required double initialVolume,
+      required Null Function(dynamic value) onUpdateVolume});
 
   @override
-  _TestingState createState() => _TestingState();
+  _CustomVolumeSliderState createState() => _CustomVolumeSliderState();
 }
 
-class _TestingState extends State<Testing> {
-  List<dynamic> _data = [];
-  bool _isLoading = true;
+class _CustomVolumeSliderState extends State<CustomVolumeSlider> {
+  double _volume = 50.0;
 
   @override
   void initState() {
     super.initState();
-    _loadData();
+    _updateVolume();
   }
 
-  Future<void> _loadData() async {
-    setState(
-      () {
-        _isLoading = true;
-      },
-    );
+  void _updateVolume() {
+    setState(() {
+      // _volume = widget.controller.value.volume ?? 50.0;
+    });
+  }
 
-    try {
-      final data = await fetchData();
-      setState(
-        () {
-          _data = data;
-          _isLoading = false;
-        },
-      );
-    } catch (e) {
-      setState(
-        () {
-          _isLoading = false;
-          _data = [];
-        },
-      );
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text('Error'),
-            content: Text('Failed to load data: ${e.toString()}'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text('OK'),
-              ),
-            ],
-          );
-        },
-      );
+  @override
+  void didUpdateWidget(covariant CustomVolumeSlider oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.controller != oldWidget.controller) {
+      _updateVolume();
     }
-  }
-
-  String getImageUrl(String imageName) {
-    return 'http://192.168.3.34/hosting_api/Guest/event_image/$imageName';
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
-      body: _isLoading
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
-          : _data.isEmpty
-              ? const Center(
-                  child: Text('No data available'),
-                )
-              : Center(
-                  child: ListView.builder(
-                    itemCount: _data.length,
-                    itemBuilder: (context, index) {
-                      final item = _data[index];
-                      final imageUrl = getImageUrl(
-                        item['upcoming_image'],
-                      );
-                      return Container(
-                        child: Card(
-                          margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                          elevation: 3,
-                          shadowColor: Colors.grey[200],
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (ctx) => Up_Event_Detail(
-                                    data: item,
-                                  ),
-                                ),
-                              );
-                            },
-                            child: Container(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Container(
-                                    height: 125,
-                                    width: double.maxFinite,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(10),
-                                      child: Image.network(
-                                        imageUrl,
-                                        width: double.maxFinite,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                          width: double.infinity,
-                                          alignment: Alignment.center,
-                                          child: Text(
-                                            item['upcoming_title'],
-                                            textAlign: TextAlign.justify,
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w500,
-                                                fontFamily:
-                                                    'KhmerOSBattambang'),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Container(
-                                          width: double.infinity,
-                                          child: Text(
-                                            item['upcoming_detail'],
-                                            textAlign: TextAlign.justify,
-                                            style: TextStyle(
-                                                fontSize: 10,
-                                                fontWeight: FontWeight.w500,
-                                                fontFamily:
-                                                    'KhmerOSBattambang'),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              child: Image.asset(
-                                                'assets/image/Event_Date.png',
-                                                width: 12,
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: 5,
-                                            ),
-                                            Container(
-                                              child: Text(
-                                                'ថ្ងៃ' + item['upcoming_day'],
-                                                style: TextStyle(
-                                                    fontSize: 8,
-                                                    fontWeight: FontWeight.w500,
-                                                    fontFamily:
-                                                        'KhmerOSBattambang',
-                                                    color: Theme.of(context)
-                                                        .primaryColor),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: 2,
-                                            ),
-                                            Container(
-                                              child: Text(
-                                                'ទី' + item['upcoming_date'],
-                                                style: TextStyle(
-                                                    fontSize: 8,
-                                                    fontWeight: FontWeight.w500,
-                                                    fontFamily:
-                                                        'KhmerOSBattambang',
-                                                    color: Theme.of(context)
-                                                        .primaryColor),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: 2,
-                                            ),
-                                            Container(
-                                              child: Text(
-                                                'ខែ' + item['upcoming_month'],
-                                                style: TextStyle(
-                                                    fontSize: 8,
-                                                    fontWeight: FontWeight.w500,
-                                                    fontFamily:
-                                                        'KhmerOSBattambang',
-                                                    color: Theme.of(context)
-                                                        .primaryColor),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: 2,
-                                            ),
-                                            Container(
-                                              child: Text(
-                                                'ឆ្នាំ' + item['upcoming_year'],
-                                                style: TextStyle(
-                                                    fontSize: 8,
-                                                    fontWeight: FontWeight.w500,
-                                                    fontFamily:
-                                                        'KhmerOSBattambang',
-                                                    color: Theme.of(context)
-                                                        .primaryColor),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: 15,
-                                            ),
-                                            Container(
-                                              child: Image.asset(
-                                                'assets/image/Event_Time.png',
-                                                width: 12,
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: 5,
-                                            ),
-                                            Container(
-                                              child: Text(
-                                                item['upcoming_time'],
-                                                style: TextStyle(
-                                                    fontSize: 8,
-                                                    fontWeight: FontWeight.w500,
-                                                    fontFamily:
-                                                        'KhmerOSBattambang',
-                                                    color: Theme.of(context)
-                                                        .primaryColor),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
+    return Row(
+      children: [
+        IconButton(
+          icon: Icon(Icons.volume_down),
+          onPressed: _decreaseVolume,
+        ),
+        Expanded(
+          child: SliderTheme(
+            data: SliderTheme.of(context).copyWith(
+              activeTrackColor: Colors.red,
+              inactiveTrackColor: Colors.grey,
+              thumbColor: Colors.red,
+              thumbShape: RoundSliderThumbShape(enabledThumbRadius: 8),
+              overlayColor: Colors.red.withOpacity(0.3),
+              overlayShape: RoundSliderOverlayShape(overlayRadius: 16),
+            ),
+            child: Slider(
+              value: _volume,
+              min: 0.0,
+              max: 100.0,
+              onChanged: (value) {
+                setState(() {
+                  _volume = value;
+                });
+                widget.controller.setVolume(_volume.round());
+              },
+            ),
+          ),
+        ),
+        IconButton(
+          icon: Icon(Icons.volume_up),
+          onPressed: _increaseVolume,
+        ),
+      ],
     );
+  }
+
+  void _decreaseVolume() {
+    setState(() {
+      if (_volume > 0) {
+        _volume -= 10;
+        _volume = _volume.clamp(0.0, 100.0);
+        widget.controller.setVolume(_volume.round());
+      }
+    });
+  }
+
+  void _increaseVolume() {
+    setState(() {
+      if (_volume < 100) {
+        _volume += 10;
+        _volume = _volume.clamp(0.0, 100.0);
+        widget.controller.setVolume(_volume.round());
+      }
+    });
   }
 }

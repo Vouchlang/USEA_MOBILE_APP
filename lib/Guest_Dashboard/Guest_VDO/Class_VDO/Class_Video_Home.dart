@@ -1,8 +1,8 @@
 class Video {
-  late final String youtube_thumbnail;
-  late final String title;
-  late final String caption;
-  late final String link;
+  final String youtube_thumbnail;
+  final String title;
+  final String caption;
+  final String link;
 
   Video(
       {required this.youtube_thumbnail,
@@ -23,14 +23,18 @@ List<Video> video_home = [
   Video(
       youtube_thumbnail:
           'https://i.ytimg.com/vi/GQyWIur03aw/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCi4Ep3XIkX1X9sZC72oAmTnuzSCQ',
-      title: 'វីដេអូទាក់ទងនឹងការចុះឈ្នោះចូលរៀនថ្នាក់បរិញ្ញបត្រ',
-      caption: 'វីដេអូទាក់ទងនឹងការចុះឈ្នោះចូលរៀនថ្នាក់បរិញ្ញបត្រ',
+      title:
+          'ចំណេះដឹង ជំនាញ ឧត្ដមភាព និងសង្គម ជាមួយសាកលវិទ្យាល័យ សៅស៍អ៊ីសថ៍អេយសៀ',
+      caption:
+          'ចំណេះដឹង ជំនាញ ឧត្ដមភាព និងសង្គម ជាមួយសាកលវិទ្យាល័យ សៅស៍អ៊ីសថ៍អេយសៀ',
       link: 'https://www.youtube.com/watch?v=GQyWIur03aw'),
   Video(
       youtube_thumbnail:
           'https://i.ytimg.com/vi/rlyHo16qZ5w/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBNrhfroWwCk8EAQDn6xJTUfboB3g',
-      title: 'វីដេអូទាក់ទងនឹងការចុះឈ្នោះចូលរៀនថ្នាក់បរិញ្ញបត្រ',
-      caption: 'វីដេអូទាក់ទងនឹងការចុះឈ្នោះចូលរៀនថ្នាក់បរិញ្ញបត្រ',
+      title:
+          'ដំណើរទស្សនកិច្ចសិក្សា កម្មវិធីសិក្សាគណនេយ្យករជំនាញ ACCA របស់សាកលវិទ្យាល័យ សៅស៍អ៊ីសថ៍អេយសៀ (USEA)',
+      caption:
+          'ដំណើរទស្សនកិច្ចសិក្សា កម្មវិធីសិក្សាគណនេយ្យករជំនាញ ACCA របស់សាកលវិទ្យាល័យ សៅស៍អ៊ីសថ៍អេយសៀ (USEA)',
       link: 'https://www.youtube.com/watch?v=rlyHo16qZ5w'),
   Video(
       youtube_thumbnail:

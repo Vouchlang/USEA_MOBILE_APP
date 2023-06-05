@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import '../../../Guest_Program/UI_Program/Program_Major_Detail_Main.dart';
 import 'api_major_search_detail.dart';
 import 'api_model.dart';
 
@@ -111,9 +112,10 @@ class _TestSearchAPIState extends State<TestSearchAPI> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      Major_Search_Screen(
-                                    majorName: major_detail[index],
-                                  ),
+                                      //     Major_Search_Screen(
+                                      //   majorName: major_detail[index],
+                                      // ),
+                                      Program_Major_Detail_Main(),
                                 ),
                               );
                             },
@@ -146,9 +148,10 @@ class _TestSearchAPIState extends State<TestSearchAPI> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          Major_Search_Screen(
-                                        majorName: filteredData[index],
-                                      ),
+                                          //     Major_Search_Screen(
+                                          //   majorName: filteredData[index],
+                                          // ),
+                                          Program_Major_Detail_Main(),
                                     ),
                                   );
                                 },

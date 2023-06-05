@@ -14,6 +14,7 @@ import '../../Guest_Notification/UI_Notification/Notifications.dart';
 import '../../Guest_Program/UI_Program/Program.dart';
 import '../../Guest_Registration/UI_Registration/Registration.dart';
 import '../../Guest_Scholarship/UI_Scholarship/Scholarship.dart';
+import '../../Guest_VDO/UI_VDO/Test_API/api_main.dart';
 import '../../Guest_VDO/UI_VDO/Video.dart';
 
 class Guest_Home extends StatefulWidget {
@@ -37,7 +38,7 @@ List<Home_Screen> home_screen = [
   Home_Screen(
     name: 'កម្មវិធីសិក្សា',
     img: 'assets/image/Guest_Program.png',
-    screen: Program(),
+    screen: FacultyList(),
   ),
   Home_Screen(
     name: 'អាហារូបករណ៍',
