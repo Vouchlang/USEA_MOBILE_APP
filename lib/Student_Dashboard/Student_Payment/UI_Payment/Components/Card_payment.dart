@@ -16,7 +16,7 @@ class PaymentCards extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          padding: EdgeInsets.all(UPdMg_5),
+          padding: EdgeInsets.all(UPd_Mg_ExtraSmall),
           child: Card(
             elevation: 1,
             shape: RoundedRectangleBorder(

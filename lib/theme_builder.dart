@@ -30,11 +30,11 @@ const FontWeight UBodyWeight = FontWeight.w500;
 const UFontFamily = "KhmerOSbattambang";
 
 //  * @ Padding & Margin Theme
-const UPdMg_5 = 5.0;
-const UPdMg_8 = 8.0;
-const UPdMg_10 = 10.0;
-const UPdMg_12 = 12.0;
-const UPdMg_15 = 15.0;
+const UPd_Mg_ExtraSmall = 5.0;
+const UPd_Mg_Small = 8.0;
+const UPd_Mg_Medium = 10.0;
+const UPd_Mg_Large = 12.0;
+const UPd_Mg_Extra = 15.0;
 
 //  * @ Rounded Theme
 const URoundedMedium = 5.0;

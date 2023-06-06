@@ -27,8 +27,7 @@ class _Video_DisplayState extends State<Video_Display> {
     _controller = YoutubePlayerController(
       initialVideoId: YoutubePlayer.convertUrlToId(widget.data.link)!,
       flags: YoutubePlayerFlags(
-        autoPlay: false,
-      ),
+          autoPlay: false, forceHD: true, enableCaption: true),
     );
     _hiddenVideoIndex = video_home.indexOf(widget.data);
     _currentVideoIndex = _hiddenVideoIndex;
@@ -57,16 +56,6 @@ class _Video_DisplayState extends State<Video_Display> {
     });
   }
 
-  void _enterFullScreen() {
-    SystemChrome.setEnabledSystemUIOverlays([]);
-    _isFullScreen = true;
-  }
-
-  void _exitFullScreen() {
-    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
-    _isFullScreen = false;
-  }
-
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
@@ -82,27 +71,27 @@ class _Video_DisplayState extends State<Video_Display> {
               controller: _controller,
               showVideoProgressIndicator: true,
               bottomActions: [
-                CurrentPosition(),
-                ProgressBar(
-                  isExpanded: true,
-                  colors: ProgressBarColors(
-                    playedColor: Colors.red,
-                    bufferedColor: Colors.white,
-                    handleColor: Colors.red,
-                    backgroundColor: Colors.grey,
+                Expanded(
+                  child: Column(
+                    children: [
+                      ProgressBar(
+                        isExpanded: false,
+                        colors: ProgressBarColors(
+                          playedColor: Colors.red,
+                          bufferedColor: Colors.white,
+                          handleColor: Colors.red,
+                          backgroundColor: Colors.grey,
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          CurrentPosition(),
+                          RemainingDuration(),
+                          PlaybackSpeedButton(),
+                        ],
+                      ),
+                    ],
                   ),
-                ),
-                RemainingDuration(),
-                PlaybackSpeedButton(),
-                FullScreenButton(
-                  controller: _controller,
-                  // onFullScreen: () {
-                  //   if (!_isFullScreen) {
-                  //     _enterFullScreen();
-                  //   } else {
-                  //     _exitFullScreen();
-                  //   }
-                  // },
                 ),
               ],
             ),
