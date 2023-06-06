@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usea_app/Custom_AppBar.dart';
-import 'package:usea_app/theme_builder.dart';
-
+import '../../../Custom_Widget/CustomText.dart';
 import 'Components/Card_payment.dart';
 
 class Payment extends StatefulWidget {
@@ -13,30 +12,6 @@ class Payment extends StatefulWidget {
 }
 
 class _PaymentState extends State<Payment> {
-  Widget buildTitle(String text, Widget widget) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 10, 10, 5),
-          child: Container(
-            child: Text(
-              text.tr,
-              style: TextStyle(
-                color: UPrimaryColor,
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-        ),
-        SizedBox(
-          child: widget,
-        ),
-      ],
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

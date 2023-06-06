@@ -1,43 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:usea_app/theme_builder.dart';
-
-import '../../../Student_Performance/UI_Perfomance/Components/Dialog_performance.dart';
+import '../../../../Custom_Widget/CustomText.dart';
 import '../../Class_Payment/Class_Payment.dart';
 import 'Dialog_payment.dart';
 
-Widget buildHeaderTitle(double num, String text) {
-  return SizedBox(
-    width: num,
-    child: Text(
-      text.tr,
-      textAlign: TextAlign.center,
-      style: TextStyle(
-        color: UPrimaryColor,
-        fontSize: 12,
-        fontWeight: FontWeight.w600,
-      ),
-    ),
-  );
-}
-
-Widget buildBody(double num, String text, Color color) {
-  return SizedBox(
-    width: num,
-    child: Text(
-      textAlign: TextAlign.center,
-      text.tr,
-      style: TextStyle(
-        fontSize: 12,
-        color: color,
-      ),
-    ),
-  );
-}
-
-/// ! card one
+// ! card 1
 class PaymentCards extends StatelessWidget {
   const PaymentCards({super.key});
 
@@ -47,15 +16,15 @@ class PaymentCards extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          padding: const EdgeInsets.all(5.0),
+          padding: EdgeInsets.all(UPdMg_5),
           child: Card(
             elevation: 1,
             shape: RoundedRectangleBorder(
               side: BorderSide(
-                color: Color.fromARGB(255, 209, 209, 209),
+                color: UGreyColor,
                 width: 0.5,
               ),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(URoundedLarge),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -65,7 +34,7 @@ class PaymentCards extends StatelessWidget {
                   child: Container(
                     padding: EdgeInsets.all(10.0),
 
-                    /// ! Header Title
+                    // * Header Title
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
