@@ -340,5 +340,61 @@ Widget buildTextBody(String text, Color color) {
     ),
   );
 }
-    
+
 // *@ End Card Attendance
+
+// *@ Payments
+
+Widget buildTitle(String text, Widget widget) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Padding(
+        padding: EdgeInsets.fromLTRB(10, 10, 10, 5),
+        child: Container(
+          child: Text(
+            text.tr,
+            style: TextStyle(
+              color: UPrimaryColor,
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+      ),
+      SizedBox(
+        child: widget,
+      ),
+    ],
+  );
+}
+
+Widget buildHeaderTitle(double num, String text) {
+  return SizedBox(
+    width: num,
+    child: Text(
+      text.tr,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        color: UPrimaryColor,
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+      ),
+    ),
+  );
+}
+
+Widget buildBody(double num, String text, Color color) {
+  return SizedBox(
+    width: num,
+    child: Text(
+      textAlign: TextAlign.center,
+      text.tr,
+      style: TextStyle(
+        fontSize: 12,
+        color: color,
+      ),
+    ),
+  );
+}
+// *@ End Payments
