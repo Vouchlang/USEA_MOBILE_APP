@@ -30,17 +30,19 @@ class _Major_AttendanceState extends State<Major_Attendance> {
           elevation: 1,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(
-              UPd_Mg_Medium,
-              UPd_Mg_Medium,
-              UPd_Mg_Extra,
-              UPd_Mg_Medium,
+              UPdMg_10,
+              UPdMg_10,
+              UPdMg_15,
+              UPdMg_10,
             ),
             child: InkWell(
               onTap: () {
                 setState(() {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => All_info_major()),
+                    MaterialPageRoute(
+                      builder: (context) => All_info_major(),
+                    ),
                   );
                 });
               },

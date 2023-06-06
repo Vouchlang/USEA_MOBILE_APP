@@ -20,7 +20,7 @@ class _CustomAttDialogState extends State<CustomAttDialog> {
     return Dialog(
       elevation: 5,
       backgroundColor: UBackgroundColor,
-      insetPadding: EdgeInsets.all(UPd_Mg_Medium),
+      insetPadding: EdgeInsets.all(UPdMg_10),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(URoundedLarge),
@@ -56,7 +56,7 @@ class _CustomAttDialogState extends State<CustomAttDialog> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            padding: const EdgeInsets.all(UPd_Mg_Medium),
+            padding: const EdgeInsets.all(UPdMg_10),
             width: UFullWidth,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
@@ -81,7 +81,7 @@ class _CustomAttDialogState extends State<CustomAttDialog> {
             height: 4,
           ),
           Container(
-            padding: EdgeInsets.all(UPd_Mg_Small),
+            padding: EdgeInsets.all(UPdMg_8),
             width: UFullWidth,
             child: ListView.builder(
               physics: NeverScrollableScrollPhysics(),
@@ -89,7 +89,7 @@ class _CustomAttDialogState extends State<CustomAttDialog> {
               itemCount: attendance.length,
               itemBuilder: (context, index) {
                 return Container(
-                  padding: EdgeInsets.symmetric(vertical: UPd_Mg_ExtraSmall),
+                  padding: EdgeInsets.symmetric(vertical: UPdMg_5),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -138,7 +138,7 @@ class _CustomScoreDialogState extends State<CustomScoreDialog> {
     return Dialog(
       elevation: 5,
       backgroundColor: UBackgroundColor,
-      insetPadding: EdgeInsets.all(UPd_Mg_Medium),
+      insetPadding: EdgeInsets.all(UPdMg_10),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(URoundedLarge),
@@ -175,8 +175,8 @@ class _CustomScoreDialogState extends State<CustomScoreDialog> {
         children: [
           Container(
             padding: const EdgeInsets.symmetric(
-              vertical: UPd_Mg_Medium,
-              horizontal: UPd_Mg_Medium,
+              vertical: UPdMg_10,
+              horizontal: UPdMg_10,
             ),
             width: UFullWidth,
             decoration: const BoxDecoration(
@@ -202,7 +202,7 @@ class _CustomScoreDialogState extends State<CustomScoreDialog> {
             height: 4,
           ),
           Container(
-            padding: const EdgeInsets.all(UPd_Mg_Small),
+            padding: const EdgeInsets.all(UPdMg_8),
             width: UFullWidth,
             child: ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
@@ -210,7 +210,7 @@ class _CustomScoreDialogState extends State<CustomScoreDialog> {
               itemCount: score.length,
               itemBuilder: (context, index) {
                 return Container(
-                  padding: EdgeInsets.symmetric(vertical: UPd_Mg_ExtraSmall),
+                  padding: EdgeInsets.symmetric(vertical: UPdMg_5),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [

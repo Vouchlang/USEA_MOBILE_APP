@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usea_app/Custom_AppBar.dart';
-
 import '../../../Custom_Widget/CustomText.dart';
-import 'Components/Card_studyinfo.dart';
+import '../../../theme_builder.dart';
 import '../Class_StudyInfo/Class_Study_Info.dart';
 
 class Study_Info extends StatefulWidget {
@@ -20,7 +19,7 @@ class _Study_InfoState extends State<Study_Info> {
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'ព័ត៌មានការសិក្សា'.tr),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(5),
+        padding: EdgeInsets.all(UPdMg_5),
         child: ListView.builder(
             shrinkWrap: true,
             physics: ScrollPhysics(),
@@ -28,14 +27,14 @@ class _Study_InfoState extends State<Study_Info> {
             itemBuilder: (BuildContext context, index) {
               return Card(
                 elevation: 2,
-                shadowColor: Colors.grey,
+                shadowColor: UGreyColor,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(URoundedLarge),
                 ),
-                color: Colors.white,
-                margin: EdgeInsets.all(5),
+                color: UBackgroundColor,
+                margin: EdgeInsets.all(UPdMg_5),
                 child: Padding(
-                  padding: EdgeInsets.all(5),
+                  padding: EdgeInsets.all(UPdMg_5),
                   child: IntrinsicHeight(
                     child: Row(
                       children: [
@@ -45,24 +44,16 @@ class _Study_InfoState extends State<Study_Info> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               NormalTitleTheme(
-                                text: studyInformationData[index].days,
-                              ),
-                              Divider(
-                                color: Colors.grey,
-                                thickness: 0.5,
-                              ),
+                                  text: studyInformationData[index].days),
+                              buildDividerAtt(),
                               NormalTitleTheme(
-                                text: studyInformationData[index].months,
-                              ),
+                                  text: studyInformationData[index].months),
                             ],
                           ),
                         ),
-                        VerticalDivider(
-                          color: Colors.grey,
-                          thickness: 0.5,
-                        ),
+                        buildVerticalDividerAtt(),
                         Container(
-                          padding: EdgeInsets.only(left: 8.0),
+                          padding: EdgeInsets.only(left: UPdMg_8),
                           child: IntrinsicWidth(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,27 +61,20 @@ class _Study_InfoState extends State<Study_Info> {
                                 Container(
                                   width: 250,
                                   child: TitleSize16_Theme(
-                                    text: studyInformationData[index]
-                                        .semesterTitle,
-                                  ),
+                                      text: studyInformationData[index]
+                                          .semesterTitle),
                                 ),
-                                Divider(
-                                  thickness: 0.5,
-                                  color: Colors.grey,
-                                ),
+                                buildDividerAtt(),
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    BodyTheme(
-                                      text: 'មុខវិជ្ជា\t',
-                                    ),
+                                    BodyTheme(text: 'មុខវិជ្ជា\t'),
                                     Container(
                                       width: 200,
                                       alignment: Alignment.centerLeft,
                                       child: BodyTheme(
-                                        text: studyInformationData[index]
-                                            .majorTitle,
-                                      ),
+                                          text: studyInformationData[index]
+                                              .majorTitle),
                                     ),
                                   ],
                                 ),
@@ -104,9 +88,8 @@ class _Study_InfoState extends State<Study_Info> {
                                       width: 200,
                                       alignment: Alignment.centerLeft,
                                       child: BodyTheme(
-                                        text: studyInformationData[index]
-                                            .roomTitle,
-                                      ),
+                                          text: studyInformationData[index]
+                                              .roomTitle),
                                     ),
                                   ],
                                 ),
@@ -120,9 +103,8 @@ class _Study_InfoState extends State<Study_Info> {
                                       width: 200,
                                       alignment: Alignment.centerLeft,
                                       child: BodyTheme(
-                                        text: studyInformationData[index]
-                                            .timeExam,
-                                      ),
+                                          text: studyInformationData[index]
+                                              .timeExam),
                                     ),
                                   ],
                                 )

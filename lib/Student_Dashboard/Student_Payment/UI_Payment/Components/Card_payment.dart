@@ -32,39 +32,26 @@ class PaymentCards extends StatelessWidget {
               children: [
                 IntrinsicHeight(
                   child: Container(
-                    padding: EdgeInsets.all(10.0),
+                    padding: EdgeInsets.all(UPdMg_10),
 
                     // * Header Title
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         buildHeaderTitle(45, 'ឆ្នាំ'),
-                        VerticalDivider(
-                          thickness: 0.5,
-                          color: Colors.grey,
-                        ),
+                        buildVerticalDividerAtt(),
                         buildHeaderTitle(55, 'ទឹកប្រាក់ត្រូវបង់'),
-                        VerticalDivider(
-                          thickness: 0.5,
-                          color: Colors.grey,
-                        ),
+                        buildVerticalDividerAtt(),
                         buildHeaderTitle(55, 'ទឹកប្រាក់បានបង់'),
-                        VerticalDivider(
-                          thickness: 0.5,
-                          color: Colors.grey,
-                        ),
+                        buildVerticalDividerAtt(),
                         buildHeaderTitle(55, 'ទឹកប្រាក់នៅសល់'),
                       ],
                     ),
                   ),
                 ),
+                buildDividerAtt(),
 
-                Divider(
-                  thickness: 0.5,
-                  color: Colors.grey,
-                ),
-
-                /// ! Body Content
+                // * Body Content
                 ListView.builder(
                   physics: ScrollPhysics(),
                   shrinkWrap: true,
@@ -76,36 +63,35 @@ class PaymentCards extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsets.all(8.0),
+                            padding: EdgeInsets.all(UPdMg_8),
                             child: IntrinsicHeight(
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
-                                  buildBody(45, paymentData[index].yearPayment,
-                                      UTextColor),
-                                  VerticalDivider(
-                                    thickness: 0.5,
-                                    color: Colors.grey,
+                                  buildBody(
+                                    45,
+                                    paymentData[index].yearPayment,
+                                    UTextColor,
                                   ),
-                                  buildBody(55, paymentData[index].amountToPaid,
-                                      UTextColor),
-                                  VerticalDivider(
-                                    thickness: 0.5,
-                                    color: Colors.grey,
+                                  buildVerticalDividerAtt(),
+                                  buildBody(
+                                    55,
+                                    paymentData[index].amountToPaid,
+                                    UTextColor,
                                   ),
-                                  buildBody(55, paymentData[index].amountPaid,
-                                      UTextColor),
-                                  VerticalDivider(
-                                    thickness: 0.5,
-                                    color: Colors.grey,
+                                  buildVerticalDividerAtt(),
+                                  buildBody(
+                                    55,
+                                    paymentData[index].amountPaid,
+                                    UTextColor,
                                   ),
+                                  buildVerticalDividerAtt(),
                                   InkWell(
                                     onTap: () {
                                       showDialog(
                                         context: context,
-                                        builder: (context) =>
-                                            const PaymentDialog(),
+                                        builder: (context) => PaymentDialog(),
                                       );
                                     },
                                     child: Container(
@@ -115,7 +101,7 @@ class PaymentCards extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           border: Border(
                                             bottom: BorderSide(
-                                              color: Colors.red,
+                                              color: URedColor,
                                               width: 1.0,
                                             ),
                                           ),
@@ -124,7 +110,7 @@ class PaymentCards extends StatelessWidget {
                                           paymentData[index].balance,
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                            fontSize: 12,
+                                            fontSize: UBodySize,
                                             color: URedColor,
                                           ),
                                         ),
@@ -154,7 +140,7 @@ class PaymentCards extends StatelessWidget {
   }
 }
 
-/// ! card two
+/// ! card 2
 class PaymentCards2 extends StatelessWidget {
   const PaymentCards2({super.key});
 
@@ -163,15 +149,15 @@ class PaymentCards2 extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(5.0),
+          padding: EdgeInsets.all(UPdMg_5),
           child: Card(
             elevation: 2,
             shape: RoundedRectangleBorder(
               side: BorderSide(
-                color: Color.fromARGB(255, 209, 209, 209),
+                color: UGreyColor,
                 width: 0.5,
               ),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(URoundedLarge),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -179,40 +165,26 @@ class PaymentCards2 extends StatelessWidget {
               children: [
                 IntrinsicHeight(
                   child: Padding(
-                    padding: EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(UPdMg_5),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         buildHeaderTitle(75, 'កាលបរិច្ឆេទ'),
-                        VerticalDivider(
-                          width: 5,
-                          color: Colors.grey,
-                        ),
+                        buildVerticalDividerW_5(),
                         buildHeaderTitle(75, 'លេខវិក័យបត្រ'),
-                        VerticalDivider(
-                          width: 2,
-                          color: Colors.grey,
-                        ),
+                        buildVerticalDividerW_2(),
                         buildHeaderTitle(45, 'ទឹកប្រាក់ត្រូវបង់'),
-                        VerticalDivider(
-                          width: 2,
-                          color: Colors.grey,
-                        ),
+                        buildVerticalDividerW_2(),
                         buildHeaderTitle(45, 'ទឹកប្រាក់បានបង់'),
-                        VerticalDivider(
-                          width: 2,
-                          color: Colors.grey,
-                        ),
+                        buildVerticalDividerW_2(),
                         buildHeaderTitle(50, 'ទឹកប្រាក់នៅសល់'),
                       ],
                     ),
                   ),
                 ),
-                Divider(
-                  color: Colors.grey,
-                ),
+                buildVerticalDividerAtt(),
 
-                /// ! Body Content​2
+                // * Body Content​2
                 ListView.builder(
                   shrinkWrap: true,
                   physics: ScrollPhysics(),
@@ -226,52 +198,46 @@ class PaymentCards2 extends StatelessWidget {
                           IntrinsicHeight(
                             child: Container(
                               alignment: Alignment.center,
-                              padding: EdgeInsets.all(5),
+                              padding: EdgeInsets.all(UPdMg_5),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
-                                  /// ! datePayment
+                                  // * datePayment
                                   buildBody(
-                                      75,
-                                      paymentData2[index].datePayment2,
-                                      UTextColor),
-
-                                  VerticalDivider(
-                                    width: 5,
-                                    color: Colors.grey,
+                                    75,
+                                    paymentData2[index].datePayment2,
+                                    UTextColor,
                                   ),
-                                  buildBody(75, paymentData2[index].invoiceNum2,
-                                      UTextColor),
-
-                                  VerticalDivider(
-                                    width: 2,
-                                    color: Colors.grey,
-                                  ),
+                                  buildVerticalDividerW_5(),
                                   buildBody(
-                                      45,
-                                      paymentData2[index].amountToPaid2,
-                                      UTextColor),
-
-                                  VerticalDivider(
-                                    width: 2,
-                                    color: Colors.grey,
+                                    75,
+                                    paymentData2[index].invoiceNum2,
+                                    UTextColor,
                                   ),
-                                  buildBody(45, paymentData2[index].amountPaid2,
-                                      UTextColor),
-                                  VerticalDivider(
-                                    width: 2,
-                                    color: Colors.grey,
+                                  buildVerticalDividerW_2(),
+                                  buildBody(
+                                    45,
+                                    paymentData2[index].amountToPaid2,
+                                    UTextColor,
                                   ),
-                                  buildBody(50, paymentData2[index].balance2,
-                                      URedColor),
+                                  buildVerticalDividerW_2(),
+                                  buildBody(
+                                    45,
+                                    paymentData2[index].amountPaid2,
+                                    UTextColor,
+                                  ),
+                                  buildVerticalDividerW_2(),
+                                  buildBody(
+                                    50,
+                                    paymentData2[index].balance2,
+                                    URedColor,
+                                  ),
                                 ],
                               ),
                             ),
                           ),
-                          Divider(
-                            color: Colors.grey,
-                          ),
+                          Divider(color: UGreyColor),
                         ],
                       ),
                     );
@@ -286,7 +252,7 @@ class PaymentCards2 extends StatelessWidget {
   }
 }
 
-/// ! card three
+// ! card 3
 class PaymentCards3 extends StatelessWidget {
   const PaymentCards3({super.key});
 
@@ -295,15 +261,15 @@ class PaymentCards3 extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(5.0),
+          padding: EdgeInsets.all(UPdMg_5),
           child: Card(
             elevation: 2,
             shape: RoundedRectangleBorder(
               side: BorderSide(
-                color: Color.fromARGB(255, 209, 209, 209),
+                color: UGreyColor,
                 width: 0.5,
               ),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(URoundedLarge),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -311,40 +277,26 @@ class PaymentCards3 extends StatelessWidget {
               children: [
                 IntrinsicHeight(
                   child: Padding(
-                    padding: EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(UPdMg_5),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         buildHeaderTitle(75, 'កាលបរិច្ឆេទ'),
-                        VerticalDivider(
-                          width: 5,
-                          color: Colors.grey,
-                        ),
+                        buildVerticalDividerW_5(),
                         buildHeaderTitle(75, 'លេខវិក័យបត្រ'),
-                        VerticalDivider(
-                          width: 5,
-                          color: Colors.grey,
-                        ),
+                        buildVerticalDividerW_5(),
                         buildHeaderTitle(45, 'ទឹកប្រាក់ត្រូវបង់'),
-                        VerticalDivider(
-                          width: 5,
-                          color: Colors.grey,
-                        ),
+                        buildVerticalDividerW_5(),
                         buildHeaderTitle(45, 'ទឹកប្រាក់បានបង់'),
-                        VerticalDivider(
-                          width: 5,
-                          color: Colors.grey,
-                        ),
+                        buildVerticalDividerW_5(),
                         buildHeaderTitle(50, 'ទឹកប្រាក់នៅសល់'),
                       ],
                     ),
                   ),
                 ),
-                Divider(
-                  color: Colors.grey,
-                ),
+                Divider(color: UGreyColor),
 
-                /// ! Body Content​2
+                // * Body Content​3
                 ListView.builder(
                   shrinkWrap: true,
                   physics: ScrollPhysics(),
@@ -358,52 +310,46 @@ class PaymentCards3 extends StatelessWidget {
                           IntrinsicHeight(
                             child: Container(
                               alignment: Alignment.center,
-                              padding: EdgeInsets.all(5),
+                              padding: EdgeInsets.all(UPdMg_5),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
-                                  /// ! datePayment
+                                  // * datePayment
                                   buildBody(
-                                      75,
-                                      paymentData4[index].datePayment4,
-                                      UTextColor),
-
-                                  VerticalDivider(
-                                    width: 5,
-                                    color: Colors.grey,
+                                    75,
+                                    paymentData4[index].datePayment4,
+                                    UTextColor,
                                   ),
-                                  buildBody(75, paymentData4[index].invoiceNum4,
-                                      UTextColor),
-
-                                  VerticalDivider(
-                                    width: 2,
-                                    color: Colors.grey,
-                                  ),
+                                  buildVerticalDividerW_5(),
                                   buildBody(
-                                      45,
-                                      paymentData4[index].amountToPaid4,
-                                      UTextColor),
-
-                                  VerticalDivider(
-                                    width: 2,
-                                    color: Colors.grey,
+                                    75,
+                                    paymentData4[index].invoiceNum4,
+                                    UTextColor,
                                   ),
-                                  buildBody(45, paymentData4[index].amountPaid4,
-                                      UTextColor),
-                                  VerticalDivider(
-                                    width: 2,
-                                    color: Colors.grey,
+                                  buildVerticalDividerW_2(),
+                                  buildBody(
+                                    45,
+                                    paymentData4[index].amountToPaid4,
+                                    UTextColor,
                                   ),
-                                  buildBody(50, paymentData4[index].balance4,
-                                      URedColor),
+                                  buildVerticalDividerW_2(),
+                                  buildBody(
+                                    45,
+                                    paymentData4[index].amountPaid4,
+                                    UTextColor,
+                                  ),
+                                  buildVerticalDividerW_2(),
+                                  buildBody(
+                                    50,
+                                    paymentData4[index].balance4,
+                                    URedColor,
+                                  ),
                                 ],
                               ),
                             ),
                           ),
-                          Divider(
-                            color: Colors.grey,
-                          ),
+                          Divider(color: UGreyColor),
                         ],
                       ),
                     );
@@ -418,7 +364,7 @@ class PaymentCards3 extends StatelessWidget {
   }
 }
 
-/// ! card four
+/// ! card 4
 class PaymentCards4 extends StatelessWidget {
   const PaymentCards4({super.key});
 
@@ -427,15 +373,15 @@ class PaymentCards4 extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(5.0),
+          padding: EdgeInsets.all(UPdMg_5),
           child: Card(
             elevation: 2,
             shape: RoundedRectangleBorder(
               side: BorderSide(
-                color: Color.fromARGB(255, 209, 209, 209),
+                color: UGreyColor,
                 width: 0.5,
               ),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(URoundedLarge),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -443,40 +389,26 @@ class PaymentCards4 extends StatelessWidget {
               children: [
                 IntrinsicHeight(
                   child: Padding(
-                    padding: EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(UPdMg_5),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         buildHeaderTitle(75, 'កាលបរិច្ឆេទ'),
-                        VerticalDivider(
-                          width: 5,
-                          color: Colors.grey,
-                        ),
+                        buildVerticalDividerW_5(),
                         buildHeaderTitle(75, 'លេខវិក័យបត្រ'),
-                        VerticalDivider(
-                          width: 5,
-                          color: Colors.grey,
-                        ),
+                        buildVerticalDividerW_5(),
                         buildHeaderTitle(45, 'ទឹកប្រាក់ត្រូវបង់'),
-                        VerticalDivider(
-                          width: 5,
-                          color: Colors.grey,
-                        ),
+                        buildVerticalDividerW_5(),
                         buildHeaderTitle(45, 'ទឹកប្រាក់បានបង់'),
-                        VerticalDivider(
-                          width: 5,
-                          color: Colors.grey,
-                        ),
+                        buildVerticalDividerW_5(),
                         buildHeaderTitle(50, 'ទឹកប្រាក់នៅសល់'),
                       ],
                     ),
                   ),
                 ),
-                Divider(
-                  color: Colors.grey,
-                ),
+                Divider(color: UGreyColor),
 
-                /// ! Body Content​2
+                // * Body Content4
                 ListView.builder(
                   shrinkWrap: true,
                   physics: ScrollPhysics(),
@@ -490,52 +422,46 @@ class PaymentCards4 extends StatelessWidget {
                           IntrinsicHeight(
                             child: Container(
                               alignment: Alignment.center,
-                              padding: EdgeInsets.all(5),
+                              padding: EdgeInsets.all(UPdMg_5),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
-                                  /// ! datePayment
+                                  // * datePayment
                                   buildBody(
-                                      75,
-                                      paymentData3[index].datePayment3,
-                                      UTextColor),
-
-                                  VerticalDivider(
-                                    width: 5,
-                                    color: Colors.grey,
+                                    75,
+                                    paymentData3[index].datePayment3,
+                                    UTextColor,
                                   ),
-                                  buildBody(75, paymentData3[index].invoiceNum3,
-                                      UTextColor),
-
-                                  VerticalDivider(
-                                    width: 2,
-                                    color: Colors.grey,
-                                  ),
+                                  buildVerticalDividerW_5(),
                                   buildBody(
-                                      45,
-                                      paymentData3[index].amountToPaid3,
-                                      UTextColor),
-
-                                  VerticalDivider(
-                                    width: 2,
-                                    color: Colors.grey,
+                                    75,
+                                    paymentData3[index].invoiceNum3,
+                                    UTextColor,
                                   ),
-                                  buildBody(45, paymentData3[index].amountPaid3,
-                                      UTextColor),
-                                  VerticalDivider(
-                                    width: 2,
-                                    color: Colors.grey,
+                                  buildVerticalDividerW_2(),
+                                  buildBody(
+                                    45,
+                                    paymentData3[index].amountToPaid3,
+                                    UTextColor,
                                   ),
-                                  buildBody(50, paymentData3[index].balance3,
-                                      URedColor),
+                                  buildVerticalDividerW_2(),
+                                  buildBody(
+                                    45,
+                                    paymentData3[index].amountPaid3,
+                                    UTextColor,
+                                  ),
+                                  buildVerticalDividerW_2(),
+                                  buildBody(
+                                    50,
+                                    paymentData3[index].balance3,
+                                    URedColor,
+                                  ),
                                 ],
                               ),
                             ),
                           ),
-                          Divider(
-                            color: Colors.grey,
-                          ),
+                          Divider(color: UGreyColor),
                         ],
                       ),
                     );

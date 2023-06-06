@@ -21,11 +21,7 @@ class _AchievementsState extends State<Achievements> {
         shrinkWrap: true,
         physics: ScrollPhysics(),
         children: [
-          Column(
-            children: [
-              const CardAchievements(),
-            ],
-          ),
+          Column(children: [CardAchievements()]),
         ],
       ),
     );

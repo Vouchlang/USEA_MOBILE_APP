@@ -24,8 +24,8 @@ class _AttendanceState extends State<Attendance> {
         child: Container(
           child: Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: UPd_Mg_Medium,
-              vertical: UPd_Mg_Extra,
+              horizontal: UPdMg_10,
+              vertical: UPdMg_15,
             ),
             child: Column(
               children: [
@@ -43,17 +43,15 @@ class _AttendanceState extends State<Attendance> {
                 ),
                 // ? Attendance List Card
                 Major_Attendance(),
-                SizedBox(
-                  height: 10,
-                ),
+                SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Container(
                       alignment: Alignment.center,
                       padding: EdgeInsets.symmetric(
-                        vertical: UPd_Mg_ExtraSmall,
-                        horizontal: UPd_Mg_Medium,
+                        vertical: UPdMg_5,
+                        horizontal: UPdMg_10,
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(URoundedMedium),

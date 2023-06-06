@@ -19,9 +19,7 @@ class Job_History extends StatelessWidget {
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'ព័ត៌មានការងារ'.tr),
       body: data_jobhistory.isEmpty
-          ? Center(
-              child: CircularProgressIndicator(),
-            )
+          ? Center(child: CircularProgressIndicator())
           : ListView.builder(
               padding: EdgeInsets.all(9),
               itemCount: data_jobhistory.length,
@@ -30,10 +28,9 @@ class Job_History extends StatelessWidget {
                   elevation: 3,
                   shadowColor: Colors.grey[200],
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+                      borderRadius: BorderRadius.circular(URoundedLarge)),
                   child: Padding(
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(UPdMg_10),
                     child: Column(
                       children: [
                         Row(
@@ -42,8 +39,8 @@ class Job_History extends StatelessWidget {
                               'កាលបរិច្ឆេទចូលបម្រើការងារ​\t\t\t\t\t'.tr +
                                   '${data_jobhistory[index].date_start_work}',
                               style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
+                                fontSize: UTitleSize,
+                                fontWeight: UTitleWeight,
                               ),
                             ),
                           ],
@@ -55,18 +52,11 @@ class Job_History extends StatelessWidget {
                               width: 125,
                               child: Text(
                                 'ស្ថានភាពការងារ'.tr,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                ),
+                                style: TextStyle(fontSize: UTitleSize),
                               ),
                             ),
-                            Text(
-                              data_jobhistory[index].status_name,
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontFamily: 'KhmerOSbattambang',
-                              ),
-                            ),
+                            NormalTitleTheme(
+                                text: data_jobhistory[index].status_name),
                           ],
                         ),
                         Divider(),
@@ -76,19 +66,12 @@ class Job_History extends StatelessWidget {
                               width: 125,
                               child: Text(
                                 'ស្ថាប័ន'.tr,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                ),
+                                style: TextStyle(fontSize: UTitleSize),
                               ),
                             ),
                             Expanded(
-                              child: Text(
-                                data_jobhistory[index].workPlace,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontFamily: 'KhmerOSbattambang',
-                                ),
-                              ),
+                              child: NormalTitleTheme(
+                                  text: data_jobhistory[index].workPlace),
                             ),
                           ],
                         ),
@@ -99,18 +82,12 @@ class Job_History extends StatelessWidget {
                               width: 125,
                               child: Text(
                                 'មុខតំណែង'.tr,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                ),
+                                style: TextStyle(fontSize: UTitleSize),
                               ),
                             ),
                             Expanded(
-                              child: Text(
-                                data_jobhistory[index].position,
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'KhmerOSbattambang'),
-                              ),
+                              child: NormalTitleTheme(
+                                  text: data_jobhistory[index].position),
                             ),
                           ],
                         ),
@@ -121,16 +98,12 @@ class Job_History extends StatelessWidget {
                               width: 125,
                               child: Text(
                                 'ប្រាក់បៀវត្ស'.tr,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                ),
+                                style: TextStyle(fontSize: UTitleSize),
                               ),
                             ),
                             Text(
                               data_jobhistory[index].salary.tr,
-                              style: TextStyle(
-                                fontSize: 14,
-                              ),
+                              style: TextStyle(fontSize: UTitleSize),
                             ),
                           ],
                         ),

@@ -27,15 +27,15 @@ class _All_info_majorState extends State<All_info_major> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(URoundedLarge),
           ),
-          margin: EdgeInsets.all(UPd_Mg_Medium),
+          margin: EdgeInsets.all(UPdMg_10),
           color: UBackgroundColor,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 padding: EdgeInsets.symmetric(
-                  vertical: UPd_Mg_Medium,
-                  horizontal: UPd_Mg_Medium,
+                  vertical: UPdMg_10,
+                  horizontal: UPdMg_10,
                 ),
                 width: UFullWidth,
                 decoration: BoxDecoration(
@@ -68,21 +68,21 @@ class _All_info_majorState extends State<All_info_major> {
                     Container(
                       child: IntrinsicHeight(
                         child: Padding(
-                          padding: EdgeInsets.all(UPd_Mg_Small),
+                          padding: EdgeInsets.all(UPdMg_8),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               buildHeader('កាលបរិច្ឆេទ'.tr),
                               Container(
                                 margin: EdgeInsets.symmetric(
-                                  horizontal: UPd_Mg_Extra,
+                                  horizontal: UPdMg_15,
                                 ),
                                 child: buildVerticalDividerAtt(),
                               ),
                               buildHeader('វត្តមាន'.tr),
                               Container(
                                 margin: EdgeInsets.symmetric(
-                                  horizontal: UPd_Mg_Extra,
+                                  horizontal: UPdMg_15,
                                 ),
                                 child: buildVerticalDividerAtt(),
                               ),
