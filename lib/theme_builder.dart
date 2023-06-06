@@ -13,9 +13,6 @@ const UTextColor = Color(0xff000000);
 const UGreyColor = Colors.grey;
 const UBtnColor = Color(0x142D74F5);
 
-//  * @ Background Color
-const UBGLightBlue = Color(0xffE9F2FF);
-
 const UZeroPixel = 0.0;
 
 //  * @ FontSize & Weight Theme
@@ -30,11 +27,14 @@ const FontWeight UBodyWeight = FontWeight.w500;
 const UFontFamily = "KhmerOSbattambang";
 
 //  * @ Padding & Margin Theme
-const UPdMg_5 = 5.0;
-const UPdMg_8 = 8.0;
-const UPdMg_10 = 10.0;
-const UPdMg_12 = 12.0;
-const UPdMg_15 = 15.0;
+const UPdMg_5 = 5.0; // UPd_Mg_ExtraSmall
+const UPdMg_8 = 8.0; // UPd_Mg_Small
+const UPdMg_10 = 10.0; // UPd_Mg_Medium
+const UPdMg_12 = 12.0; // UPd_Mg_Large
+const UPdMg_15 = 15.0; // UPd_Mg_Extra
+
+//  * @ Background Color
+const UBGLightBlue = Color(0xffE9F2FF);
 
 //  * @ Rounded Theme
 const URoundedMedium = 5.0;

@@ -63,7 +63,7 @@ class _PerformanceState extends State<Performance> {
                           ),
                         ],
                       ),
-                      margin: EdgeInsets.all(5.0),
+                      margin: EdgeInsets.all(UPdMg_5),
                       child: Center(
                         child: Text(
                           items[index].toString().tr,
@@ -81,9 +81,7 @@ class _PerformanceState extends State<Performance> {
               ),
 
               /// CONTENT BODY
-              Container(
-                child: const Card_learning_pro_1(),
-              ),
+              Container(child: Card_learning_pro_1()),
             ],
           ),
         ),

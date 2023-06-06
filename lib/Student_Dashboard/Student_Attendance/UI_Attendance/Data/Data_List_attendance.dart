@@ -27,8 +27,8 @@ class Row_Data_List extends StatelessWidget {
                   height: 0.5,
                   color: UGreyColor,
                   margin: EdgeInsets.only(
-                    bottom: UPd_Mg_ExtraSmall,
-                    top: UPd_Mg_ExtraSmall,
+                    bottom: UPdMg_5,
+                    top: UPdMg_5,
                   ),
                 ),
                 buildTextBody('Session 2'.tr, UTextColor),
@@ -44,8 +44,8 @@ class Row_Data_List extends StatelessWidget {
                   height: 0.5,
                   color: UGreyColor,
                   margin: EdgeInsets.only(
-                    bottom: UPd_Mg_ExtraSmall,
-                    top: UPd_Mg_ExtraSmall,
+                    bottom: UPdMg_5,
+                    top: UPdMg_5,
                   ),
                 ),
                 buildTextBody('វត្តមាន\t'.tr, UScoreColor),

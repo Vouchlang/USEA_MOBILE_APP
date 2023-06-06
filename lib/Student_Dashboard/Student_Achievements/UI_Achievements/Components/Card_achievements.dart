@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:usea_app/Custom_Widget/CustomText.dart';
-
 import '../../../../theme_builder.dart';
 import '../../Class_Achievements/Class_Achievements.dart';
 
@@ -13,9 +12,7 @@ class CardAchievements extends StatelessWidget {
       margin: EdgeInsets.all(2.0),
       child: Column(
         children: [
-          SizedBox(
-            height: 10.0,
-          ),
+          SizedBox(height: UPdMg_10),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -24,18 +21,17 @@ class CardAchievements extends StatelessWidget {
                 scale: 8,
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TitleTheme(
-                  text: 'Unlocked',
-                ),
+                padding: EdgeInsets.all(UPdMg_8),
+                child: TitleTheme(text: 'Unlocked'),
               ),
             ],
           ),
+          // * Unlock body
           GridView.count(
             shrinkWrap: true,
             crossAxisCount: 2,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
+            mainAxisSpacing: UPdMg_10,
+            crossAxisSpacing: UPdMg_10,
             childAspectRatio: 1.90,
             padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
             physics: NeverScrollableScrollPhysics(),
@@ -46,11 +42,11 @@ class CardAchievements extends StatelessWidget {
                   shadowColor: Colors.grey[200],
                   color: Colors.amber,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(UPdMg_10),
                   ),
-                  margin: EdgeInsets.all(0),
+                  margin: EdgeInsets.all(UZeroPixel),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(UPdMg_10),
                     child: Image.asset(
                       achievements[index].image,
                       fit: BoxFit.cover,
@@ -60,9 +56,7 @@ class CardAchievements extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            height: 20,
-          ),
+          SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -71,18 +65,18 @@ class CardAchievements extends StatelessWidget {
                 scale: 8,
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TitleTheme(
-                  text: 'Locked',
-                ),
+                padding: EdgeInsets.all(UPdMg_8),
+                child: TitleTheme(text: 'Locked'),
               ),
             ],
           ),
+
+          // * Lock body
           GridView.count(
             shrinkWrap: true,
             crossAxisCount: 2,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
+            mainAxisSpacing: UPdMg_10,
+            crossAxisSpacing: UPdMg_10,
             childAspectRatio: 1.90,
             padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
             physics: NeverScrollableScrollPhysics(),
@@ -91,13 +85,13 @@ class CardAchievements extends StatelessWidget {
               (index) => Container(
                 child: Card(
                   shadowColor: Colors.grey[200],
-                  color: Colors.amber,
+                  color: UGreyColor,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(UPdMg_10),
                   ),
-                  margin: EdgeInsets.all(0),
+                  margin: EdgeInsets.all(UZeroPixel),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(UPdMg_10),
                     child: Image.asset(
                       achievements[index].image,
                       fit: BoxFit.cover,

@@ -25,7 +25,7 @@ class Card_learning_pro_1 extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(URoundedLarge),
             ),
-            margin: EdgeInsets.all(UPd_Mg_Medium),
+            margin: EdgeInsets.all(UPdMg_10),
             color: UBackgroundColor,
 
             // todo: BODY CONTENT
@@ -35,8 +35,8 @@ class Card_learning_pro_1 extends StatelessWidget {
                 // *Container Header Card 1
                 Container(
                   padding: EdgeInsets.symmetric(
-                    vertical: UPd_Mg_Extra,
-                    horizontal: UPd_Mg_Medium,
+                    vertical: UPdMg_15,
+                    horizontal: UPdMg_10,
                   ),
                   width: UFullWidth,
                   decoration: BoxDecoration(
@@ -91,7 +91,7 @@ class Card_learning_pro_1 extends StatelessWidget {
 
                 // *Body Card 1
                 Container(
-                  padding: EdgeInsets.all(UPd_Mg_Medium),
+                  padding: EdgeInsets.all(UPdMg_10),
                   width: UFullWidth,
                   child: ListView.builder(
                     physics: NeverScrollableScrollPhysics(),
@@ -99,7 +99,7 @@ class Card_learning_pro_1 extends StatelessWidget {
                     itemCount: class_program_Score_s1.length,
                     itemBuilder: (context, index) {
                       return Container(
-                        padding: EdgeInsets.symmetric(vertical: UPd_Mg_Medium),
+                        padding: EdgeInsets.symmetric(vertical: UPdMg_10),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -153,8 +153,8 @@ class Card_learning_pro_1 extends StatelessWidget {
                 // ? Total Score
                 Container(
                   padding: EdgeInsets.symmetric(
-                    vertical: UPd_Mg_ExtraSmall,
-                    horizontal: UPd_Mg_Medium,
+                    vertical: UPdMg_5,
+                    horizontal: UPdMg_10,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -181,8 +181,8 @@ class Card_learning_pro_1 extends StatelessWidget {
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(
-                    vertical: UPd_Mg_ExtraSmall,
-                    horizontal: UPd_Mg_Medium,
+                    vertical: UPdMg_5,
+                    horizontal: UPdMg_10,
                   ),
                   alignment: Alignment.center,
                   child: Row(
@@ -206,8 +206,8 @@ class Card_learning_pro_1 extends StatelessWidget {
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(
-                    vertical: UPd_Mg_ExtraSmall,
-                    horizontal: UPd_Mg_Medium,
+                    vertical: UPdMg_5,
+                    horizontal: UPdMg_10,
                   ),
                   alignment: Alignment.center,
                   child: Row(
@@ -242,10 +242,10 @@ class Card_learning_pro_1 extends StatelessWidget {
               borderRadius: BorderRadius.circular(URoundedLarge),
             ),
             margin: EdgeInsets.fromLTRB(
-              UPd_Mg_Medium,
+              UPdMg_10,
               UZeroPixel,
-              UPd_Mg_Medium,
-              UPd_Mg_Medium,
+              UPdMg_10,
+              UPdMg_10,
             ),
             color: Colors.white,
 
@@ -256,14 +256,14 @@ class Card_learning_pro_1 extends StatelessWidget {
                 // *Container Header Card 1
                 Container(
                   padding: EdgeInsets.symmetric(
-                    vertical: UPd_Mg_Extra,
-                    horizontal: UPd_Mg_Medium,
+                    vertical: UPdMg_15,
+                    horizontal: UPdMg_10,
                   ),
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(UPd_Mg_Medium),
-                      topRight: Radius.circular(UPd_Mg_Medium),
+                      topLeft: Radius.circular(UPdMg_10),
+                      topRight: Radius.circular(UPdMg_10),
                       bottomRight: Radius.circular(UZeroPixel),
                       bottomLeft: Radius.circular(UZeroPixel),
                     ),
@@ -312,7 +312,7 @@ class Card_learning_pro_1 extends StatelessWidget {
 
                 // *Body Card 2
                 Container(
-                  padding: EdgeInsets.all(UPd_Mg_Medium),
+                  padding: EdgeInsets.all(UPdMg_10),
                   width: UFullWidth,
                   child: ListView.builder(
                     physics: NeverScrollableScrollPhysics(),
@@ -320,7 +320,7 @@ class Card_learning_pro_1 extends StatelessWidget {
                     itemCount: class_program_Score_s1.length,
                     itemBuilder: (context, index) {
                       return Container(
-                        padding: EdgeInsets.symmetric(vertical: UPd_Mg_Medium),
+                        padding: EdgeInsets.symmetric(vertical: UPdMg_10),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -374,8 +374,8 @@ class Card_learning_pro_1 extends StatelessWidget {
                 // ?Total Score
                 Container(
                   padding: EdgeInsets.symmetric(
-                    vertical: UPd_Mg_ExtraSmall,
-                    horizontal: UPd_Mg_Medium,
+                    vertical: UPdMg_5,
+                    horizontal: UPdMg_10,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -402,8 +402,8 @@ class Card_learning_pro_1 extends StatelessWidget {
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(
-                    vertical: UPd_Mg_ExtraSmall,
-                    horizontal: UPd_Mg_Medium,
+                    vertical: UPdMg_5,
+                    horizontal: UPdMg_10,
                   ),
                   alignment: Alignment.center,
                   child: Row(
@@ -427,8 +427,8 @@ class Card_learning_pro_1 extends StatelessWidget {
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(
-                    vertical: UPd_Mg_ExtraSmall,
-                    horizontal: UPd_Mg_Medium,
+                    vertical: UPdMg_5,
+                    horizontal: UPdMg_10,
                   ),
                   alignment: Alignment.center,
                   child: Row(

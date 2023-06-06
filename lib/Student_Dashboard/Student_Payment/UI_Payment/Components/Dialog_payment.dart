@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usea_app/theme_builder.dart';
 
+import '../../../../Custom_Widget/CustomText.dart';
 import '../../Class_Payment/Class_Payment.dart';
 import 'Card_payment.dart';
 

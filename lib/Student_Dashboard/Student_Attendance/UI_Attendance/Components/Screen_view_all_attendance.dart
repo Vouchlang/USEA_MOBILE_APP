@@ -34,7 +34,7 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: EdgeInsets.all(UPd_Mg_ExtraSmall),
+            padding: EdgeInsets.all(UPdMg_5),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -70,7 +70,7 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
                             )
                           ],
                         ),
-                        margin: EdgeInsets.all(UPd_Mg_ExtraSmall),
+                        margin: EdgeInsets.all(UPdMg_5),
                         child: Center(
                           child: Text(
                             items[index].toString().tr,
@@ -89,8 +89,8 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
                 SizedBox(height: 5),
                 Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: UPd_Mg_Medium,
-                    vertical: UPd_Mg_ExtraSmall,
+                    horizontal: UPdMg_10,
+                    vertical: UPdMg_5,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -103,7 +103,7 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(UPd_Mg_ExtraSmall),
+                  padding: EdgeInsets.all(UPdMg_5),
                   child: Container(
                     height: 65,
                     width: UFullWidth,
@@ -118,10 +118,10 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
                 Major_Attendance(),
                 Padding(
                   padding: EdgeInsets.fromLTRB(
-                    UPd_Mg_ExtraSmall,
-                    UPd_Mg_Medium,
-                    UPd_Mg_ExtraSmall,
-                    UPd_Mg_ExtraSmall,
+                    UPdMg_5,
+                    UPdMg_10,
+                    UPdMg_5,
+                    UPdMg_5,
                   ),
                   child: Container(
                     height: 70,

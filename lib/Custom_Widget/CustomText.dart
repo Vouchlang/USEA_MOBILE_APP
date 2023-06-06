@@ -4,6 +4,56 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../theme_builder.dart';
 
+// *@ Divider
+Widget buildDivider() {
+  return Container(
+    width: 0.5,
+    height: 15,
+    color: Colors.grey,
+    margin: EdgeInsets.only(right: 5, left: 5),
+  );
+}
+
+Widget buildDividerAtt() {
+  return Container(
+    child: Divider(
+      thickness: 0.5,
+      color: UGreyColor,
+    ),
+  );
+}
+
+Widget buildVerticalDividerAtt() {
+  return Container(
+    child: VerticalDivider(
+      thickness: 0.5,
+      color: UGreyColor,
+    ),
+  );
+}
+
+Widget buildVerticalDividerW_5() {
+  return Container(
+    child: VerticalDivider(
+      thickness: 0.5,
+      width: 5,
+      color: UGreyColor,
+    ),
+  );
+}
+
+Widget buildVerticalDividerW_2() {
+  return Container(
+    child: VerticalDivider(
+      thickness: 0.5,
+      width: 2,
+      color: UGreyColor,
+    ),
+  );
+}
+
+// *@  End Divider
+
 // *@ Title
 class TitleTheme extends StatelessWidget {
   final String text;
@@ -280,17 +330,8 @@ Widget buildNum(String text, Color color) {
     text,
     style: TextStyle(
       color: color,
-      fontSize: 14,
+      fontSize: UTitleSize,
     ),
-  );
-}
-
-Widget buildDivider() {
-  return Container(
-    width: 0.5,
-    height: 15,
-    color: Colors.grey,
-    margin: const EdgeInsets.only(right: 5, left: 5),
   );
 }
 
@@ -305,24 +346,6 @@ Widget buildHeader(String text) {
         fontSize: UBodySize,
         fontWeight: UTitleWeight,
       ),
-    ),
-  );
-}
-
-Widget buildDividerAtt() {
-  return Container(
-    child: Divider(
-      thickness: 0.5,
-      color: UGreyColor,
-    ),
-  );
-}
-
-Widget buildVerticalDividerAtt() {
-  return Container(
-    child: VerticalDivider(
-      thickness: 0.5,
-      color: UGreyColor,
     ),
   );
 }
@@ -344,7 +367,6 @@ Widget buildTextBody(String text, Color color) {
 // *@ End Card Attendance
 
 // *@ Payments
-
 Widget buildTitle(String text, Widget widget) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
