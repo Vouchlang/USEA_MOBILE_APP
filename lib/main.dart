@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'Splash_Screen.dart';
 import 'Home.dart';
+import 'Student_Dashboard/Student_Attendance/UI_Attendance/Components/Screen_view_all_attendance.dart';
 import 'Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
 import 'Student_Dashboard/Student_Attendance/UI_Attendance/Attendance.dart';
 import 'Student_Dashboard/Student_Payment/UI_Payment/Payment.dart';
@@ -30,8 +31,9 @@ void main() async {
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: new Home(),
-      // home: new Schedule(),
+      // home: new Home(),
+      home: new All_Attendance_of_Year(),
+      // home: new Performance(),
       translations: LocaleString(),
       locale: Locale(languageCode),
       fallbackLocale: Locale('en', 'US'),

@@ -32,13 +32,15 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'វត្តមាន'.tr),
       body: SingleChildScrollView(
-        child: Container(
+        child: Center(
           child: Padding(
             padding: EdgeInsets.all(UPd_Mg_ExtraSmall),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(height: 5),
-                SizedBox(
+                Container(
                   height: 50,
                   width: UFullWidth,
                   child: ListView.builder(

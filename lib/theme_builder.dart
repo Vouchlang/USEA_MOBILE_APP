@@ -13,6 +13,9 @@ const UTextColor = Color(0xff000000);
 const UGreyColor = Colors.grey;
 const UBtnColor = Color(0x142D74F5);
 
+//  * @ Background Color
+const UBGLightBlue = Color(0xffE9F2FF);
+
 const UZeroPixel = 0.0;
 
 //  * @ FontSize & Weight Theme
@@ -32,9 +35,6 @@ const UPd_Mg_Small = 8.0;
 const UPd_Mg_Medium = 10.0;
 const UPd_Mg_Large = 12.0;
 const UPd_Mg_Extra = 15.0;
-
-//  * @ Background Color
-const UBGLightBlue = Color(0xffE9F2FF);
 
 //  * @ Rounded Theme
 const URoundedMedium = 5.0;
