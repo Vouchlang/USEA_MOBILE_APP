@@ -126,7 +126,7 @@ class NoWeightTitleTheme extends StatelessWidget {
           fontSize: UTitleSize,
           fontWeight: UBodyWeight,
           color: UTextColor,
-          fontFamily: UFontFamily,
+          fontFamily: UKFontFamily,
         ),
       ),
     );
