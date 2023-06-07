@@ -81,7 +81,7 @@ class _RegistrationState extends State<Registration> {
                               textAlign: TextAlign.justify,
                               style: TextStyle(
                                 fontSize: UTitleSize16,
-                                fontFamily: UFontFamily,
+                                fontFamily: UKFontFamily,
                                 fontWeight: UTitleWeight,
                               ),
                             ),
@@ -106,7 +106,7 @@ class _RegistrationState extends State<Registration> {
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                       fontSize: UTitleSize,
-                                      fontFamily: UFontFamily,
+                                      fontFamily: UKFontFamily,
                                       fontWeight: UTitleWeight,
                                     ),
                                   ),
@@ -137,7 +137,7 @@ class _RegistrationState extends State<Registration> {
                                     registration[index].education1,
                                     style: TextStyle(
                                       fontSize: UTitleSize,
-                                      fontFamily: UFontFamily,
+                                      fontFamily: UKFontFamily,
                                       fontWeight: UTitleWeight,
                                     ),
                                   ),
@@ -158,7 +158,7 @@ class _RegistrationState extends State<Registration> {
                                     registration[index].detail1,
                                     style: TextStyle(
                                       fontSize: 13,
-                                      fontFamily: UFontFamily,
+                                      fontFamily: UKFontFamily,
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
@@ -189,7 +189,7 @@ class _RegistrationState extends State<Registration> {
                                     registration[index].education2,
                                     style: TextStyle(
                                       fontSize: UTitleSize,
-                                      fontFamily: UFontFamily,
+                                      fontFamily: UKFontFamily,
                                       fontWeight: UTitleWeight,
                                     ),
                                   ),
@@ -210,7 +210,7 @@ class _RegistrationState extends State<Registration> {
                                     registration[index].detail2,
                                     style: TextStyle(
                                       fontSize: 13,
-                                      fontFamily: UFontFamily,
+                                      fontFamily: UKFontFamily,
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
@@ -239,7 +239,7 @@ class _RegistrationState extends State<Registration> {
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                       fontSize: UTitleSize,
-                                      fontFamily: UFontFamily,
+                                      fontFamily: UKFontFamily,
                                       fontWeight: UTitleWeight,
                                     ),
                                   ),
@@ -260,7 +260,7 @@ class _RegistrationState extends State<Registration> {
                                     registration[index].detail3,
                                     style: TextStyle(
                                       fontSize: 13,
-                                      fontFamily: UFontFamily,
+                                      fontFamily: UKFontFamily,
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),

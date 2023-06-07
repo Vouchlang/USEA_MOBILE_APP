@@ -165,7 +165,7 @@ class ProgramWidget extends StatelessWidget {
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         fontSize: UTitleSize,
-                        fontFamily: UFontFamily,
+                        fontFamily: UKFontFamily,
                         fontWeight: UTitleWeight,
                         color: UTextColor,
                       ),

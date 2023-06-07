@@ -27,7 +27,8 @@ class _Program_AssociateState extends State<Program_Associate> {
               child: Text(
                 'បន្ទាប់ពីបញ្ចប់ការសិក្សាបរិញ្ញាបត្រវិទ្យាសាស្ត្រ មុខជំនាញព័ត៌មានវិទ្យា​ និស្សិតទទួលបាន សមត្ថភាពមូលដ្ឋាន និងសមត្ថភាពស្នូលដោយចែកចេញជា៖ ',
                 textAlign: TextAlign.justify,
-                style: TextStyle(fontSize: UTitleSize, fontFamily: UFontFamily),
+                style:
+                    TextStyle(fontSize: UTitleSize, fontFamily: UKFontFamily),
               ),
             ),
             Container(
@@ -54,7 +55,7 @@ class _Program_AssociateState extends State<Program_Associate> {
                                   style: TextStyle(
                                     color: UPrimaryColor,
                                     fontSize: UTitleSize,
-                                    fontFamily: UFontFamily,
+                                    fontFamily: UKFontFamily,
                                     fontWeight: UTitleWeight,
                                   ),
                                 ),
@@ -73,7 +74,7 @@ class _Program_AssociateState extends State<Program_Associate> {
                                 textAlign: TextAlign.justify,
                                 style: TextStyle(
                                   fontSize: UTitleSize,
-                                  fontFamily: UFontFamily,
+                                  fontFamily: UKFontFamily,
                                 ),
                               ),
                             ),

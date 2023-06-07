@@ -29,7 +29,7 @@ class _Program_BachelorState extends State<Program_Bachelor> {
                 textAlign: TextAlign.justify,
                 style: TextStyle(
                   fontSize: UTitleSize,
-                  fontFamily: UFontFamily,
+                  fontFamily: UKFontFamily,
                 ),
               ),
             ),
@@ -57,7 +57,7 @@ class _Program_BachelorState extends State<Program_Bachelor> {
                                   style: TextStyle(
                                     color: UPrimaryColor,
                                     fontSize: UTitleSize,
-                                    fontFamily: UFontFamily,
+                                    fontFamily: UKFontFamily,
                                     fontWeight: UTitleWeight,
                                   ),
                                 ),
@@ -76,7 +76,7 @@ class _Program_BachelorState extends State<Program_Bachelor> {
                                 textAlign: TextAlign.justify,
                                 style: TextStyle(
                                   fontSize: UTitleSize,
-                                  fontFamily: UFontFamily,
+                                  fontFamily: UKFontFamily,
                                 ),
                               ),
                             ),
