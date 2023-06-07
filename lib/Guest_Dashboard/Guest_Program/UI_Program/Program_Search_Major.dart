@@ -44,7 +44,7 @@ class _Program_SemesterState extends State<Program_Semester> {
           },
           style: TextStyle(
             fontSize: UTitleSize,
-            fontFamily: UFontFamily,
+            fontFamily: UKFontFamily,
           ),
           textAlign: TextAlign.left,
           decoration: InputDecoration.collapsed(hintText: "\t\tស្វែងរក".tr),

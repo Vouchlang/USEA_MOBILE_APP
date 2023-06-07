@@ -80,21 +80,21 @@ class _Out_UniversityState extends State<Out_University> {
                             children: [
                               Container(
                                   width: UFullWidth,
-                                  child: TitleTheme(
+                                  child: NormalTitleTheme(
                                       text:
                                           o_scholarship[index].o_school_name)),
                               Container(
                                   width: UFullWidth,
-                                  child: TitleTheme(
+                                  child: NormalTitleTheme(
                                       text: o_scholarship[index]
                                           .o_educational_level)),
                               Container(
                                   width: UFullWidth,
-                                  child: TitleTheme(
+                                  child: NormalTitleTheme(
                                       text: o_scholarship[index].o_major)),
                               Container(
                                   width: UFullWidth,
-                                  child: TitleTheme(
+                                  child: NormalTitleTheme(
                                       text: o_scholarship[index].o_expire)),
                               Container(
                                   width: UFullWidth,

@@ -55,7 +55,7 @@ class Job_History extends StatelessWidget {
                                 style: TextStyle(fontSize: UTitleSize),
                               ),
                             ),
-                            NormalTitleTheme(
+                            NoWeightTitleTheme(
                                 text: data_jobhistory[index].status_name),
                           ],
                         ),
@@ -70,7 +70,7 @@ class Job_History extends StatelessWidget {
                               ),
                             ),
                             Expanded(
-                              child: NormalTitleTheme(
+                              child: NoWeightTitleTheme(
                                   text: data_jobhistory[index].workPlace),
                             ),
                           ],
@@ -86,7 +86,7 @@ class Job_History extends StatelessWidget {
                               ),
                             ),
                             Expanded(
-                              child: NormalTitleTheme(
+                              child: NoWeightTitleTheme(
                                   text: data_jobhistory[index].position),
                             ),
                           ],

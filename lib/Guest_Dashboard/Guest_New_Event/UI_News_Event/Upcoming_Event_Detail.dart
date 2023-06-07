@@ -67,7 +67,7 @@ class Up_Event_Detail extends StatelessWidget {
                   style: TextStyle(
                     fontSize: UTitleSize,
                     fontWeight: UTitleWeight,
-                    fontFamily: UFontFamily,
+                    fontFamily: UKFontFamily,
                   ),
                 ),
               ),
@@ -84,7 +84,7 @@ class Up_Event_Detail extends StatelessWidget {
                     textAlign: TextAlign.justify,
                     style: TextStyle(
                       fontSize: UBodySize,
-                      fontFamily: UFontFamily,
+                      fontFamily: UKFontFamily,
                     ),
                   ),
                 ),

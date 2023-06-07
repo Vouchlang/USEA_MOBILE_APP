@@ -104,7 +104,7 @@ class _In_UniversityState extends State<In_University> {
                                       text: i_scholarship[index].i_expire)),
                               Container(
                                   width: UFullWidth,
-                                  child: NormalTitleTheme(
+                                  child: BodyTheme(
                                       text:
                                           i_scholarship[index].i_expire_date)),
                               Row(

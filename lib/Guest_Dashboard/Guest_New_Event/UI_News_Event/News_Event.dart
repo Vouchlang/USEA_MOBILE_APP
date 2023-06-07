@@ -63,7 +63,7 @@ class _New_EventState extends State<New_Event> {
                             horizontal: UPdMg_5,
                           ),
                           padding: EdgeInsets.all(UPdMg_10),
-                          width: 180,
+                          width: 200,
                           decoration: BoxDecoration(
                             color: current == index
                                 ? UPrimaryColor

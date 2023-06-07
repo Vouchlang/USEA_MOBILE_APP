@@ -117,7 +117,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                         style: TextStyle(
                                           fontSize: UTitleSize,
                                           fontWeight: UTitleWeight,
-                                          fontFamily: UFontFamily,
+                                          fontFamily: UKFontFamily,
                                         ),
                                       ),
                                     ),
@@ -130,7 +130,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                         style: TextStyle(
                                           fontSize: UBodySize,
                                           fontWeight: UBodyWeight,
-                                          fontFamily: UFontFamily,
+                                          fontFamily: UKFontFamily,
                                         ),
                                       ),
                                     ),
@@ -154,7 +154,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                                   style: TextStyle(
                                                     fontSize: 10,
                                                     fontWeight: UBodyWeight,
-                                                    fontFamily: UFontFamily,
+                                                    fontFamily: UKFontFamily,
                                                     color: UPrimaryColor,
                                                   ),
                                                 ),
@@ -166,7 +166,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                                   style: TextStyle(
                                                     fontSize: 10,
                                                     fontWeight: UBodyWeight,
-                                                    fontFamily: UFontFamily,
+                                                    fontFamily: UKFontFamily,
                                                     color: UPrimaryColor,
                                                   ),
                                                 ),
@@ -179,7 +179,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                                   style: TextStyle(
                                                     fontSize: 10,
                                                     fontWeight: UBodyWeight,
-                                                    fontFamily: UFontFamily,
+                                                    fontFamily: UKFontFamily,
                                                     color: UPrimaryColor,
                                                   ),
                                                 ),
@@ -192,7 +192,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                                   style: TextStyle(
                                                     fontSize: 10,
                                                     fontWeight: UBodyWeight,
-                                                    fontFamily: UFontFamily,
+                                                    fontFamily: UKFontFamily,
                                                     color: UPrimaryColor,
                                                   ),
                                                 ),
@@ -217,7 +217,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                                   style: TextStyle(
                                                     fontSize: 10,
                                                     fontWeight: UBodyWeight,
-                                                    fontFamily: UFontFamily,
+                                                    fontFamily: UKFontFamily,
                                                     color: UPrimaryColor,
                                                   ),
                                                 ),

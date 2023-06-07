@@ -126,7 +126,7 @@ class _Past_EventState extends State<Past_Event> {
                                         style: TextStyle(
                                           fontSize: UTitleSize,
                                           fontWeight: UBodyWeight,
-                                          fontFamily: UFontFamily,
+                                          fontFamily: UKFontFamily,
                                         ),
                                       ),
                                     ),
@@ -139,7 +139,7 @@ class _Past_EventState extends State<Past_Event> {
                                         style: TextStyle(
                                           fontSize: UBodySize,
                                           fontWeight: UBodyWeight,
-                                          fontFamily: UFontFamily,
+                                          fontFamily: UKFontFamily,
                                         ),
                                       ),
                                     ),
@@ -162,7 +162,7 @@ class _Past_EventState extends State<Past_Event> {
                                                   style: TextStyle(
                                                     fontSize: 10,
                                                     fontWeight: UBodyWeight,
-                                                    fontFamily: UFontFamily,
+                                                    fontFamily: UKFontFamily,
                                                     color: UPrimaryColor,
                                                   ),
                                                 ),
@@ -174,7 +174,7 @@ class _Past_EventState extends State<Past_Event> {
                                                   style: TextStyle(
                                                     fontSize: 10,
                                                     fontWeight: UBodyWeight,
-                                                    fontFamily: UFontFamily,
+                                                    fontFamily: UKFontFamily,
                                                     color: UPrimaryColor,
                                                   ),
                                                 ),
@@ -186,7 +186,7 @@ class _Past_EventState extends State<Past_Event> {
                                                   style: TextStyle(
                                                     fontSize: 10,
                                                     fontWeight: UBodyWeight,
-                                                    fontFamily: UFontFamily,
+                                                    fontFamily: UKFontFamily,
                                                     color: UPrimaryColor,
                                                   ),
                                                 ),
@@ -199,7 +199,7 @@ class _Past_EventState extends State<Past_Event> {
                                                   style: TextStyle(
                                                     fontSize: 10,
                                                     fontWeight: UBodyWeight,
-                                                    fontFamily: UFontFamily,
+                                                    fontFamily: UKFontFamily,
                                                     color: UPrimaryColor,
                                                   ),
                                                 ),
@@ -224,7 +224,7 @@ class _Past_EventState extends State<Past_Event> {
                                                   style: TextStyle(
                                                     fontSize: 10,
                                                     fontWeight: UBodyWeight,
-                                                    fontFamily: UFontFamily,
+                                                    fontFamily: UKFontFamily,
                                                     color: UPrimaryColor,
                                                   ),
                                                 ),

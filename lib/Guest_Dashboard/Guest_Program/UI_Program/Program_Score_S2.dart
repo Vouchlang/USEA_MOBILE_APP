@@ -36,9 +36,8 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
                 ),
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.horizontal(
-                    left: Radius.circular(10),
-                    right: Radius.circular(10),
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(10),
                   ),
                   color: UBGLightBlue,
                 ),
@@ -73,14 +72,14 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Expanded(
-                                  child: BodyTheme(
+                                  child: NoWeightTitleTheme(
                                       text: class_program_score_s2[index]
                                           .subject)),
                               Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Container(
-                                    child: BodyTheme(
+                                    child: NoWeightTitleTheme(
                                       text: class_program_score_s2[index]
                                           .hour
                                           .toString(),
@@ -89,7 +88,7 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
                                   SizedBox(width: 35),
                                   Container(
                                     margin: EdgeInsets.only(right: UPdMg_10),
-                                    child: BodyTheme(
+                                    child: NoWeightTitleTheme(
                                       text: class_program_score_s2[index]
                                           .credit
                                           .toString(),
@@ -106,7 +105,7 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.all(5),
+                padding: EdgeInsets.fromLTRB(5, 0, 5, 15),
                 width: double.infinity,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
