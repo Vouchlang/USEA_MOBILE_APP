@@ -74,12 +74,13 @@ class Card_learning_pro_1 extends StatelessWidget {
                                 Alignment.centerRight,
                               ),
                               VerticalDivider(
-                                color: Colors.grey,
+                                color: UGreyColor,
+                                thickness: 0.5,
                               ),
                               buildTitleContainer(
                                 50,
                                 'ពិន្ទុ',
-                                Alignment.center,
+                                Alignment.centerLeft,
                               ),
                             ],
                           ),
@@ -114,7 +115,7 @@ class Card_learning_pro_1 extends StatelessWidget {
                                       style: TextStyle(
                                         color: UTextColor,
                                         fontSize: UTitleSize,
-                                        fontFamily: UFontFamily,
+                                        fontFamily: UKFontFamily,
                                       ),
                                     ),
                                   ),
@@ -129,7 +130,7 @@ class Card_learning_pro_1 extends StatelessWidget {
                                             .toStringAsFixed(2),
                                       ),
                                       VerticalDivider(
-                                        color: Colors.grey,
+                                        color: UGreyColor,
                                         thickness: 0.5,
                                       ),
                                       BuildAttScore(
@@ -160,7 +161,7 @@ class Card_learning_pro_1 extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        'មធ្យមភាគៈ',
+                        'មធ្យមភាគៈ'.tr,
                         style: TextStyle(
                           color: UPrimaryColor,
                         ),
@@ -189,7 +190,7 @@ class Card_learning_pro_1 extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        'ចំណាត់ថ្នាក់ប្រចាំថ្នាក់ៈ',
+                        'ចំណាត់ថ្នាក់ប្រចាំថ្នាក់ៈ'.tr,
                         style: TextStyle(
                           color: UPrimaryColor,
                         ),
@@ -300,7 +301,7 @@ class Card_learning_pro_1 extends StatelessWidget {
                               buildTitleContainer(
                                 50,
                                 'ពិន្ទុ',
-                                Alignment.center,
+                                Alignment.centerLeft,
                               ),
                             ],
                           ),
@@ -335,7 +336,7 @@ class Card_learning_pro_1 extends StatelessWidget {
                                       style: TextStyle(
                                         color: UTextColor,
                                         fontSize: UTitleSize,
-                                        fontFamily: UFontFamily,
+                                        fontFamily: UKFontFamily,
                                       ),
                                     ),
                                   ),
@@ -381,7 +382,7 @@ class Card_learning_pro_1 extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        'មធ្យមភាគៈ',
+                        'មធ្យមភាគៈ'.tr,
                         style: TextStyle(
                           color: UPrimaryColor,
                         ),
@@ -410,7 +411,7 @@ class Card_learning_pro_1 extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        'ចំណាត់ថ្នាក់ប្រចាំថ្នាក់ៈ',
+                        'ចំណាត់ថ្នាក់ប្រចាំថ្នាក់ៈ'.tr,
                         style: TextStyle(
                           color: UPrimaryColor,
                         ),

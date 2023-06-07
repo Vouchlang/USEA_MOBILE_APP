@@ -27,12 +27,11 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
+                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.horizontal(
-                    left: Radius.circular(10),
-                    right: Radius.circular(10),
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(10),
                   ),
                   color: Color(0xFFE8F0FE),
                 ),
@@ -141,7 +140,7 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.all(5),
+                padding: EdgeInsets.fromLTRB(5, 0, 5, 15),
                 width: double.infinity,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -79,14 +79,14 @@ class _All_info_majorState extends State<All_info_major> {
                                 ),
                                 child: buildVerticalDividerAtt(),
                               ),
-                              buildHeader('វត្តមាន'.tr),
+                              buildHeader('Session'.tr),
                               Container(
                                 margin: EdgeInsets.symmetric(
                                   horizontal: UPdMg_15,
                                 ),
                                 child: buildVerticalDividerAtt(),
                               ),
-                              buildHeader('Session'.tr),
+                              buildHeader('វត្តមាន'.tr),
                             ],
                           ),
                         ),

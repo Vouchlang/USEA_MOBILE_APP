@@ -16,7 +16,7 @@ class PaymentCards extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          padding: EdgeInsets.all(UPd_Mg_ExtraSmall),
+          padding: EdgeInsets.all(UPdMg_5),
           child: Card(
             elevation: 1,
             shape: RoundedRectangleBorder(
@@ -57,76 +57,77 @@ class PaymentCards extends StatelessWidget {
                   shrinkWrap: true,
                   itemCount: paymentData.length,
                   itemBuilder: (context, index) {
-                    return IntrinsicHeight(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.all(UPdMg_8),
-                            child: IntrinsicHeight(
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  buildBody(
-                                    45,
-                                    paymentData[index].yearPayment,
-                                    UTextColor,
-                                  ),
-                                  buildVerticalDividerAtt(),
-                                  buildBody(
-                                    55,
-                                    paymentData[index].amountToPaid,
-                                    UTextColor,
-                                  ),
-                                  buildVerticalDividerAtt(),
-                                  buildBody(
-                                    55,
-                                    paymentData[index].amountPaid,
-                                    UTextColor,
-                                  ),
-                                  buildVerticalDividerAtt(),
-                                  InkWell(
-                                    onTap: () {
-                                      showDialog(
-                                        context: context,
-                                        builder: (context) => PaymentDialog(),
-                                      );
-                                    },
-                                    child: Container(
-                                      alignment: Alignment.center,
-                                      width: 55,
+                    final isLastIndex = index == paymentData.length - 1;
+
+                    return Padding(
+                      padding: EdgeInsets.only(bottom: isLastIndex ? 5 : 0),
+                      child: IntrinsicHeight(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.all(UPdMg_8),
+                              child: IntrinsicHeight(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    buildBody(
+                                      45,
+                                      paymentData[index].yearPayment,
+                                      UTextColor,
+                                    ),
+                                    buildVerticalDividerAtt(),
+                                    buildBody(
+                                      55,
+                                      paymentData[index].amountToPaid,
+                                      UTextColor,
+                                    ),
+                                    buildVerticalDividerAtt(),
+                                    buildBody(
+                                      55,
+                                      paymentData[index].amountPaid,
+                                      UTextColor,
+                                    ),
+                                    buildVerticalDividerAtt(),
+                                    InkWell(
+                                      onTap: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) => PaymentDialog(),
+                                        );
+                                      },
                                       child: Container(
-                                        decoration: BoxDecoration(
-                                          border: Border(
-                                            bottom: BorderSide(
-                                              color: URedColor,
-                                              width: 1.0,
+                                        alignment: Alignment.center,
+                                        width: 55,
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            border: Border(
+                                              bottom: BorderSide(
+                                                color: URedColor,
+                                                width: 1.0,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        child: Text(
-                                          paymentData[index].balance,
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontSize: UBodySize,
-                                            color: URedColor,
+                                          child: Text(
+                                            paymentData[index].balance,
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: UBodySize,
+                                              color: URedColor,
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                          Divider(
-                            thickness: 0.3,
-                            color: Colors.grey,
-                            height: 10,
-                          ),
-                        ],
+                            if (!isLastIndex) buildDividerAtt(),
+                          ],
+                        ),
                       ),
                     );
                   },
@@ -182,7 +183,7 @@ class PaymentCards2 extends StatelessWidget {
                     ),
                   ),
                 ),
-                buildVerticalDividerAtt(),
+                buildDividerAtt(),
 
                 // * Body Content​2
                 ListView.builder(
@@ -190,55 +191,60 @@ class PaymentCards2 extends StatelessWidget {
                   physics: ScrollPhysics(),
                   itemCount: paymentData2.length,
                   itemBuilder: (context, index) {
-                    return IntrinsicHeight(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          IntrinsicHeight(
-                            child: Container(
-                              alignment: Alignment.center,
-                              padding: EdgeInsets.all(UPdMg_5),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  // * datePayment
-                                  buildBody(
-                                    75,
-                                    paymentData2[index].datePayment2,
-                                    UTextColor,
-                                  ),
-                                  buildVerticalDividerW_5(),
-                                  buildBody(
-                                    75,
-                                    paymentData2[index].invoiceNum2,
-                                    UTextColor,
-                                  ),
-                                  buildVerticalDividerW_2(),
-                                  buildBody(
-                                    45,
-                                    paymentData2[index].amountToPaid2,
-                                    UTextColor,
-                                  ),
-                                  buildVerticalDividerW_2(),
-                                  buildBody(
-                                    45,
-                                    paymentData2[index].amountPaid2,
-                                    UTextColor,
-                                  ),
-                                  buildVerticalDividerW_2(),
-                                  buildBody(
-                                    50,
-                                    paymentData2[index].balance2,
-                                    URedColor,
-                                  ),
-                                ],
+                    final isLastIndex = index == paymentData2.length - 1;
+
+                    return Padding(
+                      padding: EdgeInsets.only(bottom: isLastIndex ? 5 : 0),
+                      child: IntrinsicHeight(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            IntrinsicHeight(
+                              child: Container(
+                                alignment: Alignment.center,
+                                padding: EdgeInsets.all(UPdMg_5),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    // * datePayment
+                                    buildBody(
+                                      75,
+                                      paymentData2[index].datePayment2,
+                                      UTextColor,
+                                    ),
+                                    buildVerticalDividerW_5(),
+                                    buildBody(
+                                      75,
+                                      paymentData2[index].invoiceNum2,
+                                      UTextColor,
+                                    ),
+                                    buildVerticalDividerW_2(),
+                                    buildBody(
+                                      45,
+                                      paymentData2[index].amountToPaid2,
+                                      UTextColor,
+                                    ),
+                                    buildVerticalDividerW_2(),
+                                    buildBody(
+                                      45,
+                                      paymentData2[index].amountPaid2,
+                                      UTextColor,
+                                    ),
+                                    buildVerticalDividerW_2(),
+                                    buildBody(
+                                      50,
+                                      paymentData2[index].balance2,
+                                      URedColor,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                          Divider(color: UGreyColor),
-                        ],
+                            if (!isLastIndex) buildDividerAtt(),
+                          ],
+                        ),
                       ),
                     );
                   },
@@ -294,7 +300,7 @@ class PaymentCards3 extends StatelessWidget {
                     ),
                   ),
                 ),
-                Divider(color: UGreyColor),
+                buildDividerAtt(),
 
                 // * Body Content​3
                 ListView.builder(
@@ -302,55 +308,60 @@ class PaymentCards3 extends StatelessWidget {
                   physics: ScrollPhysics(),
                   itemCount: paymentData4.length,
                   itemBuilder: (context, index) {
-                    return IntrinsicHeight(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          IntrinsicHeight(
-                            child: Container(
-                              alignment: Alignment.center,
-                              padding: EdgeInsets.all(UPdMg_5),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  // * datePayment
-                                  buildBody(
-                                    75,
-                                    paymentData4[index].datePayment4,
-                                    UTextColor,
-                                  ),
-                                  buildVerticalDividerW_5(),
-                                  buildBody(
-                                    75,
-                                    paymentData4[index].invoiceNum4,
-                                    UTextColor,
-                                  ),
-                                  buildVerticalDividerW_2(),
-                                  buildBody(
-                                    45,
-                                    paymentData4[index].amountToPaid4,
-                                    UTextColor,
-                                  ),
-                                  buildVerticalDividerW_2(),
-                                  buildBody(
-                                    45,
-                                    paymentData4[index].amountPaid4,
-                                    UTextColor,
-                                  ),
-                                  buildVerticalDividerW_2(),
-                                  buildBody(
-                                    50,
-                                    paymentData4[index].balance4,
-                                    URedColor,
-                                  ),
-                                ],
+                    final isLastIndex = index == paymentData4.length - 1;
+
+                    return Padding(
+                      padding: EdgeInsets.only(bottom: isLastIndex ? 5 : 0),
+                      child: IntrinsicHeight(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            IntrinsicHeight(
+                              child: Container(
+                                alignment: Alignment.center,
+                                padding: EdgeInsets.all(UPdMg_5),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    // * datePayment
+                                    buildBody(
+                                      75,
+                                      paymentData4[index].datePayment4,
+                                      UTextColor,
+                                    ),
+                                    buildVerticalDividerW_5(),
+                                    buildBody(
+                                      75,
+                                      paymentData4[index].invoiceNum4,
+                                      UTextColor,
+                                    ),
+                                    buildVerticalDividerW_2(),
+                                    buildBody(
+                                      45,
+                                      paymentData4[index].amountToPaid4,
+                                      UTextColor,
+                                    ),
+                                    buildVerticalDividerW_2(),
+                                    buildBody(
+                                      45,
+                                      paymentData4[index].amountPaid4,
+                                      UTextColor,
+                                    ),
+                                    buildVerticalDividerW_2(),
+                                    buildBody(
+                                      50,
+                                      paymentData4[index].balance4,
+                                      URedColor,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                          Divider(color: UGreyColor),
-                        ],
+                            if (!isLastIndex) buildDividerAtt(),
+                          ],
+                        ),
                       ),
                     );
                   },
@@ -406,7 +417,7 @@ class PaymentCards4 extends StatelessWidget {
                     ),
                   ),
                 ),
-                Divider(color: UGreyColor),
+                buildDividerAtt(),
 
                 // * Body Content4
                 ListView.builder(
@@ -414,55 +425,60 @@ class PaymentCards4 extends StatelessWidget {
                   physics: ScrollPhysics(),
                   itemCount: paymentData3.length,
                   itemBuilder: (context, index) {
-                    return IntrinsicHeight(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          IntrinsicHeight(
-                            child: Container(
-                              alignment: Alignment.center,
-                              padding: EdgeInsets.all(UPdMg_5),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  // * datePayment
-                                  buildBody(
-                                    75,
-                                    paymentData3[index].datePayment3,
-                                    UTextColor,
-                                  ),
-                                  buildVerticalDividerW_5(),
-                                  buildBody(
-                                    75,
-                                    paymentData3[index].invoiceNum3,
-                                    UTextColor,
-                                  ),
-                                  buildVerticalDividerW_2(),
-                                  buildBody(
-                                    45,
-                                    paymentData3[index].amountToPaid3,
-                                    UTextColor,
-                                  ),
-                                  buildVerticalDividerW_2(),
-                                  buildBody(
-                                    45,
-                                    paymentData3[index].amountPaid3,
-                                    UTextColor,
-                                  ),
-                                  buildVerticalDividerW_2(),
-                                  buildBody(
-                                    50,
-                                    paymentData3[index].balance3,
-                                    URedColor,
-                                  ),
-                                ],
+                    final isLastIndex = index == paymentData4.length - 1;
+
+                    return Padding(
+                      padding: EdgeInsets.only(bottom: isLastIndex ? 5 : 0),
+                      child: IntrinsicHeight(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            IntrinsicHeight(
+                              child: Container(
+                                alignment: Alignment.center,
+                                padding: EdgeInsets.all(UPdMg_5),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    // * datePayment
+                                    buildBody(
+                                      75,
+                                      paymentData3[index].datePayment3,
+                                      UTextColor,
+                                    ),
+                                    buildVerticalDividerW_5(),
+                                    buildBody(
+                                      75,
+                                      paymentData3[index].invoiceNum3,
+                                      UTextColor,
+                                    ),
+                                    buildVerticalDividerW_2(),
+                                    buildBody(
+                                      45,
+                                      paymentData3[index].amountToPaid3,
+                                      UTextColor,
+                                    ),
+                                    buildVerticalDividerW_2(),
+                                    buildBody(
+                                      45,
+                                      paymentData3[index].amountPaid3,
+                                      UTextColor,
+                                    ),
+                                    buildVerticalDividerW_2(),
+                                    buildBody(
+                                      50,
+                                      paymentData3[index].balance3,
+                                      URedColor,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                          Divider(color: UGreyColor),
-                        ],
+                            if (!isLastIndex) buildDividerAtt(),
+                          ],
+                        ),
                       ),
                     );
                   },

@@ -15,11 +15,10 @@ Widget buildDivider() {
 }
 
 Widget buildDividerAtt() {
-  return Container(
-    child: Divider(
-      thickness: 0.5,
-      color: UGreyColor,
-    ),
+  return Divider(
+    thickness: 0.5,
+    height: 10,
+    color: UGreyColor,
   );
 }
 
@@ -49,6 +48,14 @@ Widget buildVerticalDividerW_2() {
       width: 2,
       color: UGreyColor,
     ),
+  );
+}
+
+Widget buildVerticalDividerH_45() {
+  return Container(
+    width: 1,
+    height: 45,
+    color: Colors.grey[300],
   );
 }
 
@@ -94,7 +101,7 @@ class NormalTitleTheme extends StatelessWidget {
           fontSize: UTitleSize,
           fontWeight: UTitleWeight,
           color: UTextColor,
-          fontFamily: UFontFamily,
+          fontFamily: UKFontFamily,
         ),
       ),
     );
@@ -119,7 +126,7 @@ class TitleSize16_Theme extends StatelessWidget {
           fontSize: UTitleSize16,
           fontWeight: UTitleWeight,
           color: UTextColor,
-          fontFamily: UFontFamily,
+          fontFamily: UKFontFamily,
         ),
       ),
     );
@@ -144,7 +151,7 @@ class PriColorTitleSize16Theme extends StatelessWidget {
           fontSize: UTitleSize16,
           fontWeight: UTitleWeight,
           color: UPrimaryColor,
-          fontFamily: UFontFamily,
+          fontFamily: UKFontFamily,
         ),
       ),
     );
@@ -192,7 +199,7 @@ class BodyTheme extends StatelessWidget {
       style: TextStyle(
         fontSize: UBodySize,
         color: UTextColor,
-        fontFamily: 'KhmerOSbattambang',
+        fontFamily: UKFontFamily,
       ),
     );
   }
@@ -218,10 +225,10 @@ class CustomTextTheme extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontSize: size,
-        fontWeight: fontWeight,
-        color: color,
-      ),
+          fontSize: size,
+          fontWeight: fontWeight,
+          color: color,
+          fontFamily: UKFontFamily),
     );
   }
 }
@@ -229,6 +236,7 @@ class CustomTextTheme extends StatelessWidget {
 // *@ Screen_Performance widget
 Widget buildTitleContainer(double width, String text, Alignment align) {
   return Container(
+    padding: EdgeInsets.symmetric(horizontal: 4),
     width: width,
     alignment: align,
     child: Text(
@@ -282,7 +290,7 @@ class BuildAttScore extends StatelessWidget {
           style: TextStyle(
             color: UScoreColor,
             fontSize: UTitleSize,
-            fontFamily: UFontFamily,
+            fontFamily: UKFontFamily,
             fontWeight: UTitleWeight,
             decoration: TextDecoration.underline,
           ),
@@ -399,8 +407,8 @@ Widget buildHeaderTitle(double num, String text) {
       textAlign: TextAlign.center,
       style: TextStyle(
         color: UPrimaryColor,
-        fontSize: 12,
-        fontWeight: FontWeight.w600,
+        fontSize: UBodySize,
+        fontWeight: UTitleWeight,
       ),
     ),
   );
@@ -413,10 +421,220 @@ Widget buildBody(double num, String text, Color color) {
       textAlign: TextAlign.center,
       text.tr,
       style: TextStyle(
-        fontSize: 12,
+        fontSize: UBodySize,
         color: color,
       ),
     ),
   );
 }
 // *@ End Payments
+
+// *@ Student Detail
+Widget buildHeaderDetail(
+    String text, String font, double size, FontWeight fontWeight) {
+  return Container(
+    height: 25,
+    alignment: Alignment.center,
+    child: Text(
+      text,
+      style: TextStyle(
+          color: UPrimaryColor,
+          fontFamily: font,
+          fontSize: size,
+          fontWeight: fontWeight),
+    ),
+  );
+}
+
+Widget buildBodyDetail(String text1, String text2) {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      Text(
+        text1.tr,
+        style: TextStyle(fontSize: UBodySize, color: UPrimaryColor),
+      ),
+      SizedBox(
+        height: 2,
+      ),
+      Text(
+        text2,
+        style: TextStyle(fontFamily: UEFontFamily, fontSize: UTitleSize),
+      )
+    ],
+  );
+}
+
+Widget buildTailDetail(String image, title, text) {
+  return Row(
+    children: [
+      Image.asset(
+        image,
+        scale: 5,
+      ),
+      SizedBox(
+        width: 10,
+      ),
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: TextStyle(
+              color: UPrimaryColor,
+              fontSize: UBodySize,
+            ),
+          ),
+          Text(
+            text,
+            style: TextStyle(fontSize: UTitleSize, fontFamily: UKFontFamily),
+          ),
+        ],
+      )
+    ],
+  );
+}
+// *@ End Student Detail
+
+// *@ VDO
+Widget buildListText(String text, int line, double size) {
+  return Text(
+    text,
+    textAlign: TextAlign.justify,
+    maxLines: line,
+    overflow: TextOverflow.ellipsis,
+    style: TextStyle(
+      fontSize: size,
+      fontFamily: UKFontFamily,
+    ),
+  );
+}
+
+Widget buildTitleBody(String text, double size, FontWeight fontWeight) {
+  return Text(
+    text,
+    textAlign: TextAlign.justify,
+    style: TextStyle(
+      fontSize: size,
+      fontFamily: UKFontFamily,
+      fontWeight: fontWeight,
+    ),
+  );
+}
+// *@ End VDO
+
+// *@ AboutUS
+Widget buildHistory(String text) {
+  return Container(
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          child: Image.asset(
+            'assets/image/dot.png',
+            width: 5,
+          ),
+          margin: EdgeInsets.only(top: 10),
+        ),
+        SizedBox(
+          width: 5,
+        ),
+        Expanded(
+          child: Text(
+            text,
+            textAlign: TextAlign.justify,
+            style: TextStyle(fontSize: UTitleSize, fontFamily: UEFontFamily),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+// *@ End AboutUS
+
+// *@ Vision
+Widget buildTitleVision(String text1, text2) {
+  return Container(
+    margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          text1,
+          style: TextStyle(
+              fontSize: UTitleSize,
+              color: UPrimaryColor,
+              fontFamily: UEFontFamily,
+              fontWeight: UBodyWeight),
+        ),
+        Container(
+          margin: EdgeInsets.only(left: 12),
+          child: Text(
+            text2,
+            textAlign: TextAlign.justify,
+            style: TextStyle(
+              fontSize: UTitleSize,
+              fontFamily: UEFontFamily,
+            ),
+          ),
+        )
+      ],
+    ),
+  );
+}
+
+Widget buildTopBodyVision(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+        fontSize: UTitleSize,
+        color: UPrimaryColor,
+        fontFamily: UEFontFamily,
+        fontWeight: UBodyWeight),
+  );
+}
+
+Widget buildLowBodyVision(String text) {
+  return Row(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    mainAxisAlignment: MainAxisAlignment.start,
+    children: [
+      Container(
+        child: Image.asset(
+          'assets/image/dot.png',
+          width: 4,
+        ),
+        margin: EdgeInsets.only(top: 10),
+      ),
+      SizedBox(
+        width: 5,
+      ),
+      Expanded(
+        child: Text(
+          text,
+          textAlign: TextAlign.justify,
+          style: TextStyle(
+            fontSize: UTitleSize,
+            fontFamily: UEFontFamily,
+          ),
+        ),
+      )
+    ],
+  );
+}
+
+// *@ FAQ
+Widget buildFAQ(String text, TextAlign align) {
+  return Text(
+    text,
+    textAlign: align,
+    style: TextStyle(
+        fontSize: UTitleSize, fontFamily: UKFontFamily, color: UTextColor),
+  );
+}
+
+// *@ End FAQ

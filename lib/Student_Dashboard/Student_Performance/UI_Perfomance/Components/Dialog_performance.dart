@@ -70,7 +70,7 @@ class _CustomAttDialogState extends State<CustomAttDialog> {
             child: Text(
               'សេដ្ឋកិច្ចវិទ្យា',
               style: TextStyle(
-                fontFamily: UFontFamily,
+                fontFamily: UKFontFamily,
                 fontSize: UTitleSize,
                 fontWeight: UTitleWeight,
                 color: UPrimaryColor,
@@ -88,6 +88,16 @@ class _CustomAttDialogState extends State<CustomAttDialog> {
               shrinkWrap: true,
               itemCount: attendance.length,
               itemBuilder: (context, index) {
+                List<Color> colors = [
+                  USecondaryColor,
+                  UOrangeColor,
+                  URedColor,
+                  UScoreColor,
+                  // Add more colors as needed
+                ];
+
+                Color valueColor = colors[index % colors.length];
+
                 return Container(
                   padding: EdgeInsets.symmetric(vertical: UPdMg_5),
                   child: Column(
@@ -107,7 +117,7 @@ class _CustomAttDialogState extends State<CustomAttDialog> {
                               text: attendance[index].num_count.toString(),
                               fontWeight: UBodyWeight,
                               size: UTitleSize,
-                              color: USecondaryColor,
+                              color: valueColor,
                             ),
                           ],
                         ),
@@ -191,7 +201,7 @@ class _CustomScoreDialogState extends State<CustomScoreDialog> {
             child: Text(
               'សេដ្ឋកិច្ចវិទ្យា',
               style: TextStyle(
-                fontFamily: UFontFamily,
+                fontFamily: UKFontFamily,
                 fontSize: UTitleSize,
                 fontWeight: UTitleWeight,
                 color: UPrimaryColor,

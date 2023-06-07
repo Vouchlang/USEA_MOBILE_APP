@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:usea_app/Custom_Widget/CustomText.dart';
+import 'package:usea_app/theme_builder.dart';
 
 import '../../Class_Schedule/Class_Schedule.dart';
 
@@ -45,7 +46,7 @@ class CardCalendarList extends StatelessWidget {
                           // *@ VerticalDivider
                           VerticalDivider(
                             thickness: 0.5,
-                            color: Colors.grey,
+                            color: UGreyColor,
                             width: 30,
                           ),
                           // *@ End Vertical Divider

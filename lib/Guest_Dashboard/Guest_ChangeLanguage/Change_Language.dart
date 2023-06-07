@@ -2,31 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/internacionalization.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:usea_app/theme_builder.dart';
 
 final List<Map<String, dynamic>> locale = [
   {
     'name': 'ភាសាខ្មែរ',
     'logo': 'assets/image/CL_Khmer.png',
     'locale': Locale('km', 'KH'),
-    'font': 'KhmerOSbattambang'
+    'font': UKFontFamily
   },
   {
     'name': 'ភាសាអង់គ្លេស',
     'logo': 'assets/image/CL_English.png',
     'locale': Locale('en', 'US'),
-    'font': 'Poppins'
+    'font': UEFontFamily
   },
 ];
 
 class Change_Language extends StatelessWidget {
   void updateFont(Locale locale) {
-    String font = 'KhmerOSbattambang';
+    String font = UKFontFamily;
     if (locale.languageCode == 'en') {
-      font = 'Poppins';
+      font = UEFontFamily;
     }
     Get.changeTheme(
       ThemeData(
-        primaryColor: Color(0xFF002060),
+        primaryColor: UPrimaryColor,
         secondaryHeaderColor: Color(0xFFF5F7FE),
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: font,
@@ -42,13 +43,13 @@ class Change_Language extends StatelessWidget {
 
 class ChangeLanguage extends StatelessWidget {
   void updateFont(Locale locale) {
-    String font = 'KhmerOSbattambang';
+    String font = UKFontFamily;
     if (locale.languageCode == 'en') {
-      font = 'Poppins';
+      font = UEFontFamily;
     }
     Get.changeTheme(
       ThemeData(
-        primaryColor: Color(0xFF002060),
+        primaryColor: UPrimaryColor,
         secondaryHeaderColor: Color(0xFFF5F7FE),
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: font,
@@ -64,7 +65,6 @@ class ChangeLanguage extends StatelessWidget {
       await prefs.setString('font', font);
       Get.back();
       Get.updateLocale(locale);
-      // Get.reset(); // Reset translation cache
       updateFont(locale);
     }
 
@@ -82,12 +82,13 @@ class ChangeLanguage extends StatelessWidget {
           children: [
             Text(
               'ភាសា'.tr,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: UTitleSize16, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 5),
             Text(
               'សូមជ្រើសរើសភាសា'.tr,
-              style: TextStyle(fontSize: 14),
+              style: TextStyle(fontSize: UTitleSize),
             ),
             SizedBox(height: 5),
             Container(
@@ -116,8 +117,7 @@ class ChangeLanguage extends StatelessWidget {
                           Text(
                             locale[index]['name'].toString().tr,
                             style: TextStyle(
-                              fontSize: 14,
-                              // fontFamily: locale[index]['font'],
+                              fontSize: UTitleSize,
                             ),
                           ),
                         ],

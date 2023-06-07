@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:readmore/readmore.dart';
 import '../../../Custom_AppBar.dart';
+import '../../../Custom_Widget/CustomText.dart';
+import '../../../theme_builder.dart';
 import '../Class_VDO/Class_Video_Home.dart';
-import 'Test_API/api_main.dart';
 import 'Video_Display.dart';
 
 class Video_UI extends StatefulWidget {
@@ -65,33 +65,12 @@ class _VideoState extends State<Video_UI> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Container(
-                              child: Text(
-                                video_home[index].title,
-                                textAlign: TextAlign.justify,
-                                maxLines: 3,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontFamily: 'KhmerOSbattambang',
-                                ),
-                              ),
-                            ),
+                            buildListText(
+                                video_home[index].title, 3, UTitleSize),
                             SizedBox(
                               height: 5,
                             ),
-                            Container(
-                              child: Text(
-                                video_home[index].caption,
-                                textAlign: TextAlign.justify,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  fontFamily: 'KhmerOSbattambang',
-                                ),
-                              ),
-                            ),
+                            buildListText(video_home[index].caption, 1, 10),
                           ],
                         ),
                       ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usea_app/Custom_AppBar.dart';
-import 'package:usea_app/Custom_Widget/CustomText.dart';
+import 'package:usea_app/theme_builder.dart';
 import 'Components/Card_carlendar.dart';
 import 'Components/Card_carlendar_list.dart';
 
@@ -23,17 +23,14 @@ class _ScheduleState extends State<Schedule> {
       body: ListView(
         padding: EdgeInsets.symmetric(vertical: 5),
         children: [
-          SizedBox(
-            child: CardCalendar(),
-          ),
+          CardCalendar(),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              'កាលវិភាគសិក្សា',
+              'កាលវិភាគសិក្សា'.tr,
               style: TextStyle(
-                fontSize: 16,
-                fontFamily: 'KhmerOSbattambang',
-                color: Color(0xff002060),
+                fontSize: UTitleSize16,
+                color: UPrimaryColor,
               ),
             ),
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart';
+import 'package:usea_app/theme_builder.dart';
 
 class CardCalendar extends StatefulWidget {
   const CardCalendar({Key? key}) : super(key: key);
@@ -20,38 +21,38 @@ class _CardCalendarState extends State<CardCalendar> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       child: Column(
         children: [
           Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: UBackgroundColor,
               boxShadow: [
                 BoxShadow(
                   blurRadius: 2.0,
-                  color: Colors.grey,
+                  color: UGreyColor,
                 ),
               ],
               borderRadius: BorderRadius.circular(10),
             ),
             child: TableCalendar(
-              daysOfWeekHeight: 20,
+              daysOfWeekHeight: 25,
               daysOfWeekStyle: DaysOfWeekStyle(
                 dowTextFormatter: (date, locale) =>
                     DateFormat.E(locale).format(date).substring(0, 2),
               ),
               calendarStyle: CalendarStyle(
                 todayTextStyle: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.green,
+                  fontWeight: UTitleWeight,
+                  color: UScoreColor,
                 ),
                 todayDecoration: BoxDecoration(
                   color: Color.fromARGB(0, 255, 255, 255),
                 ),
                 selectedTextStyle: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.green,
+                  fontWeight: UTitleWeight,
+                  color: UScoreColor,
                   decoration: TextDecoration.underline,
                 ),
                 selectedDecoration: BoxDecoration(
@@ -77,13 +78,13 @@ class _CardCalendarState extends State<CardCalendar> {
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: isSameDay(date, today)
-                          ? Colors.green
+                          ? UScoreColor
                           : Colors.transparent,
                     ),
                     child: Text(
                       '${date.day}',
                       style: TextStyle(
-                        color: isSunday(date) ? Colors.red : null,
+                        color: isSunday(date) ? URedColor : null,
                       ),
                     ),
                   );
