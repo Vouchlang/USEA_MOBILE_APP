@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:usea_app/Guest_Dashboard/Guest_New_Event/UI_News_Event/Upcoming_Event_Detail.dart';
+import '../../../theme_builder.dart';
 import '../Class_News_Event/Class_Up_News_Events.dart';
 
 class Upcoming_Event extends StatefulWidget {
@@ -53,18 +54,23 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       body: Center(
         child: isLoading
-            ? const CircularProgressIndicator()
+            ? CircularProgressIndicator()
             : ListView.builder(
-                padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                padding: EdgeInsets.fromLTRB(
+                  UPdMg_10,
+                  UZeroPixel,
+                  UPdMg_10,
+                  UPdMg_10,
+                ),
                 itemCount: up_events.length,
                 itemBuilder: (context, index) {
                   var up_event = up_events[index];
                   return Container(
                     child: Card(
                       elevation: 3,
-                      shadowColor: Colors.grey[200],
+                      shadowColor: UGreyColor,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(URoundedLarge),
                       ),
                       child: InkWell(
                         onTap: () {
@@ -83,7 +89,8 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                 height: 150,
                                 width: double.maxFinite,
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius:
+                                      BorderRadius.circular(URoundedLarge),
                                   child: Image.network(
                                     getImageUrl(up_event.upcoming_image),
                                     width: double.maxFinite,
@@ -91,11 +98,14 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                   ),
                                 ),
                               ),
-                              SizedBox(
-                                height: 5,
-                              ),
+                              SizedBox(height: 5),
                               Container(
-                                padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                                padding: EdgeInsets.fromLTRB(
+                                  UPdMg_10,
+                                  UZeroPixel,
+                                  UPdMg_10,
+                                  UPdMg_10,
+                                ),
                                 child: Column(
                                   children: [
                                     Container(
@@ -105,29 +115,26 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                         up_event.upcoming_title,
                                         textAlign: TextAlign.justify,
                                         style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                            fontFamily: 'KhmerOSBattambang'),
+                                          fontSize: UTitleSize,
+                                          fontWeight: UTitleWeight,
+                                          fontFamily: UFontFamily,
+                                        ),
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
+                                    SizedBox(height: 5),
                                     Container(
                                       width: double.infinity,
                                       child: Text(
                                         up_event.upcoming_detail,
                                         textAlign: TextAlign.justify,
                                         style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500,
-                                          fontFamily: 'KhmerOSBattambang',
+                                          fontSize: UBodySize,
+                                          fontWeight: UBodyWeight,
+                                          fontFamily: UFontFamily,
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
+                                    SizedBox(height: 5),
                                     Row(
                                       children: [
                                         Expanded(
@@ -139,79 +146,61 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                                   width: 14,
                                                 ),
                                               ),
-                                              SizedBox(
-                                                width: 5,
-                                              ),
+                                              SizedBox(width: 5),
                                               Container(
                                                 child: Text(
                                                   'ថ្ងៃ' +
                                                       up_event.upcoming_day,
                                                   style: TextStyle(
-                                                      fontSize: 10,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontFamily:
-                                                          'KhmerOSBattambang',
-                                                      color: Theme.of(context)
-                                                          .primaryColor),
+                                                    fontSize: 10,
+                                                    fontWeight: UBodyWeight,
+                                                    fontFamily: UFontFamily,
+                                                    color: UPrimaryColor,
+                                                  ),
                                                 ),
                                               ),
-                                              SizedBox(
-                                                width: 2,
-                                              ),
+                                              SizedBox(width: 2),
                                               Container(
                                                 child: Text(
                                                   'ទី' + up_event.upcoming_date,
                                                   style: TextStyle(
-                                                      fontSize: 10,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontFamily:
-                                                          'KhmerOSBattambang',
-                                                      color: Theme.of(context)
-                                                          .primaryColor),
+                                                    fontSize: 10,
+                                                    fontWeight: UBodyWeight,
+                                                    fontFamily: UFontFamily,
+                                                    color: UPrimaryColor,
+                                                  ),
                                                 ),
                                               ),
-                                              SizedBox(
-                                                width: 2,
-                                              ),
+                                              SizedBox(width: 2),
                                               Container(
                                                 child: Text(
                                                   'ខែ' +
                                                       up_event.upcoming_month,
                                                   style: TextStyle(
-                                                      fontSize: 10,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontFamily:
-                                                          'KhmerOSBattambang',
-                                                      color: Theme.of(context)
-                                                          .primaryColor),
+                                                    fontSize: 10,
+                                                    fontWeight: UBodyWeight,
+                                                    fontFamily: UFontFamily,
+                                                    color: UPrimaryColor,
+                                                  ),
                                                 ),
                                               ),
-                                              SizedBox(
-                                                width: 2,
-                                              ),
+                                              SizedBox(width: 2),
                                               Container(
                                                 child: Text(
                                                   'ឆ្នាំ' +
                                                       up_event.upcoming_year,
                                                   style: TextStyle(
-                                                      fontSize: 10,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontFamily:
-                                                          'KhmerOSBattambang',
-                                                      color: Theme.of(context)
-                                                          .primaryColor),
+                                                    fontSize: 10,
+                                                    fontWeight: UBodyWeight,
+                                                    fontFamily: UFontFamily,
+                                                    color: UPrimaryColor,
+                                                  ),
                                                 ),
                                               ),
                                             ],
                                           ),
                                         ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
+                                        SizedBox(width: 10),
                                         Expanded(
                                           child: Row(
                                             children: [
@@ -221,20 +210,16 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                                   width: 14,
                                                 ),
                                               ),
-                                              SizedBox(
-                                                width: 5,
-                                              ),
+                                              SizedBox(width: 5),
                                               Container(
                                                 child: Text(
                                                   up_event.upcoming_time,
                                                   style: TextStyle(
-                                                      fontSize: 10,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontFamily:
-                                                          'KhmerOSBattambang',
-                                                      color: Theme.of(context)
-                                                          .primaryColor),
+                                                    fontSize: 10,
+                                                    fontWeight: UBodyWeight,
+                                                    fontFamily: UFontFamily,
+                                                    color: UPrimaryColor,
+                                                  ),
                                                 ),
                                               ),
                                             ],

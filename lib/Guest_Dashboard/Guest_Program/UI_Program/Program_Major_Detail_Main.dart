@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_Program/UI_Program/Program_Bachelor.dart';
 import '../../../Custom_AppBar.dart';
+import '../../../theme_builder.dart';
 import 'Program_Associate.dart';
 
 class Program_Major_Detail_Main extends StatefulWidget {
@@ -56,19 +57,21 @@ class _Program_Major_DetailState extends State<Program_Major_Detail_Main> {
                         },
                         child: AnimatedContainer(
                           duration: Duration(milliseconds: 300),
-                          margin:
-                              EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-                          padding: EdgeInsets.all(10),
+                          margin: EdgeInsets.symmetric(
+                            vertical: UPdMg_10,
+                            horizontal: UPdMg_5,
+                          ),
+                          padding: EdgeInsets.all(UPdMg_10),
                           width: 180,
                           decoration: BoxDecoration(
                             color: current == index
-                                ? Theme.of(context).primaryColor
-                                : Colors.white,
-                            borderRadius: BorderRadius.circular(5),
+                                ? UPrimaryColor
+                                : UBackgroundColor,
+                            borderRadius: BorderRadius.circular(URoundedMedium),
                             boxShadow: [
                               BoxShadow(
                                 blurRadius: 1,
-                                color: Colors.grey,
+                                color: UGreyColor,
                                 offset: Offset(0, 1),
                               )
                             ],
@@ -77,10 +80,11 @@ class _Program_Major_DetailState extends State<Program_Major_Detail_Main> {
                             tab_txt[index].tr,
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                color: current == index
-                                    ? Colors.white
-                                    : Colors.black,
-                                fontSize: 14),
+                              color: current == index
+                                  ? UBackgroundColor
+                                  : UTextColor,
+                              fontSize: UTitleSize,
+                            ),
                           ),
                         ),
                       ),

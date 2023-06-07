@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:usea_app/Custom_Widget/CustomText.dart';
+import 'package:usea_app/theme_builder.dart';
 import '/Guest_Dashboard/Guest_Program/UI_Program/Program_Major_Detail_Main.dart';
 import '../Class_Program/Class_Program.dart';
 
@@ -22,7 +24,7 @@ class _Program_SemesterState extends State<Program_Semester> {
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: AppBar(
         centerTitle: false,
-        backgroundColor: Colors.white,
+        backgroundColor: UBackgroundColor,
         elevation: 1,
         leading: IconButton(
           icon: Icon(
@@ -40,10 +42,13 @@ class _Program_SemesterState extends State<Program_Semester> {
               },
             );
           },
-          style: TextStyle(fontSize: 14, fontFamily: 'KhmerOSbattambang'),
+          style: TextStyle(
+            fontSize: UTitleSize,
+            fontFamily: UFontFamily,
+          ),
           textAlign: TextAlign.left,
           decoration: InputDecoration.collapsed(hintText: "\t\tស្វែងរក".tr),
-          cursorColor: Colors.black,
+          cursorColor: UTextColor,
           cursorWidth: 1.5,
         ),
       ),
@@ -86,10 +91,8 @@ class _Program_SemesterState extends State<Program_Semester> {
                           ),
                         );
                       },
-                      child: Text(
-                        filteredMajor[index].title.tr,
-                        style: TextStyle(
-                            fontSize: 14, fontFamily: 'KhmerOSbattambang'),
+                      child: NormalTitleTheme(
+                        text: filteredMajor[index].title.tr,
                       ),
                     ),
                   ),

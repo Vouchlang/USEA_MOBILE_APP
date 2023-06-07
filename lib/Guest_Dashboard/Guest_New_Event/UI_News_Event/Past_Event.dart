@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_New_Event/Class_News_Event/Class_Past_News_Events.dart';
 import 'package:http/http.dart' as http;
+import 'package:usea_app/theme_builder.dart';
 
 import 'Past_Event_Detail.dart';
 
@@ -66,11 +67,16 @@ class _Past_EventState extends State<Past_Event> {
                   var past_event = past_events[index];
                   return Container(
                     child: Card(
-                      margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                      margin: EdgeInsets.fromLTRB(
+                        UPdMg_10,
+                        UZeroPixel,
+                        UPdMg_10,
+                        UPdMg_10,
+                      ),
                       elevation: 3,
-                      shadowColor: Colors.grey[200],
+                      shadowColor: UGreyColor,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(URoundedLarge),
                       ),
                       child: InkWell(
                         onTap: () {
@@ -90,7 +96,8 @@ class _Past_EventState extends State<Past_Event> {
                                 height: 150,
                                 width: double.maxFinite,
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius:
+                                      BorderRadius.circular(URoundedLarge),
                                   child: Image.network(
                                     getImageUrl(past_event.past_image),
                                     width: double.maxFinite,
@@ -102,38 +109,41 @@ class _Past_EventState extends State<Past_Event> {
                                 height: 5,
                               ),
                               Container(
-                                padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                                padding: EdgeInsets.fromLTRB(
+                                  UPdMg_10,
+                                  UZeroPixel,
+                                  UPdMg_10,
+                                  UPdMg_10,
+                                ),
                                 child: Column(
                                   children: [
                                     Container(
-                                      width: double.infinity,
+                                      width: UFullWidth,
                                       alignment: Alignment.center,
                                       child: Text(
                                         past_event.past_title,
                                         textAlign: TextAlign.justify,
                                         style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                            fontFamily: 'KhmerOSBattambang'),
+                                          fontSize: UTitleSize,
+                                          fontWeight: UBodyWeight,
+                                          fontFamily: UFontFamily,
+                                        ),
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
+                                    SizedBox(height: UPdMg_5),
                                     Container(
                                       width: double.infinity,
                                       child: Text(
                                         past_event.past_detail,
                                         textAlign: TextAlign.justify,
                                         style: TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w500,
-                                            fontFamily: 'KhmerOSBattambang'),
+                                          fontSize: UBodySize,
+                                          fontWeight: UBodyWeight,
+                                          fontFamily: UFontFamily,
+                                        ),
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
+                                    SizedBox(height: UPdMg_5),
                                     Row(
                                       children: [
                                         Expanded(
@@ -145,77 +155,59 @@ class _Past_EventState extends State<Past_Event> {
                                                   width: 14,
                                                 ),
                                               ),
-                                              SizedBox(
-                                                width: 5,
-                                              ),
+                                              SizedBox(width: UPdMg_5),
                                               Container(
                                                 child: Text(
                                                   'ថ្ងៃ' + past_event.past_day,
                                                   style: TextStyle(
-                                                      fontSize: 10,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontFamily:
-                                                          'KhmerOSBattambang',
-                                                      color: Theme.of(context)
-                                                          .primaryColor),
+                                                    fontSize: 10,
+                                                    fontWeight: UBodyWeight,
+                                                    fontFamily: UFontFamily,
+                                                    color: UPrimaryColor,
+                                                  ),
                                                 ),
                                               ),
-                                              SizedBox(
-                                                width: 2,
-                                              ),
+                                              SizedBox(width: 2),
                                               Container(
                                                 child: Text(
                                                   'ទី' + past_event.past_date,
                                                   style: TextStyle(
-                                                      fontSize: 10,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontFamily:
-                                                          'KhmerOSBattambang',
-                                                      color: Theme.of(context)
-                                                          .primaryColor),
+                                                    fontSize: 10,
+                                                    fontWeight: UBodyWeight,
+                                                    fontFamily: UFontFamily,
+                                                    color: UPrimaryColor,
+                                                  ),
                                                 ),
                                               ),
-                                              SizedBox(
-                                                width: 2,
-                                              ),
+                                              SizedBox(width: 2),
                                               Container(
                                                 child: Text(
                                                   'ខែ' + past_event.past_month,
                                                   style: TextStyle(
-                                                      fontSize: 10,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontFamily:
-                                                          'KhmerOSBattambang',
-                                                      color: Theme.of(context)
-                                                          .primaryColor),
+                                                    fontSize: 10,
+                                                    fontWeight: UBodyWeight,
+                                                    fontFamily: UFontFamily,
+                                                    color: UPrimaryColor,
+                                                  ),
                                                 ),
                                               ),
-                                              SizedBox(
-                                                width: 2,
-                                              ),
+                                              SizedBox(width: 2),
                                               Container(
                                                 child: Text(
                                                   'ឆ្នាំ' +
                                                       past_event.past_year,
                                                   style: TextStyle(
-                                                      fontSize: 10,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontFamily:
-                                                          'KhmerOSBattambang',
-                                                      color: Theme.of(context)
-                                                          .primaryColor),
+                                                    fontSize: 10,
+                                                    fontWeight: UBodyWeight,
+                                                    fontFamily: UFontFamily,
+                                                    color: UPrimaryColor,
+                                                  ),
                                                 ),
                                               ),
                                             ],
                                           ),
                                         ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
+                                        SizedBox(width: UPdMg_10),
                                         Expanded(
                                           child: Row(
                                             children: [
@@ -225,20 +217,16 @@ class _Past_EventState extends State<Past_Event> {
                                                   width: 14,
                                                 ),
                                               ),
-                                              SizedBox(
-                                                width: 5,
-                                              ),
+                                              SizedBox(width: UPdMg_5),
                                               Container(
                                                 child: Text(
                                                   past_event.past_time,
                                                   style: TextStyle(
-                                                      fontSize: 10,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontFamily:
-                                                          'KhmerOSBattambang',
-                                                      color: Theme.of(context)
-                                                          .primaryColor),
+                                                    fontSize: 10,
+                                                    fontWeight: UBodyWeight,
+                                                    fontFamily: UFontFamily,
+                                                    color: UPrimaryColor,
+                                                  ),
                                                 ),
                                               ),
                                             ],

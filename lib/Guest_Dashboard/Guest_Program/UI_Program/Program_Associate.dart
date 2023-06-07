@@ -1,7 +1,9 @@
 import 'package:configurable_expansion_tile_null_safety/configurable_expansion_tile_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:usea_app/Custom_Widget/CustomText.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_Program/Class_Program/Class_Program_Major_Detail.dart';
+import '../../../theme_builder.dart';
 import '../Class_Program/Class_Program_Associate.dart';
 
 class Program_Associate extends StatefulWidget {
@@ -17,7 +19,7 @@ class _Program_AssociateState extends State<Program_Associate> {
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       body: Container(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(UPdMg_10),
         child: ListView(
           physics: ScrollPhysics(),
           children: [
@@ -25,7 +27,7 @@ class _Program_AssociateState extends State<Program_Associate> {
               child: Text(
                 'បន្ទាប់ពីបញ្ចប់ការសិក្សាបរិញ្ញាបត្រវិទ្យាសាស្ត្រ មុខជំនាញព័ត៌មានវិទ្យា​ និស្សិតទទួលបាន សមត្ថភាពមូលដ្ឋាន និងសមត្ថភាពស្នូលដោយចែកចេញជា៖ ',
                 textAlign: TextAlign.justify,
-                style: TextStyle(fontSize: 14, fontFamily: 'KhmerOSbattambang'),
+                style: TextStyle(fontSize: UTitleSize, fontFamily: UFontFamily),
               ),
             ),
             Container(
@@ -50,26 +52,29 @@ class _Program_AssociateState extends State<Program_Associate> {
                                   program_major_detail[index].title,
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
-                                      color: Theme.of(context).primaryColor,
-                                      fontSize: 14,
-                                      fontFamily: 'KhmerOSbattambang',
-                                      fontWeight: FontWeight.w600),
+                                    color: UPrimaryColor,
+                                    fontSize: UTitleSize,
+                                    fontFamily: UFontFamily,
+                                    fontWeight: UTitleWeight,
+                                  ),
                                 ),
                               ),
                             ),
                             animatedWidgetFollowingHeader: Icon(
                               Icons.keyboard_arrow_down_rounded,
                               size: 25,
-                              color: Theme.of(context).primaryColor,
+                              color: UPrimaryColor,
                             ),
                             childrenBody: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 10),
+                              padding:
+                                  EdgeInsets.symmetric(horizontal: UPdMg_10),
                               child: Text(
                                 program_major_detail[index].description,
                                 textAlign: TextAlign.justify,
                                 style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'KhmerOSbattambang'),
+                                  fontSize: UTitleSize,
+                                  fontFamily: UFontFamily,
+                                ),
                               ),
                             ),
                           ),
@@ -83,9 +88,7 @@ class _Program_AssociateState extends State<Program_Associate> {
             Container(
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 10,
-                  ),
+                  SizedBox(height: 10),
                   GridView.count(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
@@ -97,10 +100,10 @@ class _Program_AssociateState extends State<Program_Associate> {
                       pro_asso_year.length,
                       (index) => Card(
                         elevation: 3,
-                        color: Colors.white,
-                        shadowColor: Colors.grey[200],
+                        color: UBackgroundColor,
+                        shadowColor: UGreyColor,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(URoundedLarge),
                         ),
                         child: InkWell(
                           onTap: () {
@@ -115,15 +118,9 @@ class _Program_AssociateState extends State<Program_Associate> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                SizedBox(
-                                  height: 7,
-                                ),
-                                Text(
-                                  pro_asso_year[index].name.tr,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                  ),
-                                )
+                                SizedBox(height: 7),
+                                NormalTitleTheme(
+                                    text: pro_asso_year[index].name.tr)
                               ],
                             ),
                           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_New_Event/UI_News_Event/Past_Event.dart';
+import 'package:usea_app/theme_builder.dart';
 
 import '../../../Custom_AppBar.dart';
 import 'Upcoming_Event.dart';
@@ -37,7 +38,7 @@ class _New_EventState extends State<New_Event> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              margin: EdgeInsets.all(0),
+              margin: EdgeInsets.all(UZeroPixel),
               height: 70,
               child: ListView.builder(
                 physics: ScrollPhysics(),
@@ -57,30 +58,34 @@ class _New_EventState extends State<New_Event> {
                         },
                         child: AnimatedContainer(
                           duration: Duration(milliseconds: 300),
-                          margin:
-                              EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-                          padding: EdgeInsets.all(10),
+                          margin: EdgeInsets.symmetric(
+                            vertical: UPdMg_10,
+                            horizontal: UPdMg_5,
+                          ),
+                          padding: EdgeInsets.all(UPdMg_10),
                           width: 180,
                           decoration: BoxDecoration(
                             color: current == index
-                                ? Theme.of(context).primaryColor
-                                : Colors.white,
-                            borderRadius: BorderRadius.circular(5),
+                                ? UPrimaryColor
+                                : UBackgroundColor,
+                            borderRadius: BorderRadius.circular(URoundedMedium),
                             boxShadow: [
                               BoxShadow(
-                                  blurRadius: 1,
-                                  color: Colors.grey,
-                                  offset: Offset(0, 1))
+                                blurRadius: 1,
+                                color: UGreyColor,
+                                offset: Offset(0, 1),
+                              ),
                             ],
                           ),
                           child: Text(
                             tab_txt[index].tr,
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                color: current == index
-                                    ? Colors.white
-                                    : Colors.black,
-                                fontSize: 14),
+                              fontSize: UTitleSize,
+                              color: current == index
+                                  ? UBackgroundColor
+                                  : UTextColor,
+                            ),
                           ),
                         ),
                       ),

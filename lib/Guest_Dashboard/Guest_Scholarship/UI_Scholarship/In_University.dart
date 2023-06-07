@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:usea_app/Custom_Widget/CustomText.dart';
+import 'package:usea_app/theme_builder.dart';
 import '../Class_Scholarship/Class_Scholarship_In.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -63,101 +65,74 @@ class _In_UniversityState extends State<In_University> {
                   itemCount: i_scholarship.length,
                   itemBuilder: (context, index) {
                     return Container(
-                      margin: EdgeInsets.fromLTRB(10, 0, 10, 5),
+                      margin: EdgeInsets.fromLTRB(
+                        UPdMg_10,
+                        UZeroPixel,
+                        UPdMg_10,
+                        UPdMg_5,
+                      ),
                       child: Card(
                         elevation: 3,
-                        shadowColor: Colors.grey[200],
+                        shadowColor: UGreyColor,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(UPdMg_10),
                         ),
                         child: Container(
-                          padding: EdgeInsets.all(10),
+                          padding: EdgeInsets.all(UPdMg_10),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.end,
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Container(
-                                width: double.infinity,
-                                child: Text(
-                                  i_scholarship[index].i_school_name,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'KhmerOSbattambang',
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
+                                  width: UFullWidth,
+                                  child: NormalTitleTheme(
+                                      text:
+                                          i_scholarship[index].i_school_name)),
                               Container(
-                                width: double.infinity,
-                                child: Text(
-                                  i_scholarship[index].i_educational_level,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'KhmerOSbattambang',
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
+                                  width: UFullWidth,
+                                  child: NormalTitleTheme(
+                                      text: i_scholarship[index]
+                                          .i_educational_level)),
                               Container(
-                                width: double.infinity,
-                                child: Text(
-                                  i_scholarship[index].i_major,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'KhmerOSbattambang',
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
+                                  width: UFullWidth,
+                                  child: NormalTitleTheme(
+                                      text: i_scholarship[index].i_major)),
                               Container(
-                                width: double.infinity,
-                                child: Text(
-                                  i_scholarship[index].i_expire,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'KhmerOSbattambang',
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
+                                  width: UFullWidth,
+                                  child: NormalTitleTheme(
+                                      text: i_scholarship[index].i_expire)),
                               Container(
-                                width: double.infinity,
-                                child: Text(
-                                  i_scholarship[index].i_expire_date,
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontFamily: 'KhmerOSbattambang',
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
+                                  width: UFullWidth,
+                                  child: NormalTitleTheme(
+                                      text:
+                                          i_scholarship[index].i_expire_date)),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Container(
                                     alignment: Alignment.center,
                                     padding: EdgeInsets.symmetric(
-                                        vertical: 5, horizontal: 10),
+                                        vertical: UPdMg_5,
+                                        horizontal: UPdMg_10),
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      color: Color(0x142D74F5),
+                                      borderRadius:
+                                          BorderRadius.circular(URoundedMedium),
+                                      color: UBtnColor,
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Color(0x142D74F5),
+                                          color: UBtnColor,
                                         ),
                                       ],
                                     ),
                                     child: InkWell(
                                       onTap: () => launchUrlString(
                                           i_scholarship[index].i_link),
-                                      child: Text(
-                                        'អានបន្ថែម'.tr,
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w600,
-                                            color:
-                                                Theme.of(context).primaryColor),
+                                      child: CustomTextTheme(
+                                        text: 'អានបន្ថែម'.tr,
+                                        color: UPrimaryColor,
+                                        fontWeight: UTitleWeight,
+                                        size: UBodySize,
                                       ),
                                     ),
                                   ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_New_Event/Class_News_Event/Class_Up_News_Events.dart';
+import 'package:usea_app/theme_builder.dart';
 
 import '../../../Custom_AppBar.dart';
 
@@ -20,7 +21,12 @@ class Up_Event_Detail extends StatelessWidget {
       appBar: Custom_AppBar(title: 'ព្រឹត្តិការណ៍'.tr),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+          margin: EdgeInsets.fromLTRB(
+            UZeroPixel,
+            UZeroPixel,
+            UZeroPixel,
+            UPdMg_10,
+          ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,39 +43,49 @@ class Up_Event_Detail extends StatelessWidget {
               ),
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: UBackgroundColor,
                   borderRadius: BorderRadius.vertical(
-                    bottom: Radius.circular(10),
+                    bottom: Radius.circular(URoundedLarge),
                   ),
                   boxShadow: [
                     BoxShadow(
-                        offset: Offset(0, 1), color: Colors.grey, blurRadius: 1)
+                      offset: Offset(0, 1),
+                      color: UGreyColor,
+                      blurRadius: 1,
+                    )
                   ],
                 ),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                padding: EdgeInsets.symmetric(
+                  vertical: UPdMg_10,
+                  horizontal: UPdMg_5,
+                ),
                 alignment: Alignment.center,
                 width: double.maxFinite,
                 child: Text(
                   data.upcoming_title,
                   textAlign: TextAlign.justify,
                   style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: 'KhmerOSbattambang'),
+                    fontSize: UTitleSize,
+                    fontWeight: UTitleWeight,
+                    fontFamily: UFontFamily,
+                  ),
                 ),
               ),
-              SizedBox(
-                height: 10,
-              ),
+              SizedBox(height: UPdMg_10),
               Container(
                 width: double.infinity,
-                margin: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                margin: EdgeInsets.symmetric(
+                  vertical: UZeroPixel,
+                  horizontal: UPdMg_10,
+                ),
                 child: Align(
                   child: Text(
                     data.upcoming_desc,
                     textAlign: TextAlign.justify,
                     style: TextStyle(
-                        fontSize: 12, fontFamily: 'KhmerOSbattambang'),
+                      fontSize: UBodySize,
+                      fontFamily: UFontFamily,
+                    ),
                   ),
                 ),
               ),

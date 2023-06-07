@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_Program/UI_Program/Program_Search_Major.dart';
+import 'package:usea_app/theme_builder.dart';
 import '../Class_Program/Class_Program.dart';
 import 'Program_Major_Detail_Main.dart';
 
@@ -30,14 +31,14 @@ class _ProgramState extends State<Program> {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
-            color: Theme.of(context).primaryColor,
+            color: UPrimaryColor,
             size: 18,
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
         actions: [
           Padding(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(UPdMg_10),
             child: Container(
               child: Center(
                 child: IconButton(
@@ -53,7 +54,7 @@ class _ProgramState extends State<Program> {
                   },
                   icon: Icon(
                     Icons.search,
-                    color: Theme.of(context).primaryColor,
+                    color: UPrimaryColor,
                     size: 20,
                   ),
                 ),
@@ -63,7 +64,7 @@ class _ProgramState extends State<Program> {
         ],
       ),
       body: ListView(
-        padding: EdgeInsets.only(bottom: 10),
+        padding: EdgeInsets.only(bottom: UPdMg_10),
         children:
             program_List.map((major) => ProgramWidget(major: major)).toList(),
       ),
@@ -87,7 +88,12 @@ class ProgramWidget extends StatelessWidget {
 
     if (majors.isEmpty) {
       return Container(
-        padding: EdgeInsets.fromLTRB(15, 0, 15, 10),
+        padding: EdgeInsets.fromLTRB(
+          UPdMg_15,
+          UZeroPixel,
+          UPdMg_15,
+          UPdMg_10,
+        ),
         child: InkWell(
           onTap: () {
             Navigator.push(
@@ -99,19 +105,20 @@ class ProgramWidget extends StatelessWidget {
           },
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              border: Border.all(
-                color: Color(0xEEEEEEFF),
-              ),
+              borderRadius: BorderRadius.circular(URoundedMedium),
+              border: Border.all(color: UBGLightBlue),
             ),
-            padding: EdgeInsets.all(5),
+            padding: EdgeInsets.all(UPdMg_5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   title.tr,
                   textAlign: TextAlign.justify,
-                  style: TextStyle(fontSize: 14, color: Colors.black),
+                  style: TextStyle(
+                    fontSize: UTitleSize,
+                    color: UTextColor,
+                  ),
                 ),
                 Icon(
                   Icons.arrow_forward_ios,
@@ -126,19 +133,24 @@ class ProgramWidget extends StatelessWidget {
     } else {
       return Card(
         color: Colors.white,
-        margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
+        margin: EdgeInsets.fromLTRB(
+          UPdMg_10,
+          UPdMg_10,
+          UPdMg_10,
+          UZeroPixel,
+        ),
         elevation: 3,
-        shadowColor: Colors.grey[200],
+        shadowColor: UGreyColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(UPdMg_10),
         ),
         child: Container(
           child: Theme(
             data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
             child: ExpansionTile(
               collapsedIconColor: Theme.of(context).primaryColor,
-              iconColor: Theme.of(context).primaryColor,
-              textColor: Colors.black,
+              iconColor: UPrimaryColor,
+              textColor: UTextColor,
               key: PageStorageKey(title),
               title: Row(
                 children: [
@@ -146,17 +158,17 @@ class ProgramWidget extends StatelessWidget {
                     image,
                     scale: 6,
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
+                  SizedBox(width: 10),
                   Expanded(
                     child: Text(
                       title.tr,
                       textAlign: TextAlign.left,
                       style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black),
+                        fontSize: UTitleSize,
+                        fontFamily: UFontFamily,
+                        fontWeight: UTitleWeight,
+                        color: UTextColor,
+                      ),
                     ),
                   ),
                 ],

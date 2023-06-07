@@ -5,6 +5,8 @@ import '../../../Custom_AppBar.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import '../../../theme_builder.dart';
+
 class Registration extends StatefulWidget {
   const Registration({Key? key}) : super(key: key);
 
@@ -56,17 +58,17 @@ class _RegistrationState extends State<Registration> {
         child: isLoading
             ? const CircularProgressIndicator()
             : ListView.builder(
-                padding: EdgeInsets.all(9),
+                padding: EdgeInsets.all(UPdMg_10 - 1),
                 itemCount: registration.length,
                 itemBuilder: (context, index) {
                   return Card(
                     elevation: 3,
                     shadowColor: Colors.grey[200],
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(URoundedLarge),
                     ),
                     child: Container(
-                      padding: EdgeInsets.all(10),
+                      padding: EdgeInsets.all(UPdMg_10),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -78,9 +80,9 @@ class _RegistrationState extends State<Registration> {
                               registration[index].title,
                               textAlign: TextAlign.justify,
                               style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: 'KhmerOSbattambang',
-                                fontWeight: FontWeight.w600,
+                                fontSize: UTitleSize16,
+                                fontFamily: UFontFamily,
+                                fontWeight: UTitleWeight,
                               ),
                             ),
                           ),
@@ -97,29 +99,25 @@ class _RegistrationState extends State<Registration> {
                                   child:
                                       Image.asset('assets/image/date_time.png'),
                                 ),
-                                SizedBox(
-                                  width: 5,
-                                ),
+                                SizedBox(width: 5),
                                 Expanded(
                                   child: Text(
                                     registration[index].date,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: 'KhmerOSbattambang',
-                                      fontWeight: FontWeight.w600,
+                                      fontSize: UTitleSize,
+                                      fontFamily: UFontFamily,
+                                      fontWeight: UTitleWeight,
                                     ),
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          SizedBox(
-                            height: 5,
-                          ),
+                          SizedBox(height: 5),
                           Container(
-                            margin: EdgeInsets.only(left: 15),
-                            width: double.infinity,
+                            margin: EdgeInsets.only(left: UPdMg_15),
+                            width: UFullWidth,
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -133,40 +131,34 @@ class _RegistrationState extends State<Registration> {
                                     scale: 14,
                                   ),
                                 ),
-                                SizedBox(
-                                  width: 5,
-                                ),
+                                SizedBox(width: 5),
                                 Expanded(
                                   child: Text(
                                     registration[index].education1,
                                     style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: 'KhmerOSbattambang',
-                                      fontWeight: FontWeight.w600,
+                                      fontSize: UTitleSize,
+                                      fontFamily: UFontFamily,
+                                      fontWeight: UTitleWeight,
                                     ),
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          SizedBox(
-                            height: 5,
-                          ),
+                          SizedBox(height: 5),
                           Container(
                             margin: EdgeInsets.only(left: 35),
                             width: double.infinity,
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                SizedBox(
-                                  width: 5,
-                                ),
+                                SizedBox(width: 5),
                                 Expanded(
                                   child: Text(
                                     registration[index].detail1,
                                     style: TextStyle(
                                       fontSize: 13,
-                                      fontFamily: 'KhmerOSbattambang',
+                                      fontFamily: UFontFamily,
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
@@ -174,12 +166,10 @@ class _RegistrationState extends State<Registration> {
                               ],
                             ),
                           ),
-                          SizedBox(
-                            height: 5,
-                          ),
+                          SizedBox(height: 5),
                           Container(
-                            margin: EdgeInsets.only(left: 15),
-                            width: double.infinity,
+                            margin: EdgeInsets.only(left: UPdMg_15),
+                            width: UFullWidth,
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -193,40 +183,34 @@ class _RegistrationState extends State<Registration> {
                                     scale: 14,
                                   ),
                                 ),
-                                SizedBox(
-                                  width: 5,
-                                ),
+                                SizedBox(width: 5),
                                 Expanded(
                                   child: Text(
                                     registration[index].education2,
                                     style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: 'KhmerOSbattambang',
-                                      fontWeight: FontWeight.w600,
+                                      fontSize: UTitleSize,
+                                      fontFamily: UFontFamily,
+                                      fontWeight: UTitleWeight,
                                     ),
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          SizedBox(
-                            height: 5,
-                          ),
+                          SizedBox(height: 5),
                           Container(
                             margin: EdgeInsets.only(left: 35),
-                            width: double.infinity,
+                            width: UFullWidth,
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                SizedBox(
-                                  width: 5,
-                                ),
+                                SizedBox(width: 5),
                                 Expanded(
                                   child: Text(
                                     registration[index].detail2,
                                     style: TextStyle(
                                       fontSize: 13,
-                                      fontFamily: 'KhmerOSbattambang',
+                                      fontFamily: UFontFamily,
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
@@ -234,11 +218,9 @@ class _RegistrationState extends State<Registration> {
                               ],
                             ),
                           ),
-                          SizedBox(
-                            height: 5,
-                          ),
+                          SizedBox(height: 5),
                           Container(
-                            width: double.infinity,
+                            width: UFullWidth,
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -250,41 +232,35 @@ class _RegistrationState extends State<Registration> {
                                   child:
                                       Image.asset('assets/image/date_time.png'),
                                 ),
-                                SizedBox(
-                                  width: 5,
-                                ),
+                                SizedBox(width: 5),
                                 Expanded(
                                   child: Text(
                                     registration[index].time,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: 'KhmerOSbattambang',
-                                      fontWeight: FontWeight.w600,
+                                      fontSize: UTitleSize,
+                                      fontFamily: UFontFamily,
+                                      fontWeight: UTitleWeight,
                                     ),
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          SizedBox(
-                            height: 5,
-                          ),
+                          SizedBox(height: 5),
                           Container(
                             margin: EdgeInsets.only(left: 35),
-                            width: double.infinity,
+                            width: UFullWidth,
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                SizedBox(
-                                  width: 5,
-                                ),
+                                SizedBox(width: 5),
                                 Expanded(
                                   child: Text(
                                     registration[index].detail3,
                                     style: TextStyle(
                                       fontSize: 13,
-                                      fontFamily: 'KhmerOSbattambang',
+                                      fontFamily: UFontFamily,
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),

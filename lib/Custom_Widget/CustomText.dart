@@ -101,6 +101,31 @@ class NormalTitleTheme extends StatelessWidget {
   }
 }
 
+// *@ No Weight Title
+class NoWeightTitleTheme extends StatelessWidget {
+  final String text;
+
+  const NoWeightTitleTheme({
+    super.key,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: UTitleSize,
+          fontWeight: UBodyWeight,
+          color: UTextColor,
+          fontFamily: UFontFamily,
+        ),
+      ),
+    );
+  }
+}
+
 // *@ Normal Title 16px UTextColor
 class TitleSize16_Theme extends StatelessWidget {
   final String text;
