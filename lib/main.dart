@@ -18,10 +18,12 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   String languageCode = prefs.getString('language') ?? 'km';
-  String font = prefs.getString('font') ?? 'KhmerOSbattambang';
+  String font = prefs.getString('font') ?? UKFontFamily;
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(statusBarColor: UBackgroundColor),
   );
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
   runApp(
     new GetMaterialApp(

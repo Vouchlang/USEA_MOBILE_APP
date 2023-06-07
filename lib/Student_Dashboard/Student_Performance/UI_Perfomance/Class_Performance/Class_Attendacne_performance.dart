@@ -20,7 +20,7 @@ List<Attendance> attendance = [
     num_count: 0,
   ),
   Attendance(
-    type: "អវត្តមានឥតច្បាប់",
+    type: "អវត្តមាន",
     num_count: 0,
   ),
   Attendance(
@@ -57,10 +57,12 @@ List<Score> score = [
   Score(
     type: "កិច្ចការក្រុម",
     num_count: 100,
-  ),Score(
+  ),
+  Score(
     type: "ពាក់កណ្ដាលឆមាស",
     num_count: 100,
-  ),Score(
+  ),
+  Score(
     type: "ឆមាស",
     num_count: 100,
   ),

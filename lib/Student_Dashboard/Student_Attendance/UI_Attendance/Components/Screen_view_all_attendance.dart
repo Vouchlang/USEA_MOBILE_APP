@@ -41,7 +41,7 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
               children: [
                 SizedBox(height: 5),
                 Container(
-                  height: 50,
+                  height: 65,
                   width: UFullWidth,
                   child: ListView.builder(
                     physics: BouncingScrollPhysics(),
@@ -55,8 +55,8 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
                       },
                       child: AnimatedContainer(
                         duration: Duration(milliseconds: 300),
-                        height: 50,
-                        width: 100,
+                        height: 65,
+                        width: 115,
                         decoration: BoxDecoration(
                           color: current == index
                               ? UPrimaryColor

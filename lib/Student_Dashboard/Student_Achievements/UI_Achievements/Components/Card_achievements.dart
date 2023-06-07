@@ -33,7 +33,7 @@ class CardAchievements extends StatelessWidget {
             mainAxisSpacing: UPdMg_10,
             crossAxisSpacing: UPdMg_10,
             childAspectRatio: 1.90,
-            padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
+            padding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
             physics: NeverScrollableScrollPhysics(),
             children: List.generate(
               achievements.length,
@@ -78,7 +78,7 @@ class CardAchievements extends StatelessWidget {
             mainAxisSpacing: UPdMg_10,
             crossAxisSpacing: UPdMg_10,
             childAspectRatio: 1.90,
-            padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
+            padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
             physics: NeverScrollableScrollPhysics(),
             children: List.generate(
               achievements.length,

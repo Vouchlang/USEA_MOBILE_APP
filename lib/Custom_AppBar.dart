@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:usea_app/theme_builder.dart';
 
 class Custom_AppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -11,19 +12,18 @@ class Custom_AppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(
         title,
         style: TextStyle(
-          color: Theme.of(context).primaryColor,
+          color: UPrimaryColor,
           fontSize: 18,
-          // fontFamily: 'KhmerOSbattambang',
-          fontWeight: FontWeight.w600,
+          fontWeight: UTitleWeight,
         ),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: UBackgroundColor,
       elevation: 1,
       iconTheme: IconThemeData.fallback(),
       leading: IconButton(
         icon: Icon(
           Icons.arrow_back_ios,
-          color: Theme.of(context).primaryColor,
+          color: UPrimaryColor,
           size: 18,
         ),
         onPressed: () => Navigator.of(context).pop(),

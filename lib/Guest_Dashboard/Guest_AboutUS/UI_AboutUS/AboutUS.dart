@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:usea_app/theme_builder.dart';
 
 import '../../../Custom_AppBar.dart';
 import '../Class_AboutUS/Class_AboutUS.dart';
@@ -58,8 +59,8 @@ class _AboutUSState extends State<AboutUS> {
                                     aboutUS[index].text.tr,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600),
+                                        fontSize: UTitleSize16,
+                                        fontWeight: UBodyWeight),
                                   ),
                                 ),
                               ],

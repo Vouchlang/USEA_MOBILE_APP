@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../Custom_AppBar.dart';
+import '../../../Custom_Widget/CustomText.dart';
+import '../../../theme_builder.dart';
 import '../Class_FAQ/Class_FAQ.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -70,17 +72,10 @@ class _FAQState extends State<FAQ> {
                               data: Theme.of(context)
                                   .copyWith(dividerColor: Colors.transparent),
                               child: ExpansionTile(
-                                collapsedIconColor:
-                                    Theme.of(context).primaryColor,
-                                iconColor: Theme.of(context).primaryColor,
-                                title: Text(
-                                  faq[index].question,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: 'KhmerOSbattambang',
-                                      color: Colors.black),
-                                ),
+                                collapsedIconColor: UPrimaryColor,
+                                iconColor: UPrimaryColor,
+                                title: buildFAQ(
+                                    faq[index].question, TextAlign.left),
                                 textColor: Colors.black,
                                 children: [
                                   Container(
@@ -88,13 +83,8 @@ class _FAQState extends State<FAQ> {
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     padding: EdgeInsets.fromLTRB(17, 0, 17, 5),
-                                    child: Text(
-                                      faq[index].answer,
-                                      textAlign: TextAlign.justify,
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontFamily: 'KhmerOSbattambang'),
-                                    ),
+                                    child: buildFAQ(
+                                        faq[index].answer, TextAlign.justify),
                                   )
                                 ],
                               ),

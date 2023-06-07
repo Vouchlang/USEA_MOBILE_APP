@@ -37,8 +37,8 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.horizontal(
-                    left: Radius.circular(URoundedLarge),
-                    right: Radius.circular(URoundedLarge),
+                    left: Radius.circular(10),
+                    right: Radius.circular(10),
                   ),
                   color: UBGLightBlue,
                 ),
@@ -106,8 +106,8 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.all(UPdMg_5),
-                width: UFullWidth,
+                padding: EdgeInsets.all(5),
+                width: double.infinity,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

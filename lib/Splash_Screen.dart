@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:usea_app/Home.dart';
+import 'package:usea_app/theme_builder.dart';
 
 class Splash_Screen extends StatefulWidget {
   const Splash_Screen({Key? key}) : super(key: key);
@@ -53,7 +54,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
                 style: TextStyle(
                     fontSize: 15,
                     fontFamily: 'KhmerOSmuol',
-                    color: Theme.of(context).primaryColor),
+                    color: UPrimaryColor),
               ),
             ),
             Text(
@@ -61,15 +62,15 @@ class _Splash_ScreenState extends State<Splash_Screen> {
               textAlign: TextAlign.justify,
               style: TextStyle(
                   fontSize: 17.5,
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: 'Poppins'),
+                  color: UPrimaryColor,
+                  fontWeight: UBodyWeight,
+                  fontFamily: UEFontFamily),
             ),
             SizedBox(
               height: 5,
             ),
             SpinKitThreeBounce(
-              color: Theme.of(context).primaryColor,
+              color: UPrimaryColor,
               size: 15,
             ),
           ],

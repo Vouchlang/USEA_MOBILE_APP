@@ -23,4 +23,25 @@ List<Achievements> achievements = [
   Achievements(
     image: 'assets/image/5.jpg',
   ),
+  Achievements(
+    image: 'assets/image/5.jpg',
+  ),
+  Achievements(
+    image: 'assets/image/5.jpg',
+  ),
+  Achievements(
+    image: 'assets/image/5.jpg',
+  ),
+  Achievements(
+    image: 'assets/image/5.jpg',
+  ),
+  Achievements(
+    image: 'assets/image/5.jpg',
+  ),
+  Achievements(
+    image: 'assets/image/5.jpg',
+  ),
+  Achievements(
+    image: 'assets/image/5.jpg',
+  ),
 ];

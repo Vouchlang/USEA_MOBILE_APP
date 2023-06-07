@@ -145,6 +145,8 @@ class LocaleString extends Translations {
           'កាលវិភាគសិក្សា': 'កាលវិភាគសិក្សា',
 
           // Student Perfomance
+          'មធ្យមភាគៈ': 'មធ្យមភាគៈ',
+          'ចំណាត់ថ្នាក់ប្រចាំថ្នាក់ៈ': 'ចំណាត់ថ្នាក់ប្រចាំថ្នាក់ៈ',
           'ពិន្ទុ': 'ពិន្ទុ',
           'លំហាត់': 'លំហាត់',
           'កិច្ចការផ្ទះ': 'កិច្ចការផ្ទះ',
@@ -325,6 +327,8 @@ class LocaleString extends Translations {
           'កាលវិភាគសិក្សា': 'Schedule',
 
           // Student Performance
+          'មធ្យមភាគៈ': 'Average:',
+          'ចំណាត់ថ្នាក់ប្រចាំថ្នាក់ៈ': 'Classification:',
           'ពិន្ទុ': 'Score',
           'លំហាត់': 'Exercises',
           'កិច្ចការផ្ទះ': 'Homework',

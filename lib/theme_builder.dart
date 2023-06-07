@@ -24,7 +24,9 @@ const FontWeight UTitleWeight = FontWeight.w600;
 const FontWeight UBodyWeight = FontWeight.w500;
 
 // * @ FontFamily
-const UFontFamily = "KhmerOSbattambang";
+const UKFontFamily = "KhmerOSbattambang";
+const UEFontFamily = "Poppins";
+
 
 //  * @ Padding & Margin Theme
 const UPdMg_5 = 5.0; // UPd_Mg_ExtraSmall

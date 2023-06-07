@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../Custom_AppBar.dart';
+import '../../../Custom_Widget/CustomText.dart';
 
 class History extends StatefulWidget {
   const History({Key? key}) : super(key: key);
@@ -62,112 +62,17 @@ class _HistoryState extends State<History> {
                 margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
                 child: Column(
                   children: [
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            child: Image.asset(
-                              'assets/image/dot.png',
-                              width: 5,
-                            ),
-                            margin: EdgeInsets.only(top: 10),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Expanded(
-                            child: Text(
-                              'The picture of the golden rice panicles around the circle symbolizes the university’s strength, development and sustainability.',
-                              textAlign: TextAlign.justify,
-                              style: TextStyle(
-                                  fontSize: 14, fontFamily: 'Poppins'),
-                            ),
-                          ),
-                        ],
-                      ),
+                    buildHistory(
+                      'The picture of the golden rice panicles around the circle symbolizes the university’s strength, development and sustainability.',
                     ),
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            child: Image.asset(
-                              'assets/image/dot.png',
-                              width: 5,
-                            ),
-                            margin: EdgeInsets.only(top: 10),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Expanded(
-                            child: Text(
-                              'The dark blue phrases written in both Khmer and English around the circle and the word USEA with the light blue color on the book symbolize the name of the University of South-East Asia.',
-                              textAlign: TextAlign.justify,
-                              style: TextStyle(
-                                  fontSize: 14, fontFamily: 'Poppins'),
-                            ),
-                          ),
-                        ],
-                      ),
+                    buildHistory(
+                      'The dark blue phrases written in both Khmer and English around the circle and the word USEA with the light blue color on the book symbolize the name of the University of South-East Asia.',
                     ),
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            child: Image.asset(
-                              'assets/image/dot.png',
-                              width: 5,
-                            ),
-                            margin: EdgeInsets.only(top: 10),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Expanded(
-                            child: Text(
-                              'The picture of the light blue globe inside the circle represents fame, national and international recognition, and regional and global integration.',
-                              textAlign: TextAlign.justify,
-                              style: TextStyle(
-                                  fontSize: 14, fontFamily: 'Poppins'),
-                            ),
-                          ),
-                        ],
-                      ),
+                    buildHistory(
+                      'The picture of the light blue globe inside the circle represents fame, national and international recognition, and regional and global integration.',
                     ),
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            child: Image.asset(
-                              'assets/image/dot.png',
-                              width: 5,
-                            ),
-                            margin: EdgeInsets.only(top: 10),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Expanded(
-                            child: Container(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                'The pictures of the blue hat and spearhead on the book symbolize high quality education and research, resulting in excellent leadership with professional ethics, creativity, social understanding, and commitment to promoting national. ',
-                                textAlign: TextAlign.justify,
-                                style: TextStyle(
-                                    fontSize: 14, fontFamily: 'Poppins'),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                    buildHistory(
+                      'The pictures of the blue hat and spearhead on the book symbolize high quality education and research, resulting in excellent leadership with professional ethics, creativity, social understanding, and commitment to promoting national. ',
                     ),
                   ],
                 ),

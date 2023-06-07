@@ -125,9 +125,7 @@ class _PaymentDialogState extends State<PaymentDialog> {
                         ),
                       ),
                     ),
-                    Divider(
-                      color: Colors.grey,
-                    ),
+                    buildDividerAtt(),
 
                     /// ! Body Content​2
                     ListView.builder(
@@ -135,67 +133,69 @@ class _PaymentDialogState extends State<PaymentDialog> {
                       physics: ScrollPhysics(),
                       itemCount: paymentData2.length,
                       itemBuilder: (context, index) {
-                        return IntrinsicHeight(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              IntrinsicHeight(
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  padding: EdgeInsets.all(5),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      /// ! datePayment
-                                      buildBody(
-                                          75,
-                                          paymentData2[index].datePayment2,
-                                          UTextColor),
+                        final isLastIndex = index == paymentData2.length - 1;
 
-                                      VerticalDivider(
-                                        width: 5,
-                                        color: Colors.grey,
-                                      ),
-                                      buildBody(
-                                          75,
-                                          paymentData2[index].invoiceNum2,
-                                          UTextColor),
+                        return Padding(
+                          padding: EdgeInsets.only(bottom: isLastIndex ? 5 : 0),
+                          child: IntrinsicHeight(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                IntrinsicHeight(
+                                  child: Container(
+                                    padding: EdgeInsets.all(UPdMg_8),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        /// ! datePayment
+                                        buildBody(
+                                            75,
+                                            paymentData2[index].datePayment2,
+                                            UTextColor),
 
-                                      VerticalDivider(
-                                        width: 5,
-                                        color: Colors.grey,
-                                      ),
-                                      buildBody(
-                                          45,
-                                          paymentData2[index].amountToPaid2,
-                                          UTextColor),
+                                        VerticalDivider(
+                                          width: 5,
+                                          color: Colors.grey,
+                                        ),
+                                        buildBody(
+                                            75,
+                                            paymentData2[index].invoiceNum2,
+                                            UTextColor),
 
-                                      VerticalDivider(
-                                        width: 5,
-                                        color: Colors.grey,
-                                      ),
-                                      buildBody(
-                                          45,
-                                          paymentData2[index].amountPaid2,
-                                          UTextColor),
-                                      VerticalDivider(
-                                        width: 5,
-                                        color: Colors.grey,
-                                      ),
-                                      buildBody(
-                                          50,
-                                          paymentData2[index].balance2,
-                                          UTextColor),
-                                    ],
+                                        VerticalDivider(
+                                          width: 5,
+                                          color: Colors.grey,
+                                        ),
+                                        buildBody(
+                                            45,
+                                            paymentData2[index].amountToPaid2,
+                                            UTextColor),
+
+                                        VerticalDivider(
+                                          width: 5,
+                                          color: Colors.grey,
+                                        ),
+                                        buildBody(
+                                            45,
+                                            paymentData2[index].amountPaid2,
+                                            UTextColor),
+                                        VerticalDivider(
+                                          width: 5,
+                                          color: Colors.grey,
+                                        ),
+                                        buildBody(
+                                            50,
+                                            paymentData2[index].balance2,
+                                            UTextColor),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Divider(
-                                color: Colors.grey,
-                              ),
-                            ],
+                                if (!isLastIndex) buildDividerAtt(),
+                              ],
+                            ),
                           ),
                         );
                       },

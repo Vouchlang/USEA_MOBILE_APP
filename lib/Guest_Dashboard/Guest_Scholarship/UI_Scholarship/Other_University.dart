@@ -105,6 +105,7 @@ class _Out_UniversityState extends State<Out_University> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Container(
+                                    margin: EdgeInsets.only(top: 10),
                                     alignment: Alignment.center,
                                     padding: EdgeInsets.symmetric(
                                       vertical: UPdMg_5,

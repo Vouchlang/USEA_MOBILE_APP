@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:usea_app/theme_builder.dart';
 import '../../../Custom_AppBar.dart';
+import '../../../Custom_Widget/CustomText.dart';
 import '../Class_Contact/Class_Contact.dart';
 
 class Contact extends StatefulWidget {
@@ -51,14 +53,8 @@ class _ContactState extends State<Contact> {
                                     launchUrlString(contact[index].link),
                                 child: Container(
                                   padding: EdgeInsets.only(top: 4),
-                                  child: Text(
-                                    contact[index].text.tr,
-                                    textAlign: TextAlign.justify,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        // fontFamily: 'KhmerOSbattambang',
-                                        fontWeight: FontWeight.w500),
-                                  ),
+                                  child: buildTitleBody(contact[index].text.tr,
+                                      UTitleSize, FontWeight.w500),
                                 ),
                               ),
                             ),
