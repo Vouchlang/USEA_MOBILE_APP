@@ -25,19 +25,18 @@ class _Out_UniversityState extends State<Out_University> {
             "http://192.168.3.34/hosting_api/Guest/fetch_guest_scholarship_o.php"),
       );
       var r = json.decode(res.body);
-      if (r is List<dynamic>) {
-        o_scholarship = r.map((e) => O_Scholarship.fromJson(e)).toList();
-      } else {
-        o_scholarship = [O_Scholarship.fromJson(r)];
+      if (mounted) {
+        if (r is List<dynamic>) {
+          o_scholarship = r.map((e) => O_Scholarship.fromJson(e)).toList();
+        } else {
+          o_scholarship = [O_Scholarship.fromJson(r)];
+        }
+        setState(() {
+          isLoading = false;
+        });
       }
     } catch (e) {
       print('Error fetching data: $e');
-    } finally {
-      setState(
-        () {
-          isLoading = false;
-        },
-      );
     }
   }
 

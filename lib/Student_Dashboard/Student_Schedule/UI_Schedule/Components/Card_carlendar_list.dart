@@ -20,9 +20,9 @@ class CardCalendarList extends StatelessWidget {
           return Column(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 5),
+                padding: const EdgeInsets.fromLTRB(5, 0, 5, 5),
                 child: Card(
-                  elevation: 2,
+                  elevation: 1,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
                   child: Container(

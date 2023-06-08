@@ -24,6 +24,9 @@ class _ScheduleState extends State<Schedule> {
         padding: EdgeInsets.symmetric(vertical: 5),
         children: [
           CardCalendar(),
+          SizedBox(
+            height: 5,
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(

@@ -25,8 +25,8 @@ class _AboutUSState extends State<AboutUS> {
             return Container(
               margin: EdgeInsets.fromLTRB(6, 5, 6, 0),
               child: Card(
-                elevation: 3,
-                shadowColor: Colors.grey[200],
+                elevation: 2,
+                shadowColor: ULightGreyColor,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
                 child: Expanded(

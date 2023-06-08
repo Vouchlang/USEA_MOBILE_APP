@@ -16,8 +16,10 @@ class Card_learning_pro_1 extends StatelessWidget {
       children: [
         // ! Semester 01
         Container(
+          margin: EdgeInsets.only(bottom: 5),
           child: Card(
-            elevation: 2,
+            elevation: 1,
+            shadowColor: ULightGreyColor,
             shape: RoundedRectangleBorder(
               side: BorderSide(
                 color: UBackgroundColor,
@@ -234,7 +236,9 @@ class Card_learning_pro_1 extends StatelessWidget {
         /// ! Semester 02
         Container(
           child: Card(
-            elevation: 2,
+            elevation: 1,
+            shadowColor: ULightGreyColor,
+
             shape: RoundedRectangleBorder(
               side: BorderSide(
                 color: Color.fromARGB(255, 209, 209, 209),

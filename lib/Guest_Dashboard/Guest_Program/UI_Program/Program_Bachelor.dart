@@ -64,10 +64,9 @@ class _Program_BachelorState extends State<Program_Bachelor> {
                               ),
                             ),
                             animatedWidgetFollowingHeader: Icon(
-                              Icons.keyboard_arrow_down_rounded,
-                              size: 25,
-                              color: Theme.of(context).primaryColor,
-                            ),
+                                Icons.keyboard_arrow_down_rounded,
+                                size: 25,
+                                color: UPrimaryColor),
                             childrenBody: Container(
                               padding:
                                   EdgeInsets.symmetric(horizontal: UPdMg_10),
@@ -102,9 +101,9 @@ class _Program_BachelorState extends State<Program_Bachelor> {
                     children: List.generate(
                       pro_bach_year.length,
                       (index) => Card(
-                        elevation: 3,
+                        elevation: 2,
                         color: UBackgroundColor,
-                        shadowColor: UGreyColor,
+                        shadowColor: ULightGreyColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(UPdMg_10),
                         ),

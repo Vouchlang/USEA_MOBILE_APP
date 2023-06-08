@@ -31,9 +31,9 @@ class _Major_AttendanceState extends State<Major_Attendance> {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(
               UPdMg_10,
-              UPdMg_10,
               UPdMg_15,
-              UPdMg_10,
+              UPdMg_15,
+              UPdMg_15,
             ),
             child: InkWell(
               onTap: () {

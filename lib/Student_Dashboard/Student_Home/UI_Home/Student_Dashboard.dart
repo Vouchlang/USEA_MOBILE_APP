@@ -11,6 +11,7 @@ import 'package:usea_app/Student_Dashboard/Student_Payment/UI_Payment/Payment.da
 import 'package:usea_app/Student_Dashboard/Student_Performance/UI_Perfomance/Performance.dart';
 import 'package:usea_app/Student_Dashboard/Student_Schedule/UI_Schedule/Schedule.dart';
 import 'package:usea_app/Student_Dashboard/Student_StudyInfo/UI_StudyInfo/StudyInfo.dart';
+import 'package:usea_app/theme_builder.dart';
 
 import '../../Student_Detail/Class_Detail/Class_St_Detail.dart';
 import '../../Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
@@ -238,7 +239,7 @@ class _Student_HomeState extends State<Student_Home> {
                   home_screen.length,
                   (index) => Card(
                     elevation: 3,
-                    shadowColor: Colors.grey[200],
+                    shadowColor: ULightGreyColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),

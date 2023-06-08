@@ -26,15 +26,15 @@ class _Study_InfoState extends State<Study_Info> {
             itemCount: studyInformationData.length,
             itemBuilder: (BuildContext context, index) {
               return Card(
-                elevation: 2,
-                shadowColor: UGreyColor,
+                elevation: 1,
+                shadowColor: ULightGreyColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(URoundedLarge),
                 ),
                 color: UBackgroundColor,
-                margin: EdgeInsets.all(UPdMg_5),
+                margin: EdgeInsets.fromLTRB(5, 5, 5, 10),
                 child: Padding(
-                  padding: EdgeInsets.all(UPdMg_5),
+                  padding: EdgeInsets.all(UPdMg_8),
                   child: IntrinsicHeight(
                     child: Row(
                       children: [

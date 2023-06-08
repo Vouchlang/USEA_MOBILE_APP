@@ -18,7 +18,6 @@ class PaymentCards extends StatelessWidget {
         Container(
           padding: EdgeInsets.all(UPdMg_5),
           child: Card(
-            elevation: 1,
             shape: RoundedRectangleBorder(
               side: BorderSide(
                 color: UGreyColor,
@@ -152,10 +151,9 @@ class PaymentCards2 extends StatelessWidget {
         Padding(
           padding: EdgeInsets.all(UPdMg_5),
           child: Card(
-            elevation: 2,
             shape: RoundedRectangleBorder(
               side: BorderSide(
-                color: UGreyColor,
+                color: ULightGreyColor,
                 width: 0.5,
               ),
               borderRadius: BorderRadius.circular(URoundedLarge),
@@ -269,10 +267,9 @@ class PaymentCards3 extends StatelessWidget {
         Padding(
           padding: EdgeInsets.all(UPdMg_5),
           child: Card(
-            elevation: 2,
             shape: RoundedRectangleBorder(
               side: BorderSide(
-                color: UGreyColor,
+                color: ULightGreyColor,
                 width: 0.5,
               ),
               borderRadius: BorderRadius.circular(URoundedLarge),
@@ -386,10 +383,9 @@ class PaymentCards4 extends StatelessWidget {
         Padding(
           padding: EdgeInsets.all(UPdMg_5),
           child: Card(
-            elevation: 2,
             shape: RoundedRectangleBorder(
               side: BorderSide(
-                color: UGreyColor,
+                color: ULightGreyColor,
                 width: 0.5,
               ),
               borderRadius: BorderRadius.circular(URoundedLarge),

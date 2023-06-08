@@ -40,7 +40,7 @@ class _CustomAttDialogState extends State<CustomAttDialog> {
               },
               child: Image.asset(
                 'assets/image/close.png',
-                scale: 8,
+                scale: 10,
               ),
             ),
           ),
@@ -168,7 +168,7 @@ class _CustomScoreDialogState extends State<CustomScoreDialog> {
               },
               child: Image.asset(
                 'assets/image/close.png',
-                scale: 8,
+                scale: 10,
               ),
             ),
           ),

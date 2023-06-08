@@ -22,19 +22,18 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
       var res = await http.get(Uri.parse(
           "http://192.168.3.34/hosting_api/Guest/fetch_guest_event_upcoming.php"));
       var r = json.decode(res.body);
-      if (r is List<dynamic>) {
-        up_events = r.map((e) => Class_Upcoming_Event.fromJson(e)).toList();
-      } else {
-        up_events = [Class_Upcoming_Event.fromJson(r)];
+      if (mounted) {
+        if (r is List<dynamic>) {
+          up_events = r.map((e) => Class_Upcoming_Event.fromJson(e)).toList();
+        } else {
+          up_events = [Class_Upcoming_Event.fromJson(r)];
+        }
+        setState(() {
+          isLoading = false;
+        });
       }
     } catch (e) {
       print('Error fetching data: $e');
-    } finally {
-      setState(
-        () {
-          isLoading = false;
-        },
-      );
     }
   }
 

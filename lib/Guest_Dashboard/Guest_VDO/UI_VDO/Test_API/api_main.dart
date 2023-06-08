@@ -44,13 +44,15 @@ class _FacultyListState extends State<FacultyList> {
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: AppBar(
         centerTitle: false,
-        title: Text('កម្មវិធីសិក្សា'.tr,
-            style: TextStyle(
-              color: Theme.of(context).primaryColor,
-              fontSize: 18,
-              fontFamily: 'KhmerOSbattambang',
-              fontWeight: FontWeight.w600,
-            )),
+        title: Text(
+          'កម្មវិធីសិក្សា'.tr,
+          style: TextStyle(
+            color: UPrimaryColor,
+            fontSize: 18,
+            fontFamily: UKFontFamily,
+            fontWeight: UTitleWeight,
+          ),
+        ),
         backgroundColor: Colors.white,
         elevation: 1,
         iconTheme: IconThemeData.fallback(),
@@ -95,30 +97,33 @@ class _FacultyListState extends State<FacultyList> {
                     itemBuilder: (BuildContext context, int index) {
                       return Card(
                         color: Colors.white,
-                        margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                        elevation: 3,
+                        margin: EdgeInsets.fromLTRB(10, 15, 10, 0),
+                        elevation: 2,
                         shadowColor: ULightGreyColor,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                         child: Theme(
                           data: Theme.of(context)
                               .copyWith(dividerColor: Colors.transparent),
                           child: ExpansionTile(
-                            collapsedIconColor: Theme.of(context).primaryColor,
-                            iconColor: Theme.of(context).primaryColor,
-                            textColor: Colors.black,
+                            tilePadding: EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 10),
+                            collapsedIconColor: UPrimaryColor,
+                            iconColor: UPrimaryColor,
+                            textColor: UTextColor,
                             leading: Image.network(
                               getImageUrl(snapshot.data![index].facIcon),
-                              scale: 6,
+                              scale: 4.75,
                             ),
                             title: Text(
                               snapshot.data![index].facName,
                               textAlign: TextAlign.left,
                               style: TextStyle(
-                                  fontSize: 14,
-                                  fontFamily: 'KhmerOSbattambang',
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.black),
+                                  fontSize: UTitleSize,
+                                  fontFamily: UKFontFamily,
+                                  fontWeight: UTitleWeight,
+                                  color: UTextColor),
                             ),
                             children: [
                               Column(
@@ -145,11 +150,12 @@ class _FacultyListState extends State<FacultyList> {
                                             },
                                             child: Container(
                                               decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(5),
-                                                  border: Border.all(
-                                                      color:
-                                                          Color(0xEEEEEEFF))),
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                                border: Border.all(
+                                                  color: Color(0xEEEEEEFF),
+                                                ),
+                                              ),
                                               padding: EdgeInsets.all(5),
                                               child: Row(
                                                   mainAxisAlignment:

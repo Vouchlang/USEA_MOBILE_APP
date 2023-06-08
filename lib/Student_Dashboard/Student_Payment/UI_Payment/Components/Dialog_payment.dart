@@ -41,7 +41,7 @@ class _PaymentDialogState extends State<PaymentDialog> {
               },
               child: Image.asset(
                 'assets/image/close.png',
-                scale: 8,
+                scale: 10,
               ),
             ),
           ),
@@ -75,9 +75,9 @@ class _PaymentDialogState extends State<PaymentDialog> {
                     "ឆ្នាំទី​ ១".tr,
                     style: TextStyle(
                       color: UPrimaryColor,
-                      fontSize: 14,
-                      fontFamily: 'KhmerOSbattambang',
-                      fontWeight: FontWeight.w600,
+                      fontSize: UTitleSize,
+                      fontFamily: UKFontFamily,
+                      fontWeight: UTitleWeight,
                     ),
                   ),
                 ),

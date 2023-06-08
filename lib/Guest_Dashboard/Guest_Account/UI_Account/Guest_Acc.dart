@@ -8,6 +8,7 @@ import '../../../Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
 import '../../../Student_Dashboard/Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
 import '../../../Student_Dashboard/Student_LogIn/Student_LogIn.dart';
 import '../../../Student_Dashboard/Student_LogIn/testing_log_detail.dart';
+import '../../../theme_builder.dart';
 import '/Guest_Dashboard/Guest_Account/Class_Account/Class_Account_Screen.dart';
 import '/Guest_Dashboard/Guest_New_Event/UI_News_Event/News_Event.dart';
 
@@ -135,18 +136,18 @@ class Guest_AccState extends State<Guest_Acc> {
                 ),
                 GridView.count(
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: ScrollPhysics(),
                   crossAxisCount: 2,
-                  mainAxisSpacing: 3,
+                  mainAxisSpacing: 3.5,
                   crossAxisSpacing: 3,
-                  childAspectRatio: 1.95,
-                  padding: EdgeInsets.symmetric(vertical: 0, horizontal: 6),
+                  childAspectRatio: 1.90,
+                  padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
                   children: List.generate(
                     account_screen.length,
                     (index) => Card(
                       elevation: 3,
                       color: Colors.white,
-                      shadowColor: Colors.grey[200],
+                      shadowColor: ULightGreyColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -167,7 +168,7 @@ class Guest_AccState extends State<Guest_Acc> {
                             children: [
                               Image.asset(
                                 account_screen[index].img,
-                                scale: 7,
+                                scale: 6,
                               ),
                               SizedBox(
                                 height: 7,
@@ -175,7 +176,7 @@ class Guest_AccState extends State<Guest_Acc> {
                               Text(
                                 account_screen[index].name.tr,
                                 style: TextStyle(
-                                  fontSize: 12,
+                                  fontSize: UTitleSize,
                                 ),
                               )
                             ],

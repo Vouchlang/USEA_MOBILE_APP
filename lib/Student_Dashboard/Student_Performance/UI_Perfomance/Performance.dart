@@ -58,7 +58,7 @@ class _PerformanceState extends State<Performance> {
                         boxShadow: [
                           BoxShadow(
                             blurRadius: 1,
-                            color: Colors.grey,
+                            color: ULightGreyColor,
                             offset: Offset(0, 1),
                           ),
                         ],

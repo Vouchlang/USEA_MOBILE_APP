@@ -171,8 +171,8 @@ class _Student_LogInState extends State<Student_LogIn> {
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(title: 'គណនីនិសិ្សត'.tr),
-      body: Container(
-        margin: EdgeInsets.only(top: 20),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.only(top: 20),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -326,8 +326,8 @@ class _Student_LogInState extends State<Student_LogIn> {
             InkWell(
               onTap: _submitForm,
               child: Container(
-                width: 75,
-                height: 30,
+                width: 100,
+                height: 40,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),

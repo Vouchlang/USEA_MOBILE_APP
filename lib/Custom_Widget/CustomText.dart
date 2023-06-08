@@ -310,14 +310,24 @@ class BuildAttScore extends StatelessWidget {
             builder: (context) => customDialog,
           );
         },
-        child: Text(
-          text.tr,
-          style: TextStyle(
-            color: UScoreColor,
-            fontSize: UTitleSize,
-            fontFamily: UKFontFamily,
-            fontWeight: UTitleWeight,
-            decoration: TextDecoration.underline,
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: UScoreColor,
+                width: 0.75,
+                style: BorderStyle.solid,
+              ),
+            ),
+          ),
+          child: Text(
+            text.tr,
+            style: TextStyle(
+              color: UScoreColor,
+              fontSize: UTitleSize,
+              fontFamily: UKFontFamily,
+              fontWeight: UTitleWeight,
+            ),
           ),
         ),
       ),

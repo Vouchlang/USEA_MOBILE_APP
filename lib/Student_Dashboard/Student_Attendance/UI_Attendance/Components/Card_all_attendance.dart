@@ -45,18 +45,14 @@ class _All_info_majorState extends State<All_info_major> {
                   ),
                   color: UBGLightBlue,
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                      child: CustomTextTheme(
-                        text: "សេដ្ធកិច្ចវិទ្យា",
-                        color: UPrimaryColor,
-                        fontWeight: UTitleWeight,
-                        size: UBodySize,
-                      ),
-                    ),
-                  ],
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  child: CustomTextTheme(
+                    text: "សេដ្ធកិច្ចវិទ្យា",
+                    color: UPrimaryColor,
+                    fontWeight: UTitleWeight,
+                    size: UTitleSize,
+                  ),
                 ),
               ),
               Container(

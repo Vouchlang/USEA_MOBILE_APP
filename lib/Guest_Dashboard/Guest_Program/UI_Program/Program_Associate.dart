@@ -100,7 +100,7 @@ class _Program_AssociateState extends State<Program_Associate> {
                     children: List.generate(
                       pro_asso_year.length,
                       (index) => Card(
-                        elevation: 3,
+                        elevation: 2,
                         color: UBackgroundColor,
                         shadowColor: ULightGreyColor,
                         shape: RoundedRectangleBorder(

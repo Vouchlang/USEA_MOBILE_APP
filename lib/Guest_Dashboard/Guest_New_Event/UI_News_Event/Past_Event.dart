@@ -23,24 +23,24 @@ class _Past_EventState extends State<Past_Event> {
       var res = await http.get(Uri.parse(
           "http://192.168.3.34/hosting_api/Guest/fetch_guest_event_past.php"));
       var r = json.decode(res.body);
-      if (r is List<dynamic>) {
-        past_events = r
-            .map(
-              (e) => Class_Past_Event.fromJson(e),
-            )
-            .toList();
-      } else {
-        past_events = [Class_Past_Event.fromJson(r)];
+      if (mounted) {
+        // Check if the widget is still mounted
+        if (r is List<dynamic>) {
+          past_events = r
+              .map(
+                (e) => Class_Past_Event.fromJson(e),
+              )
+              .toList();
+        } else {
+          past_events = [Class_Past_Event.fromJson(r)];
+        }
+        setState(() {
+          isLoading = false;
+        });
       }
     } catch (e) {
       print('Error fetching data: $e');
       // handle the error here
-    } finally {
-      setState(
-        () {
-          isLoading = false;
-        },
-      );
     }
   }
 

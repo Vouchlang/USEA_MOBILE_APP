@@ -11,7 +11,8 @@ const UOrangeColor = Color(0xffDF713F);
 const URedColor = Color(0xffD71818);
 const UTextColor = Color(0xff000000);
 const UGreyColor = Colors.grey;
-const ULightGreyColor = Color.fromARGB(130, 235, 235, 235);
+const ULightGreyColor = Color.fromARGB(255, 200, 200, 200);
+
 const UBtnColor = Color(0x142D74F5);
 
 const UZeroPixel = 0.0;

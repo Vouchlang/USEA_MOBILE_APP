@@ -69,7 +69,7 @@ class _AttendanceState extends State<Attendance> {
                         child: CustomTextTheme(
                           text: 'មើលទាំងអស់'.tr,
                           color: UPrimaryColor,
-                          fontWeight: UTitleWeight,
+                          fontWeight: UBodyWeight,
                           size: UBodySize,
                         ),
                       ),

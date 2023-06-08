@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_ChangeLanguage/Change_Language.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_Home/Class_Home/Class_Home_Screen.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_New_Event/UI_News_Event/News_Event.dart';
+import 'package:usea_app/theme_builder.dart';
 import '../../Guest_AboutUS/UI_AboutUS/AboutUS.dart';
 import '../../Guest_Career/UI_Career/Career.dart';
 import '../../Guest_Contact/UI_Contact/Contact.dart';
@@ -252,7 +253,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                   home_screen.length,
                   (index) => Card(
                     elevation: 3,
-                    shadowColor: Colors.grey[200],
+                    shadowColor: ULightGreyColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -290,7 +291,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                             Text(
                               home_screen[index].name.tr,
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: UTitleSize,
                               ),
                             ),
                           ],
