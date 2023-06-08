@@ -145,7 +145,7 @@ class Guest_AccState extends State<Guest_Acc> {
                   children: List.generate(
                     account_screen.length,
                     (index) => Card(
-                      elevation: 3,
+                      elevation: 2,
                       color: Colors.white,
                       shadowColor: ULightGreyColor,
                       shape: RoundedRectangleBorder(

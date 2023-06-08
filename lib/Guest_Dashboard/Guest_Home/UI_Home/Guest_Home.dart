@@ -252,7 +252,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                 children: List.generate(
                   home_screen.length,
                   (index) => Card(
-                    elevation: 3,
+                    elevation: 2,
                     shadowColor: ULightGreyColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
