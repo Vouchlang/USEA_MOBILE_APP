@@ -69,7 +69,7 @@ class _ScholarshipState extends State<Scholarship> {
                             boxShadow: [
                               BoxShadow(
                                 blurRadius: 1,
-                                color: UGreyColor,
+                                color: ULightGreyColor,
                                 offset: Offset(0, 1),
                               ),
                             ],

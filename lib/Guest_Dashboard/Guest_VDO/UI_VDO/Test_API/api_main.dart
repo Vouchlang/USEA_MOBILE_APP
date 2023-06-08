@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:usea_app/Guest_Dashboard/Guest_VDO/UI_VDO/Test_API/test_api_search.dart';
+import '../../../../theme_builder.dart';
 import '../../../Guest_Program/UI_Program/Program_Major_Detail_Main.dart';
 import 'Demo_Lite/api_major_detail.dart';
 import 'Demo_Lite/class_demo.dart';
@@ -96,7 +97,7 @@ class _FacultyListState extends State<FacultyList> {
                         color: Colors.white,
                         margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
                         elevation: 3,
-                        shadowColor: Colors.grey[200],
+                        shadowColor: ULightGreyColor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
                         child: Theme(
@@ -132,15 +133,14 @@ class _FacultyListState extends State<FacultyList> {
                                               Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        Program_Major_Detail_Main(),
-                                                    //     Major_Detail_Lite(
-                                                    //   majorData:
-                                                    //       snapshot.data![index],
-                                                    //   index: entry.key,
-                                                    // ),
-
-                                                    ),
+                                                  builder: (context) =>
+                                                      Program_Major_Detail_Main(),
+                                                  //     Major_Detail_Lite(
+                                                  //   majorData:
+                                                  //       snapshot.data![index],
+                                                  //   index: entry.key,
+                                                  // ),
+                                                ),
                                               );
                                             },
                                             child: Container(

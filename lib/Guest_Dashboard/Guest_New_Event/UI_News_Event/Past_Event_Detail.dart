@@ -45,7 +45,7 @@ class Past_Event_Detail extends StatelessWidget {
                   boxShadow: [
                     BoxShadow(
                       offset: Offset(0, 1),
-                      color: UGreyColor,
+                      color: ULightGreyColor,
                       blurRadius: 1,
                     )
                   ],

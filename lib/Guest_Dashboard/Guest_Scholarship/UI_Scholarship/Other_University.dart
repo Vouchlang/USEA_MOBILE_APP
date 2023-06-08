@@ -66,8 +66,8 @@ class _Out_UniversityState extends State<Out_University> {
                         UPdMg_5,
                       ),
                       child: Card(
-                        elevation: 3,
-                        shadowColor: UGreyColor,
+                        elevation: 2,
+                        shadowColor: ULightGreyColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(UPdMg_10),
                         ),

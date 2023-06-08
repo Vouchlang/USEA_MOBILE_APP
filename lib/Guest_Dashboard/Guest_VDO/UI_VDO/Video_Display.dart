@@ -125,7 +125,7 @@ class _Video_DisplayState extends State<Video_Display> {
               boxShadow: [
                 BoxShadow(
                   offset: Offset(0, 1),
-                  color: Colors.grey,
+                  color: Color.fromARGB(130, 158, 158, 158),
                   blurRadius: 2,
                 ),
               ],

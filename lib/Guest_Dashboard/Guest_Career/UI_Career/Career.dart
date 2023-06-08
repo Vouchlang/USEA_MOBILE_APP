@@ -81,7 +81,7 @@ class _CareerState extends State<Career> {
                                     backgroundImage: NetworkImage(
                                       getLogo(career[index].logo),
                                     ),
-                                    radius: 40,
+                                    radius: 35,
                                   ),
                                   SizedBox(
                                     width: 15,
@@ -111,7 +111,12 @@ class _CareerState extends State<Career> {
                               SizedBox(
                                 height: 5,
                               ),
-                              if (!isFinalIndex) buildDividerAtt(),
+                              if (!isFinalIndex)
+                                Divider(
+                                  thickness: 0.5,
+                                  height: 25,
+                                  color: UGreyColor,
+                                ),
                             ],
                           ),
                         ),

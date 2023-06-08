@@ -102,7 +102,7 @@ class _Program_AssociateState extends State<Program_Associate> {
                       (index) => Card(
                         elevation: 3,
                         color: UBackgroundColor,
-                        shadowColor: UGreyColor,
+                        shadowColor: ULightGreyColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(URoundedLarge),
                         ),

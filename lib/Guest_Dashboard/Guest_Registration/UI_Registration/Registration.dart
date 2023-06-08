@@ -62,8 +62,8 @@ class _RegistrationState extends State<Registration> {
                 itemCount: registration.length,
                 itemBuilder: (context, index) {
                   return Card(
-                    elevation: 3,
-                    shadowColor: Colors.grey[200],
+                    elevation: 2,
+                    shadowColor: ULightGreyColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(URoundedLarge),
                     ),

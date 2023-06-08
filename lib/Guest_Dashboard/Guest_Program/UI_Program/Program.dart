@@ -19,7 +19,7 @@ class _ProgramState extends State<Program> {
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: AppBar(
         centerTitle: false,
-        title: Text('កម្មវិធីសិក្សា'.tr,
+        title: Text('កម្មវិធីសិក្សា5'.tr,
             style: TextStyle(
               color: Theme.of(context).primaryColor,
               fontSize: 18,

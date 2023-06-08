@@ -68,7 +68,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                   return Container(
                     child: Card(
                       elevation: 3,
-                      shadowColor: UGreyColor,
+                      shadowColor: ULightGreyColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(URoundedLarge),
                       ),

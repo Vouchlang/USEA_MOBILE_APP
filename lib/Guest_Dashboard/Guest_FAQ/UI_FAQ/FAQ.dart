@@ -63,7 +63,7 @@ class _FAQState extends State<FAQ> {
                       child: Card(
                         margin: EdgeInsets.only(top: 10),
                         elevation: 3,
-                        shadowColor: Colors.grey[200],
+                        shadowColor: ULightGreyColor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
                         child: Column(

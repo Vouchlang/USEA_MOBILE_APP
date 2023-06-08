@@ -11,6 +11,7 @@ const UOrangeColor = Color(0xffDF713F);
 const URedColor = Color(0xffD71818);
 const UTextColor = Color(0xff000000);
 const UGreyColor = Colors.grey;
+const ULightGreyColor = Color.fromARGB(130, 235, 235, 235);
 const UBtnColor = Color(0x142D74F5);
 
 const UZeroPixel = 0.0;
@@ -26,7 +27,6 @@ const FontWeight UBodyWeight = FontWeight.w500;
 // * @ FontFamily
 const UKFontFamily = "KhmerOSbattambang";
 const UEFontFamily = "Poppins";
-
 
 //  * @ Padding & Margin Theme
 const UPdMg_5 = 5.0; // UPd_Mg_ExtraSmall

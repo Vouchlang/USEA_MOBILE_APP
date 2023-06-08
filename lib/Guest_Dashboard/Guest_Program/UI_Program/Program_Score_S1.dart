@@ -20,7 +20,7 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
       body: SingleChildScrollView(
         child: Card(
           elevation: 2,
-          shadowColor: UGreyColor,
+          shadowColor: ULightGreyColor,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(URoundedLarge)),
           margin: EdgeInsets.all(UPdMg_10),

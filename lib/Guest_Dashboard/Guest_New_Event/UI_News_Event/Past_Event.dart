@@ -74,7 +74,7 @@ class _Past_EventState extends State<Past_Event> {
                         UPdMg_10,
                       ),
                       elevation: 3,
-                      shadowColor: UGreyColor,
+                      shadowColor: ULightGreyColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(URoundedLarge),
                       ),

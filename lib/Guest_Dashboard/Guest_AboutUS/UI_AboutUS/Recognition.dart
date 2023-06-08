@@ -79,7 +79,7 @@ class _RecognitionState extends State<Recognition> {
                                     'អានបន្ថែម'.tr,
                                     style: TextStyle(
                                         fontSize: UBodySize,
-                                        fontWeight: UTitleWeight,
+                                        fontWeight: UBodyWeight,
                                         color: UPrimaryColor),
                                   ),
                                 ),

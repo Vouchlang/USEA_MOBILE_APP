@@ -71,7 +71,7 @@ class _Program_Major_DetailState extends State<Program_Major_Detail_Main> {
                             boxShadow: [
                               BoxShadow(
                                 blurRadius: 1,
-                                color: UGreyColor,
+                                color: ULightGreyColor,
                                 offset: Offset(0, 1),
                               )
                             ],

@@ -72,7 +72,7 @@ class _New_EventState extends State<New_Event> {
                             boxShadow: [
                               BoxShadow(
                                 blurRadius: 1,
-                                color: UGreyColor,
+                                color: ULightGreyColor,
                                 offset: Offset(0, 1),
                               ),
                             ],
