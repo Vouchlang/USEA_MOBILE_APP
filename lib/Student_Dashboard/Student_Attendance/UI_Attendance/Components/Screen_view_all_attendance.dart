@@ -41,7 +41,7 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
               children: [
                 SizedBox(height: 5),
                 Container(
-                  height: 65,
+                  height: 70,
                   width: UFullWidth,
                   child: ListView.builder(
                     physics: BouncingScrollPhysics(),
@@ -55,8 +55,8 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
                       },
                       child: AnimatedContainer(
                         duration: Duration(milliseconds: 300),
-                        height: 65,
-                        width: 115,
+                        height: 70,
+                        width: 120,
                         decoration: BoxDecoration(
                           color: current == index
                               ? UPrimaryColor
@@ -65,7 +65,7 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
                           boxShadow: [
                             BoxShadow(
                               blurRadius: 1,
-                              color: UGreyColor,
+                              color: ULightGreyColor,
                               offset: Offset(0, 1),
                             )
                           ],

@@ -35,7 +35,7 @@ class _PerformanceState extends State<Performance> {
                 height: 5,
               ),
               SizedBox(
-                height: 65,
+                height: 70,
                 width: UFullWidth,
                 child: ListView.builder(
                   physics: const BouncingScrollPhysics(),
@@ -49,8 +49,8 @@ class _PerformanceState extends State<Performance> {
                     },
                     child: AnimatedContainer(
                       duration: Duration(milliseconds: 300),
-                      height: 65,
-                      width: 115,
+                      height: 70,
+                      width: 120,
                       decoration: BoxDecoration(
                         color:
                             current == index ? UPrimaryColor : UBackgroundColor,

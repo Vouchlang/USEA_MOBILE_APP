@@ -62,7 +62,7 @@ class _Program_Major_DetailState extends State<Program_Major_Detail_Main> {
                             horizontal: UPdMg_5,
                           ),
                           padding: EdgeInsets.all(UPdMg_10),
-                          width: 175,
+                          width: 150,
                           decoration: BoxDecoration(
                             color: current == index
                                 ? UPrimaryColor

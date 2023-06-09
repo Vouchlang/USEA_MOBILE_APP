@@ -60,7 +60,7 @@ class _ScholarshipState extends State<Scholarship> {
                           margin: EdgeInsets.symmetric(
                               vertical: UPdMg_10, horizontal: UPdMg_5),
                           padding: EdgeInsets.all(UPdMg_10),
-                          width: 180,
+                          width: 150,
                           decoration: BoxDecoration(
                             color: current == index
                                 ? UPrimaryColor
