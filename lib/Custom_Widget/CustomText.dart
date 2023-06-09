@@ -55,7 +55,7 @@ Widget buildVerticalDividerH_45() {
   return Container(
     width: 1,
     height: 45,
-    color: Colors.grey[300],
+    color: UGreyColor,
   );
 }
 // *@  End Divider
@@ -202,7 +202,7 @@ class NormalTitleCenterTheme extends StatelessWidget {
       child: Text(
         text,
         textAlign: TextAlign.center,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: UTitleSize,
           fontWeight: UTitleWeight,
           color: UTextColor,
@@ -266,7 +266,11 @@ class CustomTextTheme extends StatelessWidget {
 // *@ End General custom text
 
 // *@ Screen_Performance widget
-Widget buildTitleContainer(double width, String text, Alignment align) {
+Widget buildTitleContainer(
+  double width,
+  String text,
+  Alignment align,
+) {
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 4),
     width: width,
@@ -284,16 +288,11 @@ Widget buildTitleContainer(double width, String text, Alignment align) {
 }
 
 class BuildSemesterPerformance extends StatelessWidget {
-  final String semester;
+  final String semester, totalScore, rank, gpa;
   final int itemCount;
   final List<String> subject;
-  final Widget dialog1;
-  final List<double> attend;
-  final Widget dialog2;
-  final List<double> score;
-  final String totalScore;
-  final String rank;
-  final String gpa;
+  final Widget dialog1, dialog2;
+  final List<double> attend, score;
 
   const BuildSemesterPerformance(
       {super.key,
@@ -346,15 +345,13 @@ class BuildSemesterPerformance extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      child: Text(
-                        semester.tr,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: UPrimaryColor,
-                          fontSize: UTitleSize,
-                          fontWeight: UTitleWeight,
-                        ),
+                    Text(
+                      semester.tr,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: UPrimaryColor,
+                        fontSize: UTitleSize,
+                        fontWeight: UTitleWeight,
                       ),
                     ),
                     Row(
@@ -489,15 +486,12 @@ class BuildSemesterPerformance extends StatelessWidget {
                 ],
               ),
             ),
-
-            // ! End Total Score and End Body card 1
           ],
         ),
       ),
     );
   }
 }
-
 // *@ End Screen_Performance widget
 
 // *@ ScoreTotal
@@ -562,7 +556,10 @@ class BuildAttScore extends StatelessWidget {
 // *@ End Attendance score
 
 // *@ Attendance Score Type
-Widget buildAttList(String text, Color color) {
+Widget buildAttList(
+  String text,
+  Color color,
+) {
   return Row(
     children: [
       Icon(
@@ -586,7 +583,9 @@ Widget buildAttList(String text, Color color) {
 // *@ End Attendance Score Type
 
 // *@ Card Attendance
-Widget buildCHText(String text) {
+Widget buildCHText(
+  String text,
+) {
   return Text(
     text,
     style: TextStyle(
@@ -595,7 +594,10 @@ Widget buildCHText(String text) {
   );
 }
 
-Widget buildNum(String text, Color color) {
+Widget buildNum(
+  String text,
+  Color color,
+) {
   return Text(
     text,
     style: TextStyle(
@@ -605,7 +607,9 @@ Widget buildNum(String text, Color color) {
   );
 }
 
-Widget buildHeader(String text) {
+Widget buildHeader(
+  String text,
+) {
   return Container(
     width: 75,
     child: Text(
@@ -620,7 +624,10 @@ Widget buildHeader(String text) {
   );
 }
 
-Widget buildTextBody(String text, Color color) {
+Widget buildTextBody(
+  String text,
+  Color color,
+) {
   return Container(
     width: 75,
     child: Text(
@@ -636,7 +643,10 @@ Widget buildTextBody(String text, Color color) {
 // *@ End Card Attendance
 
 // *@ Payments
-Widget buildTitle(String text, Widget widget) {
+Widget buildTitle(
+  String text,
+  Widget widget,
+) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -647,8 +657,8 @@ Widget buildTitle(String text, Widget widget) {
             text.tr,
             style: TextStyle(
               color: UPrimaryColor,
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
+              fontSize: UBodySize,
+              fontWeight: UTitleWeight,
             ),
           ),
         ),
@@ -660,7 +670,10 @@ Widget buildTitle(String text, Widget widget) {
   );
 }
 
-Widget buildHeaderTitle(double num, String text) {
+Widget buildHeaderTitle(
+  double num,
+  String text,
+) {
   return SizedBox(
     width: num,
     child: Text(
@@ -675,7 +688,11 @@ Widget buildHeaderTitle(double num, String text) {
   );
 }
 
-Widget buildBody(double num, String text, Color color) {
+Widget buildBody(
+  double num,
+  String text,
+  Color color,
+) {
   return SizedBox(
     width: num,
     child: Text(
@@ -692,7 +709,11 @@ Widget buildBody(double num, String text, Color color) {
 
 // *@ Student Detail
 Widget buildHeaderDetail(
-    String text, String font, double size, FontWeight fontWeight) {
+  String text,
+  String font,
+  double size,
+  FontWeight fontWeight,
+) {
   return Container(
     height: 25,
     alignment: Alignment.center,
@@ -707,7 +728,10 @@ Widget buildHeaderDetail(
   );
 }
 
-Widget buildBodyDetail(String text1, String text2) {
+Widget buildBodyDetail(
+  String text1,
+  String text2,
+) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.center,
@@ -715,20 +739,30 @@ Widget buildBodyDetail(String text1, String text2) {
     children: [
       Text(
         text1.tr,
-        style: TextStyle(fontSize: UBodySize, color: UPrimaryColor),
+        style: TextStyle(
+          fontSize: UBodySize,
+          color: UPrimaryColor,
+        ),
       ),
       SizedBox(
         height: 2,
       ),
       Text(
         text2,
-        style: TextStyle(fontFamily: UEFontFamily, fontSize: UTitleSize),
+        style: TextStyle(
+          fontFamily: UEFontFamily,
+          fontSize: UTitleSize,
+        ),
       )
     ],
   );
 }
 
-Widget buildTailDetail(String image, title, text) {
+Widget buildTailDetail(
+  String image,
+  title,
+  text,
+) {
   return Row(
     children: [
       Image.asset(
@@ -750,7 +784,10 @@ Widget buildTailDetail(String image, title, text) {
           ),
           Text(
             text,
-            style: TextStyle(fontSize: UTitleSize, fontFamily: UKFontFamily),
+            style: TextStyle(
+              fontSize: UTitleSize,
+              fontFamily: UKFontFamily,
+            ),
           ),
         ],
       )
@@ -760,7 +797,11 @@ Widget buildTailDetail(String image, title, text) {
 // *@ End Student Detail
 
 // *@ VDO
-Widget buildListText(String text, int line, double size) {
+Widget buildListText(
+  String text,
+  int line,
+  double size,
+) {
   return Text(
     text,
     textAlign: TextAlign.justify,
@@ -773,7 +814,11 @@ Widget buildListText(String text, int line, double size) {
   );
 }
 
-Widget buildTitleBody(String text, double size, FontWeight fontWeight) {
+Widget buildTitleBody(
+  String text,
+  double size,
+  FontWeight fontWeight,
+) {
   return Text(
     text,
     textAlign: TextAlign.justify,
@@ -807,7 +852,10 @@ Widget buildHistory(String text) {
           child: Text(
             text,
             textAlign: TextAlign.justify,
-            style: TextStyle(fontSize: UTitleSize, fontFamily: UEFontFamily),
+            style: TextStyle(
+              fontSize: UTitleSize,
+              fontFamily: UEFontFamily,
+            ),
           ),
         ),
       ],
@@ -817,7 +865,10 @@ Widget buildHistory(String text) {
 // *@ End AboutUS
 
 // *@ Vision
-Widget buildTitleVision(String text1, text2) {
+Widget buildTitleVision(
+  String text1,
+  text2,
+) {
   return Container(
     margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
     child: Column(
@@ -889,7 +940,10 @@ Widget buildLowBodyVision(String text) {
 }
 
 // *@ FAQ
-Widget buildFAQ(String text, TextAlign align) {
+Widget buildFAQ(
+  String text,
+  TextAlign align,
+) {
   return Text(
     text,
     textAlign: align,
