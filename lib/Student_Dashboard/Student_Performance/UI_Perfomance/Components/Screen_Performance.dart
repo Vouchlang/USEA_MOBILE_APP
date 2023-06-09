@@ -14,6 +14,29 @@ class Card_learning_pro_1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        BuildSemesterPerformance(
+          semester: 'ឆមាសទី 3',
+          itemCount: class_program_Score_s1.length,
+          subject: class_program_Score_s1[0].subject,
+          dialog1: CustomAttDialog(),
+          attend: class_program_Score_s1[0].att.toStringAsFixed(2),
+          dialog2: CustomScoreDialog(),
+          score: class_program_Score_s1[0].score.toStringAsFixed(2),
+          totalScore: class_program_Score_s1
+              .fold(
+                0.0,
+                (sum, data) =>
+                    sum + (data.score) / class_program_Score_s1.length,
+              )
+              .toString()
+              .substring(0, 5),
+          rank: (class_program_Score_s1.indexWhere(
+                      (data) => data.score == class_program_Score_s1[0].score) +
+                  1)
+              .toString(),
+          gpa: '9.99',
+        ),
+
         // ! Semester 01
         Container(
           margin: EdgeInsets.only(bottom: 5),

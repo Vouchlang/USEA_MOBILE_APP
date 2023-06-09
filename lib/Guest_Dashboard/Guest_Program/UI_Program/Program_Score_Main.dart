@@ -61,7 +61,7 @@ class _Program_Score_MainState extends State<Program_Score_Main> {
                             horizontal: UPdMg_5,
                           ),
                           padding: EdgeInsets.all(UPdMg_10),
-                          width: 150,
+                          width: 175,
                           decoration: BoxDecoration(
                             color: current == index
                                 ? UPrimaryColor

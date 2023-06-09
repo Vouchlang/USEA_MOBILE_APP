@@ -34,7 +34,7 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: EdgeInsets.all(UPdMg_5),
+            padding: EdgeInsets.fromLTRB(5, 0, 5, 5),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,

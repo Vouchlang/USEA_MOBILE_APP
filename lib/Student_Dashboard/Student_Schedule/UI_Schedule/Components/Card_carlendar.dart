@@ -62,6 +62,18 @@ class _CardCalendarState extends State<CardCalendar> {
               headerStyle: HeaderStyle(
                 headerPadding:
                     EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                titleTextStyle:
+                    TextStyle(color: UPrimaryColor, fontSize: UTitleSize16),
+                leftChevronIcon: Icon(
+                  Icons.arrow_back_ios,
+                  size: 20,
+                  color: UPrimaryColor,
+                ),
+                rightChevronIcon: Icon(
+                  Icons.arrow_forward_ios,
+                  size: 20,
+                  color: UPrimaryColor,
+                ),
                 formatButtonVisible: false,
                 titleCentered: true,
               ),

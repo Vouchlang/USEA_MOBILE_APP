@@ -59,13 +59,14 @@ class _FAQState extends State<FAQ> {
                 child: ListView.builder(
                   itemCount: faq.length,
                   itemBuilder: (context, index) {
-                    return Container(
-                      child: Card(
-                        margin: EdgeInsets.only(top: 10),
-                        elevation: 3,
-                        shadowColor: ULightGreyColor,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
+                    return Card(
+                      margin: EdgeInsets.only(top: 15),
+                      elevation: 2,
+                      shadowColor: ULightGreyColor,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: UPdMg_10),
                         child: Column(
                           children: [
                             Theme(
@@ -76,7 +77,7 @@ class _FAQState extends State<FAQ> {
                                 iconColor: UPrimaryColor,
                                 title: buildFAQ(
                                     faq[index].question, TextAlign.left),
-                                textColor: Colors.black,
+                                textColor: UTextColor,
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(

@@ -5,7 +5,6 @@ import '../../../Custom_AppBar.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
 import '../Class_JobHistory/Class_Job_History.dart';
-import 'package:styled_divider/styled_divider.dart';
 
 class Job_History extends StatelessWidget {
   final List<JobHistory> data_jobhistory;
@@ -25,8 +24,8 @@ class Job_History extends StatelessWidget {
               itemCount: data_jobhistory.length,
               itemBuilder: (context, index) {
                 return Card(
-                  elevation: 3,
-                  shadowColor: Colors.grey[200],
+                  elevation: 2,
+                  shadowColor: ULightGreyColor,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(URoundedLarge)),
                   child: Padding(

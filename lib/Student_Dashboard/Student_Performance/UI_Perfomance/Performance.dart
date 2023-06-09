@@ -34,9 +34,10 @@ class _PerformanceState extends State<Performance> {
               SizedBox(
                 height: 5,
               ),
-              SizedBox(
+              Container(
                 height: 70,
                 width: UFullWidth,
+                padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
                 child: ListView.builder(
                   physics: const BouncingScrollPhysics(),
                   itemCount: items.length,

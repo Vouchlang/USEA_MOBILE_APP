@@ -1,7 +1,12 @@
 // ignore_for_file: file_names, avoid_unnecessary_containers, must_be_immutable
 
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:usea_app/Guest_Dashboard/Guest_Program/Class_Program/Class_Program_Score_S1.dart';
+import '../Student_Dashboard/Student_Performance/UI_Perfomance/Class_Performance/Class_Data_performance.dart';
+import '../Student_Dashboard/Student_Performance/UI_Perfomance/Components/Dialog_performance.dart';
 import '../theme_builder.dart';
 
 // *@ Divider
@@ -132,6 +137,7 @@ class NoWeightTitleTheme extends StatelessWidget {
     );
   }
 }
+// *@ End No Weight Title
 
 // *@ Normal Title 16px UTextColor
 class TitleSize16_Theme extends StatelessWidget {
@@ -157,6 +163,7 @@ class TitleSize16_Theme extends StatelessWidget {
     );
   }
 }
+// *@ End Normal Title 16px UTextColor
 
 // *@ Normal Title 16px UPrimaryColor
 class PriColorTitleSize16Theme extends StatelessWidget {
@@ -182,6 +189,7 @@ class PriColorTitleSize16Theme extends StatelessWidget {
     );
   }
 }
+// *@ End Normal Title 16px UPrimaryColor
 
 // *@ Center Title Pri_color
 class NormalTitleCenterTheme extends StatelessWidget {
@@ -207,6 +215,7 @@ class NormalTitleCenterTheme extends StatelessWidget {
     );
   }
 }
+// *@ End Center Title Pri_color
 
 // *@ Body text
 class BodyTheme extends StatelessWidget {
@@ -229,6 +238,7 @@ class BodyTheme extends StatelessWidget {
     );
   }
 }
+// *@ End Body text
 
 // *@ General custom text
 class CustomTextTheme extends StatelessWidget {
@@ -257,6 +267,7 @@ class CustomTextTheme extends StatelessWidget {
     );
   }
 }
+// *@ End General custom text
 
 // *@ Screen_Performance widget
 Widget buildTitleContainer(double width, String text, Alignment align) {
@@ -276,6 +287,234 @@ Widget buildTitleContainer(double width, String text, Alignment align) {
   );
 }
 
+class BuildSemesterPerformance extends StatelessWidget {
+  final String semester;
+  final int itemCount;
+  final String subject;
+  final Widget dialog1;
+  final String attend;
+  final Widget dialog2;
+  final String score;
+  final String totalScore;
+  final String rank;
+  final String gpa;
+
+  const BuildSemesterPerformance(
+      {super.key,
+      required this.semester,
+      required this.itemCount,
+      required this.subject,
+      required this.dialog1,
+      required this.attend,
+      required this.dialog2,
+      required this.score,
+      required this.totalScore,
+      required this.rank,
+      required this.gpa});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(bottom: 5),
+      child: Card(
+        elevation: 1,
+        shadowColor: ULightGreyColor,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(
+            color: UBackgroundColor,
+            width: 0.5,
+          ),
+          borderRadius: BorderRadius.circular(URoundedLarge),
+        ),
+        margin: EdgeInsets.all(UPdMg_10),
+        color: UBackgroundColor,
+
+        // todo: BODY CONTENT
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // *Container Header Card 1
+            Container(
+              padding: EdgeInsets.symmetric(
+                vertical: UPdMg_15,
+                horizontal: UPdMg_10,
+              ),
+              width: UFullWidth,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(URoundedLarge),
+                  topRight: Radius.circular(URoundedLarge),
+                  bottomRight: Radius.circular(UZeroPixel),
+                  bottomLeft: Radius.circular(UZeroPixel),
+                ),
+                color: UBGLightBlue,
+              ),
+
+              // *Header Table
+              child: IntrinsicHeight(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      child: Text(
+                        semester.tr,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: UPrimaryColor,
+                          fontSize: UTitleSize,
+                          fontWeight: UTitleWeight,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: Row(
+                        children: [
+                          buildTitleContainer(
+                            100,
+                            'វត្តមាន',
+                            Alignment.centerRight,
+                          ),
+                          VerticalDivider(
+                            color: UGreyColor,
+                            thickness: 0.5,
+                          ),
+                          buildTitleContainer(
+                            50,
+                            'ពិន្ទុ',
+                            Alignment.centerLeft,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            // *Body Card 1
+            Container(
+              padding: EdgeInsets.all(UPdMg_10),
+              width: UFullWidth,
+              child: ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: itemCount,
+                itemBuilder: (context, index) {
+                  return Container(
+                    padding: EdgeInsets.symmetric(vertical: UPdMg_10),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IntrinsicHeight(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  subject,
+                                  style: TextStyle(
+                                    color: UTextColor,
+                                    fontSize: UTitleSize,
+                                    fontFamily: UKFontFamily,
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  BuildAttScore(
+                                    customDialog: dialog1,
+                                    text: attend,
+                                  ),
+                                  VerticalDivider(
+                                    color: UGreyColor,
+                                    thickness: 0.5,
+                                  ),
+                                  BuildAttScore(
+                                    customDialog: dialog2,
+                                    text: score,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+
+            // ? Total Score
+            Container(
+              padding: EdgeInsets.symmetric(
+                vertical: UPdMg_5,
+                horizontal: UPdMg_10,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    'មធ្យមភាគៈ'.tr,
+                    style: TextStyle(
+                      color: UPrimaryColor,
+                    ),
+                  ),
+                  buildScoreTotal(totalScore),
+                ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(
+                vertical: UPdMg_5,
+                horizontal: UPdMg_10,
+              ),
+              alignment: Alignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    'ចំណាត់ថ្នាក់ប្រចាំថ្នាក់ៈ'.tr,
+                    style: TextStyle(
+                      color: UPrimaryColor,
+                    ),
+                  ),
+                  buildScoreTotal(rank),
+                ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(
+                vertical: UPdMg_5,
+                horizontal: UPdMg_10,
+              ),
+              alignment: Alignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    'GPA:',
+                    style: TextStyle(
+                      color: UPrimaryColor,
+                    ),
+                  ),
+                  buildScoreTotal(gpa),
+                ],
+              ),
+            ),
+
+            // ! End Total Score and End Body card 1
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// *@ End Screen_Performance widget
+
 // *@ ScoreTotal
 Widget buildScoreTotal(String text) {
   return Container(
@@ -287,6 +526,7 @@ Widget buildScoreTotal(String text) {
     ),
   );
 }
+// *@ End ScoreTotal
 
 // *@ Attendance score
 class BuildAttScore extends StatelessWidget {
@@ -334,6 +574,7 @@ class BuildAttScore extends StatelessWidget {
     );
   }
 }
+// *@ End Attendance score
 
 // *@ Attendance Score Type
 Widget buildAttList(String text, Color color) {
@@ -357,6 +598,7 @@ Widget buildAttList(String text, Color color) {
     ],
   );
 }
+// *@ End Attendance Score Type
 
 // *@ Card Attendance
 Widget buildCHText(String text) {
@@ -406,7 +648,6 @@ Widget buildTextBody(String text, Color color) {
     ),
   );
 }
-
 // *@ End Card Attendance
 
 // *@ Payments
@@ -668,8 +909,10 @@ Widget buildFAQ(String text, TextAlign align) {
     text,
     textAlign: align,
     style: TextStyle(
-        fontSize: UTitleSize, fontFamily: UKFontFamily, color: UTextColor),
+      fontSize: UTitleSize16,
+      fontFamily: UKFontFamily,
+      color: UTextColor,
+    ),
   );
 }
-
 // *@ End FAQ
