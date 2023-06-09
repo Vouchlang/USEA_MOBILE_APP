@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_ChangeLanguage/Change_Language.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_Home/Class_Home/Class_Home_Screen.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_New_Event/UI_News_Event/News_Event.dart';
-import 'package:usea_app/theme_builder.dart';
+import '/Guest_Dashboard/Guest_ChangeLanguage/Change_Language.dart';
+import '/Guest_Dashboard/Guest_Home/Class_Home/Class_Home_Screen.dart';
+import '/Guest_Dashboard/Guest_New_Event/UI_News_Event/News_Event.dart';
+import '/theme_builder.dart';
 import '../../Guest_AboutUS/UI_AboutUS/AboutUS.dart';
 import '../../Guest_Career/UI_Career/Career.dart';
 import '../../Guest_Contact/UI_Contact/Contact.dart';
@@ -100,11 +100,13 @@ class _Guest_HomeState extends State<Guest_Home> {
 
     Widget buildImage(String image_slide, int index) => Container(
           margin: EdgeInsets.symmetric(horizontal: 5),
-          color: Colors.grey[200],
           width: double.infinity,
-          child: Image.asset(
-            image_slide,
-            fit: BoxFit.cover,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Image.asset(
+              image_slide,
+              fit: BoxFit.cover,
+            ),
           ),
         );
 

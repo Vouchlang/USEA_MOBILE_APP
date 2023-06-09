@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/theme_builder.dart';
-
+import '/theme_builder.dart';
 import '../../../Custom_AppBar.dart';
 import '../Class_AboutUS/Class_AboutUS.dart';
 

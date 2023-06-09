@@ -1,12 +1,7 @@
 // ignore_for_file: file_names, avoid_unnecessary_containers, must_be_immutable
 
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_Program/Class_Program/Class_Program_Score_S1.dart';
-import '../Student_Dashboard/Student_Performance/UI_Perfomance/Class_Performance/Class_Data_performance.dart';
-import '../Student_Dashboard/Student_Performance/UI_Perfomance/Components/Dialog_performance.dart';
 import '../theme_builder.dart';
 
 // *@ Divider
@@ -63,7 +58,6 @@ Widget buildVerticalDividerH_45() {
     color: Colors.grey[300],
   );
 }
-
 // *@  End Divider
 
 // *@ Title
@@ -87,6 +81,7 @@ class TitleTheme extends StatelessWidget {
     );
   }
 }
+// *@  End Title
 
 // *@ Normal Title
 class NormalTitleTheme extends StatelessWidget {
@@ -112,6 +107,7 @@ class NormalTitleTheme extends StatelessWidget {
     );
   }
 }
+// *@ End Normal Title
 
 // *@ No Weight Title
 class NoWeightTitleTheme extends StatelessWidget {
@@ -290,11 +286,11 @@ Widget buildTitleContainer(double width, String text, Alignment align) {
 class BuildSemesterPerformance extends StatelessWidget {
   final String semester;
   final int itemCount;
-  final String subject;
+  final List<String> subject;
   final Widget dialog1;
-  final String attend;
+  final List<double> attend;
   final Widget dialog2;
-  final String score;
+  final List<double> score;
   final String totalScore;
   final String rank;
   final String gpa;
@@ -328,12 +324,9 @@ class BuildSemesterPerformance extends StatelessWidget {
         ),
         margin: EdgeInsets.all(UPdMg_10),
         color: UBackgroundColor,
-
-        // todo: BODY CONTENT
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // *Container Header Card 1
             Container(
               padding: EdgeInsets.symmetric(
                 vertical: UPdMg_15,
@@ -349,8 +342,6 @@ class BuildSemesterPerformance extends StatelessWidget {
                 ),
                 color: UBGLightBlue,
               ),
-
-              // *Header Table
               child: IntrinsicHeight(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -366,32 +357,28 @@ class BuildSemesterPerformance extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
-                      child: Row(
-                        children: [
-                          buildTitleContainer(
-                            100,
-                            'វត្តមាន',
-                            Alignment.centerRight,
-                          ),
-                          VerticalDivider(
-                            color: UGreyColor,
-                            thickness: 0.5,
-                          ),
-                          buildTitleContainer(
-                            50,
-                            'ពិន្ទុ',
-                            Alignment.centerLeft,
-                          ),
-                        ],
-                      ),
+                    Row(
+                      children: [
+                        buildTitleContainer(
+                          100,
+                          'វត្តមាន',
+                          Alignment.centerRight,
+                        ),
+                        VerticalDivider(
+                          color: UGreyColor,
+                          thickness: 0.5,
+                        ),
+                        buildTitleContainer(
+                          50,
+                          'ពិន្ទុ',
+                          Alignment.centerLeft,
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ),
             ),
-
-            // *Body Card 1
             Container(
               padding: EdgeInsets.all(UPdMg_10),
               width: UFullWidth,
@@ -411,7 +398,7 @@ class BuildSemesterPerformance extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Text(
-                                  subject,
+                                  subject[index],
                                   style: TextStyle(
                                     color: UTextColor,
                                     fontSize: UTitleSize,
@@ -425,7 +412,7 @@ class BuildSemesterPerformance extends StatelessWidget {
                                 children: [
                                   BuildAttScore(
                                     customDialog: dialog1,
-                                    text: attend,
+                                    text: attend[index].toStringAsFixed(2),
                                   ),
                                   VerticalDivider(
                                     color: UGreyColor,
@@ -433,7 +420,7 @@ class BuildSemesterPerformance extends StatelessWidget {
                                   ),
                                   BuildAttScore(
                                     customDialog: dialog2,
-                                    text: score,
+                                    text: score[index].toStringAsFixed(2),
                                   ),
                                 ],
                               ),
@@ -446,8 +433,6 @@ class BuildSemesterPerformance extends StatelessWidget {
                 },
               ),
             ),
-
-            // ? Total Score
             Container(
               padding: EdgeInsets.symmetric(
                 vertical: UPdMg_5,

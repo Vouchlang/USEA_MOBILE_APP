@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_AboutUS/Class_AboutUS/Class_Recognition.dart';
 import 'package:usea_app/theme_builder.dart';
-
 import '../../../Custom_AppBar.dart';
 import '../../../Custom_Widget/CustomText.dart';
 

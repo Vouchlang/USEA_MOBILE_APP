@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_Home/UI_Home/Guest_Home.dart';
-
+import '/Guest_Dashboard/Guest_Home/UI_Home/Guest_Home.dart';
 import '../../Student_Detail/Class_Detail/Class_St_Detail.dart';
 import '../../Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
 import 'Student_Dashboard.dart';

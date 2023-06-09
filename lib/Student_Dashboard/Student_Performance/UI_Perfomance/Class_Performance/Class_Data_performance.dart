@@ -25,22 +25,55 @@ List<Class_Program_Score_s1> class_program_Score_s1 = [
   ),
   Class_Program_Score_s1(
     subject: "រដ្ឋបាលសាធារណៈ",
-    att: 45,
-    score: 99,
+    att: 46,
+    score: 92,
   ),
   Class_Program_Score_s1(
     subject: "កុំព្យូទ័រសម្រាប់រដ្ឋបាល",
-    att: 45,
+    att: 42,
     score: 95,
   ),
   Class_Program_Score_s1(
     subject: "ភាសាអង់គ្លេស I",
-    att: 45,
-    score: 99,
+    att: 41,
+    score: 91,
   ),
   Class_Program_Score_s1(
     subject: "ភាសាចិន I",
     att: 45,
+    score: 99,
+  ),
+];
+
+List<Class_Program_Score_s1> class_program_Score_s2 = [
+  Class_Program_Score_s1(
+    subject: "សេដ្ឋកិច្ចវិទ្យា II",
+    att: 99.562,
+    score: 99.99,
+  ),
+  Class_Program_Score_s1(
+    subject: "ប្រវត្តិ និងវប្បធម៍អាស៊ីគ្នេយ៍ II",
+    att: 99,
+    score: 99,
+  ),
+  Class_Program_Score_s1(
+    subject: "រដ្ឋបាលសាធារណៈ II",
+    att: 99,
+    score: 99,
+  ),
+  Class_Program_Score_s1(
+    subject: "កុំព្យូទ័រសម្រាប់រដ្ឋបាល II",
+    att: 99,
+    score: 99,
+  ),
+  Class_Program_Score_s1(
+    subject: "ភាសាអង់គ្លេស II",
+    att: 99,
+    score: 99,
+  ),
+  Class_Program_Score_s1(
+    subject: "ភាសាចិន II",
+    att: 99,
     score: 99,
   ),
 ];

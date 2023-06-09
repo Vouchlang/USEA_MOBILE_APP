@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../Custom_AppBar.dart';
 
 class President extends StatefulWidget {
