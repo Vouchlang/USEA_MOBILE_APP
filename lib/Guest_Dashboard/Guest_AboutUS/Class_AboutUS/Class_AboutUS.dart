@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_AboutUS/UI_AboutUS/President_Message.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_AboutUS/UI_AboutUS/Recognition.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_AboutUS/UI_AboutUS/Stucture.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_AboutUS/UI_AboutUS/Vision.dart';
+import '/Guest_Dashboard/Guest_AboutUS/UI_AboutUS/President_Message.dart';
+import '/Guest_Dashboard/Guest_AboutUS/UI_AboutUS/Recognition.dart';
+import '/Guest_Dashboard/Guest_AboutUS/UI_AboutUS/Stucture.dart';
+import '/Guest_Dashboard/Guest_AboutUS/UI_AboutUS/Vision.dart';
 import '../UI_AboutUS/History.dart';
 
 class AboutUS {
-  late final String img;
-  late final String text;
+  late final String img, text;
   late final Widget screen;
 
-  AboutUS({required this.img, required this.text, required this.screen});
+  AboutUS({
+    required this.img,
+    required this.text,
+    required this.screen,
+  });
 }
 
 List<AboutUS> aboutUS = [

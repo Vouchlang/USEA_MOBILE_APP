@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_Registration/Class_Registration/Class_Registration.dart';
-import '../../../Custom_AppBar.dart';
+import '/Guest_Dashboard/Guest_Registration/Class_Registration/Class_Registration.dart';
+import '/Custom_AppBar.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-
-import '../../../theme_builder.dart';
+import '/theme_builder.dart';
 
 class Registration extends StatefulWidget {
   const Registration({Key? key}) : super(key: key);
@@ -52,7 +51,7 @@ class _RegistrationState extends State<Registration> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'ការចុះឈ្មោះ'.tr),
       body: Center(
         child: isLoading
@@ -153,7 +152,9 @@ class _RegistrationState extends State<Registration> {
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                SizedBox(width: 5),
+                                SizedBox(
+                                  width: 5,
+                                ),
                                 Expanded(
                                   child: Text(
                                     registration[index].detail1,

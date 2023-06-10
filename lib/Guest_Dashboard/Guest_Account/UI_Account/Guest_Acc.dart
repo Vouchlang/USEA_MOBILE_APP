@@ -1,16 +1,13 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../../Student_Dashboard/Student_Detail/Class_Detail/Class_St_Detail.dart';
-import '../../../Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
-import '../../../Student_Dashboard/Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
-import '../../../Student_Dashboard/Student_LogIn/Student_LogIn.dart';
-import '../../../Student_Dashboard/Student_LogIn/testing_log_detail.dart';
-import '../../../theme_builder.dart';
-import '/Guest_Dashboard/Guest_Account/Class_Account/Class_Account_Screen.dart';
-import '/Guest_Dashboard/Guest_New_Event/UI_News_Event/News_Event.dart';
+import '/Student_Dashboard/Student_Detail/Class_Detail/Class_St_Detail.dart';
+import '/Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
+import '/Student_Dashboard/Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
+import '/Student_Dashboard/Student_LogIn/Student_LogIn.dart';
+import '/theme_builder.dart';
+import '../Class_Account/Class_Account_Screen.dart';
 
 class Guest_Acc extends StatefulWidget {
   const Guest_Acc({Key? key}) : super(key: key);
@@ -25,28 +22,6 @@ class Guest_AccState extends State<Guest_Acc> {
   static const String KEYSTDETAIL = 'student_detail';
 
   var studentLogIn = Student_LogIn();
-  final List<Account_Screen> account_screen = [
-    Account_Screen(
-      name: 'គណនីនិស្សិត',
-      img: 'assets/image/Acc_Student.png',
-      screen: Student_LogIn(),
-    ),
-    Account_Screen(
-      name: 'គណនីអាណាព្យាបាល',
-      img: 'assets/image/Acc_Guardian.png',
-      screen: LoginPage1(),
-    ),
-    Account_Screen(
-      name: 'គណនីបុគ្គលិក',
-      img: 'assets/image/Acc_Staff.png',
-      screen: New_Event(),
-    ),
-    Account_Screen(
-      name: 'គណនីសាស្ត្រាចារ្យ',
-      img: 'assets/image/Acc_Lecturer.png',
-      screen: New_Event(),
-    ),
-  ];
 
   @override
   void initState() {
@@ -80,7 +55,6 @@ class Guest_AccState extends State<Guest_Acc> {
         JobHistory jobHistory = JobHistory.fromJson(item);
         jobHistoryList.add(jobHistory);
       }
-
       return jobHistoryList;
     } else {
       return [];
@@ -97,7 +71,6 @@ class Guest_AccState extends State<Guest_Acc> {
         StDetail stDetail = StDetail.fromJson(item);
         stDetailList.add(stDetail);
       }
-
       return stDetailList;
     } else {
       return [];
@@ -105,7 +78,9 @@ class Guest_AccState extends State<Guest_Acc> {
   }
 
   void navigateToJobHistoryScreen(
-      List<JobHistory> jobHistory, List<StDetail> stDetail) {
+    List<JobHistory> jobHistory,
+    List<StDetail> stDetail,
+  ) {
     Get.off(
       St_Home(
         data: stDetail,
@@ -122,8 +97,8 @@ class Guest_AccState extends State<Guest_Acc> {
         physics: NeverScrollableScrollPhysics(),
         children: [
           Container(
-            height: 600,
             decoration: BoxDecoration(
+              color: UScoreColor,
               image: DecorationImage(
                 image: AssetImage('assets/image/usea_bg.jpg'),
                 fit: BoxFit.cover,
@@ -146,7 +121,7 @@ class Guest_AccState extends State<Guest_Acc> {
                     account_screen.length,
                     (index) => Card(
                       elevation: 2,
-                      color: Colors.white,
+                      color: UBackgroundColor,
                       shadowColor: ULightGreyColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -162,25 +137,23 @@ class Guest_AccState extends State<Guest_Acc> {
                             ),
                           );
                         },
-                        child: Container(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                account_screen[index].img,
-                                scale: 6,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              account_screen[index].img,
+                              scale: 6,
+                            ),
+                            SizedBox(
+                              height: 7,
+                            ),
+                            Text(
+                              account_screen[index].name.tr,
+                              style: TextStyle(
+                                fontSize: UTitleSize,
                               ),
-                              SizedBox(
-                                height: 7,
-                              ),
-                              Text(
-                                account_screen[index].name.tr,
-                                style: TextStyle(
-                                  fontSize: UTitleSize,
-                                ),
-                              )
-                            ],
-                          ),
+                            )
+                          ],
                         ),
                       ),
                     ),

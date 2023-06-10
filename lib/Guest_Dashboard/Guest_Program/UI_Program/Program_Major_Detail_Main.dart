@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_Program/UI_Program/Program_Bachelor.dart';
-import '../../../Custom_AppBar.dart';
-import '../../../theme_builder.dart';
+import '/Guest_Dashboard/Guest_Program/UI_Program/Program_Bachelor.dart';
+import '/Custom_AppBar.dart';
+import '/theme_builder.dart';
 import 'Program_Associate.dart';
 
 class Program_Major_Detail_Main extends StatefulWidget {
@@ -29,7 +29,7 @@ class _Program_Major_DetailState extends State<Program_Major_Detail_Main> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'កម្មវិធីសិក្សា'.tr),
       body: Center(
         child: Column(

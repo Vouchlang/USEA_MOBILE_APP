@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../Custom_AppBar.dart';
-import '../../../Custom_Widget/CustomText.dart';
-import '../../../theme_builder.dart';
+import '/Custom_AppBar.dart';
+import '/Custom_Widget/CustomText.dart';
+import '/theme_builder.dart';
 import '../Class_FAQ/Class_FAQ.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -48,7 +48,7 @@ class _FAQState extends State<FAQ> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'FAQ'),
       body: Center(
         child: isLoading

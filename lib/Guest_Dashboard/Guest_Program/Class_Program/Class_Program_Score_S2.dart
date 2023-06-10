@@ -1,7 +1,6 @@
 class Class_Program_Score_S2 {
   late final String subject;
-  late final int hour;
-  late final int credit;
+  late final int hour, credit;
 
   Class_Program_Score_S2(
       {required this.subject, required this.hour, required this.credit});

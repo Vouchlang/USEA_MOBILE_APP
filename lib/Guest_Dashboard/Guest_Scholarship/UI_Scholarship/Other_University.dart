@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:usea_app/Custom_Widget/CustomText.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_Scholarship/Class_Scholarship/Class_Scholarship_Out.dart';
-import 'package:usea_app/theme_builder.dart';
+import '/Custom_Widget/CustomText.dart';
+import '/Guest_Dashboard/Guest_Scholarship/Class_Scholarship/Class_Scholarship_Out.dart';
+import '/theme_builder.dart';
 
 class Out_University extends StatefulWidget {
   const Out_University({Key? key}) : super(key: key);
@@ -49,95 +49,91 @@ class _Out_UniversityState extends State<Out_University> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       body: Center(
         child: isLoading
             ? const CircularProgressIndicator()
-            : Container(
-                child: ListView.builder(
-                  itemCount: o_scholarship.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      margin: EdgeInsets.fromLTRB(
-                        UPdMg_10,
-                        UZeroPixel,
-                        UPdMg_10,
-                        UPdMg_5,
+            : ListView.builder(
+                itemCount: o_scholarship.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin: EdgeInsets.fromLTRB(
+                      UPdMg_10,
+                      UZeroPixel,
+                      UPdMg_10,
+                      UPdMg_5,
+                    ),
+                    child: Card(
+                      elevation: 2,
+                      shadowColor: ULightGreyColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(UPdMg_10),
                       ),
-                      child: Card(
-                        elevation: 2,
-                        shadowColor: ULightGreyColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(UPdMg_10),
-                        ),
-                        child: Container(
-                          padding: EdgeInsets.all(UPdMg_10),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Container(
-                                  width: UFullWidth,
-                                  child: NormalTitleTheme(
-                                      text:
-                                          o_scholarship[index].o_school_name)),
-                              Container(
-                                  width: UFullWidth,
-                                  child: NormalTitleTheme(
-                                      text: o_scholarship[index]
-                                          .o_educational_level)),
-                              Container(
-                                  width: UFullWidth,
-                                  child: NormalTitleTheme(
-                                      text: o_scholarship[index].o_major)),
-                              Container(
-                                  width: UFullWidth,
-                                  child: NormalTitleTheme(
-                                      text: o_scholarship[index].o_expire)),
-                              Container(
-                                  width: UFullWidth,
-                                  child: BodyTheme(
-                                      text:
-                                          o_scholarship[index].o_expire_date)),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.only(top: 10),
-                                    alignment: Alignment.center,
-                                    padding: EdgeInsets.symmetric(
-                                      vertical: UPdMg_5,
-                                      horizontal: UPdMg_10,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.circular(URoundedMedium),
-                                      color: UBtnColor,
-                                      boxShadow: [
-                                        BoxShadow(color: UBtnColor),
-                                      ],
-                                    ),
-                                    child: InkWell(
-                                      onTap: () => launchUrlString(
-                                          o_scholarship[index].o_link),
-                                      child: CustomTextTheme(
-                                        text: 'អានបន្ថែម'.tr,
-                                        color: UPrimaryColor,
-                                        fontWeight: UTitleWeight,
-                                        size: UBodySize,
-                                      ),
+                      child: Container(
+                        padding: EdgeInsets.all(UPdMg_10),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Container(
+                                width: UFullWidth,
+                                child: NormalTitleTheme(
+                                    text: o_scholarship[index].o_school_name)),
+                            Container(
+                                width: UFullWidth,
+                                child: NormalTitleTheme(
+                                    text: o_scholarship[index]
+                                        .o_educational_level)),
+                            Container(
+                                width: UFullWidth,
+                                child: NormalTitleTheme(
+                                    text: o_scholarship[index].o_major)),
+                            Container(
+                                width: UFullWidth,
+                                child: NormalTitleTheme(
+                                    text: o_scholarship[index].o_expire)),
+                            Container(
+                                width: UFullWidth,
+                                child: BodyTheme(
+                                    text: o_scholarship[index].o_expire_date)),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(top: 10),
+                                  alignment: Alignment.center,
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: UPdMg_5,
+                                    horizontal: UPdMg_10,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.circular(URoundedMedium),
+                                    color: UBtnColor,
+                                    boxShadow: [
+                                      BoxShadow(color: UBtnColor),
+                                    ],
+                                  ),
+                                  child: InkWell(
+                                    onTap: () => launchUrlString(
+                                        o_scholarship[index].o_link),
+                                    child: CustomTextTheme(
+                                      text: 'អានបន្ថែម'.tr,
+                                      color: UPrimaryColor,
+                                      fontWeight: UTitleWeight,
+                                      size: UBodySize,
                                     ),
                                   ),
-                                ],
-                              ),
-                            ],
-                          ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
-                    );
-                  },
-                ),
+                    ),
+                  );
+                },
               ),
       ),
     );

@@ -1,10 +1,11 @@
 class Recognition {
-  late final String image;
-  late final String description;
-  late final String link;
+  late final String image, description, link;
 
-  Recognition(
-      {required this.image, required this.description, required this.link});
+  Recognition({
+    required this.image,
+    required this.description,
+    required this.link,
+  });
 }
 
 List<Recognition> recognition = [

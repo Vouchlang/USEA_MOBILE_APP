@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/theme_builder.dart';
-import '../../../../Custom_AppBar.dart';
-import '../../../../Custom_Widget/CustomText.dart';
+import '/theme_builder.dart';
+import '/Custom_AppBar.dart';
+import '/Custom_Widget/CustomText.dart';
 import '../Data/Data_List_attendance.dart';
 
 class All_info_major extends StatefulWidget {
@@ -18,12 +18,12 @@ class _All_info_majorState extends State<All_info_major> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'វត្តមាន'.tr),
       body: SingleChildScrollView(
         child: Card(
-          elevation: 5,
-          shadowColor: Colors.grey[200],
+          elevation: 2,
+          shadowColor: ULightGreyColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(URoundedLarge),
           ),
@@ -61,30 +61,28 @@ class _All_info_majorState extends State<All_info_major> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      child: IntrinsicHeight(
-                        child: Padding(
-                          padding: EdgeInsets.all(UPdMg_8),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              buildHeader('កាលបរិច្ឆេទ'.tr),
-                              Container(
-                                margin: EdgeInsets.symmetric(
-                                  horizontal: UPdMg_15,
-                                ),
-                                child: buildVerticalDividerAtt(),
+                    IntrinsicHeight(
+                      child: Padding(
+                        padding: EdgeInsets.all(UPdMg_8),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            buildHeader('កាលបរិច្ឆេទ'.tr),
+                            Container(
+                              margin: EdgeInsets.symmetric(
+                                horizontal: UPdMg_15,
                               ),
-                              buildHeader('Session'.tr),
-                              Container(
-                                margin: EdgeInsets.symmetric(
-                                  horizontal: UPdMg_15,
-                                ),
-                                child: buildVerticalDividerAtt(),
+                              child: buildVerticalDividerAtt(),
+                            ),
+                            buildHeader('Session'.tr),
+                            Container(
+                              margin: EdgeInsets.symmetric(
+                                horizontal: UPdMg_15,
                               ),
-                              buildHeader('វត្តមាន'.tr),
-                            ],
-                          ),
+                              child: buildVerticalDividerAtt(),
+                            ),
+                            buildHeader('វត្តមាន'.tr),
+                          ],
                         ),
                       ),
                     ),

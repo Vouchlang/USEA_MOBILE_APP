@@ -2,10 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../../Custom_AppBar.dart';
-import '../../../../Custom_Widget/CustomText.dart';
-import '../../../../theme_builder.dart';
+import '/Custom_AppBar.dart';
+import '/Custom_Widget/CustomText.dart';
+import '/theme_builder.dart';
 import 'Card_attendacne.dart';
 
 // ignore: camel_case_types
@@ -29,7 +28,7 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'វត្តមាន'.tr),
       body: SingleChildScrollView(
         child: Center(
@@ -95,10 +94,22 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      buildAttList('វត្តមាន\t', UScoreColor),
-                      buildAttList('យឺត', USecondaryColor),
-                      buildAttList('អវត្តមានមានច្បាប់', UOrangeColor),
-                      buildAttList('អវត្តមាន', URedColor),
+                      buildAttList(
+                        'វត្តមាន\t',
+                        UScoreColor,
+                      ),
+                      buildAttList(
+                        'យឺត',
+                        UYellowColor,
+                      ),
+                      buildAttList(
+                        'អវត្តមានមានច្បាប់',
+                        UOrangeColor,
+                      ),
+                      buildAttList(
+                        'អវត្តមាន',
+                        URedColor,
+                      ),
                     ],
                   ),
                 ),
@@ -114,7 +125,6 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
                     child: Center(child: TitleTheme(text: 'ឆមាសទី ១'.tr)),
                   ),
                 ),
-                // ? Attendance List Card
                 Major_Attendance(),
                 Padding(
                   padding: EdgeInsets.fromLTRB(
@@ -130,10 +140,12 @@ class _All_Attendance_of_YearState extends State<All_Attendance_of_Year> {
                       borderRadius: BorderRadius.circular(URoundedLarge),
                       color: UBGLightBlue,
                     ),
-                    child: Center(child: TitleTheme(text: 'ឆមាសទី ២'.tr)),
+                    child: Center(
+                        child: TitleTheme(
+                      text: 'ឆមាសទី ២'.tr,
+                    )),
                   ),
                 ),
-                // ? Attendance List Card
                 Major_Attendance(),
               ],
             ),

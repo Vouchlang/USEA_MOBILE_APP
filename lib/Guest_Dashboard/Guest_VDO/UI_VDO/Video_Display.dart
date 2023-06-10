@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/theme_builder.dart';
+import '/theme_builder.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-import '../../../Custom_AppBar.dart';
-import '../../../Custom_Widget/CustomText.dart';
+import '/Custom_AppBar.dart';
+import '/Custom_Widget/CustomText.dart';
 import '../Class_VDO/Class_Video_Home.dart';
 
 class Video_Display extends StatefulWidget {
@@ -34,7 +34,11 @@ class _Video_DisplayState extends State<Video_Display> {
   }
 
   void updateVideo(
-      String videoLink, String thumbnail, String caption, int index) {
+    String videoLink,
+    thumbnail,
+    caption,
+    int index,
+  ) {
     setState(() {
       String videoId = YoutubePlayer.convertUrlToId(videoLink)!;
       _controller.load(videoId);
@@ -63,62 +67,60 @@ class _Video_DisplayState extends State<Video_Display> {
       appBar: Custom_AppBar(title: 'វីដេអូ'.tr),
       body: ListView(
         children: [
-          Container(
-            child: YoutubePlayer(
-              controller: _controller,
-              showVideoProgressIndicator: true,
-              bottomActions: [
-                Expanded(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      ProgressBar(
-                        isExpanded: false,
-                        colors: ProgressBarColors(
-                          playedColor: URedColor,
-                          bufferedColor: Colors.white,
-                          handleColor: Colors.red,
-                          backgroundColor: Colors.grey,
+          YoutubePlayer(
+            controller: _controller,
+            showVideoProgressIndicator: true,
+            bottomActions: [
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ProgressBar(
+                      isExpanded: false,
+                      colors: ProgressBarColors(
+                        playedColor: URedColor,
+                        bufferedColor: Colors.white,
+                        handleColor: Colors.red,
+                        backgroundColor: Colors.grey,
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            CurrentPosition(),
+                            RemainingDuration(),
+                            IconButton(
+                              iconSize: 20,
+                              color: Colors.white,
+                              icon: _isMuted
+                                  ? Icon(Icons.volume_off)
+                                  : Icon(Icons.volume_up),
+                              onPressed: () {
+                                setState(
+                                  () {
+                                    _isMuted = !_isMuted;
+                                    _isMuted
+                                        ? _controller.mute()
+                                        : _controller.unMute();
+                                  },
+                                );
+                              },
+                            ),
+                          ],
                         ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              CurrentPosition(),
-                              RemainingDuration(),
-                              IconButton(
-                                iconSize: 20,
-                                color: Colors.white,
-                                icon: _isMuted
-                                    ? Icon(Icons.volume_off)
-                                    : Icon(Icons.volume_up),
-                                onPressed: () {
-                                  setState(
-                                    () {
-                                      _isMuted = !_isMuted;
-                                      _isMuted
-                                          ? _controller.mute()
-                                          : _controller.unMute();
-                                    },
-                                  );
-                                },
-                              ),
-                            ],
-                          ),
-                          PlaybackSpeedButton(),
-                        ],
-                      ),
-                    ],
-                  ),
+                        PlaybackSpeedButton(),
+                      ],
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
           Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: UBackgroundColor,
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(10),
               ),
@@ -130,7 +132,10 @@ class _Video_DisplayState extends State<Video_Display> {
                 ),
               ],
             ),
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            padding: EdgeInsets.symmetric(
+              vertical: 10,
+              horizontal: 10,
+            ),
             width: double.infinity,
             alignment: Alignment.center,
             child: buildTitleBody(video_home[_currentVideoIndex!].title,

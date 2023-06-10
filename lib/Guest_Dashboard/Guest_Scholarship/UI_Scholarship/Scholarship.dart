@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/theme_builder.dart';
-
-import '../../../Custom_AppBar.dart';
+import '/theme_builder.dart';
+import '/Custom_AppBar.dart';
 import 'In_University.dart';
 import 'Other_University.dart';
 
@@ -29,7 +28,7 @@ class _ScholarshipState extends State<Scholarship> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'អាហារូបករណ៍'.tr),
       body: Center(
         child: Column(

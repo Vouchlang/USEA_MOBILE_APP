@@ -1,7 +1,5 @@
 class Contact {
-  late final String icon;
-  late final String text;
-  late final String link;
+  late final String icon, text, link;
 
   Contact({required this.icon, required this.text, required this.link});
 }

@@ -1,6 +1,5 @@
 class Program_List {
-  late final String image;
-  late final String title;
+  late final String image, title;
   late final List<Program_List> majors;
 
   Program_List(

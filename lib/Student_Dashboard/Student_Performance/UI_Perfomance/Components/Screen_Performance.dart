@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
-import '../../../../Custom_Widget/CustomText.dart';
+import '/Custom_Widget/CustomText.dart';
 import '../Class_Performance/Class_Data_performance.dart';
 import 'Dialog_performance.dart';
 

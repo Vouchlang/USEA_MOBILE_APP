@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_Notification/UI_Notification/Notifications.dart';
+import 'package:usea_app/theme_builder.dart';
+import '/Guest_Dashboard/Guest_Notification/UI_Notification/Notifications.dart';
 
 class Student_Home2 extends StatefulWidget {
   const Student_Home2({super.key});
@@ -12,7 +13,7 @@ class _Student_HomeState extends State<Student_Home2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: AppBar(
         leading: Image.asset(
           'assets/image/usea_logo.png',
@@ -27,42 +28,48 @@ class _Student_HomeState extends State<Student_Home2> {
                 Text(
                   'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
                   style: TextStyle(
-                      color: Theme.of(context).primaryColor,
+                      color: UPrimaryColor,
                       fontSize: 10,
                       fontFamily: 'KhmerOSmuol'),
                 ),
                 Text('UNIVERSITY OF SOUTH-EAST ASIA',
                     style: TextStyle(
-                        color: Theme.of(context).primaryColor,
+                        color: UPrimaryColor,
                         fontSize: 11.7,
                         fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500)),
+                        fontWeight: UBodyWeight)),
               ],
             ),
           ],
         ),
         actions: [
           Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100),
-              ),
-              child: Center(
-                child: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (ctx) => Notifications()));
-                      });
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(100),
+            ),
+            child: Center(
+              child: IconButton(
+                onPressed: () {
+                  setState(
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (ctx) => Notifications(),
+                        ),
+                      );
                     },
-                    icon: Image.asset(
-                      'assets/image/logo3.png',
-                    )),
-              )),
+                  );
+                },
+                icon: Image.asset(
+                  'assets/image/logo3.png',
+                ),
+              ),
+            ),
+          ),
         ],
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: UBackgroundColor,
         elevation: 1,
       ),
     );

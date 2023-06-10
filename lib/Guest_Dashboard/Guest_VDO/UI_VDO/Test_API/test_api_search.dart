@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import '/theme_builder.dart';
 import 'dart:convert';
 import '../../../Guest_Program/UI_Program/Program_Major_Detail_Main.dart';
-import 'api_major_search_detail.dart';
 import 'api_model.dart';
 
 class TestSearchAPI extends StatefulWidget {
@@ -15,8 +15,7 @@ class TestSearchAPI extends StatefulWidget {
 
 class _TestSearchAPIState extends State<TestSearchAPI> {
   String _searchQuery = '';
-  List<Major_Detail> filteredData = [];
-  List<Major_Detail> major_detail = [];
+  List<Major_Detail> filteredData = [], major_detail = [];
 
   Future<String> getData() async {
     var response = await http.get(
@@ -63,10 +62,10 @@ class _TestSearchAPIState extends State<TestSearchAPI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: AppBar(
         centerTitle: false,
-        backgroundColor: Colors.white,
+        backgroundColor: UBackgroundColor,
         elevation: 1,
         leading: IconButton(
           icon: Icon(
@@ -83,10 +82,10 @@ class _TestSearchAPIState extends State<TestSearchAPI> {
             });
             _filterData(value);
           },
-          style: TextStyle(fontSize: 14, fontFamily: 'KhmerOSbattambang'),
+          style: TextStyle(fontSize: UTitleSize, fontFamily: UKFontFamily),
           textAlign: TextAlign.left,
           decoration: InputDecoration.collapsed(hintText: "\t\tស្វែងរក".tr),
-          cursorColor: Colors.black,
+          cursorColor: UTextColor,
           cursorWidth: 1.5,
         ),
       ),
@@ -122,9 +121,9 @@ class _TestSearchAPIState extends State<TestSearchAPI> {
                             child: Text(
                               major_detail[index].major_name.toString(),
                               style: TextStyle(
-                                fontSize: 12,
-                                fontFamily: 'KhmerOSbattambang',
-                                color: Colors.black,
+                                fontSize: UBodySize,
+                                fontFamily: UKFontFamily,
+                                color: UTextColor,
                               ),
                             ),
                           ),
@@ -158,9 +157,9 @@ class _TestSearchAPIState extends State<TestSearchAPI> {
                                 child: Text(
                                   filteredData[index].major_name.toString(),
                                   style: TextStyle(
-                                    fontSize: 12,
-                                    fontFamily: 'KhmerOSbattambang',
-                                    color: Colors.black,
+                                    fontSize: UBodySize,
+                                    fontFamily: UKFontFamily,
+                                    color: UTextColor,
                                   ),
                                 ),
                               ),
@@ -173,8 +172,8 @@ class _TestSearchAPIState extends State<TestSearchAPI> {
                           "No major found",
                           style: TextStyle(
                             fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey[600],
+                            fontWeight: UTitleWeight,
+                            color: URedColor,
                           ),
                         ),
                       ),

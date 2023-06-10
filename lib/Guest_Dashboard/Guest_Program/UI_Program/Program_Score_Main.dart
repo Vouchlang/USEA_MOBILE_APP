@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../Custom_AppBar.dart';
-import '../../../theme_builder.dart';
+import '/Custom_AppBar.dart';
+import '/theme_builder.dart';
 import 'Program_Score_S1.dart';
 import 'Program_Score_S2.dart';
 
@@ -28,7 +28,7 @@ class _Program_Score_MainState extends State<Program_Score_Main> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'កម្មវិធីសិក្សា'.tr),
       body: Center(
         child: Column(

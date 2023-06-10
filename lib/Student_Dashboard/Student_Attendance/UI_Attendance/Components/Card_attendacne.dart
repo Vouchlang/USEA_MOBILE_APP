@@ -2,9 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/theme_builder.dart';
-
-import '../../../../Custom_Widget/CustomText.dart';
+import '/theme_builder.dart';
+import '/Custom_Widget/CustomText.dart';
 import '../../Class_Attendance/Class_Attendance.dart';
 import 'Card_all_attendance.dart';
 
@@ -68,7 +67,7 @@ class _Major_AttendanceState extends State<Major_Attendance> {
                         )
                       ],
                     ),
-                    buildNum('0', USecondaryColor),
+                    buildNum('0', UYellowColor),
                     buildDivider(),
                     buildNum('5', UOrangeColor),
                     buildDivider(),

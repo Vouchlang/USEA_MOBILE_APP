@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:usea_app/Guest_Dashboard/Guest_VDO/UI_VDO/Test_API/test_api_search.dart';
-import '../../../../theme_builder.dart';
+import '/Guest_Dashboard/Guest_VDO/UI_VDO/Test_API/test_api_search.dart';
+import '/theme_builder.dart';
 import '../../../Guest_Program/UI_Program/Program_Major_Detail_Main.dart';
-import 'Demo_Lite/api_major_detail.dart';
 import 'Demo_Lite/class_demo.dart';
 
 class FacultyList extends StatefulWidget {
@@ -41,7 +40,7 @@ class _FacultyListState extends State<FacultyList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: AppBar(
         centerTitle: false,
         title: Text(
@@ -53,7 +52,7 @@ class _FacultyListState extends State<FacultyList> {
             fontWeight: UTitleWeight,
           ),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: UBackgroundColor,
         elevation: 1,
         iconTheme: IconThemeData.fallback(),
         leading: IconButton(
@@ -67,21 +66,27 @@ class _FacultyListState extends State<FacultyList> {
         actions: [
           Padding(
             padding: EdgeInsets.all(10),
-            child: Container(
-                child: Center(
+            child: Center(
               child: IconButton(
-                  onPressed: () {
-                    setState(() {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (ctx) => TestSearchAPI()));
-                    });
-                  },
-                  icon: Icon(
-                    Icons.search,
-                    color: Theme.of(context).primaryColor,
-                    size: 20,
-                  )),
-            )),
+                onPressed: () {
+                  setState(
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (ctx) => TestSearchAPI(),
+                        ),
+                      );
+                    },
+                  );
+                },
+                icon: Icon(
+                  Icons.search,
+                  color: Theme.of(context).primaryColor,
+                  size: 20,
+                ),
+              ),
+            ),
           ),
         ],
       ),
@@ -96,7 +101,7 @@ class _FacultyListState extends State<FacultyList> {
                     itemCount: snapshot.data!.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Card(
-                        color: Colors.white,
+                        color: UBackgroundColor,
                         margin: EdgeInsets.fromLTRB(10, 15, 10, 0),
                         elevation: 2,
                         shadowColor: ULightGreyColor,
@@ -153,7 +158,7 @@ class _FacultyListState extends State<FacultyList> {
                                                 borderRadius:
                                                     BorderRadius.circular(5),
                                                 border: Border.all(
-                                                  color: Color(0xEEEEEEFF),
+                                                  color: UBGLightBlue,
                                                 ),
                                               ),
                                               padding: EdgeInsets.all(5),
@@ -167,16 +172,15 @@ class _FacultyListState extends State<FacultyList> {
                                                       textAlign:
                                                           TextAlign.justify,
                                                       style: TextStyle(
-                                                          fontSize: 14,
+                                                          fontSize: UTitleSize,
                                                           fontFamily:
-                                                              'KhmerOSbattambang',
-                                                          color: Colors.black),
+                                                              UKFontFamily,
+                                                          color: UTextColor),
                                                     ),
                                                     Icon(
                                                       Icons.arrow_forward_ios,
-                                                      size: 14,
-                                                      color: Theme.of(context)
-                                                          .primaryColor,
+                                                      size: UTitleSize,
+                                                      color: UPrimaryColor,
                                                     )
                                                   ]),
                                             ),

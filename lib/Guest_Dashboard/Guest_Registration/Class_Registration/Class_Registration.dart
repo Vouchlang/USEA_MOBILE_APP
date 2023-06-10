@@ -3,14 +3,14 @@ part 'Class_Registration.g.dart';
 
 @JsonSerializable()
 class Class_Registration {
-  late final String title;
-  late final String date;
-  late final String time;
-  late final String education1;
-  late final String education2;
-  late final String detail1;
-  late final String detail2;
-  late final String detail3;
+  late final String title,
+      date,
+      time,
+      education1,
+      education2,
+      detail1,
+      detail2,
+      detail3;
 
   Class_Registration(
       {required this.title,

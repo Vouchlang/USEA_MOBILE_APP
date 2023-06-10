@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/Custom_AppBar.dart';
-import 'package:usea_app/theme_builder.dart';
+import '/Custom_AppBar.dart';
+import '/theme_builder.dart';
 import 'Components/Card_carlendar.dart';
 import 'Components/Card_carlendar_list.dart';
 
@@ -18,7 +18,7 @@ class _ScheduleState extends State<Schedule> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'កាលវិភាគ'.tr),
       body: ListView(
         padding: EdgeInsets.symmetric(vertical: 5),

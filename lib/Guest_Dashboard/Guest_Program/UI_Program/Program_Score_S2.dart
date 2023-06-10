@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/Custom_Widget/CustomText.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_Program/Class_Program/Class_Program_Score_S2.dart';
-
-import '../../../theme_builder.dart';
+import '/Custom_Widget/CustomText.dart';
+import '/Guest_Dashboard/Guest_Program/Class_Program/Class_Program_Score_S2.dart';
+import '/theme_builder.dart';
 
 class Program_Score_S2 extends StatefulWidget {
   const Program_Score_S2({super.key});
@@ -16,7 +15,7 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       body: SingleChildScrollView(
         child: Card(
           elevation: 2,
@@ -25,7 +24,7 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
             borderRadius: BorderRadius.circular(URoundedLarge),
           ),
           margin: EdgeInsets.all(UPdMg_10),
-          color: Colors.white,
+          color: UBackgroundColor,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -44,14 +43,20 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(child: TitleTheme(text: 'មុខវិជ្ជា'.tr)),
+                    TitleTheme(
+                      text: 'មុខវិជ្ជា'.tr,
+                    ),
                     Row(
                       children: [
-                        Container(child: TitleTheme(text: 'ម៉ោង'.tr)),
+                        TitleTheme(
+                          text: 'ម៉ោង'.tr,
+                        ),
                         SizedBox(width: 15),
-                        Container(child: TitleTheme(text: 'ក្រេឌីត'.tr))
+                        TitleTheme(
+                          text: 'ក្រេឌីត'.tr,
+                        )
                       ],
-                    ),
+                    )
                   ],
                 ),
               ),
@@ -67,24 +72,23 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
                     return Container(
                       padding: EdgeInsets.symmetric(vertical: UPdMg_10),
                       child: Column(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Expanded(
-                                  child: NoWeightTitleTheme(
-                                      text: class_program_score_s2[index]
-                                          .subject)),
+                                child: NoWeightTitleTheme(
+                                    text:
+                                        class_program_score_s2[index].subject),
+                              ),
                               Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Container(
-                                    child: NoWeightTitleTheme(
+                                  NoWeightTitleTheme(
                                       text: class_program_score_s2[index]
                                           .hour
-                                          .toString(),
-                                    ),
-                                  ),
+                                          .toString()),
                                   SizedBox(width: 35),
                                   Container(
                                     margin: EdgeInsets.only(right: UPdMg_10),
@@ -110,30 +114,32 @@ class _Program_Score_S2State extends State<Program_Score_S2> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(child: TitleTheme(text: 'សរុប'.tr)),
+                    TitleTheme(
+                      text: 'សរុប'.tr,
+                    ),
                     Row(
                       children: [
                         Container(
                           width: 30,
                           alignment: Alignment.center,
                           child: TitleTheme(
-                            text: class_program_score_s2
-                                .fold(0, (sum, data) => sum + data.hour)
-                                .toString(),
-                          ),
+                              text: class_program_score_s2
+                                  .fold(0, (sum, data) => sum + data.hour)
+                                  .toString()),
                         ),
-                        SizedBox(width: 15),
+                        SizedBox(
+                          width: 15,
+                        ),
                         Container(
                           width: 30,
                           alignment: Alignment.center,
                           child: TitleTheme(
-                            text: class_program_score_s2
-                                .fold(0, (sum, data) => sum + data.credit)
-                                .toString(),
-                          ),
+                              text: class_program_score_s2
+                                  .fold(0, (sum, data) => sum + data.credit)
+                                  .toString()),
                         ),
                       ],
-                    ),
+                    )
                   ],
                 ),
               ),

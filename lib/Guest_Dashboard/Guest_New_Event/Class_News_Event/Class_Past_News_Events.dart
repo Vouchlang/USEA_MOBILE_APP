@@ -3,15 +3,15 @@ part 'Class_Past_News_Events.g.dart';
 
 @JsonSerializable()
 class Class_Past_Event {
-  final String past_image;
-  final String past_title;
-  final String past_detail;
-  final String past_desc;
-  final String past_day;
-  final String past_date;
-  final String past_month;
-  final String past_year;
-  final String past_time;
+  final String past_image,
+      past_title,
+      past_detail,
+      past_desc,
+      past_day,
+      past_date,
+      past_month,
+      past_year,
+      past_time;
 
   Class_Past_Event(
       {required this.past_image,

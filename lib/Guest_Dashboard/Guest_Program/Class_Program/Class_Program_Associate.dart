@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_Program/UI_Program/Program_Score_Main.dart';
+import '/Guest_Dashboard/Guest_Program/UI_Program/Program_Score_Main.dart';
 
 class Program_Associate_Year {
   late final String name;

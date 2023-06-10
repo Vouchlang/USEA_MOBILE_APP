@@ -1,9 +1,5 @@
 class JobHistory {
-  final String date_start_work;
-  final String status_name;
-  final String workPlace;
-  final String position;
-  final String salary;
+  final String date_start_work, status_name, workPlace, position, salary;
 
   JobHistory({
     required this.date_start_work,

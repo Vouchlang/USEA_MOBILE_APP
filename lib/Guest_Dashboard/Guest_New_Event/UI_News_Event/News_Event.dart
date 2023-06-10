@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_New_Event/UI_News_Event/Past_Event.dart';
-import 'package:usea_app/theme_builder.dart';
-
-import '../../../Custom_AppBar.dart';
+import 'Past_Event.dart';
+import '/theme_builder.dart';
+import '/Custom_AppBar.dart';
 import 'Upcoming_Event.dart';
 
 class New_Event extends StatefulWidget {
@@ -29,7 +28,7 @@ class _New_EventState extends State<New_Event> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'ព្រឹត្តិការណ៍'.tr),
       body: Center(
         child: Column(

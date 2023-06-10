@@ -3,10 +3,7 @@ part 'Class_Career.g.dart';
 
 @JsonSerializable()
 class Class_Career {
-  late final String logo;
-  late final String position;
-  late final String organization;
-  late final String link;
+  late final String logo, position, organization, link;
 
   Class_Career(
       {required this.logo,

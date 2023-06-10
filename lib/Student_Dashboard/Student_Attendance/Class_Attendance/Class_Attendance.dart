@@ -1,7 +1,6 @@
 // ignore_for_file: camel_case_types, non_constant_identifier_names
 
 class Attendance_Data {
-  /// contractor
   late final String subject;
   late final int credit, hour;
 

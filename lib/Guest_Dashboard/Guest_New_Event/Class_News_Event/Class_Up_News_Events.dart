@@ -3,15 +3,15 @@ part 'Class_Up_News_Events.g.dart';
 
 @JsonSerializable()
 class Class_Upcoming_Event {
-  final String upcoming_image;
-  final String upcoming_title;
-  final String upcoming_detail;
-  final String upcoming_desc;
-  final String upcoming_day;
-  final String upcoming_date;
-  final String upcoming_month;
-  final String upcoming_year;
-  final String upcoming_time;
+  final String upcoming_image,
+      upcoming_title,
+      upcoming_detail,
+      upcoming_desc,
+      upcoming_day,
+      upcoming_date,
+      upcoming_month,
+      upcoming_year,
+      upcoming_time;
 
   Class_Upcoming_Event(
       {required this.upcoming_image,
@@ -24,6 +24,7 @@ class Class_Upcoming_Event {
       required this.upcoming_year,
       required this.upcoming_time});
 
-  factory Class_Upcoming_Event.fromJson(Map<String, dynamic> json) => _$Class_Upcoming_EventFromJson(json);
+  factory Class_Upcoming_Event.fromJson(Map<String, dynamic> json) =>
+      _$Class_Upcoming_EventFromJson(json);
   Map<String, dynamic> toJson() => _$Class_Upcoming_EventToJson(this);
 }

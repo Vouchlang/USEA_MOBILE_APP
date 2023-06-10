@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_New_Event/Class_News_Event/Class_Up_News_Events.dart';
-import 'package:usea_app/theme_builder.dart';
-
-import '../../../Custom_AppBar.dart';
+import '/Guest_Dashboard/Guest_New_Event/Class_News_Event/Class_Up_News_Events.dart';
+import '/theme_builder.dart';
+import '/Custom_AppBar.dart';
 
 class Up_Event_Detail extends StatelessWidget {
   final Class_Upcoming_Event data;
@@ -17,7 +16,7 @@ class Up_Event_Detail extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'ព្រឹត្តិការណ៍'.tr),
       body: SingleChildScrollView(
         child: Container(
@@ -78,14 +77,12 @@ class Up_Event_Detail extends StatelessWidget {
                   vertical: UZeroPixel,
                   horizontal: UPdMg_10,
                 ),
-                child: Align(
-                  child: Text(
-                    data.upcoming_desc,
-                    textAlign: TextAlign.justify,
-                    style: TextStyle(
-                      fontSize: UBodySize,
-                      fontFamily: UKFontFamily,
-                    ),
+                child: Text(
+                  data.upcoming_desc,
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                    fontSize: UBodySize,
+                    fontFamily: UKFontFamily,
                   ),
                 ),
               ),

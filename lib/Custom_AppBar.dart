@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:usea_app/theme_builder.dart';
+import '/theme_builder.dart';
 
 class Custom_AppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  const Custom_AppBar({super.key, required this.title});
+  const Custom_AppBar({
+    super.key,
+    required this.title,
+  });
 
   @override
   Widget build(BuildContext context) {

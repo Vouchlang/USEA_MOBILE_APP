@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:usea_app/Home.dart';
-import 'package:usea_app/theme_builder.dart';
+import 'Home.dart';
+import 'theme_builder.dart';
 
 class Splash_Screen extends StatefulWidget {
   const Splash_Screen({Key? key}) : super(key: key);
@@ -33,7 +33,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -48,14 +48,12 @@ class _Splash_ScreenState extends State<Splash_Screen> {
             SizedBox(
               height: 10,
             ),
-            Container(
-              child: Text(
-                'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
-                style: TextStyle(
-                    fontSize: 15,
-                    fontFamily: 'KhmerOSmuol',
-                    color: UPrimaryColor),
-              ),
+            Text(
+              'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
+              style: TextStyle(
+                  fontSize: 15,
+                  fontFamily: 'KhmerOSmuol',
+                  color: UPrimaryColor),
             ),
             Text(
               'UNIVERSITY OF SOUTH-EAST ASIA',

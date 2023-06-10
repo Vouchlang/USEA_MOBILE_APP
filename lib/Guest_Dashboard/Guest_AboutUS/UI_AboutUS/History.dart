@@ -1,31 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../Custom_AppBar.dart';
-import '../../../Custom_Widget/CustomText.dart';
+import '/Custom_AppBar.dart';
+import '/Custom_Widget/CustomText.dart';
+import '/theme_builder.dart';
 
-class History extends StatefulWidget {
+class History extends StatelessWidget {
   const History({Key? key}) : super(key: key);
 
   @override
-  State<History> createState() => _HistoryState();
-}
-
-class _HistoryState extends State<History> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'ប្រវត្តិ និងអត្ថន័យរបស់និមិត្តសញ្ញា'.tr),
       body: Container(
-        width: double.infinity,
-        height: double.infinity,
+        width: UFullWidth,
+        height: UFullWidth,
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 height: 200,
-                width: double.infinity,
+                width: UFullWidth,
                 color: Colors.grey,
                 child: Image.asset(
                   'assets/image/usea_building.jpg',

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/Custom_Widget/CustomText.dart';
-import 'package:usea_app/theme_builder.dart';
+import '/Custom_Widget/CustomText.dart';
+import '/theme_builder.dart';
 import '/Guest_Dashboard/Guest_Program/UI_Program/Program_Major_Detail_Main.dart';
 import '../Class_Program/Class_Program.dart';
 
@@ -21,7 +21,7 @@ class _Program_SemesterState extends State<Program_Semester> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: AppBar(
         centerTitle: false,
         backgroundColor: UBackgroundColor,

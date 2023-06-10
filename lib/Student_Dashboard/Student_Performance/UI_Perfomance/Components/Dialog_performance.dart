@@ -2,9 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/theme_builder.dart';
-import 'package:usea_app/Custom_Widget/CustomText.dart';
-
+import '/theme_builder.dart';
+import '/Custom_Widget/CustomText.dart';
 import '../Class_Performance/Class_Attendacne_performance.dart';
 
 class CustomAttDialog extends StatefulWidget {
@@ -89,11 +88,10 @@ class _CustomAttDialogState extends State<CustomAttDialog> {
               itemCount: attendance.length,
               itemBuilder: (context, index) {
                 List<Color> colors = [
-                  USecondaryColor,
+                  UYellowColor,
                   UOrangeColor,
                   URedColor,
                   UScoreColor,
-                  // Add more colors as needed
                 ];
 
                 Color valueColor = colors[index % colors.length];

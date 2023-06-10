@@ -5,17 +5,8 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '/Guest_Dashboard/Guest_ChangeLanguage/Change_Language.dart';
 import '/Guest_Dashboard/Guest_Home/Class_Home/Class_Home_Screen.dart';
-import '/Guest_Dashboard/Guest_New_Event/UI_News_Event/News_Event.dart';
 import '/theme_builder.dart';
-import '../../Guest_AboutUS/UI_AboutUS/AboutUS.dart';
-import '../../Guest_Career/UI_Career/Career.dart';
-import '../../Guest_Contact/UI_Contact/Contact.dart';
-import '../../Guest_FAQ/UI_FAQ/FAQ.dart';
 import '../../Guest_Notification/UI_Notification/Notifications.dart';
-import '../../Guest_Registration/UI_Registration/Registration.dart';
-import '../../Guest_Scholarship/UI_Scholarship/Scholarship.dart';
-import '../../Guest_VDO/UI_VDO/Test_API/api_main.dart';
-import '../../Guest_VDO/UI_VDO/Video.dart';
 
 class Guest_Home extends StatefulWidget {
   const Guest_Home({Key? key}) : super(key: key);
@@ -23,59 +14,6 @@ class Guest_Home extends StatefulWidget {
   @override
   State<Guest_Home> createState() => _Guest_HomeState();
 }
-
-List<Home_Screen> home_screen = [
-  Home_Screen(
-    name: 'ព្រឹត្តិការណ៍',
-    img: 'assets/image/Guest_News.png',
-    screen: New_Event(),
-  ),
-  Home_Screen(
-    name: 'ការចុះឈ្មោះ',
-    img: 'assets/image/Guest_Regis.png',
-    screen: Registration(),
-  ),
-  Home_Screen(
-    name: 'កម្មវិធីសិក្សា',
-    img: 'assets/image/Guest_Program.png',
-    screen: FacultyList(),
-  ),
-  Home_Screen(
-    name: 'អាហារូបករណ៍',
-    img: 'assets/image/Guest_Scholarship.png',
-    screen: Scholarship(),
-  ),
-  Home_Screen(
-    name: 'ព័ត៌មានការងារ',
-    img: 'assets/image/Guest_Career.png',
-    screen: Career(),
-  ),
-  Home_Screen(
-    name: 'វីដេអូ',
-    img: 'assets/image/Guest_VDO.png',
-    screen: Video_UI(),
-  ),
-  Home_Screen(
-    name: 'ទំនាក់ទំនង',
-    img: 'assets/image/Guest_Contact.png',
-    screen: Contact(),
-  ),
-  Home_Screen(
-    name: 'អំពីយើង',
-    img: 'assets/image/Guest_About.png',
-    screen: AboutUS(),
-  ),
-  Home_Screen(
-    name: 'ផ្លាស់ប្ដូរភាសា',
-    img: 'assets/image/Guest_Language.png',
-    screen: Change_Language(),
-  ),
-  Home_Screen(
-    name: 'FAQ',
-    img: 'assets/image/Guest_QA.png',
-    screen: FAQ(),
-  ),
-];
 
 class _Guest_HomeState extends State<Guest_Home> {
   final Uri urlFb = Uri.parse("https://www.facebook.com/usea.edu.kh");
@@ -100,7 +38,7 @@ class _Guest_HomeState extends State<Guest_Home> {
 
     Widget buildImage(String image_slide, int index) => Container(
           margin: EdgeInsets.symmetric(horizontal: 5),
-          width: double.infinity,
+          width: UFullWidth,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Image.asset(
@@ -114,14 +52,14 @@ class _Guest_HomeState extends State<Guest_Home> {
           activeIndex: activeIndex,
           count: image_slides.length,
           effect: WormEffect(
-              activeDotColor: Theme.of(context).primaryColor,
-              dotColor: Colors.grey,
+              activeDotColor: UPrimaryColor,
+              dotColor: UGreyColor,
               dotHeight: 8,
               dotWidth: 8),
         );
 
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Row(
@@ -130,11 +68,9 @@ class _Guest_HomeState extends State<Guest_Home> {
             Expanded(
               child: Row(
                 children: [
-                  Container(
-                    child: Image.asset(
-                      'assets/image/usea_logo.png',
-                      scale: 30,
-                    ),
+                  Image.asset(
+                    'assets/image/usea_logo.png',
+                    scale: 30,
                   ),
                   SizedBox(
                     width: 5,
@@ -252,7 +188,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                 childAspectRatio: 1.90,
                 padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
                 children: List.generate(
-                  home_screen.length,
+                  guest_home_screen.length,
                   (index) => Card(
                     elevation: 2,
                     shadowColor: ULightGreyColor,
@@ -273,7 +209,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    home_screen[index].screen),
+                                    guest_home_screen[index].screen),
                           );
                         }
                       },
@@ -284,14 +220,14 @@ class _Guest_HomeState extends State<Guest_Home> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.asset(
-                              home_screen[index].img,
+                              guest_home_screen[index].img,
                               scale: 6,
                             ),
                             SizedBox(
                               height: 7,
                             ),
                             Text(
-                              home_screen[index].name.tr,
+                              guest_home_screen[index].name.tr,
                               style: TextStyle(
                                 fontSize: UTitleSize,
                               ),
@@ -308,71 +244,62 @@ class _Guest_HomeState extends State<Guest_Home> {
               height: 7,
             ),
             Card(
-              elevation: 3,
-              shadowColor: Colors.grey[200],
+              elevation: 2,
+              shadowColor: ULightGreyColor,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
               margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
-              child: Container(
+              child: Padding(
+                padding: EdgeInsets.all(10),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Expanded(
-                      child: InkWell(
-                        onTap: () {
-                          launchUrl(urlFb);
-                        },
-                        child: Image.asset(
-                          'assets/image/SM_Facebook.png',
-                          scale: 4.75,
-                        ),
+                    InkWell(
+                      onTap: () {
+                        launchUrl(urlFb);
+                      },
+                      child: Image.asset(
+                        'assets/image/SM_Facebook.png',
+                        scale: 5,
                       ),
                     ),
-                    Expanded(
-                      child: InkWell(
-                        onTap: () {
-                          launchUrl(urlIg);
-                        },
-                        child: Image.asset(
-                          'assets/image/SM_IG.png',
-                          scale: 4.75,
-                        ),
+                    InkWell(
+                      onTap: () {
+                        launchUrl(urlIg);
+                      },
+                      child: Image.asset(
+                        'assets/image/SM_IG.png',
+                        scale: 5,
                       ),
                     ),
-                    Expanded(
-                      child: InkWell(
-                        onTap: () {
-                          launchUrl(urlYt);
-                        },
-                        child: Image.asset(
-                          'assets/image/SM_Yt.png',
-                          scale: 4.75,
-                        ),
+                    InkWell(
+                      onTap: () {
+                        launchUrl(urlYt);
+                      },
+                      child: Image.asset(
+                        'assets/image/SM_Yt.png',
+                        scale: 5,
                       ),
                     ),
-                    Expanded(
-                      child: InkWell(
-                        onTap: () {
-                          launchUrl(urlTel);
-                        },
-                        child: Image.asset(
-                          'assets/image/SM_Telegram.png',
-                          scale: 4.75,
-                        ),
+                    InkWell(
+                      onTap: () {
+                        launchUrl(urlTel);
+                      },
+                      child: Image.asset(
+                        'assets/image/SM_Telegram.png',
+                        scale: 5,
                       ),
                     ),
-                    Expanded(
-                      child: InkWell(
-                        onTap: () {
-                          launchUrl(urlWeb);
-                        },
-                        child: Image.asset(
-                          'assets/image/SM_Website.png',
-                          scale: 4.75,
-                        ),
+                    InkWell(
+                      onTap: () {
+                        launchUrl(urlWeb);
+                      },
+                      child: Image.asset(
+                        'assets/image/SM_Website.png',
+                        scale: 5,
                       ),
                     ),
                   ],

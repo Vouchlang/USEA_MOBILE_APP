@@ -1,7 +1,6 @@
 class Achievements {
   late final String image;
 
-  /// ! Contractor
   Achievements({
     required this.image,
   });

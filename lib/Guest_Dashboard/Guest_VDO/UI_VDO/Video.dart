@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../Custom_AppBar.dart';
-import '../../../Custom_Widget/CustomText.dart';
-import '../../../theme_builder.dart';
+import '/Custom_AppBar.dart';
+import '/Custom_Widget/CustomText.dart';
+import '/theme_builder.dart';
 import '../Class_VDO/Class_Video_Home.dart';
 import 'Video_Display.dart';
 
@@ -17,7 +17,7 @@ class _VideoState extends State<Video_UI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'វីដេអូ'.tr),
       body: ListView.builder(
         padding: EdgeInsets.all(10),

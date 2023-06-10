@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:usea_app/theme_builder.dart';
 import '/Guest_Dashboard/Guest_Home/UI_Home/Guest_Home.dart';
 import '../../Student_Detail/Class_Detail/Class_St_Detail.dart';
 import '../../Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
@@ -9,12 +10,12 @@ class St_Home extends StatefulWidget {
   final dynamic data;
   final List<JobHistory> data_jobhistory;
   final List<StDetail> data_stdetail;
-  const St_Home(
-      {Key? key,
-      required this.data,
-      required this.data_jobhistory,
-      required this.data_stdetail})
-      : super(key: key);
+  const St_Home({
+    Key? key,
+    required this.data,
+    required this.data_jobhistory,
+    required this.data_stdetail,
+  }) : super(key: key);
 
   @override
   State<St_Home> createState() => _St_HomeState();
@@ -53,12 +54,12 @@ class _St_HomeState extends State<St_Home> {
               elevation: 0,
               onTap: onTap,
               currentIndex: currentIndex,
-              selectedItemColor: Theme.of(context).primaryColor,
-              unselectedItemColor: Colors.grey,
+              selectedItemColor: UPrimaryColor,
+              unselectedItemColor: UGreyColor,
               selectedFontSize: 11,
               unselectedFontSize: 11,
-              selectedLabelStyle: TextStyle(fontFamily: 'KhmerOSbattambang'),
-              unselectedLabelStyle: TextStyle(fontFamily: 'KhmerOSbattambang'),
+              selectedLabelStyle: TextStyle(fontFamily: UKFontFamily),
+              unselectedLabelStyle: TextStyle(fontFamily: UKFontFamily),
               items: [
                 BottomNavigationBarItem(
                   icon: Icon(

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/root/internacionalization.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:usea_app/theme_builder.dart';
+import '/theme_builder.dart';
 
 final List<Map<String, dynamic>> locale = [
   {
@@ -28,7 +27,7 @@ class Change_Language extends StatelessWidget {
     Get.changeTheme(
       ThemeData(
         primaryColor: UPrimaryColor,
-        secondaryHeaderColor: Color(0xFFF5F7FE),
+        secondaryHeaderColor: USecondaryColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: font,
       ),
@@ -50,7 +49,7 @@ class ChangeLanguage extends StatelessWidget {
     Get.changeTheme(
       ThemeData(
         primaryColor: UPrimaryColor,
-        secondaryHeaderColor: Color(0xFFF5F7FE),
+        secondaryHeaderColor: USecondaryColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: font,
       ),
@@ -69,7 +68,9 @@ class ChangeLanguage extends StatelessWidget {
     }
 
     return Dialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
       elevation: 3,
       child: Container(
         margin: EdgeInsets.all(7),
@@ -83,16 +84,20 @@ class ChangeLanguage extends StatelessWidget {
             Text(
               'ភាសា'.tr,
               style: TextStyle(
-                  fontSize: UTitleSize16, fontWeight: FontWeight.bold),
+                fontSize: UTitleSize,
+                fontWeight: UTitleWeight,
+              ),
             ),
             SizedBox(height: 5),
             Text(
               'សូមជ្រើសរើសភាសា'.tr,
-              style: TextStyle(fontSize: UTitleSize),
+              style: TextStyle(
+                fontSize: UBodySize,
+              ),
             ),
             SizedBox(height: 5),
             Container(
-              height: 80,
+              height: 70,
               padding: EdgeInsets.all(5),
               alignment: Alignment.center,
               child: ListView.separated(
@@ -101,7 +106,7 @@ class ChangeLanguage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return InkWell(
                     child: Container(
-                      height: 80,
+                      height: 75,
                       width: 95,
                       alignment: Alignment.center,
                       child: Column(
@@ -111,13 +116,13 @@ class ChangeLanguage extends StatelessWidget {
                         children: [
                           Image.asset(
                             locale[index]['logo'],
-                            scale: 4,
+                            scale: 4.5,
                           ),
                           SizedBox(height: 5),
                           Text(
                             locale[index]['name'].toString().tr,
                             style: TextStyle(
-                              fontSize: UTitleSize,
+                              fontSize: UBodySize,
                             ),
                           ),
                         ],
@@ -134,6 +139,8 @@ class ChangeLanguage extends StatelessWidget {
                 separatorBuilder: (context, index) {
                   return VerticalDivider(
                     width: 40,
+                    thickness: 0.5,
+                    color: UGreyColor,
                   );
                 },
                 itemCount: locale.length,

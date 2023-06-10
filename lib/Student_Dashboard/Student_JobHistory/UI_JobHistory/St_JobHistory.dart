@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../Custom_AppBar.dart';
-
-import '../../../Custom_Widget/CustomText.dart';
-import '../../../theme_builder.dart';
+import '/Custom_AppBar.dart';
+import '/Custom_Widget/CustomText.dart';
+import '/theme_builder.dart';
 import '../Class_JobHistory/Class_Job_History.dart';
 
 class Job_History extends StatelessWidget {
@@ -15,7 +14,7 @@ class Job_History extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'ព័ត៌មានការងារ'.tr),
       body: data_jobhistory.isEmpty
           ? Center(child: CircularProgressIndicator())
@@ -27,7 +26,8 @@ class Job_History extends StatelessWidget {
                   elevation: 2,
                   shadowColor: ULightGreyColor,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(URoundedLarge)),
+                    borderRadius: BorderRadius.circular(URoundedLarge),
+                  ),
                   child: Padding(
                     padding: EdgeInsets.all(UPdMg_10),
                     child: Column(
@@ -81,12 +81,15 @@ class Job_History extends StatelessWidget {
                               width: 125,
                               child: Text(
                                 'មុខតំណែង'.tr,
-                                style: TextStyle(fontSize: UTitleSize),
+                                style: TextStyle(
+                                  fontSize: UTitleSize,
+                                ),
                               ),
                             ),
                             Expanded(
                               child: NoWeightTitleTheme(
-                                  text: data_jobhistory[index].position),
+                                text: data_jobhistory[index].position,
+                              ),
                             ),
                           ],
                         ),
@@ -97,12 +100,16 @@ class Job_History extends StatelessWidget {
                               width: 125,
                               child: Text(
                                 'ប្រាក់បៀវត្ស'.tr,
-                                style: TextStyle(fontSize: UTitleSize),
+                                style: TextStyle(
+                                  fontSize: UTitleSize,
+                                ),
                               ),
                             ),
                             Text(
                               data_jobhistory[index].salary.tr,
-                              style: TextStyle(fontSize: UTitleSize),
+                              style: TextStyle(
+                                fontSize: UTitleSize,
+                              ),
                             ),
                           ],
                         ),

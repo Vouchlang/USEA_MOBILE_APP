@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:usea_app/theme_builder.dart';
-import '../../../Custom_Widget/CustomText.dart';
-import '../../../Home.dart';
+import '/theme_builder.dart';
+import '/Custom_Widget/CustomText.dart';
+import '/Home.dart';
 import '../Class_Detail/Class_St_Detail.dart';
 
 class Student_Detail extends StatefulWidget {
@@ -26,18 +26,25 @@ class _Student_DetailState extends State<Student_Detail> {
       builder: (BuildContext context) {
         return Dialog(
           elevation: 3,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(
+            10,
+          )),
           child: Container(
             margin: EdgeInsets.all(7),
             padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), color: Colors.white),
+                borderRadius: BorderRadius.circular(20),
+                color: UBackgroundColor),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
                   'ចាកចេញ'.tr,
                   style: TextStyle(
-                      fontSize: UTitleSize16, fontWeight: FontWeight.bold),
+                    fontSize: UTitleSize,
+                    fontWeight: UTitleWeight,
+                  ),
                 ),
                 SizedBox(
                   height: 5,
@@ -46,7 +53,7 @@ class _Student_DetailState extends State<Student_Detail> {
                   'តើអ្នកប្រាកដថាអ្នកនឹងចាកចេញពីគណនីនិសិ្សតដែរឬទេ?'.tr,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: UTitleSize,
+                    fontSize: UBodySize,
                   ),
                 ),
                 SizedBox(
@@ -56,42 +63,46 @@ class _Student_DetailState extends State<Student_Detail> {
                   height: 50,
                   padding: EdgeInsets.all(5),
                   alignment: Alignment.center,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      TextButton(
-                        child: Text(
-                          'បោះបង់'.tr,
-                          style: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                      VerticalDivider(),
-                      TextButton(
-                        child: Text(
-                          'ចាកចេញ'.tr,
-                          style: TextStyle(
-                            color: Colors.red,
-                          ),
-                        ),
-                        onPressed: () async {
-                          SharedPreferences prefs =
-                              await SharedPreferences.getInstance();
-                          await prefs.clear();
-
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (BuildContext context) => Home(),
+                  child: IntrinsicHeight(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        TextButton(
+                          child: Text(
+                            'បោះបង់'.tr,
+                            style: TextStyle(
+                              color: UPrimaryColor,
+                              fontSize: UBodySize,
                             ),
-                          );
-                        },
-                      ),
-                    ],
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                        buildVerticalDividerAtt(),
+                        TextButton(
+                          child: Text(
+                            'ចាកចេញ'.tr,
+                            style: TextStyle(
+                              color: URedColor,
+                              fontSize: UBodySize,
+                            ),
+                          ),
+                          onPressed: () async {
+                            SharedPreferences prefs =
+                                await SharedPreferences.getInstance();
+                            await prefs.clear();
+
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (BuildContext context) => Home(),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -105,24 +116,24 @@ class _Student_DetailState extends State<Student_Detail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: AppBar(
         centerTitle: false,
         title: Text(
           'ព័ត៌មានលម្អិតរបស់និស្សិត'.tr,
           style: TextStyle(
-            color: Theme.of(context).primaryColor,
+            color: UPrimaryColor,
             fontSize: 18,
-            fontWeight: FontWeight.w600,
+            fontWeight: UTitleWeight,
           ),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: UBackgroundColor,
         elevation: 1,
         iconTheme: IconThemeData.fallback(),
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
-            color: Theme.of(context).primaryColor,
+            color: UPrimaryColor,
             size: 18,
           ),
           onPressed: () => Navigator.of(context).pop(),
@@ -131,7 +142,7 @@ class _Student_DetailState extends State<Student_Detail> {
           IconButton(
             icon: Icon(
               Icons.logout,
-              color: Theme.of(context).primaryColor,
+              color: UPrimaryColor,
               size: 18,
             ),
             onPressed: () {
@@ -150,13 +161,17 @@ class _Student_DetailState extends State<Student_Detail> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      padding: EdgeInsets.symmetric(
+                        vertical: 10,
+                        horizontal: 20,
+                      ),
                       child: Row(
                         children: [
                           CircleAvatar(
                             backgroundImage: NetworkImage(
-                              getImage(widget.dataDetail[index].profile_pic),
+                              getImage(
+                                widget.dataDetail[index].profile_pic,
+                              ),
                             ),
                             radius: 50,
                           ),
@@ -170,25 +185,25 @@ class _Student_DetailState extends State<Student_Detail> {
                             children: [
                               buildHeaderDetail(
                                   widget.dataDetail[index].name_kh,
-                                  'KhmerOSbattambang',
+                                  UKFontFamily,
                                   UTitleSize16,
-                                  FontWeight.bold),
+                                  UTitleWeight),
                               buildHeaderDetail(
                                   widget.dataDetail[index].name_en,
-                                  'Poppins',
+                                  UEFontFamily,
                                   UTitleSize16,
-                                  FontWeight.w500),
+                                  UBodyWeight),
                               buildHeaderDetail(
                                   widget.dataDetail[index].student_id,
-                                  'Poppins',
+                                  UEFontFamily,
                                   UBodySize,
-                                  FontWeight.w500),
+                                  UBodyWeight),
                             ],
                           )
                         ],
                       ),
                     ),
-                    Divider(),
+                    buildDividerStDetail(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -208,7 +223,7 @@ class _Student_DetailState extends State<Student_Detail> {
                             widget.dataDetail[index].academic_year),
                       ],
                     ),
-                    Divider(),
+                    buildDividerStDetail(),
                     Container(
                       margin:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -219,45 +234,45 @@ class _Student_DetailState extends State<Student_Detail> {
                                 'assets/image/Stu_Faculty.png',
                                 'មហាវិទ្យាល័យ'.tr,
                                 widget.dataDetail[index].faculty_name),
-                            Divider(),
+                            buildDividerStDetail(),
                             buildTailDetail(
                                 'assets/image/Stu_Degree.png',
                                 'កម្រិតសិក្សា'.tr,
                                 widget.dataDetail[index].degree_name),
-                            Divider(),
+                            buildDividerStDetail(),
                             buildTailDetail(
                                 'assets/image/Stu_Major.png',
                                 'មុខជំនាញ'.tr,
                                 widget.dataDetail[index].major_name),
-                            Divider(),
+                            buildDividerStDetail(),
                             buildTailDetail(
                                 'assets/image/Stu_Room.png',
                                 'បន្ទប់សិក្សា'.tr,
                                 widget.dataDetail[index].room_name),
-                            Divider(),
+                            buildDividerStDetail(),
                             buildTailDetail(
                                 'assets/image/Stu_Shift.png',
                                 'វេនសិក្សា'.tr,
                                 widget.dataDetail[index].shift_name),
-                            Divider(),
+                            buildDividerStDetail(),
                             buildTailDetail(
                                 'assets/image/Stu_Status.png',
                                 'ស្ថានភាពសិក្សា'.tr,
                                 widget.dataDetail[index].status_name),
-                            Divider(),
+                            buildDividerStDetail(),
                             buildTailDetail(
                                 'assets/image/Stu_DOB.png',
                                 'ថ្ងៃកំណើត'.tr,
                                 widget.dataDetail[index].date_of_birth),
-                            Divider(),
+                            buildDividerStDetail(),
                             buildTailDetail(
                                 'assets/image/Stu_Tel.png',
                                 'លេខទូរស័ព្ទ'.tr,
                                 widget.dataDetail[index].phone_number),
-                            Divider(),
+                            buildDividerStDetail(),
                             buildTailDetail('assets/image/Stu_Job.png',
                                 'មុខតំណែង'.tr, widget.dataDetail[index].job),
-                            Divider(),
+                            buildDividerStDetail(),
                             buildTailDetail(
                                 'assets/image/Stu_Workplace.png',
                                 'ស្ថាប័ន'.tr,

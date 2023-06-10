@@ -1,9 +1,8 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:usea_app/Custom_Widget/CustomText.dart';
-import 'package:usea_app/theme_builder.dart';
-
+import '/Custom_Widget/CustomText.dart';
+import '/theme_builder.dart';
 import '../../Class_Schedule/Class_Schedule.dart';
 
 class CardCalendarList extends StatelessWidget {
@@ -52,45 +51,39 @@ class CardCalendarList extends StatelessWidget {
                           // *@ End Vertical Divider
 
                           Expanded(
-                            child: Container(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  TitleSize16_Theme(
-                                    text: datacalendar[index].majorTitle,
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  BodyTheme(
-                                    text: datacalendar[index].classroom,
-                                  ),
-                                  Expanded(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Expanded(
-                                          child: Container(
-                                            child: BodyTheme(
-                                              text: datacalendar[index]
-                                                  .teacherName,
-                                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                TitleSize16_Theme(
+                                  text: datacalendar[index].majorTitle,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                BodyTheme(
+                                  text: datacalendar[index].classroom,
+                                ),
+                                Expanded(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Expanded(
+                                        child: BodyTheme(
+                                          text: datacalendar[index].teacherName,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Container(
+                                          alignment: Alignment.topRight,
+                                          child: BodyTheme(
+                                            text: datacalendar[index].tel,
                                           ),
                                         ),
-                                        Expanded(
-                                          child: Container(
-                                            alignment: Alignment.topRight,
-                                            child: BodyTheme(
-                                              text: datacalendar[index].tel,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         ],

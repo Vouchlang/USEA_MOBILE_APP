@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '/theme_builder.dart';
-import '../../../Custom_AppBar.dart';
+import '/Custom_AppBar.dart';
 import '../Class_AboutUS/Class_AboutUS.dart';
 
-class AboutUS extends StatefulWidget {
+class AboutUS extends StatelessWidget {
   const AboutUS({Key? key}) : super(key: key);
 
   @override
-  State<AboutUS> createState() => _AboutUSState();
-}
-
-class _AboutUSState extends State<AboutUS> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'អំពីយើង'.tr),
       body: ListView.builder(
         itemCount: aboutUS.length,

@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:usea_app/Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
+import 'package:usea_app/theme_builder.dart';
+import '/Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../Custom_AppBar.dart';
+import '/Custom_AppBar.dart';
 import '../Student_Detail/Class_Detail/Class_St_Detail.dart';
 import '../Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
 
@@ -103,22 +103,27 @@ class _Student_LogInState extends State<Student_LogIn> {
         context: context,
         builder: (BuildContext context) {
           return Dialog(
-            elevation: 3,
+            elevation: 2,
             child: Container(
               height: 175.0,
               margin: EdgeInsets.all(7),
               padding: EdgeInsets.symmetric(horizontal: 10),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10), color: Colors.white),
+                borderRadius: BorderRadius.circular(10),
+                color: UBackgroundColor,
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     'គណនីនិស្សិត'.tr,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: UTitleSize16, fontWeight: UTitleWeight),
                   ),
-                  SizedBox(height: 10.0),
+                  SizedBox(
+                    height: 10.0,
+                  ),
                   Text(
                     'អត្តលេខនិស្សិត ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវ។ សូមបញ្ចូលម្ដងទៀត!!!'
                         .tr,
@@ -133,14 +138,14 @@ class _Student_LogInState extends State<Student_LogIn> {
                     onTap: () => Navigator.pop(context),
                     child: Container(
                       alignment: Alignment.center,
-                      width: double.infinity,
+                      width: UFullWidth,
                       child: Text(
                         'OK',
                         style: TextStyle(
-                            color: Theme.of(context).copyWith().primaryColor,
-                            fontSize: 14,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w500),
+                            color: UPrimaryColor,
+                            fontSize: UTitleSize,
+                            fontFamily: UEFontFamily,
+                            fontWeight: UBodyWeight),
                       ),
                     ),
                   )
@@ -189,17 +194,17 @@ class _Student_LogInState extends State<Student_LogIn> {
               'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
               style: TextStyle(
                   fontFamily: 'KhmerOSmuol',
-                  color: Theme.of(context).primaryColor,
-                  fontSize: 16),
+                  color: UPrimaryColor,
+                  fontSize: UTitleSize16),
             ),
             Text(
               'UNIVERSITY OF SOUTH-EAST ASIA',
               style: TextStyle(
                   letterSpacing: 1.5,
-                  fontFamily: 'Poppins',
-                  color: Theme.of(context).primaryColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500),
+                  fontFamily: UEFontFamily,
+                  color: UPrimaryColor,
+                  fontSize: UTitleSize16,
+                  fontWeight: UBodyWeight),
             ),
             SizedBox(
               height: 15,
@@ -216,7 +221,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                       'អត្តលេខនិស្សិត'.tr,
                       textAlign: TextAlign.left,
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: UBodySize,
                       ),
                     ),
                   ),
@@ -225,7 +230,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                     alignment: Alignment.center,
                     child: TextFormField(
                       controller: _textControllerUsername,
-                      cursorColor: Colors.grey,
+                      cursorColor: UGreyColor,
                       cursorWidth: 1,
                       cursorHeight: 20,
                       decoration: InputDecoration(
@@ -233,7 +238,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                         hintText: '\t\tបញ្ចូលអត្តលេខ'.tr,
                         hintStyle: TextStyle(
                           fontSize: 10,
-                          color: Colors.grey,
+                          color: UGreyColor,
                         ),
                         border: OutlineInputBorder(),
                         suffixIcon: IconButton(
@@ -246,11 +251,11 @@ class _Student_LogInState extends State<Student_LogIn> {
                           ),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey),
+                          borderSide: BorderSide(color: UGreyColor),
                         ),
-                        suffixIconColor: Colors.grey,
-                        errorStyle: TextStyle(
-                            fontSize: 10, fontFamily: 'KhmerOSbattambang'),
+                        suffixIconColor: UGreyColor,
+                        errorStyle:
+                            TextStyle(fontSize: 10, fontFamily: UKFontFamily),
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -276,7 +281,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                     child: TextFormField(
                       obscureText: _obscureText,
                       controller: _textControllerPsw,
-                      cursorColor: Colors.grey,
+                      cursorColor: UGreyColor,
                       cursorWidth: 1,
                       cursorHeight: 20,
                       decoration: InputDecoration(
@@ -284,7 +289,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                         hintText: '\t\tបញ្ចូលពាក្យសម្ងាត់'.tr,
                         hintStyle: TextStyle(
                           fontSize: 10,
-                          color: Colors.grey,
+                          color: UGreyColor,
                         ),
                         border: OutlineInputBorder(),
                         suffixIcon: IconButton(
@@ -303,11 +308,15 @@ class _Student_LogInState extends State<Student_LogIn> {
                           ),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey),
+                          borderSide: BorderSide(
+                            color: UGreyColor,
+                          ),
                         ),
-                        suffixIconColor: Colors.grey,
+                        suffixIconColor: UGreyColor,
                         errorStyle: TextStyle(
-                            fontSize: 10, fontFamily: 'KhmerOSbattambang'),
+                          fontSize: 10,
+                          fontFamily: UKFontFamily,
+                        ),
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -331,11 +340,12 @@ class _Student_LogInState extends State<Student_LogIn> {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
-                  color: Theme.of(context).primaryColor,
+                  color: UPrimaryColor,
                 ),
                 child: Text(
                   'ចូល'.tr,
-                  style: TextStyle(color: Colors.white, fontSize: 14),
+                  style:
+                      TextStyle(color: UBackgroundColor, fontSize: UTitleSize),
                 ),
               ),
             ),

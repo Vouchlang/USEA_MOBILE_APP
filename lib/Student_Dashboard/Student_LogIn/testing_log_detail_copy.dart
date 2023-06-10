@@ -1,11 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:usea_app/Student_Dashboard/Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
-import 'package:usea_app/Student_Dashboard/Student_LogIn/testing_log_detail_a.dart';
-import 'package:usea_app/Student_Dashboard/Student_LogIn/testing_log_detail_b.dart';
-import 'package:usea_app/Student_Dashboard/Student_LogIn/testing_log_detail_more.dart';
-
+import '/Student_Dashboard/Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
+import '/Student_Dashboard/Student_LogIn/testing_log_detail_more.dart';
 import '../Student_Detail/Class_Detail/Class_St_Detail.dart';
 
 class LoginPage1_M extends StatefulWidget {
@@ -100,9 +97,6 @@ class _LoginPageState extends State<LoginPage1_M> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Login Example',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: Scaffold(
         appBar: AppBar(
           title: Text('Login Page'),

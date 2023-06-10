@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_Program/Class_Program/Class_Program_Score_S1.dart';
-import 'package:usea_app/theme_builder.dart';
-
-import '../../../Custom_Widget/CustomText.dart';
+import '/Guest_Dashboard/Guest_Program/Class_Program/Class_Program_Score_S1.dart';
+import '/theme_builder.dart';
+import '/Custom_Widget/CustomText.dart';
 
 class Program_Score_S1 extends StatefulWidget {
   const Program_Score_S1({super.key});
@@ -16,13 +15,14 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       body: SingleChildScrollView(
         child: Card(
           elevation: 2,
           shadowColor: ULightGreyColor,
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(URoundedLarge)),
+            borderRadius: BorderRadius.circular(URoundedLarge),
+          ),
           margin: EdgeInsets.all(UPdMg_10),
           color: UBackgroundColor,
           child: Column(
@@ -43,12 +43,18 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(child: TitleTheme(text: 'មុខវិជ្ជា'.tr)),
+                    TitleTheme(
+                      text: 'មុខវិជ្ជា'.tr,
+                    ),
                     Row(
                       children: [
-                        Container(child: TitleTheme(text: 'ម៉ោង'.tr)),
+                        TitleTheme(
+                          text: 'ម៉ោង'.tr,
+                        ),
                         SizedBox(width: 15),
-                        Container(child: TitleTheme(text: 'ក្រេឌីត'.tr))
+                        TitleTheme(
+                          text: 'ក្រេឌីត'.tr,
+                        )
                       ],
                     )
                   ],
@@ -72,25 +78,25 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Expanded(
-                                  child: NoWeightTitleTheme(
-                                      text: class_program_score_s1[index]
-                                          .subject)),
+                                child: NoWeightTitleTheme(
+                                    text:
+                                        class_program_score_s1[index].subject),
+                              ),
                               Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Container(
-                                    child: NoWeightTitleTheme(
-                                        text: class_program_score_s1[index]
-                                            .hour
-                                            .toString()),
-                                  ),
+                                  NoWeightTitleTheme(
+                                      text: class_program_score_s1[index]
+                                          .hour
+                                          .toString()),
                                   SizedBox(width: 35),
                                   Container(
                                     margin: EdgeInsets.only(right: UPdMg_10),
                                     child: NoWeightTitleTheme(
-                                        text: class_program_score_s1[index]
-                                            .credit
-                                            .toString()),
+                                      text: class_program_score_s1[index]
+                                          .credit
+                                          .toString(),
+                                    ),
                                   ),
                                 ],
                               )
@@ -108,7 +114,9 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(child: TitleTheme(text: 'សរុប'.tr)),
+                    TitleTheme(
+                      text: 'សរុប'.tr,
+                    ),
                     Row(
                       children: [
                         Container(
@@ -119,7 +127,9 @@ class _Program_Score_S1State extends State<Program_Score_S1> {
                                   .fold(0, (sum, data) => sum + data.hour)
                                   .toString()),
                         ),
-                        SizedBox(width: 15),
+                        SizedBox(
+                          width: 15,
+                        ),
                         Container(
                           width: 30,
                           alignment: Alignment.center,

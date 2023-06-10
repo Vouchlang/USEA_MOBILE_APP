@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_Account/UI_Account/Guest_Acc.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_Home/UI_Home/Guest_Home.dart';
-import 'package:usea_app/theme_builder.dart';
+import '/Guest_Dashboard/Guest_Account/UI_Account/Guest_Acc.dart';
+import '/Guest_Dashboard/Guest_Home/UI_Home/Guest_Home.dart';
+import '/theme_builder.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);

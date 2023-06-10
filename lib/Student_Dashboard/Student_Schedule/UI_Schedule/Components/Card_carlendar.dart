@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart';
-import 'package:usea_app/theme_builder.dart';
+import '/theme_builder.dart';
 
 class CardCalendar extends StatefulWidget {
   const CardCalendar({Key? key}) : super(key: key);
@@ -22,7 +22,10 @@ class _CardCalendarState extends State<CardCalendar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+      padding: EdgeInsets.symmetric(
+        vertical: 5,
+        horizontal: 10,
+      ),
       child: Column(
         children: [
           Container(
@@ -60,10 +63,14 @@ class _CardCalendarState extends State<CardCalendar> {
                 ),
               ),
               headerStyle: HeaderStyle(
-                headerPadding:
-                    EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                titleTextStyle:
-                    TextStyle(color: UPrimaryColor, fontSize: UTitleSize16),
+                headerPadding: EdgeInsets.symmetric(
+                  horizontal: 20.0,
+                  vertical: 10.0,
+                ),
+                titleTextStyle: TextStyle(
+                  color: UPrimaryColor,
+                  fontSize: UTitleSize16,
+                ),
                 leftChevronIcon: Icon(
                   Icons.arrow_back_ios,
                   size: 20,

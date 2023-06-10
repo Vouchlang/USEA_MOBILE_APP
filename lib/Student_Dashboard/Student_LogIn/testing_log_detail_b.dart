@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../Student_Detail/Class_Detail/Class_St_Detail.dart';
 
-
 class DataPage2 extends StatelessWidget {
   final List<StDetail> data2;
 
@@ -19,7 +18,9 @@ class DataPage2 extends StatelessWidget {
         itemBuilder: (context, index) {
           final item = data2[index];
           return ListTile(
-            title: Text(item.name_kh),
+            title: Text(
+              item.name_kh,
+            ),
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

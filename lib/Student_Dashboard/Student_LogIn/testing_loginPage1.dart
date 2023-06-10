@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:usea_app/Student_Dashboard/Student_LogIn/testing_log_detail_b.dart';
-
 import '../../Custom_AppBar.dart';
 import '../Student_Detail/Class_Detail/Class_St_Detail.dart';
 import '../Student_Home/UI_Home/St_Home.dart';

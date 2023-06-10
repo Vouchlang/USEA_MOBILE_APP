@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_Program/UI_Program/Program_Search_Major.dart';
-import 'package:usea_app/theme_builder.dart';
+import '/Guest_Dashboard/Guest_Program/UI_Program/Program_Search_Major.dart';
+import '/theme_builder.dart';
 import '../Class_Program/Class_Program.dart';
 import 'Program_Major_Detail_Main.dart';
 
@@ -16,16 +16,16 @@ class _ProgramState extends State<Program> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: AppBar(
         centerTitle: false,
-        title: Text('កម្មវិធីសិក្សា5'.tr,
+        title: Text('កម្មវិធីសិក្សា'.tr,
             style: TextStyle(
-              color: Theme.of(context).primaryColor,
+              color: UPrimaryColor,
               fontSize: 18,
-              fontWeight: FontWeight.w600,
+              fontWeight: UTitleWeight,
             )),
-        backgroundColor: Colors.white,
+        backgroundColor: UBackgroundColor,
         elevation: 1,
         iconTheme: IconThemeData.fallback(),
         leading: IconButton(
@@ -39,24 +39,22 @@ class _ProgramState extends State<Program> {
         actions: [
           Padding(
             padding: EdgeInsets.all(UPdMg_10),
-            child: Container(
-              child: Center(
-                child: IconButton(
-                  onPressed: () {
-                    setState(() {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (ctx) => Program_Semester(),
-                        ),
-                      );
-                    });
-                  },
-                  icon: Icon(
-                    Icons.search,
-                    color: UPrimaryColor,
-                    size: 20,
-                  ),
+            child: Center(
+              child: IconButton(
+                onPressed: () {
+                  setState(() {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (ctx) => Program_Semester(),
+                      ),
+                    );
+                  });
+                },
+                icon: Icon(
+                  Icons.search,
+                  color: UPrimaryColor,
+                  size: 20,
                 ),
               ),
             ),
@@ -132,14 +130,14 @@ class ProgramWidget extends StatelessWidget {
       );
     } else {
       return Card(
-        color: Colors.white,
+        color: UBackgroundColor,
         margin: EdgeInsets.fromLTRB(
           UPdMg_10,
           UPdMg_10,
           UPdMg_10,
           UZeroPixel,
         ),
-        elevation: 3,
+        elevation: 2,
         shadowColor: UGreyColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(UPdMg_10),
@@ -148,7 +146,7 @@ class ProgramWidget extends StatelessWidget {
           child: Theme(
             data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
             child: ExpansionTile(
-              collapsedIconColor: Theme.of(context).primaryColor,
+              collapsedIconColor: UPrimaryColor,
               iconColor: UPrimaryColor,
               textColor: UTextColor,
               key: PageStorageKey(title),

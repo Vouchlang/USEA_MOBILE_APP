@@ -1,8 +1,5 @@
 class Video {
-  final String youtube_thumbnail;
-  final String title;
-  final String caption;
-  final String link;
+  final String youtube_thumbnail, title, caption, link;
 
   Video(
       {required this.youtube_thumbnail,

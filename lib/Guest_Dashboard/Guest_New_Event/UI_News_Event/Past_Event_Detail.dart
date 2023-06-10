@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_New_Event/Class_News_Event/Class_Past_News_Events.dart';
-
-import '../../../Custom_AppBar.dart';
-import '../../../theme_builder.dart';
+import '/Guest_Dashboard/Guest_New_Event/Class_News_Event/Class_Past_News_Events.dart';
+import '/Custom_AppBar.dart';
+import '/theme_builder.dart';
 
 class Past_Event_Detail extends StatelessWidget {
   final Class_Past_Event data;
@@ -17,7 +16,7 @@ class Past_Event_Detail extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'ព្រឹត្តិការណ៍'.tr),
       body: SingleChildScrollView(
         child: Container(
@@ -73,14 +72,12 @@ class Past_Event_Detail extends StatelessWidget {
                   vertical: UZeroPixel,
                   horizontal: UPdMg_10,
                 ),
-                child: Align(
-                  child: Text(
-                    data.past_desc,
-                    textAlign: TextAlign.justify,
-                    style: TextStyle(
-                      fontSize: UBodySize,
-                      fontFamily: UKFontFamily,
-                    ),
+                child: Text(
+                  data.past_desc,
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                    fontSize: UBodySize,
+                    fontFamily: UKFontFamily,
                   ),
                 ),
               ),

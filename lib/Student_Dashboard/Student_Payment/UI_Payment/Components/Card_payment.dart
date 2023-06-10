@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:usea_app/theme_builder.dart';
-import '../../../../Custom_Widget/CustomText.dart';
+import '/theme_builder.dart';
+import '/Custom_Widget/CustomText.dart';
 import '../../Class_Payment/Class_Payment.dart';
 import 'Dialog_payment.dart';
 
@@ -57,7 +57,6 @@ class PaymentCards extends StatelessWidget {
                   itemCount: paymentData.length,
                   itemBuilder: (context, index) {
                     final isLastIndex = index == paymentData.length - 1;
-
                     return Padding(
                       padding: EdgeInsets.only(bottom: isLastIndex ? 5 : 0),
                       child: IntrinsicHeight(

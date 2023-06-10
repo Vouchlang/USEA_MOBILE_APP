@@ -18,7 +18,9 @@ class DataPage1 extends StatelessWidget {
         itemBuilder: (context, index) {
           final item = data_jobhistory[index];
           return ListTile(
-            title: Text(item.date_start_work),
+            title: Text(
+              item.date_start_work,
+            ),
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

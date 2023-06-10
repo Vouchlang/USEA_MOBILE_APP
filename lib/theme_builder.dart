@@ -4,16 +4,19 @@ import 'package:flutter/material.dart';
 
 // * @ Colors Theme
 const UPrimaryColor = Color(0xff002060);
-const USecondaryColor = Color(0xffE4AC40);
-const UScoreColor = Color(0xff38920D);
-const UBackgroundColor = Color(0xffFFFFFF);
+const USecondaryColor = Color(0xFFF5F7FE);
+const UYellowColor = Color(0xffE4AC40);
 const UOrangeColor = Color(0xffDF713F);
 const URedColor = Color(0xffD71818);
+const UScoreColor = Color(0xff38920D);
+const UBackgroundColor = Color(0xffFFFFFF);
 const UTextColor = Color(0xff000000);
 const UGreyColor = Colors.grey;
 const ULightGreyColor = Color.fromARGB(255, 200, 200, 200);
-
 const UBtnColor = Color(0x142D74F5);
+
+//  * @ Background Color
+const UBGLightBlue = Color(0xffE9F2FF);
 
 const UZeroPixel = 0.0;
 
@@ -35,9 +38,6 @@ const UPdMg_8 = 8.0; // UPd_Mg_Small
 const UPdMg_10 = 10.0; // UPd_Mg_Medium
 const UPdMg_12 = 12.0; // UPd_Mg_Large
 const UPdMg_15 = 15.0; // UPd_Mg_Extra
-
-//  * @ Background Color
-const UBGLightBlue = Color(0xffE9F2FF);
 
 //  * @ Rounded Theme
 const URoundedMedium = 5.0;

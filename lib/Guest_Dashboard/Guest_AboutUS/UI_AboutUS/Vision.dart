@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../Custom_AppBar.dart';
-import '../../../Custom_Widget/CustomText.dart';
+import '/Custom_AppBar.dart';
+import '/Custom_Widget/CustomText.dart';
+import '/theme_builder.dart';
 
-class Vision extends StatefulWidget {
+class Vision extends StatelessWidget {
   const Vision({Key? key}) : super(key: key);
 
   @override
-  State<Vision> createState() => _VisionState();
-}
-
-class _VisionState extends State<Vision> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'ចក្ខុវិស័យ បេសកកម្ម និងគុណតម្លៃ'.tr),
       body: ListView(
         children: [
@@ -126,7 +122,7 @@ class _VisionState extends State<Vision> {
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+            margin: EdgeInsets.all(10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,

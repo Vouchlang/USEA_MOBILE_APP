@@ -3,12 +3,12 @@ part 'Class_Scholarship_Out.g.dart';
 
 @JsonSerializable()
 class O_Scholarship {
-  late final String o_school_name;
-  late final String o_educational_level;
-  late final String o_major;
-  late final String o_expire;
-  late final String o_expire_date;
-  late final String o_link;
+  late final String o_school_name,
+      o_educational_level,
+      o_major,
+      o_expire,
+      o_expire_date,
+      o_link;
 
   O_Scholarship(
       {required this.o_school_name,

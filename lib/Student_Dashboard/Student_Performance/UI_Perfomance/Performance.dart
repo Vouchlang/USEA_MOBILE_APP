@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/Custom_AppBar.dart';
-import 'package:usea_app/theme_builder.dart';
-
+import '/Custom_AppBar.dart';
+import '/theme_builder.dart';
 import 'Components/Screen_Performance.dart';
 
 class Performance extends StatefulWidget {
@@ -25,7 +24,7 @@ class _PerformanceState extends State<Performance> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
+      backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'ដំណើរការសិក្សា'.tr),
       body: Container(
         child: SingleChildScrollView(

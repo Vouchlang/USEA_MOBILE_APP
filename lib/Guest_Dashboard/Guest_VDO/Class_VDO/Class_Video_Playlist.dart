@@ -1,8 +1,5 @@
 class Video_PlayList {
-  late final String youtube_thumbnail;
-  late final String title;
-  late final String caption;
-  late final String link;
+  late final String youtube_thumbnail, title, caption, link;
 
   Video_PlayList(
       {required this.youtube_thumbnail,

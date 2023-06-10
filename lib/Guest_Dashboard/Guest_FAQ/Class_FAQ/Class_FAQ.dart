@@ -3,8 +3,7 @@ part 'Class_FAQ.g.dart';
 
 @JsonSerializable()
 class Class_FAQ {
-  late final String question;
-  late final String answer;
+  late final String question, answer;
 
   Class_FAQ({required this.question, required this.answer});
 
