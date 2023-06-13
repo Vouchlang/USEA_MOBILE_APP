@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../../Student_Dashboard/Student_Other_Class/Class_Student_User.dart';
+import '../../../Student_Dashboard/Student_Other_Class/Class_Survey_Status.dart';
 import '/Student_Dashboard/Student_Detail/Class_Detail/Class_St_Detail.dart';
 import '/Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
 import '/Student_Dashboard/Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
@@ -18,6 +20,8 @@ class Guest_Acc extends StatefulWidget {
 
 class Guest_AccState extends State<Guest_Acc> {
   static const String KEYLOGIN = 'login';
+  static const String KEYSTUDENT_USER = 'student_user';
+  static const String KEYSURVEY = 'survey';
   static const String KEYJOBHISTORY = 'job_history';
   static const String KEYSTDETAIL = 'student_detail';
 
@@ -36,12 +40,50 @@ class Guest_AccState extends State<Guest_Acc> {
 
     if (isLoggedIn != null) {
       if (isLoggedIn) {
+        List<StudentUser> dataStudentUser = getSavedStudentUser(sharePref);
+        List<SurveyStatus> dataSurvey = getSavedSurvey(sharePref);
         List<JobHistory> dataJobHistory = getSavedJobHistory(sharePref);
         List<StDetail> dataStDetail = getSavedStDetail(sharePref);
-        if (dataJobHistory.isNotEmpty && dataStDetail.isNotEmpty) {
-          navigateToSt_HomeScreen(dataJobHistory, dataStDetail);
+        if (dataStudentUser.isNotEmpty &&
+            dataSurvey.isNotEmpty &&
+            dataJobHistory.isNotEmpty &&
+            dataStDetail.isNotEmpty) {
+          navigateToSt_HomeScreen(
+              dataStudentUser, dataSurvey, dataJobHistory, dataStDetail);
         }
       }
+    }
+  }
+
+  List<StudentUser> getSavedStudentUser(SharedPreferences sharedPreferences) {
+    final studentUserString = sharedPreferences.getString(KEYSTUDENT_USER);
+    if (studentUserString != null) {
+      final jsonData = json.decode(studentUserString);
+      List<StudentUser> studentUserList = [];
+      for (var item in jsonData) {
+        StudentUser studentUser = StudentUser.fromJson(item);
+        studentUserList.add(studentUser);
+      }
+      return studentUserList;
+    } else {
+      return [];
+    }
+  }
+
+  List<SurveyStatus> getSavedSurvey(SharedPreferences sharedPreferences) {
+    final surveyString = sharedPreferences.getString(KEYSURVEY);
+    if (surveyString != null) {
+      final jsonData = json.decode(surveyString);
+      List<SurveyStatus> surveyList = [];
+
+      for (var item in jsonData) {
+        SurveyStatus survey = SurveyStatus.fromJson(item);
+        surveyList.add(survey);
+      }
+
+      return surveyList;
+    } else {
+      return [];
     }
   }
 
@@ -78,11 +120,15 @@ class Guest_AccState extends State<Guest_Acc> {
   }
 
   void navigateToSt_HomeScreen(
+    List<StudentUser> studentUser,
+    List<SurveyStatus> survey,
     List<JobHistory> jobHistory,
     List<StDetail> stDetail,
   ) {
     Get.off(
       St_Home(
+        data_studentUser: studentUser,
+        data_survey: survey,
         data: stDetail,
         data_jobhistory: jobHistory,
         data_stdetail: stDetail,

@@ -141,6 +141,10 @@ class LocaleString extends Translations {
               'តើអ្នកប្រាកដថាអ្នកនឹងចាកចេញពីគណនីនិសិ្សតដែរឬទេ?',
           'បោះបង់': 'បោះបង់',
 
+          // Student Survery
+          'សូមជួយវាយដម្លៃការបង្រៀនរបស់សាស្ត្រាចារ្យ':
+              'សូមជួយវាយដម្លៃការបង្រៀនរបស់សាស្ត្រាចារ្យ',
+
           // Student Schedule
           'កាលវិភាគសិក្សា': 'កាលវិភាគសិក្សា',
 
@@ -322,6 +326,10 @@ class LocaleString extends Translations {
           'តើអ្នកប្រាកដថាអ្នកនឹងចាកចេញពីគណនីនិសិ្សតដែរឬទេ?':
               'Are you sure you want to log out student account?',
           'បោះបង់': 'Cancel',
+
+          // Student Survery
+          'សូមជួយវាយដម្លៃការបង្រៀនរបស់សាស្ត្រាចារ្យ':
+              'Please help evaluate the lecture of the professor',
 
           // Student Schedule
           'កាលវិភាគសិក្សា': 'Schedule',

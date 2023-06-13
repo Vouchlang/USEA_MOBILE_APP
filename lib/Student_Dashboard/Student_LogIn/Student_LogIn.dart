@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:usea_app/theme_builder.dart';
+import '../Student_Other_Class/Class_Student_User.dart';
+import '../Student_Other_Class/Class_Survey_Status.dart';
 import '/Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '/Custom_AppBar.dart';
@@ -42,8 +44,28 @@ class _Student_LogInState extends State<Student_LogIn> {
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       if (data != null) {
+        final studentUserData = data['student_users'];
+        final surveyData = data['survey_status'];
         final userData = data['user_data'];
         final jobHistoryData = data['job_history_data'];
+
+        List<StudentUser> dataList_StudentUser = [];
+        for (var item in studentUserData) {
+          StudentUser dataModel1 = StudentUser(
+            name_kh: item['name_kh'],
+            student_id: item['student_id'],
+            pwd: item['pwd'],
+          );
+          dataList_StudentUser.add(dataModel1);
+        }
+
+        List<SurveyStatus> dataList_Survey = [];
+        for (var item in surveyData) {
+          SurveyStatus dataModel1 = SurveyStatus(
+            survey_status: item['survey_status'],
+          );
+          dataList_Survey.add(dataModel1);
+        }
 
         List<JobHistory> dataList_JobHistory = [];
         for (var item in jobHistoryData) {
@@ -85,12 +107,16 @@ class _Student_LogInState extends State<Student_LogIn> {
 
         SharedPreferences sharedPref = await SharedPreferences.getInstance();
         sharedPref.setBool('login', true);
+        saveStudentUser(sharedPref, dataList_StudentUser);
+        saveSurvey(sharedPref, dataList_Survey);
         saveJobHistory(sharedPref, dataList_JobHistory);
         saveStDetail(sharedPref, dataList_StDetail);
 
         Get.off(
           St_Home(
             data: null,
+            data_studentUser: dataList_StudentUser,
+            data_survey: dataList_Survey,
             data_jobhistory: dataList_JobHistory,
             data_stdetail: dataList_StDetail,
           ),
@@ -156,6 +182,19 @@ class _Student_LogInState extends State<Student_LogIn> {
         },
       );
     }
+  }
+
+  void saveStudentUser(
+      SharedPreferences sharedPreferences, List<StudentUser> studentUserList) {
+    final jsonData =
+        studentUserList.map((studentUser) => studentUser.toJson()).toList();
+    sharedPreferences.setString('student_user', json.encode(jsonData));
+  }
+
+  void saveSurvey(
+      SharedPreferences sharedPreferences, List<SurveyStatus> surveyList) {
+    final jsonData = surveyList.map((survey) => survey.toJson()).toList();
+    sharedPreferences.setString('survey', json.encode(jsonData));
   }
 
   void saveJobHistory(

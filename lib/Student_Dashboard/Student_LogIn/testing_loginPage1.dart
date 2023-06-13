@@ -88,6 +88,8 @@ class _LoginPageState extends State<LoginPage1> {
           data: null,
           data_jobhistory: dataList_JobHistory,
           data_stdetail: dataList_StDetail,
+          data_studentUser: [],
+          data_survey: [],
         ));
       } else {
         print('Error');
