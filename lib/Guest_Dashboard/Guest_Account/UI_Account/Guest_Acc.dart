@@ -39,7 +39,7 @@ class Guest_AccState extends State<Guest_Acc> {
         List<JobHistory> dataJobHistory = getSavedJobHistory(sharePref);
         List<StDetail> dataStDetail = getSavedStDetail(sharePref);
         if (dataJobHistory.isNotEmpty && dataStDetail.isNotEmpty) {
-          navigateToJobHistoryScreen(dataJobHistory, dataStDetail);
+          navigateToSt_HomeScreen(dataJobHistory, dataStDetail);
         }
       }
     }
@@ -77,7 +77,7 @@ class Guest_AccState extends State<Guest_Acc> {
     }
   }
 
-  void navigateToJobHistoryScreen(
+  void navigateToSt_HomeScreen(
     List<JobHistory> jobHistory,
     List<StDetail> stDetail,
   ) {
