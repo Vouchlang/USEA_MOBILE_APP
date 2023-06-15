@@ -25,7 +25,7 @@ class Guest_AccState extends State<Guest_Acc> {
   static const String KEYJOBHISTORY = 'job_history';
   static const String KEYSTDETAIL = 'student_detail';
 
-  var studentLogIn = Student_LogIn();
+  // var studentLogIn = Student_LogIn();
 
   @override
   void initState() {
@@ -139,73 +139,73 @@ class Guest_AccState extends State<Guest_Acc> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: USecondaryColor,
       body: ListView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: ScrollPhysics(),
         children: [
           Container(
+            height: 10,
+            color: Colors.blue,
+          ),
+          Container(
+            height: 350,
             decoration: BoxDecoration(
-              color: UScoreColor,
+              color: USecondaryColor,
               image: DecorationImage(
-                image: AssetImage('assets/image/usea_bg.jpg'),
-                fit: BoxFit.cover,
+                image: AssetImage('assets/image/guess_acc.png'),
+                fit: BoxFit.fitWidth,
+                alignment: Alignment.topCenter,
               ),
             ),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 270,
+          ),
+          GridView.count(
+            shrinkWrap: true,
+            physics: ScrollPhysics(),
+            crossAxisCount: 2,
+            mainAxisSpacing: 3.5,
+            crossAxisSpacing: 3,
+            childAspectRatio: 1.90,
+            padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
+            children: List.generate(
+              account_screen.length,
+              (index) => Card(
+                elevation: 2,
+                color: UBackgroundColor,
+                shadowColor: ULightGreyColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                GridView.count(
-                  shrinkWrap: true,
-                  physics: ScrollPhysics(),
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 3.5,
-                  crossAxisSpacing: 3,
-                  childAspectRatio: 1.90,
-                  padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
-                  children: List.generate(
-                    account_screen.length,
-                    (index) => Card(
-                      elevation: 2,
-                      color: UBackgroundColor,
-                      shadowColor: ULightGreyColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (BuildContext context) {
-                                return account_screen[index].screen;
-                              },
-                            ),
-                          );
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) {
+                          return account_screen[index].screen;
                         },
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              account_screen[index].img,
-                              scale: 6,
-                            ),
-                            SizedBox(
-                              height: 7,
-                            ),
-                            Text(
-                              account_screen[index].name.tr,
-                              style: TextStyle(
-                                fontSize: UTitleSize,
-                              ),
-                            )
-                          ],
-                        ),
                       ),
-                    ),
+                    );
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        account_screen[index].img,
+                        scale: 6,
+                      ),
+                      SizedBox(
+                        height: 7,
+                      ),
+                      Text(
+                        account_screen[index].name.tr,
+                        style: TextStyle(
+                          fontSize: UTitleSize,
+                        ),
+                      )
+                    ],
                   ),
                 ),
-              ],
+              ),
             ),
           ),
         ],
