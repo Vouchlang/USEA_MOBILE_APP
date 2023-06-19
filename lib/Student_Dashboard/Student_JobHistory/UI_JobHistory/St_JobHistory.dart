@@ -79,7 +79,9 @@ class _Job_HistoryState extends State<Job_History> {
       backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'ព័ត៌មានការងារ'.tr),
       body: _dataJobHistory.isEmpty
-          ? Center(child: CircularProgressIndicator())
+          ? Center(
+              child: Text('No Data'),
+            )
           : RefreshIndicator(
               onRefresh: _refreshData,
               child: ListView.builder(
