@@ -30,16 +30,20 @@ class CardCalendarList extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              NormalTitleTheme(
-                                text: datacalendar[index].weekday,
-                              ),
-                              NormalTitleTheme(
-                                text: datacalendar[index].date,
-                              ),
-                            ],
+                          Container(
+                            width: 40,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                NormalTitleTheme(
+                                  text: datacalendar[index].weekday,
+                                ),
+                                NormalTitleTheme(
+                                  text: datacalendar[index].date,
+                                ),
+                              ],
+                            ),
                           ),
 
                           // *@ VerticalDivider
