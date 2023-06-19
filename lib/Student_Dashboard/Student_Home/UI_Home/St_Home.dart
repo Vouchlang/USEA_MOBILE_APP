@@ -28,6 +28,14 @@ class St_Home extends StatefulWidget {
 }
 
 class _St_HomeState extends State<St_Home> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print(
+        'Data ${widget.data_studentUser}\n Data ${widget.data_jobhistory}\n Data ${widget.data_stdetail}');
+  }
+
   late TabController controller;
 
   int currentIndex = 1;
@@ -44,7 +52,7 @@ class _St_HomeState extends State<St_Home> {
     List pages = [
       Guest_Home(),
       Student_Home(
-        dataDetail: widget.data,
+        // dataDetail: widget.data,
         data_studentUser: widget.data_studentUser,
         data_survey: widget.data_survey,
         data_jobhistory: widget.data_jobhistory,

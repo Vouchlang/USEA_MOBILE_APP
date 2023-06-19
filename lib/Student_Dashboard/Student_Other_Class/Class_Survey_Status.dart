@@ -1,5 +1,5 @@
 class SurveyStatus {
-  final int survey_status;
+  final String survey_status;
 
   SurveyStatus({
     required this.survey_status,
@@ -13,7 +13,7 @@ class SurveyStatus {
 
   factory SurveyStatus.fromJson(Map<String, dynamic> json) {
     return SurveyStatus(
-      survey_status: json['survey_status'] as int,
+      survey_status: json['survey_status'] as String,
     );
   }
 }

@@ -15,14 +15,14 @@ import '../../Student_Other_Class/Class_Student_User.dart';
 import '../../Student_Other_Class/Class_Survey_Status.dart';
 
 class Student_Home extends StatefulWidget {
-  final dynamic dataDetail;
+  // final dynamic dataDetail;
   final List<StudentUser> data_studentUser;
   final List<SurveyStatus> data_survey;
   final List<JobHistory> data_jobhistory;
   final List<StDetail> data_stdetail;
-  Student_Home(
+  const Student_Home(
       {Key? key,
-      required this.dataDetail,
+      // required this.dataDetail,
       required this.data_jobhistory,
       required this.data_stdetail,
       required this.data_studentUser,
@@ -37,48 +37,43 @@ class _Student_HomeState extends State<Student_Home> {
   int activeIndex = 0;
   bool isLoading = false;
   List<Class_Survey_Link> survey = [];
-  late List<StudentUser> _dataStudentUser = [];
-  late List<SurveyStatus> _dataSurvey = [];
-  late List<JobHistory> _dataJobHistory = [];
-  late List<StDetail> _dataStDetail = [];
+  late List<StudentUser> _dataStudentUser;
+  late List<SurveyStatus> _dataSurvey;
+  late List<JobHistory> _dataJobHistory;
+  late List<StDetail> _dataStDetail;
 
   final Uri urlFb = Uri.parse("https://www.facebook.com/usea.edu.kh");
-
-  String getImage(String image) {
-    return 'http://192.168.3.34/hosting_api/Student/profile_pic/$image';
-  }
 
   @override
   void initState() {
     super.initState();
     _dataStudentUser = widget.data_studentUser;
     _dataSurvey = widget.data_survey;
-    _dataJobHistory = _dataJobHistory;
-    _dataStDetail = _dataStDetail;
-    getData();
+    _dataJobHistory = widget.data_jobhistory;
+    _dataStDetail = widget.data_stdetail;
   }
 
-  Future<void> getData() async {
-    try {
-      var res = await http.get(
-        Uri.parse("http://192.168.3.34/hosting_api/Student/student_survey.php"),
-      );
-      var r = json.decode(res.body);
-      if (r is List<dynamic>) {
-        survey = r.map((e) => Class_Survey_Link.fromJson(e)).toList();
-      } else {
-        survey = [
-          Class_Survey_Link.fromJson(r),
-        ];
-      }
-    } catch (e) {
-      print('Error fetching data: $e');
-    } finally {
-      setState(() {
-        isLoading = false;
-      });
-    }
-  }
+  // Future<void> getData() async {
+  //   try {
+  //     var res = await http.get(
+  //       Uri.parse("http://192.168.3.34/hosting_api/Student/student_survey.php"),
+  //     );
+  //     var r = json.decode(res.body);
+  //     if (r is List<dynamic>) {
+  //       survey = r.map((e) => Class_Survey_Link.fromJson(e)).toList();
+  //     } else {
+  //       survey = [
+  //         Class_Survey_Link.fromJson(r),
+  //       ];
+  //     }
+  //   } catch (e) {
+  //     print('Error fetching data: $e');
+  //   } finally {
+  //     setState(() {
+  //       isLoading = false;
+  //     });
+  //   }
+  // }
 
   Future<void> _refreshData() async {
     setState(() {
@@ -87,10 +82,11 @@ class _Student_HomeState extends State<Student_Home> {
 
     try {
       var response = await http.post(
-        Uri.parse('http://192.168.3.34/hosting_api/Student/login_test.php'),
+        Uri.parse(
+            'http://192.168.3.87/usea/api/apidata.php?action=login_student'),
         body: {
-          'student_id': _dataStudentUser[0].student_id,
-          'pwd': _dataStudentUser[0].pwd,
+          'student_id': widget.data_studentUser[0].student_id,
+          'pwd': widget.data_studentUser[0].pwd,
         },
       );
 
@@ -180,14 +176,21 @@ class _Student_HomeState extends State<Student_Home> {
                   context,
                   MaterialPageRoute(
                     builder: (BuildContext context) => Student_Detail(
-                      dataDetail: _dataStDetail,
+                      data_Detail: _dataStDetail,
+                      data_studentUser: _dataStudentUser,
                     ),
                   ),
                 );
               },
+              // child: Container(
+              // height: 10,
+              // width: 10,
+              // color: Colors.amber,
+              // ),
               child: CircleAvatar(
                 backgroundImage: NetworkImage(
-                  getImage(widget.data_stdetail[0].profile_pic),
+                  _dataStDetail[0].profile_pic,
+                  // getImage(widget.data_stdetail[0].profile_pic),
                 ),
                 radius: 25,
               ),
@@ -203,7 +206,7 @@ class _Student_HomeState extends State<Student_Home> {
           ? Center(child: CircularProgressIndicator())
           : RefreshIndicator(
               onRefresh: _refreshData,
-              child: _dataSurvey[0].survey_status == 0
+              child: _dataSurvey[0].survey_status == 1
                   ? ListView(
                       shrinkWrap: true,
                       children: [
@@ -331,7 +334,9 @@ class _Student_HomeState extends State<Student_Home> {
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) => Job_History(
-                                              data_jobhistory: _dataJobHistory),
+                                            data_jobhistory: _dataJobHistory,
+                                            data_studentUser: _dataStudentUser,
+                                          ),
                                         ),
                                       );
                                     } else {
@@ -474,7 +479,9 @@ class _Student_HomeState extends State<Student_Home> {
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) => Job_History(
-                                              data_jobhistory: _dataJobHistory),
+                                            data_jobhistory: _dataJobHistory,
+                                            data_studentUser: _dataStudentUser,
+                                          ),
                                         ),
                                       );
                                     } else {
