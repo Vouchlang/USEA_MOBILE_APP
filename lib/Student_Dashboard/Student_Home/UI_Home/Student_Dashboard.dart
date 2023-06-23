@@ -9,6 +9,7 @@ import 'package:usea_app/Student_Dashboard/Student_Detail/UI_Detail/St_Detail.da
 import 'package:usea_app/Student_Dashboard/Student_JobHistory/UI_JobHistory/St_JobHistory.dart';
 import 'package:usea_app/Student_Dashboard/Student_Other_Class/Class_Survey_Link.dart';
 import 'package:usea_app/theme_builder.dart';
+import '../../../Custom_Widget/CustomText.dart';
 import '../../Student_Detail/Class_Detail/Class_St_Detail.dart';
 import '../../Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
 import '../../Student_Other_Class/Class_Student_User.dart';
@@ -182,15 +183,9 @@ class _Student_HomeState extends State<Student_Home> {
                   ),
                 );
               },
-              // child: Container(
-              // height: 10,
-              // width: 10,
-              // color: Colors.amber,
-              // ),
               child: CircleAvatar(
                 backgroundImage: NetworkImage(
                   _dataStDetail[0].profile_pic,
-                  // getImage(widget.data_stdetail[0].profile_pic),
                 ),
                 radius: 25,
               ),
@@ -206,320 +201,608 @@ class _Student_HomeState extends State<Student_Home> {
           ? Center(child: CircularProgressIndicator())
           : RefreshIndicator(
               onRefresh: _refreshData,
-              child: ListView(
-                shrinkWrap: true,
-                children: [
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Card(
-                    margin: EdgeInsets.symmetric(horizontal: 10),
-                    elevation: 1,
-                    shadowColor: ULightGreyColor,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5)),
-                    child: InkWell(
-                      onTap: () {
-                        launchUrl(Uri.parse(survey[0].survey_link));
-                      },
-                      child: Container(
-                        margin: EdgeInsets.all(5),
-                        child: Text(
-                          'សូមជួយវាយដម្លៃការបង្រៀនរបស់សាស្ត្រាចារ្យ'.tr,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: UBodySize,
-                            color: URedColor,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    height: 175,
-                    padding: EdgeInsets.symmetric(
-                      vertical: 0,
-                      horizontal: 5,
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Expanded(
-                          child: DChartPie(
-                            data: [
-                              {'domain': 'Flutter', 'measure': 10},
-                              {'domain': 'React Native', 'measure': 10},
-                              {'domain': 'React JS', 'measure': 10},
-                              {'domain': 'Flutter1', 'measure': 10},
-                              {'domain': 'React Native1', 'measure': 10},
-                              {'domain': 'React JS2', 'measure': 10},
-                              {'domain': 'Flutter2', 'measure': 10},
-                              {'domain': 'React Native2', 'measure': 10},
-                              {'domain': 'React JS3', 'measure': 10},
-                              {'domain': 'React JS4', 'measure': 10},
-                            ],
-                            fillColor: (pieData, index) => UPrimaryColor,
-                            donutWidth: 30,
-                            labelColor: UBackgroundColor,
-                          ),
-                        ),
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.circle,
-                                    color: UOrangeColor,
-                                  ),
-                                  Text('ចំនួនក្រឌីតសរុប'),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.circle,
-                                    color: UPrimaryColor,
-                                  ),
-                                  Text('ចំនួនក្រឌីតបានបំពេញ'),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Expanded(
-                    child: GridView.count(
+              child: (() {
+                if (_dataSurvey.isNotEmpty) {
+                  if (_dataSurvey.length > 1) {
+                    return ListView(
                       shrinkWrap: true,
-                      physics: ScrollPhysics(),
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 3.5,
-                      crossAxisSpacing: 3,
-                      childAspectRatio: 1.90,
-                      padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
-                      children: List.generate(
-                        st_home_screen.length,
-                        (index) => Card(
-                          elevation: 2,
+                      children: [
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Card(
+                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          elevation: 1,
                           shadowColor: ULightGreyColor,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
+                              borderRadius: BorderRadius.circular(5)),
                           child: InkWell(
                             onTap: () {
-                              if (index.isEqual(6)) {
-                                launchUrl(urlFb);
-                              } else if (index.isEqual(4)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Job_History(
-                                      data_jobhistory: _dataJobHistory,
-                                      data_studentUser: _dataStudentUser,
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return Dialog(
+                                    elevation: 3,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                      10,
+                                    )),
+                                    child: Container(
+                                      margin: EdgeInsets.all(7),
+                                      padding: EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          color: UBackgroundColor),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Text(
+                                            'ការវាយតម្លៃ'.tr,
+                                            style: TextStyle(
+                                              fontSize: UTitleSize,
+                                              fontWeight: UTitleWeight,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            'សូមជ្រើសរើសប្រភេទនៃការវាយតម្លៃ!!!'
+                                                .tr,
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: UBodySize,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Container(
+                                            height: 70,
+                                            padding: EdgeInsets.all(5),
+                                            alignment: Alignment.center,
+                                            child: ListView.builder(
+                                              shrinkWrap: true,
+                                              scrollDirection: Axis.horizontal,
+                                              itemCount: _dataSurvey.length,
+                                              itemBuilder: (context, index) {
+                                                return Row(
+                                                  children: [
+                                                    ElevatedButton(
+                                                      style: ButtonStyle(
+                                                        backgroundColor:
+                                                            MaterialStateProperty
+                                                                .all<Color>(
+                                                          UBGLightBlue,
+                                                        ),
+                                                      ),
+                                                      child: Container(
+                                                        width: 75,
+                                                        child: Text(
+                                                          'សាស្ត្រាចារ្យ',
+                                                          // _dataSurvey[index]
+                                                          //     .link
+                                                          //     .tr,
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: TextStyle(
+                                                            color:
+                                                                UPrimaryColor,
+                                                            fontSize: UBodySize,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      onPressed: () {
+                                                        launchUrl(Uri.parse(
+                                                            _dataSurvey[index]
+                                                                .link));
+                                                      },
+                                                    ),
+                                                    if (index !=
+                                                        _dataSurvey.length - 1)
+                                                      VerticalDivider(
+                                                        width: 20,
+                                                        thickness: 0.5,
+                                                        color: UGreyColor,
+                                                      ),
+                                                  ],
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                );
-                              } else {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          st_home_screen[index].screen),
-                                );
-                              }
+                                  );
+                                },
+                              );
                             },
                             child: Container(
-                              padding: EdgeInsets.only(left: 15),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Image.asset(
-                                    st_home_screen[index].img,
-                                    scale: 6,
-                                  ),
-                                  SizedBox(
-                                    height: 7,
-                                  ),
-                                  Text(
-                                    st_home_screen[index].name.tr,
-                                    style: TextStyle(
-                                      fontSize: 14,
+                              margin: EdgeInsets.all(5),
+                              child: Text(
+                                'សូមជួយធ្វើការវាយដម្លៃ'.tr,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: UBodySize,
+                                  color: URedColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          height: 175,
+                          padding: EdgeInsets.symmetric(
+                            vertical: 0,
+                            horizontal: 5,
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Expanded(
+                                child: DChartPie(
+                                  data: [
+                                    {'domain': 'Flutter', 'measure': 10},
+                                    {'domain': 'React Native', 'measure': 10},
+                                    {'domain': 'React JS', 'measure': 10},
+                                    {'domain': 'Flutter1', 'measure': 10},
+                                    {'domain': 'React Native1', 'measure': 10},
+                                    {'domain': 'React JS2', 'measure': 10},
+                                    {'domain': 'Flutter2', 'measure': 10},
+                                    {'domain': 'React Native2', 'measure': 10},
+                                    {'domain': 'React JS3', 'measure': 10},
+                                    {'domain': 'React JS4', 'measure': 10},
+                                  ],
+                                  fillColor: (pieData, index) => UPrimaryColor,
+                                  donutWidth: 30,
+                                  labelColor: UBackgroundColor,
+                                ),
+                              ),
+                              Expanded(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.circle,
+                                          color: UOrangeColor,
+                                        ),
+                                        Text('ចំនួនក្រឌីតសរុប'),
+                                      ],
                                     ),
-                                  )
-                                ],
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.circle,
+                                          color: UPrimaryColor,
+                                        ),
+                                        Text('ចំនួនក្រឌីតបានបំពេញ'),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Expanded(
+                          child: GridView.count(
+                            shrinkWrap: true,
+                            physics: ScrollPhysics(),
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 3.5,
+                            crossAxisSpacing: 3,
+                            childAspectRatio: 1.90,
+                            padding: EdgeInsets.symmetric(
+                                vertical: 0, horizontal: 7),
+                            children: List.generate(
+                              st_home_screen.length,
+                              (index) => Card(
+                                elevation: 2,
+                                shadowColor: ULightGreyColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: InkWell(
+                                  onTap: () {
+                                    if (index.isEqual(6)) {
+                                      launchUrl(urlFb);
+                                    } else if (index.isEqual(4)) {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Job_History(
+                                            data_jobhistory: _dataJobHistory,
+                                            data_studentUser: _dataStudentUser,
+                                          ),
+                                        ),
+                                      );
+                                    } else {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                st_home_screen[index].screen),
+                                      );
+                                    }
+                                  },
+                                  child: Container(
+                                    padding: EdgeInsets.only(left: 15),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Image.asset(
+                                          st_home_screen[index].img,
+                                          scale: 6,
+                                        ),
+                                        SizedBox(
+                                          height: 7,
+                                        ),
+                                        Text(
+                                          st_home_screen[index].name.tr,
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 7,
+                        ),
+                      ],
+                    );
+                  } else if (_dataSurvey.length == 1) {
+                    return ListView(
+                      shrinkWrap: true,
+                      children: [
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Card(
+                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          elevation: 1,
+                          shadowColor: ULightGreyColor,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5)),
+                          child: InkWell(
+                            onTap: () {
+                              launchUrl(Uri.parse(_dataSurvey[0].link));
+                            },
+                            child: Container(
+                              margin: EdgeInsets.all(5),
+                              child: Text(
+                                'សូមជួយវាយដម្លៃការបង្រៀនរបស់សាស្ត្រាចារ្យ'.tr,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: UBodySize,
+                                  color: URedColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          height: 175,
+                          padding: EdgeInsets.symmetric(
+                            vertical: 0,
+                            horizontal: 5,
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Expanded(
+                                child: DChartPie(
+                                  data: [
+                                    {'domain': 'Flutter', 'measure': 10},
+                                    {'domain': 'React Native', 'measure': 10},
+                                    {'domain': 'React JS', 'measure': 10},
+                                    {'domain': 'Flutter1', 'measure': 10},
+                                    {'domain': 'React Native1', 'measure': 10},
+                                    {'domain': 'React JS2', 'measure': 10},
+                                    {'domain': 'Flutter2', 'measure': 10},
+                                    {'domain': 'React Native2', 'measure': 10},
+                                    {'domain': 'React JS3', 'measure': 10},
+                                    {'domain': 'React JS4', 'measure': 10},
+                                  ],
+                                  fillColor: (pieData, index) => UPrimaryColor,
+                                  donutWidth: 30,
+                                  labelColor: UBackgroundColor,
+                                ),
+                              ),
+                              Expanded(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.circle,
+                                          color: UOrangeColor,
+                                        ),
+                                        Text('ចំនួនក្រឌីតសរុប'),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.circle,
+                                          color: UPrimaryColor,
+                                        ),
+                                        Text('ចំនួនក្រឌីតបានបំពេញ'),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Expanded(
+                          child: GridView.count(
+                            shrinkWrap: true,
+                            physics: ScrollPhysics(),
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 3.5,
+                            crossAxisSpacing: 3,
+                            childAspectRatio: 1.90,
+                            padding: EdgeInsets.symmetric(
+                                vertical: 0, horizontal: 7),
+                            children: List.generate(
+                              st_home_screen.length,
+                              (index) => Card(
+                                elevation: 2,
+                                shadowColor: ULightGreyColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: InkWell(
+                                  onTap: () {
+                                    if (index.isEqual(6)) {
+                                      launchUrl(urlFb);
+                                    } else if (index.isEqual(4)) {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Job_History(
+                                            data_jobhistory: _dataJobHistory,
+                                            data_studentUser: _dataStudentUser,
+                                          ),
+                                        ),
+                                      );
+                                    } else {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                st_home_screen[index].screen),
+                                      );
+                                    }
+                                  },
+                                  child: Container(
+                                    padding: EdgeInsets.only(left: 15),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Image.asset(
+                                          st_home_screen[index].img,
+                                          scale: 6,
+                                        ),
+                                        SizedBox(
+                                          height: 7,
+                                        ),
+                                        Text(
+                                          st_home_screen[index].name.tr,
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 7,
+                        ),
+                      ],
+                    );
+                  }
+                }
+                return ListView(
+                  shrinkWrap: true,
+                  children: [
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      alignment: Alignment.center,
+                      height: 175,
+                      padding: EdgeInsets.symmetric(
+                        vertical: 0,
+                        horizontal: 5,
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Expanded(
+                            child: DChartPie(
+                              data: [
+                                {'domain': 'Flutter', 'measure': 10},
+                                {'domain': 'React Native', 'measure': 10},
+                                {'domain': 'React JS', 'measure': 10},
+                                {'domain': 'Flutter1', 'measure': 10},
+                                {'domain': 'React Native1', 'measure': 10},
+                                {'domain': 'React JS2', 'measure': 10},
+                                {'domain': 'Flutter2', 'measure': 10},
+                                {'domain': 'React Native2', 'measure': 10},
+                                {'domain': 'React JS3', 'measure': 10},
+                                {'domain': 'React JS4', 'measure': 10},
+                              ],
+                              fillColor: (pieData, index) => UPrimaryColor,
+                              donutWidth: 30,
+                              labelColor: UBackgroundColor,
+                            ),
+                          ),
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.circle,
+                                      color: UOrangeColor,
+                                    ),
+                                    Text('ចំនួនក្រឌីតសរុប'),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.circle,
+                                      color: UPrimaryColor,
+                                    ),
+                                    Text('ចំនួនក្រឌីតបានបំពេញ'),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Expanded(
+                      child: GridView.count(
+                        shrinkWrap: true,
+                        physics: ScrollPhysics(),
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 3.5,
+                        crossAxisSpacing: 3,
+                        childAspectRatio: 1.90,
+                        padding:
+                            EdgeInsets.symmetric(vertical: 0, horizontal: 7),
+                        children: List.generate(
+                          st_home_screen.length,
+                          (index) => Card(
+                            elevation: 2,
+                            shadowColor: ULightGreyColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: InkWell(
+                              onTap: () {
+                                if (index.isEqual(6)) {
+                                  launchUrl(urlFb);
+                                } else if (index.isEqual(4)) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Job_History(
+                                        data_jobhistory: _dataJobHistory,
+                                        data_studentUser: _dataStudentUser,
+                                      ),
+                                    ),
+                                  );
+                                } else {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            st_home_screen[index].screen),
+                                  );
+                                }
+                              },
+                              child: Container(
+                                padding: EdgeInsets.only(left: 15),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Image.asset(
+                                      st_home_screen[index].img,
+                                      scale: 6,
+                                    ),
+                                    SizedBox(
+                                      height: 7,
+                                    ),
+                                    Text(
+                                      st_home_screen[index].name.tr,
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 7,
-                  ),
-                ],
-              )
-              // : ListView(
-              //     shrinkWrap: true,
-              //     children: [
-              //       SizedBox(
-              //         height: 10,
-              //       ),
-              //       Container(
-              //         alignment: Alignment.center,
-              //         height: 175,
-              //         padding: EdgeInsets.symmetric(
-              //           vertical: 0,
-              //           horizontal: 5,
-              //         ),
-              //         child: Row(
-              //           mainAxisSize: MainAxisSize.min,
-              //           children: [
-              //             Expanded(
-              //               child: DChartPie(
-              //                 data: [
-              //                   {'domain': 'Flutter', 'measure': 58},
-              //                   {'domain': 'React Native', 'measure': 20},
-              //                   {'domain': 'React JS', 'measure': 22},
-              //                 ],
-              //                 fillColor: (pieData, index) => UPrimaryColor,
-              //                 donutWidth: 30,
-              //                 labelColor: UBackgroundColor,
-              //               ),
-              //             ),
-              //             Expanded(
-              //               child: Column(
-              //                 mainAxisAlignment: MainAxisAlignment.center,
-              //                 children: [
-              //                   Row(
-              //                     mainAxisAlignment:
-              //                         MainAxisAlignment.start,
-              //                     crossAxisAlignment:
-              //                         CrossAxisAlignment.center,
-              //                     children: [
-              //                       Icon(
-              //                         Icons.circle,
-              //                         color: UOrangeColor,
-              //                       ),
-              //                       Text('ចំនួនក្រឌីតសរុប'),
-              //                     ],
-              //                   ),
-              //                   SizedBox(
-              //                     height: 10,
-              //                   ),
-              //                   Row(
-              //                     mainAxisAlignment:
-              //                         MainAxisAlignment.start,
-              //                     crossAxisAlignment:
-              //                         CrossAxisAlignment.center,
-              //                     children: [
-              //                       Icon(
-              //                         Icons.circle,
-              //                         color: UPrimaryColor,
-              //                       ),
-              //                       Text('ចំនួនក្រឌីតបានបំពេញ'),
-              //                     ],
-              //                   ),
-              //                 ],
-              //               ),
-              //             ),
-              //           ],
-              //         ),
-              //       ),
-              //       SizedBox(
-              //         height: 10,
-              //       ),
-              //       Expanded(
-              //         child: GridView.count(
-              //           shrinkWrap: true,
-              //           physics: ScrollPhysics(),
-              //           crossAxisCount: 2,
-              //           mainAxisSpacing: 3.5,
-              //           crossAxisSpacing: 3,
-              //           childAspectRatio: 1.90,
-              //           padding: EdgeInsets.symmetric(
-              //               vertical: 0, horizontal: 7),
-              //           children: List.generate(
-              //             st_home_screen.length,
-              //             (index) => Card(
-              //               elevation: 2,
-              //               shadowColor: ULightGreyColor,
-              //               shape: RoundedRectangleBorder(
-              //                 borderRadius: BorderRadius.circular(10),
-              //               ),
-              //               child: InkWell(
-              //                 onTap: () {
-              //                   if (index.isEqual(6)) {
-              //                     launchUrl(urlFb);
-              //                   } else if (index.isEqual(4)) {
-              //                     Navigator.push(
-              //                       context,
-              //                       MaterialPageRoute(
-              //                         builder: (context) => Job_History(
-              //                           data_jobhistory: _dataJobHistory,
-              //                           data_studentUser: _dataStudentUser,
-              //                         ),
-              //                       ),
-              //                     );
-              //                   } else {
-              //                     Navigator.push(
-              //                       context,
-              //                       MaterialPageRoute(
-              //                           builder: (context) =>
-              //                               st_home_screen[index].screen),
-              //                     );
-              //                   }
-              //                 },
-              //                 child: Container(
-              //                   padding: EdgeInsets.only(left: 15),
-              //                   child: Column(
-              //                     mainAxisAlignment:
-              //                         MainAxisAlignment.center,
-              //                     crossAxisAlignment:
-              //                         CrossAxisAlignment.start,
-              //                     children: [
-              //                       Image.asset(
-              //                         st_home_screen[index].img,
-              //                         scale: 6,
-              //                       ),
-              //                       SizedBox(
-              //                         height: 7,
-              //                       ),
-              //                       Text(
-              //                         st_home_screen[index].name.tr,
-              //                         style: TextStyle(
-              //                           fontSize: 14,
-              //                         ),
-              //                       )
-              //                     ],
-              //                   ),
-              //                 ),
-              //               ),
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //       SizedBox(
-              //         height: 7,
-              //       ),
-              //     ],
-              //   ),
-              ),
+                    SizedBox(
+                      height: 7,
+                    ),
+                  ],
+                );
+              })(),
+            ),
     );
   }
 }

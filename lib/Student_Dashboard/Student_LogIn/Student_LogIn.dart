@@ -65,6 +65,7 @@ class _Student_LogInState extends State<Student_LogIn> {
         for (var item in surveyData) {
           SurveyStatus dataModel1 = SurveyStatus(
             survey_status: item['survey_status'],
+            link: item['link'],
           );
           dataList_Survey.add(dataModel1);
         }
