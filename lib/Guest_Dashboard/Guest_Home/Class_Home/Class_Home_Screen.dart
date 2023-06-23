@@ -89,7 +89,7 @@ List<Home_Screen> st_home_screen = [
   ),
   Home_Screen(
     name: 'វត្តមាន',
-    img: 'assets/image/st_att.png',
+    img: 'assets/image/Stu_Att.png',
     screen: Attendance(),
   ),
   Home_Screen(
