@@ -37,7 +37,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     return Scaffold(
       body: pages[currentIndex],
       bottomNavigationBar: Container(
-        height: 60,
+        height: 100,
         child: Center(
           child: BottomNavigationBar(
             elevation: 0,
