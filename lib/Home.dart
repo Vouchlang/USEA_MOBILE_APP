@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import '/Guest_Dashboard/Guest_Account/UI_Account/Guest_Acc.dart';
 import '/Guest_Dashboard/Guest_Home/UI_Home/Guest_Home.dart';
 import '/theme_builder.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -43,6 +47,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             unselectedItemColor: UGreyColor,
             selectedFontSize: 11,
             unselectedFontSize: 11,
+            selectedLabelStyle:
+                TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
             items: [
               BottomNavigationBarItem(
                 icon: Icon(
@@ -57,7 +63,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                   size: 20,
                 ),
                 label: 'ចូលគណនី'.tr,
-              )
+              ),
             ],
           ),
         ),
