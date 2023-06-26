@@ -38,19 +38,14 @@ class Guest_AccState extends State<Guest_Acc> {
     var sharePref = await SharedPreferences.getInstance();
     var isLoggedIn = sharePref.getBool(KEYLOGIN);
 
-    if (isLoggedIn != null) {
+    if (isLoggedIn != null && isLoggedIn) {
+      List<StudentUser> dataStudentUser = getSavedStudentUser(sharePref);
+      List<SurveyStatus> dataSurvey = getSavedSurvey(sharePref);
+      List<JobHistory> dataJobHistory = getSavedJobHistory(sharePref);
+      List<StDetail> dataStDetail = getSavedStDetail(sharePref);
       if (isLoggedIn) {
-        List<StudentUser> dataStudentUser = getSavedStudentUser(sharePref);
-        List<SurveyStatus> dataSurvey = getSavedSurvey(sharePref);
-        List<JobHistory> dataJobHistory = getSavedJobHistory(sharePref);
-        List<StDetail> dataStDetail = getSavedStDetail(sharePref);
-        if (dataStudentUser.isNotEmpty &&
-            dataSurvey.isNotEmpty &&
-            dataJobHistory.isNotEmpty &&
-            dataStDetail.isNotEmpty) {
-          navigateToSt_HomeScreen(
-              dataStudentUser, dataSurvey, dataJobHistory, dataStDetail);
-        }
+        navigateToSt_HomeScreen(
+            dataStudentUser, dataSurvey, dataJobHistory, dataStDetail);
       }
     }
   }
