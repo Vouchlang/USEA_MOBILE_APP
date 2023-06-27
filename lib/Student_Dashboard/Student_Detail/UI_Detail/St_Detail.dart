@@ -219,16 +219,13 @@ class _Student_DetailState extends State<Student_Detail> {
                 Container(
                   padding: EdgeInsets.symmetric(
                     vertical: 10,
-                    horizontal: 20,
+                    horizontal: 20, 
                   ),
                   child: Row(
                     children: [
                       CircleAvatar(
                         backgroundImage: NetworkImage(
                           _dataStDetail[index].profile_pic,
-                          // getImage(
-                          //   widget.dataDetail[index].profile_pic,
-                          // ),
                         ),
                         radius: 50,
                       ),
