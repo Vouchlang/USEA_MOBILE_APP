@@ -19,7 +19,7 @@ class _TestSearchAPIState extends State<TestSearchAPI> {
 
   Future<String> getData() async {
     var response = await http.get(
-      Uri.parse('http://192.168.3.34/hosting_api/Guest/demo_major_list.php'),
+      Uri.parse('http://192.168.1.34/hosting_api/Guest/demo_major_list.php'),
       headers: {"Accept": "application/json"},
     );
 

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../Custom_AppBar.dart';
-import 'api_main_lite.dart';
 import 'class_demo.dart';
 
 class Major_Detail_Lite extends StatelessWidget {

@@ -18,7 +18,7 @@ class _MyAppStateState extends State<MyAppState> {
 
   Future<List<Program_List>> fetchProgram_List() async {
     final response = await http
-        .get(Uri.parse('http://192.168.3.34/hosting_api/Guest/demo_major.php'));
+        .get(Uri.parse('http://192.168.1.34/hosting_api/Guest/demo_major.php'));
     if (response.statusCode == 200) {
       final List<dynamic> jsonResponse = json.decode(response.body);
       return jsonResponse.map((json) => Program_List.fromJson(json)).toList();
@@ -34,7 +34,7 @@ class _MyAppStateState extends State<MyAppState> {
   }
 
   String getImageUrl(String imageName) {
-    return 'http://192.168.3.34/hosting_api/Guest/fac_icon/$imageName';
+    return 'http://192.168.1.34/hosting_api/Guest/fac_icon/$imageName';
   }
 
   @override

@@ -31,7 +31,7 @@ class St_Home extends StatefulWidget {
   State<St_Home> createState() => _St_HomeState();
 }
 
-class _St_HomeState extends State<St_Home> {
+class _St_HomeState extends State<St_Home> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     // TODO: implement initState
@@ -61,40 +61,75 @@ class _St_HomeState extends State<St_Home> {
         data_studyinfo: widget.data_studyinfo,
       ),
     ];
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: Scaffold(
-        body: pages[currentIndex],
-        bottomNavigationBar: Container(
-          height: 100,
-          child: Center(
-            child: BottomNavigationBar(
-              elevation: 0,
-              onTap: onTap,
-              currentIndex: currentIndex,
-              selectedItemColor: UPrimaryColor,
-              unselectedItemColor: UGreyColor,
-              selectedFontSize: 11,
-              unselectedFontSize: 11,
-              selectedLabelStyle: TextStyle(fontFamily: UKFontFamily),
-              unselectedLabelStyle: TextStyle(fontFamily: UKFontFamily),
-              items: [
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.home,
-                    size: 20,
-                  ),
-                  label: 'ទំព័រដើម'.tr,
+    // return WillPopScope(
+    //   onWillPop: () async => false,
+    //   child: Scaffold(
+    //     body: pages[currentIndex],
+    //     bottomNavigationBar: Container(
+    //       height: 100,
+    //       child: Center(
+    //         child: BottomNavigationBar(
+    //           elevation: 0,
+    //           onTap: onTap,
+    //           currentIndex: currentIndex,
+    //           selectedItemColor: UPrimaryColor,
+    //           unselectedItemColor: UGreyColor,
+    //           selectedFontSize: 11,
+    //           unselectedFontSize: 11,
+    //           selectedLabelStyle: TextStyle(fontFamily: UKFontFamily),
+    //           unselectedLabelStyle: TextStyle(fontFamily: UKFontFamily),
+    //           items: [
+    //             BottomNavigationBarItem(
+    //               icon: Icon(
+    //                 Icons.home,
+    //                 size: 20,
+    //               ),
+    //               label: 'ទំព័រដើម'.tr,
+    //             ),
+    //             BottomNavigationBarItem(
+    //               icon: Icon(
+    //                 Icons.account_box,
+    //                 size: 20,
+    //               ),
+    //               label: 'ចូលគណនី'.tr,
+    //             )
+    //           ],
+    //         ),
+    //       ),
+    //     ),
+    //   ),
+    // );
+    return Scaffold(
+      body: pages[currentIndex],
+      bottomNavigationBar: Container(
+        height: 100,
+        child: Center(
+          child: BottomNavigationBar(
+            elevation: 0,
+            onTap: onTap,
+            currentIndex: currentIndex,
+            selectedItemColor: UPrimaryColor,
+            unselectedItemColor: UGreyColor,
+            selectedFontSize: 11,
+            unselectedFontSize: 11,
+            selectedLabelStyle:
+                TextStyle(fontWeight: FontWeight.w600, fontSize: 12),
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                  size: 20,
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.account_box,
-                    size: 20,
-                  ),
-                  label: 'ចូលគណនី'.tr,
-                )
-              ],
-            ),
+                label: 'ទំព័រដើម'.tr,
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.account_box,
+                  size: 20,
+                ),
+                label: 'ចូលគណនី'.tr,
+              ),
+            ],
           ),
         ),
       ),

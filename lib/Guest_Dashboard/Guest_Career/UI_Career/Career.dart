@@ -23,7 +23,7 @@ class _CareerState extends State<Career> {
     try {
       var res = await http.get(
         Uri.parse(
-            "http://192.168.3.34/hosting_api/Guest/fetch_guest_career.php"),
+            "http://192.168.1.34/hosting_api/Guest/fetch_guest_career.php"),
       );
       var r = json.decode(res.body);
       if (r is List<dynamic>) {
@@ -44,7 +44,7 @@ class _CareerState extends State<Career> {
   }
 
   String getLogo(String imageName) {
-    return 'http://192.168.3.34/hosting_api/Guest/career/$imageName';
+    return 'http://192.168.1.34/hosting_api/Guest/career/$imageName';
   }
 
   @override

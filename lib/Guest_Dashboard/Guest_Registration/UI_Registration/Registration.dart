@@ -21,7 +21,7 @@ class _RegistrationState extends State<Registration> {
     try {
       var res = await http.get(
         Uri.parse(
-            "http://192.168.3.34/hosting_api/Guest/fetch_guest_registration.php"),
+            "http://192.168.1.34/hosting_api/Guest/fetch_guest_registration.php"),
       );
       var r = json.decode(res.body);
       if (r is List<dynamic>) {
