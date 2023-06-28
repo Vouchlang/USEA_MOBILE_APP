@@ -107,7 +107,9 @@ List<Home_Screen> st_home_screen = [
   Home_Screen(
     name: 'ព័ត៌មានការសិក្សា',
     img: 'assets/image/Stu_Study_Info.png',
-    screen: Study_Info(),
+    screen: InkWell(
+      onTap: () {},
+    ),
   ),
   Home_Screen(
     name: 'មតិកែលម្អ',

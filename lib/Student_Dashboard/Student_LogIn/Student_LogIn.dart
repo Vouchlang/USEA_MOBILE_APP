@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:usea_app/Student_Dashboard/Student_StudyInfo/Class_StudyInfo/Class_Study_Info.dart';
 import 'package:usea_app/theme_builder.dart';
 import '../Student_Other_Class/Class_Student_User.dart';
 import '../Student_Other_Class/Class_Survey_Status.dart';
@@ -50,6 +51,7 @@ class _Student_LogInState extends State<Student_LogIn> {
         final surveyData = data['survey_status'];
         final userData = data['user_data'];
         final jobHistoryData = data['job_history_data'];
+        final studyInfoData = data['study_info_data'];
 
         List<StudentUser> dataList_StudentUser = [];
         for (var item in studentUserData) {
@@ -108,12 +110,28 @@ class _Student_LogInState extends State<Student_LogIn> {
           dataList_StDetail.add(dataModel);
         }
 
+        List<StudyInfoData> dataList_StudyInfo = [];
+        for (var item in studyInfoData) {
+          StudyInfoData dataModel1 = StudyInfoData(
+            date: item['date'],
+            month: item['month'],
+            title: item['title'],
+            subject: item['subject'],
+            room: item['room'],
+            time: item['time'],
+            seat: item['seat'],
+            takeout: item['takeout'],
+          );
+          dataList_StudyInfo.add(dataModel1);
+        }
+
         SharedPreferences sharedPref = await SharedPreferences.getInstance();
         sharedPref.setBool('login', true);
         saveStudentUser(sharedPref, dataList_StudentUser);
         saveSurvey(sharedPref, dataList_Survey);
         saveJobHistory(sharedPref, dataList_JobHistory);
         saveStDetail(sharedPref, dataList_StDetail);
+        saveStudyInfo(sharedPref, dataList_StudyInfo);
 
         Get.off(
           St_Home(
@@ -122,6 +140,7 @@ class _Student_LogInState extends State<Student_LogIn> {
             data_survey: dataList_Survey,
             data_jobhistory: dataList_JobHistory,
             data_stdetail: dataList_StDetail,
+            data_studyinfo: dataList_StudyInfo,
           ),
         );
       } else {
@@ -211,6 +230,13 @@ class _Student_LogInState extends State<Student_LogIn> {
       SharedPreferences sharedPreferences, List<StDetail> stDetailList) {
     final jsonData = stDetailList.map((stDetail) => stDetail.toJson()).toList();
     sharedPreferences.setString('student_detail', json.encode(jsonData));
+  }
+
+  void saveStudyInfo(
+      SharedPreferences sharedPreferences, List<StudyInfoData> studyInfoList) {
+    final jsonData =
+        studyInfoList.map((studyInfo) => studyInfo.toJson()).toList();
+    sharedPreferences.setString('study_info', json.encode(jsonData));
   }
 
   @override

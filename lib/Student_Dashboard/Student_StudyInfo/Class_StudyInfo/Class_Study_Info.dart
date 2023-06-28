@@ -1,85 +1,40 @@
-class StudyInformationData {
-  late final String days,
-      months,
-      semesterTitle,
-      majorTitle,
-      roomTitle,
-      timeExam;
+class StudyInfoData {
+  late final String date, month, title, subject, room, time, seat, takeout;
 
   /// ! contractor
-  StudyInformationData({
-    required this.days,
-    required this.months,
-    required this.semesterTitle,
-    required this.majorTitle,
-    required this.roomTitle,
-    required this.timeExam,
+  StudyInfoData({
+    required this.date,
+    required this.month,
+    required this.title,
+    required this.subject,
+    required this.room,
+    required this.time,
+    required this.seat,
+    required this.takeout,
   });
-}
+  Map<String, dynamic> toJson() {
+    return {
+      'date': date,
+      'month': month,
+      'title': title,
+      'subject': subject,
+      'room': room,
+      'time': time,
+      'seat': seat,
+      'takeout': takeout,
+    };
+  }
 
-List<StudyInformationData> studyInformationData = [
-  StudyInformationData(
-    days: '២៣',
-    months: 'មិនា',
-    semesterTitle: 'ប្រឡងឆមាសទី១ ឆ្នាំទី១',
-    majorTitle: 'ភាសាអង់គ្លេស',
-    roomTitle: 'ប្រាសាទព្រះខ័ន',
-    timeExam: '៦ៈ០០ - ៨ៈ០០ ល្ងាច',
-  ),
-  StudyInformationData(
-    days: '២៣',
-    months: 'មិនា',
-    semesterTitle: 'ប្រឡងឆមាសទី១ ឆ្នាំទី១',
-    majorTitle: 'ភាសាអង់គ្លេស',
-    roomTitle: 'ប្រាសាទព្រះខ័ន',
-    timeExam: '៦ៈ០០ - ៨ៈ០០ ល្ងាច',
-  ),
-  StudyInformationData(
-    days: '២៣',
-    months: 'មិនា',
-    semesterTitle: 'ប្រឡងឆមាសទី១ ឆ្នាំទី១',
-    majorTitle: 'ភាសាអង់គ្លេស',
-    roomTitle: 'ប្រាសាទព្រះខ័ន',
-    timeExam: '៦ៈ០០ - ៨ៈ០០ ល្ងាច',
-  ),
-  StudyInformationData(
-    days: '២៣',
-    months: 'មិនា',
-    semesterTitle: 'ប្រឡងឆមាសទី១ ឆ្នាំទី១',
-    majorTitle: 'ភាសាអង់គ្លេស',
-    roomTitle: 'ប្រាសាទព្រះខ័ន',
-    timeExam: '៦ៈ០០ - ៨ៈ០០ ល្ងាច',
-  ),
-  StudyInformationData(
-    days: '២៣',
-    months: 'មិនា',
-    semesterTitle: 'ប្រឡងឆមាសទី១ ឆ្នាំទី១',
-    majorTitle: 'ភាសាអង់គ្លេស',
-    roomTitle: 'ប្រាសាទព្រះខ័ន',
-    timeExam: '៦ៈ០០ - ៨ៈ០០ ល្ងាច',
-  ),
-  StudyInformationData(
-    days: '២៣',
-    months: 'មិនា',
-    semesterTitle: 'ប្រឡងឆមាសទី១ ឆ្នាំទី១',
-    majorTitle: 'ភាសាអង់គ្លេស',
-    roomTitle: 'ប្រាសាទព្រះខ័ន',
-    timeExam: '៦ៈ០០ - ៨ៈ០០ ល្ងាច',
-  ),
-  StudyInformationData(
-    days: '២៣',
-    months: 'មិនា',
-    semesterTitle: 'ប្រឡងឆមាសទី១ ឆ្នាំទី១',
-    majorTitle: 'ភាសាអង់គ្លេស',
-    roomTitle: 'ប្រាសាទព្រះខ័ន',
-    timeExam: '៦ៈ០០ - ៨ៈ០០ ល្ងាច',
-  ),
-  StudyInformationData(
-    days: '២៣',
-    months: 'មិនា',
-    semesterTitle: 'ប្រឡងឆមាសទី១ ឆ្នាំទី១',
-    majorTitle: 'ភាសាអង់គ្លេស',
-    roomTitle: 'ប្រាសាទព្រះខ័ន',
-    timeExam: '៦ៈ០០ - ៨ៈ០០ ល្ងាច',
-  ),
-];
+  factory StudyInfoData.fromJson(Map<String, dynamic> json) {
+    return StudyInfoData(
+      date: json['date'],
+      month: json['month'],
+      title: json['title'],
+      subject: json['subject'],
+      room: json['room'],
+      time: json['time'],
+      seat: json['seat'],
+      takeout: json['takeout'],
+    );
+  }
+}

@@ -8,27 +8,29 @@ import 'package:usea_app/Guest_Dashboard/Guest_Home/Class_Home/Class_Home_Screen
 import 'package:usea_app/Student_Dashboard/Student_Detail/UI_Detail/St_Detail.dart';
 import 'package:usea_app/Student_Dashboard/Student_JobHistory/UI_JobHistory/St_JobHistory.dart';
 import 'package:usea_app/Student_Dashboard/Student_Other_Class/Class_Survey_Link.dart';
+import 'package:usea_app/Student_Dashboard/Student_StudyInfo/Class_StudyInfo/Class_Study_Info.dart';
 import 'package:usea_app/theme_builder.dart';
-import '../../../Custom_Widget/CustomText.dart';
 import '../../Student_Detail/Class_Detail/Class_St_Detail.dart';
 import '../../Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
 import '../../Student_Other_Class/Class_Student_User.dart';
 import '../../Student_Other_Class/Class_Survey_Status.dart';
+import '../../Student_StudyInfo/UI_StudyInfo/StudyInfo.dart';
 
 class Student_Home extends StatefulWidget {
-  // final dynamic dataDetail;
   final List<StudentUser> data_studentUser;
   final List<SurveyStatus> data_survey;
   final List<JobHistory> data_jobhistory;
   final List<StDetail> data_stdetail;
-  const Student_Home(
-      {Key? key,
-      // required this.dataDetail,
-      required this.data_jobhistory,
-      required this.data_stdetail,
-      required this.data_studentUser,
-      required this.data_survey})
-      : super(key: key);
+  final List<StudyInfoData> data_studyinfo;
+
+  const Student_Home({
+    Key? key,
+    required this.data_jobhistory,
+    required this.data_stdetail,
+    required this.data_studentUser,
+    required this.data_survey,
+    required this.data_studyinfo,
+  }) : super(key: key);
 
   @override
   State<Student_Home> createState() => _Student_HomeState();
@@ -42,6 +44,7 @@ class _Student_HomeState extends State<Student_Home> {
   late List<SurveyStatus> _dataSurvey;
   late List<JobHistory> _dataJobHistory;
   late List<StDetail> _dataStDetail;
+  late List<StudyInfoData> _dataStudyInfo;
 
   final Uri urlFb = Uri.parse("https://www.facebook.com/usea.edu.kh");
 
@@ -52,6 +55,7 @@ class _Student_HomeState extends State<Student_Home> {
     _dataSurvey = widget.data_survey;
     _dataJobHistory = widget.data_jobhistory;
     _dataStDetail = widget.data_stdetail;
+    _dataStudyInfo = widget.data_studyinfo;
   }
 
   // Future<void> getData() async {
@@ -103,6 +107,8 @@ class _Student_HomeState extends State<Student_Home> {
               .map((data) => JobHistory.fromJson(data)));
           _dataStDetail = List<StDetail>.from(
               data['user_data'].map((data) => StDetail.fromJson(data)));
+          _dataStudyInfo = List<StudyInfoData>.from(data['study_info_data']
+              .map((data) => StudyInfoData.fromJson(data)));
           isLoading = false;
         });
       } else {
@@ -281,9 +287,6 @@ class _Student_HomeState extends State<Student_Home> {
                                                         width: 75,
                                                         child: Text(
                                                           'សាស្ត្រាចារ្យ',
-                                                          // _dataSurvey[index]
-                                                          //     .link
-                                                          //     .tr,
                                                           textAlign:
                                                               TextAlign.center,
                                                           style: TextStyle(
@@ -321,7 +324,7 @@ class _Student_HomeState extends State<Student_Home> {
                             child: Container(
                               margin: EdgeInsets.all(5),
                               child: Text(
-                                'សូមជួយធ្វើការវាយដម្លៃ'.tr,
+                                'សូមជួយធ្វើការវាយតម្លៃ'.tr,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: UBodySize,
@@ -430,6 +433,16 @@ class _Student_HomeState extends State<Student_Home> {
                                         MaterialPageRoute(
                                           builder: (context) => Job_History(
                                             data_jobhistory: _dataJobHistory,
+                                            data_studentUser: _dataStudentUser,
+                                          ),
+                                        ),
+                                      );
+                                    } else if (index.isEqual(5)) {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Study_Info(
+                                            data_studyInfo: _dataStudyInfo,
                                             data_studentUser: _dataStudentUser,
                                           ),
                                         ),
@@ -610,6 +623,16 @@ class _Student_HomeState extends State<Student_Home> {
                                           ),
                                         ),
                                       );
+                                    } else if (index.isEqual(5)) {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Study_Info(
+                                            data_studyInfo: _dataStudyInfo,
+                                            data_studentUser: _dataStudentUser,
+                                          ),
+                                        ),
+                                      );
                                     } else {
                                       Navigator.push(
                                         context,
@@ -756,6 +779,16 @@ class _Student_HomeState extends State<Student_Home> {
                                     MaterialPageRoute(
                                       builder: (context) => Job_History(
                                         data_jobhistory: _dataJobHistory,
+                                        data_studentUser: _dataStudentUser,
+                                      ),
+                                    ),
+                                  );
+                                } else if (index.isEqual(5)) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Study_Info(
+                                        data_studyInfo: _dataStudyInfo,
                                         data_studentUser: _dataStudentUser,
                                       ),
                                     ),

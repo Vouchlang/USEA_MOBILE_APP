@@ -85,6 +85,7 @@ class _Job_HistoryState extends State<Job_History> {
           : RefreshIndicator(
               onRefresh: _refreshData,
               child: ListView.builder(
+                shrinkWrap: true,
                 padding: EdgeInsets.all(9),
                 itemCount: _dataJobHistory.length,
                 itemBuilder: (context, index) {

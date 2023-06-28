@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:usea_app/Student_Dashboard/Student_StudyInfo/Class_StudyInfo/Class_Study_Info.dart';
 import '/theme_builder.dart';
 import '../../Student_Other_Class/Class_Student_User.dart';
 import '../../Student_Other_Class/Class_Survey_Status.dart';
@@ -14,6 +15,8 @@ class St_Home extends StatefulWidget {
   final List<SurveyStatus> data_survey;
   final List<JobHistory> data_jobhistory;
   final List<StDetail> data_stdetail;
+  final List<StudyInfoData> data_studyinfo;
+
   const St_Home({
     Key? key,
     required this.data,
@@ -21,6 +24,7 @@ class St_Home extends StatefulWidget {
     required this.data_stdetail,
     required this.data_studentUser,
     required this.data_survey,
+    required this.data_studyinfo,
   }) : super(key: key);
 
   @override
@@ -32,8 +36,6 @@ class _St_HomeState extends State<St_Home> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    print(
-        'Data ${widget.data_studentUser}\n Data ${widget.data_jobhistory}\n Data ${widget.data_stdetail}');
   }
 
   late TabController controller;
@@ -52,11 +54,11 @@ class _St_HomeState extends State<St_Home> {
     List pages = [
       Guest_Home(),
       Student_Home(
-        // dataDetail: widget.data,
         data_studentUser: widget.data_studentUser,
         data_survey: widget.data_survey,
         data_jobhistory: widget.data_jobhistory,
         data_stdetail: widget.data_stdetail,
+        data_studyinfo: widget.data_studyinfo,
       ),
     ];
     return WillPopScope(

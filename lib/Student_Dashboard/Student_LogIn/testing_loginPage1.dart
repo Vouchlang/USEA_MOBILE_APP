@@ -90,6 +90,7 @@ class _LoginPageState extends State<LoginPage1> {
           data_stdetail: dataList_StDetail,
           data_studentUser: [],
           data_survey: [],
+          data_studyinfo: [],
         ));
       } else {
         print('Error');

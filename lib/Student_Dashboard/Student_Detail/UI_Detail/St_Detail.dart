@@ -219,7 +219,7 @@ class _Student_DetailState extends State<Student_Detail> {
                 Container(
                   padding: EdgeInsets.symmetric(
                     vertical: 10,
-                    horizontal: 20, 
+                    horizontal: 20,
                   ),
                   child: Row(
                     children: [

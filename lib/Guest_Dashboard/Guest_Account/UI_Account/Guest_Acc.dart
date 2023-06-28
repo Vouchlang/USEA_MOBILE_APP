@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:usea_app/Student_Dashboard/Student_StudyInfo/Class_StudyInfo/Class_Study_Info.dart';
 import '../../../Student_Dashboard/Student_Other_Class/Class_Student_User.dart';
 import '../../../Student_Dashboard/Student_Other_Class/Class_Survey_Status.dart';
 import '/Student_Dashboard/Student_Detail/Class_Detail/Class_St_Detail.dart';
@@ -24,6 +25,7 @@ class Guest_AccState extends State<Guest_Acc> {
   static const String KEYSURVEY = 'survey';
   static const String KEYJOBHISTORY = 'job_history';
   static const String KEYSTDETAIL = 'student_detail';
+  static const String KEYSTUDYINFO = 'study_info';
 
   // var studentLogIn = Student_LogIn();
 
@@ -43,9 +45,11 @@ class Guest_AccState extends State<Guest_Acc> {
       List<SurveyStatus> dataSurvey = getSavedSurvey(sharePref);
       List<JobHistory> dataJobHistory = getSavedJobHistory(sharePref);
       List<StDetail> dataStDetail = getSavedStDetail(sharePref);
+      List<StudyInfoData> dataStudyInfo = getSavedStudyInfo(sharePref);
+
       if (isLoggedIn) {
-        navigateToSt_HomeScreen(
-            dataStudentUser, dataSurvey, dataJobHistory, dataStDetail);
+        navigateToSt_HomeScreen(dataStudentUser, dataSurvey, dataJobHistory,
+            dataStDetail, dataStudyInfo);
       }
     }
   }
@@ -114,11 +118,29 @@ class Guest_AccState extends State<Guest_Acc> {
     }
   }
 
+  List<StudyInfoData> getSavedStudyInfo(SharedPreferences sharedPreferences) {
+    final studyInfoString = sharedPreferences.getString(KEYSTUDYINFO);
+    if (studyInfoString != null) {
+      final jsonData = json.decode(studyInfoString);
+      List<StudyInfoData> studyInfoList = [];
+
+      for (var item in jsonData) {
+        StudyInfoData studyInfo = StudyInfoData.fromJson(item);
+        studyInfoList.add(studyInfo);
+      }
+
+      return studyInfoList;
+    } else {
+      return [];
+    }
+  }
+
   void navigateToSt_HomeScreen(
     List<StudentUser> studentUser,
     List<SurveyStatus> survey,
     List<JobHistory> jobHistory,
     List<StDetail> stDetail,
+    List<StudyInfoData> studyInfo,
   ) {
     Get.off(
       St_Home(
@@ -127,6 +149,7 @@ class Guest_AccState extends State<Guest_Acc> {
         data: stDetail,
         data_jobhistory: jobHistory,
         data_stdetail: stDetail,
+        data_studyinfo: studyInfo,
       ),
     );
   }
@@ -138,10 +161,6 @@ class Guest_AccState extends State<Guest_Acc> {
       body: ListView(
         physics: ScrollPhysics(),
         children: [
-          Container(
-            height: 10,
-            color: Colors.blue,
-          ),
           Container(
             height: 350,
             decoration: BoxDecoration(
