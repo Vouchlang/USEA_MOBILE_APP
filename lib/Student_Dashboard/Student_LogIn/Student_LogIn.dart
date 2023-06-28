@@ -33,7 +33,6 @@ class _Student_LogInState extends State<Student_LogIn> {
     final String studentId = _textControllerUsername.text;
     final String password = _textControllerPsw.text;
 
-    // final url = 'http://192.168.3.34/hosting_api/Student/login_test.php';
     final url = 'http://192.168.3.87/usea/api/apidata.php?action=login_student';
 
     final response = await http.post(
