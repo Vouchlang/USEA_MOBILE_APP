@@ -88,7 +88,7 @@ class _Study_InfoState extends State<Study_Info> {
           : RefreshIndicator(
               onRefresh: _refreshData,
               child: ListView.builder(
-                shrinkWrap: true,
+                // shrinkWrap: true,
                 padding: EdgeInsets.all(UPdMg_5),
                 itemCount: _dataStudyInfo.length,
                 itemBuilder: (BuildContext context, index) {
