@@ -80,7 +80,9 @@ List<Home_Screen> st_home_screen = [
   Home_Screen(
     name: 'កាលវិភាគ',
     img: 'assets/image/Stu_Schedule.png',
-    screen: Schedule(),
+    screen: InkWell(
+      onTap: () {},
+    ),
   ),
   Home_Screen(
     name: 'ដំណើរការសិក្សា',

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:usea_app/Student_Dashboard/Student_Schedule/Class_Schedule/Class_Schedule.dart';
 import 'package:usea_app/Student_Dashboard/Student_StudyInfo/Class_StudyInfo/Class_Study_Info.dart';
 import '/theme_builder.dart';
 import '../../Student_Other_Class/Class_Student_User.dart';
@@ -16,6 +17,7 @@ class St_Home extends StatefulWidget {
   final List<JobHistory> data_jobhistory;
   final List<StDetail> data_stdetail;
   final List<StudyInfoData> data_studyinfo;
+  final List<ScheduleClass> data_schedule;
 
   const St_Home({
     Key? key,
@@ -25,6 +27,7 @@ class St_Home extends StatefulWidget {
     required this.data_studentUser,
     required this.data_survey,
     required this.data_studyinfo,
+    required this.data_schedule,
   }) : super(key: key);
 
   @override
@@ -59,46 +62,9 @@ class _St_HomeState extends State<St_Home> with SingleTickerProviderStateMixin {
         data_jobhistory: widget.data_jobhistory,
         data_stdetail: widget.data_stdetail,
         data_studyinfo: widget.data_studyinfo,
+        data_schedule: widget.data_schedule,
       ),
     ];
-    // return WillPopScope(
-    //   onWillPop: () async => false,
-    //   child: Scaffold(
-    //     body: pages[currentIndex],
-    //     bottomNavigationBar: Container(
-    //       height: 100,
-    //       child: Center(
-    //         child: BottomNavigationBar(
-    //           elevation: 0,
-    //           onTap: onTap,
-    //           currentIndex: currentIndex,
-    //           selectedItemColor: UPrimaryColor,
-    //           unselectedItemColor: UGreyColor,
-    //           selectedFontSize: 11,
-    //           unselectedFontSize: 11,
-    //           selectedLabelStyle: TextStyle(fontFamily: UKFontFamily),
-    //           unselectedLabelStyle: TextStyle(fontFamily: UKFontFamily),
-    //           items: [
-    //             BottomNavigationBarItem(
-    //               icon: Icon(
-    //                 Icons.home,
-    //                 size: 20,
-    //               ),
-    //               label: 'ទំព័រដើម'.tr,
-    //             ),
-    //             BottomNavigationBarItem(
-    //               icon: Icon(
-    //                 Icons.account_box,
-    //                 size: 20,
-    //               ),
-    //               label: 'ចូលគណនី'.tr,
-    //             )
-    //           ],
-    //         ),
-    //       ),
-    //     ),
-    //   ),
-    // );
     return Scaffold(
       body: pages[currentIndex],
       bottomNavigationBar: Container(

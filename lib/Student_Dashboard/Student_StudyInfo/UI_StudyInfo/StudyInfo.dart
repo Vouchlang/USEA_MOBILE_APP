@@ -111,7 +111,8 @@ class _Study_InfoState extends State<Study_Info> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   NormalTitleTheme(
-                                      text: _dataStudyInfo[index].date),
+                                    text: _dataStudyInfo[index].date,
+                                  ),
                                   buildDividerAtt(),
                                   NormalTitleTheme(
                                       text: _dataStudyInfo[index].month),

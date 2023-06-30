@@ -8,12 +8,14 @@ import 'package:usea_app/Guest_Dashboard/Guest_Home/Class_Home/Class_Home_Screen
 import 'package:usea_app/Student_Dashboard/Student_Detail/UI_Detail/St_Detail.dart';
 import 'package:usea_app/Student_Dashboard/Student_JobHistory/UI_JobHistory/St_JobHistory.dart';
 import 'package:usea_app/Student_Dashboard/Student_Other_Class/Class_Survey_Link.dart';
+import 'package:usea_app/Student_Dashboard/Student_Schedule/Class_Schedule/Class_Schedule.dart';
 import 'package:usea_app/Student_Dashboard/Student_StudyInfo/Class_StudyInfo/Class_Study_Info.dart';
 import 'package:usea_app/theme_builder.dart';
 import '../../Student_Detail/Class_Detail/Class_St_Detail.dart';
 import '../../Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
 import '../../Student_Other_Class/Class_Student_User.dart';
 import '../../Student_Other_Class/Class_Survey_Status.dart';
+import '../../Student_Schedule/UI_Schedule/Schedule.dart';
 import '../../Student_StudyInfo/UI_StudyInfo/StudyInfo.dart';
 
 class Student_Home extends StatefulWidget {
@@ -22,6 +24,7 @@ class Student_Home extends StatefulWidget {
   final List<JobHistory> data_jobhistory;
   final List<StDetail> data_stdetail;
   final List<StudyInfoData> data_studyinfo;
+  final List<ScheduleClass> data_schedule;
 
   const Student_Home({
     Key? key,
@@ -30,6 +33,7 @@ class Student_Home extends StatefulWidget {
     required this.data_studentUser,
     required this.data_survey,
     required this.data_studyinfo,
+    required this.data_schedule,
   }) : super(key: key);
 
   @override
@@ -45,8 +49,10 @@ class _Student_HomeState extends State<Student_Home> {
   late List<JobHistory> _dataJobHistory;
   late List<StDetail> _dataStDetail;
   late List<StudyInfoData> _dataStudyInfo;
+  late List<ScheduleClass> _dataSchedule;
 
-  final Uri urlFb = Uri.parse("https://www.facebook.com/usea.edu.kh");
+  final Uri urlFb =
+      Uri.parse("https://9anime.to/watch/fighting-spirit.lr3/ep-17");
 
   @override
   void initState() {
@@ -56,29 +62,8 @@ class _Student_HomeState extends State<Student_Home> {
     _dataJobHistory = widget.data_jobhistory;
     _dataStDetail = widget.data_stdetail;
     _dataStudyInfo = widget.data_studyinfo;
+    _dataSchedule = widget.data_schedule;
   }
-
-  // Future<void> getData() async {
-  //   try {
-  //     var res = await http.get(
-  //       Uri.parse("http://192.168.3.34/hosting_api/Student/student_survey.php"),
-  //     );
-  //     var r = json.decode(res.body);
-  //     if (r is List<dynamic>) {
-  //       survey = r.map((e) => Class_Survey_Link.fromJson(e)).toList();
-  //     } else {
-  //       survey = [
-  //         Class_Survey_Link.fromJson(r),
-  //       ];
-  //     }
-  //   } catch (e) {
-  //     print('Error fetching data: $e');
-  //   } finally {
-  //     setState(() {
-  //       isLoading = false;
-  //     });
-  //   }
-  // }
 
   Future<void> _refreshData() async {
     setState(() {
@@ -109,6 +94,8 @@ class _Student_HomeState extends State<Student_Home> {
               data['user_data'].map((data) => StDetail.fromJson(data)));
           _dataStudyInfo = List<StudyInfoData>.from(data['study_info_data']
               .map((data) => StudyInfoData.fromJson(data)));
+          _dataSchedule = List<ScheduleClass>.from(data['schedule_data']
+              .map((data) => ScheduleClass.fromJson(data)));
           isLoading = false;
         });
       } else {
@@ -427,6 +414,16 @@ class _Student_HomeState extends State<Student_Home> {
                                   onTap: () {
                                     if (index.isEqual(6)) {
                                       launchUrl(urlFb);
+                                    } else if (index.isEqual(0)) {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Schedule(
+                                            data_schedule: _dataSchedule,
+                                            data_studentUser: _dataStudentUser,
+                                          ),
+                                        ),
+                                      );
                                     } else if (index.isEqual(4)) {
                                       Navigator.push(
                                         context,
@@ -613,6 +610,16 @@ class _Student_HomeState extends State<Student_Home> {
                                   onTap: () {
                                     if (index.isEqual(6)) {
                                       launchUrl(urlFb);
+                                    } else if (index.isEqual(0)) {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Schedule(
+                                            data_schedule: _dataSchedule,
+                                            data_studentUser: _dataStudentUser,
+                                          ),
+                                        ),
+                                      );
                                     } else if (index.isEqual(4)) {
                                       Navigator.push(
                                         context,
@@ -773,6 +780,16 @@ class _Student_HomeState extends State<Student_Home> {
                               onTap: () {
                                 if (index.isEqual(6)) {
                                   launchUrl(urlFb);
+                                } else if (index.isEqual(0)) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Schedule(
+                                        data_schedule: _dataSchedule,
+                                        data_studentUser: _dataStudentUser,
+                                      ),
+                                    ),
+                                  );
                                 } else if (index.isEqual(4)) {
                                   Navigator.push(
                                     context,

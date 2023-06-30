@@ -1,64 +1,38 @@
-class DataCalendar {
-  late final String weekday, date, majorTitle, classroom, teacherName, tel;
+class ScheduleClass {
+  late final String wday, weekday, session, subject, teacher, phonenumber, room;
 
   /// ! Contractor
-  DataCalendar({
+  ScheduleClass({
+    required this.wday,
     required this.weekday,
-    required this.date,
-    required this.majorTitle,
-    required this.classroom,
-    required this.teacherName,
-    required this.tel,
+    required this.session,
+    required this.subject,
+    required this.teacher,
+    required this.phonenumber,
+    required this.room,
   });
-}
 
-List<DataCalendar> datacalendar = [
-  DataCalendar(
-    weekday: 'ចន្ទ',
-    date: '១៦',
-    majorTitle: 'សេដ្ឋកិច្ចវិទ្យា',
-    classroom: 'ប្រាសាទព្រះខ័ន',
-    teacherName: 'លោក​ ឃ្លាំង មង្គល',
-    tel: '099 999 9999',
-  ),
-  DataCalendar(
-    weekday: 'អង្គ',
-    date: '១៧',
-    majorTitle: 'សេដ្ឋកិច្ចវិទ្យា',
-    classroom: 'ប្រាសាទព្រះខ័ន',
-    teacherName: 'លោក​ ឃ្លាំង មង្គល',
-    tel: '099 999 9999',
-  ),
-  DataCalendar(
-    weekday: 'ពុធ',
-    date: '១៨',
-    majorTitle: 'សេដ្ឋកិច្ចវិទ្យា',
-    classroom: 'ប្រាសាទព្រះខ័ន',
-    teacherName: 'លោក​ ឃ្លាំង មង្គល',
-    tel: '099 999 9999',
-  ),
-  DataCalendar(
-    weekday: 'ព្រហ',
-    date: '១៩',
-    majorTitle: 'សេដ្ឋកិច្ចវិទ្យា',
-    classroom: 'ប្រាសាទព្រះខ័ន',
-    teacherName: 'លោក​ ឃ្លាំង មង្គល',
-    tel: '099 999 9999',
-  ),
-  DataCalendar(
-    weekday: 'សុក្រ',
-    date: '២០',
-    majorTitle: 'សេដ្ឋកិច្ចវិទ្យា',
-    classroom: 'ប្រាសាទព្រះខ័ន',
-    teacherName: 'លោក​ ឃ្លាំង មង្គល',
-    tel: '099 999 9999',
-  ),
-  DataCalendar(
-    weekday: 'សៅរ៏',
-    date: '២១',
-    majorTitle: 'សេដ្ឋកិច្ចវិទ្យា',
-    classroom: 'ប្រាសាទព្រះខ័ន',
-    teacherName: 'លោក​ ឃ្លាំង មង្គល',
-    tel: '099 999 9999',
-  ),
-];
+  Map<String, dynamic> toJson() {
+    return {
+      'wday': wday,
+      'weekday': weekday,
+      'session': session,
+      'subject': subject,
+      'teacher': teacher,
+      'phonenumber': phonenumber,
+      'room': room,
+    };
+  }
+
+  factory ScheduleClass.fromJson(Map<String, dynamic> json) {
+    return ScheduleClass(
+      wday: json['wday'],
+      weekday: json['weekday'],
+      session: json['session'],
+      subject: json['subject'],
+      teacher: json['teacher'],
+      phonenumber: json['phonenumber'],
+      room: json['room'],
+    );
+  }
+}

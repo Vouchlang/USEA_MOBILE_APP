@@ -6,6 +6,7 @@ import 'package:usea_app/Student_Dashboard/Student_StudyInfo/Class_StudyInfo/Cla
 import 'package:usea_app/theme_builder.dart';
 import '../Student_Other_Class/Class_Student_User.dart';
 import '../Student_Other_Class/Class_Survey_Status.dart';
+import '../Student_Schedule/Class_Schedule/Class_Schedule.dart';
 import '/Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '/Custom_AppBar.dart';
@@ -51,6 +52,7 @@ class _Student_LogInState extends State<Student_LogIn> {
         final userData = data['user_data'];
         final jobHistoryData = data['job_history_data'];
         final studyInfoData = data['study_info_data'];
+        final scheduleData = data['schedule_data'];
 
         List<StudentUser> dataList_StudentUser = [];
         for (var item in studentUserData) {
@@ -124,6 +126,20 @@ class _Student_LogInState extends State<Student_LogIn> {
           dataList_StudyInfo.add(dataModel1);
         }
 
+        List<ScheduleClass> dataList_Schedule = [];
+        for (var item in scheduleData) {
+          ScheduleClass dataModel1 = ScheduleClass(
+            wday: item['wday'],
+            weekday: item['weekday'],
+            session: item['session'],
+            subject: item['subject'],
+            teacher: item['teacher'],
+            phonenumber: item['phonenumber'],
+            room: item['room'],
+          );
+          dataList_Schedule.add(dataModel1);
+        }
+
         SharedPreferences sharedPref = await SharedPreferences.getInstance();
         sharedPref.setBool('login', true);
         saveStudentUser(sharedPref, dataList_StudentUser);
@@ -131,6 +147,7 @@ class _Student_LogInState extends State<Student_LogIn> {
         saveJobHistory(sharedPref, dataList_JobHistory);
         saveStDetail(sharedPref, dataList_StDetail);
         saveStudyInfo(sharedPref, dataList_StudyInfo);
+        saveSchedule(sharedPref, dataList_Schedule);
 
         Get.off(
           St_Home(
@@ -140,6 +157,7 @@ class _Student_LogInState extends State<Student_LogIn> {
             data_jobhistory: dataList_JobHistory,
             data_stdetail: dataList_StDetail,
             data_studyinfo: dataList_StudyInfo,
+            data_schedule: dataList_Schedule,
           ),
         );
       } else {
@@ -236,6 +254,13 @@ class _Student_LogInState extends State<Student_LogIn> {
     final jsonData =
         studyInfoList.map((studyInfo) => studyInfo.toJson()).toList();
     sharedPreferences.setString('study_info', json.encode(jsonData));
+  }
+
+  void saveSchedule(
+      SharedPreferences sharedPreferences, List<ScheduleClass> scheduleList) {
+    final jsonData =
+        scheduleList.map((studyInfo) => studyInfo.toJson()).toList();
+    sharedPreferences.setString('schedule', json.encode(jsonData));
   }
 
   @override
