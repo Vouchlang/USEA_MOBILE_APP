@@ -10,11 +10,10 @@ import '../Class_StudyInfo/Class_Study_Info.dart';
 
 class Study_Info extends StatefulWidget {
   final List<StudentUser> data_studentUser;
-  final List<StudyInfoData> data_studyInfo;
-  const Study_Info(
-      {super.key,
-      required this.data_studentUser,
-      required this.data_studyInfo});
+  const Study_Info({
+    super.key,
+    required this.data_studentUser,
+  });
 
   @override
   State<Study_Info> createState() => _Study_InfoState();
@@ -25,9 +24,7 @@ class _Study_InfoState extends State<Study_Info> {
   late List<StudyInfoData> _dataStudyInfo = [];
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    _dataStudyInfo = widget.data_studyInfo;
     _refreshData();
   }
 
@@ -39,7 +36,7 @@ class _Study_InfoState extends State<Study_Info> {
     try {
       var response = await http.post(
         Uri.parse(
-            'http://192.168.3.87/usea/api/apidata.php?action=login_student'),
+            'http://192.168.3.87/usea/api/student_info_data_exam.php?action=login_student'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -51,7 +48,7 @@ class _Study_InfoState extends State<Study_Info> {
 
         setState(() {
           _dataStudyInfo = List<StudyInfoData>.from(
-            data['study_info_data'].map(
+            data['student_info_data_exam'].map(
               (data) => StudyInfoData.fromJson(data),
             ),
           );
@@ -82,13 +79,23 @@ class _Study_InfoState extends State<Study_Info> {
       backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'ព័ត៌មានការសិក្សា'.tr),
       body: _dataStudyInfo.isEmpty
-          ? Center(
-              child: Text('No Data'),
+          ? FutureBuilder(
+              future: Future.delayed(Duration(seconds: 3)),
+              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  return Center(
+                    child: Text('No Data'),
+                  );
+                }
+              },
             )
           : RefreshIndicator(
               onRefresh: _refreshData,
               child: ListView.builder(
-                // shrinkWrap: true,
                 padding: EdgeInsets.all(UPdMg_5),
                 itemCount: _dataStudyInfo.length,
                 itemBuilder: (BuildContext context, index) {

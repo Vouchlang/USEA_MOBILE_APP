@@ -2,13 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:usea_app/Student_Dashboard/Student_Schedule/Class_Schedule/Class_Schedule.dart';
-import 'package:usea_app/Student_Dashboard/Student_StudyInfo/Class_StudyInfo/Class_Study_Info.dart';
 import '../../../Student_Dashboard/Student_Other_Class/Class_Student_User.dart';
-import '../../../Student_Dashboard/Student_Other_Class/Class_Survey_Status.dart';
-import '/Student_Dashboard/Student_Detail/Class_Detail/Class_St_Detail.dart';
 import '/Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
-import '/Student_Dashboard/Student_JobHistory/Class_JobHistory/Class_Job_History.dart';
 import '/theme_builder.dart';
 import '../Class_Account/Class_Account_Screen.dart';
 
@@ -22,17 +17,9 @@ class Guest_Acc extends StatefulWidget {
 class Guest_AccState extends State<Guest_Acc> {
   static const String KEYLOGIN = 'login';
   static const String KEYSTUDENT_USER = 'student_user';
-  static const String KEYSURVEY = 'survey';
-  static const String KEYJOBHISTORY = 'job_history';
-  static const String KEYSTDETAIL = 'student_detail';
-  static const String KEYSTUDYINFO = 'study_info';
-  static const String KEYSCHEDULE = 'schedule';
-
-  // var studentLogIn = Student_LogIn();
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     whereToGo();
   }
@@ -43,15 +30,9 @@ class Guest_AccState extends State<Guest_Acc> {
 
     if (isLoggedIn != null && isLoggedIn) {
       List<StudentUser> dataStudentUser = getSavedStudentUser(sharePref);
-      List<SurveyStatus> dataSurvey = getSavedSurvey(sharePref);
-      List<JobHistory> dataJobHistory = getSavedJobHistory(sharePref);
-      List<StDetail> dataStDetail = getSavedStDetail(sharePref);
-      List<StudyInfoData> dataStudyInfo = getSavedStudyInfo(sharePref);
-      List<ScheduleClass> dataSchedule = getSavedSchedule(sharePref);
 
       if (isLoggedIn) {
-        navigateToSt_HomeScreen(dataStudentUser, dataSurvey, dataJobHistory,
-            dataStDetail, dataStudyInfo, dataSchedule);
+        navigateToSt_HomeScreen(dataStudentUser);
       }
     }
   }
@@ -71,104 +52,12 @@ class Guest_AccState extends State<Guest_Acc> {
     }
   }
 
-  List<SurveyStatus> getSavedSurvey(SharedPreferences sharedPreferences) {
-    final surveyString = sharedPreferences.getString(KEYSURVEY);
-    if (surveyString != null) {
-      final jsonData = json.decode(surveyString);
-      List<SurveyStatus> surveyList = [];
-
-      for (var item in jsonData) {
-        SurveyStatus survey = SurveyStatus.fromJson(item);
-        surveyList.add(survey);
-      }
-
-      return surveyList;
-    } else {
-      return [];
-    }
-  }
-
-  List<JobHistory> getSavedJobHistory(SharedPreferences sharedPreferences) {
-    final jobHistoryString = sharedPreferences.getString(KEYJOBHISTORY);
-    if (jobHistoryString != null) {
-      final jsonData = json.decode(jobHistoryString);
-      List<JobHistory> jobHistoryList = [];
-
-      for (var item in jsonData) {
-        JobHistory jobHistory = JobHistory.fromJson(item);
-        jobHistoryList.add(jobHistory);
-      }
-      return jobHistoryList;
-    } else {
-      return [];
-    }
-  }
-
-  List<StDetail> getSavedStDetail(SharedPreferences sharedPreferences) {
-    final stDetailString = sharedPreferences.getString(KEYSTDETAIL);
-    if (stDetailString != null) {
-      final jsonData = json.decode(stDetailString);
-      List<StDetail> stDetailList = [];
-
-      for (var item in jsonData) {
-        StDetail stDetail = StDetail.fromJson(item);
-        stDetailList.add(stDetail);
-      }
-      return stDetailList;
-    } else {
-      return [];
-    }
-  }
-
-  List<StudyInfoData> getSavedStudyInfo(SharedPreferences sharedPreferences) {
-    final studyInfoString = sharedPreferences.getString(KEYSTUDYINFO);
-    if (studyInfoString != null) {
-      final jsonData = json.decode(studyInfoString);
-      List<StudyInfoData> studyInfoList = [];
-
-      for (var item in jsonData) {
-        StudyInfoData studyInfo = StudyInfoData.fromJson(item);
-        studyInfoList.add(studyInfo);
-      }
-
-      return studyInfoList;
-    } else {
-      return [];
-    }
-  }
-
-  List<ScheduleClass> getSavedSchedule(SharedPreferences sharedPreferences) {
-    final scheduleString = sharedPreferences.getString(KEYSCHEDULE);
-    if (scheduleString != null) {
-      final jsonData = json.decode(scheduleString);
-      List<ScheduleClass> scheduleList = [];
-      for (var item in jsonData) {
-        ScheduleClass schedule = ScheduleClass.fromJson(item);
-        scheduleList.add(schedule);
-      }
-      return scheduleList;
-    } else {
-      return [];
-    }
-  }
-
   void navigateToSt_HomeScreen(
     List<StudentUser> studentUser,
-    List<SurveyStatus> survey,
-    List<JobHistory> jobHistory,
-    List<StDetail> stDetail,
-    List<StudyInfoData> studyInfo,
-    List<ScheduleClass> schedule,
   ) {
     Get.off(
       St_Home(
         data_studentUser: studentUser,
-        data_survey: survey,
-        data: stDetail,
-        data_jobhistory: jobHistory,
-        data_stdetail: stDetail,
-        data_studyinfo: studyInfo,
-        data_schedule: schedule,
       ),
     );
   }

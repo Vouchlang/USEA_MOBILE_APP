@@ -81,17 +81,15 @@ class _LoginPageState extends State<LoginPage1> {
 
         SharedPreferences sharedPref = await SharedPreferences.getInstance();
         sharedPref.setBool('login', true);
-        saveJobHistory(sharedPref, dataList_JobHistory);
-        saveStDetail(sharedPref, dataList_StDetail);
+        // saveJobHistory(sharedPref, dataList_JobHistory);
+        // saveStDetail(sharedPref, dataList_StDetail);
 
         Get.off(St_Home(
-          data: null,
-          data_jobhistory: dataList_JobHistory,
-          data_stdetail: dataList_StDetail,
+          // data_jobhistory: dataList_JobHistory,
           data_studentUser: [],
-          data_survey: [],
-          data_studyinfo: [],
-          data_schedule: [],
+          // data_survey: [],
+          // data_studyinfo: [],
+          // data_schedule: [],
         ));
       } else {
         print('Error');
@@ -152,18 +150,18 @@ class _LoginPageState extends State<LoginPage1> {
     }
   }
 
-  void saveJobHistory(
-      SharedPreferences sharedPreferences, List<JobHistory> jobHistoryList) {
-    final jsonData =
-        jobHistoryList.map((jobHistory) => jobHistory.toJson()).toList();
-    sharedPreferences.setString('job_history', json.encode(jsonData));
-  }
+  // void saveJobHistory(
+  //     SharedPreferences sharedPreferences, List<JobHistory> jobHistoryList) {
+  //   final jsonData =
+  //       jobHistoryList.map((jobHistory) => jobHistory.toJson()).toList();
+  //   sharedPreferences.setString('job_history', json.encode(jsonData));
+  // }
 
-  void saveStDetail(
-      SharedPreferences sharedPreferences, List<StDetail> stDetailList) {
-    final jsonData = stDetailList.map((stDetail) => stDetail.toJson()).toList();
-    sharedPreferences.setString('student_detail', json.encode(jsonData));
-  }
+  // void saveStDetail(
+  //     SharedPreferences sharedPreferences, List<StDetail> stDetailList) {
+  //   final jsonData = stDetailList.map((stDetail) => stDetail.toJson()).toList();
+  //   sharedPreferences.setString('student_detail', json.encode(jsonData));
+  // }
 
   @override
   Widget build(BuildContext context) {

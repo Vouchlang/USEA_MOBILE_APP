@@ -96,6 +96,7 @@ class LocaleString extends Translations {
           'គណនីសាស្ត្រាចារ្យ': 'គណនីសាស្ត្រាចារ្យ',
 
           // Student Dashboard
+
           'ព័ត៌មានលម្អិតរបស់និស្សិត': 'ព័ត៌មានលម្អិតរបស់និស្សិត',
           'កាលវិភាគ': 'កាលវិភាគ',
           'ដំណើរការសិក្សា': 'ដំណើរការសិក្សា',
@@ -141,9 +142,16 @@ class LocaleString extends Translations {
               'តើអ្នកប្រាកដថាអ្នកនឹងចាកចេញពីគណនីនិសិ្សតដែរឬទេ?',
           'បោះបង់': 'បោះបង់',
 
-          // Student Survery
+          // Student Survey
           'សូមជួយវាយដម្លៃការបង្រៀនរបស់សាស្ត្រាចារ្យ':
               'សូមជួយវាយដម្លៃការបង្រៀនរបស់សាស្ត្រាចារ្យ',
+          '\tចំនួនក្រឌីតសរុប': '\tចំនួនក្រឌីតសរុប',
+          '\tចំនួនក្រឌីតបានបំពេញ': '\tចំនួនក្រឌីតបានបំពេញ',
+          'សូមជួយធ្វើការវាយតម្លៃ': 'សូមជួយធ្វើការវាយតម្លៃ',
+          'ការវាយតម្លៃ': 'ការវាយតម្លៃ',
+          'សូមជ្រើសរើសប្រភេទនៃការវាយតម្លៃ!!!':
+              'សូមជ្រើសរើសប្រភេទនៃការវាយតម្លៃ!!!',
+          'សាស្ត្រាចារ្យ': 'សាស្ត្រាចារ្យ',
 
           // Student Schedule
           'កាលវិភាគសិក្សា': 'កាលវិភាគសិក្សា',
@@ -282,6 +290,7 @@ class LocaleString extends Translations {
           'គណនីសាស្ត្រាចារ្យ': 'Lecturer Account',
 
           // Student Dashboard
+
           'ព័ត៌មានលម្អិតរបស់និស្សិត': 'Student Detail',
           'កាលវិភាគ': 'Schedule',
           'ដំណើរការសិក្សា': 'Performance',
@@ -327,9 +336,16 @@ class LocaleString extends Translations {
               'Are you sure you want to log out student account?',
           'បោះបង់': 'Cancel',
 
-          // Student Survery
+          // Student Survey
+          '\tចំនួនក្រឌីតសរុប': '\tTotal Credits',
+          '\tចំនួនក្រឌីតបានបំពេញ': '\tRemaining Credits',
           'សូមជួយវាយដម្លៃការបង្រៀនរបស់សាស្ត្រាចារ្យ':
-              'Please help evaluate the lecture of the professor',
+              'Please evaluate the lecture of the professor',
+          'សូមជួយធ្វើការវាយតម្លៃ': 'Please help evaluate',
+          'ការវាយតម្លៃ': 'Evaluation',
+          'សូមជ្រើសរើសប្រភេទនៃការវាយតម្លៃ!!!':
+              'Please select type of assessments!!!',
+          'សាស្ត្រាចារ្យ': 'Lecturer',
 
           // Student Schedule
           'កាលវិភាគសិក្សា': 'Schedule',

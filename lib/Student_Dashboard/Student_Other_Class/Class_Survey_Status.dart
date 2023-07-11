@@ -6,12 +6,12 @@ class SurveyStatus {
     required this.link,
   });
 
-  Map<String, dynamic> toJson() {
-    return {
-      'survey_status': survey_status,
-      'link': link,
-    };
-  }
+  // Map<String, dynamic> toJson() {
+  //   return {
+  //     'survey_status': survey_status,
+  //     'link': link,
+  //   };
+  // }
 
   factory SurveyStatus.fromJson(Map<String, dynamic> json) {
     return SurveyStatus(

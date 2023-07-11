@@ -1,7 +1,6 @@
 class StudyInfoData {
   late final String date, month, title, subject, room, time, seat, takeout;
 
-  /// ! contractor
   StudyInfoData({
     required this.date,
     required this.month,
@@ -12,18 +11,6 @@ class StudyInfoData {
     required this.seat,
     required this.takeout,
   });
-  Map<String, dynamic> toJson() {
-    return {
-      'date': date,
-      'month': month,
-      'title': title,
-      'subject': subject,
-      'room': room,
-      'time': time,
-      'seat': seat,
-      'takeout': takeout,
-    };
-  }
 
   factory StudyInfoData.fromJson(Map<String, dynamic> json) {
     return StudyInfoData(

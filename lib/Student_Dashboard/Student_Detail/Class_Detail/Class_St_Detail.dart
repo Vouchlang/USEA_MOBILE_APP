@@ -1,5 +1,5 @@
 class StDetail {
-  final String faculty_name,
+  late final String faculty_name,
       degree_name,
       major_name,
       year_name,
@@ -40,30 +40,6 @@ class StDetail {
     required this.job,
     required this.work_place,
   });
-
-  Map<String, dynamic> toJson() {
-    return {
-      'faculty_name': faculty_name,
-      'degree_name': degree_name,
-      'major_name': major_name,
-      'year_name': year_name,
-      'semester_name': semester_name,
-      'name_kh': name_kh,
-      'name_en': name_en,
-      'student_id': student_id,
-      'stage_name': stage_name,
-      'term_name': term_name,
-      'academic_year': academic_year,
-      'shift_name': shift_name,
-      'room_name': room_name,
-      'status_name': status_name,
-      'date_of_birth': date_of_birth,
-      'phone_number': phone_number,
-      'profile_pic': profile_pic,
-      'job': job,
-      'work_place': work_place
-    };
-  }
 
   factory StDetail.fromJson(Map<String, dynamic> json) {
     return StDetail(

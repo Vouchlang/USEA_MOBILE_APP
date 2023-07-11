@@ -13,14 +13,16 @@ import '/Student_Dashboard/Student_Achievements/UI_Achievements/Achievements.dar
 import '/Student_Dashboard/Student_Attendance/UI_Attendance/Attendance.dart';
 import '/Student_Dashboard/Student_Payment/UI_Payment/Payment.dart';
 import '/Student_Dashboard/Student_Performance/UI_Perfomance/Performance.dart';
-import '/Student_Dashboard/Student_Schedule/UI_Schedule/Schedule.dart';
-import '/Student_Dashboard/Student_StudyInfo/UI_StudyInfo/StudyInfo.dart';
 
 class Home_Screen {
   late final String name, img;
   late final Widget screen;
 
-  Home_Screen({required this.name, required this.img, required this.screen});
+  Home_Screen({
+    required this.name,
+    required this.img,
+    required this.screen,
+  });
 }
 
 List<Home_Screen> guest_home_screen = [

@@ -11,11 +11,9 @@ import 'dart:convert';
 
 class Schedule extends StatefulWidget {
   final List<StudentUser> data_studentUser;
-  final List<ScheduleClass> data_schedule;
   Schedule({
     super.key,
     required this.data_studentUser,
-    required this.data_schedule,
   });
 
   @override
@@ -28,9 +26,7 @@ class _ScheduleState extends State<Schedule> {
   late List<ScheduleClass> _dataSchedule = [];
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    _dataSchedule = widget.data_schedule;
     _refreshData();
   }
 
@@ -42,7 +38,7 @@ class _ScheduleState extends State<Schedule> {
     try {
       var response = await http.post(
         Uri.parse(
-            'http://192.168.3.87/usea/api/apidata.php?action=login_student'),
+            'http://192.168.3.87/usea/api/student_schedule.php?action=login_student'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -85,8 +81,19 @@ class _ScheduleState extends State<Schedule> {
       backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'កាលវិភាគ'.tr),
       body: _dataSchedule.isEmpty
-          ? Center(
-              child: Text('No Data'),
+          ? FutureBuilder(
+              future: Future.delayed(Duration(seconds: 3)),
+              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  return Center(
+                    child: Text('No Data'),
+                  );
+                }
+              },
             )
           : RefreshIndicator(
               onRefresh: _refreshData,
@@ -146,15 +153,11 @@ class _ScheduleState extends State<Schedule> {
                                             ],
                                           ),
                                         ),
-
-                                        // *@ VerticalDivider
                                         VerticalDivider(
                                           thickness: 0.5,
                                           color: UGreyColor,
                                           width: 30,
                                         ),
-                                        // *@ End Vertical Divider
-
                                         Expanded(
                                           child: Column(
                                             crossAxisAlignment:

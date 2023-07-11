@@ -1,7 +1,6 @@
 class ScheduleClass {
   late final String wday, weekday, session, subject, teacher, phonenumber, room;
 
-  /// ! Contractor
   ScheduleClass({
     required this.wday,
     required this.weekday,
@@ -11,18 +10,6 @@ class ScheduleClass {
     required this.phonenumber,
     required this.room,
   });
-
-  Map<String, dynamic> toJson() {
-    return {
-      'wday': wday,
-      'weekday': weekday,
-      'session': session,
-      'subject': subject,
-      'teacher': teacher,
-      'phonenumber': phonenumber,
-      'room': room,
-    };
-  }
 
   factory ScheduleClass.fromJson(Map<String, dynamic> json) {
     return ScheduleClass(

@@ -1,5 +1,5 @@
 class JobHistory {
-  final String date_start_work, status_name, workPlace, position, salary;
+  late final String date_start_work, status_name, workPlace, position, salary;
 
   JobHistory({
     required this.date_start_work,
@@ -8,16 +8,6 @@ class JobHistory {
     required this.position,
     required this.salary,
   });
-
-  Map<String, dynamic> toJson() {
-    return {
-      'date_start_work': date_start_work,
-      'status_name': status_name,
-      'work_place': workPlace,
-      'position': position,
-      'salary': salary,
-    };
-  }
 
   factory JobHistory.fromJson(Map<String, dynamic> json) {
     return JobHistory(
