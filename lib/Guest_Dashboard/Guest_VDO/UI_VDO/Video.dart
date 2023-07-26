@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../Custom_Widget/CustomText.dart';
 import '/Custom_AppBar.dart';
-import '/Custom_Widget/CustomText.dart';
 import '/theme_builder.dart';
-import '../Class_VDO/Class_Video_Home.dart';
+import '../Class_VDO/Class_Video.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
 import 'Video_Display.dart';
 
 class Video_UI extends StatefulWidget {
@@ -14,6 +17,39 @@ class Video_UI extends StatefulWidget {
 }
 
 class _VideoState extends State<Video_UI> {
+  List<VDO_Class> vdo = [];
+  bool isLoading = true;
+
+  Future<void> getData() async {
+    try {
+      var res = await http.get(
+        Uri.parse("http://192.168.1.51/hosting_api/Guest/fetch_guest_vdo.php"),
+      );
+      var r = json.decode(res.body);
+      if (r is List<dynamic>) {
+        vdo = r.map((e) => VDO_Class.fromJson(e)).toList();
+      } else {
+        vdo = [
+          VDO_Class.fromJson(r),
+        ];
+      }
+    } catch (e) {
+      print('Error fetching data: $e');
+    } finally {
+      setState(
+        () {
+          isLoading = false;
+        },
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +57,7 @@ class _VideoState extends State<Video_UI> {
       appBar: Custom_AppBar(title: 'វីដេអូ'.tr),
       body: ListView.builder(
         padding: EdgeInsets.all(10),
-        itemCount: video_home.length,
+        itemCount: vdo.length,
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
@@ -29,7 +65,8 @@ class _VideoState extends State<Video_UI> {
                 context,
                 MaterialPageRoute(
                   builder: ((context) => Video_Display(
-                        data: video_home[index],
+                        data: vdo[index],
+                        vdo: vdo,
                       )),
                 ),
               );
@@ -51,8 +88,7 @@ class _VideoState extends State<Video_UI> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
                           image: DecorationImage(
-                              image: NetworkImage(
-                                  video_home[index].youtube_thumbnail),
+                              image: NetworkImage(vdo[index].youtube_thumbnail),
                               fit: BoxFit.cover),
                         ),
                       ),
@@ -65,12 +101,11 @@ class _VideoState extends State<Video_UI> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            buildListText(
-                                video_home[index].title, 3, UTitleSize),
+                            buildListText(vdo[index].title, 3, UTitleSize),
                             SizedBox(
                               height: 5,
                             ),
-                            buildListText(video_home[index].caption, 1, 10),
+                            buildListText(vdo[index].caption, 1, 10),
                           ],
                         ),
                       ),

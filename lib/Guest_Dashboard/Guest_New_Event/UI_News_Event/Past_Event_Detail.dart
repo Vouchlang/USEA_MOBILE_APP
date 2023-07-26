@@ -12,7 +12,7 @@ class Past_Event_Detail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String getImageUrl(String imageName) {
-      return 'http://192.168.1.34/hosting_api/Guest/event_image/$imageName';
+      return 'http://192.168.1.51/hosting_api/Guest/event_image/$imageName';
     }
 
     return Scaffold(

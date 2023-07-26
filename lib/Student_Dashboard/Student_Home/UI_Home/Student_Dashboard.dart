@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:d_chart/d_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_Home/Class_Home/Class_Home_Screen.dart';
 import 'package:usea_app/Student_Dashboard/Student_Detail/UI_Detail/St_Detail.dart';
@@ -13,6 +14,7 @@ import '../../Student_Other_Class/Class_Student_User.dart';
 import '../../Student_Other_Class/Class_Survey_Status.dart';
 import '../../Student_Schedule/UI_Schedule/Schedule.dart';
 import '../../Student_StudyInfo/UI_StudyInfo/StudyInfo.dart';
+import '../Class_Home/Class_St_Credit.dart';
 
 class Student_Home extends StatefulWidget {
   final List<StudentUser> data_studentUser;
@@ -30,6 +32,7 @@ class _Student_HomeState extends State<Student_Home> {
   int activeIndex = 0;
   bool isLoading = false;
   late List<StudentUser> _dataStudentUser;
+  late List<Credit_Class> _dataCredit = [];
   late List<SurveyStatus> _dataSurvey = [];
   late List<StDetail> _dataStDetail = [];
 
@@ -58,6 +61,15 @@ class _Student_HomeState extends State<Student_Home> {
         },
       );
 
+      var response_credit = await http.post(
+        Uri.parse(
+            'http://192.168.3.87/usea/api/apidata.php?action=study_credit'),
+        body: {
+          'student_id': widget.data_studentUser[0].student_id,
+          'pwd': widget.data_studentUser[0].pwd,
+        },
+      );
+
       var response_survey = await http.post(
         Uri.parse(
             'http://192.168.3.87/usea/api/survey_success.php?action=login_student'),
@@ -77,9 +89,11 @@ class _Student_HomeState extends State<Student_Home> {
       );
 
       if (response_stUser.statusCode == 200 &&
+          response_credit.statusCode == 200 &&
           response_survey.statusCode == 200 &&
           response_stDetail.statusCode == 200) {
         var data_stUser = jsonDecode(response_stUser.body);
+        var data_credit = jsonDecode(response_credit.body);
         var data_survey = jsonDecode(response_survey.body);
         var data_stDetail = jsonDecode(response_stDetail.body);
 
@@ -88,6 +102,11 @@ class _Student_HomeState extends State<Student_Home> {
             _dataStudentUser = List<StudentUser>.from(
               data_stUser['student_users'].map(
                 (data_stUser) => StudentUser.fromJson(data_stUser),
+              ),
+            );
+            _dataCredit = List<Credit_Class>.from(
+              data_credit['credit_data'].map(
+                (data_credit) => Credit_Class.fromJson(data_credit),
               ),
             );
             _dataSurvey = List<SurveyStatus>.from(
@@ -122,8 +141,22 @@ class _Student_HomeState extends State<Student_Home> {
     _refreshData();
   }
 
+  double calculatePercentIndicator() {
+    if (_dataCredit.isEmpty || _dataCredit[0].totalCredit == "0") {
+      return 0; // Avoid division by zero error
+    }
+
+    double yourCredit = double.parse(_dataCredit[0].yourCredit);
+    double totalCredit = double.parse(_dataCredit[0].totalCredit);
+
+    double percentIndicator = yourCredit / totalCredit;
+    return percentIndicator;
+  }
+
   @override
   Widget build(BuildContext context) {
+    double percentIndicator = calculatePercentIndicator();
+
     return Scaffold(
       backgroundColor: USecondaryColor,
       appBar: AppBar(
@@ -321,66 +354,77 @@ class _Student_HomeState extends State<Student_Home> {
                       ),
                     ),
                   ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Container(
                     alignment: Alignment.center,
-                    height: 175,
-                    padding: EdgeInsets.symmetric(
-                      vertical: 0,
-                      horizontal: 5,
-                    ),
+                    height: 180,
+                    padding: EdgeInsets.symmetric(horizontal: 5),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Expanded(
-                          child: DChartPie(
-                            data: [
-                              {'domain': 'Flutter', 'measure': 10},
-                              {'domain': 'React Native', 'measure': 10},
-                              {'domain': 'React JS', 'measure': 10},
-                              {'domain': 'Flutter1', 'measure': 10},
-                              {'domain': 'React Native1', 'measure': 10},
-                              {'domain': 'React JS2', 'measure': 10},
-                              {'domain': 'Flutter2', 'measure': 10},
-                              {'domain': 'React Native2', 'measure': 10},
-                              {'domain': 'React JS3', 'measure': 10},
-                              {'domain': 'React JS4', 'measure': 10},
-                            ],
-                            fillColor: (pieData, index) => UPrimaryColor,
-                            donutWidth: 30,
-                            labelColor: UBackgroundColor,
+                        CircularPercentIndicator(
+                          radius: 90.0,
+                          lineWidth: 40.0,
+                          percent: percentIndicator,
+                          progressColor: Colors.indigo[900],
+                          animateFromLastPercent: true,
+                          animation: true,
+                          animationDuration: 750,
+                          backgroundColor: UYellowColor,
+                          center: Text(
+                            _dataCredit.isNotEmpty
+                                ? '${_dataCredit[0].yourCredit} / ${_dataCredit[0].totalCredit}'
+                                : 'N/A',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.circle,
-                                    color: UOrangeColor,
-                                  ),
-                                  Text('\tចំនួនក្រឌីតសរុប'.tr),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.circle,
-                                    color: UPrimaryColor,
-                                  ),
-                                  Text('\tចំនួនក្រឌីតបានបំពេញ'.tr),
-                                ],
-                              ),
-                            ],
-                          ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.circle,
+                                  size: 20,
+                                  color: UYellowColor,
+                                ),
+                                Text('\tចំនួនក្រឌីតសរុប'.tr),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.circle,
+                                  size: 20,
+                                  color: UPrimaryColor,
+                                ),
+                                Text(
+                                  '\tចំនួនក្រឌីតបានបំពេញ'.tr,
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -509,65 +553,72 @@ class _Student_HomeState extends State<Student_Home> {
                   ),
                   Container(
                     alignment: Alignment.center,
-                    height: 175,
-                    padding: EdgeInsets.symmetric(
-                      vertical: 0,
-                      horizontal: 5,
-                    ),
+                    height: 180,
+                    padding: EdgeInsets.symmetric(horizontal: 5),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Expanded(
-                          child: DChartPie(
-                            data: [
-                              {'domain': 'Flutter', 'measure': 10},
-                              {'domain': 'React Native', 'measure': 10},
-                              {'domain': 'React JS', 'measure': 10},
-                              {'domain': 'Flutter1', 'measure': 10},
-                              {'domain': 'React Native1', 'measure': 10},
-                              {'domain': 'React JS2', 'measure': 10},
-                              {'domain': 'Flutter2', 'measure': 10},
-                              {'domain': 'React Native2', 'measure': 10},
-                              {'domain': 'React JS3', 'measure': 10},
-                              {'domain': 'React JS4', 'measure': 10},
-                            ],
-                            fillColor: (pieData, index) => UPrimaryColor,
-                            donutWidth: 30,
-                            labelColor: UBackgroundColor,
+                        CircularPercentIndicator(
+                          radius: 90.0,
+                          lineWidth: 40.0,
+                          percent: percentIndicator,
+                          progressColor: Colors.indigo[900],
+                          animateFromLastPercent: true,
+                          animation: true,
+                          animationDuration: 750,
+                          backgroundColor: UYellowColor,
+                          center: Text(
+                            _dataCredit.isNotEmpty
+                                ? '${_dataCredit[0].yourCredit} / ${_dataCredit[0].totalCredit}'
+                                : 'N/A',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.circle,
-                                    size: 25,
-                                    color: UOrangeColor,
-                                  ),
-                                  Text('\tចំនួនក្រឌីតសរុប'.tr),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.circle,
-                                    color: UPrimaryColor,
-                                  ),
-                                  Text('\tចំនួនក្រឌីតបានបំពេញ'.tr),
-                                ],
-                              ),
-                            ],
-                          ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.circle,
+                                  size: 20,
+                                  color: UYellowColor,
+                                ),
+                                Text('\tចំនួនក្រឌីតសរុប'.tr),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.circle,
+                                  size: 20,
+                                  color: UPrimaryColor,
+                                ),
+                                Text(
+                                  '\tចំនួនក្រឌីតបានបំពេញ'.tr,
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -674,66 +725,72 @@ class _Student_HomeState extends State<Student_Home> {
               ),
               Container(
                 alignment: Alignment.center,
-                height: 175,
-                padding: EdgeInsets.symmetric(
-                  vertical: 0,
-                  horizontal: 5,
-                ),
+                height: 180,
+                padding: EdgeInsets.symmetric(horizontal: 5),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Expanded(
-                      child: DChartPie(
-                        data: [
-                          {'domain': 'Flutter', 'measure': 10},
-                          {'domain': 'React Native', 'measure': 10},
-                          {'domain': 'React JS', 'measure': 10},
-                          {'domain': 'Flutter1', 'measure': 10},
-                          {'domain': 'React Native1', 'measure': 10},
-                          {'domain': 'React JS2', 'measure': 10},
-                          {'domain': 'Flutter2', 'measure': 10},
-                          {'domain': 'React Native2', 'measure': 10},
-                          {'domain': 'React JS3', 'measure': 10},
-                          {'domain': 'React JS4', 'measure': 10},
-                        ],
-                        fillColor: (pieData, index) => UPrimaryColor,
-                        donutWidth: 30,
-                        labelColor: UBackgroundColor,
+                    CircularPercentIndicator(
+                      radius: 90.0,
+                      lineWidth: 40.0,
+                      percent: percentIndicator,
+                      progressColor: Colors.indigo[900],
+                      animateFromLastPercent: true,
+                      animation: true,
+                      animationDuration: 750,
+                      backgroundColor: UYellowColor,
+                      center: Text(
+                        _dataCredit.isNotEmpty
+                            ? '${_dataCredit[0].yourCredit} / ${_dataCredit[0].totalCredit}'
+                            : 'N/A',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.circle,
-                                color: UOrangeColor,
-                                size: 20,
-                              ),
-                              Text('\tចំនួនក្រឌីតសរុប'.tr),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.circle,
-                                color: UPrimaryColor,
-                                size: 20,
-                              ),
-                              Text('\tចំនួនក្រឌីតបានបំពេញ'.tr),
-                            ],
-                          ),
-                        ],
-                      ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.circle,
+                              size: 20,
+                              color: UYellowColor,
+                            ),
+                            Text('\tចំនួនក្រឌីតសរុប'.tr),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.circle,
+                              size: 20,
+                              color: UPrimaryColor,
+                            ),
+                            Text(
+                              '\tចំនួនក្រឌីតបានបំពេញ'.tr,
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ],
                 ),

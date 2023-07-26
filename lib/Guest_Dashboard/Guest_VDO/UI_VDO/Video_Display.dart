@@ -4,12 +4,14 @@ import '/theme_builder.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '/Custom_AppBar.dart';
 import '/Custom_Widget/CustomText.dart';
-import '../Class_VDO/Class_Video_Home.dart';
+import '../Class_VDO/Class_Video.dart';
 
 class Video_Display extends StatefulWidget {
-  final Video data;
+  final VDO_Class data;
+  final List<VDO_Class> vdo;
 
-  const Video_Display({Key? key, required this.data}) : super(key: key);
+  const Video_Display({Key? key, required this.data, required this.vdo})
+      : super(key: key);
 
   @override
   _Video_DisplayState createState() => _Video_DisplayState();
@@ -29,7 +31,7 @@ class _Video_DisplayState extends State<Video_Display> {
       flags: YoutubePlayerFlags(
           autoPlay: false, forceHD: true, enableCaption: true),
     );
-    _hiddenVideoIndex = video_home.indexOf(widget.data);
+    _hiddenVideoIndex = widget.vdo.indexOf(widget.data);
     _currentVideoIndex = _hiddenVideoIndex;
   }
 
@@ -37,6 +39,7 @@ class _Video_DisplayState extends State<Video_Display> {
     String videoLink,
     thumbnail,
     caption,
+    title,
     int index,
   ) {
     setState(() {
@@ -45,15 +48,15 @@ class _Video_DisplayState extends State<Video_Display> {
       _controller.play();
 
       int videoIndex =
-          video_home.indexWhere((video) => video.link == videoLink);
-      if (videoIndex != -1) {
-        Video updatedVideo = Video(
+          widget.vdo.indexWhere((video) => video.link == videoLink);
+      if (videoIndex != 0) {
+        VDO_Class updatedVideo = VDO_Class(
           link: videoLink,
           youtube_thumbnail: thumbnail,
-          title: video_home[index].title,
+          title: title,
           caption: caption,
         );
-        video_home[videoIndex] = updatedVideo;
+        widget.vdo[videoIndex] = updatedVideo;
       }
 
       _currentVideoIndex = index;
@@ -133,35 +136,35 @@ class _Video_DisplayState extends State<Video_Display> {
               ],
             ),
             padding: EdgeInsets.symmetric(
-              vertical: 10,
+              vertical: 5,
               horizontal: 10,
             ),
             width: double.infinity,
             alignment: Alignment.center,
-            child: buildTitleBody(video_home[_currentVideoIndex!].title,
-                UTitleSize16, FontWeight.w600),
+            child: buildTitleBody(widget.vdo[_currentVideoIndex!].title,
+                UTitleSize, FontWeight.w600),
           ),
           SizedBox(height: 5),
           Container(
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
               width: double.infinity,
-              child: buildTitleBody(video_home[_currentVideoIndex!].caption,
+              child: buildTitleBody(widget.vdo[_currentVideoIndex!].caption,
                   UTitleSize, FontWeight.w500)),
           SizedBox(height: 5),
           ListView.builder(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             padding: EdgeInsets.symmetric(horizontal: 10),
-            itemCount: video_home.length,
+            itemCount: widget.vdo.length,
             itemBuilder: (context, index) {
-              Video video = video_home[index];
+              VDO_Class video = widget.vdo[index];
               if (index == _hiddenVideoIndex) {
                 return Container(); // Return an empty container for hidden video
               }
               return InkWell(
                 onTap: () {
                   updateVideo(video.link, video.youtube_thumbnail,
-                      video.caption, index);
+                      video.caption, video.title, index);
                   hideVideo(index);
                 },
                 child: Container(
@@ -182,7 +185,7 @@ class _Video_DisplayState extends State<Video_Display> {
                               borderRadius: BorderRadius.circular(5),
                               image: DecorationImage(
                                 image: NetworkImage(
-                                  video_home[index].youtube_thumbnail,
+                                  widget.vdo[index].youtube_thumbnail,
                                 ),
                                 fit: BoxFit.cover,
                               ),
@@ -196,9 +199,9 @@ class _Video_DisplayState extends State<Video_Display> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 buildListText(
-                                    video_home[index].title, 3, UTitleSize),
+                                    widget.vdo[index].title, 3, UTitleSize),
                                 SizedBox(height: 5),
-                                buildListText(video_home[index].caption, 1, 10),
+                                buildListText(widget.vdo[index].caption, 1, 10),
                               ],
                             ),
                           ),

@@ -20,7 +20,7 @@ class _Past_EventState extends State<Past_Event> {
   Future<void> getData() async {
     try {
       var res = await http.get(Uri.parse(
-          "http://192.168.1.34/hosting_api/Guest/fetch_guest_event_past.php"));
+          "http://192.168.1.51/hosting_api/Guest/fetch_guest_event_past.php"));
       var r = json.decode(res.body);
       if (mounted) {
         // Check if the widget is still mounted
@@ -44,7 +44,7 @@ class _Past_EventState extends State<Past_Event> {
   }
 
   String getImageUrl(String imageName) {
-    return 'http://192.168.1.34/hosting_api/Guest/event_image/$imageName';
+    return 'http://192.168.1.51/hosting_api/Guest/event_image/$imageName';
   }
 
   @override

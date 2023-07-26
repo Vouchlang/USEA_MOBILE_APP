@@ -19,7 +19,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
   Future<void> getData() async {
     try {
       var res = await http.get(Uri.parse(
-          "http://192.168.1.34/hosting_api/Guest/fetch_guest_event_upcoming.php"));
+          "http://192.168.1.51/hosting_api/Guest/fetch_guest_event_upcoming.php"));
       var r = json.decode(res.body);
       if (mounted) {
         if (r is List<dynamic>) {
@@ -37,7 +37,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
   }
 
   String getImageUrl(String imageName) {
-    return 'http://192.168.1.34/hosting_api/Guest/event_image/$imageName';
+    return 'http://192.168.1.51/hosting_api/Guest/event_image/$imageName';
   }
 
   @override

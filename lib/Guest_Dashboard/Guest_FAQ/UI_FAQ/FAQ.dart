@@ -20,7 +20,7 @@ class _FAQState extends State<FAQ> {
   Future<void> getData() async {
     try {
       var res = await http.get(Uri.parse(
-          "http://192.168.1.34/hosting_api/Guest/fetch_guest_more_faq.php"));
+          "http://192.168.1.51/hosting_api/Guest/fetch_guest_more_faq.php"));
       var r = json.decode(res.body);
       if (r is List<dynamic>) {
         faq = r.map((e) => Class_FAQ.fromJson(e)).toList();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../Guest_ChangeLanguage/Change_Language.dart';
+import '../../Guest_Program/UI_Program/Program.dart';
 import '/Guest_Dashboard/Guest_New_Event/UI_News_Event/News_Event.dart';
 import '../../Guest_AboutUS/UI_AboutUS/AboutUS.dart';
 import '../../Guest_Career/UI_Career/Career.dart';
@@ -7,7 +8,6 @@ import '../../Guest_Contact/UI_Contact/Contact.dart';
 import '../../Guest_FAQ/UI_FAQ/FAQ.dart';
 import '../../Guest_Registration/UI_Registration/Registration.dart';
 import '../../Guest_Scholarship/UI_Scholarship/Scholarship.dart';
-import '../../Guest_VDO/UI_VDO/Test_API/api_main.dart';
 import '../../Guest_VDO/UI_VDO/Video.dart';
 import '/Student_Dashboard/Student_Achievements/UI_Achievements/Achievements.dart';
 import '/Student_Dashboard/Student_Attendance/UI_Attendance/Attendance.dart';
@@ -39,7 +39,7 @@ List<Home_Screen> guest_home_screen = [
   Home_Screen(
     name: 'កម្មវិធីសិក្សា',
     img: 'assets/image/Guest_Program.png',
-    screen: FacultyList(),
+    screen: Program(),
   ),
   Home_Screen(
     name: 'អាហារូបករណ៍',

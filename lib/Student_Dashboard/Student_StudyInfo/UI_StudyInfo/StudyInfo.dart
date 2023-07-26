@@ -36,7 +36,7 @@ class _Study_InfoState extends State<Study_Info> {
     try {
       var response = await http.post(
         Uri.parse(
-            'http://192.168.3.87/usea/api/student_info_data_exam.php?action=login_student'),
+            'http://192.168.3.87/usea/api/apidata.php?action=exam_schedule'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -48,7 +48,7 @@ class _Study_InfoState extends State<Study_Info> {
 
         setState(() {
           _dataStudyInfo = List<StudyInfoData>.from(
-            data['student_info_data_exam'].map(
+            data['study_info_data'].map(
               (data) => StudyInfoData.fromJson(data),
             ),
           );

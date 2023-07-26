@@ -22,7 +22,7 @@ class _Out_UniversityState extends State<Out_University> {
     try {
       var res = await http.get(
         Uri.parse(
-            "http://192.168.1.34/hosting_api/Guest/fetch_guest_scholarship_o.php"),
+            "http://192.168.1.51/hosting_api/Guest/fetch_guest_scholarship_o.php"),
       );
       var r = json.decode(res.body);
       if (mounted) {
