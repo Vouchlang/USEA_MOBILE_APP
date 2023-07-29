@@ -99,7 +99,9 @@ List<Home_Screen> st_home_screen = [
   Home_Screen(
     name: 'ការបង់ប្រាក់',
     img: 'assets/image/Stu_Payment.png',
-    screen: Payment(),
+    screen: InkWell(
+      onTap: () {},
+    ),
   ),
   Home_Screen(
     name: 'ប្រវត្តិការងារ',

@@ -83,7 +83,7 @@ class _PaymentDialogState extends State<PaymentDialog> {
               ],
             ),
           ),
-          const SizedBox(
+          SizedBox(
             height: 4,
           ),
           Column(

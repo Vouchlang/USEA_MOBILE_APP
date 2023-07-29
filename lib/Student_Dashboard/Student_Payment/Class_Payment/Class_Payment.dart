@@ -1,43 +1,3 @@
-/// ! PaymentData1
-class PaymentData {
-  late final String yearPayment, amountToPaid, amountPaid, balance;
-
-  /// ! constructor
-  PaymentData({
-    required this.yearPayment,
-    required this.amountToPaid,
-    required this.amountPaid,
-    required this.balance,
-  });
-}
-
-List<PaymentData> paymentData = [
-  PaymentData(
-    yearPayment: 'ឆ្នាំទី​ ១',
-    amountToPaid: '650',
-    amountPaid: '650',
-    balance: '0',
-  ),
-  PaymentData(
-    yearPayment: 'ឆ្នាំទី​ ២',
-    amountToPaid: '650',
-    amountPaid: '650',
-    balance: '0',
-  ),
-  PaymentData(
-    yearPayment: 'ឆ្នាំទី​ ៣',
-    amountToPaid: '650',
-    amountPaid: '650',
-    balance: '60',
-  ),
-  PaymentData(
-    yearPayment: 'ឆ្នាំទី​ ៤',
-    amountToPaid: '650',
-    amountPaid: '650',
-    balance: '130',
-  ),
-];
-
 /// ! PaymentData2
 class PaymentData2 {
   late final String datePayment2,
@@ -108,85 +68,51 @@ List<PaymentData3> paymentData3 = [
   ),
 ];
 
-/// ! PaymentData4
-class PaymentData4 {
-  late final String datePayment4,
-      invoiceNum4,
-      amountToPaid4,
-      amountPaid4,
-      balance4;
+class PayStudy {
+  final String yearName;
+  final String moneyPay;
 
-  /// ! constructor4
-  PaymentData4({
-    required this.datePayment4,
-    required this.invoiceNum4,
-    required this.amountToPaid4,
-    required this.amountPaid4,
-    required this.balance4,
+  final List<Payment> payments;
+
+  PayStudy({
+    required this.yearName,
+    required this.moneyPay,
+    required this.payments,
   });
+
+  factory PayStudy.fromJson(Map<String, dynamic> json) {
+    List<Payment> payments =
+        List<Payment>.from(json['invoices'].map((x) => Payment.fromJson(x)));
+    return PayStudy(
+      yearName: json['year'].toString(),
+      moneyPay: json['finalprice'].toString(),
+      payments: payments,
+    );
+  }
 }
 
-List<PaymentData4> paymentData4 = [
-  PaymentData4(
-    datePayment4: '15/02/2023',
-    invoiceNum4: 'XXXXXX',
-    amountToPaid4: '15',
-    amountPaid4: '10',
-    balance4: '0',
-  ),
-  PaymentData4(
-    datePayment4: '15/02/2023',
-    invoiceNum4: 'XXXXXX',
-    amountToPaid4: '10',
-    amountPaid4: '10',
-    balance4: '320',
-  ),
-];
+class Payment {
+  final String invoiceNum;
+  final String pdate;
+  final String moneyPaid;
+  final String moneyRem;
 
-// class PayStudy {
-//   final String yearName;
-//   final List<Payment> payments;
+  Payment({
+    required this.invoiceNum,
+    required this.pdate,
+    required this.moneyPaid,
+    required this.moneyRem,
+  });
 
-//   PayStudy({
-//     required this.yearName,
-//     required this.payments,
-//   });
-
-//   factory PayStudy.fromJson(Map<String, dynamic> json) {
-//     List<Payment> payments = List<Payment>.from(
-//         json['payment_list'].map((x) => Payment.fromJson(x)));
-//     return PayStudy(
-//       yearName: json['year_name'],
-//       payments: payments,
-//     );
-//   }
-// }
-
-// class Payment {
-//   final String invoiceNum;
-//   final String pdate;
-//   final String moneyPay;
-//   final String moneyPaid;
-//   final String moneyRem;
-
-//   Payment({
-//     required this.invoiceNum,
-//     required this.pdate,
-//     required this.moneyPay,
-//     required this.moneyPaid,
-//     required this.moneyRem,
-//   });
-
-//   factory Payment.fromJson(Map<String, dynamic> json) {
-//     return Payment(
-//       invoiceNum: json['invoice_num'],
-//       pdate: json['pdate'],
-//       moneyPay: json['money_pay'],
-//       moneyPaid: json['money_paid'],
-//       moneyRem: json['money_rem'],
-//     );
-//   }
-// }
+  factory Payment.fromJson(Map<String, dynamic> json) {
+    return Payment(
+      invoiceNum: json['invoice_num'] ?? '',
+      pdate: json['pdate'] ?? '',
+      moneyPaid: json['money_paid'],
+      moneyRem: json['money_rem'] ?? '',
+    );
+  }
+}
 
 // // ReExam Study Payment
 // class ReExamStudyClass {
@@ -240,28 +166,28 @@ List<PaymentData4> paymentData4 = [
 //   }
 // }
 
-// // Other Payment
-// class OtherPayClass {
-//   final String o_invoice;
-//   final String o_pdate;
-//   final String o_money_pay;
-//   final String o_money_paid;
-//   final String o_money_rem;
+// Other Payment
+class OtherPayClass {
+  final String o_invoice;
+  final String o_pdate;
+  final String o_money_pay;
+  final String o_money_paid;
+  final String o_money_rem;
 
-//   OtherPayClass(
-//       {required this.o_pdate,
-//       required this.o_invoice,
-//       required this.o_money_pay,
-//       required this.o_money_paid,
-//       required this.o_money_rem});
+  OtherPayClass(
+      {required this.o_pdate,
+      required this.o_invoice,
+      required this.o_money_pay,
+      required this.o_money_paid,
+      required this.o_money_rem});
 
-//   factory OtherPayClass.fromJson(Map<String, dynamic> json) {
-//     return OtherPayClass(
-//       o_pdate: json['o_pdate'],
-//       o_invoice: json['o_invoice'],
-//       o_money_pay: json['o_money_pay'],
-//       o_money_paid: json['o_money_paid'],
-//       o_money_rem: json['o_money_rem'],
-//     );
-//   }
-// }
+  factory OtherPayClass.fromJson(Map<String, dynamic> json) {
+    return OtherPayClass(
+      o_pdate: json['o_pdate'],
+      o_invoice: json['o_invoice'],
+      o_money_pay: json['o_money_pay'],
+      o_money_paid: json['o_money_paid'],
+      o_money_rem: json['o_money_rem'],
+    );
+  }
+}
