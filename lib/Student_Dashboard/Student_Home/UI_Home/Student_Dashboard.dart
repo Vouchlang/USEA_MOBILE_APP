@@ -561,6 +561,9 @@ class _Student_HomeState extends State<Student_Home> {
                       ),
                     ),
                   ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Container(
                     alignment: Alignment.center,
                     height: 180,
