@@ -9,6 +9,7 @@ import 'package:usea_app/Guest_Dashboard/Guest_Home/Class_Home/Class_Home_Screen
 import 'package:usea_app/Student_Dashboard/Student_Detail/UI_Detail/St_Detail.dart';
 import 'package:usea_app/Student_Dashboard/Student_JobHistory/UI_JobHistory/St_JobHistory.dart';
 import 'package:usea_app/theme_builder.dart';
+import '../../Student_Achievements/UI_Achievements/Achievements.dart';
 import '../../Student_Detail/Class_Detail/Class_St_Detail.dart';
 import '../../Student_Other_Class/Class_Student_User.dart';
 import '../../Student_Other_Class/Class_Survey_Status.dart';
@@ -486,6 +487,15 @@ class _Student_HomeState extends State<Student_Home> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => Study_Info(
+                                      data_studentUser: _dataStudentUser,
+                                    ),
+                                  ),
+                                );
+                              } else if (index.isEqual(7)) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Achievements(
                                       data_studentUser: _dataStudentUser,
                                     ),
                                   ),

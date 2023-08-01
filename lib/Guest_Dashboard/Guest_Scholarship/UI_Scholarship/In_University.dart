@@ -99,8 +99,7 @@ class _In_UniversityState extends State<In_University> {
                                     text: i_scholarship[index].i_major)),
                             Container(
                                 width: UFullWidth,
-                                child: NormalTitleTheme(
-                                    text: i_scholarship[index].i_expire)),
+                                child: NormalTitleTheme(text: 'ផុតកំណត់៖')),
                             Container(
                                 width: UFullWidth,
                                 child: BodyTheme(

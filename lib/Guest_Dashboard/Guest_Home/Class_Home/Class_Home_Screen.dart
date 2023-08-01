@@ -127,6 +127,8 @@ List<Home_Screen> st_home_screen = [
   Home_Screen(
     name: 'សម្មិទ្ធផល',
     img: 'assets/image/Stu_Achievement.png',
-    screen: Achievements(),
+    screen: InkWell(
+      onTap: () {},
+    ),
   ),
 ];

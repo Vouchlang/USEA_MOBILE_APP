@@ -1,28 +1,64 @@
-import 'package:json_annotation/json_annotation.dart';
-part 'Class_Registration.g.dart';
+class EducationData {
+  String title;
+  List<EducationDetail> details;
 
-@JsonSerializable()
-class Class_Registration {
-  late final String title,
-      date,
-      time,
-      education1,
-      education2,
-      detail1,
-      detail2,
-      detail3;
+  EducationData({required this.title, required this.details});
 
-  Class_Registration(
-      {required this.title,
-      required this.date,
-      required this.time,
-      required this.education1,
-      required this.education2,
-      required this.detail1,
-      required this.detail2,
-      required this.detail3});
+  factory EducationData.fromJson(Map<String, dynamic> json) {
+    return EducationData(
+      title: json['title'],
+      details: List<EducationDetail>.from(
+          json['details'].map((x) => EducationDetail.fromJson(x))),
+    );
+  }
+}
 
-  factory Class_Registration.fromJson(Map<String, dynamic> json) =>
-      _$Class_RegistrationFromJson(json);
-  Map<String, dynamic> toJson() => _$Class_RegistrationToJson(this);
+class EducationDetail {
+  String dateTitle;
+  List<EducationItem> educationList;
+  String timeTitle;
+  String timeDetail;
+
+  EducationDetail({
+    required this.dateTitle,
+    required this.educationList,
+    required this.timeTitle,
+    required this.timeDetail,
+  });
+
+  factory EducationDetail.fromJson(Map<String, dynamic> json) {
+    return EducationDetail(
+      dateTitle: json['date_title'],
+      educationList: List<EducationItem>.from(
+          json['education_list'].map((x) => EducationItem.fromJson(x))),
+      timeTitle: json['time_title'],
+      timeDetail: json['time_detail'],
+    );
+  }
+}
+
+class EducationItem {
+  String educationName;
+  List<InfoList> infoList;
+
+  EducationItem({required this.educationName, required this.infoList});
+
+  factory EducationItem.fromJson(Map<String, dynamic> json) {
+    return EducationItem(
+      educationName: json['education_name'],
+      infoList: List<InfoList>.from(json['list'].map((x) => x['info'])),
+    );
+  }
+}
+
+class InfoList {
+  String info_text;
+
+  InfoList({required this.info_text});
+
+  factory InfoList.fromJson(Map<String, dynamic> json) {
+    return InfoList(
+      info_text: json['info'],
+    );
+  }
 }

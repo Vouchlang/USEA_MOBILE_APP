@@ -91,8 +91,7 @@ class _Out_UniversityState extends State<Out_University> {
                                     text: o_scholarship[index].o_major)),
                             Container(
                                 width: UFullWidth,
-                                child: NormalTitleTheme(
-                                    text: o_scholarship[index].o_expire)),
+                                child: NormalTitleTheme(text: 'ផុតកំណត់៖')),
                             Container(
                                 width: UFullWidth,
                                 child: BodyTheme(

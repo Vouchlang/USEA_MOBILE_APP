@@ -50,6 +50,7 @@ class _Program_SHCState extends State<Program_SHC> {
                 itemBuilder: (context, index) {
                   String semesterName =
                       widget.semestersData.keys.toList()[index];
+                  final isLastIndex = index == widget.semestersData.length - 1;
                   return InkWell(
                     onTap: () {
                       setState(() {
@@ -58,12 +59,10 @@ class _Program_SHCState extends State<Program_SHC> {
                     },
                     child: AnimatedContainer(
                       duration: Duration(milliseconds: 300),
-                      margin: EdgeInsets.symmetric(
-                        vertical: UPdMg_10,
-                        horizontal: UPdMg_5,
-                      ),
+                      margin: EdgeInsets.fromLTRB(
+                          UPdMg_10, UPdMg_10, isLastIndex ? 10 : 0, UPdMg_10),
                       padding: EdgeInsets.all(UPdMg_10),
-                      width: 175,
+                      width: 165,
                       decoration: BoxDecoration(
                         color: selectedSemesterName == semesterName
                             ? UPrimaryColor

@@ -128,8 +128,10 @@ class _ProgramState extends State<Program> {
                 Map<String, dynamic> majorData = programData![facultyName];
                 String? facultyIcon = majorData['fac_icon'];
                 if (facultyIcon == null) {
-                  facultyIcon =
-                      'https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*';
+                  Icon(
+                    Icons.error,
+                    size: 2,
+                  );
                 }
                 return Card(
                   color: UBackgroundColor,
@@ -163,7 +165,7 @@ class _ProgramState extends State<Program> {
                               },
                             ),
                             SizedBox(width: 10),
-                            Expanded(child: Text(facultyName)),
+                            Expanded(child: Text(facultyName.tr)),
                           ],
                         ),
                         children: majorData.keys.map((majorName) {
@@ -321,7 +323,7 @@ class MajorSearchDelegate extends SearchDelegate<String> {
       itemBuilder: (context, index) {
         String suggestion = suggestionList[index];
         return ListTile(
-          title: Text(suggestion),
+          title: Text(suggestion.tr),
           onTap: () {
             close(context, suggestion);
           },

@@ -50,6 +50,7 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
               itemCount: widget.educationNames.length,
               itemBuilder: (context, index) {
                 String educationName = widget.educationNames[index];
+                final isLastIndex = index == widget.educationNames.length - 1;
                 return InkWell(
                   onTap: () {
                     setState(() {
@@ -58,12 +59,10 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                   },
                   child: AnimatedContainer(
                     duration: Duration(milliseconds: 300),
-                    margin: EdgeInsets.symmetric(
-                      vertical: UPdMg_10,
-                      horizontal: UPdMg_5,
-                    ),
+                    margin: EdgeInsets.fromLTRB(
+                        UPdMg_10, UPdMg_10, isLastIndex ? 10 : 0, UPdMg_10),
                     padding: EdgeInsets.all(UPdMg_10),
-                    width: 175,
+                    width: 165,
                     decoration: BoxDecoration(
                       color: educationName == selectedEducationName
                           ? UPrimaryColor

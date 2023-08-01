@@ -6,7 +6,6 @@ class I_Scholarship {
   late final String i_school_name,
       i_educational_level,
       i_major,
-      i_expire,
       i_expire_date,
       i_link;
 
@@ -14,7 +13,6 @@ class I_Scholarship {
       {required this.i_school_name,
       required this.i_educational_level,
       required this.i_major,
-      required this.i_expire,
       required this.i_expire_date,
       required this.i_link});
 

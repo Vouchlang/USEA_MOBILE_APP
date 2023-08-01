@@ -45,6 +45,7 @@ class _New_EventState extends State<New_Event> {
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 itemBuilder: (ctx, index) {
+                  final isLastIndex = index == tab_txt.length - 1;
                   return Column(
                     children: [
                       GestureDetector(
@@ -57,10 +58,8 @@ class _New_EventState extends State<New_Event> {
                         },
                         child: AnimatedContainer(
                           duration: Duration(milliseconds: 300),
-                          margin: EdgeInsets.symmetric(
-                            vertical: UPdMg_10,
-                            horizontal: UPdMg_5,
-                          ),
+                          margin: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_10,
+                              isLastIndex ? 10 : 0, UPdMg_10),
                           padding: EdgeInsets.all(UPdMg_10),
                           width: 200,
                           decoration: BoxDecoration(

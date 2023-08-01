@@ -105,7 +105,7 @@ class LocaleString extends Translations {
           'ប្រវត្តិការងារ': 'ប្រវត្តិការងារ',
           'ព័ត៌មានការសិក្សា': 'ព័ត៌មានការសិក្សា',
           'មតិកែលម្អ': 'មតិកែលម្អ',
-          'សម្មិទ្ធផល': 'សម្មិទ្ធផល',
+          'សមិទ្ធិផល': 'សមិទ្ធិផល',
 
           // Student Login
           'គណនីនិសិ្សត': 'គណនីនិសិ្សត',
@@ -179,6 +179,12 @@ class LocaleString extends Translations {
           'ឆ្នាំទី​ ៤': 'ឆ្នាំទី​ ៤',
           'ឆមាសទី ១': 'ឆមាសទី ១',
           'ឆមាសទី ២': 'ឆមាសទី ២',
+          'Year I': 'ឆ្នាំទី​ ១',
+          'Year II': 'ឆ្នាំទី​ ២',
+          'Year III': 'ឆ្នាំទី​ ៣',
+          'Year IV': 'ឆ្នាំទី​ ៤',
+          'Semester I': 'ឆមាសទី ១',
+          'Semester II': 'ឆមាសទី ២',
           'កាលបរិច្ឆេទ': 'កាលបរិច្ឆេទ',
 
           // Student Payment
@@ -249,8 +255,8 @@ class LocaleString extends Translations {
           'ឆ្នាំទី២': 'Year 2',
           'ឆ្នាំទី៣': 'Year 3',
           'ឆ្នាំទី៤': 'Year 4',
-          'ឆមាសទី១': 'Semester 1',
-          'ឆមាសទី២': 'Semester 2',
+          'ឆមាសទី១': 'Semester I',
+          'ឆមាសទី២': 'Semester II',
           'មុខវិជ្ជា': 'Subject',
           'ម៉ោង': 'Hours',
           'ក្រេឌីត': 'Credits',
@@ -299,7 +305,7 @@ class LocaleString extends Translations {
           'ប្រវត្តិការងារ': 'Job History',
           'ព័ត៌មានការសិក្សា': 'Study Info',
           'មតិកែលម្អ': 'Feedback',
-          'សម្មិទ្ធផល': 'Achievements',
+          'សមិទ្ធិផល': 'Achievements',
 
           // Student Login
           'គណនីនិសិ្សត': 'Student Account',
@@ -371,8 +377,15 @@ class LocaleString extends Translations {
           'ឆ្នាំទី​ ២': 'Year II',
           'ឆ្នាំទី​ ៣': 'Year III',
           'ឆ្នាំទី​ ៤': 'Year IV',
+
           'ឆមាសទី ១': 'Semester I',
           'ឆមាសទី ២': 'Semester II',
+          'Year I': 'Year I',
+          'Year II': 'Year II',
+          'Year III': 'Year III',
+          'Year IV': 'Year IV',
+          'Semester I': 'Semester I',
+          'Semester II': 'Semester II',
           'កាលបរិច្ឆេទ': 'Date',
 
           // Student Attendance
