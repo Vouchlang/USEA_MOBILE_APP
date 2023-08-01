@@ -10,7 +10,6 @@ Class_Past_Event _$Class_Past_EventFromJson(Map<String, dynamic> json) =>
     Class_Past_Event(
       past_image: json['past_image'] as String,
       past_title: json['past_title'] as String,
-      past_detail: json['past_detail'] as String,
       past_desc: json['past_desc'] as String,
       past_day: json['past_day'] as String,
       past_date: json['past_date'] as String,
@@ -23,7 +22,6 @@ Map<String, dynamic> _$Class_Past_EventToJson(Class_Past_Event instance) =>
     <String, dynamic>{
       'past_image': instance.past_image,
       'past_title': instance.past_title,
-      'past_detail': instance.past_detail,
       'past_desc': instance.past_desc,
       'past_day': instance.past_day,
       'past_date': instance.past_date,

@@ -5,7 +5,6 @@ part 'Class_Up_News_Events.g.dart';
 class Class_Upcoming_Event {
   final String upcoming_image,
       upcoming_title,
-      upcoming_detail,
       upcoming_desc,
       upcoming_day,
       upcoming_date,
@@ -16,7 +15,6 @@ class Class_Upcoming_Event {
   Class_Upcoming_Event(
       {required this.upcoming_image,
       required this.upcoming_title,
-      required this.upcoming_detail,
       required this.upcoming_desc,
       required this.upcoming_day,
       required this.upcoming_date,

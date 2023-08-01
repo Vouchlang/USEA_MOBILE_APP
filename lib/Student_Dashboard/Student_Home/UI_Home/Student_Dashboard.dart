@@ -706,6 +706,15 @@ class _Student_HomeState extends State<Student_Home> {
                                     ),
                                   ),
                                 );
+                              } else if (index.isEqual(7)) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Achievements(
+                                      data_studentUser: _dataStudentUser,
+                                    ),
+                                  ),
+                                );
                               } else {
                                 Navigator.push(
                                   context,
@@ -883,6 +892,15 @@ class _Student_HomeState extends State<Student_Home> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => Study_Info(
+                                  data_studentUser: _dataStudentUser,
+                                ),
+                              ),
+                            );
+                          } else if (index.isEqual(7)) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Achievements(
                                   data_studentUser: _dataStudentUser,
                                 ),
                               ),

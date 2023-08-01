@@ -5,7 +5,6 @@ part 'Class_Past_News_Events.g.dart';
 class Class_Past_Event {
   final String past_image,
       past_title,
-      past_detail,
       past_desc,
       past_day,
       past_date,
@@ -16,7 +15,6 @@ class Class_Past_Event {
   Class_Past_Event(
       {required this.past_image,
       required this.past_title,
-      required this.past_detail,
       required this.past_desc,
       required this.past_day,
       required this.past_date,

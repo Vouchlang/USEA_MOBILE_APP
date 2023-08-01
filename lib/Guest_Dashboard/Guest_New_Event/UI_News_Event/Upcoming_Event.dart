@@ -122,7 +122,9 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                 Container(
                                   width: UFullWidth,
                                   child: Text(
-                                    up_event.upcoming_detail,
+                                    up_event.upcoming_desc,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.justify,
                                     style: TextStyle(
                                       fontSize: UBodySize,

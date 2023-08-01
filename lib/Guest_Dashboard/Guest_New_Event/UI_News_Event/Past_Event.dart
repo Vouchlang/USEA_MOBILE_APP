@@ -61,6 +61,12 @@ class _Past_EventState extends State<Past_Event> {
         child: isLoading
             ? const CircularProgressIndicator()
             : ListView.builder(
+                padding: EdgeInsets.fromLTRB(
+                  UPdMg_10,
+                  UZeroPixel,
+                  UPdMg_10,
+                  UPdMg_10,
+                ),
                 itemCount: past_events.length,
                 itemBuilder: (context, index) {
                   var past_event = past_events[index];
@@ -126,7 +132,9 @@ class _Past_EventState extends State<Past_Event> {
                                 Container(
                                   width: double.infinity,
                                   child: Text(
-                                    past_event.past_detail,
+                                    past_event.past_desc,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.justify,
                                     style: TextStyle(
                                       fontSize: UBodySize,

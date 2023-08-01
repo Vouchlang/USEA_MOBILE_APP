@@ -11,7 +11,6 @@ Class_Upcoming_Event _$Class_Upcoming_EventFromJson(
     Class_Upcoming_Event(
       upcoming_image: json['upcoming_image'] as String,
       upcoming_title: json['upcoming_title'] as String,
-      upcoming_detail: json['upcoming_detail'] as String,
       upcoming_desc: json['upcoming_desc'] as String,
       upcoming_day: json['upcoming_day'] as String,
       upcoming_date: json['upcoming_date'] as String,
@@ -25,7 +24,6 @@ Map<String, dynamic> _$Class_Upcoming_EventToJson(
     <String, dynamic>{
       'upcoming_image': instance.upcoming_image,
       'upcoming_title': instance.upcoming_title,
-      'upcoming_detail': instance.upcoming_detail,
       'upcoming_desc': instance.upcoming_desc,
       'upcoming_day': instance.upcoming_day,
       'upcoming_date': instance.upcoming_date,

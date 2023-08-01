@@ -75,121 +75,121 @@ class _AchievementsState extends State<Achievements> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: USecondaryColor,
-        appBar: Custom_AppBar(title: 'សមិទ្ធិផល'.tr),
-        body: _achievementData == null
-            ? Center(
-                child: Text('No Data'),
-              )
-            : RefreshIndicator(
-                onRefresh: _refreshData,
-                child: ListView(
-                  physics: NeverScrollableScrollPhysics(),
-                  children: [
-                    Container(
-                      alignment: Alignment.center,
-                      height: 70,
-                      child: ListView.builder(
-                        physics: ScrollPhysics(),
-                        itemCount: _achievementData!.achievementData.length,
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        itemBuilder: (ctx, index) {
-                          final achievementTypeData =
-                              _achievementData!.achievementData[index];
-                          final isLastIndex = index ==
-                              _achievementData!.achievementData.length - 1;
-
-                          return Column(
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  setState(
-                                    () {
-                                      _selectedAchievementTypeIndex = index;
-                                    },
-                                  );
-                                },
-                                child: AnimatedContainer(
-                                  duration: Duration(milliseconds: 300),
-                                  margin: EdgeInsets.fromLTRB(UPdMg_10,
-                                      UPdMg_10, isLastIndex ? 10 : 0, UPdMg_10),
-                                  padding: EdgeInsets.all(UPdMg_10),
-                                  width: 165,
-                                  decoration: BoxDecoration(
+      backgroundColor: USecondaryColor,
+      appBar: Custom_AppBar(title: 'សមិទ្ធិផល'.tr),
+      body: _achievementData == null
+          ? Center(
+              child: Text('No Data'),
+            )
+          : RefreshIndicator(
+              onRefresh: _refreshData,
+              child: ListView(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    height: 70,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: _achievementData!.achievementData.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (ctx, index) {
+                        final achievementTypeData =
+                            _achievementData!.achievementData[index];
+                        final isLastIndex = index ==
+                            _achievementData!.achievementData.length - 1;
+                        return Column(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                setState(
+                                  () {
+                                    _selectedAchievementTypeIndex = index;
+                                  },
+                                );
+                              },
+                              child: AnimatedContainer(
+                                duration: Duration(milliseconds: 300),
+                                margin: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_10,
+                                    isLastIndex ? 10 : 0, UPdMg_10),
+                                padding: EdgeInsets.all(UPdMg_10),
+                                width: 165,
+                                decoration: BoxDecoration(
+                                  color: _selectedAchievementTypeIndex == index
+                                      ? UPrimaryColor
+                                      : UBackgroundColor,
+                                  borderRadius:
+                                      BorderRadius.circular(URoundedMedium),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 1,
+                                      color: ULightGreyColor,
+                                      offset: Offset(0, 1),
+                                    ),
+                                  ],
+                                ),
+                                child: Text(
+                                  achievementTypeData.achievementType,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
                                     color:
                                         _selectedAchievementTypeIndex == index
-                                            ? UPrimaryColor
-                                            : UBackgroundColor,
-                                    borderRadius:
-                                        BorderRadius.circular(URoundedMedium),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 1,
-                                        color: ULightGreyColor,
-                                        offset: Offset(0, 1),
-                                      ),
-                                    ],
-                                  ),
-                                  child: Text(
-                                    achievementTypeData.achievementType,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color:
-                                          _selectedAchievementTypeIndex == index
-                                              ? UBackgroundColor
-                                              : UTextColor,
-                                      fontSize: UTitleSize,
-                                    ),
+                                            ? UBackgroundColor
+                                            : UTextColor,
+                                    fontSize: UTitleSize,
                                   ),
                                 ),
                               ),
-                            ],
-                          );
-                        },
-                      ),
-                    ),
-                    Expanded(
-                      child: GridView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          crossAxisSpacing: 10.0,
-                          mainAxisSpacing: 10.0,
-                        ),
-                        itemCount: _selectedAchievementTypeIndex >= 0
-                            ? _achievementData!
-                                .achievementData[_selectedAchievementTypeIndex]
-                                .data
-                                .length
-                            : 0,
-                        itemBuilder: (context, index) {
-                          return Card(
-                            shadowColor: Colors.grey[200],
-                            color: UGreyColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(UPdMg_10),
                             ),
-                            margin: EdgeInsets.all(UZeroPixel),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(UPdMg_10),
-                              child: Image.network(
-                                _achievementData!
-                                    .achievementData[
-                                        _selectedAchievementTypeIndex]
-                                    .data[index]
-                                    .image,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          );
-                        },
-                      ),
+                          ],
+                        );
+                      },
                     ),
-                  ],
-                ),
-              ));
+                  ),
+                  Expanded(
+                    child: GridView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        crossAxisSpacing: 10.0,
+                        mainAxisSpacing: 10.0,
+                      ),
+                      itemCount: _selectedAchievementTypeIndex >= 0
+                          ? _achievementData!
+                              .achievementData[_selectedAchievementTypeIndex]
+                              .data
+                              .length
+                          : 0,
+                      itemBuilder: (context, index) {
+                        return Card(
+                          shadowColor: Colors.grey[200],
+                          color: UGreyColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(UPdMg_10),
+                          ),
+                          margin: EdgeInsets.all(UZeroPixel),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(UPdMg_10),
+                            child: Image.network(
+                              _achievementData!
+                                  .achievementData[
+                                      _selectedAchievementTypeIndex]
+                                  .data[index]
+                                  .image,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+    );
   }
 }
