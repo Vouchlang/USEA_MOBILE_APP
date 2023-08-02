@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:d_chart/d_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -8,6 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_Home/Class_Home/Class_Home_Screen.dart';
 import 'package:usea_app/Student_Dashboard/Student_Detail/UI_Detail/St_Detail.dart';
 import 'package:usea_app/Student_Dashboard/Student_JobHistory/UI_JobHistory/St_JobHistory.dart';
+import 'package:usea_app/Student_Dashboard/Student_Other_Class/Class_Feedback.dart';
 import 'package:usea_app/theme_builder.dart';
 import '../../Student_Achievements/UI_Achievements/Achievements.dart';
 import '../../Student_Detail/Class_Detail/Class_St_Detail.dart';
@@ -37,6 +37,7 @@ class _Student_HomeState extends State<Student_Home> {
   late List<Credit_Class> _dataCredit = [];
   late List<SurveyStatus> _dataSurvey = [];
   late List<StDetail> _dataStDetail = [];
+  late List<FeedbackClass> _dataFeedback = [];
 
   final Uri urlFb =
       Uri.parse("https://9anime.to/watch/fighting-spirit.lr3/ep-17");
@@ -90,17 +91,27 @@ class _Student_HomeState extends State<Student_Home> {
         },
       );
 
+      var response_feedback = await http.post(
+        Uri.parse('http://192.168.3.87/usea/api/apidata.php?action=feedback'),
+        body: {
+          'student_id': widget.data_studentUser[0].student_id,
+          'pwd': widget.data_studentUser[0].pwd,
+        },
+      );
+
       if (response_stUser.statusCode == 200 &&
           response_credit.statusCode == 200 &&
           response_survey.statusCode == 200 &&
-          response_stDetail.statusCode == 200) {
+          response_stDetail.statusCode == 200 &&
+          response_feedback.statusCode == 200) {
         var data_stUser = jsonDecode(response_stUser.body);
         var data_credit = jsonDecode(response_credit.body);
         var data_survey = jsonDecode(response_survey.body);
         var data_stDetail = jsonDecode(response_stDetail.body);
+        var data_feedback = jsonDecode(response_feedback.body);
 
-        setState(
-          () {
+        if (mounted) {
+          setState(() {
             _dataStudentUser = List<StudentUser>.from(
               data_stUser['student_users'].map(
                 (data_stUser) => StudentUser.fromJson(data_stUser),
@@ -121,19 +132,28 @@ class _Student_HomeState extends State<Student_Home> {
                 (data_stDetail) => StDetail.fromJson(data_stDetail),
               ),
             );
+            _dataFeedback = List<FeedbackClass>.from(
+              data_feedback['feedback_data'].map(
+                (data_feedback) => FeedbackClass.fromJson(data_feedback),
+              ),
+            );
             isLoading = false;
-          },
-        );
+          });
+        }
       } else {
+        if (mounted) {
+          setState(() {
+            isLoading = false;
+          });
+        }
+      }
+    } catch (error) {
+      print('Error: $error');
+      if (mounted) {
         setState(() {
           isLoading = false;
         });
       }
-    } catch (error) {
-      print('Error: $error');
-      setState(() {
-        isLoading = false;
-      });
     }
   }
 
@@ -309,9 +329,9 @@ class _Student_HomeState extends State<Student_Home> {
                                                   ),
                                                 ),
                                                 child: Container(
-                                                  width: 75,
+                                                  width: 80,
                                                   child: Text(
-                                                    'សាស្ត្រាចារ្យ'.tr,
+                                                    'ការវាយតម្លៃទី ${_dataSurvey[index].times}',
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       color: UPrimaryColor,
@@ -327,9 +347,9 @@ class _Student_HomeState extends State<Student_Home> {
                                               if (index !=
                                                   _dataSurvey.length - 1)
                                                 VerticalDivider(
-                                                  width: 20,
-                                                  thickness: 0.5,
-                                                  color: UGreyColor,
+                                                  width: 10,
+                                                  color: Colors.transparent,
+                                                  thickness: 0,
                                                 ),
                                             ],
                                           );
@@ -454,7 +474,7 @@ class _Student_HomeState extends State<Student_Home> {
                           child: InkWell(
                             onTap: () {
                               if (index.isEqual(6)) {
-                                launchUrl(urlFb);
+                                launchUrl(Uri.parse(_dataFeedback[0].feedback));
                               } else if (index.isEqual(0)) {
                                 Navigator.push(
                                   context,
@@ -669,7 +689,7 @@ class _Student_HomeState extends State<Student_Home> {
                           child: InkWell(
                             onTap: () {
                               if (index.isEqual(6)) {
-                                launchUrl(urlFb);
+                                launchUrl(Uri.parse(_dataFeedback[0].feedback));
                               } else if (index.isEqual(0)) {
                                 Navigator.push(
                                   context,
@@ -859,7 +879,7 @@ class _Student_HomeState extends State<Student_Home> {
                       child: InkWell(
                         onTap: () {
                           if (index.isEqual(6)) {
-                            launchUrl(urlFb);
+                            launchUrl(Uri.parse(_dataFeedback[0].feedback));
                           } else if (index.isEqual(0)) {
                             Navigator.push(
                               context,

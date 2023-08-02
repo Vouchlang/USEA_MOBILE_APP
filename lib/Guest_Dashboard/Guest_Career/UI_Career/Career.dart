@@ -22,8 +22,7 @@ class _CareerState extends State<Career> {
   Future<void> getData() async {
     try {
       var res = await http.get(
-        Uri.parse(
-            "http://192.168.1.51/hosting_api/Guest/fetch_guest_career.php"),
+        Uri.parse("https://usea.edu.kh/api/webapi.php?action=career"),
       );
       var r = json.decode(res.body);
       if (r is List<dynamic>) {
@@ -41,10 +40,6 @@ class _CareerState extends State<Career> {
         },
       );
     }
-  }
-
-  String getLogo(String imageName) {
-    return 'http://192.168.1.51/hosting_api/Guest/career/$imageName';
   }
 
   @override
@@ -76,12 +71,12 @@ class _CareerState extends State<Career> {
                           children: [
                             Row(
                               children: [
-                                CircleAvatar(
-                                  backgroundImage: NetworkImage(
-                                    getLogo(career[index].logo),
-                                  ),
-                                  radius: 35,
-                                ),
+                                Container(
+                                    width: 75,
+                                    height: 75,
+                                    child: Image.network(
+                                      career[index].logo,
+                                    )),
                                 SizedBox(
                                   width: 15,
                                 ),
@@ -91,8 +86,8 @@ class _CareerState extends State<Career> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       CustomTextTheme(
-                                        color: UTextColor,
-                                        fontWeight: UBodyWeight,
+                                        color: UPrimaryColor,
+                                        fontWeight: UTitleWeight,
                                         size: UTitleSize,
                                         text: career[index].position,
                                       ),

@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../Class_ImageSlide/Class_ImageSlide.dart';
 import '/Guest_Dashboard/Guest_ChangeLanguage/Change_Language.dart';
 import '/Guest_Dashboard/Guest_Home/Class_Home/Class_Home_Screen.dart';
 import '/theme_builder.dart';
 import '../../Guest_Notification/UI_Notification/Notifications.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Guest_Home extends StatefulWidget {
   const Guest_Home({Key? key}) : super(key: key);
@@ -18,30 +21,56 @@ class Guest_Home extends StatefulWidget {
 class _Guest_HomeState extends State<Guest_Home> {
   final Uri urlFb = Uri.parse("https://www.facebook.com/usea.edu.kh");
   final Uri urlIg =
-      Uri.parse("https://ww3.read-onepiece.net/manga/one-piece-chapter-1059/");
-  final Uri urlYt =
-      Uri.parse("https://www.youtube.com/@universityofsouth-eastasia8619");
-  final Uri urlTel = Uri.parse("https://t.me/cpsteamsports");
-  final Uri urlWeb = Uri.parse("http://www.usea.edu.kh/");
+      Uri.parse("https://www.instagram.com/university_of_south_east_asia/");
+  final Uri urlYt = Uri.parse("https://www.youtube.com/@usea-edu-kh");
+  final Uri urlTel = Uri.parse("https://t.me/university_of_south_east_asia");
+  final Uri urlWeb = Uri.parse("https://www.usea.edu.kh/en/Pages/index.php");
+  late List<Class_Image> image_slides = [];
+
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    getImageData();
+  }
+
+  Future<void> getImageData() async {
+    try {
+      var res = await http.get(
+        Uri.parse(
+            "http://192.168.1.51/hosting_api/Guest/fetch_guest_image_slideshow.php"),
+      );
+      var r = json.decode(res.body);
+      if (r is List<dynamic>) {
+        setState(() {
+          image_slides = r.map((e) => Class_Image.fromJson(e)).toList();
+        });
+      } else {
+        setState(() {
+          image_slides = [Class_Image.fromJson(r)];
+        });
+      }
+    } catch (e) {
+      print('Error fetching data: $e');
+      // handle the error here
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
 
   int activeIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    final image_slides = [
-      'assets/image/1.jpg',
-      'assets/image/2.jpg',
-      'assets/image/3.jpg',
-      'assets/image/4.jpg',
-      'assets/image/5.jpg',
-    ];
-
     Widget buildImage(String image_slide, int index) => Container(
           margin: EdgeInsets.symmetric(horizontal: 5),
           width: UFullWidth,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: Image.asset(
+            child: Image.network(
               image_slide,
               fit: BoxFit.cover,
             ),
@@ -52,10 +81,11 @@ class _Guest_HomeState extends State<Guest_Home> {
           activeIndex: activeIndex,
           count: image_slides.length,
           effect: WormEffect(
-              activeDotColor: UPrimaryColor,
-              dotColor: UGreyColor,
-              dotHeight: 8,
-              dotWidth: 8),
+            activeDotColor: UPrimaryColor,
+            dotColor: UGreyColor,
+            dotHeight: 8,
+            dotWidth: 8,
+          ),
         );
 
     return Scaffold(
@@ -150,24 +180,30 @@ class _Guest_HomeState extends State<Guest_Home> {
               height: 175,
               width: double.infinity,
               padding: EdgeInsets.symmetric(vertical: 0, horizontal: 5),
-              child: CarouselSlider.builder(
-                options: CarouselOptions(
-                  height: double.infinity,
-                  pageSnapping: true,
-                  enableInfiniteScroll: true,
-                  autoPlayInterval: Duration(seconds: 3),
-                  viewportFraction: 1,
-                  enlargeCenterPage: true,
-                  enlargeStrategy: CenterPageEnlargeStrategy.zoom,
-                  onPageChanged: ((index, reason) =>
-                      setState(() => activeIndex = index)),
-                ),
-                itemCount: image_slides.length,
-                itemBuilder: (context, index, realIndex) {
-                  final image_slide = image_slides[index];
-                  return buildImage(image_slide, index);
-                },
-              ),
+              child: isLoading
+                  ? CircularProgressIndicator() // Show a loading indicator while fetching data
+                  : CarouselSlider.builder(
+                      options: CarouselOptions(
+                        height: double.infinity,
+                        pageSnapping: true,
+                        enableInfiniteScroll: true,
+                        autoPlayInterval: Duration(seconds: 3),
+                        viewportFraction: 1,
+                        enlargeCenterPage: true,
+                        enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+                        onPageChanged: ((index, reason) =>
+                            setState(() => activeIndex = index)),
+                      ),
+                      itemCount: image_slides.length,
+                      itemBuilder: (context, index, realIndex) {
+                        if (index >= 0 && index < image_slides.length) {
+                          final image_slide = image_slides[index].image_url;
+                          return buildImage(image_slide, index);
+                        } else {
+                          return buildImage("fallback_image_path", index);
+                        }
+                      },
+                    ),
             ),
             SizedBox(
               height: 7,
