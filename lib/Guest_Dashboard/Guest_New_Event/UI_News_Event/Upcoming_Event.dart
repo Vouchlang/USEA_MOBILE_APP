@@ -19,7 +19,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
   Future<void> getData() async {
     try {
       var res = await http.get(Uri.parse(
-          "http://192.168.1.51/hosting_api/Guest/fetch_guest_event_upcoming.php"));
+          "https://usea.edu.kh/api/webapi.php?action=upcoming_events"));
       var r = json.decode(res.body);
       if (mounted) {
         if (r is List<dynamic>) {
@@ -36,10 +36,6 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
     }
   }
 
-  String getImageUrl(String imageName) {
-    return 'http://192.168.1.51/hosting_api/Guest/event_image/$imageName';
-  }
-
   @override
   void initState() {
     super.initState();
@@ -52,13 +48,21 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
       backgroundColor: USecondaryColor,
       body: Center(
         child: isLoading
-            ? CircularProgressIndicator()
+            ? Center(
+                child: FutureBuilder<void>(
+                  future: Future.delayed(Duration(seconds: 3)),
+                  builder: (context, snapshot) =>
+                      snapshot.connectionState == ConnectionState.done
+                          ? Text('No Data')
+                          : CircularProgressIndicator(),
+                ),
+              )
             : ListView.builder(
                 padding: EdgeInsets.fromLTRB(
                   UPdMg_10,
                   UZeroPixel,
                   UPdMg_10,
-                  UPdMg_10,
+                  UZeroPixel,
                 ),
                 itemCount: up_events.length,
                 itemBuilder: (context, index) {
@@ -66,7 +70,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                   return Card(
                     elevation: 2,
                     shadowColor: ULightGreyColor,
-                    margin: EdgeInsets.only(bottom: 15),
+                    margin: EdgeInsets.only(bottom: 10),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(URoundedLarge),
                     ),
@@ -89,7 +93,9 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                               borderRadius:
                                   BorderRadius.circular(URoundedLarge),
                               child: Image.network(
-                                getImageUrl(up_event.upcoming_image),
+                                up_event.upcoming_image.isEmpty
+                                    ? 'https://wallpapers.com/images/featured/blank-white-7sn5o1woonmklx1h.jpg'
+                                    : up_event.upcoming_image,
                                 width: double.maxFinite,
                                 fit: BoxFit.cover,
                               ),
@@ -109,8 +115,12 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                   width: UFullWidth,
                                   alignment: Alignment.center,
                                   child: Text(
-                                    up_event.upcoming_title,
+                                    up_event.upcoming_title.isEmpty
+                                        ? 'N/A'
+                                        : up_event.upcoming_title,
                                     textAlign: TextAlign.justify,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                       fontSize: UTitleSize,
                                       fontWeight: UTitleWeight,
@@ -122,7 +132,9 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                 Container(
                                   width: UFullWidth,
                                   child: Text(
-                                    up_event.upcoming_desc,
+                                    up_event.upcoming_desc.isEmpty
+                                        ? 'N/A'
+                                        : up_event.upcoming_desc,
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.justify,
@@ -136,7 +148,8 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                 SizedBox(height: 5),
                                 Row(
                                   children: [
-                                    Expanded(
+                                    Flexible(
+                                      flex: 2,
                                       child: Row(
                                         children: [
                                           Image.asset(
@@ -145,7 +158,10 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                           ),
                                           SizedBox(width: 5),
                                           Text(
-                                            'ថ្ងៃ' + up_event.upcoming_day,
+                                            up_event.upcoming_day.isEmpty
+                                                ? 'N/A'
+                                                : 'ថ្ងៃ' +
+                                                    up_event.upcoming_day,
                                             style: TextStyle(
                                               fontSize: 10,
                                               fontWeight: UBodyWeight,
@@ -155,7 +171,9 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                           ),
                                           SizedBox(width: 2),
                                           Text(
-                                            'ទី' + up_event.upcoming_date,
+                                            up_event.upcoming_date.isEmpty
+                                                ? 'N/A'
+                                                : 'ទី' + up_event.upcoming_date,
                                             style: TextStyle(
                                               fontSize: 10,
                                               fontWeight: UBodyWeight,
@@ -165,7 +183,10 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                           ),
                                           SizedBox(width: 2),
                                           Text(
-                                            'ខែ' + up_event.upcoming_month,
+                                            up_event.upcoming_month.isEmpty
+                                                ? 'N/A'
+                                                : 'ខែ' +
+                                                    up_event.upcoming_month,
                                             style: TextStyle(
                                               fontSize: 10,
                                               fontWeight: UBodyWeight,
@@ -175,7 +196,10 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                           ),
                                           SizedBox(width: 2),
                                           Text(
-                                            'ឆ្នាំ' + up_event.upcoming_year,
+                                            up_event.upcoming_year.isEmpty
+                                                ? 'N/A'
+                                                : 'ឆ្នាំ' +
+                                                    up_event.upcoming_year,
                                             style: TextStyle(
                                               fontSize: 10,
                                               fontWeight: UBodyWeight,
@@ -187,7 +211,8 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                       ),
                                     ),
                                     SizedBox(width: 10),
-                                    Expanded(
+                                    Flexible(
+                                      flex: 1,
                                       child: Row(
                                         children: [
                                           Image.asset(
@@ -196,7 +221,9 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                           ),
                                           SizedBox(width: 5),
                                           Text(
-                                            up_event.upcoming_time,
+                                            up_event.upcoming_time.isEmpty
+                                                ? 'N/A'
+                                                : up_event.upcoming_time,
                                             style: TextStyle(
                                               fontSize: 10,
                                               fontWeight: UBodyWeight,

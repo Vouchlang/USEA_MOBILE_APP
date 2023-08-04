@@ -48,24 +48,30 @@ class _ScheduleState extends State<Schedule> {
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
 
-        setState(() {
-          _dataSchedule = List<ScheduleClass>.from(
-            data['schedule_data'].map(
-              (data) => ScheduleClass.fromJson(data),
-            ),
-          );
-          isLoading = false;
-        });
+        if (mounted) {
+          setState(() {
+            _dataSchedule = List<ScheduleClass>.from(
+              data['schedule_data'].map(
+                (data) => ScheduleClass.fromJson(data),
+              ),
+            );
+            isLoading = false;
+          });
+        }
       } else {
+        if (mounted) {
+          setState(() {
+            isLoading = false;
+          });
+        }
+      }
+    } catch (error) {
+      print('Error: $error');
+      if (mounted) {
         setState(() {
           isLoading = false;
         });
       }
-    } catch (error) {
-      print('Error: $error');
-      setState(() {
-        isLoading = false;
-      });
     }
   }
 

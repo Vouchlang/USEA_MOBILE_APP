@@ -11,10 +11,6 @@ class Past_Event_Detail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String getImageUrl(String imageName) {
-      return 'http://192.168.1.51/hosting_api/Guest/event_image/$imageName';
-    }
-
     return Scaffold(
       backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'ព្រឹត្តិការណ៍'.tr),
@@ -30,8 +26,10 @@ class Past_Event_Detail extends StatelessWidget {
                 height: 175,
                 child: InteractiveViewer(
                   child: Image.network(
-                    getImageUrl(data.past_image),
-                    fit: BoxFit.fitWidth,
+                    data.past_image.isEmpty
+                        ? 'https://wallpapers.com/images/featured/blank-white-7sn5o1woonmklx1h.jpg'
+                        : data.past_image,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
@@ -56,7 +54,7 @@ class Past_Event_Detail extends StatelessWidget {
                 alignment: Alignment.center,
                 width: double.maxFinite,
                 child: Text(
-                  data.past_title,
+                  data.past_title.isEmpty ? 'N/A' : data.past_title,
                   textAlign: TextAlign.justify,
                   style: TextStyle(
                     fontSize: UTitleSize,
@@ -73,7 +71,7 @@ class Past_Event_Detail extends StatelessWidget {
                   horizontal: UPdMg_10,
                 ),
                 child: Text(
-                  data.past_desc,
+                  data.past_desc.isEmpty ? 'N/A' : data.past_desc,
                   textAlign: TextAlign.justify,
                   style: TextStyle(
                     fontSize: UBodySize,

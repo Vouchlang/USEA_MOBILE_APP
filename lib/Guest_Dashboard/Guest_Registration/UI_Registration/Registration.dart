@@ -72,81 +72,156 @@ class _RegistrationState extends State<Registration> {
     return Scaffold(
       backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'ការចុះឈ្មោះ'.tr),
-      body: ListView.builder(
-        padding: EdgeInsets.all(UPdMg_10 - 1),
-        itemCount: educationDataList.length,
-        itemBuilder: (context, index) {
-          final educationData = educationDataList[index];
-          return Card(
-            elevation: 2,
-            margin: EdgeInsets.only(bottom: 15),
-            shadowColor: ULightGreyColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(URoundedLarge),
-            ),
-            child: Container(
+      body: educationDataList.isEmpty
+          ? Center(
+              child: FutureBuilder<void>(
+                future: Future.delayed(Duration(seconds: 3)),
+                builder: (context, snapshot) =>
+                    snapshot.connectionState == ConnectionState.done
+                        ? Text('No Data')
+                        : CircularProgressIndicator(),
+              ),
+            )
+          : ListView.builder(
               padding: EdgeInsets.all(UPdMg_10),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(height: 5),
-                  Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      educationData.title,
-                      textAlign: TextAlign.justify,
-                      style: TextStyle(
-                        fontSize: UTitleSize16,
-                        fontFamily: UKFontFamily,
-                        fontWeight: UTitleWeight,
-                      ),
-                    ),
+              itemCount: educationDataList.length,
+              itemBuilder: (context, index) {
+                final educationData = educationDataList[index];
+                return Card(
+                  elevation: 2,
+                  margin: EdgeInsets.only(bottom: 10),
+                  shadowColor: ULightGreyColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(URoundedLarge),
                   ),
-                  SizedBox(height: 5),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
-                    itemCount: educationData.details.length,
-                    itemBuilder: (context, detailIndex) {
-                      final details = educationData.details[detailIndex];
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  width: 20,
-                                  height: 20,
-                                  child:
-                                      Image.asset('assets/image/date_time.png'),
-                                ),
-                                SizedBox(width: 5),
-                                Expanded(
-                                  child: Text(
-                                    details.dateTitle,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      fontSize: UTitleSize,
-                                      fontFamily: UKFontFamily,
-                                      fontWeight: UTitleWeight,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                  child: Container(
+                    padding: EdgeInsets.all(UPdMg_10),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            educationData.title,
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontSize: UTitleSize16,
+                              fontFamily: UKFontFamily,
+                              fontWeight: UTitleWeight,
                             ),
                           ),
-                          for (var educationItem in details.educationList)
-                            Column(
+                        ),
+                        SizedBox(height: 5),
+                        ListView.builder(
+                          shrinkWrap: true,
+                          physics: ClampingScrollPhysics(),
+                          itemCount: educationData.details.length,
+                          itemBuilder: (context, detailIndex) {
+                            final details = educationData.details[detailIndex];
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-                                  margin: EdgeInsets.only(left: UPdMg_15),
+                                  width: double.infinity,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        width: 20,
+                                        height: 20,
+                                        child: Image.asset(
+                                            'assets/image/date_time.png'),
+                                      ),
+                                      SizedBox(width: 5),
+                                      Expanded(
+                                        child: Text(
+                                          details.dateTitle,
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                            fontSize: UTitleSize,
+                                            fontFamily: UKFontFamily,
+                                            fontWeight: UTitleWeight,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                for (var educationItem in details.educationList)
+                                  Column(
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.only(left: UPdMg_15),
+                                        width: UFullWidth,
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              width: 20,
+                                              height: 20,
+                                              child: Image.asset(
+                                                'assets/image/detail.png',
+                                                scale: 14,
+                                              ),
+                                            ),
+                                            SizedBox(width: 5),
+                                            Expanded(
+                                              child: Text(
+                                                educationItem.educationName,
+                                                style: TextStyle(
+                                                  fontSize: UTitleSize,
+                                                  fontFamily: UKFontFamily,
+                                                  fontWeight: UTitleWeight,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      for (var info in educationItem.infoList)
+                                        Column(
+                                          children: [
+                                            SizedBox(height: 5),
+                                            Container(
+                                              margin: EdgeInsets.only(left: 35),
+                                              width: double.infinity,
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  SizedBox(
+                                                    width: 5,
+                                                  ),
+                                                  Expanded(
+                                                    child: Text(
+                                                      info.info_text,
+                                                      style: TextStyle(
+                                                        fontSize: 13,
+                                                        fontFamily:
+                                                            UKFontFamily,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            SizedBox(height: 5),
+                                          ],
+                                        ),
+                                    ],
+                                  ),
+                                SizedBox(height: 5),
+                                Container(
                                   width: UFullWidth,
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -158,14 +233,13 @@ class _RegistrationState extends State<Registration> {
                                         width: 20,
                                         height: 20,
                                         child: Image.asset(
-                                          'assets/image/detail.png',
-                                          scale: 14,
-                                        ),
+                                            'assets/image/date_time.png'),
                                       ),
                                       SizedBox(width: 5),
                                       Expanded(
                                         child: Text(
-                                          educationItem.educationName,
+                                          details.timeTitle,
+                                          textAlign: TextAlign.left,
                                           style: TextStyle(
                                             fontSize: UTitleSize,
                                             fontFamily: UKFontFamily,
@@ -176,97 +250,37 @@ class _RegistrationState extends State<Registration> {
                                     ],
                                   ),
                                 ),
-                                for (var info in educationItem.infoList)
-                                  Column(
+                                SizedBox(height: 5),
+                                Container(
+                                  margin: EdgeInsets.only(left: 35),
+                                  width: UFullWidth,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      SizedBox(height: 5),
-                                      Container(
-                                        margin: EdgeInsets.only(left: 35),
-                                        width: double.infinity,
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            SizedBox(
-                                              width: 5,
-                                            ),
-                                            Expanded(
-                                              child: Text(
-                                                info.info_text,
-                                                style: TextStyle(
-                                                  fontSize: 13,
-                                                  fontFamily: UKFontFamily,
-                                                  fontWeight: FontWeight.w400,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
+                                      SizedBox(width: 5),
+                                      Expanded(
+                                        child: Text(
+                                          details.timeDetail,
+                                          style: TextStyle(
+                                            fontSize: 13,
+                                            fontFamily: UKFontFamily,
+                                            fontWeight: FontWeight.w400,
+                                          ),
                                         ),
                                       ),
-                                      SizedBox(height: 5),
                                     ],
                                   ),
-                              ],
-                            ),
-                          SizedBox(height: 5),
-                          Container(
-                            width: UFullWidth,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  width: 20,
-                                  height: 20,
-                                  child:
-                                      Image.asset('assets/image/date_time.png'),
-                                ),
-                                SizedBox(width: 5),
-                                Expanded(
-                                  child: Text(
-                                    details.timeTitle,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      fontSize: UTitleSize,
-                                      fontFamily: UKFontFamily,
-                                      fontWeight: UTitleWeight,
-                                    ),
-                                  ),
                                 ),
                               ],
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Container(
-                            margin: EdgeInsets.only(left: 35),
-                            width: UFullWidth,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                SizedBox(width: 5),
-                                Expanded(
-                                  child: Text(
-                                    details.timeDetail,
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                      fontFamily: UKFontFamily,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      );
-                    },
+                            );
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              ),
+                );
+              },
             ),
-          );
-        },
-      ),
     );
   }
 }

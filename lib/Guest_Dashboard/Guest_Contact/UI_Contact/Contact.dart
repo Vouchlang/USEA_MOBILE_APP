@@ -47,14 +47,25 @@ class _ContactState extends State<Contact> {
                             width: 10,
                           ),
                           Expanded(
-                            child: InkWell(
-                              onTap: () => launchUrlString(contact[index].link),
-                              child: Container(
-                                padding: EdgeInsets.only(top: 4),
-                                child: buildTitleBody(contact[index].text.tr,
-                                    UTitleSize, FontWeight.w500),
-                              ),
-                            ),
+                            child: contact[index].link.isEmpty
+                                ? Container(
+                                    padding: EdgeInsets.only(top: 4),
+                                    child: buildTitleBody(
+                                        contact[index].text.tr,
+                                        UTitleSize,
+                                        FontWeight.w500),
+                                  )
+                                : InkWell(
+                                    onTap: () =>
+                                        launchUrlString(contact[index].link),
+                                    child: Container(
+                                      padding: EdgeInsets.only(top: 4),
+                                      child: buildTitleBody(
+                                          contact[index].text.tr,
+                                          UTitleSize,
+                                          FontWeight.w500),
+                                    ),
+                                  ),
                           ),
                         ],
                       ),

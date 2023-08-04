@@ -46,24 +46,30 @@ class _Study_InfoState extends State<Study_Info> {
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
 
-        setState(() {
-          _dataStudyInfo = List<StudyInfoData>.from(
-            data['study_info_data'].map(
-              (data) => StudyInfoData.fromJson(data),
-            ),
-          );
-          isLoading = false;
-        });
+        if (mounted) {
+          setState(() {
+            _dataStudyInfo = List<StudyInfoData>.from(
+              data['study_info_data'].map(
+                (data) => StudyInfoData.fromJson(data),
+              ),
+            );
+            isLoading = false;
+          });
+        }
       } else {
+        if (mounted) {
+          setState(() {
+            isLoading = false;
+          });
+        }
+      }
+    } catch (error) {
+      print('Error: $error');
+      if (mounted) {
         setState(() {
           isLoading = false;
         });
       }
-    } catch (error) {
-      print('Error: $error');
-      setState(() {
-        isLoading = false;
-      });
     }
   }
 

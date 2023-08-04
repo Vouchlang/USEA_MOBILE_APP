@@ -60,7 +60,15 @@ class _In_UniversityState extends State<In_University> {
       backgroundColor: USecondaryColor,
       body: Center(
         child: isLoading
-            ? const CircularProgressIndicator()
+            ? Center(
+                child: FutureBuilder<void>(
+                  future: Future.delayed(Duration(seconds: 3)),
+                  builder: (context, snapshot) =>
+                      snapshot.connectionState == ConnectionState.done
+                          ? Text('No Data')
+                          : CircularProgressIndicator(),
+                ),
+              )
             : ListView.builder(
                 itemCount: i_scholarship.length,
                 itemBuilder: (context, index) {

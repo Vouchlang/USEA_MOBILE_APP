@@ -47,24 +47,30 @@ class _Job_HistoryState extends State<Job_History> {
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
 
-        setState(() {
-          _dataJobHistory = List<JobHistory>.from(
-            data['job_history_data'].map(
-              (data) => JobHistory.fromJson(data),
-            ),
-          );
-          isLoading = false;
-        });
+        if (mounted) {
+          setState(() {
+            _dataJobHistory = List<JobHistory>.from(
+              data['job_history_data'].map(
+                (data) => JobHistory.fromJson(data),
+              ),
+            );
+            isLoading = false;
+          });
+        }
       } else {
+        if (mounted) {
+          setState(() {
+            isLoading = false;
+          });
+        }
+      }
+    } catch (error) {
+      print('Error: $error');
+      if (mounted) {
         setState(() {
           isLoading = false;
         });
       }
-    } catch (error) {
-      print('Error: $error');
-      setState(() {
-        isLoading = false;
-      });
     }
   }
 

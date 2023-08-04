@@ -55,7 +55,15 @@ class _CareerState extends State<Career> {
       appBar: Custom_AppBar(title: 'ព័ត៌មានការងារ'.tr),
       body: Center(
         child: isLoading
-            ? const CircularProgressIndicator()
+            ? Center(
+                child: FutureBuilder<void>(
+                  future: Future.delayed(Duration(seconds: 3)),
+                  builder: (context, snapshot) =>
+                      snapshot.connectionState == ConnectionState.done
+                          ? Text('No Data')
+                          : CircularProgressIndicator(),
+                ),
+              )
             : ListView.builder(
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 itemCount: career.length,

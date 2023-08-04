@@ -11,10 +11,6 @@ class Up_Event_Detail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String getImageUrl(String imageName) {
-      return 'http://192.168.1.51/hosting_api/Guest/event_image/$imageName';
-    }
-
     return Scaffold(
       backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'ព្រឹត្តិការណ៍'.tr),
@@ -35,7 +31,9 @@ class Up_Event_Detail extends StatelessWidget {
                 height: 175,
                 child: InteractiveViewer(
                   child: Image.network(
-                    getImageUrl(data.upcoming_image),
+                    data.upcoming_image.isEmpty
+                        ? 'https://wallpapers.com/images/featured/blank-white-7sn5o1woonmklx1h.jpg'
+                        : data.upcoming_image,
                     fit: BoxFit.fitWidth,
                   ),
                 ),
@@ -61,7 +59,7 @@ class Up_Event_Detail extends StatelessWidget {
                 alignment: Alignment.center,
                 width: double.maxFinite,
                 child: Text(
-                  data.upcoming_title,
+                  data.upcoming_title.isEmpty ? 'N/A' : data.upcoming_title,
                   textAlign: TextAlign.justify,
                   style: TextStyle(
                     fontSize: UTitleSize,
@@ -78,7 +76,7 @@ class Up_Event_Detail extends StatelessWidget {
                   horizontal: UPdMg_10,
                 ),
                 child: Text(
-                  data.upcoming_desc,
+                  data.upcoming_desc.isEmpty ? 'N/A' : data.upcoming_desc,
                   textAlign: TextAlign.justify,
                   style: TextStyle(
                     fontSize: UBodySize,

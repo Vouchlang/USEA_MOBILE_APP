@@ -49,24 +49,30 @@ class _Student_DetailState extends State<Student_Detail> {
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
 
-        setState(() {
-          _dataStDetail = List<StDetail>.from(
-            data['user_data'].map(
-              (data) => StDetail.fromJson(data),
-            ),
-          );
-          isLoading = false;
-        });
+        if (mounted) {
+          setState(() {
+            _dataStDetail = List<StDetail>.from(
+              data['user_data'].map(
+                (data) => StDetail.fromJson(data),
+              ),
+            );
+            isLoading = false;
+          });
+        }
       } else {
+        if (mounted) {
+          setState(() {
+            isLoading = false;
+          });
+        }
+      }
+    } catch (error) {
+      print('Error: $error');
+      if (mounted) {
         setState(() {
           isLoading = false;
         });
       }
-    } catch (error) {
-      print('Error: $error');
-      setState(() {
-        isLoading = false;
-      });
     }
   }
 

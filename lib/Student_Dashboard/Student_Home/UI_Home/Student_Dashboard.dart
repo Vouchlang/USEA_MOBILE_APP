@@ -198,20 +198,21 @@ class _Student_HomeState extends State<Student_Home> {
                   ),
                   Expanded(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
                           style: TextStyle(
                               color: UPrimaryColor,
-                              fontSize: 11,
+                              fontSize: 10,
                               fontFamily: 'KhmerOSmuol'),
                         ),
                         Text(
                           'UNIVERSITY OF SOUTH-EAST ASIA',
                           style: TextStyle(
                               color: UPrimaryColor,
-                              fontSize: 13,
+                              fontSize: 12,
                               fontFamily: UEFontFamily,
                               fontWeight: UBodyWeight),
                         ),
@@ -239,11 +240,11 @@ class _Student_HomeState extends State<Student_Home> {
                     ? CircleAvatar(
                         backgroundImage:
                             NetworkImage(_dataStDetail[0].profile_pic),
-                        radius: 25,
+                        radius: 22.5,
                       )
                     : Icon(
                         Icons.account_circle,
-                        size: 50,
+                        size: 40,
                       )),
           ],
         ),

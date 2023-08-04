@@ -53,7 +53,7 @@ class _Payment_UIState extends State<Payment_UI> {
 
       if (responsePayStudy.statusCode == 200) {
         var dataPayStudy = jsonDecode(responsePayStudy.body);
-
+        print(responsePayStudy.body);
         if (dataPayStudy['pay_study_data'] is List) {
           List<dynamic> payStudyData = dataPayStudy['pay_study_data'];
           List<PayStudy> payStudies = [];
@@ -97,6 +97,7 @@ class _Payment_UIState extends State<Payment_UI> {
         });
       }
       if (responseOtherPay.statusCode == 200) {
+        print("Other ${responseOtherPay.body}");
         var dataOtherPay = jsonDecode(responseOtherPay.body);
         setState(() {
           _dataOther = List<OtherPayClass>.from(dataOtherPay['pay_other_data']

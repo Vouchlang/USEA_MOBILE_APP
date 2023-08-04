@@ -38,26 +38,31 @@ class _Guest_HomeState extends State<Guest_Home> {
   Future<void> getImageData() async {
     try {
       var res = await http.get(
-        Uri.parse(
-            "http://192.168.1.51/hosting_api/Guest/fetch_guest_image_slideshow.php"),
+        Uri.parse("https://usea.edu.kh/api/webapi.php?action=slide_home"),
       );
       var r = json.decode(res.body);
       if (r is List<dynamic>) {
-        setState(() {
-          image_slides = r.map((e) => Class_Image.fromJson(e)).toList();
-        });
+        if (mounted) {
+          setState(() {
+            image_slides = r.map((e) => Class_Image.fromJson(e)).toList();
+          });
+        }
       } else {
-        setState(() {
-          image_slides = [Class_Image.fromJson(r)];
-        });
+        if (mounted) {
+          setState(() {
+            image_slides = [Class_Image.fromJson(r)];
+          });
+        }
       }
     } catch (e) {
       print('Error fetching data: $e');
       // handle the error here
     } finally {
-      setState(() {
-        isLoading = false;
-      });
+      if (mounted) {
+        setState(() {
+          isLoading = false;
+        });
+      }
     }
   }
 
@@ -68,11 +73,12 @@ class _Guest_HomeState extends State<Guest_Home> {
     Widget buildImage(String image_slide, int index) => Container(
           margin: EdgeInsets.symmetric(horizontal: 5),
           width: UFullWidth,
+          height: UFullWidth,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Image.network(
               image_slide,
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           ),
         );
@@ -107,20 +113,21 @@ class _Guest_HomeState extends State<Guest_Home> {
                   ),
                   Expanded(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
                           style: TextStyle(
                               color: Theme.of(context).primaryColor,
-                              fontSize: 11,
+                              fontSize: 10,
                               fontFamily: 'KhmerOSmuol'),
                         ),
                         Text(
                           'UNIVERSITY OF SOUTH-EAST ASIA',
                           style: TextStyle(
                               color: Theme.of(context).primaryColor,
-                              fontSize: 13,
+                              fontSize: 12,
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w500),
                         ),
@@ -200,7 +207,9 @@ class _Guest_HomeState extends State<Guest_Home> {
                           final image_slide = image_slides[index].image_url;
                           return buildImage(image_slide, index);
                         } else {
-                          return buildImage("fallback_image_path", index);
+                          return buildImage(
+                              "https://www.elegantthemes.com/blog/wp-content/uploads/2020/08/000-http-error-codes.png",
+                              index);
                         }
                       },
                     ),

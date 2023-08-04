@@ -79,7 +79,13 @@ class _AchievementsState extends State<Achievements> {
       appBar: Custom_AppBar(title: 'សមិទ្ធិផល'.tr),
       body: _achievementData == null
           ? Center(
-              child: Text('No Data'),
+              child: FutureBuilder<void>(
+                future: Future.delayed(Duration(seconds: 3)),
+                builder: (context, snapshot) =>
+                    snapshot.connectionState == ConnectionState.done
+                        ? Text('No Data')
+                        : CircularProgressIndicator(),
+              ),
             )
           : RefreshIndicator(
               onRefresh: _refreshData,

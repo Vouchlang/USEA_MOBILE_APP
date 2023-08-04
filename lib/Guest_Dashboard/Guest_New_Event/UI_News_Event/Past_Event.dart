@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '/Guest_Dashboard/Guest_New_Event/Class_News_Event/Class_Past_News_Events.dart';
 import 'package:http/http.dart' as http;
 import '/theme_builder.dart';
-
 import 'Past_Event_Detail.dart';
 
 class Past_Event extends StatefulWidget {
@@ -19,11 +18,10 @@ class _Past_EventState extends State<Past_Event> {
 
   Future<void> getData() async {
     try {
-      var res = await http.get(Uri.parse(
-          "http://192.168.1.51/hosting_api/Guest/fetch_guest_event_past.php"));
+      var res = await http.get(
+          Uri.parse("https://usea.edu.kh/api/webapi.php?action=past_events"));
       var r = json.decode(res.body);
       if (mounted) {
-        // Check if the widget is still mounted
         if (r is List<dynamic>) {
           past_events = r
               .map(
@@ -39,12 +37,7 @@ class _Past_EventState extends State<Past_Event> {
       }
     } catch (e) {
       print('Error fetching data: $e');
-      // handle the error here
     }
-  }
-
-  String getImageUrl(String imageName) {
-    return 'http://192.168.1.51/hosting_api/Guest/event_image/$imageName';
   }
 
   @override
@@ -59,19 +52,27 @@ class _Past_EventState extends State<Past_Event> {
       backgroundColor: USecondaryColor,
       body: Center(
         child: isLoading
-            ? const CircularProgressIndicator()
+            ? Center(
+                child: FutureBuilder<void>(
+                  future: Future.delayed(Duration(seconds: 3)),
+                  builder: (context, snapshot) =>
+                      snapshot.connectionState == ConnectionState.done
+                          ? Text('No Data')
+                          : CircularProgressIndicator(),
+                ),
+              )
             : ListView.builder(
                 padding: EdgeInsets.fromLTRB(
                   UPdMg_10,
                   UZeroPixel,
                   UPdMg_10,
-                  UPdMg_10,
+                  UZeroPixel,
                 ),
                 itemCount: past_events.length,
                 itemBuilder: (context, index) {
                   var past_event = past_events[index];
                   return Card(
-                    margin: EdgeInsets.only(bottom: 15),
+                    margin: EdgeInsets.only(bottom: 10),
                     elevation: 2,
                     shadowColor: ULightGreyColor,
                     shape: RoundedRectangleBorder(
@@ -97,8 +98,9 @@ class _Past_EventState extends State<Past_Event> {
                               borderRadius:
                                   BorderRadius.circular(URoundedLarge),
                               child: Image.network(
-                                getImageUrl(past_event.past_image),
-                                width: double.maxFinite,
+                                past_event.past_image.isEmpty
+                                    ? 'https://wallpapers.com/images/featured/blank-white-7sn5o1woonmklx1h.jpg'
+                                    : past_event.past_image,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -119,11 +121,15 @@ class _Past_EventState extends State<Past_Event> {
                                   width: UFullWidth,
                                   alignment: Alignment.center,
                                   child: Text(
-                                    past_event.past_title,
+                                    past_event.past_title.isEmpty
+                                        ? 'N/A'
+                                        : past_event.past_title,
                                     textAlign: TextAlign.justify,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                       fontSize: UTitleSize,
-                                      fontWeight: UBodyWeight,
+                                      fontWeight: UTitleWeight,
                                       fontFamily: UKFontFamily,
                                     ),
                                   ),
@@ -132,7 +138,9 @@ class _Past_EventState extends State<Past_Event> {
                                 Container(
                                   width: double.infinity,
                                   child: Text(
-                                    past_event.past_desc,
+                                    past_event.past_desc.isEmpty
+                                        ? 'N/A'
+                                        : past_event.past_desc,
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.justify,
@@ -146,7 +154,8 @@ class _Past_EventState extends State<Past_Event> {
                                 SizedBox(height: UPdMg_5),
                                 Row(
                                   children: [
-                                    Expanded(
+                                    Flexible(
+                                      flex: 2,
                                       child: Row(
                                         children: [
                                           Image.asset(
@@ -155,7 +164,9 @@ class _Past_EventState extends State<Past_Event> {
                                           ),
                                           SizedBox(width: UPdMg_5),
                                           Text(
-                                            'ថ្ងៃ' + past_event.past_day,
+                                            past_event.past_day.isEmpty
+                                                ? 'N/A'
+                                                : 'ថ្ងៃ' + past_event.past_day,
                                             style: TextStyle(
                                               fontSize: 10,
                                               fontWeight: UBodyWeight,
@@ -165,7 +176,9 @@ class _Past_EventState extends State<Past_Event> {
                                           ),
                                           SizedBox(width: 2),
                                           Text(
-                                            'ទី' + past_event.past_date,
+                                            past_event.past_date.isEmpty
+                                                ? 'N/A'
+                                                : 'ទី' + past_event.past_date,
                                             style: TextStyle(
                                               fontSize: 10,
                                               fontWeight: UBodyWeight,
@@ -175,7 +188,9 @@ class _Past_EventState extends State<Past_Event> {
                                           ),
                                           SizedBox(width: 2),
                                           Text(
-                                            'ខែ' + past_event.past_month,
+                                            past_event.past_month.isEmpty
+                                                ? 'N/A'
+                                                : 'ខែ' + past_event.past_month,
                                             style: TextStyle(
                                               fontSize: 10,
                                               fontWeight: UBodyWeight,
@@ -185,7 +200,10 @@ class _Past_EventState extends State<Past_Event> {
                                           ),
                                           SizedBox(width: 2),
                                           Text(
-                                            'ឆ្នាំ' + past_event.past_year,
+                                            past_event.past_year.isEmpty
+                                                ? 'N/A'
+                                                : 'ឆ្នាំ' +
+                                                    past_event.past_year,
                                             style: TextStyle(
                                               fontSize: 10,
                                               fontWeight: UBodyWeight,
@@ -197,7 +215,8 @@ class _Past_EventState extends State<Past_Event> {
                                       ),
                                     ),
                                     SizedBox(width: UPdMg_10),
-                                    Expanded(
+                                    Flexible(
+                                      flex: 1,
                                       child: Row(
                                         children: [
                                           Image.asset(
@@ -206,7 +225,9 @@ class _Past_EventState extends State<Past_Event> {
                                           ),
                                           SizedBox(width: UPdMg_5),
                                           Text(
-                                            past_event.past_time,
+                                            past_event.past_time.isEmpty
+                                                ? 'N/A'
+                                                : past_event.past_time,
                                             style: TextStyle(
                                               fontSize: 10,
                                               fontWeight: UBodyWeight,

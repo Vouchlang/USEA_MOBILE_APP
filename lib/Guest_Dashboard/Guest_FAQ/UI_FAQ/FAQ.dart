@@ -19,8 +19,8 @@ class _FAQState extends State<FAQ> {
 
   Future<void> getData() async {
     try {
-      var res = await http.get(Uri.parse(
-          "http://192.168.1.51/hosting_api/Guest/fetch_guest_more_faq.php"));
+      var res = await http
+          .get(Uri.parse("https://usea.edu.kh/api/webapi.php?action=faq"));
       var r = json.decode(res.body);
       if (r is List<dynamic>) {
         faq = r.map((e) => Class_FAQ.fromJson(e)).toList();
@@ -52,15 +52,27 @@ class _FAQState extends State<FAQ> {
       appBar: Custom_AppBar(title: 'FAQ'),
       body: Center(
         child: isLoading
-            ? const CircularProgressIndicator()
+            ? Center(
+                child: FutureBuilder<void>(
+                  future: Future.delayed(Duration(seconds: 3)),
+                  builder: (context, snapshot) =>
+                      snapshot.connectionState == ConnectionState.done
+                          ? Text('No Data')
+                          : CircularProgressIndicator(),
+                ),
+              )
             : Container(
                 margin: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
                 width: double.infinity,
                 child: ListView.builder(
                   itemCount: faq.length,
                   itemBuilder: (context, index) {
+                    final isLastIndex = index == faq.length - 1;
+
                     return Card(
-                      margin: EdgeInsets.only(top: 15),
+                      margin: isLastIndex
+                          ? EdgeInsets.fromLTRB(0, 10, 0, 10)
+                          : EdgeInsets.only(top: 10),
                       elevation: 2,
                       shadowColor: ULightGreyColor,
                       shape: RoundedRectangleBorder(
@@ -83,7 +95,7 @@ class _FAQState extends State<FAQ> {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
                                     ),
-                                    padding: EdgeInsets.fromLTRB(17, 0, 17, 5),
+                                    padding: EdgeInsets.fromLTRB(17, 10, 17, 5),
                                     child: buildFAQ(
                                         faq[index].answer, TextAlign.justify),
                                   )

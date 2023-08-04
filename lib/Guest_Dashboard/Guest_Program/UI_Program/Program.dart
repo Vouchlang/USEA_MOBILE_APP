@@ -17,24 +17,28 @@ class _ProgramState extends State<Program> {
   List<String> filteredMajorNames = [];
 
   Future<void> fetchData() async {
-    final response = await http.get(
-      Uri.parse(
-          'http://192.168.1.51/hosting_api/Test_student/guest_program_testing.php'),
-    );
+    try {
+      final response = await http.get(
+        Uri.parse(
+            'http://192.168.1.51/hosting_api/Test_student/guest_program_testing.php'),
+      );
 
-    if (response.statusCode == 200) {
-      setState(() {
-        programData = jsonDecode(response.body)['program_data'];
-        majorNames = programData!.values
-            .expand((majorData) => majorData.keys)
-            .toList()
-            .cast<String>();
+      if (response.statusCode == 200) {
+        setState(() {
+          programData = jsonDecode(response.body)['program_data'];
+          majorNames = programData!.values
+              .expand((majorData) => majorData.keys)
+              .toList()
+              .cast<String>();
 
-        filteredMajorNames = majorNames;
-      });
-    } else {
-      // Handle errors
-      print('Failed to load data');
+          filteredMajorNames = majorNames;
+        });
+      } else {
+        // Handle errors
+        print('Failed to load data');
+      }
+    } catch (e) {
+      print('Error fetching data: $e');
     }
   }
 
@@ -56,185 +60,194 @@ class _ProgramState extends State<Program> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: USecondaryColor,
-      appBar: AppBar(
-        centerTitle: false,
-        title: Text('កម្មវិធីសិក្សា'.tr,
-            style: TextStyle(
-              color: UPrimaryColor,
-              fontSize: 18,
-              fontWeight: UTitleWeight,
-            )),
-        backgroundColor: UBackgroundColor,
-        elevation: 1,
-        iconTheme: IconThemeData.fallback(),
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: UPrimaryColor,
-            size: 18,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        actions: [
-          IconButton(
+        backgroundColor: USecondaryColor,
+        appBar: AppBar(
+          centerTitle: false,
+          title: Text('កម្មវិធីសិក្សា'.tr,
+              style: TextStyle(
+                color: UPrimaryColor,
+                fontSize: 18,
+                fontWeight: UTitleWeight,
+              )),
+          backgroundColor: UBackgroundColor,
+          elevation: 1,
+          iconTheme: IconThemeData.fallback(),
+          leading: IconButton(
             icon: Icon(
-              Icons.search,
+              Icons.arrow_back_ios,
               color: UPrimaryColor,
-              size: 20,
+              size: 18,
             ),
-            onPressed: () async {
-              final selectedMajorName = await showSearch(
-                context: context,
-                delegate: MajorSearchDelegate(filteredMajorNames,
-                    programData: programData),
-              );
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          actions: [
+            IconButton(
+              icon: Icon(
+                Icons.search,
+                color: UPrimaryColor,
+                size: 20,
+              ),
+              onPressed: () async {
+                final selectedMajorName = await showSearch(
+                  context: context,
+                  delegate: MajorSearchDelegate(filteredMajorNames,
+                      programData: programData),
+                );
 
-              if (selectedMajorName != null) {
-                // Get the faculty name associated with the selected major name
-                String? facultyName;
-                programData?.forEach((key, value) {
-                  if (value.containsKey(selectedMajorName)) {
-                    facultyName = key;
-                  }
-                });
+                if (selectedMajorName != null) {
+                  // Get the faculty name associated with the selected major name
+                  String? facultyName;
+                  programData?.forEach((key, value) {
+                    if (value.containsKey(selectedMajorName)) {
+                      facultyName = key;
+                    }
+                  });
 
-                if (facultyName != null) {
-                  Map<String, dynamic>? educationData =
-                      programData?[facultyName]?[selectedMajorName];
-                  if (educationData != null) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MajorDetailsScreen(
-                          majorName: selectedMajorName,
-                          majorInfoData: educationData,
-                          educationNames: educationData.keys.toList(),
+                  if (facultyName != null) {
+                    Map<String, dynamic>? educationData =
+                        programData?[facultyName]?[selectedMajorName];
+                    if (educationData != null) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MajorDetailsScreen(
+                            majorName: selectedMajorName,
+                            majorInfoData: educationData,
+                            educationNames: educationData.keys.toList(),
+                          ),
                         ),
-                      ),
+                      );
+                    }
+                  }
+                }
+              },
+            ),
+          ],
+        ),
+        body: programData == null
+            ? Center(
+                child: Center(
+                  child: FutureBuilder<void>(
+                    future: Future.delayed(Duration(seconds: 3)),
+                    builder: (context, snapshot) =>
+                        snapshot.connectionState == ConnectionState.done
+                            ? Text('No Data')
+                            : CircularProgressIndicator(),
+                  ),
+                ),
+              )
+            : ListView.builder(
+                itemCount: programData!.length,
+                itemBuilder: (context, index) {
+                  String facultyName = programData!.keys.elementAt(index);
+                  Map<String, dynamic> majorData = programData![facultyName];
+                  String? facultyIcon = majorData['fac_icon'];
+                  if (facultyIcon == null) {
+                    Icon(
+                      Icons.error,
+                      size: 2,
                     );
                   }
-                }
-              }
-            },
-          ),
-        ],
-      ),
-      body: programData != null
-          ? ListView.builder(
-              itemCount: programData!.length,
-              itemBuilder: (context, index) {
-                String facultyName = programData!.keys.elementAt(index);
-                Map<String, dynamic> majorData = programData![facultyName];
-                String? facultyIcon = majorData['fac_icon'];
-                if (facultyIcon == null) {
-                  Icon(
-                    Icons.error,
-                    size: 2,
-                  );
-                }
-                return Card(
-                  color: UBackgroundColor,
-                  margin: EdgeInsets.fromLTRB(
-                    UPdMg_10,
-                    UPdMg_10,
-                    UPdMg_10,
-                    UZeroPixel,
-                  ),
-                  elevation: 2,
-                  shadowColor: UGreyColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(UPdMg_10),
-                  ),
-                  child: Container(
-                    child: Theme(
-                      data: Theme.of(context)
-                          .copyWith(dividerColor: Colors.transparent),
-                      child: ExpansionTile(
-                        collapsedIconColor: UPrimaryColor,
-                        iconColor: UPrimaryColor,
-                        textColor: UTextColor,
-                        key: PageStorageKey(facultyName),
-                        title: Row(
-                          children: [
-                            Image.network(
-                              'http://192.168.1.51/hosting_api/Test_student/fac_icon/$facultyIcon',
-                              scale: 6,
-                              errorBuilder: (context, error, stackTrace) {
-                                return Icon(Icons.error);
-                              },
-                            ),
-                            SizedBox(width: 10),
-                            Expanded(child: Text(facultyName.tr)),
-                          ],
-                        ),
-                        children: majorData.keys.map((majorName) {
-                          if (majorName != 'fac_icon') {
-                            return Container(
-                              padding: EdgeInsets.fromLTRB(
-                                UPdMg_15,
-                                UZeroPixel,
-                                UPdMg_15,
-                                UPdMg_10,
-                              ),
-                              child: InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => MajorDetailsScreen(
-                                        majorName: majorName,
-                                        majorInfoData: majorData[majorName],
-                                        educationNames:
-                                            majorData[majorName].keys.toList(),
-                                      ),
-                                    ),
-                                  );
+                  return Card(
+                    color: UBackgroundColor,
+                    margin: EdgeInsets.fromLTRB(
+                      UPdMg_10,
+                      UPdMg_10,
+                      UPdMg_10,
+                      UZeroPixel,
+                    ),
+                    elevation: 2,
+                    shadowColor: UGreyColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(UPdMg_10),
+                    ),
+                    child: Container(
+                      child: Theme(
+                        data: Theme.of(context)
+                            .copyWith(dividerColor: Colors.transparent),
+                        child: ExpansionTile(
+                          collapsedIconColor: UPrimaryColor,
+                          iconColor: UPrimaryColor,
+                          textColor: UTextColor,
+                          key: PageStorageKey(facultyName),
+                          title: Row(
+                            children: [
+                              Image.network(
+                                'http://192.168.1.51/hosting_api/Test_student/fac_icon/$facultyIcon',
+                                scale: 6,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return Icon(Icons.error);
                                 },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.circular(URoundedMedium),
-                                    border: Border.all(color: UBGLightBlue),
-                                  ),
-                                  padding: EdgeInsets.all(UPdMg_5),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        majorName.tr,
-                                        textAlign: TextAlign.justify,
-                                        style: TextStyle(
-                                          fontSize: UTitleSize,
-                                          color: UTextColor,
+                              ),
+                              SizedBox(width: 10),
+                              Expanded(child: Text(facultyName.tr)),
+                            ],
+                          ),
+                          children: majorData.keys.map((majorName) {
+                            if (majorName != 'fac_icon') {
+                              return Container(
+                                padding: EdgeInsets.fromLTRB(
+                                  UPdMg_15,
+                                  UZeroPixel,
+                                  UPdMg_15,
+                                  UPdMg_10,
+                                ),
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            MajorDetailsScreen(
+                                          majorName: majorName,
+                                          majorInfoData: majorData[majorName],
+                                          educationNames: majorData[majorName]
+                                              .keys
+                                              .toList(),
                                         ),
                                       ),
-                                      Icon(
-                                        Icons.arrow_forward_ios,
-                                        size: 14,
-                                        color: Theme.of(context).primaryColor,
-                                      )
-                                    ],
+                                    );
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.circular(URoundedMedium),
+                                      border: Border.all(color: UBGLightBlue),
+                                    ),
+                                    padding: EdgeInsets.all(UPdMg_5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          majorName.tr,
+                                          textAlign: TextAlign.justify,
+                                          style: TextStyle(
+                                            fontSize: UTitleSize,
+                                            color: UTextColor,
+                                          ),
+                                        ),
+                                        Icon(
+                                          Icons.arrow_forward_ios,
+                                          size: 14,
+                                          color: Theme.of(context).primaryColor,
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            );
-                          } else {
-                            return SizedBox
-                                .shrink(); // Skip the faculty icon data
-                          }
-                        }).toList(),
+                              );
+                            } else {
+                              return SizedBox
+                                  .shrink(); // Skip the faculty icon data
+                            }
+                          }).toList(),
+                        ),
                       ),
                     ),
-                  ),
-                );
-              },
-            )
-          : Center(
-              child: CircularProgressIndicator(),
-            ),
-    );
+                  );
+                },
+              ));
   }
 }
 
