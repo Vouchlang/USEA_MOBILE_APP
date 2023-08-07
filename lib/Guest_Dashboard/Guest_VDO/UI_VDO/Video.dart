@@ -23,7 +23,7 @@ class _VideoState extends State<Video_UI> {
   Future<void> getData() async {
     try {
       var res = await http.get(
-        Uri.parse("http://192.168.1.51/hosting_api/Guest/fetch_guest_vdo.php"),
+        Uri.parse("https://usea.edu.kh/api/webapi.php?action=yt_video"),
       );
       var r = json.decode(res.body);
       if (r is List<dynamic>) {

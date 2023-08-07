@@ -53,7 +53,6 @@ class _Payment_UIState extends State<Payment_UI> {
 
       if (responsePayStudy.statusCode == 200) {
         var dataPayStudy = jsonDecode(responsePayStudy.body);
-        print(responsePayStudy.body);
         if (dataPayStudy['pay_study_data'] is List) {
           List<dynamic> payStudyData = dataPayStudy['pay_study_data'];
           List<PayStudy> payStudies = [];
@@ -80,43 +79,54 @@ class _Payment_UIState extends State<Payment_UI> {
             }
           });
 
-          setState(() {
-            _dataPayStudy = payStudies;
-            isLoading = false;
-          });
+          if (mounted) {
+            setState(() {
+              _dataPayStudy = payStudies;
+              isLoading = false;
+            });
+          }
         } else {
           print('Response Body: ${responsePayStudy.body}');
+          if (mounted) {
+            setState(() {
+              isLoading = false;
+            });
+          }
+        }
+      } else {
+        print('Response Status Code: ${responsePayStudy.statusCode}');
+        if (mounted) {
           setState(() {
             isLoading = false;
           });
         }
-      } else {
-        print('Response Status Code: ${responsePayStudy.statusCode}');
-        setState(() {
-          isLoading = false;
-        });
       }
       if (responseOtherPay.statusCode == 200) {
-        print("Other ${responseOtherPay.body}");
         var dataOtherPay = jsonDecode(responseOtherPay.body);
-        setState(() {
-          _dataOther = List<OtherPayClass>.from(dataOtherPay['pay_other_data']
-              .map((dataOtherPay) => OtherPayClass.fromJson(dataOtherPay)));
+        if (mounted) {
+          setState(() {
+            _dataOther = List<OtherPayClass>.from(dataOtherPay['pay_other_data']
+                .map((dataOtherPay) => OtherPayClass.fromJson(dataOtherPay)));
 
-          isLoading = false;
-        });
+            isLoading = false;
+          });
+        }
       } else {
         print('Response Body: ${responseOtherPay.body}');
 
+        if (mounted) {
+          setState(() {
+            isLoading = false;
+          });
+        }
+      }
+    } catch (error) {
+      print('Error: $error');
+      if (mounted) {
         setState(() {
           isLoading = false;
         });
       }
-    } catch (error) {
-      print('Error: $error');
-      setState(() {
-        isLoading = false;
-      });
     }
   }
 
@@ -183,107 +193,110 @@ class _Payment_UIState extends State<Payment_UI> {
               ),
             ),
             buildDividerAtt(),
-            ListView.builder(
-              physics: ScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: _dataPayStudy.length,
-              itemBuilder: (context, index) {
-                final isLastIndex = index == _dataPayStudy.length - 1;
-                PayStudy payStudy = _dataPayStudy[index];
-                // double totalPaid = payStudy.payments.fold(0.0,
-                //     (sum, payment) => sum + double.parse(payment.moneyPaid));
-                double totalPaid = payStudy.payments.fold(
-                  0.0,
-                  (sum, payment) =>
-                      sum + (double.tryParse(payment.moneyPaid) ?? 0.0),
-                );
+            _dataPayStudy.isEmpty
+                ? buildEmptyData()
+                : ListView.builder(
+                    physics: ScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: _dataPayStudy.length,
+                    itemBuilder: (context, index) {
+                      final isLastIndex = index == _dataPayStudy.length - 1;
+                      PayStudy payStudy = _dataPayStudy[index];
+                      double totalPaid = payStudy.payments.fold(
+                        0.0,
+                        (sum, payment) =>
+                            sum + (double.tryParse(payment.moneyPaid) ?? 0.0),
+                      );
 
-                double totalRem = payStudy.payments.isNotEmpty
-                    ? double.tryParse(payStudy.payments.last.moneyRem) ?? 0.0
-                    : 0.0;
+                      double totalRem = payStudy.payments.isNotEmpty
+                          ? double.tryParse(payStudy.payments.last.moneyRem) ??
+                              0.0
+                          : 0.0;
 
-                return Padding(
-                  padding: EdgeInsets.only(bottom: isLastIndex ? 5 : 0),
-                  child: IntrinsicHeight(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(UPdMg_8),
-                          child: IntrinsicHeight(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                buildBody(
-                                  40,
-                                  payStudy.yearName.isEmpty
-                                      ? 'N/A'
-                                      : 'ឆ្នាំទី ${payStudy.yearName}'.tr,
-                                  UTextColor,
-                                ),
-                                buildVerticalDividerAtt(),
-                                buildBody(
-                                  75,
-                                  payStudy.moneyPay.isEmpty
-                                      ? 'N/A'
-                                      : '\$ ${payStudy.moneyPay}',
-                                  UTextColor,
-                                ),
-                                buildVerticalDividerAtt(),
-                                buildBody(
-                                  75,
-                                  totalPaid.toString().isEmpty
-                                      ? 'N/A'
-                                      : "\$ ${totalPaid.toString()}",
-                                  UTextColor,
-                                ),
-                                buildVerticalDividerAtt(),
-                                InkWell(
-                                  onTap: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return _buildPaymentDetailsDialog(
-                                            payStudy);
-                                      },
-                                    );
-                                  },
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    width: 75,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        border: Border(
-                                          bottom: BorderSide(
-                                            color: URedColor,
-                                            width: 1.0,
+                      return Padding(
+                        padding: EdgeInsets.only(bottom: isLastIndex ? 5 : 0),
+                        child: IntrinsicHeight(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                padding: EdgeInsets.all(UPdMg_8),
+                                child: IntrinsicHeight(
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      buildBody(
+                                        40,
+                                        payStudy.yearName.isEmpty
+                                            ? 'N/A'
+                                            : 'ឆ្នាំទី ${payStudy.yearName}'.tr,
+                                        UTextColor,
+                                      ),
+                                      buildVerticalDividerAtt(),
+                                      buildBody(
+                                        75,
+                                        payStudy.moneyPay.isEmpty
+                                            ? 'N/A'
+                                            : '\$ ${payStudy.moneyPay}',
+                                        UTextColor,
+                                      ),
+                                      buildVerticalDividerAtt(),
+                                      buildBody(
+                                        75,
+                                        totalPaid.toString().isEmpty
+                                            ? 'N/A'
+                                            : "\$ ${totalPaid.toString()}",
+                                        UTextColor,
+                                      ),
+                                      buildVerticalDividerAtt(),
+                                      InkWell(
+                                        onTap: () {
+                                          showDialog(
+                                            context: context,
+                                            barrierDismissible: false,
+                                            builder: (BuildContext context) {
+                                              return _buildPaymentDetailsDialog(
+                                                  payStudy);
+                                            },
+                                          );
+                                        },
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          width: 75,
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              border: Border(
+                                                bottom: BorderSide(
+                                                  color: URedColor,
+                                                  width: 1.0,
+                                                ),
+                                              ),
+                                            ),
+                                            child: Text(
+                                              totalRem.toString().isEmpty
+                                                  ? 'N/A'
+                                                  : '\$ ${totalRem.toString()}',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                fontSize: UBodySize,
+                                                color: URedColor,
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
-                                      child: Text(
-                                        totalRem.toString().isEmpty
-                                            ? 'N/A'
-                                            : '\$ ${totalRem.toString()}',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontSize: UBodySize,
-                                          color: URedColor,
-                                        ),
-                                      ),
-                                    ),
+                                    ],
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
           ],
         ),
       ),
@@ -370,90 +383,202 @@ class _Payment_UIState extends State<Payment_UI> {
                     ),
                   ),
                   buildDividerAtt(),
-
-                  /// ! Body Content​2
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: ScrollPhysics(),
-                    itemCount: payStudy.payments.length,
-                    itemBuilder: (context, index) {
-                      final isLastIndex = index == payStudy.payments.length - 1;
-                      return payStudy.payments.isEmpty
-                          ? Text(
-                              'No Data',
-                            )
-                          : Padding(
-                              padding:
-                                  EdgeInsets.only(bottom: isLastIndex ? 5 : 0),
-                              child: IntrinsicHeight(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    IntrinsicHeight(
-                                      child: Container(
-                                        padding: EdgeInsets.all(UPdMg_8),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          children: [
-                                            buildBody(
-                                              75,
-                                              payStudy.payments[index].pdate
-                                                      .isEmpty
-                                                  ? 'N/A'
-                                                  : payStudy
-                                                      .payments[index].pdate,
-                                              UTextColor,
-                                            ),
-                                            VerticalDivider(
-                                              width: 5,
-                                              color: UGreyColor,
-                                            ),
-                                            buildBody(
-                                              75,
-                                              payStudy.payments[index]
-                                                      .invoiceNum.isEmpty
-                                                  ? 'N/A'
-                                                  : payStudy.payments[index]
-                                                      .invoiceNum,
-                                              UTextColor,
-                                            ),
-                                            VerticalDivider(
-                                              width: 5,
-                                              color: UGreyColor,
-                                            ),
-                                            buildBody(
-                                              75,
-                                              payStudy.payments[index].moneyPaid
-                                                      .isEmpty
-                                                  ? 'N/A'
-                                                  : '\$ ${payStudy.payments[index].moneyPaid}',
-                                              UTextColor,
-                                            ),
-                                            VerticalDivider(
-                                              width: 5,
-                                              color: UGreyColor,
-                                            ),
-                                            buildBody(
-                                              75,
-                                              payStudy.payments[index].moneyRem
-                                                      .isEmpty
-                                                  ? 'N/A'
-                                                  : '\$ ${payStudy.payments[index].moneyRem}',
-                                              UTextColor,
-                                            ),
-                                          ],
-                                        ),
+                  payStudy.payments.isEmpty
+                      ? IntrinsicHeight(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              IntrinsicHeight(
+                                child: Container(
+                                  padding: EdgeInsets.all(UPdMg_8),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      buildBody(
+                                        75,
+                                        'N/A',
+                                        UTextColor,
                                       ),
-                                    ),
-                                    if (!isLastIndex) buildDividerAtt(),
-                                  ],
+                                      VerticalDivider(
+                                        width: 5,
+                                        color: UGreyColor,
+                                      ),
+                                      buildBody(
+                                        75,
+                                        'N/A',
+                                        UTextColor,
+                                      ),
+                                      VerticalDivider(
+                                        width: 5,
+                                        color: UGreyColor,
+                                      ),
+                                      buildBody(
+                                        75,
+                                        'N/A',
+                                        UTextColor,
+                                      ),
+                                      VerticalDivider(
+                                        width: 5,
+                                        color: UGreyColor,
+                                      ),
+                                      buildBody(
+                                        75,
+                                        'N/A',
+                                        UTextColor,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            );
-                    },
-                  ),
+                            ],
+                          ),
+                        )
+                      : ListView.builder(
+                          shrinkWrap: true,
+                          physics: ScrollPhysics(),
+                          itemCount: payStudy.payments.length,
+                          itemBuilder: (context, index) {
+                            final isLastIndex =
+                                index == payStudy.payments.length - 1;
+                            return payStudy.payments.isEmpty
+                                ? Padding(
+                                    padding: EdgeInsets.only(
+                                        bottom: isLastIndex ? 5 : 0),
+                                    child: IntrinsicHeight(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          IntrinsicHeight(
+                                            child: Container(
+                                              padding: EdgeInsets.all(UPdMg_8),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
+                                                children: [
+                                                  buildBody(
+                                                    75,
+                                                    'N/A',
+                                                    UTextColor,
+                                                  ),
+                                                  VerticalDivider(
+                                                    width: 5,
+                                                    color: UGreyColor,
+                                                  ),
+                                                  buildBody(
+                                                    75,
+                                                    'N/A',
+                                                    UTextColor,
+                                                  ),
+                                                  VerticalDivider(
+                                                    width: 5,
+                                                    color: UGreyColor,
+                                                  ),
+                                                  buildBody(
+                                                    75,
+                                                    'N/A',
+                                                    UTextColor,
+                                                  ),
+                                                  VerticalDivider(
+                                                    width: 5,
+                                                    color: UGreyColor,
+                                                  ),
+                                                  buildBody(
+                                                    75,
+                                                    'N/A',
+                                                    UTextColor,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          if (!isLastIndex) buildDividerAtt(),
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                : Padding(
+                                    padding: EdgeInsets.only(
+                                        bottom: isLastIndex ? 5 : 0),
+                                    child: IntrinsicHeight(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          IntrinsicHeight(
+                                            child: Container(
+                                              padding: EdgeInsets.all(UPdMg_8),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
+                                                children: [
+                                                  buildBody(
+                                                    75,
+                                                    payStudy.payments[index]
+                                                            .pdate.isEmpty
+                                                        ? 'N/A'
+                                                        : payStudy
+                                                            .payments[index]
+                                                            .pdate,
+                                                    UTextColor,
+                                                  ),
+                                                  VerticalDivider(
+                                                    width: 5,
+                                                    color: UGreyColor,
+                                                  ),
+                                                  buildBody(
+                                                    75,
+                                                    payStudy.payments[index]
+                                                            .invoiceNum.isEmpty
+                                                        ? 'N/A'
+                                                        : payStudy
+                                                            .payments[index]
+                                                            .invoiceNum,
+                                                    UTextColor,
+                                                  ),
+                                                  VerticalDivider(
+                                                    width: 5,
+                                                    color: UGreyColor,
+                                                  ),
+                                                  buildBody(
+                                                    75,
+                                                    payStudy.payments[index]
+                                                            .moneyPaid.isEmpty
+                                                        ? 'N/A'
+                                                        : '\$ ${payStudy.payments[index].moneyPaid}',
+                                                    UTextColor,
+                                                  ),
+                                                  VerticalDivider(
+                                                    width: 5,
+                                                    color: UGreyColor,
+                                                  ),
+                                                  buildBody(
+                                                    75,
+                                                    payStudy.payments[index]
+                                                            .moneyRem.isEmpty
+                                                        ? 'N/A'
+                                                        : '\$ ${payStudy.payments[index].moneyRem}',
+                                                    UTextColor,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          if (!isLastIndex) buildDividerAtt(),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                          },
+                        ),
                 ],
               ),
             ],
@@ -515,16 +640,8 @@ class _Payment_UIState extends State<Payment_UI> {
                     ),
                   ),
                   buildDividerAtt(),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: ScrollPhysics(),
-                    itemCount: _dataOther.length,
-                    itemBuilder: (context, index) {
-                      final isLastIndex = index == _dataOther.length - 1;
-
-                      return Padding(
-                        padding: EdgeInsets.only(bottom: isLastIndex ? 5 : 0),
-                        child: IntrinsicHeight(
+                  _dataOther.isEmpty
+                      ? IntrinsicHeight(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -537,51 +654,175 @@ class _Payment_UIState extends State<Payment_UI> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: [
-                                      // * datePayment
                                       buildBody(
                                         70,
-                                        '${_dataOther[index].o_pdate}',
+                                        'N/A',
                                         UTextColor,
                                       ),
                                       buildVerticalDividerW_2(),
                                       buildBody(
                                         80,
-                                        _dataOther[index].o_invoice,
+                                        'N/A',
                                         UTextColor,
                                       ),
                                       buildVerticalDividerW_2(),
                                       buildBody(
                                         55,
-                                        _dataOther[index].o_money_pay,
+                                        'N/A',
                                         UTextColor,
                                       ),
                                       buildVerticalDividerW_2(),
                                       buildBody(
                                         55,
-                                        _dataOther[index].o_money_paid,
+                                        'N/A',
                                         UTextColor,
                                       ),
                                       buildVerticalDividerW_2(),
                                       buildBody(
                                         55,
-                                        _dataOther[index].o_money_rem,
-                                        URedColor,
+                                        'N/A',
+                                        UTextColor,
                                       ),
                                     ],
                                   ),
                                 ),
                               ),
-                              if (!isLastIndex) buildDividerAtt(),
                             ],
                           ),
+                        )
+                      : ListView.builder(
+                          shrinkWrap: true,
+                          physics: ScrollPhysics(),
+                          itemCount: _dataOther.length,
+                          itemBuilder: (context, index) {
+                            final isLastIndex = index == _dataOther.length - 1;
+
+                            return Padding(
+                              padding:
+                                  EdgeInsets.only(bottom: isLastIndex ? 5 : 0),
+                              child: IntrinsicHeight(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    IntrinsicHeight(
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        padding: EdgeInsets.all(UPdMg_5),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            // * datePayment
+                                            buildBody(
+                                              70,
+                                              _dataOther[index].o_pdate.isEmpty
+                                                  ? 'N/A'
+                                                  : _dataOther[index].o_pdate,
+                                              UTextColor,
+                                            ),
+                                            buildVerticalDividerW_2(),
+                                            buildBody(
+                                              80,
+                                              _dataOther[index]
+                                                      .o_invoice
+                                                      .isEmpty
+                                                  ? 'N/A'
+                                                  : _dataOther[index].o_invoice,
+                                              UTextColor,
+                                            ),
+                                            buildVerticalDividerW_2(),
+                                            buildBody(
+                                              55,
+                                              _dataOther[index]
+                                                      .o_money_pay
+                                                      .isEmpty
+                                                  ? 'N/A'
+                                                  : _dataOther[index]
+                                                      .o_money_pay,
+                                              UTextColor,
+                                            ),
+                                            buildVerticalDividerW_2(),
+                                            buildBody(
+                                              55,
+                                              _dataOther[index]
+                                                      .o_money_paid
+                                                      .isEmpty
+                                                  ? 'N/A'
+                                                  : _dataOther[index]
+                                                      .o_money_paid,
+                                              UTextColor,
+                                            ),
+                                            buildVerticalDividerW_2(),
+                                            buildBody(
+                                              55,
+                                              _dataOther[index]
+                                                      .o_money_rem
+                                                      .isEmpty
+                                                  ? 'N/A'
+                                                  : _dataOther[index]
+                                                      .o_money_rem,
+                                              URedColor,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    if (!isLastIndex) buildDividerAtt(),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
                         ),
-                      );
-                    },
-                  ),
                 ],
               ),
             ),
           )),
     ]);
+  }
+
+  Widget buildEmptyData() {
+    return IntrinsicHeight(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: EdgeInsets.all(UPdMg_8),
+            child: IntrinsicHeight(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  buildBody(
+                    40,
+                    'N/A',
+                    UTextColor,
+                  ),
+                  buildVerticalDividerAtt(),
+                  buildBody(
+                    75,
+                    'N/A',
+                    UTextColor,
+                  ),
+                  buildVerticalDividerAtt(),
+                  buildBody(
+                    75,
+                    'N/A',
+                    UTextColor,
+                  ),
+                  buildVerticalDividerAtt(),
+                  buildBody(
+                    75,
+                    'N/A',
+                    UTextColor,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

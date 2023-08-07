@@ -516,6 +516,7 @@ class BuildAttScore extends StatelessWidget {
       child: InkWell(
         onTap: () {
           showDialog(
+            barrierDismissible: false,
             context: context,
             builder: (context) => customDialog,
           );

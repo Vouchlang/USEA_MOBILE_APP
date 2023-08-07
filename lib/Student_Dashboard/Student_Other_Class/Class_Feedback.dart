@@ -7,7 +7,7 @@ class FeedbackClass {
 
   factory FeedbackClass.fromJson(Map<String, dynamic> json) {
     return FeedbackClass(
-      feedback: json['feedback'] as String,
+      feedback: json['feedback'],
     );
   }
 }

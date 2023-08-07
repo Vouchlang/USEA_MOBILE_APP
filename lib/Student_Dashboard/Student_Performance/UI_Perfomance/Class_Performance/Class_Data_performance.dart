@@ -15,32 +15,32 @@ class Class_Program_Score_s1 {
 List<Class_Program_Score_s1> class_program_Score_s1 = [
   Class_Program_Score_s1(
     subject: "សេដ្ឋកិច្ចវិទ្យា",
-    att: 45.562,
+    att: 30,
     score: 99.99,
   ),
   Class_Program_Score_s1(
     subject: "ប្រវត្តិ និងវប្បធម៍អាស៊ីគ្នេយ៍",
-    att: 45,
+    att: 30,
     score: 96,
   ),
   Class_Program_Score_s1(
     subject: "រដ្ឋបាលសាធារណៈ",
-    att: 46,
+    att: 30,
     score: 92,
   ),
   Class_Program_Score_s1(
     subject: "កុំព្យូទ័រសម្រាប់រដ្ឋបាល",
-    att: 42,
+    att: 30,
     score: 95,
   ),
   Class_Program_Score_s1(
     subject: "ភាសាអង់គ្លេស I",
-    att: 41,
+    att: 30,
     score: 91,
   ),
   Class_Program_Score_s1(
     subject: "ភាសាចិន I",
-    att: 45,
+    att: 30,
     score: 99,
   ),
 ];

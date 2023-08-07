@@ -119,8 +119,13 @@ class _Job_HistoryState extends State<Job_History> {
                           Row(
                             children: [
                               Text(
-                                'កាលបរិច្ឆេទចូលបម្រើការងារ​\t\t\t\t\t'.tr +
-                                    '${_dataJobHistory[index].date_start_work}',
+                                _dataJobHistory[index].date_start_work.isEmpty
+                                    ? 'កាលបរិច្ឆេទចូលបម្រើការងារ​\t\t\t\t\t'
+                                            .tr +
+                                        'N/A'
+                                    : 'កាលបរិច្ឆេទចូលបម្រើការងារ​\t\t\t\t\t'
+                                            .tr +
+                                        _dataJobHistory[index].date_start_work,
                                 style: TextStyle(
                                   fontSize: UTitleSize,
                                   fontWeight: UTitleWeight,
@@ -139,7 +144,10 @@ class _Job_HistoryState extends State<Job_History> {
                                 ),
                               ),
                               NoWeightTitleTheme(
-                                  text: _dataJobHistory[index].status_name),
+                                  text:
+                                      _dataJobHistory[index].status_name.isEmpty
+                                          ? 'N/A'
+                                          : _dataJobHistory[index].status_name),
                             ],
                           ),
                           Divider(),
@@ -154,7 +162,10 @@ class _Job_HistoryState extends State<Job_History> {
                               ),
                               Expanded(
                                 child: NoWeightTitleTheme(
-                                    text: _dataJobHistory[index].workPlace),
+                                    text:
+                                        _dataJobHistory[index].workPlace.isEmpty
+                                            ? 'N/A'
+                                            : _dataJobHistory[index].workPlace),
                               ),
                             ],
                           ),
@@ -172,7 +183,9 @@ class _Job_HistoryState extends State<Job_History> {
                               ),
                               Expanded(
                                 child: NoWeightTitleTheme(
-                                  text: _dataJobHistory[index].position,
+                                  text: _dataJobHistory[index].position.isEmpty
+                                      ? 'N/A'
+                                      : _dataJobHistory[index].position,
                                 ),
                               ),
                             ],
@@ -190,7 +203,9 @@ class _Job_HistoryState extends State<Job_History> {
                                 ),
                               ),
                               Text(
-                                _dataJobHistory[index].salary.tr,
+                                _dataJobHistory[index].salary.isEmpty
+                                    ? 'N/A'
+                                    : _dataJobHistory[index].salary,
                                 style: TextStyle(
                                   fontSize: UTitleSize,
                                 ),

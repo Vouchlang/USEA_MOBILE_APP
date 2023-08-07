@@ -14,6 +14,7 @@ const UTextColor = Color(0xff000000);
 const UGreyColor = Colors.grey;
 const ULightGreyColor = Color.fromARGB(255, 200, 200, 200);
 const UBtnColor = Color(0x142D74F5);
+const UBGChartColor = Color.fromARGB(25, 0, 32, 96);
 
 //  * @ Background Color
 const UBGLightBlue = Color(0xffE9F2FF);

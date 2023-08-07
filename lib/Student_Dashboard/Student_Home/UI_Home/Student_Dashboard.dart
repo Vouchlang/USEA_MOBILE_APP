@@ -16,7 +16,7 @@ import '../../Student_Other_Class/Class_Survey_Status.dart';
 import '../../Student_Payment/UI_Payment/Payment.dart';
 import '../../Student_Schedule/UI_Schedule/Schedule.dart';
 import '../../Student_StudyInfo/UI_StudyInfo/StudyInfo.dart';
-import '../Class_Home/Class_St_Credit.dart';
+import '../../Student_Other_Class/Class_St_Credit.dart';
 
 class Student_Home extends StatefulWidget {
   final List<StudentUser> data_studentUser;
@@ -38,9 +38,6 @@ class _Student_HomeState extends State<Student_Home> {
   late List<SurveyStatus> _dataSurvey = [];
   late List<StDetail> _dataStDetail = [];
   late List<FeedbackClass> _dataFeedback = [];
-
-  final Uri urlFb =
-      Uri.parse("https://9anime.to/watch/fighting-spirit.lr3/ep-17");
 
   @override
   void initState() {
@@ -137,6 +134,7 @@ class _Student_HomeState extends State<Student_Home> {
                 (data_feedback) => FeedbackClass.fromJson(data_feedback),
               ),
             );
+
             isLoading = false;
           });
         }
@@ -332,7 +330,8 @@ class _Student_HomeState extends State<Student_Home> {
                                                 child: Container(
                                                   width: 80,
                                                   child: Text(
-                                                    'ការវាយតម្លៃទី ${_dataSurvey[index].times}',
+                                                    'ការវាយតម្លៃទី ${_dataSurvey[index].times}'
+                                                        .tr,
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       color: UPrimaryColor,
@@ -393,11 +392,11 @@ class _Student_HomeState extends State<Student_Home> {
                           radius: 90.0,
                           lineWidth: 40.0,
                           percent: percentIndicator,
-                          progressColor: Colors.indigo[900],
+                          progressColor: UPrimaryColor,
                           animateFromLastPercent: true,
                           animation: true,
                           animationDuration: 750,
-                          backgroundColor: UYellowColor,
+                          backgroundColor: UBGChartColor,
                           center: Text(
                             _dataCredit.isNotEmpty
                                 ? '${_dataCredit[0].yourCredit} / ${_dataCredit[0].totalCredit}'
@@ -424,7 +423,7 @@ class _Student_HomeState extends State<Student_Home> {
                                 Icon(
                                   Icons.circle,
                                   size: 20,
-                                  color: UYellowColor,
+                                  color: UBGChartColor,
                                 ),
                                 Text('\tចំនួនក្រឌីតសរុប'.tr),
                               ],
@@ -475,7 +474,75 @@ class _Student_HomeState extends State<Student_Home> {
                           child: InkWell(
                             onTap: () {
                               if (index.isEqual(6)) {
-                                launchUrl(Uri.parse(_dataFeedback[0].feedback));
+                                _dataFeedback[0].feedback.isEmpty
+                                    ? showDialog(
+                                        context: context,
+                                        barrierDismissible: false,
+                                        builder: (BuildContext context) {
+                                          return Dialog(
+                                            elevation: 3,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                              10,
+                                            )),
+                                            child: Container(
+                                              margin: EdgeInsets.all(7),
+                                              padding: EdgeInsets.all(10),
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                  color: UBackgroundColor),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Text(
+                                                    'សូមអធ្យាស្រ័យ'.tr,
+                                                    style: TextStyle(
+                                                      fontSize: UTitleSize,
+                                                      fontWeight: UTitleWeight,
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                  Text(
+                                                    'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!'
+                                                        .tr,
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                      fontSize: UBodySize,
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                  Container(
+                                                    height: 50,
+                                                    padding: EdgeInsets.all(5),
+                                                    alignment: Alignment.center,
+                                                    child: TextButton(
+                                                      child: Text(
+                                                        'បោះបង់'.tr,
+                                                        style: TextStyle(
+                                                          color: UPrimaryColor,
+                                                          fontSize: UBodySize,
+                                                        ),
+                                                      ),
+                                                      onPressed: () {
+                                                        Navigator.of(context)
+                                                            .pop();
+                                                      },
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      )
+                                    : launchUrl(
+                                        Uri.parse(_dataFeedback[0].feedback));
                               } else if (index.isEqual(0)) {
                                 Navigator.push(
                                   context,
@@ -582,7 +649,7 @@ class _Student_HomeState extends State<Student_Home> {
                       child: Container(
                         margin: EdgeInsets.all(5),
                         child: Text(
-                          'សូមជួយវាយដម្លៃការបង្រៀនរបស់សាស្ត្រាចារ្យ'.tr,
+                          'សូមជួយធ្វើការវាយតម្លៃ'.tr,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: UBodySize,
@@ -608,11 +675,11 @@ class _Student_HomeState extends State<Student_Home> {
                           radius: 90.0,
                           lineWidth: 40.0,
                           percent: percentIndicator,
-                          progressColor: Colors.indigo[900],
+                          progressColor: UPrimaryColor,
                           animateFromLastPercent: true,
                           animation: true,
                           animationDuration: 750,
-                          backgroundColor: UYellowColor,
+                          backgroundColor: UBGChartColor,
                           center: Text(
                             _dataCredit.isNotEmpty
                                 ? '${_dataCredit[0].yourCredit} / ${_dataCredit[0].totalCredit}'
@@ -639,7 +706,7 @@ class _Student_HomeState extends State<Student_Home> {
                                 Icon(
                                   Icons.circle,
                                   size: 20,
-                                  color: UYellowColor,
+                                  color: UBGChartColor,
                                 ),
                                 Text('\tចំនួនក្រឌីតសរុប'.tr),
                               ],
@@ -690,7 +757,75 @@ class _Student_HomeState extends State<Student_Home> {
                           child: InkWell(
                             onTap: () {
                               if (index.isEqual(6)) {
-                                launchUrl(Uri.parse(_dataFeedback[0].feedback));
+                                _dataFeedback[0].feedback.isEmpty
+                                    ? showDialog(
+                                        context: context,
+                                        barrierDismissible: false,
+                                        builder: (BuildContext context) {
+                                          return Dialog(
+                                            elevation: 3,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                              10,
+                                            )),
+                                            child: Container(
+                                              margin: EdgeInsets.all(7),
+                                              padding: EdgeInsets.all(10),
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                  color: UBackgroundColor),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Text(
+                                                    'សូមអធ្យាស្រ័យ'.tr,
+                                                    style: TextStyle(
+                                                      fontSize: UTitleSize,
+                                                      fontWeight: UTitleWeight,
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                  Text(
+                                                    'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!'
+                                                        .tr,
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                      fontSize: UBodySize,
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                  Container(
+                                                    height: 50,
+                                                    padding: EdgeInsets.all(5),
+                                                    alignment: Alignment.center,
+                                                    child: TextButton(
+                                                      child: Text(
+                                                        'បោះបង់'.tr,
+                                                        style: TextStyle(
+                                                          color: UPrimaryColor,
+                                                          fontSize: UBodySize,
+                                                        ),
+                                                      ),
+                                                      onPressed: () {
+                                                        Navigator.of(context)
+                                                            .pop();
+                                                      },
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      )
+                                    : launchUrl(
+                                        Uri.parse(_dataFeedback[0].feedback));
                               } else if (index.isEqual(0)) {
                                 Navigator.push(
                                   context,
@@ -798,11 +933,11 @@ class _Student_HomeState extends State<Student_Home> {
                       radius: 90.0,
                       lineWidth: 40.0,
                       percent: percentIndicator,
-                      progressColor: Colors.indigo[900],
+                      progressColor: UPrimaryColor,
                       animateFromLastPercent: true,
                       animation: true,
                       animationDuration: 750,
-                      backgroundColor: UYellowColor,
+                      backgroundColor: UBGChartColor,
                       center: Text(
                         _dataCredit.isNotEmpty
                             ? '${_dataCredit[0].yourCredit} / ${_dataCredit[0].totalCredit}'
@@ -829,7 +964,7 @@ class _Student_HomeState extends State<Student_Home> {
                             Icon(
                               Icons.circle,
                               size: 20,
-                              color: UYellowColor,
+                              color: UBGChartColor,
                             ),
                             Text('\tចំនួនក្រឌីតសរុប'.tr),
                           ],
@@ -879,8 +1014,75 @@ class _Student_HomeState extends State<Student_Home> {
                       ),
                       child: InkWell(
                         onTap: () {
+                          print(_dataFeedback.length);
                           if (index.isEqual(6)) {
-                            launchUrl(Uri.parse(_dataFeedback[0].feedback));
+                            _dataFeedback.isEmpty
+                                ? showDialog(
+                                    context: context,
+                                    barrierDismissible: false,
+                                    builder: (BuildContext context) {
+                                      return Dialog(
+                                        elevation: 3,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(
+                                          10,
+                                        )),
+                                        child: Container(
+                                          margin: EdgeInsets.all(7),
+                                          padding: EdgeInsets.all(10),
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              color: UBackgroundColor),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Text(
+                                                'សូមអធ្យាស្រ័យ'.tr,
+                                                style: TextStyle(
+                                                  fontSize: UTitleSize,
+                                                  fontWeight: UTitleWeight,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 5,
+                                              ),
+                                              Text(
+                                                'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!'
+                                                    .tr,
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  fontSize: UBodySize,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 5,
+                                              ),
+                                              Container(
+                                                height: 50,
+                                                padding: EdgeInsets.all(5),
+                                                alignment: Alignment.center,
+                                                child: TextButton(
+                                                  child: Text(
+                                                    'បោះបង់'.tr,
+                                                    style: TextStyle(
+                                                      color: UPrimaryColor,
+                                                      fontSize: UBodySize,
+                                                    ),
+                                                  ),
+                                                  onPressed: () {
+                                                    Navigator.of(context).pop();
+                                                  },
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  )
+                                : launchUrl(
+                                    Uri.parse(_dataFeedback[0].feedback));
                           } else if (index.isEqual(0)) {
                             Navigator.push(
                               context,

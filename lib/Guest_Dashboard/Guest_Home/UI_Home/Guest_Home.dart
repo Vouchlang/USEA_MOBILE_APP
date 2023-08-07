@@ -208,7 +208,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                           return buildImage(image_slide, index);
                         } else {
                           return buildImage(
-                              "https://www.elegantthemes.com/blog/wp-content/uploads/2020/08/000-http-error-codes.png",
+                              "https://wallpaperaccess.com/full/7074756.jpg",
                               index);
                         }
                       },
@@ -245,6 +245,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                         if (index.isEqual(8)) {
                           showDialog(
                             context: context,
+                            barrierDismissible: false,
                             builder: (BuildContext context) {
                               return Change_Language();
                             },

@@ -85,6 +85,7 @@ class _Student_DetailState extends State<Student_Detail> {
   void _logout() {
     showDialog(
       context: context,
+      barrierDismissible: false,
       builder: (BuildContext context) {
         return Dialog(
           elevation: 3,

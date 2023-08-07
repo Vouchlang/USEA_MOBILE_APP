@@ -232,12 +232,25 @@ class _CustomScoreDialogState extends State<CustomScoreDialog> {
                               fontWeight: UBodyWeight,
                               size: UTitleSize,
                             ),
-                            CustomTextTheme(
-                              text: score[index].num_count.toString(),
-                              color: UScoreColor,
-                              fontWeight: UBodyWeight,
-                              size: UTitleSize,
-                            ),
+                            Row(
+                              children: [
+                                CustomTextTheme(
+                                  text: score[index].num_count.toString(),
+                                  color: UScoreColor,
+                                  fontWeight: UBodyWeight,
+                                  size: UTitleSize,
+                                ),
+                                SizedBox(
+                                  width: 50,
+                                ),
+                                CustomTextTheme(
+                                  text: score[index].num_count.toString(),
+                                  color: UScoreColor,
+                                  fontWeight: UBodyWeight,
+                                  size: UTitleSize,
+                                ),
+                              ],
+                            )
                           ],
                         ),
                       ),

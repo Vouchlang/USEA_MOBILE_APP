@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '/Custom_Widget/CustomText.dart';
 import '../Class_Performance/Class_Data_performance.dart';
 import 'Dialog_performance.dart';
@@ -13,7 +14,7 @@ class Card_learning_pro_1 extends StatelessWidget {
     return Column(
       children: [
         BuildSemesterPerformance(
-          semester: 'ឆមាសទី 1',
+          semester: 'ឆមាសទី 1'.tr,
           itemCount: class_program_Score_s1.length,
           subject: class_program_Score_s1.map((e) => e.subject).toList(),
           dialog1: CustomAttDialog(),

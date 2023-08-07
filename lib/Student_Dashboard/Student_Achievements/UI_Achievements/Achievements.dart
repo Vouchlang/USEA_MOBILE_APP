@@ -52,23 +52,28 @@ class _AchievementsState extends State<Achievements> {
 
       if (response.statusCode == 200) {
         final jsonData = json.decode(response.body);
-        setState(() {
-          _achievementData = AchievementData.fromJson(jsonData);
-          isLoading = false;
-        });
+        if (mounted) {
+          setState(() {
+            _achievementData = AchievementData.fromJson(jsonData);
+            isLoading = false;
+          });
+        }
       } else {
-        // Handle error when fetching data
         print(
             'Failed to fetch achievements. Status Code: ${response.statusCode}');
+        if (mounted) {
+          setState(() {
+            isLoading = false;
+          });
+        }
+      }
+    } catch (error) {
+      print('Failed to fetch achievements: $error');
+      if (mounted) {
         setState(() {
           isLoading = false;
         });
       }
-    } catch (error) {
-      print('Failed to fetch achievements: $error');
-      setState(() {
-        isLoading = false;
-      });
     }
   }
 
@@ -77,15 +82,21 @@ class _AchievementsState extends State<Achievements> {
     return Scaffold(
       backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'សមិទ្ធិផល'.tr),
-      body: _achievementData == null
-          ? Center(
-              child: FutureBuilder<void>(
-                future: Future.delayed(Duration(seconds: 3)),
-                builder: (context, snapshot) =>
-                    snapshot.connectionState == ConnectionState.done
-                        ? Text('No Data')
-                        : CircularProgressIndicator(),
-              ),
+      body: (_achievementData == null ||
+              _achievementData!.achievementData.isEmpty)
+          ? FutureBuilder(
+              future: Future.delayed(Duration(seconds: 3)),
+              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  return Center(
+                    child: Text('No Data'),
+                  );
+                }
+              },
             )
           : RefreshIndicator(
               onRefresh: _refreshData,
@@ -106,51 +117,60 @@ class _AchievementsState extends State<Achievements> {
                             _achievementData!.achievementData[index];
                         final isLastIndex = index ==
                             _achievementData!.achievementData.length - 1;
-                        return Column(
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                setState(
-                                  () {
-                                    _selectedAchievementTypeIndex = index;
-                                  },
-                                );
-                              },
-                              child: AnimatedContainer(
-                                duration: Duration(milliseconds: 300),
-                                margin: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_10,
-                                    isLastIndex ? 10 : 0, UPdMg_10),
-                                padding: EdgeInsets.all(UPdMg_10),
-                                width: 165,
-                                decoration: BoxDecoration(
-                                  color: _selectedAchievementTypeIndex == index
-                                      ? UPrimaryColor
-                                      : UBackgroundColor,
-                                  borderRadius:
-                                      BorderRadius.circular(URoundedMedium),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      blurRadius: 1,
-                                      color: ULightGreyColor,
-                                      offset: Offset(0, 1),
+                        return _achievementData!.achievementData.isEmpty
+                            ? Center(
+                                child: Text('No Data'),
+                              )
+                            : Column(
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(
+                                        () {
+                                          _selectedAchievementTypeIndex = index;
+                                        },
+                                      );
+                                    },
+                                    child: AnimatedContainer(
+                                      duration: Duration(milliseconds: 300),
+                                      margin: EdgeInsets.fromLTRB(
+                                          UPdMg_10,
+                                          UPdMg_10,
+                                          isLastIndex ? 10 : 0,
+                                          UPdMg_10),
+                                      padding: EdgeInsets.all(UPdMg_10),
+                                      width: 165,
+                                      decoration: BoxDecoration(
+                                        color: _selectedAchievementTypeIndex ==
+                                                index
+                                            ? UPrimaryColor
+                                            : UBackgroundColor,
+                                        borderRadius: BorderRadius.circular(
+                                            URoundedMedium),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 1,
+                                            color: ULightGreyColor,
+                                            offset: Offset(0, 1),
+                                          ),
+                                        ],
+                                      ),
+                                      child: Text(
+                                        achievementTypeData.achievementType,
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color:
+                                              _selectedAchievementTypeIndex ==
+                                                      index
+                                                  ? UBackgroundColor
+                                                  : UTextColor,
+                                          fontSize: UTitleSize,
+                                        ),
+                                      ),
                                     ),
-                                  ],
-                                ),
-                                child: Text(
-                                  achievementTypeData.achievementType,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color:
-                                        _selectedAchievementTypeIndex == index
-                                            ? UBackgroundColor
-                                            : UTextColor,
-                                    fontSize: UTitleSize,
                                   ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        );
+                                ],
+                              );
                       },
                     ),
                   ),
@@ -164,7 +184,10 @@ class _AchievementsState extends State<Achievements> {
                         crossAxisSpacing: 10.0,
                         mainAxisSpacing: 10.0,
                       ),
-                      itemCount: _selectedAchievementTypeIndex >= 0
+                      itemCount: _achievementData != null &&
+                              _selectedAchievementTypeIndex >= 0 &&
+                              _selectedAchievementTypeIndex <
+                                  _achievementData!.achievementData.length
                           ? _achievementData!
                               .achievementData[_selectedAchievementTypeIndex]
                               .data
@@ -180,14 +203,33 @@ class _AchievementsState extends State<Achievements> {
                           margin: EdgeInsets.all(UZeroPixel),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(UPdMg_10),
-                            child: Image.network(
-                              _achievementData!
-                                  .achievementData[
-                                      _selectedAchievementTypeIndex]
-                                  .data[index]
-                                  .image,
-                              fit: BoxFit.cover,
-                            ),
+                            child: _achievementData != null &&
+                                    _selectedAchievementTypeIndex >= 0 &&
+                                    _selectedAchievementTypeIndex <
+                                        _achievementData!
+                                            .achievementData.length &&
+                                    _achievementData!
+                                        .achievementData[
+                                            _selectedAchievementTypeIndex]
+                                        .data
+                                        .isNotEmpty &&
+                                    index <
+                                        _achievementData!
+                                            .achievementData[
+                                                _selectedAchievementTypeIndex]
+                                            .data
+                                            .length
+                                ? Image.network(
+                                    _achievementData!
+                                        .achievementData[
+                                            _selectedAchievementTypeIndex]
+                                        .data[index]
+                                        .image,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Center(
+                                    child: Text('data'),
+                                  ),
                           ),
                         );
                       },

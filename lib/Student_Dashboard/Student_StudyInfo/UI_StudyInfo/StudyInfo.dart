@@ -105,6 +105,7 @@ class _Study_InfoState extends State<Study_Info> {
                 padding: EdgeInsets.all(UPdMg_5),
                 itemCount: _dataStudyInfo.length,
                 itemBuilder: (BuildContext context, index) {
+                  final isLastIndex = index == _dataStudyInfo.length - 1;
                   return Card(
                     elevation: 1,
                     shadowColor: ULightGreyColor,
@@ -112,7 +113,9 @@ class _Study_InfoState extends State<Study_Info> {
                       borderRadius: BorderRadius.circular(URoundedLarge),
                     ),
                     color: UBackgroundColor,
-                    margin: EdgeInsets.fromLTRB(5, 5, 5, 10),
+                    margin: isLastIndex
+                        ? EdgeInsets.fromLTRB(5, 10, 5, 10)
+                        : EdgeInsets.fromLTRB(5, 10, 5, 5),
                     child: Padding(
                       padding: EdgeInsets.all(UPdMg_8),
                       child: IntrinsicHeight(
@@ -149,7 +152,7 @@ class _Study_InfoState extends State<Study_Info> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        BodyTheme(text: 'មុខវិជ្ជា\t'),
+                                        BodyTheme(text: 'មុខវិជ្ជា\t'.tr),
                                         Container(
                                           width: 200,
                                           alignment: Alignment.centerLeft,
@@ -164,7 +167,7 @@ class _Study_InfoState extends State<Study_Info> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         BodyTheme(
-                                          text: 'បន្ទប់\t',
+                                          text: 'បន្ទប់\t'.tr,
                                         ),
                                         Container(
                                           width: 200,
@@ -179,7 +182,7 @@ class _Study_InfoState extends State<Study_Info> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         BodyTheme(
-                                          text: 'ម៉ោង\t',
+                                          text: 'ម៉ោង\t'.tr,
                                         ),
                                         Container(
                                           width: 200,
@@ -194,7 +197,7 @@ class _Study_InfoState extends State<Study_Info> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         BodyTheme(
-                                          text: 'លេខតុ\t',
+                                          text: 'លេខតុ\t'.tr,
                                         ),
                                         Container(
                                           width: 200,

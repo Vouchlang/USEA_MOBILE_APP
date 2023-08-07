@@ -56,6 +56,8 @@ class LocaleString extends Translations {
           'ឆ្នាំទី៤': 'ឆ្នាំទី៤',
           'ឆមាសទី១': 'ឆមាសទី១',
           'ឆមាសទី២': 'ឆមាសទី២',
+          'ឆមាសទី 1': 'ឆមាសទី 1',
+          'ឆមាសទី 2': 'ឆមាសទី 2',
           'មុខវិជ្ជា': 'មុខវិជ្ជា',
           'ម៉ោង': 'ម៉ោង',
           'ក្រេឌីត': 'ក្រេឌីត',
@@ -151,7 +153,8 @@ class LocaleString extends Translations {
           'ការវាយតម្លៃ': 'ការវាយតម្លៃ',
           'សូមជ្រើសរើសប្រភេទនៃការវាយតម្លៃ!!!':
               'សូមជ្រើសរើសប្រភេទនៃការវាយតម្លៃ!!!',
-          'សាស្ត្រាចារ្យ': 'សាស្ត្រាចារ្យ',
+          'ការវាយតម្លៃទី 1': 'ការវាយតម្លៃទី 1',
+          'ការវាយតម្លៃទី 2': 'ការវាយតម្លៃទី 2',
 
           // Student Schedule
           'កាលវិភាគសិក្សា': 'កាលវិភាគសិក្សា',
@@ -203,6 +206,12 @@ class LocaleString extends Translations {
               'កាលបរិច្ឆេទចូលបម្រើការងារ​\t\t\t\t\t',
           'ស្ថានភាពការងារ': 'ស្ថានភាពការងារ',
           'ប្រាក់បៀវត្ស': 'ប្រាក់បៀវត្ស',
+
+          // Student Study Info
+          'មុខវិជ្ជា\t': 'មុខវិជ្ជា\t',
+          'បន្ទប់\t': 'បន្ទប់\t',
+          'ម៉ោង\t': 'ម៉ោង\t',
+          'លេខតុ\t': 'លេខតុ\t',
         },
         'en_US': {
           // Guest Dashboard
@@ -296,7 +305,6 @@ class LocaleString extends Translations {
           'គណនីសាស្ត្រាចារ្យ': 'Lecturer Account',
 
           // Student Dashboard
-
           'ព័ត៌មានលម្អិតរបស់និស្សិត': 'Student Detail',
           'កាលវិភាគ': 'Schedule',
           'ដំណើរការសិក្សា': 'Performance',
@@ -350,8 +358,9 @@ class LocaleString extends Translations {
           'សូមជួយធ្វើការវាយតម្លៃ': 'Please help evaluate',
           'ការវាយតម្លៃ': 'Evaluation',
           'សូមជ្រើសរើសប្រភេទនៃការវាយតម្លៃ!!!':
-              'Please select type of assessments!!!',
-          'សាស្ត្រាចារ្យ': 'Lecturer',
+              'Please select number of survey!!!',
+          'ការវាយតម្លៃទី 1': 'Survey 1',
+          'ការវាយតម្លៃទី 2': 'Survey 2',
 
           // Student Schedule
           'កាលវិភាគសិក្សា': 'Schedule',
@@ -380,6 +389,8 @@ class LocaleString extends Translations {
 
           'ឆមាសទី ១': 'Semester I',
           'ឆមាសទី ២': 'Semester II',
+          'ឆមាសទី 1': 'Semester I',
+          'ឆមាសទី 2': 'Semester II',
           'Year I': 'Year I',
           'Year II': 'Year II',
           'Year III': 'Year III',
@@ -402,8 +413,14 @@ class LocaleString extends Translations {
 
           // Student Job History
           'កាលបរិច្ឆេទចូលបម្រើការងារ​\t\t\t\t\t': 'Date of entry\t\t\t\t\t',
-          'ស្ថានភាពការងារ': 'Working Status',
+          'ស្ថានភាពការងារ': 'Job Status',
           'ប្រាក់បៀវត្ស': 'Salary',
+
+          // Student Study Info
+          'មុខវិជ្ជា\t': 'Subject\t',
+          'បន្ទប់\t': 'Room\t',
+          'ម៉ោង\t': 'Time\t',
+          'លេខតុ\t': 'Seat\t',
         },
       };
 }

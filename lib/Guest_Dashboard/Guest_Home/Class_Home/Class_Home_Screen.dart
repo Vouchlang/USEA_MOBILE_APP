@@ -125,7 +125,7 @@ List<Home_Screen> st_home_screen = [
     ),
   ),
   Home_Screen(
-    name: 'សម្មិទ្ធផល',
+    name: 'សមិទ្ធិផល',
     img: 'assets/image/Stu_Achievement.png',
     screen: InkWell(
       onTap: () {},

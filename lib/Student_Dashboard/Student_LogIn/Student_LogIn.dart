@@ -29,10 +29,8 @@ class _Student_LogInState extends State<Student_LogIn> {
     final String studentId = _textControllerUsername.text;
     final String password = _textControllerPsw.text;
 
-    final url = 'http://192.168.3.87/usea/api/login.php?action=login_student';
-
-    final response = await http.post(
-      Uri.parse(url),
+    var response = await http.post(
+      Uri.parse('http://192.168.3.87/usea/api/login.php?action=login_student'),
       body: {
         'student_id': studentId,
         'pwd': password,
