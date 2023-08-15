@@ -4,13 +4,13 @@ import '../../../Custom_AppBar.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
 
-class Program_SHC extends StatefulWidget {
+class Noti_SHC extends StatefulWidget {
   final String majorName;
   final String educationName;
   final String yearName;
   final List<dynamic> yearsData;
 
-  Program_SHC({
+  Noti_SHC({
     required this.majorName,
     required this.educationName,
     required this.yearName,
@@ -18,10 +18,10 @@ class Program_SHC extends StatefulWidget {
   });
 
   @override
-  _Program_SHCState createState() => _Program_SHCState();
+  _Noti_SHCState createState() => _Noti_SHCState();
 }
 
-class _Program_SHCState extends State<Program_SHC> {
+class _Noti_SHCState extends State<Noti_SHC> {
   String selectedSemesterName = '';
 
   @override

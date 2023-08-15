@@ -150,7 +150,7 @@ class _Payment_UIState extends State<Payment_UI> {
             ),
             buildTitle(
               'ការបង់ថ្លៃឈ្នួលដកលិខិតបញ្ជាក់ការសិក្សាផ្សេងៗ',
-              buildOther(),
+              buildOtherPayment(),
             ),
           ],
         ),
@@ -176,8 +176,6 @@ class _Payment_UIState extends State<Payment_UI> {
             IntrinsicHeight(
               child: Container(
                 padding: EdgeInsets.all(UPdMg_10),
-
-                // * Header Title
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -203,15 +201,19 @@ class _Payment_UIState extends State<Payment_UI> {
                       final isLastIndex = index == _dataPayStudy.length - 1;
                       PayStudy payStudy = _dataPayStudy[index];
                       double totalPaid = payStudy.payments.fold(
-                        0.0,
+                        0.00,
                         (sum, payment) =>
-                            sum + (double.tryParse(payment.moneyPaid) ?? 0.0),
+                            sum + (double.tryParse(payment.moneyPaid) ?? 0.00),
                       );
+
+                      String formattedTotalPaid = totalPaid.toStringAsFixed(2);
 
                       double totalRem = payStudy.payments.isNotEmpty
                           ? double.tryParse(payStudy.payments.last.moneyRem) ??
-                              0.0
-                          : 0.0;
+                              0.00
+                          : 0.00;
+
+                      String formattedtotalRem = totalRem.toStringAsFixed(2);
 
                       return Padding(
                         padding: EdgeInsets.only(bottom: isLastIndex ? 5 : 0),
@@ -231,7 +233,8 @@ class _Payment_UIState extends State<Payment_UI> {
                                         40,
                                         payStudy.yearName.isEmpty
                                             ? 'N/A'
-                                            : 'ឆ្នាំទី ${payStudy.yearName}'.tr,
+                                            : 'ឆ្នាំទី​ '.tr +
+                                                payStudy.yearName,
                                         UTextColor,
                                       ),
                                       buildVerticalDividerAtt(),
@@ -245,9 +248,9 @@ class _Payment_UIState extends State<Payment_UI> {
                                       buildVerticalDividerAtt(),
                                       buildBody(
                                         75,
-                                        totalPaid.toString().isEmpty
+                                        formattedTotalPaid.toString().isEmpty
                                             ? 'N/A'
-                                            : "\$ ${totalPaid.toString()}",
+                                            : '\$ ${formattedTotalPaid.toString()}',
                                         UTextColor,
                                       ),
                                       buildVerticalDividerAtt(),
@@ -257,8 +260,14 @@ class _Payment_UIState extends State<Payment_UI> {
                                             context: context,
                                             barrierDismissible: false,
                                             builder: (BuildContext context) {
-                                              return _buildPaymentDetailsDialog(
-                                                  payStudy);
+                                              return Center(
+                                                child: ListView(
+                                                    shrinkWrap: true,
+                                                    children: [
+                                                      _buildPaymentDetailsDialog(
+                                                          payStudy),
+                                                    ]),
+                                              );
                                             },
                                           );
                                         },
@@ -275,9 +284,11 @@ class _Payment_UIState extends State<Payment_UI> {
                                               ),
                                             ),
                                             child: Text(
-                                              totalRem.toString().isEmpty
+                                              formattedtotalRem
+                                                      .toString()
+                                                      .isEmpty
                                                   ? 'N/A'
-                                                  : '\$ ${totalRem.toString()}',
+                                                  : '\$ ${formattedtotalRem.toString()}',
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 fontSize: UBodySize,
@@ -338,11 +349,10 @@ class _Payment_UIState extends State<Payment_UI> {
                     Text(
                       payStudy.yearName.isEmpty
                           ? 'N/A'
-                          : "ឆ្នាំទី​ ${payStudy.yearName}".tr,
+                          : 'ឆ្នាំទី​ '.tr + payStudy.yearName,
                       style: TextStyle(
                         color: UPrimaryColor,
                         fontSize: UTitleSize,
-                        fontFamily: UKFontFamily,
                         fontWeight: UTitleWeight,
                       ),
                     ),
@@ -358,23 +368,23 @@ class _Payment_UIState extends State<Payment_UI> {
                 children: [
                   IntrinsicHeight(
                     child: Padding(
-                      padding: EdgeInsets.all(5.0),
+                      padding: EdgeInsets.all(UPdMg_5),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           buildHeaderTitle(75, 'កាលបរិច្ឆេទ'),
                           VerticalDivider(
-                            width: 5,
+                            width: 2,
                             color: UGreyColor,
                           ),
-                          buildHeaderTitle(75, 'លេខវិក័យបត្រ'),
+                          buildHeaderTitle(95, 'លេខវិក័យបត្រ'),
                           VerticalDivider(
-                            width: 5,
+                            width: 2,
                             color: UGreyColor,
                           ),
                           buildHeaderTitle(75, 'ទឹកប្រាក់បានបង់'),
                           VerticalDivider(
-                            width: 5,
+                            width: 2,
                             color: UGreyColor,
                           ),
                           buildHeaderTitle(75, 'ទឹកប្រាក់នៅសល់'),
@@ -394,7 +404,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                   padding: EdgeInsets.all(UPdMg_8),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       buildBody(
                                         75,
@@ -442,6 +452,10 @@ class _Payment_UIState extends State<Payment_UI> {
                           itemBuilder: (context, index) {
                             final isLastIndex =
                                 index == payStudy.payments.length - 1;
+                            double moneyRem =
+                                double.parse(payStudy.payments[index].moneyRem);
+                            String formattedMoneyRem =
+                                moneyRem.toStringAsFixed(2);
                             return payStudy.payments.isEmpty
                                 ? Padding(
                                     padding: EdgeInsets.only(
@@ -505,76 +519,66 @@ class _Payment_UIState extends State<Payment_UI> {
                                 : Padding(
                                     padding: EdgeInsets.only(
                                         bottom: isLastIndex ? 5 : 0),
-                                    child: IntrinsicHeight(
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          IntrinsicHeight(
-                                            child: Container(
-                                              padding: EdgeInsets.all(UPdMg_8),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceAround,
-                                                children: [
-                                                  buildBody(
-                                                    75,
-                                                    payStudy.payments[index]
-                                                            .pdate.isEmpty
-                                                        ? 'N/A'
-                                                        : payStudy
-                                                            .payments[index]
-                                                            .pdate,
-                                                    UTextColor,
-                                                  ),
-                                                  VerticalDivider(
-                                                    width: 5,
-                                                    color: UGreyColor,
-                                                  ),
-                                                  buildBody(
-                                                    75,
-                                                    payStudy.payments[index]
-                                                            .invoiceNum.isEmpty
-                                                        ? 'N/A'
-                                                        : payStudy
-                                                            .payments[index]
-                                                            .invoiceNum,
-                                                    UTextColor,
-                                                  ),
-                                                  VerticalDivider(
-                                                    width: 5,
-                                                    color: UGreyColor,
-                                                  ),
-                                                  buildBody(
-                                                    75,
-                                                    payStudy.payments[index]
-                                                            .moneyPaid.isEmpty
-                                                        ? 'N/A'
-                                                        : '\$ ${payStudy.payments[index].moneyPaid}',
-                                                    UTextColor,
-                                                  ),
-                                                  VerticalDivider(
-                                                    width: 5,
-                                                    color: UGreyColor,
-                                                  ),
-                                                  buildBody(
-                                                    75,
-                                                    payStudy.payments[index]
-                                                            .moneyRem.isEmpty
-                                                        ? 'N/A'
-                                                        : '\$ ${payStudy.payments[index].moneyRem}',
-                                                    UTextColor,
-                                                  ),
-                                                ],
-                                              ),
+                                    child: Column(
+                                      children: [
+                                        IntrinsicHeight(
+                                          child: Container(
+                                            padding: EdgeInsets.all(UPdMg_5),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
+                                              children: [
+                                                buildBody(
+                                                  75,
+                                                  payStudy.payments[index].pdate
+                                                          .isEmpty
+                                                      ? 'N/A'
+                                                      : payStudy.payments[index]
+                                                          .pdate,
+                                                  UTextColor,
+                                                ),
+                                                VerticalDivider(
+                                                  width: 2,
+                                                  color: UGreyColor,
+                                                ),
+                                                buildBody(
+                                                  90,
+                                                  payStudy.payments[index]
+                                                          .invoiceNum.isEmpty
+                                                      ? 'N/A'
+                                                      : payStudy.payments[index]
+                                                          .invoiceNum,
+                                                  UTextColor,
+                                                ),
+                                                VerticalDivider(
+                                                  width: 2,
+                                                  color: UGreyColor,
+                                                ),
+                                                buildBody(
+                                                  75,
+                                                  payStudy.payments[index]
+                                                          .moneyPaid.isEmpty
+                                                      ? 'N/A'
+                                                      : '\$ ${payStudy.payments[index].moneyPaid}',
+                                                  UTextColor,
+                                                ),
+                                                VerticalDivider(
+                                                  width: 2,
+                                                  color: UGreyColor,
+                                                ),
+                                                buildBody(
+                                                  75,
+                                                  formattedMoneyRem.isEmpty
+                                                      ? 'N/A'
+                                                      : '\$ ${formattedMoneyRem}',
+                                                  UTextColor,
+                                                ),
+                                              ],
                                             ),
                                           ),
-                                          if (!isLastIndex) buildDividerAtt(),
-                                        ],
-                                      ),
+                                        ),
+                                        if (!isLastIndex) buildDividerAtt(),
+                                      ],
                                     ),
                                   );
                           },
@@ -603,7 +607,7 @@ class _Payment_UIState extends State<Payment_UI> {
     );
   }
 
-  Widget buildOther() {
+  Widget buildOtherPayment() {
     return Column(children: [
       Padding(
           padding: EdgeInsets.all(UPdMg_5),
@@ -630,11 +634,11 @@ class _Payment_UIState extends State<Payment_UI> {
                           buildVerticalDividerW_2(),
                           buildHeaderTitle(80, 'លេខវិក័យបត្រ'),
                           buildVerticalDividerW_2(),
-                          buildHeaderTitle(55, 'ទឹកប្រាក់ត្រូវបង់'),
+                          buildHeaderTitle(70, 'ទឹកប្រាក់ត្រូវបង់'),
                           buildVerticalDividerW_2(),
-                          buildHeaderTitle(55, 'ទឹកប្រាក់បានបង់'),
-                          buildVerticalDividerW_2(),
-                          buildHeaderTitle(55, 'ទឹកប្រាក់នៅសល់'),
+                          buildHeaderTitle(70, 'ទឹកប្រាក់បានបង់'),
+                          // buildVerticalDividerW_5(),
+                          // buildHeaderTitle(55, 'ទឹកប្រាក់នៅសល់'),
                         ],
                       ),
                     ),
@@ -714,12 +718,22 @@ class _Payment_UIState extends State<Payment_UI> {
                                               MainAxisAlignment.spaceAround,
                                           children: [
                                             // * datePayment
-                                            buildBody(
-                                              70,
-                                              _dataOther[index].o_pdate.isEmpty
-                                                  ? 'N/A'
-                                                  : _dataOther[index].o_pdate,
-                                              UTextColor,
+                                            Container(
+                                              width: 70,
+                                              child: Text(
+                                                textAlign: TextAlign.center,
+                                                _dataOther[index]
+                                                        .o_pdate
+                                                        .isEmpty
+                                                    ? 'N/A'
+                                                    : _dataOther[index]
+                                                        .o_pdate
+                                                        .tr,
+                                                style: TextStyle(
+                                                  fontSize: 11.75,
+                                                  color: UTextColor,
+                                                ),
+                                              ),
                                             ),
                                             buildVerticalDividerW_2(),
                                             buildBody(
@@ -733,7 +747,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                             ),
                                             buildVerticalDividerW_2(),
                                             buildBody(
-                                              55,
+                                              70,
                                               _dataOther[index]
                                                       .o_money_pay
                                                       .isEmpty
@@ -744,7 +758,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                             ),
                                             buildVerticalDividerW_2(),
                                             buildBody(
-                                              55,
+                                              70,
                                               _dataOther[index]
                                                       .o_money_paid
                                                       .isEmpty
@@ -753,17 +767,17 @@ class _Payment_UIState extends State<Payment_UI> {
                                                       .o_money_paid,
                                               UTextColor,
                                             ),
-                                            buildVerticalDividerW_2(),
-                                            buildBody(
-                                              55,
-                                              _dataOther[index]
-                                                      .o_money_rem
-                                                      .isEmpty
-                                                  ? 'N/A'
-                                                  : _dataOther[index]
-                                                      .o_money_rem,
-                                              URedColor,
-                                            ),
+                                            // buildVerticalDividerW_2(),
+                                            // buildBody(
+                                            //   55,
+                                            //   _dataOther[index]
+                                            //           .o_money_rem
+                                            //           .isEmpty
+                                            //       ? 'N/A'
+                                            //       : _dataOther[index]
+                                            //           .o_money_rem,
+                                            //   URedColor,
+                                            // ),
                                           ],
                                         ),
                                       ),

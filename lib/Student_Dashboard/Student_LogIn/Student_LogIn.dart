@@ -67,6 +67,7 @@ class _Student_LogInState extends State<Student_LogIn> {
     } else {
       showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (BuildContext context) {
           return Dialog(
             elevation: 2,

@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../../Custom_AppBar.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
-import 'Program_SHC.dart';
+import 'Noti_SHC.dart';
 
-class MajorDetailsScreen extends StatefulWidget {
+class NotiDetailsScreen extends StatefulWidget {
   final String majorName;
   final Map<String, dynamic> majorInfoData;
   final List<String> educationNames;
 
-  MajorDetailsScreen({
+  NotiDetailsScreen({
     required this.majorName,
     required this.majorInfoData,
     required this.educationNames,
   });
 
   @override
-  _MajorDetailsScreenState createState() => _MajorDetailsScreenState();
+  _NotiDetailsScreenState createState() => _NotiDetailsScreenState();
 }
 
-class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
+class _NotiDetailsScreenState extends State<NotiDetailsScreen> {
   String selectedEducationName = '';
   String selectedYearName = '';
 
@@ -164,7 +165,7 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Program_SHC(
+                                    builder: (context) => Noti_SHC(
                                       majorName: widget.majorName,
                                       educationName: selectedEducationName,
                                       yearName: selectedYearName,

@@ -191,6 +191,7 @@ class LocaleString extends Translations {
           'កាលបរិច្ឆេទ': 'កាលបរិច្ឆេទ',
 
           // Student Payment
+          'ឆ្នាំទី​ ': 'ឆ្នាំទី​ ',
           'ការបង់ថ្លៃឈ្នួលសិក្សា': 'ការបង់ថ្លៃឈ្នួលសិក្សា',
           'ការបង់ថ្លៃឈ្នួលប្រឡងឡើងវិញ': 'ការបង់ថ្លៃឈ្នួលប្រឡងឡើងវិញ',
           'ការបង់ថ្លៃឈ្នួលរៀនបំពេញក្រេឌីត': 'ការបង់ថ្លៃឈ្នួលរៀនបំពេញក្រេឌីត',
@@ -212,6 +213,11 @@ class LocaleString extends Translations {
           'បន្ទប់\t': 'បន្ទប់\t',
           'ម៉ោង\t': 'ម៉ោង\t',
           'លេខតុ\t': 'លេខតុ\t',
+
+          // Student Feedback
+          'សូមអធ្យាស្រ័យ': 'សូមអធ្យាស្រ័យ',
+          'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!':
+              'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!',
         },
         'en_US': {
           // Guest Dashboard
@@ -386,7 +392,6 @@ class LocaleString extends Translations {
           'ឆ្នាំទី​ ២': 'Year II',
           'ឆ្នាំទី​ ៣': 'Year III',
           'ឆ្នាំទី​ ៤': 'Year IV',
-
           'ឆមាសទី ១': 'Semester I',
           'ឆមាសទី ២': 'Semester II',
           'ឆមាសទី 1': 'Semester I',
@@ -399,7 +404,8 @@ class LocaleString extends Translations {
           'Semester II': 'Semester II',
           'កាលបរិច្ឆេទ': 'Date',
 
-          // Student Attendance
+          // Student Payment
+          'ឆ្នាំទី​ ': 'Year ',
           'ការបង់ថ្លៃឈ្នួលសិក្សា': 'Tuition payment',
           'ការបង់ថ្លៃឈ្នួលប្រឡងឡើងវិញ': 'Re-examination fee payment',
           'ការបង់ថ្លៃឈ្នួលរៀនបំពេញក្រេឌីត':
@@ -421,6 +427,11 @@ class LocaleString extends Translations {
           'បន្ទប់\t': 'Room\t',
           'ម៉ោង\t': 'Time\t',
           'លេខតុ\t': 'Seat\t',
+
+          // Student Feedback
+          'សូមអធ្យាស្រ័យ': 'Apologies for any trouble',
+          'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!':
+              'Sorry, you have not been able to provide feedback yet !!!',
         },
       };
 }
