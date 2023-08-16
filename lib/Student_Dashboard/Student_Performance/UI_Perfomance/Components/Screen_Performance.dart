@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '/Custom_Widget/CustomText.dart';
-import '../Class_Performance/Class_Data_performance.dart';
+import '../../Class_Performance/Class_Data_performance.dart';
 import 'Dialog_performance.dart';
 
 class Card_learning_pro_1 extends StatelessWidget {

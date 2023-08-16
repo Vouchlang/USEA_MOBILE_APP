@@ -128,18 +128,30 @@ class _Program_SHCState extends State<Program_SHC> {
 
       return Container(
         padding: EdgeInsets.symmetric(vertical: UPdMg_5, horizontal: UPdMg_5),
+        height: 50,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
-              child: NoWeightTitleTheme(text: subject),
+              child: Text(
+                subject,
+                style: TextStyle(
+                  height: 1.5,
+                  fontSize: UTitleSize,
+                  fontWeight: UBodyWeight,
+                  color: UTextColor,
+                  fontFamily: UKFontFamily,
+                ),
+              ),
             ),
             Row(
               mainAxisSize: MainAxisSize.min,
+              
               children: [
                 Container(
                   alignment: Alignment.center,
-                  width: 30,
+                  width: 55,
                   child: NoWeightTitleTheme(text: hour.toString()),
                 ),
                 SizedBox(width: 10),
@@ -224,7 +236,7 @@ class _Program_SHCState extends State<Program_SHC> {
                   Row(
                     children: [
                       Container(
-                        width: 30,
+                        width: 55,
                         alignment: Alignment.center,
                         child: TitleTheme(text: totalHours.toString()),
                       ),

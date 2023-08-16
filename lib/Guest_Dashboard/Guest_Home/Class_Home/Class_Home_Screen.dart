@@ -89,7 +89,9 @@ List<Home_Screen> st_home_screen = [
   Home_Screen(
     name: 'ដំណើរការសិក្សា',
     img: 'assets/image/Stu_Performance.png',
-    screen: Performance(),
+    screen: InkWell(
+      onTap: () {},
+    ),
   ),
   Home_Screen(
     name: 'វត្តមាន',

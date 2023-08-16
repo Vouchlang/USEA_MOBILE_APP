@@ -19,8 +19,7 @@ class _ProgramState extends State<Program> {
 
   Future<void> fetchData() async {
     final response = await http.get(
-      Uri.parse(
-          'http://192.168.1.51/hosting_api/Test_student/guest_program_testing.php'),
+      Uri.parse('https://usea.edu.kh/api/webapi.php?action=study_program'),
     );
 
     if (response.statusCode == 200) {
@@ -201,7 +200,7 @@ class _ProgramState extends State<Program> {
                         title: Row(
                           children: [
                             Image.network(
-                              'http://192.168.1.51/hosting_api/Test_student/fac_icon/$facultyIcon',
+                              facultyIcon,
                               scale: 6,
                               errorBuilder: (context, error, stackTrace) {
                                 return Icon(Icons.error);

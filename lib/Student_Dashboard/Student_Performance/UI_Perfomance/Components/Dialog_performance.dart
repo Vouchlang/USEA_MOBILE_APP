@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '/theme_builder.dart';
 import '/Custom_Widget/CustomText.dart';
-import '../Class_Performance/Class_Attendacne_performance.dart';
+import '../../Class_Performance/Class_Attendacne_performance.dart';
 
 class CustomAttDialog extends StatefulWidget {
   const CustomAttDialog({super.key});

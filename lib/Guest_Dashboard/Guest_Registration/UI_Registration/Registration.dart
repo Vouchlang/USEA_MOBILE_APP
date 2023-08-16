@@ -23,7 +23,7 @@ class _RegistrationState extends State<Registration> {
 
   Future<void> fetchData() async {
     String apiUrl =
-        'http://192.168.1.51/hosting_api/Guest/fetch_guest_registration.php';
+        'https://usea.edu.kh/api/webapi.php?action=registration_info';
     try {
       http.Response response = await http.get(Uri.parse(apiUrl));
       if (response.statusCode == 200) {

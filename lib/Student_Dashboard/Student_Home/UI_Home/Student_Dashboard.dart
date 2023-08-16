@@ -14,6 +14,7 @@ import '../../Student_Detail/Class_Detail/Class_St_Detail.dart';
 import '../../Student_Other_Class/Class_Student_User.dart';
 import '../../Student_Other_Class/Class_Survey_Status.dart';
 import '../../Student_Payment/UI_Payment/Payment.dart';
+import '../../Student_Performance/UI_Perfomance/Performance.dart';
 import '../../Student_Schedule/UI_Schedule/Schedule.dart';
 import '../../Student_StudyInfo/UI_StudyInfo/StudyInfo.dart';
 import '../../Student_Other_Class/Class_St_Credit.dart';
@@ -552,6 +553,24 @@ class _Student_HomeState extends State<Student_Home> {
                                     ),
                                   ),
                                 );
+                              } else if (index.isEqual(1)) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Performance(
+                                      data_studentUser: _dataStudentUser,
+                                    ),
+                                  ),
+                                );
+                              } else if (index.isEqual(1)) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Performance(
+                                      data_studentUser: _dataStudentUser,
+                                    ),
+                                  ),
+                                );
                               } else if (index.isEqual(3)) {
                                 Navigator.push(
                                   context,
@@ -835,6 +854,15 @@ class _Student_HomeState extends State<Student_Home> {
                                     ),
                                   ),
                                 );
+                              } else if (index.isEqual(1)) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Performance(
+                                      data_studentUser: _dataStudentUser,
+                                    ),
+                                  ),
+                                );
                               } else if (index.isEqual(3)) {
                                 Navigator.push(
                                   context,
@@ -1088,6 +1116,15 @@ class _Student_HomeState extends State<Student_Home> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => Schedule(
+                                  data_studentUser: _dataStudentUser,
+                                ),
+                              ),
+                            );
+                          } else if (index.isEqual(1)) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Performance(
                                   data_studentUser: _dataStudentUser,
                                 ),
                               ),

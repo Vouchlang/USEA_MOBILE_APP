@@ -507,7 +507,6 @@ class BuildAttScore extends StatelessWidget {
     required this.text,
     required this.customDialog,
   });
-
   @override
   Widget build(BuildContext context) {
     return Container(
