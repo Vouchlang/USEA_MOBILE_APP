@@ -96,7 +96,9 @@ List<Home_Screen> st_home_screen = [
   Home_Screen(
     name: 'វត្តមាន',
     img: 'assets/image/Stu_Att.png',
-    screen: Attendance(),
+    screen: InkWell(
+      onTap: () {},
+    ),
   ),
   Home_Screen(
     name: 'ការបង់ប្រាក់',

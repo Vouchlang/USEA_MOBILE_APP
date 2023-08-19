@@ -47,7 +47,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
     return Scaffold(
       backgroundColor: USecondaryColor,
       body: Center(
-        child: isLoading
+        child: up_events.isEmpty
             ? Center(
                 child: FutureBuilder<void>(
                   future: Future.delayed(Duration(seconds: 3)),

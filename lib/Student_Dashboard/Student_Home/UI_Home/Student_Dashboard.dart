@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_Home/Class_Home/Class_Home_Screen.dart';
+import 'package:usea_app/Student_Dashboard/Student_Attendance/UI_Attendance/Attendance.dart';
 import 'package:usea_app/Student_Dashboard/Student_Detail/UI_Detail/St_Detail.dart';
 import 'package:usea_app/Student_Dashboard/Student_JobHistory/UI_JobHistory/St_JobHistory.dart';
 import 'package:usea_app/Student_Dashboard/Student_Other_Class/Class_Feedback.dart';
@@ -562,11 +563,11 @@ class _Student_HomeState extends State<Student_Home> {
                                     ),
                                   ),
                                 );
-                              } else if (index.isEqual(1)) {
+                              } else if (index.isEqual(2)) {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Performance(
+                                    builder: (context) => Attendance(
                                       data_studentUser: _dataStudentUser,
                                     ),
                                   ),
@@ -863,6 +864,15 @@ class _Student_HomeState extends State<Student_Home> {
                                     ),
                                   ),
                                 );
+                              } else if (index.isEqual(2)) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Attendance(
+                                      data_studentUser: _dataStudentUser,
+                                    ),
+                                  ),
+                                );
                               } else if (index.isEqual(3)) {
                                 Navigator.push(
                                   context,
@@ -1125,6 +1135,15 @@ class _Student_HomeState extends State<Student_Home> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => Performance(
+                                  data_studentUser: _dataStudentUser,
+                                ),
+                              ),
+                            );
+                          } else if (index.isEqual(2)) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Attendance(
                                   data_studentUser: _dataStudentUser,
                                 ),
                               ),

@@ -19,7 +19,9 @@ class _ProgramState extends State<Program> {
 
   Future<void> fetchData() async {
     final response = await http.get(
-      Uri.parse('https://usea.edu.kh/api/webapi.php?action=study_program'),
+      Uri.parse(Get.locale?.languageCode == 'km'
+          ? 'https://usea.edu.kh/api/webapi.php?action=study_program'
+          : 'https://usea.edu.kh/api/webapi.php?action=study_program_en'),
     );
 
     if (response.statusCode == 200) {
@@ -27,18 +29,20 @@ class _ProgramState extends State<Program> {
 
       final List<dynamic> programDataList = jsonData['program_data'];
 
-      setState(() {
-        programData = List<Map<String, dynamic>>.from(programDataList);
-        majorNames = [];
-        for (final data in programData!) {
-          final majorNamesForFaculty =
-              (data['faculty_data']['major_name'] as List)
-                  .map<String>((major) => major['major_name'] as String)
-                  .toList();
-          majorNames.addAll(majorNamesForFaculty);
-        }
-        filteredMajorNames = majorNames;
-      });
+      if (mounted) {
+        setState(() {
+          programData = List<Map<String, dynamic>>.from(programDataList);
+          majorNames = [];
+          for (final data in programData!) {
+            final majorNamesForFaculty =
+                (data['faculty_data']['major_name'] as List)
+                    .map<String>((major) => major['major_name'] as String)
+                    .toList();
+            majorNames.addAll(majorNamesForFaculty);
+          }
+          filteredMajorNames = majorNames;
+        });
+      }
     } else {
       // Handle errors
       print('Failed to load data');
@@ -51,14 +55,19 @@ class _ProgramState extends State<Program> {
     fetchData();
   }
 
+  @override
   void updateSearchQuery(String query) {
     Future.delayed(Duration.zero, () {
-      setState(() {
-        searchQuery = query;
-        filteredMajorNames = majorNames
-            .where((major) => major.toLowerCase().contains(query.toLowerCase()))
-            .toList();
-      });
+      if (mounted) {
+        setState(() {
+          searchQuery = query;
+          final translatedQuery = query.tr;
+          filteredMajorNames = majorNames
+              .where((major) =>
+                  major.toLowerCase().contains(translatedQuery.toLowerCase()))
+              .toList();
+        });
+      }
     });
   }
 
@@ -135,6 +144,7 @@ class _ProgramState extends State<Program> {
         actions: [
           IconButton(
             icon: Icon(Icons.search),
+            color: UPrimaryColor,
             onPressed: () {
               showSearch(
                 context: context,
@@ -150,7 +160,7 @@ class _ProgramState extends State<Program> {
           ),
         ],
       ),
-      body: programData == null
+      body: programData == null || programData!.isEmpty
           ? Center(
               child: Center(
                 child: FutureBuilder<void>(
@@ -189,6 +199,7 @@ class _ProgramState extends State<Program> {
                     borderRadius: BorderRadius.circular(UPdMg_10),
                   ),
                   child: Container(
+                    padding: EdgeInsets.symmetric(vertical: UPdMg_5),
                     child: Theme(
                       data: Theme.of(context)
                           .copyWith(dividerColor: Colors.transparent),
@@ -243,7 +254,8 @@ class _ProgramState extends State<Program> {
                                       BorderRadius.circular(URoundedMedium),
                                   border: Border.all(color: UBGLightBlue),
                                 ),
-                                padding: EdgeInsets.all(UPdMg_5),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: UPdMg_8, horizontal: UPdMg_5),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -281,15 +293,15 @@ class MajorSearchDelegate extends SearchDelegate<String> {
   final List<String> majorNames;
   final List<String> filteredMajorNames;
   final Function(String) updateSearchQuery;
-  final Function(String) fetchEducationNames;
-  final Function(String) fetchMajorInfoData;
+  final Future<Map<String, dynamic>> Function(String) fetchMajorInfoData;
+  final Future<List<String>> Function(String) fetchEducationNames;
 
   MajorSearchDelegate({
     required this.majorNames,
     required this.filteredMajorNames,
     required this.updateSearchQuery,
-    required this.fetchEducationNames,
     required this.fetchMajorInfoData,
+    required this.fetchEducationNames,
   });
 
   @override
@@ -297,6 +309,7 @@ class MajorSearchDelegate extends SearchDelegate<String> {
     return [
       IconButton(
         icon: Icon(Icons.clear),
+        color: UPrimaryColor,
         onPressed: () {
           query = '';
           updateSearchQuery(query);
@@ -309,11 +322,10 @@ class MajorSearchDelegate extends SearchDelegate<String> {
   Widget buildResults(BuildContext context) {
     updateSearchQuery(query);
 
-    // Check if there's only one result, then navigate directly
     if (filteredMajorNames.length == 1) {
       final majorName = filteredMajorNames[0];
       navigateToMajorDetails(context, majorName);
-      return Container(); // Return an empty container
+      return Container();
     }
 
     return ListView.builder(
@@ -356,14 +368,17 @@ class MajorSearchDelegate extends SearchDelegate<String> {
     return ListView.builder(
       itemCount: suggestionList.length,
       itemBuilder: (context, index) {
-        final majorName = suggestionList[index]; // Get the major name
-
-        return ListTile(
-          title: Text(majorName.tr),
+        final majorName = suggestionList[index];
+        return InkWell(
           onTap: () {
-            // Navigate to MajorDetailsScreen directly
             navigateToMajorDetails(context, majorName);
           },
+          child: Container(
+            padding: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_15, UPdMg_10, 0),
+            child: Text(
+              majorName.tr,
+            ),
+          ),
         );
       },
     );
@@ -373,6 +388,7 @@ class MajorSearchDelegate extends SearchDelegate<String> {
   Widget buildLeading(BuildContext context) {
     return IconButton(
       icon: Icon(Icons.arrow_back),
+      color: UPrimaryColor,
       onPressed: () {
         close(context, '');
       },

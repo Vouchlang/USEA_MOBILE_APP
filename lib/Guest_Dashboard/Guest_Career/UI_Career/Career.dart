@@ -54,7 +54,7 @@ class _CareerState extends State<Career> {
       backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'ព័ត៌មានការងារ'.tr),
       body: Center(
-        child: isLoading
+        child: career.isEmpty
             ? Center(
                 child: FutureBuilder<void>(
                   future: Future.delayed(Duration(seconds: 3)),

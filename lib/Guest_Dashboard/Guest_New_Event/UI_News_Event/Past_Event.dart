@@ -51,7 +51,7 @@ class _Past_EventState extends State<Past_Event> {
     return Scaffold(
       backgroundColor: USecondaryColor,
       body: Center(
-        child: isLoading
+        child: past_events.isEmpty
             ? Center(
                 child: FutureBuilder<void>(
                   future: Future.delayed(Duration(seconds: 3)),

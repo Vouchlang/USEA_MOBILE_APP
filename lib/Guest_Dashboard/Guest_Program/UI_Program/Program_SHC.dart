@@ -58,6 +58,7 @@ class _Program_SHCState extends State<Program_SHC> {
                     });
                   },
                   child: AnimatedContainer(
+                    alignment: Alignment.center,
                     duration: Duration(milliseconds: 300),
                     margin: EdgeInsets.fromLTRB(
                         UPdMg_10, UPdMg_10, isLastIndex ? 10 : 0, UPdMg_10),
@@ -134,20 +135,21 @@ class _Program_SHCState extends State<Program_SHC> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
-              child: Text(
-                subject,
-                style: TextStyle(
-                  height: 1.5,
-                  fontSize: UTitleSize,
-                  fontWeight: UBodyWeight,
-                  color: UTextColor,
-                  fontFamily: UKFontFamily,
+              child: Container(
+                margin: EdgeInsets.only(right: UPdMg_15),
+                child: Text(
+                  subject.toString().tr,
+                  style: TextStyle(
+                    height: 1.5,
+                    fontSize: UTitleSize,
+                    fontWeight: UBodyWeight,
+                    color: UTextColor,
+                  ),
                 ),
               ),
             ),
             Row(
               mainAxisSize: MainAxisSize.min,
-              
               children: [
                 Container(
                   alignment: Alignment.center,
@@ -210,12 +212,20 @@ class _Program_SHCState extends State<Program_SHC> {
                   ),
                   Row(
                     children: [
-                      TitleTheme(
-                        text: 'ម៉ោង'.tr,
+                      Container(
+                        width: 55,
+                        alignment: Alignment.centerRight,
+                        child: TitleTheme(
+                          text: 'ម៉ោង'.tr,
+                        ),
                       ),
                       SizedBox(width: 15),
-                      TitleTheme(
-                        text: 'ក្រេឌីត'.tr,
+                      Container(
+                        alignment: Alignment.center,
+                        width: 55,
+                        child: TitleTheme(
+                          text: 'ក្រេឌីត'.tr,
+                        ),
                       ),
                     ],
                   ),

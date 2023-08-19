@@ -1,19 +1,68 @@
-// ignore_for_file: camel_case_types, non_constant_identifier_names
+class Attendances {
+  final String year_no;
+  final List<Semester> semesters;
 
-class Attendance_Data {
-  late final String subject;
-  late final int credit, hour;
-
-  Attendance_Data(
-      {required this.subject, required this.hour, required this.credit});
+  Attendances({
+    required this.year_no,
+    required this.semesters,
+  });
 }
 
-List<Attendance_Data> attendance_data = [
-  Attendance_Data(subject: "សេដ្ធកិច្ចវិទ្យា", hour: 45, credit: 3),
-  Attendance_Data(
-      subject: "ប្រវត្តិ និងវប្បធម៏អាសុីអាគ្នេយ៏", hour: 45, credit: 3),
-  Attendance_Data(subject: "រដ្ធបាលសាធារណៈ", hour: 45, credit: 3),
-  Attendance_Data(subject: "កុំព្រូទ័រសម្រាប់រដ្ធបាល", hour: 45, credit: 3),
-  Attendance_Data(subject: "ភាសាអង់គ្លេស I", hour: 45, credit: 3),
-  Attendance_Data(subject: "ភាសាចិន I", hour: 45, credit: 3),
-];
+class Semester {
+  final String semester_no;
+  final List<Subject> subjects;
+
+  Semester({
+    required this.semester_no,
+    required this.subjects,
+  });
+}
+
+class Subject {
+  final String id,
+      code,
+      name_kh,
+      hour,
+      credit,
+      attendance_a,
+      attendance_pm,
+      attendance_al,
+      attendance_all,
+      attendance_ps;
+  final List<Dates> dates;
+
+  Subject({
+    required this.id,
+    required this.code,
+    required this.name_kh,
+    required this.hour,
+    required this.credit,
+    required this.attendance_a,
+    required this.attendance_pm,
+    required this.attendance_al,
+    required this.attendance_all,
+    required this.attendance_ps,
+    required this.dates,
+  });
+}
+
+class Dates {
+  final String date_name;
+  final List<Sessions> sessions;
+
+  Dates({
+    required this.date_name,
+    required this.sessions,
+  });
+}
+
+class Sessions {
+  final String date, session, session_all, absent_status;
+
+  Sessions({
+    required this.date,
+    required this.session,
+    required this.session_all,
+    required this.absent_status,
+  });
+}

@@ -59,7 +59,7 @@ class _In_UniversityState extends State<In_University> {
     return Scaffold(
       backgroundColor: USecondaryColor,
       body: Center(
-        child: isLoading
+        child: i_scholarship.isEmpty
             ? Center(
                 child: FutureBuilder<void>(
                   future: Future.delayed(Duration(seconds: 3)),

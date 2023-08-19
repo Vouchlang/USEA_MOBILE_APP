@@ -30,7 +30,6 @@ class _PerformanceState extends State<Performance> {
   Future<void> _refreshData() async {
     String apiUrl =
         'http://192.168.3.87/usea/api/apidata.php?action=study_performance';
-
     try {
       final response = await http.post(
         Uri.parse(apiUrl),
@@ -294,16 +293,17 @@ class _PerformanceState extends State<Performance> {
                                                   Row(
                                                     children: [
                                                       buildTitleContainer(
-                                                        100,
+                                                        110,
                                                         'វត្តមាន'.tr,
                                                         Alignment.centerRight,
                                                       ),
                                                       VerticalDivider(
                                                         color: UGreyColor,
                                                         thickness: 0.5,
+                                                        width: 0,
                                                       ),
                                                       buildTitleContainer(
-                                                        50,
+                                                        65,
                                                         'ពិន្ទុ'.tr,
                                                         Alignment.centerLeft,
                                                       ),
@@ -333,7 +333,7 @@ class _PerformanceState extends State<Performance> {
                                                               margin: EdgeInsets
                                                                   .only(
                                                                       right:
-                                                                          20),
+                                                                          15),
                                                               alignment: Alignment
                                                                   .centerLeft,
                                                               child: Text(
@@ -366,6 +366,8 @@ class _PerformanceState extends State<Performance> {
                                                                     showDialog(
                                                                       context:
                                                                           context,
+                                                                      barrierDismissible:
+                                                                          false,
                                                                       builder:
                                                                           (BuildContext
                                                                               context) {
@@ -417,7 +419,7 @@ class _PerformanceState extends State<Performance> {
                                                                                       height: 4,
                                                                                     ),
                                                                                     Container(
-                                                                                      padding: EdgeInsets.all(UPdMg_8),
+                                                                                      padding: EdgeInsets.all(UPdMg_10),
                                                                                       width: UFullWidth,
                                                                                       child: Column(
                                                                                         mainAxisSize: MainAxisSize.min,
@@ -554,9 +556,10 @@ class _PerformanceState extends State<Performance> {
                                                                 color:
                                                                     UGreyColor,
                                                                 thickness: 0.5,
+                                                                width: 0,
                                                               ),
                                                               Container(
-                                                                width: 50,
+                                                                width: 65,
                                                                 alignment:
                                                                     Alignment
                                                                         .center,
@@ -565,6 +568,8 @@ class _PerformanceState extends State<Performance> {
                                                                     showDialog(
                                                                       context:
                                                                           context,
+                                                                      barrierDismissible:
+                                                                          false,
                                                                       builder:
                                                                           (BuildContext
                                                                               context) {
@@ -616,7 +621,7 @@ class _PerformanceState extends State<Performance> {
                                                                                       height: 4,
                                                                                     ),
                                                                                     Container(
-                                                                                      padding: EdgeInsets.all(UPdMg_8),
+                                                                                      padding: EdgeInsets.all(UPdMg_10),
                                                                                       width: UFullWidth,
                                                                                       child: Container(
                                                                                         padding: EdgeInsets.symmetric(vertical: UPdMg_5),
@@ -818,7 +823,7 @@ class _PerformanceState extends State<Performance> {
                                             padding: EdgeInsets.fromLTRB(
                                                 UPdMg_10,
                                                 UPdMg_10,
-                                                UPdMg_10,
+                                                UPdMg_15,
                                                 0),
                                             child: Row(
                                               mainAxisAlignment:
@@ -831,7 +836,7 @@ class _PerformanceState extends State<Performance> {
                                                   ),
                                                 ),
                                                 Container(
-                                                  width: 50,
+                                                  width: 65,
                                                   alignment:
                                                       Alignment.centerRight,
                                                   child: Text(
@@ -847,7 +852,7 @@ class _PerformanceState extends State<Performance> {
                                             padding: EdgeInsets.fromLTRB(
                                                 UPdMg_10,
                                                 UPdMg_10,
-                                                UPdMg_10,
+                                                UPdMg_15,
                                                 0),
                                             child: Row(
                                               mainAxisAlignment:
@@ -860,7 +865,7 @@ class _PerformanceState extends State<Performance> {
                                                   ),
                                                 ),
                                                 Container(
-                                                  width: 50,
+                                                  width: 65,
                                                   alignment:
                                                       Alignment.centerRight,
                                                   child: Text(
@@ -875,7 +880,7 @@ class _PerformanceState extends State<Performance> {
                                           Container(
                                             padding: EdgeInsets.symmetric(
                                                 vertical: UPdMg_10,
-                                                horizontal: UPdMg_10),
+                                                horizontal: UPdMg_15),
                                             child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.end,
@@ -887,7 +892,7 @@ class _PerformanceState extends State<Performance> {
                                                   ),
                                                 ),
                                                 Container(
-                                                  width: 50,
+                                                  width: 65,
                                                   alignment:
                                                       Alignment.centerRight,
                                                   child: Text(

@@ -206,14 +206,16 @@ class _Payment_UIState extends State<Payment_UI> {
                             sum + (double.tryParse(payment.moneyPaid) ?? 0.00),
                       );
 
-                      String formattedTotalPaid = totalPaid.toStringAsFixed(2);
+                      String formattedTotalPaid =
+                          totalPaid == 0.00 ? 'N/A' : totalPaid.toString();
 
                       double totalRem = payStudy.payments.isNotEmpty
                           ? double.tryParse(payStudy.payments.last.moneyRem) ??
                               0.00
                           : 0.00;
 
-                      String formattedtotalRem = totalRem.toStringAsFixed(2);
+                      String textTotalRem =
+                          totalRem == 0.00 ? 'N/A' : totalRem.toString();
 
                       return Padding(
                         padding: EdgeInsets.only(bottom: isLastIndex ? 5 : 0),
@@ -248,7 +250,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                       buildVerticalDividerAtt(),
                                       buildBody(
                                         75,
-                                        formattedTotalPaid.toString().isEmpty
+                                        formattedTotalPaid.toString() == 'N/A'
                                             ? 'N/A'
                                             : '\$ ${formattedTotalPaid.toString()}',
                                         UTextColor,
@@ -284,11 +286,9 @@ class _Payment_UIState extends State<Payment_UI> {
                                               ),
                                             ),
                                             child: Text(
-                                              formattedtotalRem
-                                                      .toString()
-                                                      .isEmpty
+                                              totalRem.toString().isEmpty
                                                   ? 'N/A'
-                                                  : '\$ ${formattedtotalRem.toString()}',
+                                                  : '\$ ${totalRem.toString()}',
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 fontSize: UBodySize,
@@ -302,6 +302,9 @@ class _Payment_UIState extends State<Payment_UI> {
                                   ),
                                 ),
                               ),
+                              !isLastIndex
+                                  ? buildDividerAtt()
+                                  : SizedBox.shrink(),
                             ],
                           ),
                         ),

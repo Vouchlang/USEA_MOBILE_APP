@@ -38,8 +38,9 @@ class _Student_DetailState extends State<Student_Detail> {
 
     try {
       var response = await http.post(
-        Uri.parse(
-            'http://192.168.3.87/usea/api/student_detail_success.php?action=login_student'),
+        Uri.parse(Get.locale?.languageCode == 'km'
+            ? 'http://192.168.3.87/usea/api/student_detail_success.php?action=login_student'
+            : 'http://192.168.3.87/usea/api/student_detail_success_en.php?action=login_student'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -259,12 +260,25 @@ class _Student_DetailState extends State<Student_Detail> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                buildHeaderDetail(_dataStDetail[index].name_kh,
-                                    UKFontFamily, UTitleSize16, UTitleWeight),
-                                buildHeaderDetail(_dataStDetail[index].name_en,
-                                    UEFontFamily, UTitleSize16, UBodyWeight),
                                 buildHeaderDetail(
-                                    _dataStDetail[index].student_id,
+                                  _dataStDetail[index].name_kh.isEmpty
+                                      ? 'N/A'
+                                      : _dataStDetail[index].name_kh,
+                                  UKFontFamily,
+                                  UTitleSize16,
+                                  UTitleWeight,
+                                ),
+                                buildHeaderDetail(
+                                    _dataStDetail[index].name_en.isEmpty
+                                        ? 'N/A'
+                                        : _dataStDetail[index].name_en,
+                                    UEFontFamily,
+                                    UTitleSize16,
+                                    UBodyWeight),
+                                buildHeaderDetail(
+                                    _dataStDetail[index].student_id.isEmpty
+                                        ? 'N/A'
+                                        : _dataStDetail[index].student_id,
                                     UEFontFamily,
                                     UBodySize,
                                     UBodyWeight),
@@ -278,19 +292,34 @@ class _Student_DetailState extends State<Student_Detail> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           buildBodyDetail(
-                              'ឆ្នាំ', _dataStDetail[index].year_name),
+                              'ឆ្នាំ',
+                              _dataStDetail[index].year_name.isEmpty
+                                  ? 'N/A'
+                                  : _dataStDetail[index].year_name),
                           buildVerticalDividerH_45(),
                           buildBodyDetail(
-                              'ឆមាស', _dataStDetail[index].semester_name),
+                              'ឆមាស',
+                              _dataStDetail[index].semester_name.isEmpty
+                                  ? 'N/A'
+                                  : _dataStDetail[index].semester_name),
                           buildVerticalDividerH_45(),
                           buildBodyDetail(
-                              'ជំនាន់', _dataStDetail[index].stage_name),
+                              'ជំនាន់',
+                              _dataStDetail[index].stage_name.isEmpty
+                                  ? 'N/A'
+                                  : _dataStDetail[index].stage_name),
                           buildVerticalDividerH_45(),
                           buildBodyDetail(
-                              'វគ្គ', _dataStDetail[index].term_name),
+                              'វគ្គ',
+                              _dataStDetail[index].term_name.isEmpty
+                                  ? 'N/A'
+                                  : _dataStDetail[index].term_name),
                           buildVerticalDividerH_45(),
-                          buildBodyDetail('ឆ្នាំមូលដ្ឋាន',
-                              _dataStDetail[index].academic_year),
+                          buildBodyDetail(
+                              'ឆ្នាំមូលដ្ឋាន',
+                              _dataStDetail[index].academic_year.isEmpty
+                                  ? 'N/A'
+                                  : _dataStDetail[index].academic_year),
                         ],
                       ),
                       buildDividerStDetail(),

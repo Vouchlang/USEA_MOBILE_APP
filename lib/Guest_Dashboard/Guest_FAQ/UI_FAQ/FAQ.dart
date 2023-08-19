@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '/Custom_AppBar.dart';
 import '/Custom_Widget/CustomText.dart';
 import '/theme_builder.dart';
@@ -19,8 +20,9 @@ class _FAQState extends State<FAQ> {
 
   Future<void> getData() async {
     try {
-      var res = await http
-          .get(Uri.parse("https://usea.edu.kh/api/webapi.php?action=faq"));
+      var res = await http.get(Uri.parse(Get.locale?.languageCode == 'km'
+          ? "https://usea.edu.kh/api/webapi.php?action=faq"
+          : "https://usea.edu.kh/api/webapi.php?action=faq_en"));
       var r = json.decode(res.body);
       if (r is List<dynamic>) {
         faq = r.map((e) => Class_FAQ.fromJson(e)).toList();
@@ -51,7 +53,7 @@ class _FAQState extends State<FAQ> {
       backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'FAQ'),
       body: Center(
-        child: isLoading
+        child: faq.isEmpty
             ? Center(
                 child: FutureBuilder<void>(
                   future: Future.delayed(Duration(seconds: 3)),
@@ -88,7 +90,7 @@ class _FAQState extends State<FAQ> {
                                 collapsedIconColor: UPrimaryColor,
                                 iconColor: UPrimaryColor,
                                 title: buildFAQ(
-                                    faq[index].question, TextAlign.left),
+                                    faq[index].question, TextAlign.justify),
                                 textColor: UTextColor,
                                 children: [
                                   Container(
