@@ -214,9 +214,6 @@ class _Payment_UIState extends State<Payment_UI> {
                               0.00
                           : 0.00;
 
-                      String textTotalRem =
-                          totalRem == 0.00 ? 'N/A' : totalRem.toString();
-
                       return Padding(
                         padding: EdgeInsets.only(bottom: isLastIndex ? 5 : 0),
                         child: IntrinsicHeight(
@@ -225,7 +222,8 @@ class _Payment_UIState extends State<Payment_UI> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                padding: EdgeInsets.all(UPdMg_8),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: UPdMg_8, horizontal: 10),
                                 child: IntrinsicHeight(
                                   child: Row(
                                     mainAxisAlignment:
@@ -321,10 +319,10 @@ class _Payment_UIState extends State<Payment_UI> {
     return Dialog(
       elevation: 5,
       backgroundColor: UBackgroundColor,
-      insetPadding: EdgeInsets.all(10),
+      insetPadding: EdgeInsets.all(UPdMg_10),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(10.0),
+          Radius.circular(UPdMg_10),
         ),
       ),
       child: Stack(
@@ -334,14 +332,14 @@ class _Payment_UIState extends State<Payment_UI> {
             children: [
               Container(
                 padding: EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 10,
+                  vertical: UPdMg_10,
+                  horizontal: UPdMg_10,
                 ),
                 width: UFullWidth,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10.0),
-                    topRight: Radius.circular(10.0),
+                    topLeft: Radius.circular(UPdMg_10),
+                    topRight: Radius.circular(UPdMg_10),
                   ),
                   color: UBGLightBlue,
                 ),
@@ -380,7 +378,7 @@ class _Payment_UIState extends State<Payment_UI> {
                             width: 2,
                             color: UGreyColor,
                           ),
-                          buildHeaderTitle(95, 'លេខវិក័យបត្រ'),
+                          buildHeaderTitle(90, 'លេខវិក័យបត្រ'),
                           VerticalDivider(
                             width: 2,
                             color: UGreyColor,
@@ -472,7 +470,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                         children: [
                                           IntrinsicHeight(
                                             child: Container(
-                                              padding: EdgeInsets.all(UPdMg_8),
+                                              padding: EdgeInsets.all(UPdMg_5),
                                               child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
@@ -488,7 +486,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                                     color: UGreyColor,
                                                   ),
                                                   buildBody(
-                                                    75,
+                                                    90,
                                                     'N/A',
                                                     UTextColor,
                                                   ),
@@ -611,8 +609,9 @@ class _Payment_UIState extends State<Payment_UI> {
   }
 
   Widget buildOtherPayment() {
-    return Column(children: [
-      Padding(
+    return Column(
+      children: [
+        Padding(
           padding: EdgeInsets.all(UPdMg_5),
           child: Card(
             shape: RoundedRectangleBorder(
@@ -640,8 +639,6 @@ class _Payment_UIState extends State<Payment_UI> {
                           buildHeaderTitle(70, 'ទឹកប្រាក់ត្រូវបង់'),
                           buildVerticalDividerW_2(),
                           buildHeaderTitle(70, 'ទឹកប្រាក់បានបង់'),
-                          // buildVerticalDividerW_5(),
-                          // buildHeaderTitle(55, 'ទឹកប្រាក់នៅសល់'),
                         ],
                       ),
                     ),
@@ -770,17 +767,6 @@ class _Payment_UIState extends State<Payment_UI> {
                                                       .o_money_paid,
                                               UTextColor,
                                             ),
-                                            // buildVerticalDividerW_2(),
-                                            // buildBody(
-                                            //   55,
-                                            //   _dataOther[index]
-                                            //           .o_money_rem
-                                            //           .isEmpty
-                                            //       ? 'N/A'
-                                            //       : _dataOther[index]
-                                            //           .o_money_rem,
-                                            //   URedColor,
-                                            // ),
                                           ],
                                         ),
                                       ),
@@ -795,8 +781,10 @@ class _Payment_UIState extends State<Payment_UI> {
                 ],
               ),
             ),
-          )),
-    ]);
+          ),
+        ),
+      ],
+    );
   }
 
   Widget buildEmptyData() {

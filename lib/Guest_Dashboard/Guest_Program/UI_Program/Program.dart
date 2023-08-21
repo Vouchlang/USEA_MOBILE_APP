@@ -260,12 +260,14 @@ class _ProgramState extends State<Program> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
-                                      majorName.toString().tr,
-                                      textAlign: TextAlign.justify,
-                                      style: TextStyle(
-                                        fontSize: UTitleSize,
-                                        color: UTextColor,
+                                    Expanded(
+                                      child: Text(
+                                        majorName.toString().tr,
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          fontSize: UTitleSize,
+                                          color: UTextColor,
+                                        ),
                                       ),
                                     ),
                                     Icon(
@@ -308,7 +310,10 @@ class MajorSearchDelegate extends SearchDelegate<String> {
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
-        icon: Icon(Icons.clear),
+        icon: Icon(
+          Icons.clear,
+          size: 18,
+        ),
         color: UPrimaryColor,
         onPressed: () {
           query = '';
@@ -387,8 +392,11 @@ class MajorSearchDelegate extends SearchDelegate<String> {
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.arrow_back),
-      color: UPrimaryColor,
+      icon: Icon(
+        Icons.arrow_back_ios,
+        color: UPrimaryColor,
+        size: 18,
+      ),
       onPressed: () {
         close(context, '');
       },

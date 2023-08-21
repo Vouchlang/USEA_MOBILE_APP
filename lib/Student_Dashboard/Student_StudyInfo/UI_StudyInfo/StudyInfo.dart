@@ -115,8 +115,9 @@ class _Study_InfoState extends State<Study_Info> {
                     ),
                     color: UBackgroundColor,
                     margin: isLastIndex
-                        ? EdgeInsets.fromLTRB(5, 10, 5, 10)
-                        : EdgeInsets.fromLTRB(5, 10, 5, 5),
+                        ? EdgeInsets.fromLTRB(
+                            UPdMg_5, UPdMg_5, UPdMg_5, UPdMg_10)
+                        : EdgeInsets.all(UPdMg_5),
                     child: Padding(
                       padding: EdgeInsets.all(UPdMg_8),
                       child: IntrinsicHeight(

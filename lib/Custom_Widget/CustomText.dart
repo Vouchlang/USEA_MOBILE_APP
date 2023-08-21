@@ -132,6 +132,38 @@ class NoWeightTitleTheme extends StatelessWidget {
 }
 // *@ End No Weight Title
 
+//*@ Career Card Row
+
+Widget buildCareerCardRow(
+  String textTitle,
+  textValue,
+) {
+  return Row(
+    children: [
+      Container(
+        width: 125,
+        child: Text(
+          textTitle.tr,
+          style: TextStyle(fontSize: UTitleSize),
+        ),
+      ),
+      Expanded(
+        child: Text(
+          textValue,
+          style: TextStyle(
+            fontSize: UTitleSize,
+            fontWeight: UBodyWeight,
+            color: UTextColor,
+            fontFamily: UKFontFamily,
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+// *@ End Career Card Row
+
 // *@ Normal Title 16px UTextColor
 class TitleSize16_Theme extends StatelessWidget {
   final String text;
@@ -278,214 +310,6 @@ Widget buildTitleContainer(
   );
 }
 
-// class BuildSemesterPerformance extends StatelessWidget {
-//   final String semester, totalScore, rank, gpa;
-//   final int itemCount;
-//   final List<String> subject;
-//   final Widget dialog1, dialog2;
-//   final List<double> attend, score;
-
-//   const BuildSemesterPerformance(
-//       {super.key,
-//       required this.semester,
-//       required this.itemCount,
-//       required this.subject,
-//       required this.dialog1,
-//       required this.attend,
-//       required this.dialog2,
-//       required this.score,
-//       required this.totalScore,
-//       required this.rank,
-//       required this.gpa});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       margin: EdgeInsets.only(bottom: 5),
-//       child: Card(
-//         elevation: 1,
-//         shadowColor: ULightGreyColor,
-//         shape: RoundedRectangleBorder(
-//           side: BorderSide(
-//             color: UBackgroundColor,
-//             width: 0.5,
-//           ),
-//           borderRadius: BorderRadius.circular(URoundedLarge),
-//         ),
-//         margin: EdgeInsets.all(UPdMg_10),
-//         color: UBackgroundColor,
-//         child: Column(
-//           mainAxisSize: MainAxisSize.min,
-//           children: [
-//             Container(
-//               padding: EdgeInsets.symmetric(
-//                 vertical: UPdMg_15,
-//                 horizontal: UPdMg_10,
-//               ),
-//               width: UFullWidth,
-//               decoration: BoxDecoration(
-//                 borderRadius: BorderRadius.only(
-//                   topLeft: Radius.circular(URoundedLarge),
-//                   topRight: Radius.circular(URoundedLarge),
-//                   bottomRight: Radius.circular(UZeroPixel),
-//                   bottomLeft: Radius.circular(UZeroPixel),
-//                 ),
-//                 color: UBGLightBlue,
-//               ),
-//               child: IntrinsicHeight(
-//                 child: Row(
-//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                   children: [
-//                     Text(
-//                       semester.tr,
-//                       textAlign: TextAlign.center,
-//                       style: TextStyle(
-//                         color: UPrimaryColor,
-//                         fontSize: UTitleSize,
-//                         fontWeight: UTitleWeight,
-//                       ),
-//                     ),
-//                     Row(
-//                       children: [
-//                         buildTitleContainer(
-//                           100,
-//                           'វត្តមាន',
-//                           Alignment.centerRight,
-//                         ),
-//                         VerticalDivider(
-//                           color: UGreyColor,
-//                           thickness: 0.5,
-//                         ),
-//                         buildTitleContainer(
-//                           50,
-//                           'ពិន្ទុ',
-//                           Alignment.centerLeft,
-//                         ),
-//                       ],
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//             ),
-//             Container(
-//               padding: EdgeInsets.all(UPdMg_10),
-//               width: UFullWidth,
-//               child: ListView.builder(
-//                 physics: NeverScrollableScrollPhysics(),
-//                 shrinkWrap: true,
-//                 itemCount: itemCount,
-//                 itemBuilder: (context, index) {
-//                   return Container(
-//                     padding: EdgeInsets.symmetric(vertical: UPdMg_10),
-//                     child: Column(
-//                       mainAxisSize: MainAxisSize.min,
-//                       children: [
-//                         IntrinsicHeight(
-//                           child: Row(
-//                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                             children: [
-//                               Expanded(
-//                                 child: Text(
-//                                   subject[index],
-//                                   style: TextStyle(
-//                                     color: UTextColor,
-//                                     fontSize: UTitleSize,
-//                                     fontFamily: UKFontFamily,
-//                                   ),
-//                                 ),
-//                               ),
-//                               Row(
-//                                 mainAxisAlignment:
-//                                     MainAxisAlignment.spaceBetween,
-//                                 children: [
-//                                   BuildAttScore(
-//                                     customDialog: dialog1,
-//                                     text: attend[index].toStringAsFixed(2),
-//                                   ),
-//                                   VerticalDivider(
-//                                     color: UGreyColor,
-//                                     thickness: 0.5,
-//                                   ),
-//                                   BuildAttScore(
-//                                     customDialog: dialog2,
-//                                     text: score[index].toStringAsFixed(2),
-//                                   ),
-//                                 ],
-//                               ),
-//                             ],
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                   );
-//                 },
-//               ),
-//             ),
-//             Container(
-//               padding: EdgeInsets.symmetric(
-//                 vertical: UPdMg_5,
-//                 horizontal: UPdMg_10,
-//               ),
-//               child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.end,
-//                 children: [
-//                   Text(
-//                     'មធ្យមភាគៈ'.tr,
-//                     style: TextStyle(
-//                       color: UPrimaryColor,
-//                     ),
-//                   ),
-//                   buildScoreTotal(totalScore),
-//                 ],
-//               ),
-//             ),
-//             Container(
-//               padding: EdgeInsets.symmetric(
-//                 vertical: UPdMg_5,
-//                 horizontal: UPdMg_10,
-//               ),
-//               alignment: Alignment.center,
-//               child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.end,
-//                 children: [
-//                   Text(
-//                     'ចំណាត់ថ្នាក់ប្រចាំថ្នាក់ៈ'.tr,
-//                     style: TextStyle(
-//                       color: UPrimaryColor,
-//                     ),
-//                   ),
-//                   buildScoreTotal(rank),
-//                 ],
-//               ),
-//             ),
-//             Container(
-//               padding: EdgeInsets.symmetric(
-//                 vertical: UPdMg_5,
-//                 horizontal: UPdMg_10,
-//               ),
-//               alignment: Alignment.center,
-//               child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.end,
-//                 children: [
-//                   Text(
-//                     'GPA:',
-//                     style: TextStyle(
-//                       color: UPrimaryColor,
-//                     ),
-//                   ),
-//                   buildScoreTotal(gpa),
-//                 ],
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// *@ End Screen_Performance widget
-
 // *@ ScoreTotal
 Widget buildScoreTotal(String text) {
   return Container(
@@ -590,13 +414,11 @@ Widget buildNum(
   String text,
   Color color,
 ) {
-  return Container(
-    child: Text(
-      text,
-      style: TextStyle(
-        color: color,
-        fontSize: UTitleSize,
-      ),
+  return Text(
+    text,
+    style: TextStyle(
+      color: color,
+      fontSize: UTitleSize,
     ),
   );
 }
@@ -641,6 +463,7 @@ Widget buildTextBody(
 ) {
   return Container(
     width: 75,
+    margin: EdgeInsets.symmetric(vertical: 5),
     child: Text(
       text,
       textAlign: TextAlign.center,
@@ -744,10 +567,10 @@ Widget buildHeaderDetail(
   FontWeight fontWeight,
 ) {
   return Container(
-    height: 25,
-    alignment: Alignment.center,
+    alignment: Alignment.centerLeft,
     child: Text(
       text,
+      textAlign: TextAlign.justify,
       style: TextStyle(
         color: UPrimaryColor,
         fontFamily: font,
@@ -794,6 +617,7 @@ Widget buildTailDetail(
   text,
 ) {
   return Row(
+    mainAxisSize: MainAxisSize.min,
     children: [
       Image.asset(
         image,
@@ -802,24 +626,27 @@ Widget buildTailDetail(
       SizedBox(
         width: 10,
       ),
-      Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: TextStyle(
-              color: UPrimaryColor,
-              fontSize: UBodySize,
+      Expanded(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                color: UPrimaryColor,
+                fontSize: UBodySize,
+              ),
             ),
-          ),
-          Text(
-            text,
-            style: TextStyle(
-              fontSize: UTitleSize,
-              fontFamily: UKFontFamily,
+            Text(
+              text,
+              style: TextStyle(
+                fontSize: UTitleSize,
+                fontFamily: UKFontFamily,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       )
     ],
   );

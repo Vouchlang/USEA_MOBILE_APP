@@ -94,8 +94,54 @@ class _Job_HistoryState extends State<Job_History> {
                     child: CircularProgressIndicator(),
                   );
                 } else {
-                  return Center(
-                    child: Text('No Data'),
+                  return Padding(
+                    padding: EdgeInsets.all(UPdMg_5),
+                    child: Card(
+                      elevation: 2,
+                      shadowColor: ULightGreyColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(URoundedLarge),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(UPdMg_10),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  'កាលបរិច្ឆេទចូលបម្រើការងារ​\t\t\t\t\t'.tr +
+                                      'N/A',
+                                  style: TextStyle(
+                                    fontSize: UTitleSize,
+                                    fontWeight: UTitleWeight,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Divider(),
+                            Row(
+                              children: [
+                                Container(
+                                  width: 125,
+                                  child: Text(
+                                    'ស្ថានភាពការងារ'.tr,
+                                    style: TextStyle(fontSize: UTitleSize),
+                                  ),
+                                ),
+                                NoWeightTitleTheme(text: 'N/A'),
+                              ],
+                            ),
+                            Divider(),
+                            buildCareerCardRow('ស្ថាប័ន', 'N/A'),
+                            Divider(),
+                            buildCareerCardRow('មុខតំណែង', 'N/A'),
+                            Divider(),
+                            buildCareerCardRow('ប្រាក់បៀវត្ស', 'N/A'),
+                          ],
+                        ),
+                      ),
+                    ),
                   );
                 }
               },
@@ -103,7 +149,7 @@ class _Job_HistoryState extends State<Job_History> {
           : RefreshIndicator(
               onRefresh: _refreshData,
               child: ListView.builder(
-                padding: EdgeInsets.all(9),
+                padding: EdgeInsets.all(UPdMg_5),
                 itemCount: _dataJobHistory.length,
                 itemBuilder: (context, index) {
                   return Card(
@@ -134,84 +180,29 @@ class _Job_HistoryState extends State<Job_History> {
                             ],
                           ),
                           Divider(),
-                          Row(
-                            children: [
-                              Container(
-                                width: 125,
-                                child: Text(
-                                  'ស្ថានភាពការងារ'.tr,
-                                  style: TextStyle(fontSize: UTitleSize),
-                                ),
-                              ),
-                              NoWeightTitleTheme(
-                                  text:
-                                      _dataJobHistory[index].status_name.isEmpty
-                                          ? 'N/A'
-                                          : _dataJobHistory[index].status_name),
-                            ],
-                          ),
+                          buildCareerCardRow(
+                              'ស្ថានភាពការងារ',
+                              _dataJobHistory[index].status_name.isEmpty
+                                  ? 'N/A'
+                                  : _dataJobHistory[index].status_name),
                           Divider(),
-                          Row(
-                            children: [
-                              Container(
-                                width: 125,
-                                child: Text(
-                                  'ស្ថាប័ន'.tr,
-                                  style: TextStyle(fontSize: UTitleSize),
-                                ),
-                              ),
-                              Expanded(
-                                child: NoWeightTitleTheme(
-                                    text:
-                                        _dataJobHistory[index].workPlace.isEmpty
-                                            ? 'N/A'
-                                            : _dataJobHistory[index].workPlace),
-                              ),
-                            ],
-                          ),
+                          buildCareerCardRow(
+                              'ស្ថាប័ន',
+                              _dataJobHistory[index].workPlace.isEmpty
+                                  ? 'N/A'
+                                  : _dataJobHistory[index].workPlace),
                           Divider(),
-                          Row(
-                            children: [
-                              Container(
-                                width: 125,
-                                child: Text(
-                                  'មុខតំណែង'.tr,
-                                  style: TextStyle(
-                                    fontSize: UTitleSize,
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: NoWeightTitleTheme(
-                                  text: _dataJobHistory[index].position.isEmpty
-                                      ? 'N/A'
-                                      : _dataJobHistory[index].position,
-                                ),
-                              ),
-                            ],
-                          ),
+                          buildCareerCardRow(
+                              'មុខតំណែង',
+                              _dataJobHistory[index].position.isEmpty
+                                  ? 'N/A'
+                                  : _dataJobHistory[index].position),
                           Divider(),
-                          Row(
-                            children: [
-                              Container(
-                                width: 125,
-                                child: Text(
-                                  'ប្រាក់បៀវត្ស'.tr,
-                                  style: TextStyle(
-                                    fontSize: UTitleSize,
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                _dataJobHistory[index].salary.isEmpty
-                                    ? 'N/A'
-                                    : _dataJobHistory[index].salary,
-                                style: TextStyle(
-                                  fontSize: UTitleSize,
-                                ),
-                              ),
-                            ],
-                          ),
+                          buildCareerCardRow(
+                              'ប្រាក់បៀវត្ស',
+                              _dataJobHistory[index].salary.isEmpty
+                                  ? 'N/A'
+                                  : _dataJobHistory[index].salary),
                         ],
                       ),
                     ),

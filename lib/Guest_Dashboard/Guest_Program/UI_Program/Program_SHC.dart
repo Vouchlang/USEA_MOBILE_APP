@@ -170,14 +170,14 @@ class _Program_SHCState extends State<Program_SHC> {
       );
     }).toList();
 
-    int totalHours = 0;
-    int totalCredits = 0;
+    double totalHours = 0;
+    double totalCredits = 0;
 
     semesterData.forEach((subjectData) {
       var hour = subjectData['Hour'];
       var credit = subjectData['Credit'];
-      totalHours += int.parse(hour ?? '0');
-      totalCredits += int.parse(credit ?? '0');
+      totalHours += double.parse(hour ?? '0');
+      totalCredits += double.parse(credit ?? '0');
     });
 
     return [
@@ -187,7 +187,6 @@ class _Program_SHCState extends State<Program_SHC> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(URoundedLarge),
         ),
-        margin: EdgeInsets.all(UPdMg_10),
         color: UBackgroundColor,
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -248,7 +247,7 @@ class _Program_SHCState extends State<Program_SHC> {
                       Container(
                         width: 55,
                         alignment: Alignment.center,
-                        child: TitleTheme(text: totalHours.toString()),
+                        child: TitleTheme(text: totalHours.toStringAsFixed(0)),
                       ),
                       SizedBox(
                         width: 10,
@@ -257,7 +256,8 @@ class _Program_SHCState extends State<Program_SHC> {
                         width: 30,
                         alignment: Alignment.center,
                         margin: EdgeInsets.only(right: UPdMg_10),
-                        child: TitleTheme(text: totalCredits.toString()),
+                        child:
+                            TitleTheme(text: totalCredits.toStringAsFixed(0)),
                       ),
                     ],
                   ),

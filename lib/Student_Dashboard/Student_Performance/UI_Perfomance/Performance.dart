@@ -823,7 +823,7 @@ class _PerformanceState extends State<Performance> {
                                             padding: EdgeInsets.fromLTRB(
                                                 UPdMg_10,
                                                 UPdMg_10,
-                                                UPdMg_15,
+                                                UPdMg_10,
                                                 0),
                                             child: Row(
                                               mainAxisAlignment:
@@ -837,6 +837,8 @@ class _PerformanceState extends State<Performance> {
                                                 ),
                                                 Container(
                                                   width: 65,
+                                                  padding: EdgeInsets.only(
+                                                      right: UPdMg_15),
                                                   alignment:
                                                       Alignment.centerRight,
                                                   child: Text(
@@ -852,7 +854,7 @@ class _PerformanceState extends State<Performance> {
                                             padding: EdgeInsets.fromLTRB(
                                                 UPdMg_10,
                                                 UPdMg_10,
-                                                UPdMg_15,
+                                                UPdMg_10,
                                                 0),
                                             child: Row(
                                               mainAxisAlignment:
@@ -866,6 +868,8 @@ class _PerformanceState extends State<Performance> {
                                                 ),
                                                 Container(
                                                   width: 65,
+                                                  padding: EdgeInsets.only(
+                                                      right: UPdMg_15),
                                                   alignment:
                                                       Alignment.centerRight,
                                                   child: Text(
@@ -878,9 +882,11 @@ class _PerformanceState extends State<Performance> {
                                             ),
                                           ),
                                           Container(
-                                            padding: EdgeInsets.symmetric(
-                                                vertical: UPdMg_10,
-                                                horizontal: UPdMg_15),
+                                            padding: EdgeInsets.fromLTRB(
+                                                UPdMg_10,
+                                                UPdMg_10,
+                                                UPdMg_10,
+                                                UPdMg_15),
                                             child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.end,
@@ -893,6 +899,8 @@ class _PerformanceState extends State<Performance> {
                                                 ),
                                                 Container(
                                                   width: 65,
+                                                  padding: EdgeInsets.only(
+                                                      right: UPdMg_15),
                                                   alignment:
                                                       Alignment.centerRight,
                                                   child: Text(
