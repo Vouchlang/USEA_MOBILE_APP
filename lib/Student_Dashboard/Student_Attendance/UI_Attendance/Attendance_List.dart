@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:usea_app/Student_Dashboard/Student_Attendance/UI_Attendance/Attendance_Detail.dart';
 import 'dart:convert';
-
 import '../../../Custom_AppBar.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
@@ -80,6 +79,7 @@ class _AttendanceListState extends State<AttendanceList> {
                 id: subjectData['id'] ?? 'N/A',
                 code: subjectData['code'] ?? 'N/A',
                 name_kh: subjectData['name_kh'] ?? 'N/A',
+                name_en: subjectData['name_en'] ?? 'N/A',
                 hour: subjectData['hour'] ?? 'N/A',
                 credit: subjectData['credit'] ?? 'N/A',
                 attendance_a: subjectData['attendance_a'] ?? 'N/A',
@@ -112,8 +112,6 @@ class _AttendanceListState extends State<AttendanceList> {
         setState(() {
           attendances = attendanceList;
         });
-
-        print(attendances);
       } else {
         // Handle error case
         print('Request failed with status: ${response.statusCode}');
@@ -222,7 +220,7 @@ class _AttendanceListState extends State<AttendanceList> {
                             UYellowColor,
                           ),
                           buildAttList(
-                            'អវត្តមានមានច្បាប់',
+                            'សុំច្បាប់',
                             UOrangeColor,
                           ),
                           buildAttList(
@@ -278,8 +276,11 @@ class _AttendanceListState extends State<AttendanceList> {
                                               onTap: () {
                                                 Get.to(
                                                   Attendance_Detail(
-                                                    subjectName:
-                                                        subject.name_kh,
+                                                    subjectName: Get.locale
+                                                                ?.languageCode ==
+                                                            'km'
+                                                        ? subject.name_kh
+                                                        : subject.name_en,
                                                     subjectDate: subject.dates,
                                                   ),
                                                 );
@@ -297,7 +298,10 @@ class _AttendanceListState extends State<AttendanceList> {
                                                       Container(
                                                         width: 165,
                                                         child: Text(
-                                                          subject.name_kh,
+                                                          Get.locale?.languageCode ==
+                                                                  'km'
+                                                              ? subject.name_kh
+                                                              : subject.name_en,
                                                           style: TextStyle(
                                                             height: 1.5,
                                                             fontSize:
@@ -305,8 +309,6 @@ class _AttendanceListState extends State<AttendanceList> {
                                                             fontWeight:
                                                                 UTitleWeight,
                                                             color: UTextColor,
-                                                            fontFamily:
-                                                                UKFontFamily,
                                                           ),
                                                         ),
                                                       ),

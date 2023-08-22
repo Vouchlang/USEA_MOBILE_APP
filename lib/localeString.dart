@@ -175,7 +175,7 @@ class LocaleString extends Translations {
           // Student Attendance
           'វត្តមាន\t': 'វត្តមាន\t',
           'យឺត': 'យឺត',
-          'អវត្តមានមានច្បាប់': 'អវត្តមានមានច្បាប់',
+          'សុំច្បាប់': 'សុំច្បាប់',
           'អវត្តមាន': 'អវត្តមាន',
           '\tក្រេឌីត\t': '\tក្រេឌីត\t',
           '\tម៉ោង': '\tម៉ោង',
@@ -394,7 +394,7 @@ class LocaleString extends Translations {
           // Student Attendance
           'វត្តមាន\t': 'Present',
           'យឺត': 'Late',
-          'អវត្តមានមានច្បាប់': 'AWOP',
+          'សុំច្បាប់': 'Permission',
           'អវត្តមាន': 'Absent',
           '\tក្រេឌីត\t': '\tCredits\t',
           '\tម៉ោង': '\tHours',

@@ -27,7 +27,6 @@ class _AttendanceState extends State<Attendance> {
   void initState() {
     super.initState();
     _refreshData();
-    print(_displayLastSemesterSubjects);
   }
 
   Future<void> _refreshData() async {
@@ -81,6 +80,7 @@ class _AttendanceState extends State<Attendance> {
                 id: subjectData['id'] ?? 'N/A',
                 code: subjectData['code'] ?? 'N/A',
                 name_kh: subjectData['name_kh'] ?? 'N/A',
+                name_en: subjectData['name_en'] ?? 'N/A',
                 hour: subjectData['hour'] ?? 'N/A',
                 credit: subjectData['credit'] ?? 'N/A',
                 attendance_a: subjectData['attendance_a'] ?? 'N/A',
@@ -184,7 +184,7 @@ class _AttendanceState extends State<Attendance> {
                           children: [
                             buildAttList('វត្តមាន\t', UScoreColor),
                             buildAttList('យឺត', UYellowColor),
-                            buildAttList('អវត្តមានមានច្បាប់', UOrangeColor),
+                            buildAttList('សុំច្បាប់', UOrangeColor),
                             buildAttList('អវត្តមាន', URedColor),
                           ],
                         ),
@@ -278,13 +278,14 @@ class _AttendanceState extends State<Attendance> {
                                   Container(
                                     width: 165,
                                     child: Text(
-                                      subject.name_kh,
+                                      Get.locale?.languageCode == 'km'
+                                          ? subject.name_kh
+                                          : subject.name_en,
                                       style: TextStyle(
                                         height: 1.5,
                                         fontSize: UTitleSize,
                                         fontWeight: UTitleWeight,
                                         color: UTextColor,
-                                        fontFamily: UKFontFamily,
                                       ),
                                     ),
                                   ),

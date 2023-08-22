@@ -286,7 +286,35 @@ class CustomTextTheme extends StatelessWidget {
     );
   }
 }
-// *@ End General custom text
+
+// *@ Attendance custom text
+class CustomAttTextTheme extends StatelessWidget {
+  final String text;
+  final double size;
+  final Color color;
+  final FontWeight fontWeight;
+
+  const CustomAttTextTheme({
+    super.key,
+    required this.text,
+    required this.size,
+    required this.color,
+    required this.fontWeight,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: size,
+        fontWeight: fontWeight,
+        color: color,
+      ),
+    );
+  }
+}
+// *@ End Attendance custom text
 
 // *@ Screen_Performance widget
 Widget buildTitleContainer(
@@ -457,12 +485,47 @@ Widget buildHeader(
   );
 }
 
+Widget buildAttDetailHeader(
+  String text,
+) {
+  return Container(
+    width: 100,
+    child: Text(
+      text.tr,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        color: UPrimaryColor,
+        fontSize: UBodySize,
+        fontWeight: UTitleWeight,
+      ),
+    ),
+  );
+}
+
 Widget buildTextBody(
   String text,
   Color color,
 ) {
   return Container(
     width: 75,
+    margin: EdgeInsets.symmetric(vertical: 5),
+    child: Text(
+      text,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: UBodySize,
+        color: color,
+      ),
+    ),
+  );
+}
+
+Widget buildAttTextBody(
+  String text,
+  Color color,
+) {
+  return Container(
+    width: 100,
     margin: EdgeInsets.symmetric(vertical: 5),
     child: Text(
       text,

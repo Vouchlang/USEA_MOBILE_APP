@@ -37,7 +37,7 @@ class _Attendance_DetailState extends State<Attendance_Detail> {
             children: [
               Container(
                 padding: EdgeInsets.symmetric(
-                  vertical: UPdMg_10,
+                  vertical: UPdMg_15,
                   horizontal: UPdMg_10,
                 ),
                 width: UFullWidth,
@@ -48,7 +48,7 @@ class _Attendance_DetailState extends State<Attendance_Detail> {
                   ),
                   color: UBGLightBlue,
                 ),
-                child: CustomTextTheme(
+                child: CustomAttTextTheme(
                   text: widget.subjectName,
                   color: UPrimaryColor,
                   fontWeight: UTitleWeight,
@@ -71,7 +71,7 @@ class _Attendance_DetailState extends State<Attendance_Detail> {
                                 children: [
                                   buildHeader('កាលបរិច្ឆេទ'.tr),
                                   buildVerticalDividerAtt(),
-                                  buildHeader('Session'.tr),
+                                  buildAttDetailHeader('Session'.tr),
                                   buildVerticalDividerAtt(),
                                   buildHeader('វត្តមាន'.tr),
                                 ],
@@ -126,17 +126,17 @@ class _Attendance_DetailState extends State<Attendance_Detail> {
                                                   mainAxisSize:
                                                       MainAxisSize.min,
                                                   children: [
-                                                    buildTextBody(
-                                                        session.session,
+                                                    buildAttTextBody(
+                                                        session.session_all,
                                                         UTextColor),
                                                     !isLastItem
                                                         ? Container(
-                                                            width: 75,
+                                                            width: 100,
                                                             height: 0.5,
                                                             color: UGreyColor,
                                                           )
                                                         : Container(
-                                                            width: 75,
+                                                            width: 100,
                                                           ),
                                                   ],
                                                 );
@@ -166,7 +166,7 @@ class _Attendance_DetailState extends State<Attendance_Detail> {
                                                                 ? 'យឺត'.tr
                                                                 : session.absent_status ==
                                                                         'awp'
-                                                                    ? 'អវត្តមានមានច្បាប់'
+                                                                    ? 'សុំច្បាប់'
                                                                         .tr
                                                                     : session.absent_status ==
                                                                             'ps'
