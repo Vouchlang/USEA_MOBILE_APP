@@ -2,7 +2,6 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'package:flutter/material.dart';
-import 'package:usea_app/Student_Dashboard/Student_LogIn/testing_loginPage1.dart';
 
 class ApiService {
   static const baseUrl = 'http://192.168.3.34/hosting_api/Student';

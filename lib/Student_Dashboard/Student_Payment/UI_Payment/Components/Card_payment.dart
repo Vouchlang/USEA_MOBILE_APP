@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '/theme_builder.dart';
 import '/Custom_Widget/CustomText.dart';
 import '../../Class_Payment/Class_Payment.dart';
-import 'Dialog_payment.dart';
 
 /// ! card 2
 class PaymentCards2 extends StatelessWidget {

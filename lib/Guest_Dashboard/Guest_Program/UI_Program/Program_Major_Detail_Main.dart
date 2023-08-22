@@ -142,7 +142,7 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                                   selectedEducationName)['degree_detail']
                           ['degree_data'];
 
-                      if (degreeData != null && degreeData.isNotEmpty) {
+                      if (degreeData.isNotEmpty) {
                         Map<String, dynamic> yearData = degreeData[index];
                         String yearName = yearData['year_name'];
 
@@ -161,7 +161,7 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                               Map<String, dynamic> selectedYearData =
                                   yearData['year_data'][0];
 
-                              if (selectedYearData != null) {
+                              if (selectedYearData.isNotEmpty) {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(

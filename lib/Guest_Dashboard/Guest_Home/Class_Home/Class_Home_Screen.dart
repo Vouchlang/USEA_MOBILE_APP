@@ -9,10 +9,6 @@ import '../../Guest_FAQ/UI_FAQ/FAQ.dart';
 import '../../Guest_Registration/UI_Registration/Registration.dart';
 import '../../Guest_Scholarship/UI_Scholarship/Scholarship.dart';
 import '../../Guest_VDO/UI_VDO/Video.dart';
-import '/Student_Dashboard/Student_Achievements/UI_Achievements/Achievements.dart';
-import '/Student_Dashboard/Student_Attendance/UI_Attendance/Attendance.dart';
-import '/Student_Dashboard/Student_Payment/UI_Payment/Payment.dart';
-import '/Student_Dashboard/Student_Performance/UI_Perfomance/Performance.dart';
 
 class Home_Screen {
   late final String name, img;

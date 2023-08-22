@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '/Student_Dashboard/Student_LogIn/Student_LogIn.dart';
-import '../../../Student_Dashboard/Student_LogIn/testing_loginPage1.dart';
 import '/Guest_Dashboard/Guest_New_Event/UI_News_Event/News_Event.dart';
 
 class Account_Screen {
@@ -23,7 +22,7 @@ final List<Account_Screen> account_screen = [
   Account_Screen(
     name: 'គណនីអាណាព្យាបាល',
     img: 'assets/image/Acc_Guardian.png',
-    screen: LoginPage1(),
+    screen: New_Event(),
   ),
   Account_Screen(
     name: 'គណនីបុគ្គលិក',
