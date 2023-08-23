@@ -162,9 +162,7 @@ class _AttendanceState extends State<Attendance> {
                       child: CircularProgressIndicator(),
                     );
                   } else {
-                    return Center(
-                      child: Text('No Data'),
-                    );
+                    return Center(child: Text('គ្មានទិន្ន័យ'.tr),);
                   }
                 },
               )

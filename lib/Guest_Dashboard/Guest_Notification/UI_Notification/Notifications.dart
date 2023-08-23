@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../Custom_AppBar.dart';
 import '../../../theme_builder.dart';
 
@@ -13,9 +14,11 @@ class _NotificationsState extends State<Notifications> {
     return Scaffold(
       backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(
-        title: 'Notification',
+        title: 'ព័ត៌មានថ្មីៗ'.tr,
       ),
-      body: Container(),
+      body: Center(
+        child: Text('Coming Soon!!!'),
+      ),
     );
   }
 }

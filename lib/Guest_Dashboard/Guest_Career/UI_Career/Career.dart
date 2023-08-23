@@ -60,7 +60,7 @@ class _CareerState extends State<Career> {
                   future: Future.delayed(Duration(seconds: 3)),
                   builder: (context, snapshot) =>
                       snapshot.connectionState == ConnectionState.done
-                          ? Text('No Data')
+                          ? Text('គ្មានទិន្ន័យ'.tr)
                           : CircularProgressIndicator(),
                 ),
               )

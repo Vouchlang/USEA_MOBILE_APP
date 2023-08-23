@@ -174,14 +174,83 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                                   ),
                                 );
                               } else {
-                                // Handle the case where selectedYearData is null or not available
+                                showDialog(
+                                  context: context,
+                                  barrierDismissible: false,
+                                  builder: (BuildContext context) {
+                                    return Dialog(
+                                      elevation: 3,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                        10,
+                                      )),
+                                      child: Container(
+                                        margin: EdgeInsets.all(7),
+                                        padding: EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            color: UBackgroundColor),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Text(
+                                              'សូមអធ្យាស្រ័យ'.tr,
+                                              style: TextStyle(
+                                                fontSize: UTitleSize,
+                                                fontWeight: UTitleWeight,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 5,
+                                            ),
+                                            Text(
+                                              'គ្មានទិន្ន័យ'.tr,
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                fontSize: UBodySize,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 5,
+                                            ),
+                                            Container(
+                                              height: 50,
+                                              padding: EdgeInsets.all(5),
+                                              alignment: Alignment.center,
+                                              child: TextButton(
+                                                child: Text(
+                                                  'បោះបង់'.tr,
+                                                  style: TextStyle(
+                                                    color: UPrimaryColor,
+                                                    fontSize: UBodySize,
+                                                  ),
+                                                ),
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
                               }
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 SizedBox(height: 7),
-                                NormalTitleTheme(text: yearName.tr)
+                                Text(
+                                  yearName.tr,
+                                  style: TextStyle(
+                                    fontSize: UTitleSize,
+                                    fontWeight: UTitleWeight,
+                                    color: UTextColor,
+                                  ),
+                                ),
                               ],
                             ),
                           ),

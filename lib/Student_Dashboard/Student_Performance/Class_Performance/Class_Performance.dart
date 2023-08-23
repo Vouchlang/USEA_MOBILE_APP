@@ -24,6 +24,7 @@ class Semester {
 
 class Subject {
   final String id,
+      name_kh,
       name_en,
       pscore_attendance,
       pscore_assignment,
@@ -42,6 +43,7 @@ class Subject {
 
   Subject({
     required this.id,
+    required this.name_kh,
     required this.name_en,
     required this.pscore_attendance,
     required this.pscore_assignment,

@@ -225,7 +225,7 @@ class _Student_DetailState extends State<Student_Detail> {
                   );
                 } else {
                   return Center(
-                    child: Text('No Data'),
+                    child: Text('គ្មានទិន្ន័យ'.tr),
                   );
                 }
               },

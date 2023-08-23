@@ -142,9 +142,7 @@ class _AttendanceListState extends State<AttendanceList> {
                     child: CircularProgressIndicator(),
                   );
                 } else {
-                  return Center(
-                    child: Text('No Data'),
-                  );
+                  return Center(child: Text('គ្មានទិន្ន័យ'.tr),);
                 }
               },
             )

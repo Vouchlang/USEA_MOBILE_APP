@@ -97,7 +97,7 @@ class _ScheduleState extends State<Schedule> {
                   );
                 } else {
                   return Center(
-                    child: Text('No Data'),
+                    child: Text('គ្មានទិន្ន័យ'.tr),
                   );
                 }
               },
@@ -130,13 +130,15 @@ class _ScheduleState extends State<Schedule> {
                         return Column(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(5, 0, 5, 5),
+                              padding: const EdgeInsets.fromLTRB(
+                                  UPdMg_5, 0, UPdMg_5, UPdMg_5),
                               child: Card(
                                 elevation: 1,
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
+                                    borderRadius:
+                                        BorderRadius.circular(UPdMg_10)),
                                 child: Container(
-                                  padding: EdgeInsets.all(10.0),
+                                  padding: EdgeInsets.all(UPdMg_10),
                                   child: IntrinsicHeight(
                                     child: Row(
                                       mainAxisAlignment:

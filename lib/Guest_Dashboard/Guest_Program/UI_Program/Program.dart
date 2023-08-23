@@ -167,12 +167,13 @@ class _ProgramState extends State<Program> {
                   future: Future.delayed(Duration(seconds: 3)),
                   builder: (context, snapshot) =>
                       snapshot.connectionState == ConnectionState.done
-                          ? Text('No Data')
+                          ? Text('គ្មានទិន្ន័យ'.tr)
                           : CircularProgressIndicator(),
                 ),
               ),
             )
           : ListView.builder(
+              padding: EdgeInsets.only(bottom: UPdMg_10),
               itemCount: programData!.length,
               itemBuilder: (context, index) {
                 final faculty = programData![index];
@@ -183,6 +184,7 @@ class _ProgramState extends State<Program> {
                   Icon(
                     Icons.error,
                     size: 2,
+                    color: UPrimaryColor,
                   );
                 }
                 return Card(
@@ -217,7 +219,7 @@ class _ProgramState extends State<Program> {
                                 return Icon(Icons.error);
                               },
                             ),
-                            SizedBox(width: 10),
+                            SizedBox(width: UPdMg_10),
                             Expanded(child: Text(facultyName.toString().tr)),
                           ],
                         ),

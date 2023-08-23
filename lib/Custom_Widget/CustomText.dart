@@ -287,6 +287,31 @@ class CustomTextTheme extends StatelessWidget {
   }
 }
 
+class CustomPerformanceDiaglogTextTheme extends StatelessWidget {
+  final String text;
+  final double size;
+  final Color color;
+
+  const CustomPerformanceDiaglogTextTheme({
+    super.key,
+    required this.text,
+    required this.size,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: size,
+        fontWeight: UBodyWeight,
+        color: color,
+      ),
+    );
+  }
+}
+
 // *@ Attendance custom text
 class CustomAttTextTheme extends StatelessWidget {
   final String text;

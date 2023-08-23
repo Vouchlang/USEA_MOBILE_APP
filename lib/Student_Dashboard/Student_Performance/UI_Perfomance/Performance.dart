@@ -52,6 +52,7 @@ class _PerformanceState extends State<Performance> {
             semesterData['subjects'].forEach((subjectData) {
               Subject subjectObj = Subject(
                 id: subjectData['id'] == null ? 'N/A' : subjectData['id'],
+                name_kh: subjectData['name_kh'] ?? 'N/A',
                 name_en: subjectData['name_en'] == null
                     ? 'N/A'
                     : subjectData['name_en'],
@@ -166,9 +167,7 @@ class _PerformanceState extends State<Performance> {
                         child: CircularProgressIndicator(),
                       );
                     } else {
-                      return Center(
-                        child: Text('No Data'),
-                      );
+                      return Center(child: Text('គ្មានទិន្ន័យ'.tr));
                     }
                   },
                 )
@@ -184,7 +183,7 @@ class _PerformanceState extends State<Performance> {
                         Container(
                           height: 70,
                           width: UFullWidth,
-                          padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+                          padding: EdgeInsets.fromLTRB(UPdMg_5, 0, UPdMg_5, 0),
                           child: ListView.builder(
                             shrinkWrap: true,
                             physics: const BouncingScrollPhysics(),
@@ -337,7 +336,13 @@ class _PerformanceState extends State<Performance> {
                                                               alignment: Alignment
                                                                   .centerLeft,
                                                               child: Text(
-                                                                subject.name_en,
+                                                                Get.locale
+                                                                            ?.languageCode ==
+                                                                        'km'
+                                                                    ? subject
+                                                                        .name_kh
+                                                                    : subject
+                                                                        .name_en,
                                                                 style:
                                                                     TextStyle(
                                                                   height: 1.5,
@@ -345,8 +350,6 @@ class _PerformanceState extends State<Performance> {
                                                                       UTextColor,
                                                                   fontSize:
                                                                       UTitleSize,
-                                                                  fontFamily:
-                                                                      UKFontFamily,
                                                                 ),
                                                               ),
                                                             ),
@@ -407,7 +410,6 @@ class _PerformanceState extends State<Performance> {
                                                                                         child: Text(
                                                                                           subject.name_en.tr,
                                                                                           style: TextStyle(
-                                                                                            fontFamily: UKFontFamily,
                                                                                             fontSize: UTitleSize,
                                                                                             fontWeight: UTitleWeight,
                                                                                             color: UPrimaryColor,
@@ -431,27 +433,23 @@ class _PerformanceState extends State<Performance> {
                                                                                                 Column(
                                                                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                   children: [
-                                                                                                    CustomTextTheme(
+                                                                                                    CustomPerformanceDiaglogTextTheme(
                                                                                                       text: 'យឺត'.tr,
-                                                                                                      fontWeight: UBodyWeight,
                                                                                                       size: UTitleSize,
                                                                                                       color: UTextColor,
                                                                                                     ),
-                                                                                                    CustomTextTheme(
-                                                                                                      text: 'អវត្តមានមានច្បាប់'.tr,
-                                                                                                      fontWeight: UBodyWeight,
+                                                                                                    CustomPerformanceDiaglogTextTheme(
+                                                                                                      text: 'សុំច្បាប់'.tr,
                                                                                                       size: UTitleSize,
                                                                                                       color: UTextColor,
                                                                                                     ),
-                                                                                                    CustomTextTheme(
+                                                                                                    CustomPerformanceDiaglogTextTheme(
                                                                                                       text: 'អវត្តមាន'.tr,
-                                                                                                      fontWeight: UBodyWeight,
                                                                                                       size: UTitleSize,
                                                                                                       color: UTextColor,
                                                                                                     ),
-                                                                                                    CustomTextTheme(
+                                                                                                    CustomPerformanceDiaglogTextTheme(
                                                                                                       text: 'វត្តមាន'.tr,
-                                                                                                      fontWeight: UBodyWeight,
                                                                                                       size: UTitleSize,
                                                                                                       color: UTextColor,
                                                                                                     ),
@@ -459,27 +457,23 @@ class _PerformanceState extends State<Performance> {
                                                                                                 ),
                                                                                                 Column(
                                                                                                   children: [
-                                                                                                    CustomTextTheme(
+                                                                                                    CustomPerformanceDiaglogTextTheme(
                                                                                                       text: subject.attendance_al,
-                                                                                                      fontWeight: UBodyWeight,
                                                                                                       size: UTitleSize,
                                                                                                       color: UYellowColor,
                                                                                                     ),
-                                                                                                    CustomTextTheme(
+                                                                                                    CustomPerformanceDiaglogTextTheme(
                                                                                                       text: subject.attendance_pm,
-                                                                                                      fontWeight: UBodyWeight,
                                                                                                       size: UTitleSize,
                                                                                                       color: UOrangeColor,
                                                                                                     ),
-                                                                                                    CustomTextTheme(
+                                                                                                    CustomPerformanceDiaglogTextTheme(
                                                                                                       text: subject.attendance_a,
-                                                                                                      fontWeight: UBodyWeight,
                                                                                                       size: UTitleSize,
                                                                                                       color: URedColor,
                                                                                                     ),
-                                                                                                    CustomTextTheme(
+                                                                                                    CustomPerformanceDiaglogTextTheme(
                                                                                                       text: subject.attendance_ps,
-                                                                                                      fontWeight: UBodyWeight,
                                                                                                       size: UTitleSize,
                                                                                                       color: UScoreColor,
                                                                                                     ),
@@ -543,8 +537,6 @@ class _PerformanceState extends State<Performance> {
                                                                             UScoreColor,
                                                                         fontSize:
                                                                             UTitleSize,
-                                                                        fontFamily:
-                                                                            UKFontFamily,
                                                                         fontWeight:
                                                                             UTitleWeight,
                                                                       ),
@@ -609,7 +601,6 @@ class _PerformanceState extends State<Performance> {
                                                                                         child: Text(
                                                                                           subject.name_en,
                                                                                           style: TextStyle(
-                                                                                            fontFamily: UKFontFamily,
                                                                                             fontSize: UTitleSize,
                                                                                             fontWeight: UTitleWeight,
                                                                                             color: UPrimaryColor,
@@ -635,33 +626,28 @@ class _PerformanceState extends State<Performance> {
                                                                                                   Column(
                                                                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                     children: [
-                                                                                                      CustomTextTheme(
+                                                                                                      CustomPerformanceDiaglogTextTheme(
                                                                                                         text: 'លក្ខណៈវិនិច្ឆ័យ'.tr,
-                                                                                                        fontWeight: UBodyWeight,
                                                                                                         size: UTitleSize,
                                                                                                         color: UPrimaryColor,
                                                                                                       ),
-                                                                                                      CustomTextTheme(
+                                                                                                      CustomPerformanceDiaglogTextTheme(
                                                                                                         text: 'វត្តមាន'.tr,
-                                                                                                        fontWeight: UBodyWeight,
                                                                                                         size: UTitleSize,
                                                                                                         color: UTextColor,
                                                                                                       ),
-                                                                                                      CustomTextTheme(
+                                                                                                      CustomPerformanceDiaglogTextTheme(
                                                                                                         text: 'លំហាត់'.tr,
-                                                                                                        fontWeight: UBodyWeight,
                                                                                                         size: UTitleSize,
                                                                                                         color: UTextColor,
                                                                                                       ),
-                                                                                                      CustomTextTheme(
+                                                                                                      CustomPerformanceDiaglogTextTheme(
                                                                                                         text: 'ពាក់កណ្ដាលឆមាស'.tr,
-                                                                                                        fontWeight: UBodyWeight,
                                                                                                         size: UTitleSize,
                                                                                                         color: UTextColor,
                                                                                                       ),
-                                                                                                      CustomTextTheme(
+                                                                                                      CustomPerformanceDiaglogTextTheme(
                                                                                                         text: 'ឆមាស'.tr,
-                                                                                                        fontWeight: UBodyWeight,
                                                                                                         size: UTitleSize,
                                                                                                         color: UTextColor,
                                                                                                       ),
@@ -671,33 +657,28 @@ class _PerformanceState extends State<Performance> {
                                                                                                     children: [
                                                                                                       Column(
                                                                                                         children: [
-                                                                                                          CustomTextTheme(
+                                                                                                          CustomPerformanceDiaglogTextTheme(
                                                                                                             text: 'ភាគរយ'.tr,
-                                                                                                            fontWeight: UBodyWeight,
                                                                                                             size: UTitleSize,
                                                                                                             color: UPrimaryColor,
                                                                                                           ),
-                                                                                                          CustomTextTheme(
+                                                                                                          CustomPerformanceDiaglogTextTheme(
                                                                                                             text: subject.pscore_attendance,
-                                                                                                            fontWeight: UBodyWeight,
                                                                                                             size: UTitleSize,
                                                                                                             color: UScoreColor,
                                                                                                           ),
-                                                                                                          CustomTextTheme(
+                                                                                                          CustomPerformanceDiaglogTextTheme(
                                                                                                             text: subject.pscore_assignment,
-                                                                                                            fontWeight: UBodyWeight,
                                                                                                             size: UTitleSize,
                                                                                                             color: UScoreColor,
                                                                                                           ),
-                                                                                                          CustomTextTheme(
+                                                                                                          CustomPerformanceDiaglogTextTheme(
                                                                                                             text: subject.pscore_mid_term,
-                                                                                                            fontWeight: UBodyWeight,
                                                                                                             size: UTitleSize,
                                                                                                             color: UScoreColor,
                                                                                                           ),
-                                                                                                          CustomTextTheme(
+                                                                                                          CustomPerformanceDiaglogTextTheme(
                                                                                                             text: subject.pscore_final,
-                                                                                                            fontWeight: UBodyWeight,
                                                                                                             size: UTitleSize,
                                                                                                             color: UScoreColor,
                                                                                                           ),
@@ -708,33 +689,28 @@ class _PerformanceState extends State<Performance> {
                                                                                                       ),
                                                                                                       Column(
                                                                                                         children: [
-                                                                                                          CustomTextTheme(
+                                                                                                          CustomPerformanceDiaglogTextTheme(
                                                                                                             text: 'ពិន្ទុ'.tr,
-                                                                                                            fontWeight: UBodyWeight,
                                                                                                             size: UTitleSize,
                                                                                                             color: UPrimaryColor,
                                                                                                           ),
-                                                                                                          CustomTextTheme(
+                                                                                                          CustomPerformanceDiaglogTextTheme(
                                                                                                             text: subject.number_attendance,
-                                                                                                            fontWeight: UBodyWeight,
                                                                                                             size: UTitleSize,
                                                                                                             color: UScoreColor,
                                                                                                           ),
-                                                                                                          CustomTextTheme(
+                                                                                                          CustomPerformanceDiaglogTextTheme(
                                                                                                             text: subject.number_assignment,
-                                                                                                            fontWeight: UBodyWeight,
                                                                                                             size: UTitleSize,
                                                                                                             color: UScoreColor,
                                                                                                           ),
-                                                                                                          CustomTextTheme(
+                                                                                                          CustomPerformanceDiaglogTextTheme(
                                                                                                             text: subject.number_mid_term,
-                                                                                                            fontWeight: UBodyWeight,
                                                                                                             size: UTitleSize,
                                                                                                             color: UScoreColor,
                                                                                                           ),
-                                                                                                          CustomTextTheme(
+                                                                                                          CustomPerformanceDiaglogTextTheme(
                                                                                                             text: subject.number_final,
-                                                                                                            fontWeight: UBodyWeight,
                                                                                                             size: UTitleSize,
                                                                                                             color: UScoreColor,
                                                                                                           ),
@@ -802,8 +778,6 @@ class _PerformanceState extends State<Performance> {
                                                                             UScoreColor,
                                                                         fontSize:
                                                                             UTitleSize,
-                                                                        fontFamily:
-                                                                            UKFontFamily,
                                                                         fontWeight:
                                                                             UTitleWeight,
                                                                       ),
@@ -929,7 +903,7 @@ class _PerformanceState extends State<Performance> {
                                     );
                                   } else {
                                     return Center(
-                                      child: Text('No Data'),
+                                      child: Text('គ្មានទិន្ន័យ'.tr),
                                     );
                                   }
                                 },

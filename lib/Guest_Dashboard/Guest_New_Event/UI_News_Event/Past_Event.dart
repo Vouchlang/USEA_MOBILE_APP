@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '/Guest_Dashboard/Guest_New_Event/Class_News_Event/Class_Past_News_Events.dart';
 import 'package:http/http.dart' as http;
 import '/theme_builder.dart';
@@ -57,7 +58,7 @@ class _Past_EventState extends State<Past_Event> {
                   future: Future.delayed(Duration(seconds: 3)),
                   builder: (context, snapshot) =>
                       snapshot.connectionState == ConnectionState.done
-                          ? Text('No Data')
+                          ? Text('គ្មានទិន្ន័យ'.tr)
                           : CircularProgressIndicator(),
                 ),
               )
@@ -72,7 +73,7 @@ class _Past_EventState extends State<Past_Event> {
                 itemBuilder: (context, index) {
                   var past_event = past_events[index];
                   return Card(
-                    margin: EdgeInsets.only(bottom: 10),
+                    margin: EdgeInsets.only(bottom: UPdMg_10),
                     elevation: 2,
                     shadowColor: ULightGreyColor,
                     shape: RoundedRectangleBorder(

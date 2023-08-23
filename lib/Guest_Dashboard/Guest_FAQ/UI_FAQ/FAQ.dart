@@ -59,7 +59,7 @@ class _FAQState extends State<FAQ> {
                   future: Future.delayed(Duration(seconds: 3)),
                   builder: (context, snapshot) =>
                       snapshot.connectionState == ConnectionState.done
-                          ? Text('No Data')
+                          ? Text('គ្មានទិន្ន័យ'.tr)
                           : CircularProgressIndicator(),
                 ),
               )

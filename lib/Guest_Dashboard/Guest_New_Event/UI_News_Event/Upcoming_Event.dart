@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import '/Guest_Dashboard/Guest_New_Event/UI_News_Event/Upcoming_Event_Detail.dart';
 import '/theme_builder.dart';
@@ -53,7 +54,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                   future: Future.delayed(Duration(seconds: 3)),
                   builder: (context, snapshot) =>
                       snapshot.connectionState == ConnectionState.done
-                          ? Text('No Data')
+                          ? Text('គ្មានទិន្ន័យ'.tr)
                           : CircularProgressIndicator(),
                 ),
               )

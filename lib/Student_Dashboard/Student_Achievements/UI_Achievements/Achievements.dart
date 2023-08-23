@@ -93,7 +93,7 @@ class _AchievementsState extends State<Achievements> {
                   );
                 } else {
                   return Center(
-                    child: Text('No Data'),
+                    child: Text('គ្មានទិន្ន័យ'.tr),
                   );
                 }
               },
