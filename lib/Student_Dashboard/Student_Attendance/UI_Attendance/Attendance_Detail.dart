@@ -63,7 +63,7 @@ class _Attendance_DetailState extends State<Attendance_Detail> {
                           IntrinsicHeight(
                             child: Padding(
                               padding: EdgeInsets.symmetric(
-                                vertical: 10,
+                                vertical: UPdMg_10,
                               ),
                               child: Row(
                                 mainAxisAlignment:
@@ -205,7 +205,7 @@ class _Attendance_DetailState extends State<Attendance_Detail> {
                                       !isLastIndex
                                           ? buildDividerAtt()
                                           : SizedBox(
-                                              height: 5,
+                                              height: UPdMg_5,
                                             ),
                                     ],
                                   ),

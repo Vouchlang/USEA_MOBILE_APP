@@ -84,7 +84,7 @@ class _Job_HistoryState extends State<Job_History> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: 'ព័ត៌មានការងារ'.tr),
+      appBar: Custom_AppBar(title: 'ប្រវត្តិការងារ'.tr),
       body: _dataJobHistory.isEmpty
           ? FutureBuilder(
               future: Future.delayed(Duration(seconds: 3)),

@@ -215,7 +215,8 @@ class _Payment_UIState extends State<Payment_UI> {
                           : 0.00;
 
                       return Padding(
-                        padding: EdgeInsets.only(bottom: isLastIndex ? 5 : 0),
+                        padding:
+                            EdgeInsets.only(bottom: isLastIndex ? UPdMg_5 : 0),
                         child: IntrinsicHeight(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -460,7 +461,7 @@ class _Payment_UIState extends State<Payment_UI> {
                             return payStudy.payments.isEmpty
                                 ? Padding(
                                     padding: EdgeInsets.only(
-                                        bottom: isLastIndex ? 5 : 0),
+                                        bottom: isLastIndex ? UPdMg_5 : 0),
                                     child: IntrinsicHeight(
                                       child: Column(
                                         mainAxisAlignment:
@@ -519,7 +520,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                   )
                                 : Padding(
                                     padding: EdgeInsets.only(
-                                        bottom: isLastIndex ? 5 : 0),
+                                        bottom: isLastIndex ? UPdMg_5 : 0),
                                     child: Column(
                                       children: [
                                         IntrinsicHeight(
@@ -702,8 +703,8 @@ class _Payment_UIState extends State<Payment_UI> {
                             final isLastIndex = index == _dataOther.length - 1;
 
                             return Padding(
-                              padding:
-                                  EdgeInsets.only(bottom: isLastIndex ? 5 : 0),
+                              padding: EdgeInsets.only(
+                                  bottom: isLastIndex ? UPdMg_5 : 0),
                               child: IntrinsicHeight(
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,

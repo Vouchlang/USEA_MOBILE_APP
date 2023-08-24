@@ -142,7 +142,9 @@ class _AttendanceListState extends State<AttendanceList> {
                     child: CircularProgressIndicator(),
                   );
                 } else {
-                  return Center(child: Text('គ្មានទិន្ន័យ'.tr),);
+                  return Center(
+                    child: Text('គ្មានទិន្ន័យ'.tr),
+                  );
                 }
               },
             )
@@ -187,7 +189,7 @@ class _AttendanceListState extends State<AttendanceList> {
                             margin: EdgeInsets.all(UPdMg_5),
                             child: Center(
                               child: Text(
-                                'ឆ្នាំទី ${attendances[index].year_no}'.tr,
+                                'ឆ្នាំទី​ ${attendances[index].year_no}'.tr,
                                 style: TextStyle(
                                   fontSize: UTitleSize,
                                   color: selectedYearIndex == index

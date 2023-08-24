@@ -84,6 +84,91 @@ class TitleTheme extends StatelessWidget {
 }
 // *@  End Title
 
+// *@ Normal Title Attendance UTextColor
+class TitleAttendance_Theme extends StatelessWidget {
+  final String text;
+
+  const TitleAttendance_Theme({
+    super.key,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: UTitleSize16,
+        fontWeight: UTitleWeight,
+        color: UTextColor,
+      ),
+    );
+  }
+}
+// *@ End Normal Title 16px UTextColor
+
+// *@ Normal Date Study Info
+class NormalDateStudyInfo extends StatelessWidget {
+  final String text;
+
+  const NormalDateStudyInfo({
+    super.key,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: UTitleSize,
+        fontWeight: UTitleWeight,
+        color: UTextColor,
+      ),
+    );
+  }
+}
+// *@ End Normal Title
+
+// *@ Normal Data Study Info
+class RowDataStudyInfo extends StatelessWidget {
+  final String title, tData;
+
+  const RowDataStudyInfo({
+    super.key,
+    required this.title,
+    required this.tData,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title.tr,
+          style: TextStyle(
+            fontSize: UBodySize,
+            color: UTextColor,
+          ),
+        ),
+        Container(
+          width: 200,
+          alignment: Alignment.centerLeft,
+          child: Text(
+            tData,
+            style: TextStyle(
+              fontSize: UBodySize,
+              color: UTextColor,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+// *@ End Normal Title
+
 // *@ Normal Title
 class NormalTitleTheme extends StatelessWidget {
   final String text;
@@ -730,7 +815,6 @@ Widget buildTailDetail(
               text,
               style: TextStyle(
                 fontSize: UTitleSize,
-                fontFamily: UKFontFamily,
               ),
             ),
           ],

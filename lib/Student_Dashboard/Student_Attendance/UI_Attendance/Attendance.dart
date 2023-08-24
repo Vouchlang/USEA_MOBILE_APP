@@ -123,30 +123,6 @@ class _AttendanceState extends State<Attendance> {
     }
   }
 
-  List<Attendances> _displayLastSemesterSubjects() {
-    if (attendances.isNotEmpty) {
-      final lastYearWithSemesters = attendances.last;
-
-      if (lastYearWithSemesters.semesters.isNotEmpty) {
-        final lastSemester = lastYearWithSemesters.semesters.last;
-
-        if (lastSemester.subjects.isNotEmpty) {
-          for (final subject in lastSemester.subjects) {
-            print('Subject Name: ${subject.name_kh}');
-            print('Subject Code: ${subject.code}');
-          }
-        } else {
-          print('No subjects in the last semester of the last year.');
-        }
-      } else {
-        print('No semesters in the last year.');
-      }
-    } else {
-      print('No data available for attendance.');
-    }
-    return [];
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

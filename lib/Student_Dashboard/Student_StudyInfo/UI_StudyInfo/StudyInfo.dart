@@ -128,11 +128,11 @@ class _Study_InfoState extends State<Study_Info> {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  NormalTitleTheme(
+                                  NormalDateStudyInfo(
                                     text: _dataStudyInfo[index].date,
                                   ),
                                   buildDividerAtt(),
-                                  NormalTitleTheme(
+                                  NormalDateStudyInfo(
                                       text: _dataStudyInfo[index].month),
                                 ],
                               ),
@@ -146,68 +146,25 @@ class _Study_InfoState extends State<Study_Info> {
                                   children: [
                                     Container(
                                       width: 250,
-                                      child: TitleSize16_Theme(
+                                      child: TitleAttendance_Theme(
                                           text: _dataStudyInfo[index].title),
                                     ),
                                     buildDividerAtt(),
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        BodyTheme(text: 'មុខវិជ្ជា\t'.tr),
-                                        Container(
-                                          width: 200,
-                                          alignment: Alignment.centerLeft,
-                                          child: BodyTheme(
-                                              text: _dataStudyInfo[index]
-                                                  .subject),
-                                        ),
-                                      ],
+                                    RowDataStudyInfo(
+                                      title: 'មុខវិជ្ជា\t',
+                                      tData: _dataStudyInfo[index].subject,
                                     ),
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        BodyTheme(
-                                          text: 'បន្ទប់\t'.tr,
-                                        ),
-                                        Container(
-                                          width: 200,
-                                          alignment: Alignment.centerLeft,
-                                          child: BodyTheme(
-                                              text: _dataStudyInfo[index].room),
-                                        ),
-                                      ],
+                                    RowDataStudyInfo(
+                                      title: 'បន្ទប់\t',
+                                      tData: _dataStudyInfo[index].room,
                                     ),
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        BodyTheme(
-                                          text: 'ម៉ោង\t'.tr,
-                                        ),
-                                        Container(
-                                          width: 200,
-                                          alignment: Alignment.centerLeft,
-                                          child: BodyTheme(
-                                              text: _dataStudyInfo[index].time),
-                                        ),
-                                      ],
+                                    RowDataStudyInfo(
+                                      title: 'ម៉ោង\t',
+                                      tData: _dataStudyInfo[index].time,
                                     ),
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        BodyTheme(
-                                          text: 'លេខតុ\t'.tr,
-                                        ),
-                                        Container(
-                                          width: 200,
-                                          alignment: Alignment.centerLeft,
-                                          child: BodyTheme(
-                                              text: _dataStudyInfo[index].seat),
-                                        ),
-                                      ],
+                                    RowDataStudyInfo(
+                                      title: 'លេខតុ\t',
+                                      tData: _dataStudyInfo[index].seat,
                                     ),
                                     _dataStudyInfo[index].takeout == '1'
                                         ? Text(

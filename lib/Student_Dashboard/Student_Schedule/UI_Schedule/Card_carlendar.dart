@@ -25,8 +25,8 @@ class _CardCalendarState extends State<CardCalendar> {
       physics: AlwaysScrollableScrollPhysics(),
       child: Container(
         padding: EdgeInsets.symmetric(
-          vertical: 5,
-          horizontal: 10,
+          vertical: UPdMg_5,
+          horizontal: UPdMg_10,
         ),
         child: Column(
           children: [
@@ -39,7 +39,7 @@ class _CardCalendarState extends State<CardCalendar> {
                     color: UGreyColor,
                   ),
                 ],
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(UPdMg_10),
               ),
               child: TableCalendar(
                 daysOfWeekHeight: 25,
