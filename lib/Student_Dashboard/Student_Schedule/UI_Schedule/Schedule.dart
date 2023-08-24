@@ -105,14 +105,14 @@ class _ScheduleState extends State<Schedule> {
           : RefreshIndicator(
               onRefresh: _refreshData,
               child: ListView(
-                padding: EdgeInsets.symmetric(vertical: 5),
+                padding: EdgeInsets.symmetric(vertical: UPdMg_5),
                 children: [
                   CardCalendar(),
                   SizedBox(
                     height: 5,
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(UPdMg_8),
                     child: Text(
                       'កាលវិភាគសិក្សា'.tr,
                       style: TextStyle(
@@ -121,110 +121,103 @@ class _ScheduleState extends State<Schedule> {
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: ListView.builder(
-                      physics: ScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: _dataSchedule.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(
-                                  UPdMg_5, 0, UPdMg_5, UPdMg_5),
-                              child: Card(
-                                elevation: 1,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(UPdMg_10)),
-                                child: Container(
-                                  padding: EdgeInsets.all(UPdMg_10),
-                                  child: IntrinsicHeight(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          width: 40,
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              NormalTitleTheme(
-                                                text: _dataSchedule[index].wday,
-                                              ),
-                                              NormalTitleTheme(
-                                                text: _dataSchedule[index]
-                                                    .weekday,
-                                              ),
-                                            ],
-                                          ),
+                  ListView.builder(
+                    physics: ScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: _dataSchedule.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(
+                                UPdMg_5, 0, UPdMg_5, UPdMg_5),
+                            child: Card(
+                              elevation: 1,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.circular(UPdMg_10)),
+                              child: Container(
+                                padding: EdgeInsets.all(UPdMg_10),
+                                child: IntrinsicHeight(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        width: 40,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            NormalTitleTheme(
+                                              text: _dataSchedule[index].wday,
+                                            ),
+                                            NormalTitleTheme(
+                                              text:
+                                                  _dataSchedule[index].weekday,
+                                            ),
+                                          ],
                                         ),
-                                        VerticalDivider(
-                                          thickness: 0.5,
-                                          color: UGreyColor,
-                                          width: 30,
-                                        ),
-                                        Expanded(
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              TitleSize16_Theme(
-                                                text: _dataSchedule[index]
-                                                    .subject,
-                                              ),
-                                              SizedBox(
-                                                height: 5,
-                                              ),
-                                              BodyTheme(
-                                                text: _dataSchedule[index]
-                                                    .session,
-                                              ),
-                                              BodyTheme(
-                                                text: _dataSchedule[index].room,
-                                              ),
-                                              Expanded(
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Expanded(
-                                                      child: BodyTheme(
-                                                        text:
-                                                            _dataSchedule[index]
-                                                                .teacher,
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      child: Container(
-                                                        alignment:
-                                                            Alignment.topRight,
-                                                        child: BodyTheme(
-                                                          text: _dataSchedule[
-                                                                  index]
-                                                              .phonenumber,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
+                                      ),
+                                      VerticalDivider(
+                                        thickness: 0.5,
+                                        color: UGreyColor,
+                                        width: 30,
+                                      ),
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            TitleSize16_Theme(
+                                              text:
+                                                  _dataSchedule[index].subject,
+                                            ),
+                                            SizedBox(
+                                              height: 5,
+                                            ),
+                                            BodyTheme(
+                                              text:
+                                                  _dataSchedule[index].session,
+                                            ),
+                                            BodyTheme(
+                                              text: _dataSchedule[index].room,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Expanded(
+                                                  child: BodyTheme(
+                                                    text: _dataSchedule[index]
+                                                        .teacher,
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
-                                          ),
+                                                Expanded(
+                                                  child: Container(
+                                                    alignment:
+                                                        Alignment.topRight,
+                                                    child: BodyTheme(
+                                                      text: _dataSchedule[index]
+                                                          .phonenumber,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
                             ),
-                          ],
-                        );
-                      },
-                    ),
+                          ),
+                        ],
+                      );
+                    },
                   ),
                 ],
               ),

@@ -19,10 +19,12 @@ class Guest_Home extends StatefulWidget {
 }
 
 class _Guest_HomeState extends State<Guest_Home> {
-  final Uri urlFb = Uri.parse("https://www.facebook.com/usea.edu.kh");
-  final Uri urlIg =
-      Uri.parse("https://www.instagram.com/university_of_south_east_asia/");
-  final Uri urlYt = Uri.parse("https://www.youtube.com/@usea-edu-kh");
+  final Uri urlFb =
+      Uri.parse("https://www.facebook.com/usea.edu.kh?mibextid=LQQJ4d");
+  final Uri urlIg = Uri.parse(
+      "https://instagram.com/university_of_south_east_asia?igshid=MzRlODBiNWFlZA==");
+  final Uri urlYt =
+      Uri.parse("https://youtube.com/@usea-edu-kh?si=O-C7zB1vDD6KjP0z");
   final Uri urlTel = Uri.parse("https://t.me/university_of_south_east_asia");
   final Uri urlWeb = Uri.parse("https://www.usea.edu.kh/en/Pages/index.php");
   late List<Class_Image> image_slides = [];
@@ -223,63 +225,61 @@ class _Guest_HomeState extends State<Guest_Home> {
             SizedBox(
               height: 7,
             ),
-            Expanded(
-              child: GridView.count(
-                shrinkWrap: true,
-                physics: ScrollPhysics(),
-                crossAxisCount: 2,
-                mainAxisSpacing: 3.5,
-                crossAxisSpacing: 3,
-                childAspectRatio: 1.90,
-                padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
-                children: List.generate(
-                  guest_home_screen.length,
-                  (index) => Card(
-                    elevation: 2,
-                    shadowColor: ULightGreyColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: InkWell(
-                      onTap: () {
-                        if (index.isEqual(8)) {
-                          showDialog(
-                            context: context,
-                            barrierDismissible: false,
-                            builder: (BuildContext context) {
-                              return Change_Language();
-                            },
-                          );
-                        } else {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    guest_home_screen[index].screen),
-                          );
-                        }
-                      },
-                      child: Container(
-                        padding: EdgeInsets.only(left: 15),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              guest_home_screen[index].img,
-                              scale: 6,
+            GridView.count(
+              shrinkWrap: true,
+              physics: ScrollPhysics(),
+              crossAxisCount: 2,
+              mainAxisSpacing: 3.5,
+              crossAxisSpacing: 3,
+              childAspectRatio: 1.90,
+              padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
+              children: List.generate(
+                guest_home_screen.length,
+                (index) => Card(
+                  elevation: 2,
+                  shadowColor: ULightGreyColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: InkWell(
+                    onTap: () {
+                      if (index.isEqual(8)) {
+                        showDialog(
+                          context: context,
+                          barrierDismissible: false,
+                          builder: (BuildContext context) {
+                            return Change_Language();
+                          },
+                        );
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  guest_home_screen[index].screen),
+                        );
+                      }
+                    },
+                    child: Container(
+                      padding: EdgeInsets.only(left: 15),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            guest_home_screen[index].img,
+                            scale: 6,
+                          ),
+                          SizedBox(
+                            height: 7,
+                          ),
+                          Text(
+                            guest_home_screen[index].name.tr,
+                            style: TextStyle(
+                              fontSize: UTitleSize,
                             ),
-                            SizedBox(
-                              height: 7,
-                            ),
-                            Text(
-                              guest_home_screen[index].name.tr,
-                              style: TextStyle(
-                                fontSize: UTitleSize,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ),

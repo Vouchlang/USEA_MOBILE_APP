@@ -456,188 +456,186 @@ class _Student_HomeState extends State<Student_Home> {
                   SizedBox(
                     height: 10,
                   ),
-                  Expanded(
-                    child: GridView.count(
-                      shrinkWrap: true,
-                      physics: ScrollPhysics(),
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 3.5,
-                      crossAxisSpacing: 3,
-                      childAspectRatio: 1.90,
-                      padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
-                      children: List.generate(
-                        st_home_screen.length,
-                        (index) => Card(
-                          elevation: 2,
-                          shadowColor: ULightGreyColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: InkWell(
-                            onTap: () {
-                              if (index.isEqual(6)) {
-                                _dataFeedback[0].feedback.isEmpty
-                                    ? showDialog(
-                                        context: context,
-                                        barrierDismissible: false,
-                                        builder: (BuildContext context) {
-                                          return Dialog(
-                                            elevation: 3,
-                                            shape: RoundedRectangleBorder(
+                  GridView.count(
+                    shrinkWrap: true,
+                    physics: ScrollPhysics(),
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 3.5,
+                    crossAxisSpacing: 3,
+                    childAspectRatio: 1.90,
+                    padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
+                    children: List.generate(
+                      st_home_screen.length,
+                      (index) => Card(
+                        elevation: 2,
+                        shadowColor: ULightGreyColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: InkWell(
+                          onTap: () {
+                            if (index.isEqual(6)) {
+                              _dataFeedback[0].feedback.isEmpty
+                                  ? showDialog(
+                                      context: context,
+                                      barrierDismissible: false,
+                                      builder: (BuildContext context) {
+                                        return Dialog(
+                                          elevation: 3,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                            10,
+                                          )),
+                                          child: Container(
+                                            margin: EdgeInsets.all(7),
+                                            padding: EdgeInsets.all(10),
+                                            decoration: BoxDecoration(
                                                 borderRadius:
-                                                    BorderRadius.circular(
-                                              10,
-                                            )),
-                                            child: Container(
-                                              margin: EdgeInsets.all(7),
-                                              padding: EdgeInsets.all(10),
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                  color: UBackgroundColor),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Text(
-                                                    'សូមអធ្យាស្រ័យ'.tr,
-                                                    style: TextStyle(
-                                                      fontSize: UTitleSize,
-                                                      fontWeight: UTitleWeight,
-                                                    ),
+                                                    BorderRadius.circular(20),
+                                                color: UBackgroundColor),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Text(
+                                                  'សូមអធ្យាស្រ័យ'.tr,
+                                                  style: TextStyle(
+                                                    fontSize: UTitleSize,
+                                                    fontWeight: UTitleWeight,
                                                   ),
-                                                  SizedBox(
-                                                    height: 5,
+                                                ),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Text(
+                                                  'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!'
+                                                      .tr,
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                    fontSize: UBodySize,
                                                   ),
-                                                  Text(
-                                                    'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!'
-                                                        .tr,
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                      fontSize: UBodySize,
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 5,
-                                                  ),
-                                                  Container(
-                                                    height: 50,
-                                                    padding: EdgeInsets.all(5),
-                                                    alignment: Alignment.center,
-                                                    child: TextButton(
-                                                      child: Text(
-                                                        'បោះបង់'.tr,
-                                                        style: TextStyle(
-                                                          color: UPrimaryColor,
-                                                          fontSize: UBodySize,
-                                                        ),
+                                                ),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Container(
+                                                  height: 50,
+                                                  padding: EdgeInsets.all(5),
+                                                  alignment: Alignment.center,
+                                                  child: TextButton(
+                                                    child: Text(
+                                                      'បោះបង់'.tr,
+                                                      style: TextStyle(
+                                                        color: UPrimaryColor,
+                                                        fontSize: UBodySize,
                                                       ),
-                                                      onPressed: () {
-                                                        Navigator.of(context)
-                                                            .pop();
-                                                      },
                                                     ),
+                                                    onPressed: () {
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                    },
                                                   ),
-                                                ],
-                                              ),
+                                                ),
+                                              ],
                                             ),
-                                          );
-                                        },
-                                      )
-                                    : launchUrl(
-                                        Uri.parse(_dataFeedback[0].feedback));
-                              } else if (index.isEqual(0)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Schedule(
-                                      data_studentUser: _dataStudentUser,
-                                    ),
+                                          ),
+                                        );
+                                      },
+                                    )
+                                  : launchUrl(
+                                      Uri.parse(_dataFeedback[0].feedback));
+                            } else if (index.isEqual(0)) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Schedule(
+                                    data_studentUser: _dataStudentUser,
                                   ),
-                                );
-                              } else if (index.isEqual(1)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Performance(
-                                      data_studentUser: _dataStudentUser,
-                                    ),
+                                ),
+                              );
+                            } else if (index.isEqual(1)) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Performance(
+                                    data_studentUser: _dataStudentUser,
                                   ),
-                                );
-                              } else if (index.isEqual(2)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Attendance(
-                                      data_studentUser: _dataStudentUser,
-                                    ),
+                                ),
+                              );
+                            } else if (index.isEqual(2)) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Attendance(
+                                    data_studentUser: _dataStudentUser,
                                   ),
-                                );
-                              } else if (index.isEqual(3)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Payment_UI(
-                                      data_studentUser: _dataStudentUser,
-                                    ),
+                                ),
+                              );
+                            } else if (index.isEqual(3)) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Payment_UI(
+                                    data_studentUser: _dataStudentUser,
                                   ),
-                                );
-                              } else if (index.isEqual(4)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Job_History(
-                                      data_studentUser: _dataStudentUser,
-                                    ),
+                                ),
+                              );
+                            } else if (index.isEqual(4)) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Job_History(
+                                    data_studentUser: _dataStudentUser,
                                   ),
-                                );
-                              } else if (index.isEqual(5)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Study_Info(
-                                      data_studentUser: _dataStudentUser,
-                                    ),
+                                ),
+                              );
+                            } else if (index.isEqual(5)) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Study_Info(
+                                    data_studentUser: _dataStudentUser,
                                   ),
-                                );
-                              } else if (index.isEqual(7)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Achievements(
-                                      data_studentUser: _dataStudentUser,
-                                    ),
+                                ),
+                              );
+                            } else if (index.isEqual(7)) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Achievements(
+                                    data_studentUser: _dataStudentUser,
                                   ),
-                                );
-                              } else {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          st_home_screen[index].screen),
-                                );
-                              }
-                            },
-                            child: Container(
-                              padding: EdgeInsets.only(left: 15),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Image.asset(
-                                    st_home_screen[index].img,
-                                    scale: 6,
+                                ),
+                              );
+                            } else {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        st_home_screen[index].screen),
+                              );
+                            }
+                          },
+                          child: Container(
+                            padding: EdgeInsets.only(left: 15),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Image.asset(
+                                  st_home_screen[index].img,
+                                  scale: 6,
+                                ),
+                                SizedBox(
+                                  height: 7,
+                                ),
+                                Text(
+                                  st_home_screen[index].name.tr,
+                                  style: TextStyle(
+                                    fontSize: 14,
                                   ),
-                                  SizedBox(
-                                    height: 7,
-                                  ),
-                                  Text(
-                                    st_home_screen[index].name.tr,
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                    ),
-                                  )
-                                ],
-                              ),
+                                )
+                              ],
                             ),
                           ),
                         ),
@@ -757,188 +755,186 @@ class _Student_HomeState extends State<Student_Home> {
                   SizedBox(
                     height: 10,
                   ),
-                  Expanded(
-                    child: GridView.count(
-                      shrinkWrap: true,
-                      physics: ScrollPhysics(),
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 3.5,
-                      crossAxisSpacing: 3,
-                      childAspectRatio: 1.90,
-                      padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
-                      children: List.generate(
-                        st_home_screen.length,
-                        (index) => Card(
-                          elevation: 2,
-                          shadowColor: ULightGreyColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: InkWell(
-                            onTap: () {
-                              if (index.isEqual(6)) {
-                                _dataFeedback[0].feedback.isEmpty
-                                    ? showDialog(
-                                        context: context,
-                                        barrierDismissible: false,
-                                        builder: (BuildContext context) {
-                                          return Dialog(
-                                            elevation: 3,
-                                            shape: RoundedRectangleBorder(
+                  GridView.count(
+                    shrinkWrap: true,
+                    physics: ScrollPhysics(),
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 3.5,
+                    crossAxisSpacing: 3,
+                    childAspectRatio: 1.90,
+                    padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
+                    children: List.generate(
+                      st_home_screen.length,
+                      (index) => Card(
+                        elevation: 2,
+                        shadowColor: ULightGreyColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: InkWell(
+                          onTap: () {
+                            if (index.isEqual(6)) {
+                              _dataFeedback[0].feedback.isEmpty
+                                  ? showDialog(
+                                      context: context,
+                                      barrierDismissible: false,
+                                      builder: (BuildContext context) {
+                                        return Dialog(
+                                          elevation: 3,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                            10,
+                                          )),
+                                          child: Container(
+                                            margin: EdgeInsets.all(7),
+                                            padding: EdgeInsets.all(10),
+                                            decoration: BoxDecoration(
                                                 borderRadius:
-                                                    BorderRadius.circular(
-                                              10,
-                                            )),
-                                            child: Container(
-                                              margin: EdgeInsets.all(7),
-                                              padding: EdgeInsets.all(10),
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                  color: UBackgroundColor),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Text(
-                                                    'សូមអធ្យាស្រ័យ'.tr,
-                                                    style: TextStyle(
-                                                      fontSize: UTitleSize,
-                                                      fontWeight: UTitleWeight,
-                                                    ),
+                                                    BorderRadius.circular(20),
+                                                color: UBackgroundColor),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Text(
+                                                  'សូមអធ្យាស្រ័យ'.tr,
+                                                  style: TextStyle(
+                                                    fontSize: UTitleSize,
+                                                    fontWeight: UTitleWeight,
                                                   ),
-                                                  SizedBox(
-                                                    height: 5,
+                                                ),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Text(
+                                                  'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!'
+                                                      .tr,
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                    fontSize: UBodySize,
                                                   ),
-                                                  Text(
-                                                    'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!'
-                                                        .tr,
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                      fontSize: UBodySize,
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 5,
-                                                  ),
-                                                  Container(
-                                                    height: 50,
-                                                    padding: EdgeInsets.all(5),
-                                                    alignment: Alignment.center,
-                                                    child: TextButton(
-                                                      child: Text(
-                                                        'បោះបង់'.tr,
-                                                        style: TextStyle(
-                                                          color: UPrimaryColor,
-                                                          fontSize: UBodySize,
-                                                        ),
+                                                ),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Container(
+                                                  height: 50,
+                                                  padding: EdgeInsets.all(5),
+                                                  alignment: Alignment.center,
+                                                  child: TextButton(
+                                                    child: Text(
+                                                      'បោះបង់'.tr,
+                                                      style: TextStyle(
+                                                        color: UPrimaryColor,
+                                                        fontSize: UBodySize,
                                                       ),
-                                                      onPressed: () {
-                                                        Navigator.of(context)
-                                                            .pop();
-                                                      },
                                                     ),
+                                                    onPressed: () {
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                    },
                                                   ),
-                                                ],
-                                              ),
+                                                ),
+                                              ],
                                             ),
-                                          );
-                                        },
-                                      )
-                                    : launchUrl(
-                                        Uri.parse(_dataFeedback[0].feedback));
-                              } else if (index.isEqual(0)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Schedule(
-                                      data_studentUser: _dataStudentUser,
-                                    ),
+                                          ),
+                                        );
+                                      },
+                                    )
+                                  : launchUrl(
+                                      Uri.parse(_dataFeedback[0].feedback));
+                            } else if (index.isEqual(0)) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Schedule(
+                                    data_studentUser: _dataStudentUser,
                                   ),
-                                );
-                              } else if (index.isEqual(1)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Performance(
-                                      data_studentUser: _dataStudentUser,
-                                    ),
+                                ),
+                              );
+                            } else if (index.isEqual(1)) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Performance(
+                                    data_studentUser: _dataStudentUser,
                                   ),
-                                );
-                              } else if (index.isEqual(2)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Attendance(
-                                      data_studentUser: _dataStudentUser,
-                                    ),
+                                ),
+                              );
+                            } else if (index.isEqual(2)) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Attendance(
+                                    data_studentUser: _dataStudentUser,
                                   ),
-                                );
-                              } else if (index.isEqual(3)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Payment_UI(
-                                      data_studentUser: _dataStudentUser,
-                                    ),
+                                ),
+                              );
+                            } else if (index.isEqual(3)) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Payment_UI(
+                                    data_studentUser: _dataStudentUser,
                                   ),
-                                );
-                              } else if (index.isEqual(4)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Job_History(
-                                      data_studentUser: _dataStudentUser,
-                                    ),
+                                ),
+                              );
+                            } else if (index.isEqual(4)) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Job_History(
+                                    data_studentUser: _dataStudentUser,
                                   ),
-                                );
-                              } else if (index.isEqual(5)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Study_Info(
-                                      data_studentUser: _dataStudentUser,
-                                    ),
+                                ),
+                              );
+                            } else if (index.isEqual(5)) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Study_Info(
+                                    data_studentUser: _dataStudentUser,
                                   ),
-                                );
-                              } else if (index.isEqual(7)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Achievements(
-                                      data_studentUser: _dataStudentUser,
-                                    ),
+                                ),
+                              );
+                            } else if (index.isEqual(7)) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Achievements(
+                                    data_studentUser: _dataStudentUser,
                                   ),
-                                );
-                              } else {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          st_home_screen[index].screen),
-                                );
-                              }
-                            },
-                            child: Container(
-                              padding: EdgeInsets.only(left: 15),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Image.asset(
-                                    st_home_screen[index].img,
-                                    scale: 6,
+                                ),
+                              );
+                            } else {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        st_home_screen[index].screen),
+                              );
+                            }
+                          },
+                          child: Container(
+                            padding: EdgeInsets.only(left: 15),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Image.asset(
+                                  st_home_screen[index].img,
+                                  scale: 6,
+                                ),
+                                SizedBox(
+                                  height: 7,
+                                ),
+                                Text(
+                                  st_home_screen[index].name.tr,
+                                  style: TextStyle(
+                                    fontSize: 14,
                                   ),
-                                  SizedBox(
-                                    height: 7,
-                                  ),
-                                  Text(
-                                    st_home_screen[index].name.tr,
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                    ),
-                                  )
-                                ],
-                              ),
+                                )
+                              ],
                             ),
                           ),
                         ),
@@ -1033,187 +1029,184 @@ class _Student_HomeState extends State<Student_Home> {
               SizedBox(
                 height: 10,
               ),
-              Expanded(
-                child: GridView.count(
-                  shrinkWrap: true,
-                  physics: ScrollPhysics(),
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 3.5,
-                  crossAxisSpacing: 3,
-                  childAspectRatio: 1.90,
-                  padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
-                  children: List.generate(
-                    st_home_screen.length,
-                    (index) => Card(
-                      elevation: 2,
-                      shadowColor: ULightGreyColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: InkWell(
-                        onTap: () {
-                          print(_dataFeedback.length);
-                          if (index.isEqual(6)) {
-                            _dataFeedback.isEmpty
-                                ? showDialog(
-                                    context: context,
-                                    barrierDismissible: false,
-                                    builder: (BuildContext context) {
-                                      return Dialog(
-                                        elevation: 3,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(
-                                          10,
-                                        )),
-                                        child: Container(
-                                          margin: EdgeInsets.all(7),
-                                          padding: EdgeInsets.all(10),
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                              color: UBackgroundColor),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              Text(
-                                                'សូមអធ្យាស្រ័យ'.tr,
-                                                style: TextStyle(
-                                                  fontSize: UTitleSize,
-                                                  fontWeight: UTitleWeight,
-                                                ),
+              GridView.count(
+                shrinkWrap: true,
+                physics: ScrollPhysics(),
+                crossAxisCount: 2,
+                mainAxisSpacing: 3.5,
+                crossAxisSpacing: 3,
+                childAspectRatio: 1.90,
+                padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
+                children: List.generate(
+                  st_home_screen.length,
+                  (index) => Card(
+                    elevation: 2,
+                    shadowColor: ULightGreyColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: InkWell(
+                      onTap: () {
+                        print(_dataFeedback.length);
+                        if (index.isEqual(6)) {
+                          _dataFeedback.isEmpty
+                              ? showDialog(
+                                  context: context,
+                                  barrierDismissible: false,
+                                  builder: (BuildContext context) {
+                                    return Dialog(
+                                      elevation: 3,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                        10,
+                                      )),
+                                      child: Container(
+                                        margin: EdgeInsets.all(7),
+                                        padding: EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            color: UBackgroundColor),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Text(
+                                              'សូមអធ្យាស្រ័យ'.tr,
+                                              style: TextStyle(
+                                                fontSize: UTitleSize,
+                                                fontWeight: UTitleWeight,
                                               ),
-                                              SizedBox(
-                                                height: 5,
+                                            ),
+                                            SizedBox(
+                                              height: 5,
+                                            ),
+                                            Text(
+                                              'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!'
+                                                  .tr,
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                fontSize: UBodySize,
                                               ),
-                                              Text(
-                                                'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!'
-                                                    .tr,
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  fontSize: UBodySize,
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: 5,
-                                              ),
-                                              Container(
-                                                height: 50,
-                                                padding: EdgeInsets.all(5),
-                                                alignment: Alignment.center,
-                                                child: TextButton(
-                                                  child: Text(
-                                                    'បោះបង់'.tr,
-                                                    style: TextStyle(
-                                                      color: UPrimaryColor,
-                                                      fontSize: UBodySize,
-                                                    ),
+                                            ),
+                                            SizedBox(
+                                              height: 5,
+                                            ),
+                                            Container(
+                                              height: 50,
+                                              padding: EdgeInsets.all(5),
+                                              alignment: Alignment.center,
+                                              child: TextButton(
+                                                child: Text(
+                                                  'បោះបង់'.tr,
+                                                  style: TextStyle(
+                                                    color: UPrimaryColor,
+                                                    fontSize: UBodySize,
                                                   ),
-                                                  onPressed: () {
-                                                    Navigator.of(context).pop();
-                                                  },
                                                 ),
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
-                                      );
-                                    },
-                                  )
-                                : launchUrl(
-                                    Uri.parse(_dataFeedback[0].feedback));
-                          } else if (index.isEqual(0)) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Schedule(
-                                  data_studentUser: _dataStudentUser,
-                                ),
+                                      ),
+                                    );
+                                  },
+                                )
+                              : launchUrl(Uri.parse(_dataFeedback[0].feedback));
+                        } else if (index.isEqual(0)) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Schedule(
+                                data_studentUser: _dataStudentUser,
                               ),
-                            );
-                          } else if (index.isEqual(1)) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Performance(
-                                  data_studentUser: _dataStudentUser,
-                                ),
+                            ),
+                          );
+                        } else if (index.isEqual(1)) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Performance(
+                                data_studentUser: _dataStudentUser,
                               ),
-                            );
-                          } else if (index.isEqual(2)) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Attendance(
-                                  data_studentUser: _dataStudentUser,
-                                ),
+                            ),
+                          );
+                        } else if (index.isEqual(2)) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Attendance(
+                                data_studentUser: _dataStudentUser,
                               ),
-                            );
-                          } else if (index.isEqual(3)) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Payment_UI(
-                                  data_studentUser: _dataStudentUser,
-                                ),
+                            ),
+                          );
+                        } else if (index.isEqual(3)) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Payment_UI(
+                                data_studentUser: _dataStudentUser,
                               ),
-                            );
-                          } else if (index.isEqual(4)) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Job_History(
-                                  data_studentUser: _dataStudentUser,
-                                ),
+                            ),
+                          );
+                        } else if (index.isEqual(4)) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Job_History(
+                                data_studentUser: _dataStudentUser,
                               ),
-                            );
-                          } else if (index.isEqual(5)) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Study_Info(
-                                  data_studentUser: _dataStudentUser,
-                                ),
+                            ),
+                          );
+                        } else if (index.isEqual(5)) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Study_Info(
+                                data_studentUser: _dataStudentUser,
                               ),
-                            );
-                          } else if (index.isEqual(7)) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Achievements(
-                                  data_studentUser: _dataStudentUser,
-                                ),
+                            ),
+                          );
+                        } else if (index.isEqual(7)) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Achievements(
+                                data_studentUser: _dataStudentUser,
                               ),
-                            );
-                          } else {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      st_home_screen[index].screen),
-                            );
-                          }
-                        },
-                        child: Container(
-                          padding: EdgeInsets.only(left: 15),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                st_home_screen[index].img,
-                                scale: 6,
+                            ),
+                          );
+                        } else {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    st_home_screen[index].screen),
+                          );
+                        }
+                      },
+                      child: Container(
+                        padding: EdgeInsets.only(left: 15),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                              st_home_screen[index].img,
+                              scale: 6,
+                            ),
+                            SizedBox(
+                              height: 7,
+                            ),
+                            Text(
+                              st_home_screen[index].name.tr,
+                              style: TextStyle(
+                                fontSize: 14,
                               ),
-                              SizedBox(
-                                height: 7,
-                              ),
-                              Text(
-                                st_home_screen[index].name.tr,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                ),
-                              )
-                            ],
-                          ),
+                            )
+                          ],
                         ),
                       ),
                     ),

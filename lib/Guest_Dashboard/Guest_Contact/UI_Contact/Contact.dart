@@ -22,61 +22,55 @@ class _ContactState extends State<Contact> {
       body: ListView(
         padding: EdgeInsets.all(10),
         children: [
-          Expanded(
-            child: ListView.builder(
-              shrinkWrap: true,
-              physics: ScrollPhysics(),
-              itemCount: contact.length,
-              itemBuilder: (context, index) {
-                return Expanded(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
+          ListView.builder(
+            shrinkWrap: true,
+            physics: ScrollPhysics(),
+            itemCount: contact.length,
+            itemBuilder: (context, index) {
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: 30,
-                            height: 30,
-                            child: Image.asset(
-                              contact[index].icon,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Expanded(
-                            child: contact[index].link.isEmpty
-                                ? Container(
-                                    padding: EdgeInsets.only(top: 4),
-                                    child: buildTitleBody(
-                                        contact[index].text.tr,
-                                        UTitleSize,
-                                        FontWeight.w500),
-                                  )
-                                : InkWell(
-                                    onTap: () =>
-                                        launchUrlString(contact[index].link),
-                                    child: Container(
-                                      padding: EdgeInsets.only(top: 4),
-                                      child: buildTitleBody(
-                                          contact[index].text.tr,
-                                          UTitleSize,
-                                          FontWeight.w500),
-                                    ),
-                                  ),
-                          ),
-                        ],
+                      Container(
+                        width: 30,
+                        height: 30,
+                        child: Image.asset(
+                          contact[index].icon,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                       SizedBox(
-                        height: 10,
+                        width: 10,
+                      ),
+                      Expanded(
+                        child: contact[index].link.isEmpty
+                            ? Container(
+                                padding: EdgeInsets.only(top: 4),
+                                child: buildTitleBody(contact[index].text.tr,
+                                    UTitleSize, FontWeight.w500),
+                              )
+                            : InkWell(
+                                onTap: () =>
+                                    launchUrlString(contact[index].link),
+                                child: Container(
+                                  padding: EdgeInsets.only(top: 4),
+                                  child: buildTitleBody(
+                                      contact[index].text.tr,
+                                      UTitleSize,
+                                      FontWeight.w500),
+                                ),
+                              ),
                       ),
                     ],
                   ),
-                );
-              },
-            ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                ],
+              );
+            },
           ),
           Container(
             height: 200,

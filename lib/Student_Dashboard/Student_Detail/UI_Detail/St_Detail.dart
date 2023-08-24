@@ -236,160 +236,146 @@ class _Student_DetailState extends State<Student_Detail> {
                 shrinkWrap: true,
                 itemCount: _dataStDetail.length,
                 itemBuilder: (context, index) {
-                  return Expanded(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 20,
-                          ),
-                          child: Expanded(
-                            child: Row(
-                              children: [
-                                CircleAvatar(
-                                  backgroundImage: NetworkImage(
-                                    _dataStDetail[index].profile_pic,
-                                  ),
-                                  radius: 50,
-                                ),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      buildHeaderDetail(
-                                        _dataStDetail[index].name_kh.isEmpty
-                                            ? 'N/A'
-                                            : _dataStDetail[index].name_kh,
-                                        UKFontFamily,
-                                        UTitleSize16,
-                                        UTitleWeight,
-                                      ),
-                                      buildHeaderDetail(
-                                          _dataStDetail[index].name_en.isEmpty
-                                              ? 'N/A'
-                                              : _dataStDetail[index].name_en,
-                                          UEFontFamily,
-                                          UTitleSize16,
-                                          UBodyWeight),
-                                      buildHeaderDetail(
-                                          _dataStDetail[index]
-                                                  .student_id
-                                                  .isEmpty
-                                              ? 'N/A'
-                                              : _dataStDetail[index].student_id,
-                                          UEFontFamily,
-                                          UBodySize,
-                                          UBodyWeight),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
+                  return Column(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          vertical: UPdMg_10,
+                          horizontal: 20,
                         ),
-                        buildDividerStDetail(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        child: Row(
                           children: [
-                            buildBodyDetail(
-                                'ឆ្នាំ',
-                                _dataStDetail[index].year_name.isEmpty
-                                    ? 'N/A'
-                                    : _dataStDetail[index].year_name),
-                            buildVerticalDividerH_45(),
-                            buildBodyDetail(
-                                'ឆមាស',
-                                _dataStDetail[index].semester_name.isEmpty
-                                    ? 'N/A'
-                                    : _dataStDetail[index].semester_name),
-                            buildVerticalDividerH_45(),
-                            buildBodyDetail(
-                                'ជំនាន់',
-                                _dataStDetail[index].stage_name.isEmpty
-                                    ? 'N/A'
-                                    : _dataStDetail[index].stage_name),
-                            buildVerticalDividerH_45(),
-                            buildBodyDetail(
-                                'វគ្គ',
-                                _dataStDetail[index].term_name.isEmpty
-                                    ? 'N/A'
-                                    : _dataStDetail[index].term_name),
-                            buildVerticalDividerH_45(),
-                            buildBodyDetail(
-                                'ឆ្នាំមូលដ្ឋាន',
-                                _dataStDetail[index].academic_year.isEmpty
-                                    ? 'N/A'
-                                    : _dataStDetail[index].academic_year),
+                            CircleAvatar(
+                              backgroundImage: NetworkImage(
+                                _dataStDetail[index].profile_pic,
+                              ),
+                              radius: 50,
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  buildHeaderDetail(
+                                    _dataStDetail[index].name_kh.isEmpty
+                                        ? 'N/A'
+                                        : _dataStDetail[index].name_kh,
+                                    UKFontFamily,
+                                    UTitleSize16,
+                                    UTitleWeight,
+                                  ),
+                                  buildHeaderDetail(
+                                      _dataStDetail[index].name_en.isEmpty
+                                          ? 'N/A'
+                                          : _dataStDetail[index].name_en,
+                                      UEFontFamily,
+                                      UTitleSize16,
+                                      UBodyWeight),
+                                  buildHeaderDetail(
+                                      _dataStDetail[index].student_id.isEmpty
+                                          ? 'N/A'
+                                          : _dataStDetail[index].student_id,
+                                      UEFontFamily,
+                                      UBodySize,
+                                      UBodyWeight),
+                                ],
+                              ),
+                            )
                           ],
                         ),
-                        buildDividerStDetail(),
-                        Container(
-                          margin: EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 20),
-                          child: Expanded(
-                            child: Column(
-                              children: [
-                                buildTailDetail(
-                                    'assets/image/Stu_Faculty.png',
-                                    'មហាវិទ្យាល័យ'.tr,
-                                    _dataStDetail[index].faculty_name),
-                                buildDividerStDetail(),
-                                buildTailDetail(
-                                    'assets/image/Stu_Degree.png',
-                                    'កម្រិតសិក្សា'.tr,
-                                    _dataStDetail[index].degree_name),
-                                buildDividerStDetail(),
-                                buildTailDetail(
-                                    'assets/image/Stu_Major.png',
-                                    'មុខជំនាញ'.tr,
-                                    _dataStDetail[index].major_name),
-                                buildDividerStDetail(),
-                                buildTailDetail(
-                                    'assets/image/Stu_Room.png',
-                                    'បន្ទប់សិក្សា'.tr,
-                                    _dataStDetail[index].room_name),
-                                buildDividerStDetail(),
-                                buildTailDetail(
-                                    'assets/image/Stu_Shift.png',
-                                    'វេនសិក្សា'.tr,
-                                    _dataStDetail[index].shift_name),
-                                buildDividerStDetail(),
-                                buildTailDetail(
-                                    'assets/image/Stu_Status.png',
-                                    'ស្ថានភាពសិក្សា'.tr,
-                                    _dataStDetail[index].status_name),
-                                buildDividerStDetail(),
-                                buildTailDetail(
-                                    'assets/image/Stu_DOB.png',
-                                    'ថ្ងៃកំណើត'.tr,
-                                    _dataStDetail[index].date_of_birth),
-                                buildDividerStDetail(),
-                                buildTailDetail(
-                                    'assets/image/Stu_Tel.png',
-                                    'លេខទូរស័ព្ទ'.tr,
-                                    _dataStDetail[index].phone_number),
-                                buildDividerStDetail(),
-                                buildTailDetail('assets/image/Stu_Job.png',
-                                    'មុខតំណែង'.tr, _dataStDetail[index].job),
-                                buildDividerStDetail(),
-                                buildTailDetail(
-                                    'assets/image/Stu_Workplace.png',
-                                    'ស្ថាប័ន'.tr,
-                                    _dataStDetail[index].work_place),
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
+                      ),
+                      buildDividerStDetail(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          buildBodyDetail(
+                              'ឆ្នាំ',
+                              _dataStDetail[index].year_name.isEmpty
+                                  ? 'N/A'
+                                  : _dataStDetail[index].year_name),
+                          buildVerticalDividerH_45(),
+                          buildBodyDetail(
+                              'ឆមាស',
+                              _dataStDetail[index].semester_name.isEmpty
+                                  ? 'N/A'
+                                  : _dataStDetail[index].semester_name),
+                          buildVerticalDividerH_45(),
+                          buildBodyDetail(
+                              'ជំនាន់',
+                              _dataStDetail[index].stage_name.isEmpty
+                                  ? 'N/A'
+                                  : _dataStDetail[index].stage_name),
+                          buildVerticalDividerH_45(),
+                          buildBodyDetail(
+                              'វគ្គ',
+                              _dataStDetail[index].term_name.isEmpty
+                                  ? 'N/A'
+                                  : _dataStDetail[index].term_name),
+                          buildVerticalDividerH_45(),
+                          buildBodyDetail(
+                              'ឆ្នាំមូលដ្ឋាន',
+                              _dataStDetail[index].academic_year.isEmpty
+                                  ? 'N/A'
+                                  : _dataStDetail[index].academic_year),
+                        ],
+                      ),
+                      buildDividerStDetail(),
+                      Container(
+                        margin:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                        child: Column(
+                          children: [
+                            buildTailDetail(
+                                'assets/image/Stu_Faculty.png',
+                                'មហាវិទ្យាល័យ'.tr,
+                                _dataStDetail[index].faculty_name),
+                            buildDividerStDetail(),
+                            buildTailDetail(
+                                'assets/image/Stu_Degree.png',
+                                'កម្រិតសិក្សា'.tr,
+                                _dataStDetail[index].degree_name),
+                            buildDividerStDetail(),
+                            buildTailDetail('assets/image/Stu_Major.png',
+                                'មុខជំនាញ'.tr, _dataStDetail[index].major_name),
+                            buildDividerStDetail(),
+                            buildTailDetail(
+                                'assets/image/Stu_Room.png',
+                                'បន្ទប់សិក្សា'.tr,
+                                _dataStDetail[index].room_name),
+                            buildDividerStDetail(),
+                            buildTailDetail(
+                                'assets/image/Stu_Shift.png',
+                                'វេនសិក្សា'.tr,
+                                _dataStDetail[index].shift_name),
+                            buildDividerStDetail(),
+                            buildTailDetail(
+                                'assets/image/Stu_Status.png',
+                                'ស្ថានភាពសិក្សា'.tr,
+                                _dataStDetail[index].status_name),
+                            buildDividerStDetail(),
+                            buildTailDetail(
+                                'assets/image/Stu_DOB.png',
+                                'ថ្ងៃកំណើត'.tr,
+                                _dataStDetail[index].date_of_birth),
+                            buildDividerStDetail(),
+                            buildTailDetail(
+                                'assets/image/Stu_Tel.png',
+                                'លេខទូរស័ព្ទ'.tr,
+                                _dataStDetail[index].phone_number),
+                            buildDividerStDetail(),
+                            buildTailDetail('assets/image/Stu_Job.png',
+                                'មុខតំណែង'.tr, _dataStDetail[index].job),
+                            buildDividerStDetail(),
+                            buildTailDetail('assets/image/Stu_Workplace.png',
+                                'ស្ថាប័ន'.tr, _dataStDetail[index].work_place),
+                          ],
+                        ),
+                      )
+                    ],
                   );
                 },
               ),

@@ -174,66 +174,64 @@ class _AchievementsState extends State<Achievements> {
                       },
                     ),
                   ),
-                  Expanded(
-                    child: GridView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        crossAxisSpacing: 10.0,
-                        mainAxisSpacing: 10.0,
-                      ),
-                      itemCount: _achievementData != null &&
-                              _selectedAchievementTypeIndex >= 0 &&
-                              _selectedAchievementTypeIndex <
-                                  _achievementData!.achievementData.length
-                          ? _achievementData!
-                              .achievementData[_selectedAchievementTypeIndex]
-                              .data
-                              .length
-                          : 0,
-                      itemBuilder: (context, index) {
-                        return Card(
-                          shadowColor: Colors.grey[200],
-                          color: UGreyColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(UPdMg_10),
-                          ),
-                          margin: EdgeInsets.all(UZeroPixel),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(UPdMg_10),
-                            child: _achievementData != null &&
-                                    _selectedAchievementTypeIndex >= 0 &&
-                                    _selectedAchievementTypeIndex <
-                                        _achievementData!
-                                            .achievementData.length &&
-                                    _achievementData!
-                                        .achievementData[
-                                            _selectedAchievementTypeIndex]
-                                        .data
-                                        .isNotEmpty &&
-                                    index <
-                                        _achievementData!
-                                            .achievementData[
-                                                _selectedAchievementTypeIndex]
-                                            .data
-                                            .length
-                                ? Image.network(
-                                    _achievementData!
-                                        .achievementData[
-                                            _selectedAchievementTypeIndex]
-                                        .data[index]
-                                        .image,
-                                    fit: BoxFit.cover,
-                                  )
-                                : Center(
-                                    child: Text('data'),
-                                  ),
-                          ),
-                        );
-                      },
+                  GridView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 10.0,
+                      mainAxisSpacing: 10.0,
                     ),
+                    itemCount: _achievementData != null &&
+                            _selectedAchievementTypeIndex >= 0 &&
+                            _selectedAchievementTypeIndex <
+                                _achievementData!.achievementData.length
+                        ? _achievementData!
+                            .achievementData[_selectedAchievementTypeIndex]
+                            .data
+                            .length
+                        : 0,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        shadowColor: Colors.grey[200],
+                        color: UGreyColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(UPdMg_10),
+                        ),
+                        margin: EdgeInsets.all(UZeroPixel),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(UPdMg_10),
+                          child: _achievementData != null &&
+                                  _selectedAchievementTypeIndex >= 0 &&
+                                  _selectedAchievementTypeIndex <
+                                      _achievementData!
+                                          .achievementData.length &&
+                                  _achievementData!
+                                      .achievementData[
+                                          _selectedAchievementTypeIndex]
+                                      .data
+                                      .isNotEmpty &&
+                                  index <
+                                      _achievementData!
+                                          .achievementData[
+                                              _selectedAchievementTypeIndex]
+                                          .data
+                                          .length
+                              ? Image.network(
+                                  _achievementData!
+                                      .achievementData[
+                                          _selectedAchievementTypeIndex]
+                                      .data[index]
+                                      .image,
+                                  fit: BoxFit.cover,
+                                )
+                              : Center(
+                                  child: Text('data'),
+                                ),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),

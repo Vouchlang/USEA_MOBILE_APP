@@ -162,7 +162,9 @@ class _AttendanceState extends State<Attendance> {
                       child: CircularProgressIndicator(),
                     );
                   } else {
-                    return Center(child: Text('គ្មានទិន្ន័យ'.tr),);
+                    return Center(
+                      child: Text('គ្មានទិន្ន័យ'.tr),
+                    );
                   }
                 },
               )
@@ -266,52 +268,50 @@ class _AttendanceState extends State<Attendance> {
                         });
                       },
                       child: IntrinsicHeight(
-                        child: Expanded(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    width: 165,
-                                    child: Text(
-                                      Get.locale?.languageCode == 'km'
-                                          ? subject.name_kh
-                                          : subject.name_en,
-                                      style: TextStyle(
-                                        height: 1.5,
-                                        fontSize: UTitleSize,
-                                        fontWeight: UTitleWeight,
-                                        color: UTextColor,
-                                      ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: 165,
+                                  child: Text(
+                                    Get.locale?.languageCode == 'km'
+                                        ? subject.name_kh
+                                        : subject.name_en,
+                                    style: TextStyle(
+                                      height: 1.5,
+                                      fontSize: UTitleSize,
+                                      fontWeight: UTitleWeight,
+                                      color: UTextColor,
                                     ),
                                   ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Row(
-                                    children: [
-                                      buildCHText(subject.credit.toString()),
-                                      buildCHText('\tក្រេឌីត\t'.tr),
-                                      buildCHText(subject.hour.toString()),
-                                      buildCHText('\tម៉ោង'.tr),
-                                    ],
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              buildNum(subject.attendance_al, UYellowColor),
-                              buildDivider(),
-                              buildNum(subject.attendance_pm, UOrangeColor),
-                              buildDivider(),
-                              buildNum(subject.attendance_a, URedColor),
-                              buildDivider(),
-                              buildNum(subject.attendance_ps, UScoreColor),
-                            ],
-                          ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  children: [
+                                    buildCHText(subject.credit.toString()),
+                                    buildCHText('\tក្រេឌីត\t'.tr),
+                                    buildCHText(subject.hour.toString()),
+                                    buildCHText('\tម៉ោង'.tr),
+                                  ],
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            buildNum(subject.attendance_al, UYellowColor),
+                            buildDivider(),
+                            buildNum(subject.attendance_pm, UOrangeColor),
+                            buildDivider(),
+                            buildNum(subject.attendance_a, URedColor),
+                            buildDivider(),
+                            buildNum(subject.attendance_ps, UScoreColor),
+                          ],
                         ),
                       ),
                     ),

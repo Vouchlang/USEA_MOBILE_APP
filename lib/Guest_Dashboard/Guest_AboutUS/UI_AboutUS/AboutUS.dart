@@ -22,50 +22,47 @@ class AboutUS extends StatelessWidget {
               shadowColor: ULightGreyColor,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
-              child: Expanded(
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (ctx) => aboutUS[index].screen),
-                    );
-                  },
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                aboutUS[index].img,
-                                scale: 6,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (ctx) => aboutUS[index].screen),
+                  );
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              aboutUS[index].img,
+                              scale: 6,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Expanded(
+                              child: Text(
+                                aboutUS[index].text.tr,
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    fontSize: UTitleSize16,
+                                    fontWeight: UBodyWeight),
                               ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  aboutUS[index].text.tr,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                      fontSize: UTitleSize16,
-                                      fontWeight: UBodyWeight),
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        Container(
-                          child: Image.asset(
-                            'assets/image/Right_Arrow.png',
-                            scale: 15,
-                          ),
-                        )
-                      ],
-                    ),
+                      ),
+                      Container(
+                        child: Image.asset(
+                          'assets/image/Right_Arrow.png',
+                          scale: 15,
+                        ),
+                      )
+                    ],
                   ),
                 ),
               ),
