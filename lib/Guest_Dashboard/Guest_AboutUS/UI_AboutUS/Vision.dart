@@ -31,7 +31,7 @@ class Vision extends StatelessWidget {
             'Knowledge, Skills, Excellence, Society',
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
+            margin: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_10, UPdMg_10, 0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +40,7 @@ class Vision extends StatelessWidget {
                   '4.1. Knowledge',
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 12),
+                  margin: EdgeInsets.only(left: UPdMg_12),
                   child: Column(
                     children: [
                       buildLowBodyVision(
@@ -62,7 +62,7 @@ class Vision extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
+            margin: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_10, UPdMg_10, 0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,7 +71,7 @@ class Vision extends StatelessWidget {
                   '4.2. Skills',
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 12),
+                  margin: EdgeInsets.only(left: UPdMg_12),
                   child: Column(
                     children: [
                       buildLowBodyVision(
@@ -93,14 +93,14 @@ class Vision extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
+            margin: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_10, UPdMg_10, 0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 buildTopBodyVision('4.4. Social'),
                 Container(
-                  margin: EdgeInsets.only(left: 12),
+                  margin: EdgeInsets.only(left: UPdMg_12),
                   child: Column(
                     children: [
                       buildLowBodyVision(
@@ -122,7 +122,7 @@ class Vision extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.all(10),
+            margin: EdgeInsets.all(UPdMg_10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -131,7 +131,7 @@ class Vision extends StatelessWidget {
                   '5. Goal & Objective',
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 12),
+                  margin: EdgeInsets.only(left: UPdMg_12),
                   child: Column(
                     children: [
                       buildLowBodyVision(

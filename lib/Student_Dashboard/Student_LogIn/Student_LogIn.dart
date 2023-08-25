@@ -74,9 +74,9 @@ class _Student_LogInState extends State<Student_LogIn> {
             child: Container(
               height: 175.0,
               margin: EdgeInsets.all(7),
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: UPdMg_10),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(URoundedLarge),
                 color: UBackgroundColor,
               ),
               child: Column(
@@ -89,7 +89,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                         fontSize: UTitleSize16, fontWeight: UTitleWeight),
                   ),
                   SizedBox(
-                    height: 10.0,
+                    height: UHeight10,
                   ),
                   Text(
                     'អត្តលេខនិស្សិត ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវ។ សូមបញ្ចូលម្ដងទៀត!!!'

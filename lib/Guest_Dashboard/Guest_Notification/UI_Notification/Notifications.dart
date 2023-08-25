@@ -17,7 +17,14 @@ class _NotificationsState extends State<Notifications> {
         title: 'ព័ត៌មានថ្មីៗ'.tr,
       ),
       body: Center(
-        child: Text('Coming Soon!!!'),
+        child: Text(
+          'Coming Soon!!!',
+          style: TextStyle(
+              color: UPrimaryColor,
+              fontSize: UTitleSize16,
+              fontWeight: UTitleWeight,
+              fontFamily: UEFontFamily),
+        ),
       ),
     );
   }

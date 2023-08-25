@@ -8,16 +8,16 @@ import '../theme_builder.dart';
 Widget buildDivider() {
   return Container(
     width: 0.5,
-    height: 15,
+    height: UHeight15,
     color: UGreyColor,
-    margin: EdgeInsets.only(right: 5, left: 5),
+    margin: EdgeInsets.symmetric(horizontal: UPdMg_5),
   );
 }
 
 Widget buildDividerAtt() {
   return Divider(
     thickness: 0.5,
-    height: 10,
+    height: UHeight10,
     color: UGreyColor,
   );
 }
@@ -39,7 +39,7 @@ Widget buildDividerStDetail() {
 Widget buildVerticalDividerW_5() {
   return VerticalDivider(
     thickness: 0.5,
-    width: 5,
+    width: UWidth5,
     color: UGreyColor,
   );
 }
@@ -217,8 +217,23 @@ class NoWeightTitleTheme extends StatelessWidget {
 }
 // *@ End No Weight Title
 
-//*@ Career Card Row
+//*@ Event Date
+Widget buildEventDate(
+  String text,
+) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: UBodySize10,
+      fontWeight: UBodyWeight,
+      fontFamily: UKFontFamily,
+      color: UPrimaryColor,
+    ),
+  );
+}
+// *@ End Event Date
 
+//*@ Career Card Row
 Widget buildCareerCardRow(
   String textTitle,
   textValue,
@@ -433,7 +448,7 @@ Widget buildTitleContainer(
   Alignment align,
 ) {
   return Container(
-    padding: EdgeInsets.symmetric(horizontal: 10),
+    padding: EdgeInsets.symmetric(horizontal: UPdMg_10),
     width: width,
     alignment: align,
     child: Text(
@@ -522,7 +537,7 @@ Widget buildAttList(
         size: UBodySize,
       ),
       SizedBox(
-        width: 5,
+        width: UWidth5,
       ),
       Text(
         text.tr,
@@ -543,7 +558,7 @@ Widget buildCHText(
   return Text(
     text,
     style: TextStyle(
-      fontSize: 10,
+      fontSize: UBodySize10,
     ),
   );
 }
@@ -618,7 +633,7 @@ Widget buildTextBody(
 ) {
   return Container(
     width: 75,
-    margin: EdgeInsets.symmetric(vertical: 5),
+    margin: EdgeInsets.symmetric(vertical: UPdMg_5),
     child: Text(
       text,
       textAlign: TextAlign.center,
@@ -636,7 +651,7 @@ Widget buildAttTextBody(
 ) {
   return Container(
     width: 100,
-    margin: EdgeInsets.symmetric(vertical: 5),
+    margin: EdgeInsets.symmetric(vertical: UPdMg_5),
     child: Text(
       text,
       textAlign: TextAlign.center,
@@ -654,7 +669,7 @@ Widget buildTextTitle(
 ) {
   return Container(
     width: 75,
-    margin: EdgeInsets.symmetric(vertical: 5),
+    margin: EdgeInsets.symmetric(vertical: UPdMg_5),
     child: Text(
       text,
       textAlign: TextAlign.center,
@@ -676,7 +691,7 @@ Widget buildTitle(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Padding(
-        padding: EdgeInsets.fromLTRB(10, 10, 10, 5),
+        padding: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_10, UPdMg_10, UPdMg_5),
         child: Container(
           child: Text(
             text.tr,
@@ -797,7 +812,7 @@ Widget buildTailDetail(
         scale: 5,
       ),
       SizedBox(
-        width: 10,
+        width: UWidth10,
       ),
       Expanded(
         child: Column(
@@ -871,12 +886,12 @@ Widget buildHistory(
       Container(
         child: Image.asset(
           'assets/image/dot.png',
-          width: 5,
+          width: UWidth5,
         ),
-        margin: EdgeInsets.only(top: 10),
+        margin: EdgeInsets.only(top: UPdMg_10),
       ),
       SizedBox(
-        width: 5,
+        width: UWidth5,
       ),
       Expanded(
         child: Text(
@@ -899,7 +914,7 @@ Widget buildTitleVision(
   text2,
 ) {
   return Container(
-    margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
+    margin: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_10, UPdMg_10, UZeroPixel),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -913,7 +928,7 @@ Widget buildTitleVision(
               fontWeight: UBodyWeight),
         ),
         Container(
-          margin: EdgeInsets.only(left: 12),
+          margin: EdgeInsets.only(left: UPdMg_12),
           child: Text(
             text2,
             textAlign: TextAlign.justify,
@@ -949,14 +964,14 @@ Widget buildLowBodyVision(
     mainAxisAlignment: MainAxisAlignment.start,
     children: [
       Container(
-        margin: EdgeInsets.only(top: 10),
+        margin: EdgeInsets.only(top: UPdMg_10),
         child: Image.asset(
           'assets/image/dot.png',
           width: 4,
         ),
       ),
       SizedBox(
-        width: 5,
+        width: UWidth5,
       ),
       Expanded(
         child: Text(
@@ -993,7 +1008,7 @@ Widget buildPresidentMessage(
   String text,
 ) {
   return Container(
-    margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+    margin: EdgeInsets.symmetric(horizontal: UPdMg_10),
     child: Text(
       text,
       textAlign: TextAlign.justify,

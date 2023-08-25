@@ -67,7 +67,7 @@ class _CardCalendarState extends State<CardCalendar> {
                 headerStyle: HeaderStyle(
                   headerPadding: EdgeInsets.symmetric(
                     horizontal: 20.0,
-                    vertical: 10.0,
+                    vertical: UPdMg_10,
                   ),
                   titleTextStyle: TextStyle(
                     color: UPrimaryColor,
@@ -95,7 +95,7 @@ class _CardCalendarState extends State<CardCalendar> {
                 calendarBuilders: CalendarBuilders(
                   defaultBuilder: (context, date, _) {
                     return Container(
-                      margin: const EdgeInsets.all(4.0),
+                      margin: EdgeInsets.all(UPdMg_5),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         color: isSameDay(date, today)

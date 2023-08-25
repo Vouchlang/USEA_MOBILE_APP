@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import '../../../Custom_Widget/CustomText.dart';
 import '/Guest_Dashboard/Guest_New_Event/UI_News_Event/Upcoming_Event_Detail.dart';
 import '/theme_builder.dart';
 import '../Class_News_Event/Class_Up_News_Events.dart';
@@ -71,7 +72,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                   return Card(
                     elevation: 2,
                     shadowColor: ULightGreyColor,
-                    margin: EdgeInsets.only(bottom: 10),
+                    margin: EdgeInsets.only(bottom: UPdMg_10),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(URoundedLarge),
                     ),
@@ -102,7 +103,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 5),
+                          SizedBox(height: UHeight5),
                           Container(
                             padding: EdgeInsets.fromLTRB(
                               UPdMg_10,
@@ -129,7 +130,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 5),
+                                SizedBox(height: UHeight5),
                                 Container(
                                   width: UFullWidth,
                                   child: Text(
@@ -146,7 +147,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 5),
+                                SizedBox(height: UHeight5),
                                 Row(
                                   children: [
                                     Flexible(
@@ -157,80 +158,52 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                             'assets/image/Event_Date.png',
                                             width: 14,
                                           ),
-                                          SizedBox(width: 5),
-                                          Text(
+                                          SizedBox(width: UWidth5),
+                                          buildEventDate(
                                             up_event.upcoming_day.isEmpty
                                                 ? 'N/A'
                                                 : 'ថ្ងៃ' +
                                                     up_event.upcoming_day,
-                                            style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: UBodyWeight,
-                                              fontFamily: UKFontFamily,
-                                              color: UPrimaryColor,
-                                            ),
                                           ),
                                           SizedBox(width: 2),
-                                          Text(
+                                          buildEventDate(
                                             up_event.upcoming_date.isEmpty
                                                 ? 'N/A'
                                                 : 'ទី' + up_event.upcoming_date,
-                                            style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: UBodyWeight,
-                                              fontFamily: UKFontFamily,
-                                              color: UPrimaryColor,
-                                            ),
                                           ),
                                           SizedBox(width: 2),
-                                          Text(
+                                          buildEventDate(
                                             up_event.upcoming_month.isEmpty
                                                 ? 'N/A'
                                                 : 'ខែ' +
                                                     up_event.upcoming_month,
-                                            style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: UBodyWeight,
-                                              fontFamily: UKFontFamily,
-                                              color: UPrimaryColor,
-                                            ),
                                           ),
                                           SizedBox(width: 2),
-                                          Text(
+                                          buildEventDate(
                                             up_event.upcoming_year.isEmpty
                                                 ? 'N/A'
                                                 : 'ឆ្នាំ' +
                                                     up_event.upcoming_year,
-                                            style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: UBodyWeight,
-                                              fontFamily: UKFontFamily,
-                                              color: UPrimaryColor,
-                                            ),
                                           ),
                                         ],
                                       ),
                                     ),
-                                    SizedBox(width: 10),
+                                    SizedBox(width: UWidth10),
                                     Flexible(
                                       flex: 1,
                                       child: Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
                                         children: [
                                           Image.asset(
                                             'assets/image/Event_Time.png',
                                             width: 14,
                                           ),
-                                          SizedBox(width: 5),
-                                          Text(
+                                          SizedBox(width: UWidth5),
+                                          buildEventDate(
                                             up_event.upcoming_time.isEmpty
                                                 ? 'N/A'
                                                 : up_event.upcoming_time,
-                                            style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: UBodyWeight,
-                                              fontFamily: UKFontFamily,
-                                              color: UPrimaryColor,
-                                            ),
                                           ),
                                         ],
                                       ),

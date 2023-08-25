@@ -34,11 +34,13 @@ class _CareerState extends State<Career> {
       print('Error fetching data: $e');
       // handle the error here
     } finally {
-      setState(
-        () {
-          isLoading = false;
-        },
-      );
+      if (mounted) {
+        setState(
+          () {
+            isLoading = false;
+          },
+        );
+      }
     }
   }
 
@@ -65,14 +67,16 @@ class _CareerState extends State<Career> {
                 ),
               )
             : ListView.builder(
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                padding:
+                    EdgeInsets.symmetric(vertical: UPdMg_10, horizontal: 20),
                 itemCount: career.length,
                 itemBuilder: (context, index) {
                   final isFinalIndex = index == career.length - 1;
                   return Padding(
-                    padding: EdgeInsets.only(bottom: isFinalIndex ? 10 : 0),
+                    padding:
+                        EdgeInsets.only(bottom: isFinalIndex ? UPdMg_10 : 0),
                     child: Container(
-                      padding: EdgeInsets.only(top: 5),
+                      padding: EdgeInsets.only(top: UPdMg_5),
                       child: InkWell(
                         onTap: () => launchUrlString(career[index].link),
                         child: Column(
@@ -100,7 +104,7 @@ class _CareerState extends State<Career> {
                                         text: career[index].position,
                                       ),
                                       SizedBox(
-                                        height: 5,
+                                        height: UHeight5,
                                       ),
                                       BodyTheme(
                                         text: career[index].organization,

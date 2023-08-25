@@ -194,7 +194,7 @@ class _Student_HomeState extends State<Student_Home> {
                     scale: 30,
                   ),
                   SizedBox(
-                    width: 5,
+                    width: UWidth5,
                   ),
                   Expanded(
                     child: Column(
@@ -205,14 +205,14 @@ class _Student_HomeState extends State<Student_Home> {
                           'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
                           style: TextStyle(
                               color: UPrimaryColor,
-                              fontSize: 10,
+                              fontSize: UBodySize10,
                               fontFamily: 'KhmerOSmuol'),
                         ),
                         Text(
                           'UNIVERSITY OF SOUTH-EAST ASIA',
                           style: TextStyle(
                               color: UPrimaryColor,
-                              fontSize: 12,
+                              fontSize: UBodySize,
                               fontFamily: UEFontFamily,
                               fontWeight: UBodyWeight),
                         ),
@@ -223,7 +223,7 @@ class _Student_HomeState extends State<Student_Home> {
               ),
             ),
             SizedBox(
-              width: 15,
+              width: UWidth15,
             ),
             InkWell(
                 onTap: () {
@@ -262,14 +262,14 @@ class _Student_HomeState extends State<Student_Home> {
                 shrinkWrap: true,
                 children: [
                   SizedBox(
-                    height: 10,
+                    height: UHeight10,
                   ),
                   Card(
-                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    margin: EdgeInsets.symmetric(horizontal: UPdMg_10),
                     elevation: 1,
                     shadowColor: ULightGreyColor,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5)),
+                        borderRadius: BorderRadius.circular(URoundedMedium)),
                     child: InkWell(
                       onTap: () {
                         showDialog(
@@ -279,11 +279,11 @@ class _Student_HomeState extends State<Student_Home> {
                               elevation: 3,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(
-                                10,
+                                URoundedLarge,
                               )),
                               child: Container(
                                 margin: EdgeInsets.all(7),
-                                padding: EdgeInsets.all(10),
+                                padding: EdgeInsets.all(UPdMg_10),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: UBackgroundColor),
@@ -298,7 +298,7 @@ class _Student_HomeState extends State<Student_Home> {
                                       ),
                                     ),
                                     SizedBox(
-                                      height: 5,
+                                      height: UHeight5,
                                     ),
                                     Text(
                                       'សូមជ្រើសរើសប្រភេទនៃការវាយតម្លៃ!!!'.tr,
@@ -308,11 +308,11 @@ class _Student_HomeState extends State<Student_Home> {
                                       ),
                                     ),
                                     SizedBox(
-                                      height: 5,
+                                      height: UHeight5,
                                     ),
                                     Container(
                                       height: 70,
-                                      padding: EdgeInsets.all(5),
+                                      padding: EdgeInsets.all(UPdMg_5),
                                       alignment: Alignment.center,
                                       child: ListView.builder(
                                         shrinkWrap: true,
@@ -349,7 +349,7 @@ class _Student_HomeState extends State<Student_Home> {
                                               if (index !=
                                                   _dataSurvey.length - 1)
                                                 VerticalDivider(
-                                                  width: 10,
+                                                  width: UWidth10,
                                                   color: Colors.transparent,
                                                   thickness: 0,
                                                 ),
@@ -366,7 +366,7 @@ class _Student_HomeState extends State<Student_Home> {
                         );
                       },
                       child: Container(
-                        margin: EdgeInsets.all(5),
+                        margin: EdgeInsets.all(UPdMg_5),
                         child: Text(
                           'សូមជួយធ្វើការវាយតម្លៃ'.tr,
                           textAlign: TextAlign.center,
@@ -379,12 +379,12 @@ class _Student_HomeState extends State<Student_Home> {
                     ),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: UHeight10,
                   ),
                   Container(
                     alignment: Alignment.center,
                     height: 180,
-                    padding: EdgeInsets.symmetric(horizontal: 5),
+                    padding: EdgeInsets.symmetric(horizontal: UPdMg_5),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -404,13 +404,13 @@ class _Student_HomeState extends State<Student_Home> {
                                 ? '${_dataCredit[0].yourCredit} / ${_dataCredit[0].totalCredit}'
                                 : 'N/A',
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: UTitleSize,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                         SizedBox(
-                          width: 15,
+                          width: UWidth15,
                         ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -431,7 +431,7 @@ class _Student_HomeState extends State<Student_Home> {
                               ],
                             ),
                             SizedBox(
-                              height: 10,
+                              height: UHeight10,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -454,7 +454,7 @@ class _Student_HomeState extends State<Student_Home> {
                     ),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: UHeight10,
                   ),
                   GridView.count(
                     shrinkWrap: true,
@@ -470,7 +470,7 @@ class _Student_HomeState extends State<Student_Home> {
                         elevation: 2,
                         shadowColor: ULightGreyColor,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(UPdMg_10),
                         ),
                         child: InkWell(
                           onTap: () {
@@ -489,7 +489,7 @@ class _Student_HomeState extends State<Student_Home> {
                                           )),
                                           child: Container(
                                             margin: EdgeInsets.all(7),
-                                            padding: EdgeInsets.all(10),
+                                            padding: EdgeInsets.all(UPdMg_10),
                                             decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(20),
@@ -505,7 +505,7 @@ class _Student_HomeState extends State<Student_Home> {
                                                   ),
                                                 ),
                                                 SizedBox(
-                                                  height: 5,
+                                                  height: UHeight5,
                                                 ),
                                                 Text(
                                                   'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!'
@@ -516,11 +516,12 @@ class _Student_HomeState extends State<Student_Home> {
                                                   ),
                                                 ),
                                                 SizedBox(
-                                                  height: 5,
+                                                  height: UHeight5,
                                                 ),
                                                 Container(
                                                   height: 50,
-                                                  padding: EdgeInsets.all(5),
+                                                  padding:
+                                                      EdgeInsets.all(UPdMg_5),
                                                   alignment: Alignment.center,
                                                   child: TextButton(
                                                     child: Text(
@@ -617,7 +618,7 @@ class _Student_HomeState extends State<Student_Home> {
                             }
                           },
                           child: Container(
-                            padding: EdgeInsets.only(left: 15),
+                            padding: EdgeInsets.only(left: UPdMg_15),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -632,7 +633,7 @@ class _Student_HomeState extends State<Student_Home> {
                                 Text(
                                   st_home_screen[index].name.tr,
                                   style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: UTitleSize,
                                   ),
                                 )
                               ],
@@ -652,20 +653,20 @@ class _Student_HomeState extends State<Student_Home> {
                 shrinkWrap: true,
                 children: [
                   SizedBox(
-                    height: 10,
+                    height: UHeight10,
                   ),
                   Card(
-                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    margin: EdgeInsets.symmetric(horizontal: UPdMg_10),
                     elevation: 1,
                     shadowColor: ULightGreyColor,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5)),
+                        borderRadius: BorderRadius.circular(URoundedMedium)),
                     child: InkWell(
                       onTap: () {
                         launchUrl(Uri.parse(_dataSurvey[0].link));
                       },
                       child: Container(
-                        margin: EdgeInsets.all(5),
+                        margin: EdgeInsets.all(UPdMg_5),
                         child: Text(
                           'សូមជួយធ្វើការវាយតម្លៃ'.tr,
                           textAlign: TextAlign.center,
@@ -678,12 +679,12 @@ class _Student_HomeState extends State<Student_Home> {
                     ),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: UHeight10,
                   ),
                   Container(
                     alignment: Alignment.center,
                     height: 180,
-                    padding: EdgeInsets.symmetric(horizontal: 5),
+                    padding: EdgeInsets.symmetric(horizontal: UPdMg_5),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -703,13 +704,13 @@ class _Student_HomeState extends State<Student_Home> {
                                 ? '${_dataCredit[0].yourCredit} / ${_dataCredit[0].totalCredit}'
                                 : 'N/A',
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: UTitleSize,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                         SizedBox(
-                          width: 15,
+                          width: UWidth15,
                         ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -730,7 +731,7 @@ class _Student_HomeState extends State<Student_Home> {
                               ],
                             ),
                             SizedBox(
-                              height: 10,
+                              height: UHeight10,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -753,7 +754,7 @@ class _Student_HomeState extends State<Student_Home> {
                     ),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: UHeight10,
                   ),
                   GridView.count(
                     shrinkWrap: true,
@@ -762,14 +763,14 @@ class _Student_HomeState extends State<Student_Home> {
                     mainAxisSpacing: 3.5,
                     crossAxisSpacing: 3,
                     childAspectRatio: 1.90,
-                    padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
+                    padding: EdgeInsets.symmetric(horizontal: 7),
                     children: List.generate(
                       st_home_screen.length,
                       (index) => Card(
                         elevation: 2,
                         shadowColor: ULightGreyColor,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(URoundedLarge),
                         ),
                         child: InkWell(
                           onTap: () {
@@ -784,11 +785,11 @@ class _Student_HomeState extends State<Student_Home> {
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(
-                                            10,
+                                            URoundedLarge,
                                           )),
                                           child: Container(
                                             margin: EdgeInsets.all(7),
-                                            padding: EdgeInsets.all(10),
+                                            padding: EdgeInsets.all(UPdMg_10),
                                             decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(20),
@@ -804,7 +805,7 @@ class _Student_HomeState extends State<Student_Home> {
                                                   ),
                                                 ),
                                                 SizedBox(
-                                                  height: 5,
+                                                  height: UHeight5,
                                                 ),
                                                 Text(
                                                   'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!'
@@ -815,11 +816,12 @@ class _Student_HomeState extends State<Student_Home> {
                                                   ),
                                                 ),
                                                 SizedBox(
-                                                  height: 5,
+                                                  height: UHeight5,
                                                 ),
                                                 Container(
                                                   height: 50,
-                                                  padding: EdgeInsets.all(5),
+                                                  padding:
+                                                      EdgeInsets.all(UPdMg_5),
                                                   alignment: Alignment.center,
                                                   child: TextButton(
                                                     child: Text(
@@ -916,7 +918,7 @@ class _Student_HomeState extends State<Student_Home> {
                             }
                           },
                           child: Container(
-                            padding: EdgeInsets.only(left: 15),
+                            padding: EdgeInsets.only(left: UPdMg_15),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -931,7 +933,7 @@ class _Student_HomeState extends State<Student_Home> {
                                 Text(
                                   st_home_screen[index].name.tr,
                                   style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: UTitleSize,
                                   ),
                                 )
                               ],
@@ -952,12 +954,12 @@ class _Student_HomeState extends State<Student_Home> {
             shrinkWrap: true,
             children: [
               SizedBox(
-                height: 10,
+                height: UHeight10,
               ),
               Container(
                 alignment: Alignment.center,
                 height: 180,
-                padding: EdgeInsets.symmetric(horizontal: 5),
+                padding: EdgeInsets.symmetric(horizontal: UPdMg_5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -977,13 +979,13 @@ class _Student_HomeState extends State<Student_Home> {
                             ? '${_dataCredit[0].yourCredit} / ${_dataCredit[0].totalCredit}'
                             : 'N/A',
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: UTitleSize,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                     SizedBox(
-                      width: 15,
+                      width: UWidth15,
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -1004,7 +1006,7 @@ class _Student_HomeState extends State<Student_Home> {
                           ],
                         ),
                         SizedBox(
-                          height: 10,
+                          height: UHeight10,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -1027,7 +1029,7 @@ class _Student_HomeState extends State<Student_Home> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: UHeight10,
               ),
               GridView.count(
                 shrinkWrap: true,
@@ -1036,14 +1038,14 @@ class _Student_HomeState extends State<Student_Home> {
                 mainAxisSpacing: 3.5,
                 crossAxisSpacing: 3,
                 childAspectRatio: 1.90,
-                padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
+                padding: EdgeInsets.symmetric(horizontal: 7),
                 children: List.generate(
                   st_home_screen.length,
                   (index) => Card(
                     elevation: 2,
                     shadowColor: ULightGreyColor,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(URoundedLarge),
                     ),
                     child: InkWell(
                       onTap: () {
@@ -1062,7 +1064,7 @@ class _Student_HomeState extends State<Student_Home> {
                                       )),
                                       child: Container(
                                         margin: EdgeInsets.all(7),
-                                        padding: EdgeInsets.all(10),
+                                        padding: EdgeInsets.all(UPdMg_10),
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(20),
@@ -1078,7 +1080,7 @@ class _Student_HomeState extends State<Student_Home> {
                                               ),
                                             ),
                                             SizedBox(
-                                              height: 5,
+                                              height: UHeight5,
                                             ),
                                             Text(
                                               'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!'
@@ -1089,11 +1091,11 @@ class _Student_HomeState extends State<Student_Home> {
                                               ),
                                             ),
                                             SizedBox(
-                                              height: 5,
+                                              height: UHeight5,
                                             ),
                                             Container(
                                               height: 50,
-                                              padding: EdgeInsets.all(5),
+                                              padding: EdgeInsets.all(UPdMg_5),
                                               alignment: Alignment.center,
                                               child: TextButton(
                                                 child: Text(
@@ -1188,7 +1190,7 @@ class _Student_HomeState extends State<Student_Home> {
                         }
                       },
                       child: Container(
-                        padding: EdgeInsets.only(left: 15),
+                        padding: EdgeInsets.only(left: UPdMg_15),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -1203,7 +1205,7 @@ class _Student_HomeState extends State<Student_Home> {
                             Text(
                               st_home_screen[index].name.tr,
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: UTitleSize,
                               ),
                             )
                           ],

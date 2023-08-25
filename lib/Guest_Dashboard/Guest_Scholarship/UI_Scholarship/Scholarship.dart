@@ -59,7 +59,7 @@ class _ScholarshipState extends State<Scholarship> {
                         child: AnimatedContainer(
                           duration: Duration(milliseconds: 300),
                           margin: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_10,
-                              isLastIndex ? 10 : 0, UPdMg_10),
+                              isLastIndex ? UPdMg_10 : 0, UPdMg_10),
                           padding: EdgeInsets.all(UPdMg_10),
                           width: 165,
                           decoration: BoxDecoration(

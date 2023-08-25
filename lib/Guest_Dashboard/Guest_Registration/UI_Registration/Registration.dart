@@ -27,38 +27,41 @@ class _RegistrationState extends State<Registration> {
     try {
       http.Response response = await http.get(Uri.parse(apiUrl));
       if (response.statusCode == 200) {
-        List<dynamic> jsonData = json.decode(response.body);
-        List<EducationData> data = jsonData.map((item) {
-          String title = item['title'];
-          List<dynamic> details = item['details'];
-          List<EducationDetail> educationDetails = details.map((detail) {
-            String dateTitle = detail['date_title'];
-            List<dynamic> educationList = detail['education_list'];
-            List<EducationItem> educationItems = educationList.map((education) {
-              String educationName = education['education_name'];
-              List<dynamic> infoList = education['list'];
-              List<InfoList> infos = infoList.map((info) {
-                String info_text = info['info'];
-                return InfoList(info_text: info_text);
+        if (mounted) {
+          List<dynamic> jsonData = json.decode(response.body);
+          List<EducationData> data = jsonData.map((item) {
+            String title = item['title'];
+            List<dynamic> details = item['details'];
+            List<EducationDetail> educationDetails = details.map((detail) {
+              String dateTitle = detail['date_title'];
+              List<dynamic> educationList = detail['education_list'];
+              List<EducationItem> educationItems =
+                  educationList.map((education) {
+                String educationName = education['education_name'];
+                List<dynamic> infoList = education['list'];
+                List<InfoList> infos = infoList.map((info) {
+                  String info_text = info['info'];
+                  return InfoList(info_text: info_text);
+                }).toList();
+                return EducationItem(
+                    educationName: educationName, infoList: infos);
               }).toList();
-              return EducationItem(
-                  educationName: educationName, infoList: infos);
+              String timeTitle = detail['time_title'];
+              String timeDetail = detail['time_detail'];
+              return EducationDetail(
+                dateTitle: dateTitle,
+                educationList: educationItems,
+                timeTitle: timeTitle,
+                timeDetail: timeDetail,
+              );
             }).toList();
-            String timeTitle = detail['time_title'];
-            String timeDetail = detail['time_detail'];
-            return EducationDetail(
-              dateTitle: dateTitle,
-              educationList: educationItems,
-              timeTitle: timeTitle,
-              timeDetail: timeDetail,
-            );
+            return EducationData(title: title, details: educationDetails);
           }).toList();
-          return EducationData(title: title, details: educationDetails);
-        }).toList();
 
-        setState(() {
-          educationDataList = data;
-        });
+          setState(() {
+            educationDataList = data;
+          });
+        }
       } else {
         print('Failed to fetch data. Status code: ${response.statusCode}');
       }
@@ -89,7 +92,7 @@ class _RegistrationState extends State<Registration> {
                 final educationData = educationDataList[index];
                 return Card(
                   elevation: 2,
-                  margin: EdgeInsets.only(bottom: 10),
+                  margin: EdgeInsets.only(bottom: UPdMg_10),
                   shadowColor: ULightGreyColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(URoundedLarge),
@@ -113,7 +116,7 @@ class _RegistrationState extends State<Registration> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 5),
+                        SizedBox(height: UHeight5),
                         ListView.builder(
                           shrinkWrap: true,
                           physics: ClampingScrollPhysics(),
@@ -137,7 +140,7 @@ class _RegistrationState extends State<Registration> {
                                         child: Image.asset(
                                             'assets/image/date_time.png'),
                                       ),
-                                      SizedBox(width: 5),
+                                      SizedBox(width: UWidth5),
                                       Expanded(
                                         child: Text(
                                           details.dateTitle,
@@ -173,7 +176,7 @@ class _RegistrationState extends State<Registration> {
                                                 scale: 14,
                                               ),
                                             ),
-                                            SizedBox(width: 5),
+                                            SizedBox(width: UWidth5),
                                             Expanded(
                                               child: Text(
                                                 educationItem.educationName,
@@ -190,7 +193,7 @@ class _RegistrationState extends State<Registration> {
                                       for (var info in educationItem.infoList)
                                         Column(
                                           children: [
-                                            SizedBox(height: 5),
+                                            SizedBox(height: UHeight5),
                                             Container(
                                               margin: EdgeInsets.only(left: 35),
                                               width: double.infinity,
@@ -198,13 +201,13 @@ class _RegistrationState extends State<Registration> {
                                                 mainAxisSize: MainAxisSize.min,
                                                 children: [
                                                   SizedBox(
-                                                    width: 5,
+                                                    width: UWidth5,
                                                   ),
                                                   Expanded(
                                                     child: Text(
                                                       info.info_text,
                                                       style: TextStyle(
-                                                        fontSize: 13,
+                                                        fontSize: UBodySize,
                                                         fontFamily:
                                                             UKFontFamily,
                                                         fontWeight:
@@ -215,12 +218,12 @@ class _RegistrationState extends State<Registration> {
                                                 ],
                                               ),
                                             ),
-                                            SizedBox(height: 5),
+                                            SizedBox(height: UHeight5),
                                           ],
                                         ),
                                     ],
                                   ),
-                                SizedBox(height: 5),
+                                SizedBox(height: UHeight5),
                                 Container(
                                   width: UFullWidth,
                                   child: Row(
@@ -235,7 +238,7 @@ class _RegistrationState extends State<Registration> {
                                         child: Image.asset(
                                             'assets/image/date_time.png'),
                                       ),
-                                      SizedBox(width: 5),
+                                      SizedBox(width: UWidth5),
                                       Expanded(
                                         child: Text(
                                           details.timeTitle,
@@ -250,19 +253,19 @@ class _RegistrationState extends State<Registration> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(height: 5),
+                                SizedBox(height: UHeight5),
                                 Container(
                                   margin: EdgeInsets.only(left: 35),
                                   width: UFullWidth,
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      SizedBox(width: 5),
+                                      SizedBox(width: UWidth5),
                                       Expanded(
                                         child: Text(
                                           details.timeDetail,
                                           style: TextStyle(
-                                            fontSize: 13,
+                                            fontSize: UBodySize,
                                             fontFamily: UKFontFamily,
                                             fontWeight: FontWeight.w400,
                                           ),

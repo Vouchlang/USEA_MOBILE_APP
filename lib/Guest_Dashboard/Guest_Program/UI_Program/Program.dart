@@ -198,7 +198,7 @@ class _ProgramState extends State<Program> {
                   elevation: 2,
                   shadowColor: UGreyColor,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(UPdMg_10),
+                    borderRadius: BorderRadius.circular(URoundedLarge),
                   ),
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: UPdMg_5),
@@ -219,7 +219,7 @@ class _ProgramState extends State<Program> {
                                 return Icon(Icons.error);
                               },
                             ),
-                            SizedBox(width: UPdMg_10),
+                            SizedBox(width: UWidth10),
                             Expanded(child: Text(facultyName.toString().tr)),
                           ],
                         ),

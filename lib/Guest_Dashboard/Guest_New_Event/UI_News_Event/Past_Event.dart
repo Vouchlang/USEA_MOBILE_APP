@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../Custom_Widget/CustomText.dart';
 import '/Guest_Dashboard/Guest_New_Event/Class_News_Event/Class_Past_News_Events.dart';
 import 'package:http/http.dart' as http;
 import '/theme_builder.dart';
@@ -107,7 +108,7 @@ class _Past_EventState extends State<Past_Event> {
                             ),
                           ),
                           SizedBox(
-                            height: 5,
+                            height: UHeight5,
                           ),
                           Container(
                             padding: EdgeInsets.fromLTRB(
@@ -135,7 +136,7 @@ class _Past_EventState extends State<Past_Event> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: UPdMg_5),
+                                SizedBox(height: UHeight5),
                                 Container(
                                   width: double.infinity,
                                   child: Text(
@@ -152,7 +153,7 @@ class _Past_EventState extends State<Past_Event> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: UPdMg_5),
+                                SizedBox(height: UHeight5),
                                 Row(
                                   children: [
                                     Flexible(
@@ -163,59 +164,35 @@ class _Past_EventState extends State<Past_Event> {
                                             'assets/image/Event_Date.png',
                                             width: 14,
                                           ),
-                                          SizedBox(width: UPdMg_5),
-                                          Text(
+                                          SizedBox(width: UWidth5),
+                                          buildEventDate(
                                             past_event.past_day.isEmpty
                                                 ? 'N/A'
                                                 : 'ថ្ងៃ' + past_event.past_day,
-                                            style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: UBodyWeight,
-                                              fontFamily: UKFontFamily,
-                                              color: UPrimaryColor,
-                                            ),
                                           ),
                                           SizedBox(width: 2),
-                                          Text(
+                                          buildEventDate(
                                             past_event.past_date.isEmpty
                                                 ? 'N/A'
                                                 : 'ទី' + past_event.past_date,
-                                            style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: UBodyWeight,
-                                              fontFamily: UKFontFamily,
-                                              color: UPrimaryColor,
-                                            ),
                                           ),
                                           SizedBox(width: 2),
-                                          Text(
+                                          buildEventDate(
                                             past_event.past_month.isEmpty
                                                 ? 'N/A'
                                                 : 'ខែ' + past_event.past_month,
-                                            style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: UBodyWeight,
-                                              fontFamily: UKFontFamily,
-                                              color: UPrimaryColor,
-                                            ),
                                           ),
                                           SizedBox(width: 2),
-                                          Text(
+                                          buildEventDate(
                                             past_event.past_year.isEmpty
                                                 ? 'N/A'
                                                 : 'ឆ្នាំ' +
                                                     past_event.past_year,
-                                            style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: UBodyWeight,
-                                              fontFamily: UKFontFamily,
-                                              color: UPrimaryColor,
-                                            ),
                                           ),
                                         ],
                                       ),
                                     ),
-                                    SizedBox(width: UPdMg_10),
+                                    SizedBox(width: UWidth10),
                                     Flexible(
                                       flex: 1,
                                       child: Row(
@@ -224,17 +201,11 @@ class _Past_EventState extends State<Past_Event> {
                                             'assets/image/Event_Time.png',
                                             width: 14,
                                           ),
-                                          SizedBox(width: UPdMg_5),
-                                          Text(
+                                          SizedBox(width: UWidth5),
+                                          buildEventDate(
                                             past_event.past_time.isEmpty
                                                 ? 'N/A'
                                                 : past_event.past_time,
-                                            style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: UBodyWeight,
-                                              fontFamily: UKFontFamily,
-                                              color: UPrimaryColor,
-                                            ),
                                           ),
                                         ],
                                       ),

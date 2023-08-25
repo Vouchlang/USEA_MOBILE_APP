@@ -73,11 +73,11 @@ class _Guest_HomeState extends State<Guest_Home> {
   @override
   Widget build(BuildContext context) {
     Widget buildImage(String image_slide, int index) => Container(
-          margin: EdgeInsets.symmetric(horizontal: 5),
+          margin: EdgeInsets.symmetric(horizontal: UPdMg_5),
           width: UFullWidth,
           height: UFullWidth,
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(URoundedLarge),
             child: Image.network(
               image_slide,
               fit: BoxFit.fill,
@@ -111,7 +111,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                     scale: 30,
                   ),
                   SizedBox(
-                    width: 5,
+                    width: UWidth5,
                   ),
                   Expanded(
                     child: Column(
@@ -122,16 +122,16 @@ class _Guest_HomeState extends State<Guest_Home> {
                           'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
                           style: TextStyle(
                               color: Theme.of(context).primaryColor,
-                              fontSize: 10,
+                              fontSize: UBodySize10,
                               fontFamily: 'KhmerOSmuol'),
                         ),
                         Text(
                           'UNIVERSITY OF SOUTH-EAST ASIA',
                           style: TextStyle(
                               color: Theme.of(context).primaryColor,
-                              fontSize: 12,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w500),
+                              fontSize: UBodySize,
+                              fontFamily: UEFontFamily,
+                              fontWeight: UBodyWeight),
                         ),
                       ],
                     ),
@@ -175,7 +175,7 @@ class _Guest_HomeState extends State<Guest_Home> {
         ),
         toolbarHeight: 75,
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: USecondaryColor,
         elevation: 1,
       ),
       body: Center(
@@ -183,14 +183,14 @@ class _Guest_HomeState extends State<Guest_Home> {
           shrinkWrap: true,
           children: [
             SizedBox(
-              height: 10,
+              height: UHeight10,
             ),
             Container(
               height: 175,
               width: double.infinity,
-              padding: EdgeInsets.symmetric(vertical: 0, horizontal: 5),
+              padding: EdgeInsets.symmetric(horizontal: UPdMg_5),
               child: isLoading
-                  ? CircularProgressIndicator() // Show a loading indicator while fetching data
+                  ? CircularProgressIndicator()
                   : CarouselSlider.builder(
                       options: CarouselOptions(
                         height: double.infinity,
@@ -232,14 +232,14 @@ class _Guest_HomeState extends State<Guest_Home> {
               mainAxisSpacing: 3.5,
               crossAxisSpacing: 3,
               childAspectRatio: 1.90,
-              padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
+              padding: EdgeInsets.symmetric(horizontal: 7),
               children: List.generate(
                 guest_home_screen.length,
                 (index) => Card(
                   elevation: 2,
                   shadowColor: ULightGreyColor,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(UPdMg_10),
                   ),
                   child: InkWell(
                     onTap: () {
@@ -261,7 +261,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                       }
                     },
                     child: Container(
-                      padding: EdgeInsets.only(left: 15),
+                      padding: EdgeInsets.only(left: UPdMg_15),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -293,11 +293,11 @@ class _Guest_HomeState extends State<Guest_Home> {
               elevation: 2,
               shadowColor: ULightGreyColor,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(URoundedLarge),
               ),
-              margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
+              margin: EdgeInsets.fromLTRB(UPdMg_10, 0, UPdMg_10, UPdMg_10),
               child: Padding(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(UPdMg_10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -309,7 +309,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                       },
                       child: Image.asset(
                         'assets/image/SM_Facebook.png',
-                        scale: 5,
+                        scale: UPdMg_5,
                       ),
                     ),
                     InkWell(
@@ -318,7 +318,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                       },
                       child: Image.asset(
                         'assets/image/SM_IG.png',
-                        scale: 5,
+                        scale: UPdMg_5,
                       ),
                     ),
                     InkWell(
@@ -327,7 +327,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                       },
                       child: Image.asset(
                         'assets/image/SM_Yt.png',
-                        scale: 5,
+                        scale: UPdMg_5,
                       ),
                     ),
                     InkWell(
@@ -336,7 +336,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                       },
                       child: Image.asset(
                         'assets/image/SM_Telegram.png',
-                        scale: 5,
+                        scale: UPdMg_5,
                       ),
                     ),
                     InkWell(
@@ -345,7 +345,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                       },
                       child: Image.asset(
                         'assets/image/SM_Website.png',
-                        scale: 5,
+                        scale: UPdMg_5,
                       ),
                     ),
                   ],

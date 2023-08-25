@@ -215,8 +215,8 @@ class _Payment_UIState extends State<Payment_UI> {
                           : 0.00;
 
                       return Padding(
-                        padding:
-                            EdgeInsets.only(bottom: isLastIndex ? UPdMg_5 : 0),
+                        padding: EdgeInsets.only(
+                            bottom: isLastIndex ? UPdMg_5 : UZeroPixel),
                         child: IntrinsicHeight(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -224,7 +224,7 @@ class _Payment_UIState extends State<Payment_UI> {
                             children: [
                               Container(
                                 padding: EdgeInsets.symmetric(
-                                    vertical: UPdMg_8, horizontal: 10),
+                                    vertical: UPdMg_8, horizontal: UPdMg_10),
                                 child: IntrinsicHeight(
                                   child: Row(
                                     mainAxisAlignment:
@@ -332,10 +332,7 @@ class _Payment_UIState extends State<Payment_UI> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                padding: EdgeInsets.symmetric(
-                  vertical: UPdMg_10,
-                  horizontal: UPdMg_10,
-                ),
+                padding: EdgeInsets.all(UPdMg_10),
                 width: UFullWidth,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -362,7 +359,7 @@ class _Payment_UIState extends State<Payment_UI> {
                 ),
               ),
               SizedBox(
-                height: 4,
+                height: UHeight5,
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -414,7 +411,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                         UTextColor,
                                       ),
                                       VerticalDivider(
-                                        width: 5,
+                                        width: UWidth5,
                                         color: UGreyColor,
                                       ),
                                       buildBody(
@@ -423,7 +420,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                         UTextColor,
                                       ),
                                       VerticalDivider(
-                                        width: 5,
+                                        width: UWidth5,
                                         color: UGreyColor,
                                       ),
                                       buildBody(
@@ -432,7 +429,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                         UTextColor,
                                       ),
                                       VerticalDivider(
-                                        width: 5,
+                                        width: UWidth5,
                                         color: UGreyColor,
                                       ),
                                       buildBody(
@@ -461,7 +458,8 @@ class _Payment_UIState extends State<Payment_UI> {
                             return payStudy.payments.isEmpty
                                 ? Padding(
                                     padding: EdgeInsets.only(
-                                        bottom: isLastIndex ? UPdMg_5 : 0),
+                                        bottom:
+                                            isLastIndex ? UPdMg_5 : UZeroPixel),
                                     child: IntrinsicHeight(
                                       child: Column(
                                         mainAxisAlignment:
@@ -483,7 +481,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                                     UTextColor,
                                                   ),
                                                   VerticalDivider(
-                                                    width: 5,
+                                                    width: UWidth5,
                                                     color: UGreyColor,
                                                   ),
                                                   buildBody(
@@ -492,7 +490,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                                     UTextColor,
                                                   ),
                                                   VerticalDivider(
-                                                    width: 5,
+                                                    width: UWidth5,
                                                     color: UGreyColor,
                                                   ),
                                                   buildBody(
@@ -501,7 +499,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                                     UTextColor,
                                                   ),
                                                   VerticalDivider(
-                                                    width: 5,
+                                                    width: UWidth5,
                                                     color: UGreyColor,
                                                   ),
                                                   buildBody(
@@ -520,7 +518,8 @@ class _Payment_UIState extends State<Payment_UI> {
                                   )
                                 : Padding(
                                     padding: EdgeInsets.only(
-                                        bottom: isLastIndex ? UPdMg_5 : 0),
+                                        bottom:
+                                            isLastIndex ? UPdMg_5 : UZeroPixel),
                                     child: Column(
                                       children: [
                                         IntrinsicHeight(
@@ -704,7 +703,7 @@ class _Payment_UIState extends State<Payment_UI> {
 
                             return Padding(
                               padding: EdgeInsets.only(
-                                  bottom: isLastIndex ? UPdMg_5 : 0),
+                                  bottom: isLastIndex ? UPdMg_5 : UZeroPixel),
                               child: IntrinsicHeight(
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,

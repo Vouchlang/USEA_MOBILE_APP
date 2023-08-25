@@ -14,10 +14,8 @@ class EducationData {
 }
 
 class EducationDetail {
-  String dateTitle;
+  String dateTitle, timeTitle, timeDetail;
   List<EducationItem> educationList;
-  String timeTitle;
-  String timeDetail;
 
   EducationDetail({
     required this.dateTitle,

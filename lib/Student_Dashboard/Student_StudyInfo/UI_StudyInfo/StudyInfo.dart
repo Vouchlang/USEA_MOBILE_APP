@@ -170,10 +170,10 @@ class _Study_InfoState extends State<Study_Info> {
                                         ? Text(
                                             'ដកបេក្ខភាព',
                                             style: TextStyle(
-                                                fontSize: UBodySize,
-                                                fontWeight: UTitleWeight,
-                                                color: URedColor,
-                                                fontFamily: UKFontFamily),
+                                              fontSize: UBodySize,
+                                              fontWeight: UTitleWeight,
+                                              color: URedColor,
+                                            ),
                                           )
                                         : Container(),
                                   ],

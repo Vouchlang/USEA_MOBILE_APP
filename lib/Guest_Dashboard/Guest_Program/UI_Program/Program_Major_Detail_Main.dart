@@ -57,8 +57,8 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                   child: AnimatedContainer(
                     alignment: Alignment.center,
                     duration: Duration(milliseconds: 300),
-                    margin: EdgeInsets.fromLTRB(
-                        UPdMg_10, UPdMg_10, isLastIndex ? 10 : 0, UPdMg_10),
+                    margin: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_10,
+                        isLastIndex ? UPdMg_10 : 0, UPdMg_10),
                     padding: EdgeInsets.all(UPdMg_10),
                     width: 165,
                     decoration: BoxDecoration(
@@ -107,9 +107,11 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                         : 'No major information available',
                     textAlign: TextAlign.justify,
                     style: TextStyle(
-                        fontSize: UTitleSize, fontFamily: UKFontFamily),
+                      fontSize: UTitleSize,
+                      fontFamily: UKFontFamily,
+                    ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: UHeight10),
                   GridView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
@@ -181,11 +183,11 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                                       elevation: 3,
                                       shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(
-                                        10,
+                                        URoundedLarge,
                                       )),
                                       child: Container(
                                         margin: EdgeInsets.all(7),
-                                        padding: EdgeInsets.all(10),
+                                        padding: EdgeInsets.all(UPdMg_10),
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(20),
@@ -201,7 +203,7 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                                               ),
                                             ),
                                             SizedBox(
-                                              height: 5,
+                                              height: UHeight5,
                                             ),
                                             Text(
                                               'គ្មានទិន្ន័យ'.tr,
@@ -211,11 +213,11 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                                               ),
                                             ),
                                             SizedBox(
-                                              height: 5,
+                                              height: UHeight5,
                                             ),
                                             Container(
                                               height: 50,
-                                              padding: EdgeInsets.all(5),
+                                              padding: EdgeInsets.all(UPdMg_5),
                                               alignment: Alignment.center,
                                               child: TextButton(
                                                 child: Text(

@@ -16,12 +16,12 @@ class AboutUS extends StatelessWidget {
         itemCount: aboutUS.length,
         itemBuilder: (context, index) {
           return Container(
-            margin: EdgeInsets.fromLTRB(6, 5, 6, 0),
+            margin: EdgeInsets.fromLTRB(6, UPdMg_5, 6, 0),
             child: Card(
               elevation: 2,
               shadowColor: ULightGreyColor,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
+                  borderRadius: BorderRadius.circular(URoundedLarge)),
               child: InkWell(
                 onTap: () {
                   Navigator.push(
@@ -30,7 +30,8 @@ class AboutUS extends StatelessWidget {
                   );
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                  padding: EdgeInsets.symmetric(
+                      vertical: UPdMg_15, horizontal: UPdMg_10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -42,7 +43,7 @@ class AboutUS extends StatelessWidget {
                               scale: 6,
                             ),
                             SizedBox(
-                              width: 10,
+                              width: UWidth10,
                             ),
                             Expanded(
                               child: Text(

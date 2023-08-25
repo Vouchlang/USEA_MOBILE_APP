@@ -25,6 +25,7 @@ const UZeroPixel = 0.0;
 const UTitleSize16 = 16.0;
 const UTitleSize = 14.0;
 const UBodySize = 12.0;
+const UBodySize10 = 10.0;
 
 const FontWeight UTitleWeight = FontWeight.w600;
 const FontWeight UBodyWeight = FontWeight.w500;
@@ -45,11 +46,13 @@ const URoundedMedium = 5.0;
 const URoundedLarge = 10.0;
 
 //  * @ SizedBox Weight & Height Theme
-const USizedBoxHeightMedium = 5.0;
-const USizedBoxHeightLarge = 10.0;
+const UHeight5 = 5.0;
+const UHeight10 = 10.0;
+const UHeight15 = 15.0;
 
-const USizedBoxWeightMedium = 5.0;
-const USizedBoxWeightLarge = 10.0;
+const UWidth5 = 5.0;
+const UWidth10 = 10.0;
+const UWidth15 = 15.0;
 
 //  * @ Shadow Theme
 const UBoxShadow = Shadow(

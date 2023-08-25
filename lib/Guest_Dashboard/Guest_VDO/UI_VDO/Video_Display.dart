@@ -82,9 +82,9 @@ class _Video_DisplayState extends State<Video_Display> {
                       isExpanded: false,
                       colors: ProgressBarColors(
                         playedColor: URedColor,
-                        bufferedColor: Colors.white,
-                        handleColor: Colors.red,
-                        backgroundColor: Colors.grey,
+                        bufferedColor: USecondaryColor,
+                        handleColor: URedColor,
+                        backgroundColor: UGreyColor,
                       ),
                     ),
                     Row(
@@ -96,7 +96,7 @@ class _Video_DisplayState extends State<Video_Display> {
                             RemainingDuration(),
                             IconButton(
                               iconSize: 20,
-                              color: Colors.white,
+                              color: USecondaryColor,
                               icon: _isMuted
                                   ? Icon(Icons.volume_off)
                                   : Icon(Icons.volume_up),
@@ -136,25 +136,25 @@ class _Video_DisplayState extends State<Video_Display> {
               ],
             ),
             padding: EdgeInsets.symmetric(
-              vertical: 5,
-              horizontal: 10,
+              vertical: UPdMg_5,
+              horizontal: UPdMg_10,
             ),
             width: double.infinity,
             alignment: Alignment.center,
             child: buildTitleBody(widget.vdo[_currentVideoIndex!].title,
                 UTitleSize, FontWeight.w600),
           ),
-          SizedBox(height: 5),
+          SizedBox(height: UHeight5),
           Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              padding: EdgeInsets.all(UPdMg_10),
               width: double.infinity,
               child: buildTitleBody(widget.vdo[_currentVideoIndex!].caption,
                   UTitleSize, FontWeight.w500)),
-          SizedBox(height: 5),
+          SizedBox(height: UHeight5),
           ListView.builder(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: EdgeInsets.symmetric(horizontal: UPdMg_5),
             itemCount: widget.vdo.length,
             itemBuilder: (context, index) {
               VDO_Class video = widget.vdo[index];
@@ -168,7 +168,7 @@ class _Video_DisplayState extends State<Video_Display> {
                   hideVideo(index);
                 },
                 child: Container(
-                  margin: EdgeInsets.only(bottom: 10),
+                  margin: EdgeInsets.only(bottom: UPdMg_10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -182,7 +182,8 @@ class _Video_DisplayState extends State<Video_Display> {
                             width: 150,
                             height: 100,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
+                              borderRadius:
+                                  BorderRadius.circular(URoundedMedium),
                               image: DecorationImage(
                                 image: NetworkImage(
                                   widget.vdo[index].youtube_thumbnail,
@@ -191,7 +192,7 @@ class _Video_DisplayState extends State<Video_Display> {
                               ),
                             ),
                           ),
-                          SizedBox(width: 10),
+                          SizedBox(width: UWidth10),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -200,8 +201,9 @@ class _Video_DisplayState extends State<Video_Display> {
                               children: [
                                 buildListText(
                                     widget.vdo[index].title, 3, UTitleSize),
-                                SizedBox(height: 5),
-                                buildListText(widget.vdo[index].caption, 1, 10),
+                                SizedBox(height: UHeight5),
+                                buildListText(
+                                    widget.vdo[index].caption, 1, UBodySize10),
                               ],
                             ),
                           ),

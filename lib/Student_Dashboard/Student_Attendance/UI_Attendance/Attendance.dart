@@ -126,80 +126,84 @@ class _AttendanceState extends State<Attendance> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: USecondaryColor,
-        appBar: Custom_AppBar(title: 'វត្តមាន'.tr),
-        body: attendances.isEmpty
-            ? FutureBuilder(
-                future: Future.delayed(Duration(seconds: 3)),
-                builder:
-                    (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else {
-                    return Center(
-                      child: Text('គ្មានទិន្ន័យ'.tr),
-                    );
-                  }
-                },
-              )
-            : RefreshIndicator(
-                onRefresh: _refreshData,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: UPdMg_10,
-                    vertical: UPdMg_15,
-                  ),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(3, 0, 3, UPdMg_5),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            buildAttList('វត្តមាន\t', UScoreColor),
-                            buildAttList('យឺត', UYellowColor),
-                            buildAttList('សុំច្បាប់', UOrangeColor),
-                            buildAttList('អវត្តមាន', URedColor),
-                          ],
-                        ),
-                      ),
-                      _buildLastSemesterSubjects(),
-                      SizedBox(height: 10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+      backgroundColor: USecondaryColor,
+      appBar: Custom_AppBar(title: 'វត្តមាន'.tr),
+      body: attendances.isEmpty
+          ? FutureBuilder(
+              future: Future.delayed(Duration(seconds: 3)),
+              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  return Center(
+                    child: Text('គ្មានទិន្ន័យ'.tr),
+                  );
+                }
+              },
+            )
+          : RefreshIndicator(
+              onRefresh: _refreshData,
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: UPdMg_10,
+                  vertical: UPdMg_15,
+                ),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(3, UZeroPixel, 3, UPdMg_5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                            alignment: Alignment.center,
-                            padding: EdgeInsets.symmetric(
-                              vertical: UPdMg_5,
-                              horizontal: UPdMg_10,
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.circular(URoundedMedium),
-                              color: UBtnColor,
-                              boxShadow: [BoxShadow(color: UBtnColor)],
-                            ),
-                            child: InkWell(
-                              onTap: () {
-                                Get.to(AttendanceList(
-                                    data_studentUser: widget.data_studentUser));
-                              },
-                              child: CustomTextTheme(
-                                text: 'មើលទាំងអស់'.tr,
-                                color: UPrimaryColor,
-                                fontWeight: UBodyWeight,
-                                size: UBodySize,
-                              ),
-                            ),
-                          ),
+                          buildAttList('វត្តមាន\t', UScoreColor),
+                          buildAttList('យឺត', UYellowColor),
+                          buildAttList('សុំច្បាប់', UOrangeColor),
+                          buildAttList('អវត្តមាន', URedColor),
                         ],
                       ),
-                    ],
-                  ),
-                )));
+                    ),
+                    _buildLastSemesterSubjects(),
+                    SizedBox(height: UHeight10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Container(
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.symmetric(
+                            vertical: UPdMg_5,
+                            horizontal: UPdMg_10,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(URoundedMedium),
+                            color: UBtnColor,
+                            boxShadow: [
+                              BoxShadow(color: UBtnColor),
+                            ],
+                          ),
+                          child: InkWell(
+                            onTap: () {
+                              Get.to(
+                                () => AttendanceList(
+                                    data_studentUser: widget.data_studentUser),
+                              );
+                            },
+                            child: CustomTextTheme(
+                              text: 'មើលទាំងអស់'.tr,
+                              color: UPrimaryColor,
+                              fontWeight: UBodyWeight,
+                              size: UBodySize,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+    );
   }
 
   Widget _buildLastSemesterSubjects() {
@@ -265,7 +269,7 @@ class _AttendanceState extends State<Attendance> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 5,
+                                  height: UHeight5,
                                 ),
                                 Row(
                                   children: [
@@ -278,7 +282,7 @@ class _AttendanceState extends State<Attendance> {
                               ],
                             ),
                             SizedBox(
-                              width: 5,
+                              width: UWidth5,
                             ),
                             buildNum(subject.attendance_al, UYellowColor),
                             buildDivider(),

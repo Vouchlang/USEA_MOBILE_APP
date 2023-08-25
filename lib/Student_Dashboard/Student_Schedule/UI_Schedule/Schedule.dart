@@ -109,7 +109,7 @@ class _ScheduleState extends State<Schedule> {
                 children: [
                   CardCalendar(),
                   SizedBox(
-                    height: 5,
+                    height: UHeight5,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(UPdMg_8),
@@ -130,7 +130,7 @@ class _ScheduleState extends State<Schedule> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.fromLTRB(
-                                UPdMg_5, 0, UPdMg_5, UPdMg_5),
+                                UPdMg_5, UZeroPixel, UPdMg_5, UPdMg_5),
                             child: Card(
                               elevation: 1,
                               shape: RoundedRectangleBorder(
@@ -175,7 +175,7 @@ class _ScheduleState extends State<Schedule> {
                                                   _dataSchedule[index].subject,
                                             ),
                                             SizedBox(
-                                              height: 5,
+                                              height: UHeight5,
                                             ),
                                             BodyTheme(
                                               text:

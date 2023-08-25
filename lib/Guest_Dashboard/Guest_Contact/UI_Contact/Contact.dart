@@ -20,7 +20,7 @@ class _ContactState extends State<Contact> {
       backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'ទំនាក់ទំនង'.tr),
       body: ListView(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(UPdMg_10),
         children: [
           ListView.builder(
             shrinkWrap: true,
@@ -42,31 +42,29 @@ class _ContactState extends State<Contact> {
                         ),
                       ),
                       SizedBox(
-                        width: 10,
+                        width: UWidth10,
                       ),
                       Expanded(
                         child: contact[index].link.isEmpty
                             ? Container(
                                 padding: EdgeInsets.only(top: 4),
                                 child: buildTitleBody(contact[index].text.tr,
-                                    UTitleSize, FontWeight.w500),
+                                    UTitleSize, UBodyWeight),
                               )
                             : InkWell(
                                 onTap: () =>
                                     launchUrlString(contact[index].link),
                                 child: Container(
                                   padding: EdgeInsets.only(top: 4),
-                                  child: buildTitleBody(
-                                      contact[index].text.tr,
-                                      UTitleSize,
-                                      FontWeight.w500),
+                                  child: buildTitleBody(contact[index].text.tr,
+                                      UTitleSize, UBodyWeight),
                                 ),
                               ),
                       ),
                     ],
                   ),
                   SizedBox(
-                    height: 10,
+                    height: UHeight10,
                   ),
                 ],
               );

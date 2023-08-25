@@ -37,7 +37,6 @@ class _New_EventState extends State<New_Event> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              margin: EdgeInsets.all(UZeroPixel),
               height: 70,
               child: ListView.builder(
                 physics: ScrollPhysics(),
@@ -59,7 +58,7 @@ class _New_EventState extends State<New_Event> {
                         child: AnimatedContainer(
                           duration: Duration(milliseconds: 300),
                           margin: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_10,
-                              isLastIndex ? 10 : 0, UPdMg_10),
+                              isLastIndex ? UPdMg_10 : 0, UPdMg_10),
                           padding: EdgeInsets.all(UPdMg_10),
                           width: 200,
                           decoration: BoxDecoration(

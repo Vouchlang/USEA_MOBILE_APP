@@ -141,12 +141,12 @@ class _PerformanceState extends State<Performance> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         SizedBox(
-                          height: 5,
+                          height: UHeight5,
                         ),
                         Container(
                           height: 70,
                           width: UFullWidth,
-                          padding: EdgeInsets.fromLTRB(UPdMg_5, 0, UPdMg_5, 0),
+                          padding: EdgeInsets.symmetric(horizontal: 5),
                           child: ListView.builder(
                             shrinkWrap: true,
                             physics: const BouncingScrollPhysics(),
@@ -193,7 +193,7 @@ class _PerformanceState extends State<Performance> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(height: UHeight10),
                         performances[selectedYearIndex].semesters.isNotEmpty
                             ? Column(
                                 children: performances[selectedYearIndex]
@@ -229,10 +229,6 @@ class _PerformanceState extends State<Performance> {
                                                     URoundedLarge),
                                                 topRight: Radius.circular(
                                                     URoundedLarge),
-                                                bottomRight:
-                                                    Radius.circular(UZeroPixel),
-                                                bottomLeft:
-                                                    Radius.circular(UZeroPixel),
                                               ),
                                               color: UBGLightBlue,
                                             ),
@@ -295,7 +291,7 @@ class _PerformanceState extends State<Performance> {
                                                               margin: EdgeInsets
                                                                   .only(
                                                                       right:
-                                                                          15),
+                                                                          UPdMg_15),
                                                               alignment: Alignment
                                                                   .centerLeft,
                                                               child: Text(
@@ -380,7 +376,7 @@ class _PerformanceState extends State<Performance> {
                                                                                     ),
                                                                                   ),
                                                                                   SizedBox(
-                                                                                    height: 4,
+                                                                                    height: UHeight5,
                                                                                   ),
                                                                                   Container(
                                                                                     padding: EdgeInsets.all(UPdMg_10),
@@ -570,7 +566,7 @@ class _PerformanceState extends State<Performance> {
                                                                                       ),
                                                                                     ),
                                                                                     SizedBox(
-                                                                                      height: 4,
+                                                                                      height: UHeight5,
                                                                                     ),
                                                                                     Container(
                                                                                       padding: EdgeInsets.all(UPdMg_10),
@@ -759,7 +755,7 @@ class _PerformanceState extends State<Performance> {
                                                 UPdMg_10,
                                                 UPdMg_10,
                                                 UPdMg_10,
-                                                0),
+                                                UZeroPixel),
                                             child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.end,
@@ -790,7 +786,7 @@ class _PerformanceState extends State<Performance> {
                                                 UPdMg_10,
                                                 UPdMg_10,
                                                 UPdMg_10,
-                                                0),
+                                                UZeroPixel),
                                             child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.end,

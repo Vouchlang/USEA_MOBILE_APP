@@ -16,11 +16,8 @@ class Up_Event_Detail extends StatelessWidget {
       appBar: Custom_AppBar(title: 'ព្រឹត្តិការណ៍'.tr),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.fromLTRB(
-            UZeroPixel,
-            UZeroPixel,
-            UZeroPixel,
-            UPdMg_10,
+          margin: EdgeInsets.only(
+            bottom: UPdMg_10,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -68,11 +65,10 @@ class Up_Event_Detail extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: UPdMg_10),
+              SizedBox(height: UHeight10),
               Container(
                 width: double.infinity,
                 margin: EdgeInsets.symmetric(
-                  vertical: UZeroPixel,
                   horizontal: UPdMg_10,
                 ),
                 child: Text(

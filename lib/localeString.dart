@@ -198,6 +198,7 @@ class LocaleString extends Translations {
           'បន្ទប់\t': 'បន្ទប់\t',
           'ម៉ោង\t': 'ម៉ោង\t',
           'លេខតុ\t': 'លេខតុ\t',
+          'ដកបេក្ខភាព': 'ដកបេក្ខភាព',
 
           // Student Feedback
           'សូមអធ្យាស្រ័យ': 'សូមអធ្យាស្រ័យ',
@@ -397,6 +398,7 @@ class LocaleString extends Translations {
           'បន្ទប់\t': 'Room\t',
           'ម៉ោង\t': 'Time\t',
           'លេខតុ\t': 'Seat\t',
+          'ដកបេក្ខភាព': 'Take Out',
 
           // Student Feedback
           'សូមអធ្យាស្រ័យ': 'Apologies for any trouble',

@@ -60,8 +60,8 @@ class _Program_SHCState extends State<Program_SHC> {
                   child: AnimatedContainer(
                     alignment: Alignment.center,
                     duration: Duration(milliseconds: 300),
-                    margin: EdgeInsets.fromLTRB(
-                        UPdMg_10, UPdMg_10, isLastIndex ? 10 : 0, UPdMg_10),
+                    margin: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_10,
+                        isLastIndex ? UPdMg_10 : 0, UPdMg_10),
                     padding: EdgeInsets.all(UPdMg_10),
                     width: 165,
                     decoration: BoxDecoration(
@@ -250,7 +250,7 @@ class _Program_SHCState extends State<Program_SHC> {
                         child: TitleTheme(text: totalHours.toStringAsFixed(0)),
                       ),
                       SizedBox(
-                        width: 10,
+                        width: UWidth10,
                       ),
                       Container(
                         width: 30,

@@ -68,7 +68,7 @@ class _VideoState extends State<Video_UI> {
               ),
             )
           : ListView.builder(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(UPdMg_10),
               itemCount: vdo.length,
               itemBuilder: (context, index) {
                 return InkWell(
@@ -84,7 +84,7 @@ class _VideoState extends State<Video_UI> {
                     );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(bottom: 10),
+                    margin: EdgeInsets.only(bottom: UPdMg_10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -98,7 +98,7 @@ class _VideoState extends State<Video_UI> {
                               width: 150,
                               height: 100,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
+                                borderRadius: BorderRadius.circular(UPdMg_5),
                                 image: DecorationImage(
                                     image: NetworkImage(
                                         vdo[index].youtube_thumbnail),
@@ -106,7 +106,7 @@ class _VideoState extends State<Video_UI> {
                               ),
                             ),
                             SizedBox(
-                              width: 10,
+                              width: UWidth10,
                             ),
                             Expanded(
                               child: Column(
@@ -117,9 +117,10 @@ class _VideoState extends State<Video_UI> {
                                   buildListText(
                                       vdo[index].title, 3, UTitleSize),
                                   SizedBox(
-                                    height: 5,
+                                    height: UHeight5,
                                   ),
-                                  buildListText(vdo[index].caption, 1, 10),
+                                  buildListText(
+                                      vdo[index].caption, 1, UBodySize10),
                                 ],
                               ),
                             ),

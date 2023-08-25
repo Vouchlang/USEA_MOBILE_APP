@@ -44,7 +44,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             selectedFontSize: 11,
             unselectedFontSize: 11,
             selectedLabelStyle:
-                TextStyle(fontWeight: FontWeight.w600, fontSize: 12),
+                TextStyle(fontWeight: UTitleWeight, fontSize: UBodySize),
             items: [
               BottomNavigationBarItem(
                 icon: Icon(

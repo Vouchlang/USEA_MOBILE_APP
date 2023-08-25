@@ -136,7 +136,7 @@ class _AchievementsState extends State<Achievements> {
                                       margin: EdgeInsets.fromLTRB(
                                           UPdMg_10,
                                           UPdMg_10,
-                                          isLastIndex ? 10 : 0,
+                                          isLastIndex ? UPdMg_10 : UZeroPixel,
                                           UPdMg_10),
                                       padding: EdgeInsets.all(UPdMg_10),
                                       width: 165,
@@ -177,11 +177,12 @@ class _AchievementsState extends State<Achievements> {
                   GridView.builder(
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                    padding: EdgeInsets.fromLTRB(
+                        UPdMg_10, UZeroPixel, UPdMg_10, UPdMg_10),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
-                      crossAxisSpacing: 10.0,
-                      mainAxisSpacing: 10.0,
+                      crossAxisSpacing: UPdMg_10,
+                      mainAxisSpacing: UPdMg_10,
                     ),
                     itemCount: _achievementData != null &&
                             _selectedAchievementTypeIndex >= 0 &&
@@ -194,7 +195,7 @@ class _AchievementsState extends State<Achievements> {
                         : 0,
                     itemBuilder: (context, index) {
                       return Card(
-                        shadowColor: Colors.grey[200],
+                        shadowColor: UBackgroundColor,
                         color: UGreyColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(UPdMg_10),
@@ -227,7 +228,7 @@ class _AchievementsState extends State<Achievements> {
                                   fit: BoxFit.cover,
                                 )
                               : Center(
-                                  child: Text('data'),
+                                  child: Text('គ្មានទិន្ន័យ'.tr),
                                 ),
                         ),
                       );

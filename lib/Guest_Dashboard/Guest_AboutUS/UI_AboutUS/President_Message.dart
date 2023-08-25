@@ -17,7 +17,7 @@ class President extends StatelessWidget {
         child: ListView(
           children: [
             Container(
-              margin: EdgeInsets.only(bottom: 10),
+              margin: EdgeInsets.only(bottom: UPdMg_10),
               height: 300,
               child: Image.asset(
                 'assets/image/president.png',
@@ -37,7 +37,7 @@ class President extends StatelessWidget {
               "I would like to inform you that your children have not yet finished their education; they need to pursue tertiary education in order to acquire knowledge, experience, and skills to respond to the labour market needs now and in the future. Please check a university thoroughly before choosing it for your children, for it is associated with your children's future. I suggest you all, the students who have already chosen the university, study hard to become outstanding students so as to bring good reputation to your parents and become good successors for your family as well as your country.",
             ),
             SizedBox(
-              height: 10,
+              height: UHeight10,
             )
           ],
         ),

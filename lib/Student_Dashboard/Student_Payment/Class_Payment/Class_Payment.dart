@@ -69,9 +69,7 @@ List<PaymentData3> paymentData3 = [
 ];
 
 class PayStudy {
-  final String yearName;
-  final String moneyPay;
-
+  final String yearName, moneyPay;
   final List<Payment> payments;
 
   PayStudy({
@@ -92,10 +90,7 @@ class PayStudy {
 }
 
 class Payment {
-  final String invoiceNum;
-  final String pdate;
-  final String moneyPaid;
-  final String moneyRem;
+  final String invoiceNum, pdate, moneyPaid, moneyRem;
 
   Payment({
     required this.invoiceNum,
@@ -115,11 +110,7 @@ class Payment {
 }
 
 class OtherPayClass {
-  final String o_invoice;
-  final String o_pdate;
-  final String o_money_pay;
-  final String o_money_paid;
-  final String o_money_rem;
+  final String o_invoice, o_pdate, o_money_pay, o_money_paid, o_money_rem;
 
   OtherPayClass(
       {required this.o_pdate,

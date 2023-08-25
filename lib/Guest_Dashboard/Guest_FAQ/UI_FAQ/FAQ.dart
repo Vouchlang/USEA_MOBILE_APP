@@ -27,17 +27,21 @@ class _FAQState extends State<FAQ> {
       if (r is List<dynamic>) {
         faq = r.map((e) => Class_FAQ.fromJson(e)).toList();
       } else {
-        faq = [Class_FAQ.fromJson(r)];
+        faq = [
+          Class_FAQ.fromJson(r),
+        ];
       }
     } catch (e) {
       print('Error fetching data: $e');
       // handle the error here
     } finally {
-      setState(
-        () {
-          isLoading = false;
-        },
-      );
+      if (mounted) {
+        setState(
+          () {
+            isLoading = false;
+          },
+        );
+      }
     }
   }
 
@@ -64,7 +68,7 @@ class _FAQState extends State<FAQ> {
                 ),
               )
             : Container(
-                margin: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                margin: EdgeInsets.symmetric(horizontal: UPdMg_10),
                 width: double.infinity,
                 child: ListView.builder(
                   itemCount: faq.length,
@@ -73,12 +77,13 @@ class _FAQState extends State<FAQ> {
 
                     return Card(
                       margin: isLastIndex
-                          ? EdgeInsets.fromLTRB(0, 10, 0, 10)
-                          : EdgeInsets.only(top: 10),
+                          ? EdgeInsets.symmetric(vertical: UPdMg_10)
+                          : EdgeInsets.only(top: UPdMg_10),
                       elevation: 2,
                       shadowColor: ULightGreyColor,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
+                        borderRadius: BorderRadius.circular(URoundedLarge),
+                      ),
                       child: Padding(
                         padding: EdgeInsets.symmetric(vertical: UPdMg_10),
                         child: Column(
@@ -95,11 +100,19 @@ class _FAQState extends State<FAQ> {
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
+                                      borderRadius:
+                                          BorderRadius.circular(URoundedLarge),
                                     ),
-                                    padding: EdgeInsets.fromLTRB(17, 10, 17, 5),
+                                    padding: EdgeInsets.fromLTRB(
+                                      17,
+                                      UPdMg_10,
+                                      17,
+                                      UPdMg_5,
+                                    ),
                                     child: buildFAQ(
-                                        faq[index].answer, TextAlign.justify),
+                                      faq[index].answer,
+                                      TextAlign.justify,
+                                    ),
                                   )
                                 ],
                               ),

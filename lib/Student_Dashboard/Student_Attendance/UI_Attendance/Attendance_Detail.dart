@@ -205,7 +205,7 @@ class _Attendance_DetailState extends State<Attendance_Detail> {
                                       !isLastIndex
                                           ? buildDividerAtt()
                                           : SizedBox(
-                                              height: UPdMg_5,
+                                              height: UHeight5,
                                             ),
                                     ],
                                   ),

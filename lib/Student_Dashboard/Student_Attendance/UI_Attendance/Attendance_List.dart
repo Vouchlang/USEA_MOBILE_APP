@@ -202,7 +202,7 @@ class _AttendanceListState extends State<AttendanceList> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 5),
+                    SizedBox(height: UHeight5),
                     Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: UPdMg_10,
@@ -253,7 +253,7 @@ class _AttendanceListState extends State<AttendanceList> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 10,
+                                  height: UHeight10,
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -275,7 +275,7 @@ class _AttendanceListState extends State<AttendanceList> {
                                             child: InkWell(
                                               onTap: () {
                                                 Get.to(
-                                                  Attendance_Detail(
+                                                  () => Attendance_Detail(
                                                     subjectName: Get.locale
                                                                 ?.languageCode ==
                                                             'km'
@@ -334,7 +334,7 @@ class _AttendanceListState extends State<AttendanceList> {
                                                     ],
                                                   ),
                                                   SizedBox(
-                                                    width: 5,
+                                                    width: UWidth5,
                                                   ),
                                                   buildNum(
                                                     subject.attendance_al,

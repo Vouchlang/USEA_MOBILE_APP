@@ -16,7 +16,7 @@ class Past_Event_Detail extends StatelessWidget {
       appBar: Custom_AppBar(title: 'ព្រឹត្តិការណ៍'.tr),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.fromLTRB(0, 0, 0, UPdMg_10),
+          margin: EdgeInsets.only(bottom: UPdMg_10),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,7 +35,7 @@ class Past_Event_Detail extends StatelessWidget {
               ),
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: USecondaryColor,
                   borderRadius: BorderRadius.vertical(
                     bottom: Radius.circular(URoundedLarge),
                   ),
@@ -63,11 +63,10 @@ class Past_Event_Detail extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: UPdMg_10),
+              SizedBox(height: UHeight10),
               Container(
                 width: UFullWidth,
                 margin: EdgeInsets.symmetric(
-                  vertical: UZeroPixel,
                   horizontal: UPdMg_10,
                 ),
                 child: Text(

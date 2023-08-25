@@ -19,11 +19,11 @@ class Recognition extends StatelessWidget {
         itemBuilder: (context, index) {
           final isFinalIndex = index == recognition.length - 1;
           return Padding(
-            padding: EdgeInsets.only(bottom: isFinalIndex ? 10 : 0),
+            padding: EdgeInsets.only(bottom: isFinalIndex ? UPdMg_10 : 0),
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.all(10),
+                  margin: EdgeInsets.all(UPdMg_10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,7 +37,7 @@ class Recognition extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        width: 10,
+                        width: UWidth10,
                       ),
                       Expanded(
                         child: Column(
@@ -52,7 +52,7 @@ class Recognition extends StatelessWidget {
                                   fontFamily: UEFontFamily),
                             ),
                             SizedBox(
-                              height: 10,
+                              height: UHeight10,
                             ),
                             InkWell(
                               onTap: () =>
@@ -60,18 +60,19 @@ class Recognition extends StatelessWidget {
                               child: Container(
                                 width: 80,
                                 alignment: Alignment.center,
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 5, horizontal: 5),
+                                padding: EdgeInsets.all(UPdMg_5),
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
+                                  borderRadius:
+                                      BorderRadius.circular(URoundedMedium),
                                   color: UBtnColor,
                                 ),
                                 child: Text(
                                   'អានបន្ថែម'.tr,
                                   style: TextStyle(
-                                      fontSize: UBodySize,
-                                      fontWeight: UBodyWeight,
-                                      color: UPrimaryColor),
+                                    fontSize: UBodySize,
+                                    fontWeight: UBodyWeight,
+                                    color: UPrimaryColor,
+                                  ),
                                 ),
                               ),
                             ),

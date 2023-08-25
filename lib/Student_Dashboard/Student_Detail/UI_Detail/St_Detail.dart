@@ -92,11 +92,11 @@ class _Student_DetailState extends State<Student_Detail> {
           elevation: 3,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
-            10,
+            URoundedLarge,
           )),
           child: Container(
             margin: EdgeInsets.all(7),
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(UPdMg_10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: UBackgroundColor),
@@ -111,7 +111,7 @@ class _Student_DetailState extends State<Student_Detail> {
                   ),
                 ),
                 SizedBox(
-                  height: 5,
+                  height: UHeight5,
                 ),
                 Text(
                   'តើអ្នកប្រាកដថាអ្នកនឹងចាកចេញពីគណនីនិសិ្សតដែរឬទេ?'.tr,
@@ -121,11 +121,11 @@ class _Student_DetailState extends State<Student_Detail> {
                   ),
                 ),
                 SizedBox(
-                  height: 5,
+                  height: UHeight5,
                 ),
                 Container(
                   height: 50,
-                  padding: EdgeInsets.all(5),
+                  padding: EdgeInsets.all(UPdMg_5),
                   alignment: Alignment.center,
                   child: IntrinsicHeight(
                     child: Row(
@@ -325,8 +325,8 @@ class _Student_DetailState extends State<Student_Detail> {
                       ),
                       buildDividerStDetail(),
                       Container(
-                        margin:
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                        margin: EdgeInsets.symmetric(
+                            vertical: UPdMg_10, horizontal: 20),
                         child: Column(
                           children: [
                             buildTailDetail(
