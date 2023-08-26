@@ -151,56 +151,64 @@ class _AttendanceListState extends State<AttendanceList> {
           : RefreshIndicator(
               onRefresh: _refreshData,
               child: Padding(
-                padding: EdgeInsets.all(UPdMg_10),
+                padding: EdgeInsets.all(UPdMg_5),
                 child: ListView(
                   shrinkWrap: true,
                   children: [
                     Container(
+                      alignment: Alignment.center,
                       height: 70,
                       width: UFullWidth,
                       child: ListView.builder(
-                        physics: BouncingScrollPhysics(),
-                        itemCount: attendances.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) => GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              selectedYearIndex = index;
-                            });
-                          },
-                          child: AnimatedContainer(
-                            duration: Duration(milliseconds: 300),
-                            height: 70,
-                            width: 120,
-                            decoration: BoxDecoration(
-                              color: selectedYearIndex == index
-                                  ? UPrimaryColor
-                                  : UBackgroundColor,
-                              borderRadius:
-                                  BorderRadius.circular(URoundedMedium),
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 1,
-                                  color: ULightGreyColor,
-                                  offset: Offset(0, 1),
-                                )
-                              ],
-                            ),
-                            margin: EdgeInsets.all(UPdMg_5),
-                            child: Center(
-                              child: Text(
-                                'ឆ្នាំទី​ ${attendances[index].year_no}'.tr,
-                                style: TextStyle(
-                                  fontSize: UTitleSize,
+                          physics: BouncingScrollPhysics(),
+                          itemCount: attendances.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            final isLastIndex = index == attendances.length - 1;
+
+                            return GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  selectedYearIndex = index;
+                                });
+                              },
+                              child: AnimatedContainer(
+                                alignment: Alignment.center,
+                                duration: Duration(milliseconds: 300),
+                                margin: EdgeInsets.fromLTRB(
+                                    UPdMg_10,
+                                    UPdMg_10,
+                                    isLastIndex ? UPdMg_10 : UZeroPixel,
+                                    UPdMg_10),
+                                padding: EdgeInsets.all(UPdMg_10),
+                                width: 120,
+                                decoration: BoxDecoration(
                                   color: selectedYearIndex == index
-                                      ? UBackgroundColor
-                                      : UTextColor,
+                                      ? UPrimaryColor
+                                      : UBackgroundColor,
+                                  borderRadius:
+                                      BorderRadius.circular(URoundedMedium),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 1,
+                                      color: ULightGreyColor,
+                                      offset: Offset(0, 1),
+                                    ),
+                                  ],
+                                ),
+                                child: Text(
+                                  'ឆ្នាំទី​ ${attendances[index].year_no}'.tr,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: UTitleSize,
+                                    color: selectedYearIndex == index
+                                        ? UBackgroundColor
+                                        : UTextColor,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ),
-                        ),
-                      ),
+                            );
+                          }),
                     ),
                     SizedBox(height: UHeight5),
                     Padding(
@@ -236,24 +244,19 @@ class _AttendanceListState extends State<AttendanceList> {
                           .map(
                             (year) => Column(
                               children: [
+                                SizedBox(
+                                  height: UHeight10,
+                                ),
                                 Padding(
                                   padding: EdgeInsets.all(UPdMg_5),
-                                  child: Container(
-                                    height: 65,
-                                    width: UFullWidth,
-                                    decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.circular(URoundedLarge),
-                                      color: UBtnColor,
+                                  child: Center(
+                                    child: TitleTheme(
+                                      text: 'ឆមាសទី ${year.semester_no}'.tr,
                                     ),
-                                    child: Center(
-                                        child: TitleTheme(
-                                            text: 'ឆមាសទី ${year.semester_no}'
-                                                .tr)),
                                   ),
                                 ),
                                 SizedBox(
-                                  height: UHeight10,
+                                  height: UHeight5,
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,

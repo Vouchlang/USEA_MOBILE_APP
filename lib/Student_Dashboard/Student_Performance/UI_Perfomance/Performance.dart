@@ -148,52 +148,59 @@ class _PerformanceState extends State<Performance> {
                           width: UFullWidth,
                           padding: EdgeInsets.symmetric(horizontal: 5),
                           child: ListView.builder(
-                            shrinkWrap: true,
-                            physics: const BouncingScrollPhysics(),
-                            itemCount: performances.length,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) => GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  selectedYearIndex = index;
-                                });
-                              },
-                              child: AnimatedContainer(
-                                duration: Duration(milliseconds: 300),
-                                height: 70,
-                                width: 120,
-                                decoration: BoxDecoration(
-                                  color: selectedYearIndex == index
-                                      ? UPrimaryColor
-                                      : UBackgroundColor,
-                                  borderRadius:
-                                      BorderRadius.circular(URoundedMedium),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      blurRadius: 1,
-                                      color: ULightGreyColor,
-                                      offset: Offset(0, 1),
-                                    ),
-                                  ],
-                                ),
-                                margin: EdgeInsets.all(UPdMg_5),
-                                child: Center(
-                                  child: Text(
-                                    'ឆ្នាំទី​ '.tr +
-                                        '${performances[index].yearNo}',
-                                    style: TextStyle(
-                                      fontSize: UTitleSize,
+                              shrinkWrap: true,
+                              physics: const BouncingScrollPhysics(),
+                              itemCount: performances.length,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (context, index) {
+                                final isLastIndex =
+                                    index == performances.length - 1;
+
+                                return GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      selectedYearIndex = index;
+                                    });
+                                  },
+                                  child: AnimatedContainer(
+                                    alignment: Alignment.center,
+                                    duration: Duration(milliseconds: 300),
+                                    margin: EdgeInsets.fromLTRB(
+                                        UPdMg_10,
+                                        UPdMg_10,
+                                        isLastIndex ? UPdMg_10 : UZeroPixel,
+                                        UPdMg_10),
+                                    padding: EdgeInsets.all(UPdMg_10),
+                                    width: 120,
+                                    decoration: BoxDecoration(
                                       color: selectedYearIndex == index
-                                          ? UBackgroundColor
-                                          : UTextColor,
+                                          ? UPrimaryColor
+                                          : UBackgroundColor,
+                                      borderRadius:
+                                          BorderRadius.circular(URoundedMedium),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 1,
+                                          color: ULightGreyColor,
+                                          offset: Offset(0, 1),
+                                        ),
+                                      ],
+                                    ),
+                                    child: Text(
+                                      'ឆ្នាំទី​ ${performances[index].yearNo}'
+                                          .tr,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: UTitleSize,
+                                        color: selectedYearIndex == index
+                                            ? UBackgroundColor
+                                            : UTextColor,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ),
-                            ),
-                          ),
+                                );
+                              }),
                         ),
-                        SizedBox(height: UHeight10),
                         performances[selectedYearIndex].semesters.isNotEmpty
                             ? Column(
                                 children: performances[selectedYearIndex]
@@ -287,11 +294,14 @@ class _PerformanceState extends State<Performance> {
                                                         children: [
                                                           Expanded(
                                                             child: Container(
-                                                              height: 50,
                                                               margin: EdgeInsets
                                                                   .only(
                                                                       right:
                                                                           UPdMg_15),
+                                                              padding: EdgeInsets
+                                                                  .symmetric(
+                                                                      vertical:
+                                                                          UPdMg_10),
                                                               alignment: Alignment
                                                                   .centerLeft,
                                                               child: Text(
@@ -304,7 +314,6 @@ class _PerformanceState extends State<Performance> {
                                                                         .name_en,
                                                                 style:
                                                                     TextStyle(
-                                                                  height: 1.5,
                                                                   color:
                                                                       UTextColor,
                                                                   fontSize:
@@ -488,8 +497,6 @@ class _PerformanceState extends State<Performance> {
                                                                           .attendance_ps,
                                                                       style:
                                                                           TextStyle(
-                                                                        height:
-                                                                            1.5,
                                                                         color:
                                                                             UScoreColor,
                                                                         fontSize:
@@ -729,8 +736,6 @@ class _PerformanceState extends State<Performance> {
                                                                           .toString(),
                                                                       style:
                                                                           TextStyle(
-                                                                        height:
-                                                                            1.5,
                                                                         color:
                                                                             UScoreColor,
                                                                         fontSize:

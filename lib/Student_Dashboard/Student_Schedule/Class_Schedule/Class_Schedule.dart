@@ -1,8 +1,16 @@
 class ScheduleClass {
-  late final String wday, weekday, session, subject, teacher, phonenumber, room;
+  late final String wday,
+      month,
+      weekday,
+      session,
+      subject,
+      teacher,
+      phonenumber,
+      room;
 
   ScheduleClass({
     required this.wday,
+    required this.month,
     required this.weekday,
     required this.session,
     required this.subject,
@@ -14,6 +22,7 @@ class ScheduleClass {
   factory ScheduleClass.fromJson(Map<String, dynamic> json) {
     return ScheduleClass(
       wday: json['date'],
+      month: json['month'],
       weekday: json['weekday'],
       session: json['session'],
       subject: json['subject'],

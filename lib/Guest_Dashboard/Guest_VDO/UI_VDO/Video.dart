@@ -84,7 +84,7 @@ class _VideoState extends State<Video_UI> {
                     );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(bottom: UPdMg_10),
+                    margin: EdgeInsets.only(bottom: UPdMg_15),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,

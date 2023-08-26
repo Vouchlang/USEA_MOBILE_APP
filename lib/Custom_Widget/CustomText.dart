@@ -217,6 +217,74 @@ class NoWeightTitleTheme extends StatelessWidget {
 }
 // *@ End No Weight Title
 
+// *@ Date Schedule
+class ScheduleDate extends StatelessWidget {
+  final String text;
+
+  const ScheduleDate({
+    super.key,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: UTitleSize,
+        fontWeight: UTitleWeight,
+        color: UTextColor,
+      ),
+    );
+  }
+}
+// *@ End Date Scredule
+
+// *@ Schedule Title
+class ScheduleTitle extends StatelessWidget {
+  final String text;
+
+  const ScheduleTitle({
+    super.key,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: UTitleSize16,
+        fontWeight: UTitleWeight,
+        color: UTextColor,
+      ),
+    );
+  }
+}
+// *@ End Schedule Title
+
+// *@ Schedule Body
+class ScheduleBody extends StatelessWidget {
+  final String text;
+
+  ScheduleBody({
+    super.key,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: UBodySize,
+        color: UTextColor,
+      ),
+    );
+  }
+}
+// *@ End Schedule Body
+
 //*@ Event Date
 Widget buildEventDate(
   String text,

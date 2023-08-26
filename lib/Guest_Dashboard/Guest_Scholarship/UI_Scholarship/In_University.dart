@@ -70,81 +70,80 @@ class _In_UniversityState extends State<In_University> {
                 ),
               )
             : ListView.builder(
+                padding: EdgeInsets.fromLTRB(
+                  UPdMg_10,
+                  UZeroPixel,
+                  UPdMg_10,
+                  UZeroPixel,
+                ),
                 itemCount: i_scholarship.length,
                 itemBuilder: (context, index) {
-                  return Container(
-                    margin: EdgeInsets.fromLTRB(
-                      UPdMg_10,
-                      UZeroPixel,
-                      UPdMg_10,
-                      UPdMg_5,
+                  return Card(
+                    elevation: 2,
+                    shadowColor: ULightGreyColor,
+                    margin: EdgeInsets.only(bottom: UPdMg_10),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(URoundedLarge),
                     ),
-                    child: Card(
-                      elevation: 2,
-                      shadowColor: ULightGreyColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(UPdMg_10),
-                      ),
-                      child: Container(
-                        padding: EdgeInsets.all(UPdMg_10),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Container(
-                                width: UFullWidth,
-                                child: NormalTitleTheme(
-                                    text: i_scholarship[index].i_school_name)),
-                            Container(
-                                width: UFullWidth,
-                                child: NormalTitleTheme(
-                                    text: i_scholarship[index]
-                                        .i_educational_level)),
-                            Container(
-                                width: UFullWidth,
-                                child: NormalTitleTheme(
-                                    text: i_scholarship[index].i_major)),
-                            Container(
-                                width: UFullWidth,
-                                child: NormalTitleTheme(text: 'ផុតកំណត់៖')),
-                            Container(
-                                width: UFullWidth,
-                                child: BodyTheme(
-                                    text: i_scholarship[index].i_expire_date)),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(top: UPdMg_10),
-                                  alignment: Alignment.center,
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: UPdMg_5, horizontal: UPdMg_10),
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.circular(URoundedMedium),
-                                    color: UBtnColor,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: UBtnColor,
-                                      ),
-                                    ],
-                                  ),
-                                  child: InkWell(
-                                    onTap: () => launchUrlString(
-                                        i_scholarship[index].i_link),
-                                    child: CustomTextTheme(
-                                      text: 'អានបន្ថែម'.tr,
-                                      color: UPrimaryColor,
-                                      fontWeight: UTitleWeight,
-                                      size: UBodySize,
+                    child: Container(
+                      padding: EdgeInsets.all(UPdMg_10),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Container(
+                              width: UFullWidth,
+                              child: NormalTitleTheme(
+                                  text: i_scholarship[index].i_school_name)),
+                          Container(
+                              width: UFullWidth,
+                              child: NormalTitleTheme(
+                                  text: i_scholarship[index]
+                                      .i_educational_level)),
+                          Container(
+                              width: UFullWidth,
+                              child: NormalTitleTheme(
+                                  text: i_scholarship[index].i_major)),
+                          Container(
+                              width: UFullWidth,
+                              child: NormalTitleTheme(text: 'ផុតកំណត់៖')),
+                          Container(
+                              width: UFullWidth,
+                              child: BodyTheme(
+                                  text: i_scholarship[index].i_expire_date)),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(top: UPdMg_10),
+                                alignment: Alignment.center,
+                                padding: EdgeInsets.symmetric(
+                                    vertical: UPdMg_5, horizontal: UPdMg_10),
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.circular(URoundedMedium),
+                                  color: UBtnColor,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: UBtnColor,
                                     ),
+                                  ],
+                                ),
+                                child: InkWell(
+                                  onTap: () => launchUrlString(
+                                      i_scholarship[index].i_link),
+                                  child: CustomTextTheme(
+                                    text: 'អានបន្ថែម'.tr,
+                                    color: UPrimaryColor,
+                                    fontWeight: UTitleWeight,
+                                    size: UBodySize,
                                   ),
                                 ),
-                              ],
-                            ),
-                          ],
-                        ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   );

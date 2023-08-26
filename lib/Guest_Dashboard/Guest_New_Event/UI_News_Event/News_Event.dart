@@ -39,7 +39,7 @@ class _New_EventState extends State<New_Event> {
             Container(
               height: 70,
               child: ListView.builder(
-                physics: ScrollPhysics(),
+                physics: NeverScrollableScrollPhysics(),
                 itemCount: tab_txt.length,
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
@@ -59,8 +59,8 @@ class _New_EventState extends State<New_Event> {
                           duration: Duration(milliseconds: 300),
                           margin: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_10,
                               isLastIndex ? UPdMg_10 : 0, UPdMg_10),
-                          padding: EdgeInsets.all(UPdMg_10),
-                          width: 200,
+                          padding: EdgeInsets.symmetric(vertical: UPdMg_10),
+                          width: 165,
                           decoration: BoxDecoration(
                             color: current == index
                                 ? UPrimaryColor

@@ -125,7 +125,7 @@ class _Video_DisplayState extends State<Video_Display> {
             decoration: BoxDecoration(
               color: UBackgroundColor,
               borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(10),
+                bottom: Radius.circular(UPdMg_10),
               ),
               boxShadow: [
                 BoxShadow(
@@ -142,14 +142,14 @@ class _Video_DisplayState extends State<Video_Display> {
             width: double.infinity,
             alignment: Alignment.center,
             child: buildTitleBody(widget.vdo[_currentVideoIndex!].title,
-                UTitleSize, FontWeight.w600),
+                UTitleSize, UTitleWeight),
           ),
           SizedBox(height: UHeight5),
           Container(
               padding: EdgeInsets.all(UPdMg_10),
               width: double.infinity,
               child: buildTitleBody(widget.vdo[_currentVideoIndex!].caption,
-                  UTitleSize, FontWeight.w500)),
+                  UTitleSize, UBodyWeight)),
           SizedBox(height: UHeight5),
           ListView.builder(
             shrinkWrap: true,
@@ -168,7 +168,7 @@ class _Video_DisplayState extends State<Video_Display> {
                   hideVideo(index);
                 },
                 child: Container(
-                  margin: EdgeInsets.only(bottom: UPdMg_10),
+                  margin: EdgeInsets.only(bottom: UPdMg_15),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,

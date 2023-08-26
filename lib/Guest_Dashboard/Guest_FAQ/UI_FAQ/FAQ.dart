@@ -74,7 +74,6 @@ class _FAQState extends State<FAQ> {
                   itemCount: faq.length,
                   itemBuilder: (context, index) {
                     final isLastIndex = index == faq.length - 1;
-
                     return Card(
                       margin: isLastIndex
                           ? EdgeInsets.symmetric(vertical: UPdMg_10)
@@ -95,23 +94,26 @@ class _FAQState extends State<FAQ> {
                                 collapsedIconColor: UPrimaryColor,
                                 iconColor: UPrimaryColor,
                                 title: buildFAQ(
-                                    faq[index].question, TextAlign.justify),
+                                    faq[index].question, TextAlign.left),
                                 textColor: UTextColor,
                                 children: [
+                                  Divider(),
                                   Container(
                                     decoration: BoxDecoration(
                                       borderRadius:
                                           BorderRadius.circular(URoundedLarge),
                                     ),
                                     padding: EdgeInsets.fromLTRB(
-                                      17,
+                                      UPdMg_15,
                                       UPdMg_10,
-                                      17,
+                                      UPdMg_15,
                                       UPdMg_5,
                                     ),
                                     child: buildFAQ(
                                       faq[index].answer,
-                                      TextAlign.justify,
+                                      Get.locale?.languageCode == 'km'
+                                          ? TextAlign.left
+                                          : TextAlign.justify,
                                     ),
                                   )
                                 ],

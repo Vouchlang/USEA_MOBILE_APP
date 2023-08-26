@@ -147,13 +147,14 @@ class _AttendanceState extends State<Attendance> {
               onRefresh: _refreshData,
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: UPdMg_10,
+                  horizontal: UPdMg_5,
                   vertical: UPdMg_15,
                 ),
                 child: Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.fromLTRB(3, UZeroPixel, 3, UPdMg_5),
+                      padding: EdgeInsets.fromLTRB(
+                          UPdMg_5, UZeroPixel, UPdMg_5, UPdMg_5),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [

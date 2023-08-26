@@ -45,9 +45,11 @@ class _St_HomeState extends State<St_Home> with SingleTickerProviderStateMixin {
     return Scaffold(
       body: pages[currentIndex],
       bottomNavigationBar: Container(
-        height: 100,
+        color: USecondaryColor,
+        height: 75,
         child: Center(
           child: BottomNavigationBar(
+            backgroundColor: USecondaryColor,
             elevation: 0,
             onTap: onTap,
             currentIndex: currentIndex,

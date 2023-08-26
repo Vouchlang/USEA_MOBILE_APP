@@ -132,9 +132,10 @@ class _RegistrationState extends State<Registration> {
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Container(
+                                        margin: EdgeInsets.only(top: 2),
                                         width: 20,
                                         height: 20,
                                         child: Image.asset(
@@ -230,9 +231,10 @@ class _RegistrationState extends State<Registration> {
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Container(
+                                        margin: EdgeInsets.only(top: 2),
                                         width: 20,
                                         height: 20,
                                         child: Image.asset(

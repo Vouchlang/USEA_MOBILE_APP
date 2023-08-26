@@ -4,7 +4,12 @@ import 'package:intl/intl.dart';
 import '/theme_builder.dart';
 
 class CardCalendar extends StatefulWidget {
-  const CardCalendar({Key? key}) : super(key: key);
+  final Function(DateTime) onDateSelected;
+
+  const CardCalendar({
+    Key? key,
+    required this.onDateSelected,
+  }) : super(key: key);
 
   @override
   _CardCalendarState createState() => _CardCalendarState();
@@ -12,12 +17,6 @@ class CardCalendar extends StatefulWidget {
 
 class _CardCalendarState extends State<CardCalendar> {
   DateTime today = DateTime.now();
-
-  void _onDaySelected(DateTime day, DateTime focusedDay) {
-    setState(() {
-      today = day;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,18 +49,18 @@ class _CardCalendarState extends State<CardCalendar> {
                 calendarStyle: CalendarStyle(
                   todayTextStyle: TextStyle(
                     fontWeight: UTitleWeight,
-                    color: UScoreColor,
+                    color: UPrimaryColor,
                   ),
                   todayDecoration: BoxDecoration(
                     color: Color.fromARGB(0, 255, 255, 255),
                   ),
                   selectedTextStyle: TextStyle(
                     fontWeight: UTitleWeight,
-                    color: UScoreColor,
-                    decoration: TextDecoration.underline,
+                    color: USecondaryColor,
                   ),
                   selectedDecoration: BoxDecoration(
-                    color: Colors.transparent,
+                    color: UPrimaryColor,
+                    shape: BoxShape.circle,
                   ),
                 ),
                 headerStyle: HeaderStyle(
@@ -89,9 +88,14 @@ class _CardCalendarState extends State<CardCalendar> {
                 availableGestures: AvailableGestures.all,
                 selectedDayPredicate: (day) => isSameDay(day, today),
                 focusedDay: today,
-                firstDay: DateTime(2010, 10, 16),
-                lastDay: DateTime(2030, 3, 14),
-                onDaySelected: _onDaySelected,
+                firstDay: DateTime(2020, 12, 31),
+                lastDay: DateTime(2030, 12, 31),
+                onDaySelected: (day, focusedDay) {
+                  widget.onDateSelected(day);
+                  setState(() {
+                    today = day;
+                  });
+                },
                 calendarBuilders: CalendarBuilders(
                   defaultBuilder: (context, date, _) {
                     return Container(
@@ -99,7 +103,7 @@ class _CardCalendarState extends State<CardCalendar> {
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         color: isSameDay(date, today)
-                            ? UScoreColor
+                            ? UPrimaryColor
                             : Colors.transparent,
                       ),
                       child: Text(

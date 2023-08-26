@@ -94,7 +94,7 @@ class _Program_SHCState extends State<Program_SHC> {
           ),
           Expanded(
             child: SingleChildScrollView(
-              padding: EdgeInsets.all(UPdMg_10),
+              padding: EdgeInsets.symmetric(horizontal: 7),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: _buildSubjectList(),
@@ -128,40 +128,44 @@ class _Program_SHCState extends State<Program_SHC> {
       var credit = subjectData['Credit'];
 
       return Container(
-        padding: EdgeInsets.symmetric(vertical: UPdMg_5, horizontal: UPdMg_5),
-        height: 50,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
+        padding: EdgeInsets.fromLTRB(UPdMg_5, UPdMg_10, UPdMg_5, UZeroPixel),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.only(right: UPdMg_15),
-                child: Text(
-                  subject.toString().tr,
-                  style: TextStyle(
-                    height: 1.5,
-                    fontSize: UTitleSize,
-                    fontWeight: UBodyWeight,
-                    color: UTextColor,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.only(right: UPdMg_15),
+                    padding: EdgeInsets.symmetric(vertical: UPdMg_5),
+                    child: Text(
+                      subject.toString().tr,
+                      style: TextStyle(
+                        fontSize: UTitleSize,
+                        fontWeight: UBodyWeight,
+                        color: UTextColor,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  alignment: Alignment.center,
-                  width: 55,
-                  child: NoWeightTitleTheme(text: hour.toString()),
-                ),
-                SizedBox(width: 10),
-                Container(
-                  alignment: Alignment.center,
-                  width: 30,
-                  margin: EdgeInsets.only(right: UPdMg_10),
-                  child: NoWeightTitleTheme(text: credit.toString()),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      alignment: Alignment.center,
+                      width: 55,
+                      child: NoWeightTitleTheme(text: hour.toString()),
+                    ),
+                    SizedBox(width: UWidth10),
+                    Container(
+                      alignment: Alignment.center,
+                      width: 30,
+                      margin: EdgeInsets.only(right: UPdMg_10),
+                      child: NoWeightTitleTheme(text: credit.toString()),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -199,7 +203,7 @@ class _Program_SHCState extends State<Program_SHC> {
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(10),
+                  top: Radius.circular(UPdMg_10),
                 ),
                 color: UBGLightBlue,
               ),
@@ -218,7 +222,7 @@ class _Program_SHCState extends State<Program_SHC> {
                           text: 'ម៉ោង'.tr,
                         ),
                       ),
-                      SizedBox(width: 15),
+                      SizedBox(width: UWidth15),
                       Container(
                         alignment: Alignment.center,
                         width: 55,
@@ -247,7 +251,9 @@ class _Program_SHCState extends State<Program_SHC> {
                       Container(
                         width: 55,
                         alignment: Alignment.center,
-                        child: TitleTheme(text: totalHours.toStringAsFixed(0)),
+                        child: TitleTheme(
+                          text: totalHours.toStringAsFixed(0),
+                        ),
                       ),
                       SizedBox(
                         width: UWidth10,
