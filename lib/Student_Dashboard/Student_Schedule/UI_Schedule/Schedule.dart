@@ -62,7 +62,7 @@ class _ScheduleState extends State<Schedule> {
             String selectedMonth = DateFormat('MMMM').format(selectedDate);
 
             selectedDateSchedule = _dataSchedule.where((schedule) {
-              return schedule.wday == DateFormat('d').format(selectedDate) &&
+              return schedule.wday == DateFormat('dd').format(selectedDate) &&
                   schedule.month == selectedMonth;
             }).toList();
 
@@ -91,16 +91,12 @@ class _ScheduleState extends State<Schedule> {
       selectedDate = day;
     });
 
-    // Format the selected month to the full month name
     String selectedMonth = DateFormat('MMMM').format(selectedDate);
-
-    // Filter the schedule data based on the selected month
     selectedDateSchedule = _dataSchedule.where((schedule) {
-      return schedule.wday == DateFormat('d').format(selectedDate) &&
+      return schedule.wday == DateFormat('dd').format(selectedDate) &&
           schedule.month == selectedMonth;
     }).toList();
 
-    // Update the displayed data
     _refreshData();
   }
 
@@ -110,10 +106,17 @@ class _ScheduleState extends State<Schedule> {
       backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'កាលវិភាគ'.tr),
       body: _dataSchedule.isEmpty
-          ? Center(
-              child: isLoading
-                  ? CircularProgressIndicator()
-                  : Text('No data available.'),
+          ? FutureBuilder(
+              future: Future.delayed(Duration(seconds: 3)),
+              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  return Center(child: Text('គ្មានទិន្ន័យ'.tr));
+                }
+              },
             )
           : RefreshIndicator(
               onRefresh: _refreshData,
@@ -135,8 +138,19 @@ class _ScheduleState extends State<Schedule> {
                     ),
                   ),
                   selectedDateSchedule.isEmpty
-                      ? Center(
-                          child: Text('គ្មានទិន្ន័យ'.tr),
+                      ? FutureBuilder(
+                          future: Future.delayed(Duration(seconds: 3)),
+                          builder: (BuildContext context,
+                              AsyncSnapshot<dynamic> snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            } else {
+                              return Center(child: Text('គ្មានទិន្ន័យ'.tr));
+                            }
+                          },
                         )
                       : ListView.builder(
                           physics: ScrollPhysics(),

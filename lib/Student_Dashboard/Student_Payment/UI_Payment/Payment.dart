@@ -135,26 +135,39 @@ class _Payment_UIState extends State<Payment_UI> {
     return Scaffold(
       backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'ការបង់ប្រាក់'.tr),
-      body: RefreshIndicator(
-        onRefresh: _refreshData,
-        child: ListView(
-          children: [
-            buildTitle('ការបង់ថ្លៃឈ្នួលសិក្សា', buildStudyPayment()),
-            buildTitle(
-              'ការបង់ថ្លៃឈ្នួលប្រឡងឡើងវិញ',
-              PaymentCards2(),
+      body: _dataPayStudy.isEmpty
+          ? FutureBuilder(
+              future: Future.delayed(Duration(seconds: 3)),
+              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  return Center(child: Text('គ្មានទិន្ន័យ'.tr));
+                }
+              },
+            )
+          : RefreshIndicator(
+              onRefresh: _refreshData,
+              child: ListView(
+                children: [
+                  buildTitle('ការបង់ថ្លៃឈ្នួលសិក្សា', buildStudyPayment()),
+                  buildTitle(
+                    'ការបង់ថ្លៃឈ្នួលប្រឡងឡើងវិញ',
+                    PaymentCards2(),
+                  ),
+                  buildTitle(
+                    'ការបង់ថ្លៃឈ្នួលរៀនបំពេញក្រេឌីត',
+                    PaymentCards3(),
+                  ),
+                  buildTitle(
+                    'ការបង់ថ្លៃឈ្នួលដកលិខិតបញ្ជាក់ការសិក្សាផ្សេងៗ',
+                    buildOtherPayment(),
+                  ),
+                ],
+              ),
             ),
-            buildTitle(
-              'ការបង់ថ្លៃឈ្នួលរៀនបំពេញក្រេឌីត',
-              PaymentCards3(),
-            ),
-            buildTitle(
-              'ការបង់ថ្លៃឈ្នួលដកលិខិតបញ្ជាក់ការសិក្សាផ្សេងៗ',
-              buildOtherPayment(),
-            ),
-          ],
-        ),
-      ),
     );
   }
 

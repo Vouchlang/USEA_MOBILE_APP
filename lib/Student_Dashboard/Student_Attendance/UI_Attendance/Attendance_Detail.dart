@@ -5,7 +5,7 @@ import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
 import '../Class_Attendance/Class_Attendance.dart';
 
-class Attendance_Detail extends StatefulWidget {
+class Attendance_Detail extends StatelessWidget {
   final String subjectName;
   final List<Dates> subjectDate;
 
@@ -13,11 +13,6 @@ class Attendance_Detail extends StatefulWidget {
       {Key? key, required this.subjectDate, required this.subjectName})
       : super(key: key);
 
-  @override
-  State<Attendance_Detail> createState() => _Attendance_DetailState();
-}
-
-class _Attendance_DetailState extends State<Attendance_Detail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,13 +44,13 @@ class _Attendance_DetailState extends State<Attendance_Detail> {
                   color: UBGLightBlue,
                 ),
                 child: CustomAttTextTheme(
-                  text: widget.subjectName,
+                  text: subjectName,
                   color: UPrimaryColor,
                   fontWeight: UTitleWeight,
                   size: UTitleSize,
                 ),
               ),
-              widget.subjectDate.isNotEmpty
+              subjectDate.isNotEmpty
                   ? Flexible(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -83,11 +78,11 @@ class _Attendance_DetailState extends State<Attendance_Detail> {
                             child: ListView.builder(
                               shrinkWrap: true,
                               physics: NeverScrollableScrollPhysics(),
-                              itemCount: widget.subjectDate.length,
+                              itemCount: subjectDate.length,
                               itemBuilder: (context, outerIndex) {
-                                final subject = widget.subjectDate[outerIndex];
+                                final subject = subjectDate[outerIndex];
                                 final isLastIndex =
-                                    outerIndex == widget.subjectDate.length - 1;
+                                    outerIndex == subjectDate.length - 1;
                                 return Container(
                                   width: UFullWidth,
                                   decoration: BoxDecoration(

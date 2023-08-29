@@ -19,13 +19,11 @@ class Guest_Home extends StatefulWidget {
 }
 
 class _Guest_HomeState extends State<Guest_Home> {
-  final Uri urlFb =
-      Uri.parse("https://www.facebook.com/usea.edu.kh?mibextid=LQQJ4d");
-  final Uri urlIg = Uri.parse(
-      "https://instagram.com/university_of_south_east_asia?igshid=MzRlODBiNWFlZA==");
+  final String facebookPageUrl = "https://www.facebook.com/usea.edu.kh";
+  final String telegramUrl = "https://t.me/university_of_south_east_asia";
+
   final Uri urlYt =
       Uri.parse("https://youtube.com/@usea-edu-kh?si=O-C7zB1vDD6KjP0z");
-  final Uri urlTel = Uri.parse("https://t.me/university_of_south_east_asia");
   final Uri urlWeb = Uri.parse("https://www.usea.edu.kh/en/Pages/index.php");
   late List<Class_Image> image_slides = [];
 
@@ -69,6 +67,35 @@ class _Guest_HomeState extends State<Guest_Home> {
   }
 
   int activeIndex = 0;
+
+  void _launchFacebookPage() async {
+    if (await canLaunch(facebookPageUrl)) {
+      await launch(facebookPageUrl);
+    } else {
+      throw 'Could not launch $facebookPageUrl';
+    }
+  }
+
+  void _launchInstagram() async {
+    const instagramUrl =
+        'https://www.instagram.com/university_of_south_east_asia/';
+
+    if (await canLaunch(instagramUrl)) {
+      await launch(instagramUrl);
+    } else {
+      throw 'Could not launch $instagramUrl';
+    }
+  }
+
+  void openTelegramGroup() async {
+    final String telegramUrl = "https://t.me/university_of_south_east_asia";
+
+    if (await canLaunch(telegramUrl)) {
+      await launch(telegramUrl);
+    } else {
+      throw 'Could not launch $telegramUrl';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -305,7 +332,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                   children: [
                     InkWell(
                       onTap: () {
-                        launchUrl(urlFb);
+                        _launchFacebookPage();
                       },
                       child: Image.asset(
                         'assets/image/SM_Facebook.png',
@@ -314,7 +341,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                     ),
                     InkWell(
                       onTap: () {
-                        launchUrl(urlIg);
+                        _launchInstagram();
                       },
                       child: Image.asset(
                         'assets/image/SM_IG.png',
@@ -332,7 +359,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                     ),
                     InkWell(
                       onTap: () {
-                        launchUrl(urlTel);
+                        openTelegramGroup();
                       },
                       child: Image.asset(
                         'assets/image/SM_Telegram.png',
