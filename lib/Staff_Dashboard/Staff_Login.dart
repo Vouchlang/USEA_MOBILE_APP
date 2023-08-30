@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../Custom_AppBar.dart';
-import '../../../theme_builder.dart';
 
-class Notifications extends StatefulWidget {
+import '../Custom_AppBar.dart';
+import '../theme_builder.dart';
+
+class Staff_Login extends StatefulWidget {
+  const Staff_Login({super.key});
+
   @override
-  _NotificationsState createState() => _NotificationsState();
+  State<Staff_Login> createState() => _Staff_LoginState();
 }
 
-class _NotificationsState extends State<Notifications> {
+class _Staff_LoginState extends State<Staff_Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(
-        title: 'ព័ត៌មានថ្មីៗ'.tr,
-      ),
+      appBar: Custom_AppBar(title: 'គណនីបុគ្គលិក'.tr),
       body: Center(
         child: Text(
           'មកដល់ឆាប់ៗនេះ!!!'.tr,

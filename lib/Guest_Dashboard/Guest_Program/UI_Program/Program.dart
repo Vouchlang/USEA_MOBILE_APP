@@ -272,6 +272,9 @@ class _ProgramState extends State<Program> {
                                         ),
                                       ),
                                     ),
+                                    SizedBox(
+                                      width: UWidth15,
+                                    ),
                                     Icon(
                                       Icons.arrow_forward_ios,
                                       size: 14,
@@ -376,12 +379,14 @@ class MajorSearchDelegate extends SearchDelegate<String> {
       itemCount: suggestionList.length,
       itemBuilder: (context, index) {
         final majorName = suggestionList[index];
+        var isLastIndex = index == suggestionList.length - 1;
         return InkWell(
           onTap: () {
             navigateToMajorDetails(context, majorName);
           },
           child: Container(
-            padding: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_15, UPdMg_10, 0),
+            padding: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_15, UPdMg_10,
+                isLastIndex ? UPdMg_15 : UZeroPixel),
             child: Text(
               majorName.tr,
             ),

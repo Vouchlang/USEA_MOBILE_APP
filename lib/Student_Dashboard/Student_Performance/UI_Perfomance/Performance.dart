@@ -145,11 +145,12 @@ class _PerformanceState extends State<Performance> {
                         ),
                         Container(
                           height: 70,
+                          alignment: Alignment.center,
                           width: UFullWidth,
                           padding: EdgeInsets.symmetric(horizontal: 5),
                           child: ListView.builder(
                               shrinkWrap: true,
-                              physics: const BouncingScrollPhysics(),
+                              physics: BouncingScrollPhysics(),
                               itemCount: performances.length,
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import '/theme_builder.dart';
 import '/Custom_AppBar.dart';
@@ -52,8 +53,17 @@ class _ContactState extends State<Contact> {
                                     UTitleSize, UBodyWeight),
                               )
                             : InkWell(
-                                onTap: () =>
-                                    launchUrlString(contact[index].link),
+                                onTap: () {
+                                  void _launchTelegram() async {
+                                    if (await canLaunch(contact[index].link)) {
+                                      await launch(contact[index].link);
+                                    } else {
+                                      throw 'Could not launch ${contact[index].link}';
+                                    }
+                                  }
+
+                                  _launchTelegram();
+                                },
                                 child: Container(
                                   padding: EdgeInsets.only(top: 4),
                                   child: buildTitleBody(contact[index].text.tr,

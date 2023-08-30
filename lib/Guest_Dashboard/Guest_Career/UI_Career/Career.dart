@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '/theme_builder.dart';
 import '/Custom_AppBar.dart';
 import '/Custom_Widget/CustomText.dart';
@@ -78,7 +79,19 @@ class _CareerState extends State<Career> {
                     child: Container(
                       padding: EdgeInsets.only(top: UPdMg_5),
                       child: InkWell(
-                        onTap: () => launchUrlString(career[index].link),
+                        onTap: () {
+                          void _launchCareerUrl() async {
+                            if (await canLaunch(career[index].link)) {
+                              await launch(career[index].link);
+                            } else {
+                              throw 'Could not launch ${career[index].link}';
+                            }
+                          }
+
+                          _launchCareerUrl();
+
+                          // launchUrlString(career[index].link);
+                        },
                         child: Column(
                           children: [
                             Row(

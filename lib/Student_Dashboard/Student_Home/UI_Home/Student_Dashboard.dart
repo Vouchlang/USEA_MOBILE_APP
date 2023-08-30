@@ -175,6 +175,14 @@ class _Student_HomeState extends State<Student_Home> {
     return percentIndicator;
   }
 
+  void _launchFeedback() async {
+    if (await canLaunch(_dataFeedback[0].feedback)) {
+      await launch(_dataFeedback[0].feedback);
+    } else {
+      throw 'Could not launch ${_dataFeedback[0].feedback}';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double percentIndicator = calculatePercentIndicator();
@@ -342,8 +350,19 @@ class _Student_HomeState extends State<Student_Home> {
                                                   ),
                                                 ),
                                                 onPressed: () {
-                                                  launchUrl(Uri.parse(
-                                                      _dataSurvey[index].link));
+                                                  void _launchSurvey() async {
+                                                    if (await canLaunch(
+                                                        _dataSurvey[index]
+                                                            .link)) {
+                                                      await launch(
+                                                          _dataSurvey[index]
+                                                              .link);
+                                                    } else {
+                                                      throw 'Could not launch ${_dataSurvey[index].link}';
+                                                    }
+                                                  }
+
+                                                  _launchSurvey();
                                                 },
                                               ),
                                               if (index !=
@@ -543,8 +562,7 @@ class _Student_HomeState extends State<Student_Home> {
                                         );
                                       },
                                     )
-                                  : launchUrl(
-                                      Uri.parse(_dataFeedback[0].feedback));
+                                  : _launchFeedback();
                             } else if (index.isEqual(0)) {
                               Navigator.push(
                                 context,
@@ -663,7 +681,15 @@ class _Student_HomeState extends State<Student_Home> {
                         borderRadius: BorderRadius.circular(URoundedMedium)),
                     child: InkWell(
                       onTap: () {
-                        launchUrl(Uri.parse(_dataSurvey[0].link));
+                        void _launchSurvey() async {
+                          if (await canLaunch(_dataSurvey[0].link)) {
+                            await launch(_dataSurvey[0].link);
+                          } else {
+                            throw 'Could not launch ${_dataSurvey[0].link}';
+                          }
+                        }
+
+                        _launchSurvey();
                       },
                       child: Container(
                         margin: EdgeInsets.all(UPdMg_5),
@@ -843,8 +869,7 @@ class _Student_HomeState extends State<Student_Home> {
                                         );
                                       },
                                     )
-                                  : launchUrl(
-                                      Uri.parse(_dataFeedback[0].feedback));
+                                  : _launchFeedback();
                             } else if (index.isEqual(0)) {
                               Navigator.push(
                                 context,
@@ -1131,8 +1156,7 @@ class _Student_HomeState extends State<Student_Home> {
                                           );
                                         },
                                       )
-                                    : launchUrl(
-                                        Uri.parse(_dataFeedback[0].feedback));
+                                    : _launchFeedback();
                               } else if (index.isEqual(0)) {
                                 Navigator.push(
                                   context,

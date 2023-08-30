@@ -160,6 +160,7 @@ class _AttendanceListState extends State<AttendanceList> {
                       height: 70,
                       width: UFullWidth,
                       child: ListView.builder(
+                          shrinkWrap: true,
                           physics: BouncingScrollPhysics(),
                           itemCount: attendances.length,
                           scrollDirection: Axis.horizontal,

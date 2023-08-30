@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:usea_app/Guardian_Dashboard/Guardian_login.dart';
+import 'package:usea_app/Lecturer_Dashboard/Lecturer_Login.dart';
+import 'package:usea_app/Staff_Dashboard/Staff_Login.dart';
 import '/Student_Dashboard/Student_LogIn/Student_LogIn.dart';
 import '/Guest_Dashboard/Guest_New_Event/UI_News_Event/News_Event.dart';
 
@@ -22,16 +25,16 @@ final List<Account_Screen> account_screen = [
   Account_Screen(
     name: 'គណនីអាណាព្យាបាល',
     img: 'assets/image/Acc_Guardian.png',
-    screen: New_Event(),
+    screen: Guardian_Login(),
   ),
   Account_Screen(
     name: 'គណនីបុគ្គលិក',
     img: 'assets/image/Acc_Staff.png',
-    screen: New_Event(),
+    screen: Staff_Login(),
   ),
   Account_Screen(
     name: 'គណនីសាស្ត្រាចារ្យ',
     img: 'assets/image/Acc_Lecturer.png',
-    screen: New_Event(),
+    screen: Lecturer_Login(),
   ),
 ];
