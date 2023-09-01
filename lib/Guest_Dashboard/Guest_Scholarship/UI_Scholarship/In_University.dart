@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import '/Custom_Widget/CustomText.dart';
 import '/theme_builder.dart';
@@ -131,8 +132,19 @@ class _In_UniversityState extends State<In_University> {
                                   ],
                                 ),
                                 child: InkWell(
-                                  onTap: () => launchUrlString(
-                                      i_scholarship[index].i_link),
+                                  onTap: () {
+                                    void _launchInUniUrl() async {
+                                      if (await canLaunch(
+                                          i_scholarship[index].i_link)) {
+                                        await launch(
+                                            i_scholarship[index].i_link);
+                                      } else {
+                                        throw 'Could not launch ${i_scholarship[index].i_link}';
+                                      }
+                                    }
+
+                                    _launchInUniUrl();
+                                  },
                                   child: CustomTextTheme(
                                     text: 'អានបន្ថែម'.tr,
                                     color: UPrimaryColor,

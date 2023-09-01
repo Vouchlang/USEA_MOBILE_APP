@@ -602,17 +602,17 @@ class _PerformanceState extends State<Performance> {
                                                                                                         color: UTextColor,
                                                                                                       ),
                                                                                                       CustomPerformanceDiaglogTextTheme(
-                                                                                                        text: 'លំហាត់'.tr,
+                                                                                                        text: 'កិច្ចការផ្ទះ&​ស្រាវជ្រាវ'.tr,
                                                                                                         size: UTitleSize,
                                                                                                         color: UTextColor,
                                                                                                       ),
                                                                                                       CustomPerformanceDiaglogTextTheme(
-                                                                                                        text: 'ពាក់កណ្ដាលឆមាស'.tr,
+                                                                                                        text: 'ប្រលងពាក់កណ្ដាលឆមាស'.tr,
                                                                                                         size: UTitleSize,
                                                                                                         color: UTextColor,
                                                                                                       ),
                                                                                                       CustomPerformanceDiaglogTextTheme(
-                                                                                                        text: 'ឆមាស'.tr,
+                                                                                                        text: 'ប្រលងបញ្ចប់ឆមាស'.tr,
                                                                                                         size: UTitleSize,
                                                                                                         color: UTextColor,
                                                                                                       ),
@@ -623,44 +623,13 @@ class _PerformanceState extends State<Performance> {
                                                                                                       Column(
                                                                                                         children: [
                                                                                                           CustomPerformanceDiaglogTextTheme(
-                                                                                                            text: 'ភាគរយ'.tr,
+                                                                                                            text: 'ពិន្ទុជាក់ស្ដែង'.tr,
                                                                                                             size: UTitleSize,
                                                                                                             color: UPrimaryColor,
                                                                                                           ),
                                                                                                           CustomPerformanceDiaglogTextTheme(
-                                                                                                            text: subject.pscore_attendance,
-                                                                                                            size: UTitleSize,
-                                                                                                            color: UScoreColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            text: subject.pscore_assignment,
-                                                                                                            size: UTitleSize,
-                                                                                                            color: UScoreColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            text: subject.pscore_mid_term,
-                                                                                                            size: UTitleSize,
-                                                                                                            color: UScoreColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            text: subject.pscore_final,
-                                                                                                            size: UTitleSize,
-                                                                                                            color: UScoreColor,
-                                                                                                          ),
-                                                                                                        ],
-                                                                                                      ),
-                                                                                                      SizedBox(
-                                                                                                        width: 50,
-                                                                                                      ),
-                                                                                                      Column(
-                                                                                                        children: [
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            text: 'ពិន្ទុ'.tr,
-                                                                                                            size: UTitleSize,
-                                                                                                            color: UPrimaryColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            text: subject.number_attendance,
+                                                                                                            text: '99.98/100',
+                                                                                                            // text: subject.number_attendance,
                                                                                                             size: UTitleSize,
                                                                                                             color: UScoreColor,
                                                                                                           ),
@@ -676,6 +645,39 @@ class _PerformanceState extends State<Performance> {
                                                                                                           ),
                                                                                                           CustomPerformanceDiaglogTextTheme(
                                                                                                             text: subject.number_final,
+                                                                                                            size: UTitleSize,
+                                                                                                            color: UScoreColor,
+                                                                                                          ),
+                                                                                                        ],
+                                                                                                      ),
+                                                                                                      SizedBox(
+                                                                                                        width: 5,
+                                                                                                      ),
+                                                                                                      Column(
+                                                                                                        children: [
+                                                                                                          CustomPerformanceDiaglogTextTheme(
+                                                                                                            text: 'ពិន្ទុផ្លូវការ'.tr,
+                                                                                                            size: UTitleSize,
+                                                                                                            color: UPrimaryColor,
+                                                                                                          ),
+                                                                                                          CustomPerformanceDiaglogTextTheme(
+                                                                                                            text: '99.65/100',
+                                                                                                            // subject.pscore_attendance
+                                                                                                            size: UTitleSize,
+                                                                                                            color: UScoreColor,
+                                                                                                          ),
+                                                                                                          CustomPerformanceDiaglogTextTheme(
+                                                                                                            text: subject.pscore_assignment,
+                                                                                                            size: UTitleSize,
+                                                                                                            color: UScoreColor,
+                                                                                                          ),
+                                                                                                          CustomPerformanceDiaglogTextTheme(
+                                                                                                            text: subject.pscore_mid_term,
+                                                                                                            size: UTitleSize,
+                                                                                                            color: UScoreColor,
+                                                                                                          ),
+                                                                                                          CustomPerformanceDiaglogTextTheme(
+                                                                                                            text: subject.pscore_final,
                                                                                                             size: UTitleSize,
                                                                                                             color: UScoreColor,
                                                                                                           ),

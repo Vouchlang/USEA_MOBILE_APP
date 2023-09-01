@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -123,8 +124,19 @@ class _Out_UniversityState extends State<Out_University> {
                                   ],
                                 ),
                                 child: InkWell(
-                                  onTap: () => launchUrlString(
-                                      o_scholarship[index].o_link),
+                                  onTap: () {
+                                    void _launchOutUniUrl() async {
+                                      if (await canLaunch(
+                                          o_scholarship[index].o_link)) {
+                                        await launch(
+                                            o_scholarship[index].o_link);
+                                      } else {
+                                        throw 'Could not launch ${o_scholarship[index].o_link}';
+                                      }
+                                    }
+
+                                    _launchOutUniUrl();
+                                  },
                                   child: CustomTextTheme(
                                     text: 'អានបន្ថែម'.tr,
                                     color: UPrimaryColor,

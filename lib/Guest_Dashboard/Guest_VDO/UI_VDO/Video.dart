@@ -10,7 +10,7 @@ import 'package:http/http.dart' as http;
 import 'Video_Display.dart';
 
 class Video_UI extends StatefulWidget {
-  const Video_UI({Key? key}) : super(key: key);
+  Video_UI({Key? key}) : super(key: key);
 
   @override
   State<Video_UI> createState() => _VideoState();
@@ -84,7 +84,7 @@ class _VideoState extends State<Video_UI> {
                     );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(bottom: UPdMg_15),
+                    margin: EdgeInsets.only(bottom: UPdMg_10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -102,7 +102,7 @@ class _VideoState extends State<Video_UI> {
                                 image: DecorationImage(
                                     image: NetworkImage(
                                         vdo[index].youtube_thumbnail),
-                                    fit: BoxFit.cover),
+                                    fit: BoxFit.fitWidth),
                               ),
                             ),
                             SizedBox(

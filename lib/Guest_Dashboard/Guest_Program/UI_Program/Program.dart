@@ -4,6 +4,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import '../../../theme_builder.dart';
+import '../Class_Program/Class_Program_ACCA.dart';
+import 'Program_ACCA.dart';
 import 'Program_Major_Detail_Main.dart';
 
 class Program extends StatefulWidget {
@@ -15,6 +17,8 @@ class _ProgramState extends State<Program> {
   List<Map<String, dynamic>>? programData;
   List<String> majorNames = [];
   List<String> filteredMajorNames = [];
+  List<ProgramACCA> programACCA = [];
+
   String searchQuery = '';
 
   Future<void> fetchData() async {
@@ -24,13 +28,68 @@ class _ProgramState extends State<Program> {
           : 'https://usea.edu.kh/api/webapi.php?action=study_program_en'),
     );
 
-    if (response.statusCode == 200) {
-      final Map<String, dynamic> jsonData = jsonDecode(response.body);
+    final response_acca = await http.get(
+      Uri.parse(
+          'http://192.168.1.51/hosting_api/Test_student/guest_program_testing_acca.php'),
+    );
 
+    if (response.statusCode == 200 && response_acca.statusCode == 200) {
+      final Map<String, dynamic> jsonData = jsonDecode(response.body);
       final List<dynamic> programDataList = jsonData['program_data'];
+
+      // Acca
+      final Map<String, dynamic> jsonData_ACCA =
+          json.decode(response_acca.body);
+
+      List<ProgramACCA> accaList = [];
+
+      jsonData_ACCA['program_acca']?.forEach((facData) {
+        List<Faculty_Data> fac_data = [];
+
+        facData['faculty_data']?.forEach((majorData) {
+          List<Major_Data> major_data = [];
+
+          majorData['major_data']?.forEach((subjectData) {
+            List<Subject_Data> subject_data = [];
+
+            subjectData['subject_data']?.forEach((data) {
+              Subject_Data subObj = Subject_Data(
+                subject: data['subject'] ?? 'N/A',
+                hour_per_week: data['hour_per_week'] ?? 'N/A',
+                weeks: data['weeks'] ?? 'N/A',
+                total_hour: data['total_hour'] ?? 'N/A',
+              );
+
+              subject_data.add(subObj);
+            });
+
+            Major_Data majorObj = Major_Data(
+                major_name: subjectData['major_name'] ?? 'N/A',
+                subject_data: subject_data);
+
+            major_data.add(majorObj); // Add majorObj to major_data
+          });
+
+          Faculty_Data facObj = Faculty_Data(
+            fac_icon: majorData['fac_icon'] ?? 'N/A',
+            major_data: major_data,
+          );
+
+          fac_data.add(facObj); // Add facObj to fac_data
+        });
+
+        ProgramACCA programacca = ProgramACCA(
+          fac_name: facData['faculty_name'] ?? 'N/A',
+          fac_data: fac_data,
+        );
+
+        accaList.add(programacca);
+      });
 
       if (mounted) {
         setState(() {
+          programACCA = accaList;
+
           programData = List<Map<String, dynamic>>.from(programDataList);
           majorNames = [];
           for (final data in programData!) {
@@ -172,125 +231,245 @@ class _ProgramState extends State<Program> {
                 ),
               ),
             )
-          : ListView.builder(
-              padding: EdgeInsets.only(bottom: UPdMg_10),
-              itemCount: programData!.length,
-              itemBuilder: (context, index) {
-                final faculty = programData![index];
-                final facultyName = faculty['faculty_name'];
-                final majorNamesData = faculty['faculty_data']['major_name'];
-                final facultyIcon = faculty['faculty_data']['fac_icon'];
-                if (facultyIcon == null) {
-                  Icon(
-                    Icons.error,
-                    size: 2,
-                    color: UPrimaryColor,
-                  );
-                }
-                return Card(
-                  color: UBackgroundColor,
-                  margin: EdgeInsets.fromLTRB(
-                    UPdMg_10,
-                    UPdMg_10,
-                    UPdMg_10,
-                    UZeroPixel,
-                  ),
-                  elevation: 2,
-                  shadowColor: UGreyColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(URoundedLarge),
-                  ),
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: UPdMg_5),
-                    child: Theme(
-                      data: Theme.of(context)
-                          .copyWith(dividerColor: Colors.transparent),
-                      child: ExpansionTile(
-                        collapsedIconColor: UPrimaryColor,
-                        iconColor: UPrimaryColor,
-                        textColor: UTextColor,
-                        key: PageStorageKey(facultyName.toString().tr),
-                        title: Row(
-                          children: [
-                            Image.network(
-                              facultyIcon,
-                              scale: 6,
-                              errorBuilder: (context, error, stackTrace) {
-                                return Icon(Icons.error);
-                              },
-                            ),
-                            SizedBox(width: UWidth10),
-                            Expanded(child: Text(facultyName.toString().tr)),
-                          ],
+          : SingleChildScrollView(
+              child: Column(
+                children: [
+                  ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: programData!.length,
+                    itemBuilder: (context, index) {
+                      final faculty = programData![index];
+                      final facultyName = faculty['faculty_name'];
+                      final majorNamesData =
+                          faculty['faculty_data']['major_name'];
+                      final facultyIcon = faculty['faculty_data']['fac_icon'];
+                      if (facultyIcon == null) {
+                        Icon(
+                          Icons.error,
+                          size: 2,
+                          color: UPrimaryColor,
+                        );
+                      }
+                      return Card(
+                        color: UBackgroundColor,
+                        margin: EdgeInsets.fromLTRB(
+                          UPdMg_10,
+                          UPdMg_10,
+                          UPdMg_10,
+                          UZeroPixel,
                         ),
-                        children: majorNamesData.map<Widget>((major) {
-                          final majorName = major['major_name'];
-                          final degreeDetails = major['major_data'];
+                        elevation: 2,
+                        shadowColor: UGreyColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(URoundedLarge),
+                        ),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(vertical: UPdMg_5),
+                          child: Theme(
+                            data: Theme.of(context)
+                                .copyWith(dividerColor: Colors.transparent),
+                            child: ExpansionTile(
+                              collapsedIconColor: UPrimaryColor,
+                              iconColor: UPrimaryColor,
+                              textColor: UTextColor,
+                              key: PageStorageKey(facultyName.toString().tr),
+                              title: Row(
+                                children: [
+                                  Image.network(
+                                    facultyIcon,
+                                    scale: 6,
+                                    errorBuilder: (context, error, stackTrace) {
+                                      return Icon(Icons.error);
+                                    },
+                                  ),
+                                  SizedBox(width: UWidth10),
+                                  Expanded(
+                                      child: Text(facultyName.toString().tr)),
+                                ],
+                              ),
+                              children: majorNamesData.map<Widget>((major) {
+                                final majorName = major['major_name'];
+                                final degreeDetails = major['major_data'];
 
-                          return Container(
-                            padding: EdgeInsets.fromLTRB(
-                              UPdMg_15,
-                              UZeroPixel,
-                              UPdMg_15,
-                              UPdMg_10,
-                            ),
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => MajorDetailsScreen(
-                                      majorName: majorName,
-                                      majorInfoData: major,
-                                      educationNames: degreeDetails
-                                          .map<String>((degree) =>
-                                              degree['degree_name'] as String)
-                                          .toList(),
+                                return Container(
+                                  padding: EdgeInsets.fromLTRB(
+                                    UPdMg_15,
+                                    UZeroPixel,
+                                    UPdMg_15,
+                                    UPdMg_10,
+                                  ),
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              MajorDetailsScreen(
+                                            majorName: majorName,
+                                            majorInfoData: major,
+                                            educationNames: degreeDetails
+                                                .map<String>((degree) =>
+                                                    degree['degree_name']
+                                                        as String)
+                                                .toList(),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(
+                                            URoundedMedium),
+                                        border: Border.all(color: UBGLightBlue),
+                                      ),
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: UPdMg_8,
+                                          horizontal: UPdMg_5),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              majorName.toString().tr,
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(
+                                                fontSize: UTitleSize,
+                                                color: UTextColor,
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: UWidth15,
+                                          ),
+                                          Icon(
+                                            Icons.arrow_forward_ios,
+                                            size: 14,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 );
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.circular(URoundedMedium),
-                                  border: Border.all(color: UBGLightBlue),
-                                ),
-                                padding: EdgeInsets.symmetric(
-                                    vertical: UPdMg_8, horizontal: UPdMg_5),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Expanded(
-                                      child: Text(
-                                        majorName.toString().tr,
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                          fontSize: UTitleSize,
-                                          color: UTextColor,
-                                        ),
+                              }).toList(),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: programACCA.length,
+                    padding: EdgeInsets.only(bottom: UPdMg_10),
+                    itemBuilder: (BuildContext context, index) {
+                      final program = programACCA[index];
+                      final fac_icon = program.fac_data[index].fac_icon;
+                      return Card(
+                        color: UBackgroundColor,
+                        margin: EdgeInsets.fromLTRB(
+                          UPdMg_10,
+                          UPdMg_10,
+                          UPdMg_10,
+                          UZeroPixel,
+                        ),
+                        elevation: 2,
+                        shadowColor: UGreyColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(URoundedLarge),
+                        ),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(vertical: UPdMg_5),
+                          child: Theme(
+                            data: Theme.of(context)
+                                .copyWith(dividerColor: Colors.transparent),
+                            child: ExpansionTile(
+                              collapsedIconColor: UPrimaryColor,
+                              iconColor: UPrimaryColor,
+                              textColor: UTextColor,
+                              key: PageStorageKey(
+                                  program.fac_name.toString().tr),
+                              title: Row(
+                                children: [
+                                  Image.network(
+                                    'http://192.168.1.51/hosting_api/Test_student/fac_icon/$fac_icon',
+                                    scale: 6,
+                                    errorBuilder: (context, error, stackTrace) {
+                                      return Icon(Icons.error);
+                                    },
+                                  ),
+                                  SizedBox(width: UWidth10),
+                                  Text(program.fac_name),
+                                ],
+                              ),
+                              children: program.fac_data.map((major) {
+                                final majorData = major.major_data[index];
+                                return Container(
+                                  padding: EdgeInsets.fromLTRB(
+                                    UPdMg_15,
+                                    UZeroPixel,
+                                    UPdMg_15,
+                                    UPdMg_10,
+                                  ),
+                                  child: InkWell(
+                                    onTap: () {
+                                      Get.to(Program_ACCA(
+                                        major_name: majorData.major_name,
+                                        subject_data: majorData.subject_data,
+                                      ));
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(
+                                            URoundedMedium),
+                                        border: Border.all(color: UBGLightBlue),
+                                      ),
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: UPdMg_8,
+                                          horizontal: UPdMg_5),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              majorData.major_name
+                                                  .toString()
+                                                  .tr,
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(
+                                                fontSize: UTitleSize,
+                                                color: UTextColor,
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: UWidth15,
+                                          ),
+                                          Icon(
+                                            Icons.arrow_forward_ios,
+                                            size: 14,
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                          )
+                                        ],
                                       ),
                                     ),
-                                    SizedBox(
-                                      width: UWidth15,
-                                    ),
-                                    Icon(
-                                      Icons.arrow_forward_ios,
-                                      size: 14,
-                                      color: Theme.of(context).primaryColor,
-                                    )
-                                  ],
-                                ),
-                              ),
+                                  ),
+                                );
+                              }).toList(),
                             ),
-                          );
-                        }).toList(),
-                      ),
-                    ),
+                          ),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
+                ],
+              ),
             ),
     );
   }

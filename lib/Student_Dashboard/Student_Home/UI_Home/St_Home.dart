@@ -46,7 +46,7 @@ class _St_HomeState extends State<St_Home> with SingleTickerProviderStateMixin {
       body: pages[currentIndex],
       bottomNavigationBar: Container(
         color: USecondaryColor,
-        height: 75,
+        height: 90,
         child: Center(
           child: BottomNavigationBar(
             backgroundColor: USecondaryColor,

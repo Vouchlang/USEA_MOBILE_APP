@@ -34,7 +34,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       body: pages[currentIndex],
       bottomNavigationBar: Container(
         color: USecondaryColor,
-        height: 75,
+        height: 90,
         child: Center(
           child: BottomNavigationBar(
             backgroundColor: USecondaryColor,

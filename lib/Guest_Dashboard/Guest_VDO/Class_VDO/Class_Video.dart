@@ -3,7 +3,7 @@ part 'Class_Video.g.dart';
 
 @JsonSerializable()
 class VDO_Class {
-  late final String youtube_thumbnail, title, caption, link;
+  final String youtube_thumbnail, title, caption, link;
 
   VDO_Class(
       {required this.youtube_thumbnail,
@@ -15,4 +15,3 @@ class VDO_Class {
       _$VDO_ClassFromJson(json);
   Map<String, dynamic> toJson() => _$VDO_ClassToJson(this);
 }
-

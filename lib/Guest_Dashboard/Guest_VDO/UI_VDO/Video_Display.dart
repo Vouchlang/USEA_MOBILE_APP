@@ -19,9 +19,9 @@ class Video_Display extends StatefulWidget {
 
 class _Video_DisplayState extends State<Video_Display> {
   late YoutubePlayerController _controller;
-  int? _hiddenVideoIndex;
-  int? _currentVideoIndex;
-  bool _isMuted = false;
+  late int _hiddenVideoIndex;
+  late int _currentVideoIndex;
+  late bool _isMuted = false;
 
   @override
   void initState() {
@@ -42,25 +42,31 @@ class _Video_DisplayState extends State<Video_Display> {
     title,
     int index,
   ) {
-    setState(() {
-      String videoId = YoutubePlayer.convertUrlToId(videoLink)!;
-      _controller.load(videoId);
-      _controller.play();
+    if (mounted) {
+      setState(() {
+        try {
+          String videoId = YoutubePlayer.convertUrlToId(videoLink)!;
+          _controller.load(videoId);
+          _controller.play();
 
-      int videoIndex =
-          widget.vdo.indexWhere((video) => video.link == videoLink);
-      if (videoIndex != 0) {
-        VDO_Class updatedVideo = VDO_Class(
-          link: videoLink,
-          youtube_thumbnail: thumbnail,
-          title: title,
-          caption: caption,
-        );
-        widget.vdo[videoIndex] = updatedVideo;
-      }
+          int videoIndex =
+              widget.vdo.indexWhere((video) => video.link == videoLink);
+          if (videoIndex != -1) {
+            VDO_Class updatedVideo = VDO_Class(
+              link: videoLink,
+              youtube_thumbnail: thumbnail,
+              title: title,
+              caption: caption == null ? 'N/A' : caption,
+            );
+            widget.vdo[videoIndex] = updatedVideo;
+          }
 
-      _currentVideoIndex = index;
-    });
+          _currentVideoIndex = index;
+        } catch (e) {
+          print('Error loading video: $e');
+        }
+      });
+    }
   }
 
   @override
@@ -141,14 +147,14 @@ class _Video_DisplayState extends State<Video_Display> {
             ),
             width: double.infinity,
             alignment: Alignment.center,
-            child: buildTitleBody(widget.vdo[_currentVideoIndex!].title,
-                UTitleSize, UTitleWeight),
+            child: buildTitleBody(
+                widget.vdo[_currentVideoIndex].title, UTitleSize, UTitleWeight),
           ),
           SizedBox(height: UHeight5),
           Container(
               padding: EdgeInsets.all(UPdMg_10),
               width: double.infinity,
-              child: buildTitleBody(widget.vdo[_currentVideoIndex!].caption,
+              child: buildTitleBody(widget.vdo[_currentVideoIndex].caption,
                   UTitleSize, UBodyWeight)),
           SizedBox(height: UHeight5),
           ListView.builder(
@@ -159,12 +165,16 @@ class _Video_DisplayState extends State<Video_Display> {
             itemBuilder: (context, index) {
               VDO_Class video = widget.vdo[index];
               if (index == _hiddenVideoIndex) {
-                return Container(); // Return an empty container for hidden video
+                return SizedBox.shrink();
               }
               return InkWell(
                 onTap: () {
-                  updateVideo(video.link, video.youtube_thumbnail,
-                      video.caption, video.title, index);
+                  updateVideo(
+                      video.link,
+                      video.youtube_thumbnail,
+                      video.caption.isEmpty ? 'N/A' : video.caption,
+                      video.title,
+                      index);
                   hideVideo(index);
                 },
                 child: Container(
@@ -228,7 +238,6 @@ class _Video_DisplayState extends State<Video_Display> {
 
   @override
   void dispose() {
-    // Dispose the controller
     _controller.dispose();
     super.dispose();
   }

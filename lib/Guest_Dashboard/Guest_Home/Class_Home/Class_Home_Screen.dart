@@ -43,7 +43,7 @@ List<Home_Screen> guest_home_screen = [
     screen: Scholarship(),
   ),
   Home_Screen(
-    name: 'ព័ត៌មានការងារ',
+    name: 'មជ្ឈមណ្ឌលការងារ',
     img: 'assets/image/Guest_Career.png',
     screen: Career(),
   ),

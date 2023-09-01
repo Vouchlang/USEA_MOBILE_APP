@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../../Custom_Widget/CustomText.dart';
 import '../Class_ImageSlide/Class_ImageSlide.dart';
 import '/Guest_Dashboard/Guest_ChangeLanguage/Change_Language.dart';
 import '/Guest_Dashboard/Guest_Home/Class_Home/Class_Home_Screen.dart';
@@ -21,10 +22,11 @@ class Guest_Home extends StatefulWidget {
 class _Guest_HomeState extends State<Guest_Home> {
   final String facebookPageUrl = "https://www.facebook.com/usea.edu.kh";
   final String telegramUrl = "https://t.me/university_of_south_east_asia";
-
   final Uri urlYt =
       Uri.parse("https://youtube.com/@usea-edu-kh?si=O-C7zB1vDD6KjP0z");
   final Uri urlWeb = Uri.parse("https://www.usea.edu.kh/en/Pages/index.php");
+  final Uri urlTikTok = Uri.parse("https://www.tiktok.com/@university.of.sou");
+
   late List<Class_Image> image_slides = [];
 
   bool isLoading = true;
@@ -330,51 +332,30 @@ class _Guest_HomeState extends State<Guest_Home> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    InkWell(
-                      onTap: () {
-                        _launchFacebookPage();
-                      },
-                      child: Image.asset(
-                        'assets/image/SM_Facebook.png',
-                        scale: UPdMg_5,
-                      ),
+                    BuildContainerSM(
+                      () => _launchInstagram(),
+                      'assets/image/SM_Facebook.png',
                     ),
-                    InkWell(
-                      onTap: () {
-                        _launchInstagram();
-                      },
-                      child: Image.asset(
-                        'assets/image/SM_IG.png',
-                        scale: UPdMg_5,
-                      ),
+                    BuildContainerSM(
+                      () => _launchInstagram(),
+                      'assets/image/SM_IG.png',
                     ),
-                    InkWell(
-                      onTap: () {
-                        launchUrl(urlYt);
-                      },
-                      child: Image.asset(
-                        'assets/image/SM_Yt.png',
-                        scale: UPdMg_5,
-                      ),
+                    BuildContainerSM(
+                      () => launchUrl(urlYt),
+                      'assets/image/SM_Yt.png',
                     ),
-                    InkWell(
-                      onTap: () {
-                        openTelegramGroup();
-                      },
-                      child: Image.asset(
-                        'assets/image/SM_Telegram.png',
-                        scale: UPdMg_5,
-                      ),
+                    BuildContainerSM(
+                      () => openTelegramGroup(),
+                      'assets/image/SM_Telegram.png',
                     ),
-                    InkWell(
-                      onTap: () {
-                        launchUrl(urlWeb);
-                      },
-                      child: Image.asset(
-                        'assets/image/SM_Website.png',
-                        scale: UPdMg_5,
-                      ),
+                    BuildContainerSM(
+                      () => launchUrl(urlWeb),
+                      'assets/image/SM_Website.png',
                     ),
+                    BuildContainerSM(
+                      () => launchUrl(urlTikTok),
+                      'assets/image/SM_TK.png',
+                    )
                   ],
                 ),
               ),

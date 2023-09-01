@@ -684,19 +684,13 @@ class _Payment_UIState extends State<Payment_UI> {
                                       ),
                                       buildVerticalDividerW_2(),
                                       buildBody(
-                                        55,
+                                        70,
                                         'N/A',
                                         UTextColor,
                                       ),
                                       buildVerticalDividerW_2(),
                                       buildBody(
-                                        55,
-                                        'N/A',
-                                        UTextColor,
-                                      ),
-                                      buildVerticalDividerW_2(),
-                                      buildBody(
-                                        55,
+                                        70,
                                         'N/A',
                                         UTextColor,
                                       ),

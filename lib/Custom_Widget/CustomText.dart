@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import '../theme_builder.dart';
 
 // *@ Divider
@@ -1086,4 +1087,13 @@ Widget buildPresidentMessage(
 }
 // *@ End PresidentMessage
 
-
+//@ Custom InkWell Social Media
+Widget BuildContainerSM(Function()? onTap, String imageName) {
+  return InkWell(
+    onTap: onTap,
+    child: Image.asset(
+      imageName,
+      scale: UPdMg_5,
+    ),
+  );
+}

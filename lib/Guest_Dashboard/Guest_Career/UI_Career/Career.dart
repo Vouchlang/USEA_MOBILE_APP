@@ -55,7 +55,7 @@ class _CareerState extends State<Career> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: 'ព័ត៌មានការងារ'.tr),
+      appBar: Custom_AppBar(title: 'មជ្ឈមណ្ឌលការងារ'.tr),
       body: Center(
         child: career.isEmpty
             ? Center(

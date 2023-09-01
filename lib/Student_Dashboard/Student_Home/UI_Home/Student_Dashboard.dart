@@ -1003,11 +1003,12 @@ class _Student_HomeState extends State<Student_Home> {
                         children: [
                           CircularPercentIndicator(
                             radius: 90.0,
-                            lineWidth: 40.0,
+                            lineWidth: 25.0,
                             percent: percentIndicator,
                             progressColor: UPrimaryColor,
                             animateFromLastPercent: true,
                             animation: true,
+                            circularStrokeCap: CircularStrokeCap.round,
                             animationDuration: 750,
                             backgroundColor: UBGChartColor,
                             center: Text(
@@ -1015,7 +1016,7 @@ class _Student_HomeState extends State<Student_Home> {
                                   ? '${_dataCredit[0].yourCredit} / ${_dataCredit[0].totalCredit}'
                                   : 'N/A',
                               style: TextStyle(
-                                fontSize: UTitleSize,
+                                fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),

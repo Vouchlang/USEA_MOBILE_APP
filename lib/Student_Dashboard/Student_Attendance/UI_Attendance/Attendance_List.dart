@@ -218,7 +218,7 @@ class _AttendanceListState extends State<AttendanceList> {
                         vertical: UPdMg_5,
                       ),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           buildAttList(
                             'វត្តមាន\t',

@@ -182,7 +182,7 @@ class _AttendanceState extends State<Attendance> {
                       padding: EdgeInsets.fromLTRB(
                           UPdMg_5, UZeroPixel, UPdMg_5, UPdMg_5),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           buildAttList('វត្តមាន\t', UScoreColor),
                           buildAttList('យឺត', UYellowColor),

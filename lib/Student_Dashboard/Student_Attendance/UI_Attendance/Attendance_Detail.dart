@@ -66,7 +66,7 @@ class Attendance_Detail extends StatelessWidget {
                                 children: [
                                   buildHeader('កាលបរិច្ឆេទ'.tr),
                                   buildVerticalDividerAtt(),
-                                  buildAttDetailHeader('Session'.tr),
+                                  buildAttDetailHeader('ម៉ោងសិក្សា'.tr),
                                   buildVerticalDividerAtt(),
                                   buildHeader('វត្តមាន'.tr),
                                 ],
