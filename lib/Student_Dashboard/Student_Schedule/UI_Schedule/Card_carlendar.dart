@@ -21,7 +21,7 @@ class _CardCalendarState extends State<CardCalendar> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      physics: AlwaysScrollableScrollPhysics(),
+      physics: NeverScrollableScrollPhysics(),
       child: Container(
         padding: EdgeInsets.symmetric(
           vertical: UPdMg_5,

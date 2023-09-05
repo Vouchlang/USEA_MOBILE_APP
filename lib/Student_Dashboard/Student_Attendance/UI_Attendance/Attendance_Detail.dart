@@ -44,10 +44,10 @@ class Attendance_Detail extends StatelessWidget {
                   color: UBGLightBlue,
                 ),
                 child: CustomAttTextTheme(
-                  text: subjectName,
-                  color: UPrimaryColor,
-                  fontWeight: UTitleWeight,
-                  size: UTitleSize,
+                  subjectName,
+                  UTitleSize,
+                  UPrimaryColor,
+                  UTitleWeight,
                 ),
               ),
               subjectDate.isNotEmpty

@@ -87,11 +87,13 @@ class _Study_InfoState extends State<Study_Info> {
       appBar: Custom_AppBar(title: 'ព័ត៌មានការសិក្សា'.tr),
       body: _dataStudyInfo.isEmpty
           ? FutureBuilder(
-              future: Future.delayed(Duration(seconds: 3)),
+              future: Future.delayed(Duration(seconds: 10)),
               builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      color: UPrimaryColor,
+                    ),
                   );
                 } else {
                   return Center(
@@ -102,6 +104,7 @@ class _Study_InfoState extends State<Study_Info> {
             )
           : RefreshIndicator(
               onRefresh: _refreshData,
+              color: UPrimaryColor,
               child: ListView.builder(
                 padding: EdgeInsets.all(UPdMg_5),
                 itemCount: _dataStudyInfo.length,
@@ -129,11 +132,11 @@ class _Study_InfoState extends State<Study_Info> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   NormalDateStudyInfo(
-                                    text: _dataStudyInfo[index].date,
+                                    _dataStudyInfo[index].date,
                                   ),
                                   buildDividerAtt(),
                                   NormalDateStudyInfo(
-                                      text: _dataStudyInfo[index].month),
+                                      _dataStudyInfo[index].month),
                                 ],
                               ),
                             ),
@@ -147,24 +150,24 @@ class _Study_InfoState extends State<Study_Info> {
                                     Container(
                                       width: 250,
                                       child: TitleAttendance_Theme(
-                                          text: _dataStudyInfo[index].title),
+                                          _dataStudyInfo[index].title),
                                     ),
                                     buildDividerAtt(),
                                     RowDataStudyInfo(
-                                      title: 'មុខវិជ្ជា\t',
-                                      tData: _dataStudyInfo[index].subject,
+                                      'មុខវិជ្ជា\t',
+                                      _dataStudyInfo[index].subject,
                                     ),
                                     RowDataStudyInfo(
-                                      title: 'បន្ទប់\t',
-                                      tData: _dataStudyInfo[index].room,
+                                      'បន្ទប់\t',
+                                      _dataStudyInfo[index].room,
                                     ),
                                     RowDataStudyInfo(
-                                      title: 'ម៉ោង\t',
-                                      tData: _dataStudyInfo[index].time,
+                                      'ម៉ោង\t',
+                                      _dataStudyInfo[index].time,
                                     ),
                                     RowDataStudyInfo(
-                                      title: 'លេខតុ\t',
-                                      tData: _dataStudyInfo[index].seat,
+                                      'លេខតុ\t',
+                                      _dataStudyInfo[index].seat,
                                     ),
                                     _dataStudyInfo[index].takeout == '1'
                                         ? Text(

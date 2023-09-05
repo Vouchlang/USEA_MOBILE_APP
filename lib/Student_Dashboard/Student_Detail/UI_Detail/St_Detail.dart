@@ -156,13 +156,7 @@ class _Student_DetailState extends State<Student_Detail> {
                             SharedPreferences prefs =
                                 await SharedPreferences.getInstance();
                             await prefs.clear();
-
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (BuildContext context) => Home(),
-                              ),
-                            );
+                            Get.off(() => Home());
                           },
                         ),
                       ],
@@ -217,11 +211,13 @@ class _Student_DetailState extends State<Student_Detail> {
       ),
       body: _dataStDetail.isEmpty
           ? FutureBuilder(
-              future: Future.delayed(Duration(seconds: 3)),
+              future: Future.delayed(Duration(seconds: 10)),
               builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      color: UPrimaryColor,
+                    ),
                   );
                 } else {
                   return Center(
@@ -232,6 +228,7 @@ class _Student_DetailState extends State<Student_Detail> {
             )
           : RefreshIndicator(
               onRefresh: _refreshData,
+              color: UPrimaryColor,
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: _dataStDetail.length,

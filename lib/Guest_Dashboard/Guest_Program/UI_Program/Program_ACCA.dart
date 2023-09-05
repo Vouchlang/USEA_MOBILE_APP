@@ -57,7 +57,7 @@ class Program_ACCA extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TitleTheme(
-                          text: 'មុខវិជ្ជា'.tr,
+                          'មុខវិជ្ជា'.tr,
                         ),
                         Row(
                           children: [
@@ -65,7 +65,7 @@ class Program_ACCA extends StatelessWidget {
                               width: 65,
                               alignment: Alignment.centerRight,
                               child: TitleTheme(
-                                text: 'សប្ដាហ៍'.tr,
+                                'សប្ដាហ៍'.tr,
                               ),
                             ),
                             SizedBox(width: UWidth10),
@@ -73,7 +73,7 @@ class Program_ACCA extends StatelessWidget {
                               width: 65,
                               alignment: Alignment.center,
                               child: TitleTheme(
-                                text: 'ម៉ោងសរុប'.tr,
+                                'ម៉ោងសរុប'.tr,
                               ),
                             ),
                           ],
@@ -121,7 +121,7 @@ class Program_ACCA extends StatelessWidget {
                                     alignment: Alignment.center,
                                     width: 55,
                                     child: NoWeightTitleTheme(
-                                        text: subject.weeks.toString()),
+                                        subject.weeks.toString()),
                                   ),
                                   SizedBox(width: UWidth15),
                                   Container(
@@ -129,7 +129,7 @@ class Program_ACCA extends StatelessWidget {
                                     width: 30,
                                     margin: EdgeInsets.only(right: UPdMg_10),
                                     child: NoWeightTitleTheme(
-                                        text: subject.total_hour.toString()),
+                                        subject.total_hour.toString()),
                                   ),
                                 ],
                               ),
@@ -147,12 +147,12 @@ class Program_ACCA extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TitleTheme(
-                          text: 'សរុប'.tr,
+                          'សរុប'.tr,
                         ),
                         Row(
                           children: [
                             TitleTheme(
-                              text: totalHour.toStringAsFixed(0),
+                              totalHour.toStringAsFixed(0),
                             ),
                           ],
                         ),

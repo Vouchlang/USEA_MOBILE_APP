@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
 import 'Home.dart';
 import 'theme_builder.dart';
 
@@ -17,14 +18,10 @@ class _Splash_ScreenState extends State<Splash_Screen> {
     super.initState();
 
     Future.delayed(
-      Duration(seconds: 2),
+      Duration(seconds: 3),
     ).then(
       (value) {
-        Navigator.of(context).pushReplacement(
-          CupertinoPageRoute(
-            builder: (ctx) => Home(),
-          ),
-        );
+        Get.off(() => Home());
       },
     );
   }
@@ -45,7 +42,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
               width: 200,
             ),
             SizedBox(
-              height: 10,
+              height: UHeight10,
             ),
             Text(
               'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
@@ -64,7 +61,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
                   fontFamily: UEFontFamily),
             ),
             SizedBox(
-              height: 5,
+              height: UHeight5,
             ),
             SpinKitThreeBounce(
               color: UPrimaryColor,

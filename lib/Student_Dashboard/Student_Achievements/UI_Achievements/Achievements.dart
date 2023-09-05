@@ -85,11 +85,13 @@ class _AchievementsState extends State<Achievements> {
       body: (_achievementData == null ||
               _achievementData!.achievementData.isEmpty)
           ? FutureBuilder(
-              future: Future.delayed(Duration(seconds: 3)),
+              future: Future.delayed(Duration(seconds: 10)),
               builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      color: UPrimaryColor,
+                    ),
                   );
                 } else {
                   return Center(
@@ -100,6 +102,7 @@ class _AchievementsState extends State<Achievements> {
             )
           : RefreshIndicator(
               onRefresh: _refreshData,
+              color: UPrimaryColor,
               child: ListView(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,

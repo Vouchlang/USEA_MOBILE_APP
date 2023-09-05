@@ -60,11 +60,13 @@ class _FAQState extends State<FAQ> {
         child: faq.isEmpty
             ? Center(
                 child: FutureBuilder<void>(
-                  future: Future.delayed(Duration(seconds: 3)),
+                  future: Future.delayed(Duration(seconds: 10)),
                   builder: (context, snapshot) =>
                       snapshot.connectionState == ConnectionState.done
                           ? Text('គ្មានទិន្ន័យ'.tr)
-                          : CircularProgressIndicator(),
+                          : CircularProgressIndicator(
+                              color: UPrimaryColor,
+                            ),
                 ),
               )
             : Container(

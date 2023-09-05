@@ -107,11 +107,13 @@ class _ScheduleState extends State<Schedule> {
       appBar: Custom_AppBar(title: 'កាលវិភាគ'.tr),
       body: _dataSchedule.isEmpty
           ? FutureBuilder(
-              future: Future.delayed(Duration(seconds: 3)),
+              future: Future.delayed(Duration(seconds: 10)),
               builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      color: UPrimaryColor,
+                    ),
                   );
                 } else {
                   return Center(child: Text('គ្មានទិន្ន័យ'.tr));
@@ -120,6 +122,7 @@ class _ScheduleState extends State<Schedule> {
             )
           : RefreshIndicator(
               onRefresh: _refreshData,
+              color: UPrimaryColor,
               child: ListView(
                 padding: EdgeInsets.symmetric(vertical: UPdMg_10),
                 children: [
@@ -183,13 +186,11 @@ class _ScheduleState extends State<Schedule> {
                                                     CrossAxisAlignment.center,
                                                 children: [
                                                   ScheduleDate(
-                                                    text: selectedDateSchedule[
-                                                            index]
+                                                    selectedDateSchedule[index]
                                                         .wday,
                                                   ),
                                                   ScheduleDate(
-                                                    text: selectedDateSchedule[
-                                                            index]
+                                                    selectedDateSchedule[index]
                                                         .weekday,
                                                   ),
                                                 ],
@@ -206,21 +207,18 @@ class _ScheduleState extends State<Schedule> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   ScheduleTitle(
-                                                    text: selectedDateSchedule[
-                                                            index]
+                                                    selectedDateSchedule[index]
                                                         .subject,
                                                   ),
                                                   SizedBox(
                                                     height: UHeight5,
                                                   ),
                                                   ScheduleBody(
-                                                    text: selectedDateSchedule[
-                                                            index]
+                                                    selectedDateSchedule[index]
                                                         .session,
                                                   ),
                                                   ScheduleBody(
-                                                    text: selectedDateSchedule[
-                                                            index]
+                                                    selectedDateSchedule[index]
                                                         .room,
                                                   ),
                                                   Row(
@@ -229,10 +227,9 @@ class _ScheduleState extends State<Schedule> {
                                                     children: [
                                                       Expanded(
                                                         child: ScheduleBody(
-                                                          text:
-                                                              selectedDateSchedule[
-                                                                      index]
-                                                                  .teacher,
+                                                          selectedDateSchedule[
+                                                                  index]
+                                                              .teacher,
                                                         ),
                                                       ),
                                                       Expanded(
@@ -240,10 +237,9 @@ class _ScheduleState extends State<Schedule> {
                                                           alignment: Alignment
                                                               .topRight,
                                                           child: ScheduleBody(
-                                                            text:
-                                                                selectedDateSchedule[
-                                                                        index]
-                                                                    .phonenumber,
+                                                            selectedDateSchedule[
+                                                                    index]
+                                                                .phonenumber,
                                                           ),
                                                         ),
                                                       ),

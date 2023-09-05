@@ -137,11 +137,13 @@ class _Payment_UIState extends State<Payment_UI> {
       appBar: Custom_AppBar(title: 'ការបង់ប្រាក់'.tr),
       body: _dataPayStudy.isEmpty
           ? FutureBuilder(
-              future: Future.delayed(Duration(seconds: 3)),
+              future: Future.delayed(Duration(seconds: 10)),
               builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      color: UPrimaryColor,
+                    ),
                   );
                 } else {
                   return Center(child: Text('គ្មានទិន្ន័យ'.tr));
@@ -150,6 +152,7 @@ class _Payment_UIState extends State<Payment_UI> {
             )
           : RefreshIndicator(
               onRefresh: _refreshData,
+              color: UPrimaryColor,
               child: ListView(
                 children: [
                   buildTitle('ការបង់ថ្លៃឈ្នួលសិក្សា', buildStudyPayment()),

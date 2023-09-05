@@ -87,11 +87,13 @@ class _Job_HistoryState extends State<Job_History> {
       appBar: Custom_AppBar(title: 'ប្រវត្តិការងារ'.tr),
       body: _dataJobHistory.isEmpty
           ? FutureBuilder(
-              future: Future.delayed(Duration(seconds: 3)),
+              future: Future.delayed(Duration(seconds: 10)),
               builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      color: UPrimaryColor,
+                    ),
                   );
                 } else {
                   return Padding(
@@ -129,7 +131,7 @@ class _Job_HistoryState extends State<Job_History> {
                                     style: TextStyle(fontSize: UTitleSize),
                                   ),
                                 ),
-                                NoWeightTitleTheme(text: 'N/A'),
+                                NoWeightTitleTheme('N/A'),
                               ],
                             ),
                             Divider(),
@@ -148,6 +150,7 @@ class _Job_HistoryState extends State<Job_History> {
             )
           : RefreshIndicator(
               onRefresh: _refreshData,
+              color: UPrimaryColor,
               child: ListView.builder(
                 padding: EdgeInsets.all(UPdMg_5),
                 itemCount: _dataJobHistory.length,

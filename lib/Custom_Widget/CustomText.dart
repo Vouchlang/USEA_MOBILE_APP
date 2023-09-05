@@ -1,8 +1,5 @@
-// ignore_for_file: file_names, avoid_unnecessary_containers, must_be_immutable
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import '../theme_builder.dart';
 
 // *@ Divider
@@ -63,226 +60,148 @@ Widget buildVerticalDividerH_45() {
 // *@  End Divider
 
 // *@ Title
-class TitleTheme extends StatelessWidget {
-  final String text;
-
-  const TitleTheme({
-    super.key,
-    required this.text,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: UTitleSize,
-        fontWeight: UTitleWeight,
-        color: UPrimaryColor,
-      ),
-    );
-  }
+Widget TitleTheme(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: UTitleSize,
+      fontWeight: UTitleWeight,
+      color: UPrimaryColor,
+    ),
+  );
 }
 // *@  End Title
 
 // *@ Normal Title Attendance UTextColor
-class TitleAttendance_Theme extends StatelessWidget {
-  final String text;
-
-  const TitleAttendance_Theme({
-    super.key,
-    required this.text,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: UTitleSize16,
-        fontWeight: UTitleWeight,
-        color: UTextColor,
-      ),
-    );
-  }
+Widget TitleAttendance_Theme(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: UTitleSize16,
+      fontWeight: UTitleWeight,
+      color: UTextColor,
+    ),
+  );
 }
 // *@ End Normal Title 16px UTextColor
 
 // *@ Normal Date Study Info
-class NormalDateStudyInfo extends StatelessWidget {
-  final String text;
-
-  const NormalDateStudyInfo({
-    super.key,
-    required this.text,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: UTitleSize,
-        fontWeight: UTitleWeight,
-        color: UTextColor,
-      ),
-    );
-  }
+Widget NormalDateStudyInfo(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: UTitleSize,
+      fontWeight: UTitleWeight,
+      color: UTextColor,
+    ),
+  );
 }
 // *@ End Normal Title
 
 // *@ Normal Data Study Info
-class RowDataStudyInfo extends StatelessWidget {
-  final String title, tData;
-
-  const RowDataStudyInfo({
-    super.key,
-    required this.title,
-    required this.tData,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title.tr,
+Widget RowDataStudyInfo(String title, tData) {
+  return Row(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        title.tr,
+        style: TextStyle(
+          fontSize: UBodySize,
+          color: UTextColor,
+        ),
+      ),
+      Container(
+        width: 200,
+        alignment: Alignment.centerLeft,
+        child: Text(
+          tData,
           style: TextStyle(
             fontSize: UBodySize,
             color: UTextColor,
           ),
         ),
-        Container(
-          width: 200,
-          alignment: Alignment.centerLeft,
-          child: Text(
-            tData,
-            style: TextStyle(
-              fontSize: UBodySize,
-              color: UTextColor,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-// *@ End Normal Title
-
-// *@ Normal Title
-class NormalTitleTheme extends StatelessWidget {
-  final String text;
-
-  const NormalTitleTheme({
-    super.key,
-    required this.text,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: UTitleSize,
-        fontWeight: UTitleWeight,
-        color: UTextColor,
-        fontFamily: UKFontFamily,
       ),
-    );
-  }
+    ],
+  );
 }
 // *@ End Normal Title
 
 // *@ No Weight Title
-class NoWeightTitleTheme extends StatelessWidget {
-  final String text;
-
-  const NoWeightTitleTheme({
-    super.key,
-    required this.text,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: UTitleSize,
-        fontWeight: UBodyWeight,
-        color: UTextColor,
-        fontFamily: UKFontFamily,
-      ),
-    );
-  }
+Widget NoWeightTitleTheme(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: UTitleSize,
+      fontWeight: UBodyWeight,
+      color: UTextColor,
+      fontFamily: UKFontFamily,
+    ),
+  );
 }
 // *@ End No Weight Title
 
+// *@ Scholarship Text
+Widget ScholarshipTitleTheme(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: UTitleSize,
+      fontWeight: UTitleWeight,
+      color: UTextColor,
+    ),
+  );
+}
+// *@ End Scholarship Text
+
+// *@ Scholarship Body text
+Widget ScholarshipBodyTheme(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: UBodySize,
+      color: UTextColor,
+    ),
+  );
+}
+// *@ End Scholarship Body text
+
 // *@ Date Schedule
-class ScheduleDate extends StatelessWidget {
-  final String text;
-
-  const ScheduleDate({
-    super.key,
-    required this.text,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: UTitleSize,
-        fontWeight: UTitleWeight,
-        color: UTextColor,
-      ),
-    );
-  }
+Widget ScheduleDate(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: UTitleSize,
+      fontWeight: UTitleWeight,
+      color: UTextColor,
+    ),
+  );
 }
 // *@ End Date Scredule
 
 // *@ Schedule Title
-class ScheduleTitle extends StatelessWidget {
-  final String text;
-
-  const ScheduleTitle({
-    super.key,
-    required this.text,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: UTitleSize16,
-        fontWeight: UTitleWeight,
-        color: UTextColor,
-      ),
-    );
-  }
+Widget ScheduleTitle(
+  String text,
+) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: UTitleSize16,
+      fontWeight: UTitleWeight,
+      color: UTextColor,
+    ),
+  );
 }
 // *@ End Schedule Title
 
 // *@ Schedule Body
-class ScheduleBody extends StatelessWidget {
-  final String text;
-
-  ScheduleBody({
-    super.key,
-    required this.text,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: UBodySize,
-        color: UTextColor,
-      ),
-    );
-  }
+Widget ScheduleBody(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: UBodySize,
+      color: UTextColor,
+    ),
+  );
 }
 // *@ End Schedule Body
 
@@ -333,180 +252,55 @@ Widget buildCareerCardRow(
 
 // *@ End Career Card Row
 
-// *@ Normal Title 16px UTextColor
-class TitleSize16_Theme extends StatelessWidget {
-  final String text;
-
-  const TitleSize16_Theme({
-    super.key,
-    required this.text,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: UTitleSize16,
-        fontWeight: UTitleWeight,
-        color: UTextColor,
-        fontFamily: UKFontFamily,
-      ),
-    );
-  }
-}
-// *@ End Normal Title 16px UTextColor
-
-// *@ Normal Title 16px UPrimaryColor
-class PriColorTitleSize16Theme extends StatelessWidget {
-  final String text;
-
-  const PriColorTitleSize16Theme({
-    super.key,
-    required this.text,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: UTitleSize16,
-        fontWeight: UTitleWeight,
-        color: UPrimaryColor,
-        fontFamily: UKFontFamily,
-      ),
-    );
-  }
-}
-// *@ End Normal Title 16px UPrimaryColor
-
-// *@ Center Title Pri_color
-class NormalTitleCenterTheme extends StatelessWidget {
-  final String text;
-
-  const NormalTitleCenterTheme({
-    super.key,
-    required this.text,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      textAlign: TextAlign.center,
-      style: TextStyle(
-        fontSize: UTitleSize,
-        fontWeight: UTitleWeight,
-        color: UTextColor,
-      ),
-    );
-  }
-}
-// *@ End Center Title Pri_color
-
 // *@ Body text
-class BodyTheme extends StatelessWidget {
-  final String text;
-
-  const BodyTheme({
-    super.key,
-    required this.text,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: UBodySize,
-        color: UTextColor,
-        fontFamily: UKFontFamily,
-      ),
-    );
-  }
+Widget BodyTheme(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: UBodySize,
+      color: UTextColor,
+      fontFamily: UKFontFamily,
+    ),
+  );
 }
 // *@ End Body text
 
 // *@ General custom text
-class CustomTextTheme extends StatelessWidget {
-  final String text;
-  final double size;
-  final Color color;
-  final FontWeight fontWeight;
-
-  const CustomTextTheme({
-    super.key,
-    required this.text,
-    required this.size,
-    required this.color,
-    required this.fontWeight,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-          fontSize: size,
-          fontWeight: fontWeight,
-          color: color,
-          fontFamily: UKFontFamily),
-    );
-  }
-}
-
-class CustomPerformanceDiaglogTextTheme extends StatelessWidget {
-  final String text;
-  final double size;
-  final Color color;
-
-  const CustomPerformanceDiaglogTextTheme({
-    super.key,
-    required this.text,
-    required this.size,
-    required this.color,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: size,
-        fontWeight: UBodyWeight,
-        color: color,
-      ),
-    );
-  }
-}
-
-// *@ Attendance custom text
-class CustomAttTextTheme extends StatelessWidget {
-  final String text;
-  final double size;
-  final Color color;
-  final FontWeight fontWeight;
-
-  const CustomAttTextTheme({
-    super.key,
-    required this.text,
-    required this.size,
-    required this.color,
-    required this.fontWeight,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
+Widget CustomTextTheme(
+    String text, double size, Color color, FontWeight fontWeight) {
+  return Text(
+    text,
+    style: TextStyle(
         fontSize: size,
         fontWeight: fontWeight,
         color: color,
-      ),
-    );
-  }
+        fontFamily: UKFontFamily),
+  );
+}
+
+Widget CustomPerformanceDiaglogTextTheme(
+    String text, double size, Color color) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: size,
+      fontWeight: UBodyWeight,
+      color: color,
+    ),
+  );
+}
+
+// *@ Attendance custom text
+Widget CustomAttTextTheme(
+    String text, double size, Color color, FontWeight fontWeight) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: size,
+      fontWeight: fontWeight,
+      color: color,
+    ),
+  );
 }
 // *@ End Attendance custom text
 
@@ -544,54 +338,6 @@ Widget buildScoreTotal(String text) {
   );
 }
 // *@ End ScoreTotal
-
-// *@ Attendance score
-class BuildAttScore extends StatelessWidget {
-  String text;
-  Widget customDialog;
-  BuildAttScore({
-    super.key,
-    required this.text,
-    required this.customDialog,
-  });
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 50,
-      alignment: Alignment.center,
-      child: InkWell(
-        onTap: () {
-          showDialog(
-            barrierDismissible: false,
-            context: context,
-            builder: (context) => customDialog,
-          );
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                color: UScoreColor,
-                width: 0.75,
-                style: BorderStyle.solid,
-              ),
-            ),
-          ),
-          child: Text(
-            text.tr,
-            style: TextStyle(
-              color: UScoreColor,
-              fontSize: UTitleSize,
-              fontFamily: UKFontFamily,
-              fontWeight: UTitleWeight,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-// *@ End Attendance score
 
 // *@ Attendance Score Type
 Widget buildAttList(
@@ -761,14 +507,12 @@ Widget buildTitle(
     children: [
       Padding(
         padding: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_10, UPdMg_10, UPdMg_5),
-        child: Container(
-          child: Text(
-            text.tr,
-            style: TextStyle(
-              color: UPrimaryColor,
-              fontSize: UBodySize,
-              fontWeight: UTitleWeight,
-            ),
+        child: Text(
+          text.tr,
+          style: TextStyle(
+            color: UPrimaryColor,
+            fontSize: UBodySize,
+            fontWeight: UTitleWeight,
           ),
         ),
       ),
@@ -802,7 +546,7 @@ Widget buildBody(
   String text,
   Color color,
 ) {
-  return SizedBox(
+  return Container(
     width: num,
     child: Text(
       textAlign: TextAlign.center,
@@ -914,6 +658,7 @@ Widget buildListText(
   String text,
   int line,
   double size,
+  FontWeight fontWeight,
 ) {
   return Text(
     text,
@@ -921,8 +666,10 @@ Widget buildListText(
     maxLines: line,
     overflow: TextOverflow.ellipsis,
     style: TextStyle(
+      height: 1.7,
       fontSize: size,
       fontFamily: UKFontFamily,
+      fontWeight: fontWeight,
     ),
   );
 }

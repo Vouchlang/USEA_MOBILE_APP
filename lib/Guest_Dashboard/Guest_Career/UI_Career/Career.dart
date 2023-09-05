@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -5,7 +7,6 @@ import '/theme_builder.dart';
 import '/Custom_AppBar.dart';
 import '/Custom_Widget/CustomText.dart';
 import '../Class_Career/Class_Career.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -23,7 +24,9 @@ class _CareerState extends State<Career> {
   Future<void> getData() async {
     try {
       var res = await http.get(
-        Uri.parse("https://usea.edu.kh/api/webapi.php?action=career"),
+        Uri.parse(Get.locale?.languageCode == 'km'
+            ? "https://usea.edu.kh/api/webapi.php?action=career_kh"
+            : "https://usea.edu.kh/api/webapi.php?action=career_en"),
       );
       var r = json.decode(res.body);
       if (r is List<dynamic>) {
@@ -60,11 +63,13 @@ class _CareerState extends State<Career> {
         child: career.isEmpty
             ? Center(
                 child: FutureBuilder<void>(
-                  future: Future.delayed(Duration(seconds: 3)),
+                  future: Future.delayed(Duration(seconds: 10)),
                   builder: (context, snapshot) =>
                       snapshot.connectionState == ConnectionState.done
                           ? Text('គ្មានទិន្ន័យ'.tr)
-                          : CircularProgressIndicator(),
+                          : CircularProgressIndicator(
+                              color: UPrimaryColor,
+                            ),
                 ),
               )
             : ListView.builder(
@@ -89,8 +94,6 @@ class _CareerState extends State<Career> {
                           }
 
                           _launchCareerUrl();
-
-                          // launchUrlString(career[index].link);
                         },
                         child: Column(
                           children: [
@@ -111,16 +114,16 @@ class _CareerState extends State<Career> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       CustomTextTheme(
-                                        color: UPrimaryColor,
-                                        fontWeight: UTitleWeight,
-                                        size: UTitleSize,
-                                        text: career[index].position,
+                                        career[index].position,
+                                        UTitleSize,
+                                        UPrimaryColor,
+                                        UTitleWeight,
                                       ),
                                       SizedBox(
                                         height: UHeight5,
                                       ),
                                       BodyTheme(
-                                        text: career[index].organization,
+                                        career[index].organization,
                                       ),
                                     ],
                                   ),

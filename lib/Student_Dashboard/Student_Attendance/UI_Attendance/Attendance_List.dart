@@ -135,11 +135,13 @@ class _AttendanceListState extends State<AttendanceList> {
       appBar: Custom_AppBar(title: 'វត្តមាន'.tr),
       body: attendances.isEmpty
           ? FutureBuilder(
-              future: Future.delayed(Duration(seconds: 3)),
+              future: Future.delayed(Duration(seconds: 10)),
               builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      color: UPrimaryColor,
+                    ),
                   );
                 } else {
                   return Center(
@@ -150,6 +152,7 @@ class _AttendanceListState extends State<AttendanceList> {
             )
           : RefreshIndicator(
               onRefresh: _refreshData,
+              color: UPrimaryColor,
               child: Padding(
                 padding: EdgeInsets.all(UPdMg_5),
                 child: ListView(
@@ -252,7 +255,7 @@ class _AttendanceListState extends State<AttendanceList> {
                                   padding: EdgeInsets.all(UPdMg_5),
                                   child: Center(
                                     child: TitleTheme(
-                                      text: 'ឆមាសទី ${year.semester_no}'.tr,
+                                      'ឆមាសទី ${year.semester_no}'.tr,
                                     ),
                                   ),
                                 ),

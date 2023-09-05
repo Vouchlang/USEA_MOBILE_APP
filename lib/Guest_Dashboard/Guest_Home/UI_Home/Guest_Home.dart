@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,12 +22,9 @@ class Guest_Home extends StatefulWidget {
 }
 
 class _Guest_HomeState extends State<Guest_Home> {
-  final String facebookPageUrl = "https://www.facebook.com/usea.edu.kh";
-  final String telegramUrl = "https://t.me/university_of_south_east_asia";
   final Uri urlYt =
       Uri.parse("https://youtube.com/@usea-edu-kh?si=O-C7zB1vDD6KjP0z");
   final Uri urlWeb = Uri.parse("https://www.usea.edu.kh/en/Pages/index.php");
-  final Uri urlTikTok = Uri.parse("https://www.tiktok.com/@university.of.sou");
 
   late List<Class_Image> image_slides = [];
 
@@ -71,6 +70,7 @@ class _Guest_HomeState extends State<Guest_Home> {
   int activeIndex = 0;
 
   void _launchFacebookPage() async {
+    final String facebookPageUrl = "https://www.facebook.com/usea.edu.kh";
     if (await canLaunch(facebookPageUrl)) {
       await launch(facebookPageUrl);
     } else {
@@ -79,7 +79,7 @@ class _Guest_HomeState extends State<Guest_Home> {
   }
 
   void _launchInstagram() async {
-    const instagramUrl =
+    final String instagramUrl =
         'https://www.instagram.com/university_of_south_east_asia/';
 
     if (await canLaunch(instagramUrl)) {
@@ -96,6 +96,16 @@ class _Guest_HomeState extends State<Guest_Home> {
       await launch(telegramUrl);
     } else {
       throw 'Could not launch $telegramUrl';
+    }
+  }
+
+  void openTiktok() async {
+    final String tiktokUrl = "https://www.tiktok.com/@university.of.sou";
+
+    if (await canLaunch(tiktokUrl)) {
+      await launch(tiktokUrl);
+    } else {
+      throw 'Could not launch $tiktokUrl';
     }
   }
 
@@ -219,13 +229,15 @@ class _Guest_HomeState extends State<Guest_Home> {
               width: double.infinity,
               padding: EdgeInsets.symmetric(horizontal: UPdMg_5),
               child: isLoading
-                  ? CircularProgressIndicator()
+                  ? CircularProgressIndicator(
+                      color: UPrimaryColor,
+                    )
                   : CarouselSlider.builder(
                       options: CarouselOptions(
                         height: double.infinity,
                         pageSnapping: true,
                         enableInfiniteScroll: true,
-                        autoPlayInterval: Duration(seconds: 3),
+                        autoPlayInterval: Duration(seconds: 10),
                         viewportFraction: 1,
                         enlargeCenterPage: true,
                         enlargeStrategy: CenterPageEnlargeStrategy.zoom,
@@ -238,9 +250,10 @@ class _Guest_HomeState extends State<Guest_Home> {
                           final image_slide = image_slides[index].image_url;
                           return buildImage(image_slide, index);
                         } else {
-                          return buildImage(
-                              "https://wallpaperaccess.com/full/7074756.jpg",
-                              index);
+                          return Image.asset(
+                            "assets/image/Error_Image.jpg",
+                            fit: BoxFit.fill,
+                          );
                         }
                       },
                     ),
@@ -333,7 +346,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     BuildContainerSM(
-                      () => _launchInstagram(),
+                      () => _launchFacebookPage(),
                       'assets/image/SM_Facebook.png',
                     ),
                     BuildContainerSM(
@@ -353,7 +366,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                       'assets/image/SM_Website.png',
                     ),
                     BuildContainerSM(
-                      () => launchUrl(urlTikTok),
+                      () => openTiktok(),
                       'assets/image/SM_TK.png',
                     )
                   ],

@@ -1,7 +1,8 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 import '/Custom_Widget/CustomText.dart';
 import '/theme_builder.dart';
 import '../Class_Scholarship/Class_Scholarship_In.dart';
@@ -22,8 +23,9 @@ class _In_UniversityState extends State<In_University> {
   Future<void> getData() async {
     try {
       var res = await http.get(
-        Uri.parse(
-            "https://usea.edu.kh/api/webapi.php?action=scholarship_university"),
+        Uri.parse(Get.locale?.languageCode == 'km'
+            ? "https://usea.edu.kh/api/webapi.php?action=scholarship_i_university_kh"
+            : "https://usea.edu.kh/api/webapi.php?action=scholarship_i_university_en"),
       );
       var r = json.decode(res.body);
       if (mounted) {
@@ -63,11 +65,13 @@ class _In_UniversityState extends State<In_University> {
         child: i_scholarship.isEmpty
             ? Center(
                 child: FutureBuilder<void>(
-                  future: Future.delayed(Duration(seconds: 3)),
+                  future: Future.delayed(Duration(seconds: 10)),
                   builder: (context, snapshot) =>
                       snapshot.connectionState == ConnectionState.done
                           ? Text('គ្មានទិន្ន័យ'.tr)
-                          : CircularProgressIndicator(),
+                          : CircularProgressIndicator(
+                              color: UPrimaryColor,
+                            ),
                 ),
               )
             : ListView.builder(
@@ -95,24 +99,23 @@ class _In_UniversityState extends State<In_University> {
                         children: [
                           Container(
                               width: UFullWidth,
-                              child: NormalTitleTheme(
-                                  text: i_scholarship[index].i_school_name)),
+                              child: ScholarshipTitleTheme(
+                                  i_scholarship[index].i_school_name.tr)),
                           Container(
                               width: UFullWidth,
-                              child: NormalTitleTheme(
-                                  text: i_scholarship[index]
-                                      .i_educational_level)),
+                              child: ScholarshipTitleTheme(
+                                  i_scholarship[index].i_educational_level)),
                           Container(
                               width: UFullWidth,
-                              child: NormalTitleTheme(
-                                  text: i_scholarship[index].i_major)),
+                              child: ScholarshipTitleTheme(
+                                  i_scholarship[index].i_major)),
                           Container(
                               width: UFullWidth,
-                              child: NormalTitleTheme(text: 'ផុតកំណត់៖')),
+                              child: ScholarshipTitleTheme('ថ្ងៃផុតកំណត់៖'.tr)),
                           Container(
                               width: UFullWidth,
-                              child: BodyTheme(
-                                  text: i_scholarship[index].i_expire_date)),
+                              child: ScholarshipBodyTheme(
+                                  i_scholarship[index].i_expire_date)),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
@@ -146,10 +149,10 @@ class _In_UniversityState extends State<In_University> {
                                     _launchInUniUrl();
                                   },
                                   child: CustomTextTheme(
-                                    text: 'អានបន្ថែម'.tr,
-                                    color: UPrimaryColor,
-                                    fontWeight: UTitleWeight,
-                                    size: UBodySize,
+                                    'អានបន្ថែម'.tr,
+                                    UBodySize,
+                                    UPrimaryColor,
+                                    UTitleWeight,
                                   ),
                                 ),
                               ),

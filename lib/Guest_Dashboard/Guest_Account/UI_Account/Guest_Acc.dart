@@ -56,7 +56,7 @@ class Guest_AccState extends State<Guest_Acc> {
     List<StudentUser> studentUser,
   ) {
     Get.off(
-      St_Home(
+      () => St_Home(
         data_studentUser: studentUser,
       ),
     );
@@ -87,7 +87,7 @@ class Guest_AccState extends State<Guest_Acc> {
             mainAxisSpacing: 3.5,
             crossAxisSpacing: 3,
             childAspectRatio: 1.90,
-            padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
+            padding: EdgeInsets.symmetric(horizontal: 7),
             children: List.generate(
               account_screen.length,
               (index) => Card(
@@ -95,18 +95,11 @@ class Guest_AccState extends State<Guest_Acc> {
                 color: UBackgroundColor,
                 shadowColor: ULightGreyColor,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(URoundedLarge),
                 ),
                 child: InkWell(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) {
-                          return account_screen[index].screen;
-                        },
-                      ),
-                    );
+                    Get.to(() => account_screen[index].screen);
                   },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

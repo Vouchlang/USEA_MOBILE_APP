@@ -22,10 +22,11 @@ class _RegistrationState extends State<Registration> {
   }
 
   Future<void> fetchData() async {
-    String apiUrl =
-        'https://usea.edu.kh/api/webapi.php?action=registration_info';
     try {
-      http.Response response = await http.get(Uri.parse(apiUrl));
+      http.Response response = await http.get(Uri.parse(
+          Get.locale?.languageCode == 'km'
+              ? 'https://usea.edu.kh/api/webapi.php?action=registration_info'
+              : 'https://usea.edu.kh/api/webapi.php?action=registration_info'));
       if (response.statusCode == 200) {
         if (mounted) {
           List<dynamic> jsonData = json.decode(response.body);
@@ -78,11 +79,13 @@ class _RegistrationState extends State<Registration> {
       body: educationDataList.isEmpty
           ? Center(
               child: FutureBuilder<void>(
-                future: Future.delayed(Duration(seconds: 3)),
+                future: Future.delayed(Duration(seconds: 10)),
                 builder: (context, snapshot) =>
                     snapshot.connectionState == ConnectionState.done
                         ? Text('គ្មានទិន្ន័យ'.tr)
-                        : CircularProgressIndicator(),
+                        : CircularProgressIndicator(
+                            color: UPrimaryColor,
+                          ),
               ),
             )
           : ListView.builder(
@@ -135,7 +138,7 @@ class _RegistrationState extends State<Registration> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Container(
-                                        margin: EdgeInsets.only(top: 2),
+                                        margin: EdgeInsets.only(top: 1),
                                         width: 20,
                                         height: 20,
                                         child: Image.asset(
@@ -174,7 +177,7 @@ class _RegistrationState extends State<Registration> {
                                               height: 20,
                                               child: Image.asset(
                                                 'assets/image/detail.png',
-                                                scale: 14,
+                                                scale: 15,
                                               ),
                                             ),
                                             SizedBox(width: UWidth5),
@@ -211,8 +214,7 @@ class _RegistrationState extends State<Registration> {
                                                         fontSize: UBodySize,
                                                         fontFamily:
                                                             UKFontFamily,
-                                                        fontWeight:
-                                                            FontWeight.w400,
+                                                        fontWeight: UBodyWeight,
                                                       ),
                                                     ),
                                                   ),
@@ -228,13 +230,12 @@ class _RegistrationState extends State<Registration> {
                                 Container(
                                   width: UFullWidth,
                                   child: Row(
-                                    mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
                                       Container(
-                                        margin: EdgeInsets.only(top: 2),
+                                        margin: EdgeInsets.only(top: 1),
                                         width: 20,
                                         height: 20,
                                         child: Image.asset(
@@ -269,7 +270,7 @@ class _RegistrationState extends State<Registration> {
                                           style: TextStyle(
                                             fontSize: UBodySize,
                                             fontFamily: UKFontFamily,
-                                            fontWeight: FontWeight.w400,
+                                            fontWeight: UBodyWeight,
                                           ),
                                         ),
                                       ),

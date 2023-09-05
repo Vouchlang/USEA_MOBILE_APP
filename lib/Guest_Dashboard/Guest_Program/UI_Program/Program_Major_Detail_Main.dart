@@ -163,15 +163,12 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                                   yearData['year_data'][0];
 
                               if (selectedYearData.isNotEmpty) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Program_SHC(
-                                      majorName: widget.majorName,
-                                      educationName: selectedEducationName,
-                                      yearName: selectedYearName,
-                                      yearsData: yearData['year_data'],
-                                    ),
+                                Get.to(
+                                  () => Program_SHC(
+                                    majorName: widget.majorName,
+                                    educationName: selectedEducationName,
+                                    yearName: selectedYearName,
+                                    yearsData: yearData['year_data'],
                                   ),
                                 );
                               } else {

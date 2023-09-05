@@ -42,9 +42,15 @@ class LocaleString extends Translations {
           'សរុប': 'សរុប',
 
           // Scholarship
+          'សាកលវិទ្យាល័យ សៅស៍អ៊ីសថ៍អេយសៀ': 'សាកលវិទ្យាល័យ សៅស៍អ៊ីសថ៍អេយសៀ',
           'ក្នុងសាកលវិទ្យាល័យ': 'ក្នុងសាកលវិទ្យាល័យ',
           'ក្រៅសាកលវិទ្យាល័យ': 'ក្រៅសាកលវិទ្យាល័យ',
           'អានបន្ថែម': 'អានបន្ថែម',
+          'ថ្ងៃផុតកំណត់៖': 'ថ្ងៃផុតកំណត់៖',
+
+          //Video
+          'មើលទាំងអស់ ': 'មើលទាំងអស់ ',
+          'វីដេអូពី Youtube': "វីដេអូពី Youtube",
 
           // Contact
           'ចូលឆានែលតេឡេក្រាមរបស់សកលវិទ្យាល័យ':
@@ -245,9 +251,15 @@ class LocaleString extends Translations {
           'សរុប': 'Total',
 
           // Scholarship
+          'សាកលវិទ្យាល័យ សៅស៍អ៊ីសថ៍អេយសៀ': 'University of South-East Asia',
           'ក្នុងសាកលវិទ្យាល័យ': 'Inside University',
-          'ក្រៅសាកលវិទ្យាល័យ': 'Outside University',
+          'ក្រៅសាកលវិទ្យាល័យ': 'Other University',
           'អានបន្ថែម': 'Read more',
+          'ថ្ងៃផុតកំណត់៖': 'Expired Date:',
+
+          //Video
+          'មើលទាំងអស់ ': 'View All',
+          'វីដេអូពី Youtube': "Youtube's Video",
 
           // Contact
           'ចូលឆានែលតេឡេក្រាមរបស់សកលវិទ្យាល័យ':

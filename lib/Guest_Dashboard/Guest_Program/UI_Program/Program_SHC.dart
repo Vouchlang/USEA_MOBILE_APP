@@ -156,14 +156,14 @@ class _Program_SHCState extends State<Program_SHC> {
                     Container(
                       alignment: Alignment.center,
                       width: 55,
-                      child: NoWeightTitleTheme(text: hour.toString()),
+                      child: NoWeightTitleTheme(hour.toString()),
                     ),
                     SizedBox(width: UWidth10),
                     Container(
                       alignment: Alignment.center,
                       width: 30,
                       margin: EdgeInsets.only(right: UPdMg_10),
-                      child: NoWeightTitleTheme(text: credit.toString()),
+                      child: NoWeightTitleTheme(credit.toString()),
                     ),
                   ],
                 ),
@@ -211,7 +211,7 @@ class _Program_SHCState extends State<Program_SHC> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TitleTheme(
-                    text: 'មុខវិជ្ជា'.tr,
+                    'មុខវិជ្ជា'.tr,
                   ),
                   Row(
                     children: [
@@ -219,7 +219,7 @@ class _Program_SHCState extends State<Program_SHC> {
                         width: 55,
                         alignment: Alignment.centerRight,
                         child: TitleTheme(
-                          text: 'ម៉ោង'.tr,
+                          'ម៉ោង'.tr,
                         ),
                       ),
                       SizedBox(width: UWidth15),
@@ -227,7 +227,7 @@ class _Program_SHCState extends State<Program_SHC> {
                         alignment: Alignment.center,
                         width: 55,
                         child: TitleTheme(
-                          text: 'ក្រេឌីត'.tr,
+                          'ក្រេឌីត'.tr,
                         ),
                       ),
                     ],
@@ -244,7 +244,7 @@ class _Program_SHCState extends State<Program_SHC> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TitleTheme(
-                    text: 'សរុប'.tr,
+                    'សរុប'.tr,
                   ),
                   Row(
                     children: [
@@ -252,7 +252,7 @@ class _Program_SHCState extends State<Program_SHC> {
                         width: 55,
                         alignment: Alignment.center,
                         child: TitleTheme(
-                          text: totalHours.toStringAsFixed(0),
+                          totalHours.toStringAsFixed(0),
                         ),
                       ),
                       SizedBox(
@@ -262,8 +262,7 @@ class _Program_SHCState extends State<Program_SHC> {
                         width: 30,
                         alignment: Alignment.center,
                         margin: EdgeInsets.only(right: UPdMg_10),
-                        child:
-                            TitleTheme(text: totalCredits.toStringAsFixed(0)),
+                        child: TitleTheme(totalCredits.toStringAsFixed(0)),
                       ),
                     ],
                   ),

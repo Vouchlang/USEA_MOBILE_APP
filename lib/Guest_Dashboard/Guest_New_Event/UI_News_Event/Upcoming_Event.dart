@@ -20,8 +20,9 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
 
   Future<void> getData() async {
     try {
-      var res = await http.get(Uri.parse(
-          "https://usea.edu.kh/api/webapi.php?action=upcoming_events"));
+      var res = await http.get(Uri.parse(Get.locale?.languageCode == 'km'
+          ? "https://usea.edu.kh/api/webapi.php?action=upcoming_events_kh"
+          : "https://usea.edu.kh/api/webapi.php?action=upcoming_events_en"));
       var r = json.decode(res.body);
       if (mounted) {
         if (r is List<dynamic>) {
@@ -52,11 +53,13 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
         child: up_events.isEmpty
             ? Center(
                 child: FutureBuilder<void>(
-                  future: Future.delayed(Duration(seconds: 3)),
+                  future: Future.delayed(Duration(seconds: 10)),
                   builder: (context, snapshot) =>
                       snapshot.connectionState == ConnectionState.done
                           ? Text('គ្មានទិន្ន័យ'.tr)
-                          : CircularProgressIndicator(),
+                          : CircularProgressIndicator(
+                              color: UPrimaryColor,
+                            ),
                 ),
               )
             : ListView.builder(
@@ -78,12 +81,7 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                     ),
                     child: InkWell(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (ctx) => Up_Event_Detail(data: up_event),
-                          ),
-                        );
+                        Get.to(() => Up_Event_Detail(data: up_event));
                       },
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -94,13 +92,17 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                             child: ClipRRect(
                               borderRadius:
                                   BorderRadius.circular(URoundedLarge),
-                              child: Image.network(
-                                up_event.upcoming_image.isEmpty
-                                    ? 'https://wallpapers.com/images/featured/blank-white-7sn5o1woonmklx1h.jpg'
-                                    : up_event.upcoming_image,
-                                width: double.maxFinite,
-                                fit: BoxFit.cover,
-                              ),
+                              child: up_event.upcoming_image.isEmpty
+                                  ? Image.asset(
+                                      'assets/image/Error_Image.jpg',
+                                      width: double.maxFinite,
+                                      fit: BoxFit.cover,
+                                    )
+                                  : Image.network(
+                                      up_event.upcoming_image,
+                                      width: double.maxFinite,
+                                      fit: BoxFit.cover,
+                                    ),
                             ),
                           ),
                           SizedBox(height: UHeight5),
@@ -160,30 +162,9 @@ class _Upcoming_EventState extends State<Upcoming_Event> {
                                           ),
                                           SizedBox(width: UWidth5),
                                           buildEventDate(
-                                            up_event.upcoming_day.isEmpty
-                                                ? 'N/A'
-                                                : 'ថ្ងៃ' +
-                                                    up_event.upcoming_day,
-                                          ),
-                                          SizedBox(width: 2),
-                                          buildEventDate(
                                             up_event.upcoming_date.isEmpty
                                                 ? 'N/A'
-                                                : 'ទី' + up_event.upcoming_date,
-                                          ),
-                                          SizedBox(width: 2),
-                                          buildEventDate(
-                                            up_event.upcoming_month.isEmpty
-                                                ? 'N/A'
-                                                : 'ខែ' +
-                                                    up_event.upcoming_month,
-                                          ),
-                                          SizedBox(width: 2),
-                                          buildEventDate(
-                                            up_event.upcoming_year.isEmpty
-                                                ? 'N/A'
-                                                : 'ឆ្នាំ' +
-                                                    up_event.upcoming_year,
+                                                : up_event.upcoming_date,
                                           ),
                                         ],
                                       ),

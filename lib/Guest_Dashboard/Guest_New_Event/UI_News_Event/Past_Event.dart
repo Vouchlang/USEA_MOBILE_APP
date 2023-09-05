@@ -20,8 +20,9 @@ class _Past_EventState extends State<Past_Event> {
 
   Future<void> getData() async {
     try {
-      var res = await http.get(
-          Uri.parse("https://usea.edu.kh/api/webapi.php?action=past_events"));
+      var res = await http.get(Uri.parse(Get.locale?.languageCode == 'km'
+          ? "https://usea.edu.kh/api/webapi.php?action=past_events_kh"
+          : "https://usea.edu.kh/api/webapi.php?action=past_events_en"));
       var r = json.decode(res.body);
       if (mounted) {
         if (r is List<dynamic>) {
@@ -56,11 +57,13 @@ class _Past_EventState extends State<Past_Event> {
         child: past_events.isEmpty
             ? Center(
                 child: FutureBuilder<void>(
-                  future: Future.delayed(Duration(seconds: 3)),
+                  future: Future.delayed(Duration(seconds: 10)),
                   builder: (context, snapshot) =>
                       snapshot.connectionState == ConnectionState.done
                           ? Text('គ្មានទិន្ន័យ'.tr)
-                          : CircularProgressIndicator(),
+                          : CircularProgressIndicator(
+                              color: UPrimaryColor,
+                            ),
                 ),
               )
             : ListView.builder(
@@ -82,13 +85,7 @@ class _Past_EventState extends State<Past_Event> {
                     ),
                     child: InkWell(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (ctx) =>
-                                Past_Event_Detail(data: past_event),
-                          ),
-                        );
+                        Get.to(() => Past_Event_Detail(data: past_event));
                       },
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -97,15 +94,19 @@ class _Past_EventState extends State<Past_Event> {
                             height: 150,
                             width: double.maxFinite,
                             child: ClipRRect(
-                              borderRadius:
-                                  BorderRadius.circular(URoundedLarge),
-                              child: Image.network(
-                                past_event.past_image.isEmpty
-                                    ? 'https://wallpapers.com/images/featured/blank-white-7sn5o1woonmklx1h.jpg'
-                                    : past_event.past_image,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
+                                borderRadius:
+                                    BorderRadius.circular(URoundedLarge),
+                                child: past_event.past_image.isEmpty
+                                    ? Image.asset(
+                                        'assets/image/Error_Image.jpg',
+                                        width: double.maxFinite,
+                                        fit: BoxFit.cover,
+                                      )
+                                    : Image.network(
+                                        past_event.past_image,
+                                        width: double.maxFinite,
+                                        fit: BoxFit.cover,
+                                      )),
                           ),
                           SizedBox(
                             height: UHeight5,
@@ -166,28 +167,9 @@ class _Past_EventState extends State<Past_Event> {
                                           ),
                                           SizedBox(width: UWidth5),
                                           buildEventDate(
-                                            past_event.past_day.isEmpty
-                                                ? 'N/A'
-                                                : 'ថ្ងៃ' + past_event.past_day,
-                                          ),
-                                          SizedBox(width: 2),
-                                          buildEventDate(
                                             past_event.past_date.isEmpty
                                                 ? 'N/A'
-                                                : 'ទី' + past_event.past_date,
-                                          ),
-                                          SizedBox(width: 2),
-                                          buildEventDate(
-                                            past_event.past_month.isEmpty
-                                                ? 'N/A'
-                                                : 'ខែ' + past_event.past_month,
-                                          ),
-                                          SizedBox(width: 2),
-                                          buildEventDate(
-                                            past_event.past_year.isEmpty
-                                                ? 'N/A'
-                                                : 'ឆ្នាំ' +
-                                                    past_event.past_year,
+                                                : past_event.past_date,
                                           ),
                                         ],
                                       ),

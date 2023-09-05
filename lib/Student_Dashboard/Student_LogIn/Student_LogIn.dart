@@ -57,7 +57,7 @@ class _Student_LogInState extends State<Student_LogIn> {
         saveStudentUser(sharedPref, dataList_StudentUser);
 
         Get.off(
-          St_Home(
+          () => St_Home(
             data_studentUser: dataList_StudentUser,
           ),
         );
@@ -72,7 +72,7 @@ class _Student_LogInState extends State<Student_LogIn> {
           return Dialog(
             elevation: 2,
             child: Container(
-              height: 175.0,
+              height: 175,
               margin: EdgeInsets.all(7),
               padding: EdgeInsets.symmetric(horizontal: UPdMg_10),
               decoration: BoxDecoration(
@@ -149,7 +149,7 @@ class _Student_LogInState extends State<Student_LogIn> {
               scale: 15,
             ),
             SizedBox(
-              height: 15,
+              height: UHeight15,
             ),
             Text(
               'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
@@ -168,7 +168,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                   fontWeight: UBodyWeight),
             ),
             SizedBox(
-              height: 15,
+              height: UHeight15,
             ),
             Form(
               key: _formKey,
@@ -187,7 +187,8 @@ class _Student_LogInState extends State<Student_LogIn> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+                    padding: EdgeInsets.symmetric(
+                        vertical: UPdMg_10, horizontal: 30),
                     alignment: Alignment.center,
                     child: TextFormField(
                       controller: _textControllerUsername,
@@ -195,10 +196,10 @@ class _Student_LogInState extends State<Student_LogIn> {
                       cursorWidth: 1,
                       cursorHeight: 20,
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(10),
+                        contentPadding: EdgeInsets.all(UPdMg_10),
                         hintText: '\t\tបញ្ចូលអត្តលេខ'.tr,
                         hintStyle: TextStyle(
-                          fontSize: 10,
+                          fontSize: UBodySize10,
                           color: UGreyColor,
                         ),
                         border: OutlineInputBorder(),
@@ -215,8 +216,8 @@ class _Student_LogInState extends State<Student_LogIn> {
                           borderSide: BorderSide(color: UGreyColor),
                         ),
                         suffixIconColor: UGreyColor,
-                        errorStyle:
-                            TextStyle(fontSize: 10, fontFamily: UKFontFamily),
+                        errorStyle: TextStyle(
+                            fontSize: UBodySize10, fontFamily: UKFontFamily),
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -232,12 +233,13 @@ class _Student_LogInState extends State<Student_LogIn> {
                     child: Text(
                       'ពាក្យសម្ងាត់'.tr,
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: UBodySize,
                       ),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+                    padding: EdgeInsets.symmetric(
+                        vertical: UPdMg_10, horizontal: 30),
                     alignment: Alignment.center,
                     child: TextFormField(
                       obscureText: _obscureText,
@@ -246,7 +248,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                       cursorWidth: 1,
                       cursorHeight: 20,
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(10),
+                        contentPadding: EdgeInsets.all(UPdMg_10),
                         hintText: '\t\tបញ្ចូលពាក្យសម្ងាត់'.tr,
                         hintStyle: TextStyle(
                           fontSize: 10,
@@ -275,7 +277,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                         ),
                         suffixIconColor: UGreyColor,
                         errorStyle: TextStyle(
-                          fontSize: 10,
+                          fontSize: UBodySize10,
                           fontFamily: UKFontFamily,
                         ),
                       ),
@@ -288,7 +290,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                     ),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: UHeight10,
                   ),
                 ],
               ),
@@ -300,7 +302,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                 height: 40,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius: BorderRadius.circular(UPdMg_5),
                   color: UPrimaryColor,
                 ),
                 child: Text(

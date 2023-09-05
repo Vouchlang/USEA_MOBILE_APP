@@ -154,11 +154,13 @@ class _AttendanceState extends State<Attendance> {
       appBar: Custom_AppBar(title: 'វត្តមាន'.tr),
       body: attendances.isEmpty
           ? FutureBuilder(
-              future: Future.delayed(Duration(seconds: 3)),
+              future: Future.delayed(Duration(seconds: 10)),
               builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      color: UPrimaryColor,
+                    ),
                   );
                 } else {
                   return Center(
@@ -169,6 +171,7 @@ class _AttendanceState extends State<Attendance> {
             )
           : RefreshIndicator(
               onRefresh: _refreshData,
+              color: UPrimaryColor,
               child: Container(
                 padding: EdgeInsets.symmetric(
                   horizontal: UPdMg_5,
@@ -218,10 +221,10 @@ class _AttendanceState extends State<Attendance> {
                               );
                             },
                             child: CustomTextTheme(
-                              text: 'មើលទាំងអស់'.tr,
-                              color: UPrimaryColor,
-                              fontWeight: UBodyWeight,
-                              size: UBodySize,
+                              'មើលទាំងអស់'.tr,
+                              UBodySize,
+                              UPrimaryColor,
+                              UBodyWeight,
                             ),
                           ),
                         ),
@@ -273,15 +276,12 @@ class _AttendanceState extends State<Attendance> {
                     child: InkWell(
                       onTap: () {
                         setState(() {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Attendance_Detail(
-                                subjectDate: subject.dates,
-                                subjectName: Get.locale?.languageCode == 'km'
-                                    ? subject.name_kh
-                                    : subject.name_en,
-                              ),
+                          Get.to(
+                            () => Attendance_Detail(
+                              subjectDate: subject.dates,
+                              subjectName: Get.locale?.languageCode == 'km'
+                                  ? subject.name_kh
+                                  : subject.name_en,
                             ),
                           );
                         });

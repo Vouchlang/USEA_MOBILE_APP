@@ -24,10 +24,7 @@ class AboutUS extends StatelessWidget {
                   borderRadius: BorderRadius.circular(URoundedLarge)),
               child: InkWell(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (ctx) => aboutUS[index].screen),
-                  );
+                  Get.to(() => aboutUS[index].screen);
                 },
                 child: Container(
                   padding: EdgeInsets.symmetric(

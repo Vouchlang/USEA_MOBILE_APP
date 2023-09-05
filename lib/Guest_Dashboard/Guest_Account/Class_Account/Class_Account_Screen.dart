@@ -3,7 +3,6 @@ import 'package:usea_app/Guardian_Dashboard/Guardian_login.dart';
 import 'package:usea_app/Lecturer_Dashboard/Lecturer_Login.dart';
 import 'package:usea_app/Staff_Dashboard/Staff_Login.dart';
 import '/Student_Dashboard/Student_LogIn/Student_LogIn.dart';
-import '/Guest_Dashboard/Guest_New_Event/UI_News_Event/News_Event.dart';
 
 class Account_Screen {
   late final String name, img;

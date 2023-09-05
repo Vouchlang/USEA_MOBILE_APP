@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '/Custom_AppBar.dart';
 import '/theme_builder.dart';
 import '../Class_VDO/Class_Video.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-
-import 'Video_Display.dart';
+import 'Video_Display_Second.dart';
 
 class Video_UI extends StatefulWidget {
   Video_UI({Key? key}) : super(key: key);
@@ -19,11 +19,15 @@ class Video_UI extends StatefulWidget {
 class _VideoState extends State<Video_UI> {
   List<VDO_Class> vdo = [];
   bool isLoading = true;
+  final Uri urlYt =
+      Uri.parse("https://youtube.com/@usea-edu-kh?si=O-C7zB1vDD6KjP0z");
 
   Future<void> getData() async {
     try {
       var res = await http.get(
-        Uri.parse("https://usea.edu.kh/api/webapi.php?action=yt_video"),
+        Uri.parse(Get.locale?.languageCode == 'km'
+            ? "https://usea.edu.kh/api/webapi.php?action=yt_video"
+            : "https://usea.edu.kh/api/webapi.php?action=yt_video"),
       );
       var r = json.decode(res.body);
       if (r is List<dynamic>) {
@@ -60,77 +64,156 @@ class _VideoState extends State<Video_UI> {
       body: vdo.isEmpty
           ? Center(
               child: FutureBuilder<void>(
-                future: Future.delayed(Duration(seconds: 3)),
+                future: Future.delayed(Duration(seconds: 10)),
                 builder: (context, snapshot) =>
                     snapshot.connectionState == ConnectionState.done
                         ? Text('គ្មានទិន្ន័យ'.tr)
-                        : CircularProgressIndicator(),
+                        : CircularProgressIndicator(
+                            color: UPrimaryColor,
+                          ),
               ),
             )
-          : ListView.builder(
+          : SingleChildScrollView(
               padding: EdgeInsets.all(UPdMg_10),
-              itemCount: vdo.length,
-              itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: ((context) => Video_Display(
-                              data: vdo[index],
-                              vdo: vdo,
-                            )),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    margin: EdgeInsets.only(bottom: UPdMg_10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: 150,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(UPdMg_5),
-                                image: DecorationImage(
-                                    image: NetworkImage(
-                                        vdo[index].youtube_thumbnail),
-                                    fit: BoxFit.fitWidth),
+              child: Container(
+                child: Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(bottom: UPdMg_10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            alignment: Alignment.center,
+                            padding: EdgeInsets.symmetric(
+                              vertical: UPdMg_5,
+                              horizontal: UPdMg_10,
+                            ),
+                            child: Text(
+                              'វីដេអូពី Youtube'.tr,
+                              style: TextStyle(
+                                fontSize: UTitleSize16,
+                                fontWeight: UTitleWeight,
+                                color: UPrimaryColor,
                               ),
                             ),
-                            SizedBox(
-                              width: UWidth10,
-                            ),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  buildListText(
-                                      vdo[index].title, 3, UTitleSize),
-                                  SizedBox(
-                                    height: UHeight5,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              void _launchOutUniUrl() async {
+                                if (await launchUrl(urlYt)) {
+                                  await launchUrl(urlYt);
+                                } else {
+                                  throw 'Could not launch ${urlYt}';
+                                }
+                              }
+
+                              _launchOutUniUrl();
+                            },
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  alignment: Alignment.center,
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: UPdMg_5,
                                   ),
-                                  buildListText(
-                                      vdo[index].caption, 1, UBodySize10),
-                                ],
-                              ),
+                                  child: Text(
+                                    'មើលទាំងអស់ '.tr,
+                                    style: TextStyle(
+                                      fontSize: UBodySize,
+                                      fontWeight: UBodyWeight,
+                                      color: UPrimaryColor,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(bottom: 1),
+                                  child: Icon(
+                                    Icons.arrow_forward_ios,
+                                    size: UBodySize,
+                                    color: UPrimaryColor,
+                                  ),
+                                )
+                              ],
                             ),
-                          ],
-                        ),
-                      ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              },
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: vdo.length,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () {
+                            Get.to(
+                              () => Video_Display(
+                                data: vdo[index],
+                                vdo: vdo,
+                              ),
+                            );
+                          },
+                          child: Container(
+                            margin: EdgeInsets.only(bottom: UPdMg_10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      width: 160,
+                                      height: 90,
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(UPdMg_10),
+                                        image: DecorationImage(
+                                          image: NetworkImage(
+                                            vdo[index].youtube_thumbnail,
+                                          ),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: UWidth10,
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          buildListText(vdo[index].title, 2,
+                                              UTitleSize, UTitleWeight),
+                                          SizedBox(
+                                            height: UHeight5,
+                                          ),
+                                          buildListText(vdo[index].caption, 2,
+                                              UBodySize10, UBodyWeight),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
             ),
     );
   }

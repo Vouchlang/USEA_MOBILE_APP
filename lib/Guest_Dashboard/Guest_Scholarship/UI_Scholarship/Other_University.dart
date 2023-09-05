@@ -1,7 +1,8 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '/Custom_Widget/CustomText.dart';
@@ -22,8 +23,9 @@ class _Out_UniversityState extends State<Out_University> {
   Future<void> getData() async {
     try {
       var res = await http.get(
-        Uri.parse(
-            "https://usea.edu.kh/api/webapi.php?action=scholarship_institution"),
+        Uri.parse(Get.locale?.languageCode == 'km'
+            ? "https://usea.edu.kh/api/webapi.php?action=scholarship_o_university_kh"
+            : "https://usea.edu.kh/api/webapi.php?action=scholarship_o_university_en"),
       );
       var r = json.decode(res.body);
       if (mounted) {
@@ -55,11 +57,13 @@ class _Out_UniversityState extends State<Out_University> {
         child: o_scholarship.isEmpty
             ? Center(
                 child: FutureBuilder<void>(
-                  future: Future.delayed(Duration(seconds: 3)),
+                  future: Future.delayed(Duration(seconds: 10)),
                   builder: (context, snapshot) =>
                       snapshot.connectionState == ConnectionState.done
                           ? Text('គ្មានទិន្ន័យ'.tr)
-                          : CircularProgressIndicator(),
+                          : CircularProgressIndicator(
+                              color: UPrimaryColor,
+                            ),
                 ),
               )
             : ListView.builder(
@@ -87,24 +91,23 @@ class _Out_UniversityState extends State<Out_University> {
                         children: [
                           Container(
                               width: UFullWidth,
-                              child: NormalTitleTheme(
-                                  text: o_scholarship[index].o_school_name)),
+                              child: ScholarshipTitleTheme(
+                                  o_scholarship[index].o_school_name)),
                           Container(
                               width: UFullWidth,
-                              child: NormalTitleTheme(
-                                  text: o_scholarship[index]
-                                      .o_educational_level)),
+                              child: ScholarshipTitleTheme(
+                                  o_scholarship[index].o_educational_level)),
                           Container(
                               width: UFullWidth,
-                              child: NormalTitleTheme(
-                                  text: o_scholarship[index].o_major)),
+                              child: ScholarshipTitleTheme(
+                                  o_scholarship[index].o_major)),
                           Container(
                               width: UFullWidth,
-                              child: NormalTitleTheme(text: 'ផុតកំណត់៖')),
+                              child: ScholarshipTitleTheme('ថ្ងៃផុតកំណត់៖'.tr)),
                           Container(
                               width: UFullWidth,
-                              child: BodyTheme(
-                                  text: o_scholarship[index].o_expire_date)),
+                              child: ScholarshipBodyTheme(
+                                  o_scholarship[index].o_expire_date)),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
@@ -124,26 +127,25 @@ class _Out_UniversityState extends State<Out_University> {
                                   ],
                                 ),
                                 child: InkWell(
-                                  onTap: () {
-                                    void _launchOutUniUrl() async {
-                                      if (await canLaunch(
-                                          o_scholarship[index].o_link)) {
-                                        await launch(
-                                            o_scholarship[index].o_link);
-                                      } else {
-                                        throw 'Could not launch ${o_scholarship[index].o_link}';
+                                    onTap: () {
+                                      void _launchOutUniUrl() async {
+                                        if (await canLaunch(
+                                            o_scholarship[index].o_link)) {
+                                          await launch(
+                                              o_scholarship[index].o_link);
+                                        } else {
+                                          throw 'Could not launch ${o_scholarship[index].o_link}';
+                                        }
                                       }
-                                    }
 
-                                    _launchOutUniUrl();
-                                  },
-                                  child: CustomTextTheme(
-                                    text: 'អានបន្ថែម'.tr,
-                                    color: UPrimaryColor,
-                                    fontWeight: UTitleWeight,
-                                    size: UBodySize,
-                                  ),
-                                ),
+                                      _launchOutUniUrl();
+                                    },
+                                    child: CustomTextTheme(
+                                      'អានបន្ថែម'.tr,
+                                      UBodySize,
+                                      UPrimaryColor,
+                                      UTitleWeight,
+                                    )),
                               ),
                             ],
                           ),

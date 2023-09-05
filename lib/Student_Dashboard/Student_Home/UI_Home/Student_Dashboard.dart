@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -235,12 +237,9 @@ class _Student_HomeState extends State<Student_Home> {
             ),
             InkWell(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) => Student_Detail(
-                        data_studentUser: _dataStudentUser,
-                      ),
+                  Get.to(
+                    () => Student_Detail(
+                      data_studentUser: _dataStudentUser,
                     ),
                   );
                 },
@@ -261,142 +260,199 @@ class _Student_HomeState extends State<Student_Home> {
         backgroundColor: UBackgroundColor,
         elevation: 1,
       ),
-      body: RefreshIndicator(
-        onRefresh: _refreshData,
-        child: (() {
-          if (_dataSurvey.isNotEmpty) {
-            if (_dataSurvey.length > 1) {
-              return ListView(
+      body: _dataStDetail.isEmpty
+          ? FutureBuilder(
+              future: Future.delayed(Duration(seconds: 10)),
+              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: CircularProgressIndicator(
+                      color: UPrimaryColor,
+                    ),
+                  );
+                } else {
+                  return Center(child: Text('គ្មានទិន្ន័យ'.tr));
+                }
+              },
+            )
+          : RefreshIndicator(
+              onRefresh: _refreshData,
+              color: UPrimaryColor,
+              child: ListView(
                 shrinkWrap: true,
                 children: [
                   SizedBox(
                     height: UHeight10,
                   ),
-                  Card(
-                    margin: EdgeInsets.symmetric(horizontal: UPdMg_10),
-                    elevation: 1,
-                    shadowColor: ULightGreyColor,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(URoundedMedium)),
-                    child: InkWell(
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return Dialog(
-                              elevation: 3,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(
-                                URoundedLarge,
-                              )),
-                              child: Container(
-                                margin: EdgeInsets.all(7),
-                                padding: EdgeInsets.all(UPdMg_10),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: UBackgroundColor),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text(
-                                      'ការវាយតម្លៃ'.tr,
-                                      style: TextStyle(
-                                        fontSize: UTitleSize,
-                                        fontWeight: UTitleWeight,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: UHeight5,
-                                    ),
-                                    Text(
-                                      'សូមជ្រើសរើសប្រភេទនៃការវាយតម្លៃ!!!'.tr,
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: UBodySize,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: UHeight5,
-                                    ),
-                                    Container(
-                                      height: 70,
-                                      padding: EdgeInsets.all(UPdMg_5),
-                                      alignment: Alignment.center,
-                                      child: ListView.builder(
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.horizontal,
-                                        itemCount: _dataSurvey.length,
-                                        itemBuilder: (context, index) {
-                                          return Row(
-                                            children: [
-                                              ElevatedButton(
-                                                style: ButtonStyle(
-                                                  backgroundColor:
-                                                      MaterialStateProperty.all<
-                                                          Color>(
-                                                    UBGLightBlue,
-                                                  ),
-                                                ),
-                                                child: Container(
-                                                  width: 80,
-                                                  child: Text(
-                                                    'ការវាយតម្លៃទី ${_dataSurvey[index].times}'
-                                                        .tr,
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                      color: UPrimaryColor,
-                                                      fontSize: UBodySize,
+                  (() {
+                    if (_dataSurvey.isNotEmpty && _dataSurvey.length > 1) {
+                      return Card(
+                        margin: EdgeInsets.symmetric(horizontal: UPdMg_10),
+                        elevation: 1,
+                        shadowColor: ULightGreyColor,
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(URoundedMedium)),
+                        child: InkWell(
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return Dialog(
+                                  elevation: 3,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                    URoundedLarge,
+                                  )),
+                                  child: Container(
+                                    margin: EdgeInsets.all(7),
+                                    padding: EdgeInsets.all(UPdMg_10),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                        color: UBackgroundColor),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text(
+                                          'ការវាយតម្លៃ'.tr,
+                                          style: TextStyle(
+                                            fontSize: UTitleSize,
+                                            fontWeight: UTitleWeight,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: UHeight5,
+                                        ),
+                                        Text(
+                                          'សូមជ្រើសរើសប្រភេទនៃការវាយតម្លៃ!!!'
+                                              .tr,
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: UBodySize,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: UHeight5,
+                                        ),
+                                        Container(
+                                          height: 70,
+                                          padding: EdgeInsets.all(UPdMg_5),
+                                          alignment: Alignment.center,
+                                          child: ListView.builder(
+                                            shrinkWrap: true,
+                                            scrollDirection: Axis.horizontal,
+                                            itemCount: _dataSurvey.length,
+                                            itemBuilder: (context, index) {
+                                              return Row(
+                                                children: [
+                                                  ElevatedButton(
+                                                    style: ButtonStyle(
+                                                      backgroundColor:
+                                                          MaterialStateProperty
+                                                              .all<Color>(
+                                                        UBGLightBlue,
+                                                      ),
                                                     ),
-                                                  ),
-                                                ),
-                                                onPressed: () {
-                                                  void _launchSurvey() async {
-                                                    if (await canLaunch(
-                                                        _dataSurvey[index]
-                                                            .link)) {
-                                                      await launch(
-                                                          _dataSurvey[index]
-                                                              .link);
-                                                    } else {
-                                                      throw 'Could not launch ${_dataSurvey[index].link}';
-                                                    }
-                                                  }
+                                                    child: Container(
+                                                      width: 80,
+                                                      child: Text(
+                                                        'ការវាយតម្លៃទី ${_dataSurvey[index].times}'
+                                                            .tr,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                          color: UPrimaryColor,
+                                                          fontSize: UBodySize,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    onPressed: () {
+                                                      void
+                                                          _launchSurvey() async {
+                                                        if (await canLaunch(
+                                                            _dataSurvey[index]
+                                                                .link)) {
+                                                          await launch(
+                                                              _dataSurvey[index]
+                                                                  .link);
+                                                        } else {
+                                                          throw 'Could not launch ${_dataSurvey[index].link}';
+                                                        }
+                                                      }
 
-                                                  _launchSurvey();
-                                                },
-                                              ),
-                                              if (index !=
-                                                  _dataSurvey.length - 1)
-                                                VerticalDivider(
-                                                  width: UWidth10,
-                                                  color: Colors.transparent,
-                                                  thickness: 0,
-                                                ),
-                                            ],
-                                          );
-                                        },
-                                      ),
+                                                      _launchSurvey();
+                                                    },
+                                                  ),
+                                                  if (index !=
+                                                      _dataSurvey.length - 1)
+                                                    VerticalDivider(
+                                                      width: UWidth10,
+                                                      color: Colors.transparent,
+                                                      thickness: 0,
+                                                    ),
+                                                ],
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  ],
-                                ),
-                              ),
+                                  ),
+                                );
+                              },
                             );
                           },
-                        );
-                      },
-                      child: Container(
-                        margin: EdgeInsets.all(UPdMg_5),
-                        child: Text(
-                          'សូមជួយធ្វើការវាយតម្លៃ'.tr,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: UBodySize,
-                            color: URedColor,
+                          child: Container(
+                            margin: EdgeInsets.all(UPdMg_5),
+                            child: Text(
+                              'សូមជួយធ្វើការវាយតម្លៃ'.tr,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: UBodySize,
+                                color: URedColor,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                  ),
+                      );
+                    } else if (_dataSurvey.isNotEmpty &&
+                        _dataSurvey.length == 1) {
+                      return Card(
+                        margin: EdgeInsets.symmetric(horizontal: UPdMg_10),
+                        elevation: 1,
+                        shadowColor: ULightGreyColor,
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(URoundedMedium)),
+                        child: InkWell(
+                          onTap: () {
+                            void _launchSurvey() async {
+                              if (await canLaunch(_dataSurvey[0].link)) {
+                                await launch(_dataSurvey[0].link);
+                              } else {
+                                throw 'Could not launch ${_dataSurvey[0].link}';
+                              }
+                            }
+
+                            _launchSurvey();
+                          },
+                          child: Container(
+                            margin: EdgeInsets.all(UPdMg_5),
+                            child: Text(
+                              'សូមជួយធ្វើការវាយតម្លៃ'.tr,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: UBodySize,
+                                color: URedColor,
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    } else {
+                      return SizedBox.shrink();
+                    }
+                  })(),
                   SizedBox(
                     height: UHeight10,
                   ),
@@ -411,20 +467,20 @@ class _Student_HomeState extends State<Student_Home> {
                       children: [
                         CircularPercentIndicator(
                           radius: 90.0,
-                          lineWidth: 40.0,
+                          lineWidth: 15.0,
                           percent: percentIndicator,
                           progressColor: UPrimaryColor,
                           animateFromLastPercent: true,
                           animation: true,
-                          animationDuration: 750,
+                          curve: Curves.decelerate,
+                          animationDuration: 1000,
                           backgroundColor: UBGChartColor,
                           center: Text(
                             _dataCredit.isNotEmpty
                                 ? '${_dataCredit[0].yourCredit} / ${_dataCredit[0].totalCredit}'
                                 : 'N/A',
                             style: TextStyle(
-                              fontSize: UTitleSize,
-                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
                             ),
                           ),
                         ),
@@ -482,7 +538,7 @@ class _Student_HomeState extends State<Student_Home> {
                     mainAxisSpacing: 3.5,
                     crossAxisSpacing: 3,
                     childAspectRatio: 1.90,
-                    padding: EdgeInsets.symmetric(vertical: 0, horizontal: 7),
+                    padding: EdgeInsets.symmetric(horizontal: 7),
                     children: List.generate(
                       st_home_screen.length,
                       (index) => Card(
@@ -564,75 +620,49 @@ class _Student_HomeState extends State<Student_Home> {
                                     )
                                   : _launchFeedback();
                             } else if (index.isEqual(0)) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Schedule(
-                                    data_studentUser: _dataStudentUser,
-                                  ),
+                              Get.to(
+                                () => Schedule(
+                                  data_studentUser: _dataStudentUser,
                                 ),
                               );
                             } else if (index.isEqual(1)) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Performance(
-                                    data_studentUser: _dataStudentUser,
-                                  ),
+                              Get.to(
+                                () => Performance(
+                                  data_studentUser: _dataStudentUser,
                                 ),
                               );
                             } else if (index.isEqual(2)) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Attendance(
-                                    data_studentUser: _dataStudentUser,
-                                  ),
+                              Get.to(
+                                () => Attendance(
+                                  data_studentUser: _dataStudentUser,
                                 ),
                               );
                             } else if (index.isEqual(3)) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Payment_UI(
-                                    data_studentUser: _dataStudentUser,
-                                  ),
+                              Get.to(
+                                () => Payment_UI(
+                                  data_studentUser: _dataStudentUser,
                                 ),
                               );
                             } else if (index.isEqual(4)) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Job_History(
-                                    data_studentUser: _dataStudentUser,
-                                  ),
+                              Get.to(
+                                () => Job_History(
+                                  data_studentUser: _dataStudentUser,
                                 ),
                               );
                             } else if (index.isEqual(5)) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Study_Info(
-                                    data_studentUser: _dataStudentUser,
-                                  ),
+                              Get.to(
+                                () => Study_Info(
+                                  data_studentUser: _dataStudentUser,
                                 ),
                               );
                             } else if (index.isEqual(7)) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Achievements(
-                                    data_studentUser: _dataStudentUser,
-                                  ),
+                              Get.to(
+                                () => Achievements(
+                                  data_studentUser: _dataStudentUser,
                                 ),
                               );
                             } else {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        st_home_screen[index].screen),
-                              );
+                              Get.to(() => st_home_screen[index].screen);
                             }
                           },
                           child: Container(
@@ -665,604 +695,8 @@ class _Student_HomeState extends State<Student_Home> {
                     height: 7,
                   ),
                 ],
-              );
-            } else if (_dataSurvey.length == 1) {
-              return ListView(
-                shrinkWrap: true,
-                children: [
-                  SizedBox(
-                    height: UHeight10,
-                  ),
-                  Card(
-                    margin: EdgeInsets.symmetric(horizontal: UPdMg_10),
-                    elevation: 1,
-                    shadowColor: ULightGreyColor,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(URoundedMedium)),
-                    child: InkWell(
-                      onTap: () {
-                        void _launchSurvey() async {
-                          if (await canLaunch(_dataSurvey[0].link)) {
-                            await launch(_dataSurvey[0].link);
-                          } else {
-                            throw 'Could not launch ${_dataSurvey[0].link}';
-                          }
-                        }
-
-                        _launchSurvey();
-                      },
-                      child: Container(
-                        margin: EdgeInsets.all(UPdMg_5),
-                        child: Text(
-                          'សូមជួយធ្វើការវាយតម្លៃ'.tr,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: UBodySize,
-                            color: URedColor,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: UHeight10,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    height: 180,
-                    padding: EdgeInsets.symmetric(horizontal: UPdMg_5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        CircularPercentIndicator(
-                          radius: 90.0,
-                          lineWidth: 40.0,
-                          percent: percentIndicator,
-                          progressColor: UPrimaryColor,
-                          animateFromLastPercent: true,
-                          animation: true,
-                          animationDuration: 750,
-                          backgroundColor: UBGChartColor,
-                          center: Text(
-                            _dataCredit.isNotEmpty
-                                ? '${_dataCredit[0].yourCredit} / ${_dataCredit[0].totalCredit}'
-                                : 'N/A',
-                            style: TextStyle(
-                              fontSize: UTitleSize,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: UWidth15,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(
-                                  Icons.circle,
-                                  size: 20,
-                                  color: UBGChartColor,
-                                ),
-                                Text('\tចំនួនក្រឌីតសរុប'.tr),
-                              ],
-                            ),
-                            SizedBox(
-                              height: UHeight10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(
-                                  Icons.circle,
-                                  size: 20,
-                                  color: UPrimaryColor,
-                                ),
-                                Text(
-                                  '\tចំនួនក្រឌីតបានបំពេញ'.tr,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: UHeight10,
-                  ),
-                  GridView.count(
-                    shrinkWrap: true,
-                    physics: ScrollPhysics(),
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 3.5,
-                    crossAxisSpacing: 3,
-                    childAspectRatio: 1.90,
-                    padding: EdgeInsets.symmetric(horizontal: 7),
-                    children: List.generate(
-                      st_home_screen.length,
-                      (index) => Card(
-                        elevation: 2,
-                        shadowColor: ULightGreyColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(URoundedLarge),
-                        ),
-                        child: InkWell(
-                          onTap: () {
-                            if (index.isEqual(6)) {
-                              _dataFeedback[0].feedback.isEmpty
-                                  ? showDialog(
-                                      context: context,
-                                      barrierDismissible: false,
-                                      builder: (BuildContext context) {
-                                        return Dialog(
-                                          elevation: 3,
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                            URoundedLarge,
-                                          )),
-                                          child: Container(
-                                            margin: EdgeInsets.all(7),
-                                            padding: EdgeInsets.all(UPdMg_10),
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: UBackgroundColor),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Text(
-                                                  'សូមអធ្យាស្រ័យ'.tr,
-                                                  style: TextStyle(
-                                                    fontSize: UTitleSize,
-                                                    fontWeight: UTitleWeight,
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  height: UHeight5,
-                                                ),
-                                                Text(
-                                                  'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!'
-                                                      .tr,
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                    fontSize: UBodySize,
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  height: UHeight5,
-                                                ),
-                                                Container(
-                                                  height: 50,
-                                                  padding:
-                                                      EdgeInsets.all(UPdMg_5),
-                                                  alignment: Alignment.center,
-                                                  child: TextButton(
-                                                    child: Text(
-                                                      'បោះបង់'.tr,
-                                                      style: TextStyle(
-                                                        color: UPrimaryColor,
-                                                        fontSize: UBodySize,
-                                                      ),
-                                                    ),
-                                                    onPressed: () {
-                                                      Navigator.of(context)
-                                                          .pop();
-                                                    },
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                    )
-                                  : _launchFeedback();
-                            } else if (index.isEqual(0)) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Schedule(
-                                    data_studentUser: _dataStudentUser,
-                                  ),
-                                ),
-                              );
-                            } else if (index.isEqual(1)) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Performance(
-                                    data_studentUser: _dataStudentUser,
-                                  ),
-                                ),
-                              );
-                            } else if (index.isEqual(2)) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Attendance(
-                                    data_studentUser: _dataStudentUser,
-                                  ),
-                                ),
-                              );
-                            } else if (index.isEqual(3)) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Payment_UI(
-                                    data_studentUser: _dataStudentUser,
-                                  ),
-                                ),
-                              );
-                            } else if (index.isEqual(4)) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Job_History(
-                                    data_studentUser: _dataStudentUser,
-                                  ),
-                                ),
-                              );
-                            } else if (index.isEqual(5)) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Study_Info(
-                                    data_studentUser: _dataStudentUser,
-                                  ),
-                                ),
-                              );
-                            } else if (index.isEqual(7)) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Achievements(
-                                    data_studentUser: _dataStudentUser,
-                                  ),
-                                ),
-                              );
-                            } else {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        st_home_screen[index].screen),
-                              );
-                            }
-                          },
-                          child: Container(
-                            padding: EdgeInsets.only(left: UPdMg_15),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Image.asset(
-                                  st_home_screen[index].img,
-                                  scale: 6,
-                                ),
-                                SizedBox(
-                                  height: 7,
-                                ),
-                                Text(
-                                  st_home_screen[index].name.tr,
-                                  style: TextStyle(
-                                    fontSize: UTitleSize,
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 7,
-                  ),
-                ],
-              );
-            }
-          }
-
-          return _dataCredit.isEmpty
-              ? Center(
-                  child: FutureBuilder<void>(
-                    future: Future.delayed(Duration(seconds: 3)),
-                    builder: (context, snapshot) =>
-                        snapshot.connectionState == ConnectionState.done
-                            ? Text('គ្មានទិន្ន័យ'.tr)
-                            : CircularProgressIndicator(),
-                  ),
-                )
-              : ListView(
-                  shrinkWrap: true,
-                  children: [
-                    SizedBox(
-                      height: UHeight10,
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      height: 180,
-                      padding: EdgeInsets.symmetric(horizontal: UPdMg_5),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          CircularPercentIndicator(
-                            radius: 90.0,
-                            lineWidth: 25.0,
-                            percent: percentIndicator,
-                            progressColor: UPrimaryColor,
-                            animateFromLastPercent: true,
-                            animation: true,
-                            circularStrokeCap: CircularStrokeCap.round,
-                            animationDuration: 750,
-                            backgroundColor: UBGChartColor,
-                            center: Text(
-                              _dataCredit.isNotEmpty
-                                  ? '${_dataCredit[0].yourCredit} / ${_dataCredit[0].totalCredit}'
-                                  : 'N/A',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: UWidth15,
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Icon(
-                                    Icons.circle,
-                                    size: 20,
-                                    color: UBGChartColor,
-                                  ),
-                                  Text('\tចំនួនក្រឌីតសរុប'.tr),
-                                ],
-                              ),
-                              SizedBox(
-                                height: UHeight10,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Icon(
-                                    Icons.circle,
-                                    size: 20,
-                                    color: UPrimaryColor,
-                                  ),
-                                  Text(
-                                    '\tចំនួនក្រឌីតបានបំពេញ'.tr,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: UHeight10,
-                    ),
-                    GridView.count(
-                      shrinkWrap: true,
-                      physics: ScrollPhysics(),
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 3.5,
-                      crossAxisSpacing: 3,
-                      childAspectRatio: 1.90,
-                      padding: EdgeInsets.symmetric(horizontal: 7),
-                      children: List.generate(
-                        st_home_screen.length,
-                        (index) => Card(
-                          elevation: 2,
-                          shadowColor: ULightGreyColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(URoundedLarge),
-                          ),
-                          child: InkWell(
-                            onTap: () {
-                              print(_dataFeedback.length);
-                              if (index.isEqual(6)) {
-                                _dataFeedback.isEmpty
-                                    ? showDialog(
-                                        context: context,
-                                        barrierDismissible: false,
-                                        builder: (BuildContext context) {
-                                          return Dialog(
-                                            elevation: 3,
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                              10,
-                                            )),
-                                            child: Container(
-                                              margin: EdgeInsets.all(7),
-                                              padding: EdgeInsets.all(UPdMg_10),
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                  color: UBackgroundColor),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Text(
-                                                    'សូមអធ្យាស្រ័យ'.tr,
-                                                    style: TextStyle(
-                                                      fontSize: UTitleSize,
-                                                      fontWeight: UTitleWeight,
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: UHeight5,
-                                                  ),
-                                                  Text(
-                                                    'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!'
-                                                        .tr,
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                      fontSize: UBodySize,
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: UHeight5,
-                                                  ),
-                                                  Container(
-                                                    height: 50,
-                                                    padding:
-                                                        EdgeInsets.all(UPdMg_5),
-                                                    alignment: Alignment.center,
-                                                    child: TextButton(
-                                                      child: Text(
-                                                        'បោះបង់'.tr,
-                                                        style: TextStyle(
-                                                          color: UPrimaryColor,
-                                                          fontSize: UBodySize,
-                                                        ),
-                                                      ),
-                                                      onPressed: () {
-                                                        Navigator.of(context)
-                                                            .pop();
-                                                      },
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                      )
-                                    : _launchFeedback();
-                              } else if (index.isEqual(0)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Schedule(
-                                      data_studentUser: _dataStudentUser,
-                                    ),
-                                  ),
-                                );
-                              } else if (index.isEqual(1)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Performance(
-                                      data_studentUser: _dataStudentUser,
-                                    ),
-                                  ),
-                                );
-                              } else if (index.isEqual(2)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Attendance(
-                                      data_studentUser: _dataStudentUser,
-                                    ),
-                                  ),
-                                );
-                              } else if (index.isEqual(3)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Payment_UI(
-                                      data_studentUser: _dataStudentUser,
-                                    ),
-                                  ),
-                                );
-                              } else if (index.isEqual(4)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Job_History(
-                                      data_studentUser: _dataStudentUser,
-                                    ),
-                                  ),
-                                );
-                              } else if (index.isEqual(5)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Study_Info(
-                                      data_studentUser: _dataStudentUser,
-                                    ),
-                                  ),
-                                );
-                              } else if (index.isEqual(7)) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Achievements(
-                                      data_studentUser: _dataStudentUser,
-                                    ),
-                                  ),
-                                );
-                              } else {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          st_home_screen[index].screen),
-                                );
-                              }
-                            },
-                            child: Container(
-                              padding: EdgeInsets.only(left: UPdMg_15),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Image.asset(
-                                    st_home_screen[index].img,
-                                    scale: 6,
-                                  ),
-                                  SizedBox(
-                                    height: 7,
-                                  ),
-                                  Text(
-                                    st_home_screen[index].name.tr,
-                                    style: TextStyle(
-                                      fontSize: UTitleSize,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 7,
-                    ),
-                  ],
-                );
-        })(),
-      ),
+              ),
+            ),
     );
   }
 }
