@@ -58,7 +58,7 @@ class _Student_HomeState extends State<Student_Home> {
     try {
       var response_stUser = await http.post(
         Uri.parse(
-            'http://192.168.3.87/usea/api/login.php?action=login_student'),
+            'http://192.168.1.182/usea/api/login.php?action=login_student'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -67,7 +67,7 @@ class _Student_HomeState extends State<Student_Home> {
 
       var response_credit = await http.post(
         Uri.parse(
-            'http://192.168.3.87/usea/api/apidata.php?action=study_credit'),
+            'http://192.168.1.182/usea/api/apidata.php?action=study_credit'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -76,7 +76,7 @@ class _Student_HomeState extends State<Student_Home> {
 
       var response_survey = await http.post(
         Uri.parse(
-            'http://192.168.3.87/usea/api/survey_success.php?action=login_student'),
+            'http://192.168.1.182/usea/api/survey_success.php?action=login_student'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -85,7 +85,7 @@ class _Student_HomeState extends State<Student_Home> {
 
       var response_stDetail = await http.post(
         Uri.parse(
-            'http://192.168.3.87/usea/api/student_detail_success.php?action=login_student'),
+            'http://192.168.1.182/usea/api/student_detail_success.php?action=login_student'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -93,7 +93,7 @@ class _Student_HomeState extends State<Student_Home> {
       );
 
       var response_feedback = await http.post(
-        Uri.parse('http://192.168.3.87/usea/api/apidata.php?action=feedback'),
+        Uri.parse('http://192.168.1.182/usea/api/apidata.php?action=feedback'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,

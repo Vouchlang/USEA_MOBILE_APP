@@ -96,7 +96,7 @@ Widget NormalDateStudyInfo(String text) {
     ),
   );
 }
-// *@ End Normal Title
+// *@ End Normal Date Study Info
 
 // *@ Normal Data Study Info
 Widget RowDataStudyInfo(String title, tData) {
@@ -124,7 +124,40 @@ Widget RowDataStudyInfo(String title, tData) {
     ],
   );
 }
-// *@ End Normal Title
+// *@ End Normal Data Study Info
+
+//*@ Data Study Info Assignment Row
+Widget buildStudyDataAssign(
+  String textTitle,
+  textValue,
+) {
+  return IntrinsicHeight(
+    child: Row(
+      children: [
+        Container(
+          width: 75,
+          child: Text(
+            textTitle.tr,
+            style: TextStyle(fontSize: UTitleSize),
+          ),
+        ),
+        buildVerticalDividerAtt(),
+        Expanded(
+          child: Text(
+            textValue,
+            style: TextStyle(
+              fontSize: UTitleSize,
+              fontWeight: UBodyWeight,
+              color: UTextColor,
+              // fontFamily: UKFontFamily,
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+// *@ End Data Study Info Assignment Row
 
 // *@ No Weight Title
 Widget NoWeightTitleTheme(String text) {
@@ -134,7 +167,7 @@ Widget NoWeightTitleTheme(String text) {
       fontSize: UTitleSize,
       fontWeight: UBodyWeight,
       color: UTextColor,
-      fontFamily: UKFontFamily,
+      // fontFamily: UKFontFamily,
     ),
   );
 }
@@ -164,6 +197,22 @@ Widget ScholarshipBodyTheme(String text) {
   );
 }
 // *@ End Scholarship Body text
+
+Widget buildTextContact(
+  String text,
+  double size,
+  FontWeight fontWeight,
+) {
+  return SelectableText(
+    text,
+    textAlign: TextAlign.justify,
+    style: TextStyle(
+      fontSize: size,
+      fontFamily: UKFontFamily,
+      fontWeight: fontWeight,
+    ),
+  );
+}
 
 // *@ Date Schedule
 Widget ScheduleDate(String text) {
@@ -249,7 +298,6 @@ Widget buildCareerCardRow(
     ],
   );
 }
-
 // *@ End Career Card Row
 
 // *@ Body text

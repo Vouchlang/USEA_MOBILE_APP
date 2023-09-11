@@ -41,8 +41,8 @@ class _ScheduleState extends State<Schedule> {
     try {
       var response = await http.post(
         Uri.parse(Get.locale?.languageCode == 'km'
-            ? 'http://192.168.3.87/usea/api/apidata.php?action=study_schedule'
-            : 'http://192.168.3.87/usea/api/student_schedule_en.php?action=login_student'),
+            ? 'http://192.168.1.182/usea/api/apidata.php?action=study_schedule'
+            : 'http://192.168.1.182/usea/api/student_schedule_en.php?action=login_student'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,

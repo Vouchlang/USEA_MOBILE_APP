@@ -46,30 +46,11 @@ class _ContactState extends State<Contact> {
                         width: UWidth10,
                       ),
                       Expanded(
-                        child: contact[index].link.isEmpty
-                            ? Container(
-                                padding: EdgeInsets.only(top: 4),
-                                child: buildTitleBody(contact[index].text.tr,
-                                    UTitleSize, UBodyWeight),
-                              )
-                            : InkWell(
-                                onTap: () {
-                                  void _launchTelegram() async {
-                                    if (await canLaunch(contact[index].link)) {
-                                      await launch(contact[index].link);
-                                    } else {
-                                      throw 'Could not launch ${contact[index].link}';
-                                    }
-                                  }
-
-                                  _launchTelegram();
-                                },
-                                child: Container(
-                                  padding: EdgeInsets.only(top: 4),
-                                  child: buildTitleBody(contact[index].text.tr,
-                                      UTitleSize, UBodyWeight),
-                                ),
-                              ),
+                        child: Container(
+                          padding: EdgeInsets.only(top: 4),
+                          child: buildTextContact(
+                              contact[index].text.tr, UTitleSize, UBodyWeight),
+                        ),
                       ),
                     ],
                   ),

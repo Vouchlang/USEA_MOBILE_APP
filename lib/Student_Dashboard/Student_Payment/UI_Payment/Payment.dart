@@ -36,7 +36,7 @@ class _Payment_UIState extends State<Payment_UI> {
 
     try {
       var responsePayStudy = await http.post(
-        Uri.parse('http://192.168.3.87/usea/api/apidata.php?action=payment'),
+        Uri.parse('http://192.168.1.182/usea/api/apidata.php?action=payment'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -44,7 +44,7 @@ class _Payment_UIState extends State<Payment_UI> {
       );
       var responseOtherPay = await http.post(
         Uri.parse(
-            'http://192.168.3.87/usea/api/apidata.php?action=other_payment'),
+            'http://192.168.1.182/usea/api/apidata.php?action=other_payment'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,

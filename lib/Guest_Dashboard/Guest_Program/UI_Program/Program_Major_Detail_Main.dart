@@ -95,22 +95,24 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    (widget.majorInfoData['major_data'] != null)
-                        ? (widget.majorInfoData['major_data'].firstWhere(
-                                    (degree) =>
-                                        degree['degree_name'] ==
-                                        selectedEducationName,
-                                    orElse: () => {})['degree_detail']
-                                ['major_info'] ??
-                            'No major information available')
-                        : 'No major information available',
-                    textAlign: TextAlign.justify,
-                    style: TextStyle(
-                      fontSize: UTitleSize,
-                      fontFamily: UKFontFamily,
-                    ),
-                  ),
+                  widget.majorInfoData['major_data'] != null
+                      ? Text(
+                          widget.majorInfoData['major_data'].firstWhere(
+                                      (degree) =>
+                                          degree['degree_name'] ==
+                                          selectedEducationName,
+                                      orElse: () => {})['degree_detail']
+                                  ['major_info'] ??
+                              'គ្មានទិន្ន័យ'.tr,
+                          textAlign: TextAlign.justify,
+                          style: TextStyle(
+                            fontSize: UTitleSize,
+                            fontFamily: UKFontFamily,
+                          ),
+                        )
+                      : Center(
+                          child: Text('គ្មានទិន្ន័យ'.tr),
+                        ),
                   SizedBox(height: UHeight10),
                   GridView.builder(
                     shrinkWrap: true,
@@ -237,19 +239,18 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                                 );
                               }
                             },
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SizedBox(height: 7),
-                                Text(
-                                  yearName.tr,
-                                  style: TextStyle(
-                                    fontSize: UTitleSize,
-                                    fontWeight: UTitleWeight,
-                                    color: UTextColor,
-                                  ),
+                            child: Container(
+                              padding: EdgeInsets.all(UPdMg_10),
+                              alignment: Alignment.center,
+                              child: Text(
+                                yearName.tr,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: UTitleSize,
+                                  fontWeight: UTitleWeight,
+                                  color: UTextColor,
                                 ),
-                              ],
+                              ),
                             ),
                           ),
                         );

@@ -14,15 +14,21 @@ class Faculty_Data {
 
 class Major_Data {
   late String major_name;
+  late String course_hour;
+
   late List<Subject_Data> subject_data;
 
-  Major_Data({required this.major_name, required this.subject_data});
+  Major_Data(
+      {required this.major_name,
+      required this.course_hour,
+      required this.subject_data});
 }
 
 class Subject_Data {
-  late String subject, hour_per_week, weeks, total_hour;
+  late String no, subject, hour_per_week, weeks, total_hour;
 
   Subject_Data({
+    required this.no,
     required this.subject,
     required this.hour_per_week,
     required this.weeks,

@@ -29,42 +29,105 @@ class _Student_LogInState extends State<Student_LogIn> {
     final String studentId = _textControllerUsername.text;
     final String password = _textControllerPsw.text;
 
-    var response = await http.post(
-      Uri.parse('http://192.168.3.87/usea/api/login.php?action=login_student'),
-      body: {
-        'student_id': studentId,
-        'pwd': password,
-      },
-    );
+    try {
+      var response = await http.post(
+        Uri.parse(
+            'http://192.168.1.182/usea/api/login.php?action=login_student'),
+        body: {
+          'student_id': studentId,
+          'pwd': password,
+        },
+      );
 
-    if (response.statusCode == 200) {
-      final data = json.decode(response.body);
-      if (data != null) {
-        final studentUserData = data['student_users'];
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        if (data != null) {
+          final studentUserData = data['student_users'];
 
-        List<StudentUser> dataList_StudentUser = [];
-        for (var item in studentUserData) {
-          StudentUser dataModel1 = StudentUser(
-            name_kh: item['name_kh'],
-            student_id: item['student_id'],
-            pwd: item['pwd'],
+          List<StudentUser> dataList_StudentUser = [];
+          for (var item in studentUserData) {
+            StudentUser dataModel1 = StudentUser(
+              name_kh: item['name_kh'],
+              student_id: item['student_id'],
+              pwd: item['pwd'],
+            );
+            dataList_StudentUser.add(dataModel1);
+          }
+
+          SharedPreferences sharedPref = await SharedPreferences.getInstance();
+          sharedPref.setBool('login', true);
+          saveStudentUser(sharedPref, dataList_StudentUser);
+
+          Get.off(
+            () => St_Home(
+              data_studentUser: dataList_StudentUser,
+            ),
           );
-          dataList_StudentUser.add(dataModel1);
+        } else {
+          print('Error');
         }
-
-        SharedPreferences sharedPref = await SharedPreferences.getInstance();
-        sharedPref.setBool('login', true);
-        saveStudentUser(sharedPref, dataList_StudentUser);
-
-        Get.off(
-          () => St_Home(
-            data_studentUser: dataList_StudentUser,
-          ),
-        );
       } else {
-        print('Error');
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (BuildContext context) {
+            return Dialog(
+              elevation: 2,
+              child: Container(
+                height: 175,
+                margin: EdgeInsets.all(7),
+                padding: EdgeInsets.symmetric(horizontal: UPdMg_10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(URoundedLarge),
+                  color: UBackgroundColor,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'គណនីនិស្សិត'.tr,
+                      style: TextStyle(
+                          fontSize: UTitleSize16, fontWeight: UTitleWeight),
+                    ),
+                    SizedBox(
+                      height: UHeight10,
+                    ),
+                    Text(
+                      'អត្តលេខនិស្សិត ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវ។ សូមបញ្ចូលម្ដងទៀត!!!'
+                          .tr,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 13.5,
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
+                    Divider(),
+                    InkWell(
+                      onTap: () => Navigator.pop(context),
+                      child: Container(
+                        alignment: Alignment.center,
+                        width: UFullWidth,
+                        child: Text(
+                          'OK',
+                          style: TextStyle(
+                              color: UPrimaryColor,
+                              fontSize: UTitleSize,
+                              fontFamily: UEFontFamily,
+                              fontWeight: UBodyWeight),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            );
+          },
+        );
       }
-    } else {
+    } catch (e) {
+      // Handle exceptions here
+      print('An error occurred: $e');
       showDialog(
         context: context,
         barrierDismissible: false,
@@ -92,12 +155,9 @@ class _Student_LogInState extends State<Student_LogIn> {
                     height: UHeight10,
                   ),
                   Text(
-                    'អត្តលេខនិស្សិត ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវ។ សូមបញ្ចូលម្ដងទៀត!!!'
-                        .tr,
+                    'Server Error!!!'.tr,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 13.5,
-                    ),
+                    style: TextStyle(fontSize: 13.5, fontFamily: UEFontFamily),
                   ),
                   SizedBox(height: 20.0),
                   Divider(),
@@ -121,7 +181,7 @@ class _Student_LogInState extends State<Student_LogIn> {
             ),
           );
         },
-      );
+      ); // You can add further error handling logic if needed
     }
   }
 

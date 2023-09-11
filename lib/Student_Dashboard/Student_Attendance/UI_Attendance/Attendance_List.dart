@@ -30,7 +30,7 @@ class _AttendanceListState extends State<AttendanceList> {
 
   Future<void> _refreshData() async {
     String apiUrl =
-        'http://192.168.3.87/usea/api/apidata.php?action=attendance_data';
+        'http://192.168.1.182/usea/api/apidata.php?action=attendance_data';
 
     try {
       final response = await http.post(

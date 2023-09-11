@@ -7,27 +7,32 @@ import '../../../theme_builder.dart';
 import '../Class_Program/Class_Program_ACCA.dart';
 
 class Program_ACCA extends StatelessWidget {
-  String major_name;
-  List<Subject_Data> subject_data;
+  String majorName;
+  String course_hour;
+
+  List<Subject_Data> educationNames;
   Program_ACCA(
-      {super.key, required this.major_name, required this.subject_data});
+      {super.key,
+      required this.majorName,
+      required this.course_hour,
+      required this.educationNames});
 
   @override
   Widget build(BuildContext context) {
     double totalHour = 0;
-    subject_data.forEach((subject) {
-      // double hoursPerWeek = double.tryParse(subject.hour_per_week) ?? 0.0;
-      // double weeks = double.tryParse(subject.weeks) ?? 0.0;
+    late String formattedTotal;
+    educationNames.forEach((subject) {
       double weeks = double.tryParse(subject.total_hour) ?? 0.0;
-
       totalHour += weeks;
+      formattedTotal = totalHour
+          .toStringAsFixed(totalHour.truncateToDouble() == totalHour ? 0 : 1);
     });
 
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: major_name.tr),
+      appBar: Custom_AppBar(title: majorName.tr),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 7, vertical: UPdMg_8),
+        padding: EdgeInsets.all(UPdMg_8),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -70,7 +75,7 @@ class Program_ACCA extends StatelessWidget {
                             ),
                             SizedBox(width: UWidth10),
                             Container(
-                              width: 65,
+                              width: Get.locale?.languageCode == 'km' ? 65 : 75,
                               alignment: Alignment.center,
                               child: TitleTheme(
                                 'ម៉ោងសរុប'.tr,
@@ -85,10 +90,10 @@ class Program_ACCA extends StatelessWidget {
                     padding: EdgeInsets.fromLTRB(
                         UPdMg_5, UPdMg_10, UPdMg_5, UZeroPixel),
                     child: Column(
-                        children: subject_data.map((subject) {
+                        children: educationNames.map((subject) {
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Expanded(
                             child: Container(
@@ -97,17 +102,55 @@ class Program_ACCA extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    subject.subject.toString().tr,
-                                    style: TextStyle(
-                                      fontSize: UTitleSize,
-                                      fontWeight: UBodyWeight,
-                                      color: UTextColor,
-                                    ),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      NoWeightTitleTheme(
+                                          subject.no.toString() + '.\t'),
+                                      Expanded(
+                                        child: Container(
+                                          child: Text(
+                                            subject.subject
+                                                        .toString()
+                                                        .isEmpty ||
+                                                    subject.subject
+                                                            .toString() ==
+                                                        null
+                                                ? 'N/A'
+                                                : subject.subject.toString().tr,
+                                            style: TextStyle(
+                                              fontSize: UTitleSize,
+                                              fontWeight: UBodyWeight,
+                                              color: UTextColor,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  buildCHText(
-                                      subject.hour_per_week.toString().tr +
-                                          ' ម៉ោងក្នុង១សប្ដាហ៍')
+                                  Row(
+                                    children: [
+                                      Text(
+                                        subject.no.isEmpty || subject.no == null
+                                            ? 'N/A'
+                                            : subject.no.toString() + '.\t',
+                                        style: TextStyle(
+                                          fontWeight: UBodyWeight,
+                                          color: Colors.transparent,
+                                          fontFamily: UKFontFamily,
+                                        ),
+                                      ),
+                                      buildCHText(
+                                          subject.hour_per_week.isEmpty ||
+                                                  subject.hour_per_week == null
+                                              ? 'N/A'
+                                              : subject.hour_per_week
+                                                      .toString()
+                                                      .tr +
+                                                  '\tម៉ោង/សប្ដាហ៍'.tr)
+                                    ],
+                                  )
                                 ],
                               ),
                             ),
@@ -118,18 +161,30 @@ class Program_ACCA extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Container(
+                                    padding:
+                                        EdgeInsets.symmetric(vertical: UPdMg_5),
                                     alignment: Alignment.center,
                                     width: 55,
                                     child: NoWeightTitleTheme(
-                                        subject.weeks.toString()),
+                                        subject.weeks.isEmpty ||
+                                                subject.weeks == null
+                                            ? 'N/A'
+                                            : subject.weeks.toString()),
                                   ),
                                   SizedBox(width: UWidth15),
                                   Container(
+                                    padding:
+                                        EdgeInsets.symmetric(vertical: UPdMg_5),
                                     alignment: Alignment.center,
-                                    width: 30,
+                                    width: Get.locale?.languageCode == 'km'
+                                        ? 30
+                                        : 40,
                                     margin: EdgeInsets.only(right: UPdMg_10),
                                     child: NoWeightTitleTheme(
-                                        subject.total_hour.toString()),
+                                        subject.total_hour.isEmpty ||
+                                                subject.total_hour == null
+                                            ? 'N/A'
+                                            : subject.total_hour.toString()),
                                   ),
                                 ],
                               ),
@@ -152,7 +207,9 @@ class Program_ACCA extends StatelessWidget {
                         Row(
                           children: [
                             TitleTheme(
-                              totalHour.toStringAsFixed(0),
+                              course_hour.isEmpty || course_hour == null
+                                  ? 'N/A'
+                                  : course_hour,
                             ),
                           ],
                         ),

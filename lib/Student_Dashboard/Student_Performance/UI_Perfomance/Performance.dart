@@ -29,7 +29,7 @@ class _PerformanceState extends State<Performance> {
 
   Future<void> _refreshData() async {
     String apiUrl =
-        'http://192.168.3.87/usea/api/apidata.php?action=study_performance';
+        'http://192.168.1.182/usea/api/apidata.php?action=study_performance';
     try {
       final response = await http.post(
         Uri.parse(apiUrl),

@@ -22,16 +22,6 @@ class Program_SHC extends StatefulWidget {
 }
 
 class _Program_SHCState extends State<Program_SHC> {
-  String selectedSemesterName = '';
-
-  @override
-  void initState() {
-    super.initState();
-    if (widget.yearsData.isNotEmpty) {
-      selectedSemesterName = widget.yearsData[0]['semester_name'];
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,62 +29,9 @@ class _Program_SHCState extends State<Program_SHC> {
       appBar: Custom_AppBar(title: widget.majorName.tr),
       body: Column(
         children: [
-          Container(
-            height: 70,
-            alignment: Alignment.center,
-            child: ListView.builder(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemCount: widget.yearsData.length,
-              itemBuilder: (context, index) {
-                var yearData = widget.yearsData[index] as Map<dynamic, dynamic>;
-                var semesterName = yearData['semester_name'];
-                final isLastIndex = index == widget.yearsData.length - 1;
-
-                return InkWell(
-                  onTap: () {
-                    setState(() {
-                      selectedSemesterName = semesterName;
-                    });
-                  },
-                  child: AnimatedContainer(
-                    alignment: Alignment.center,
-                    duration: Duration(milliseconds: 300),
-                    margin: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_10,
-                        isLastIndex ? UPdMg_10 : 0, UPdMg_10),
-                    padding: EdgeInsets.all(UPdMg_10),
-                    width: 165,
-                    decoration: BoxDecoration(
-                      color: selectedSemesterName == semesterName
-                          ? UPrimaryColor
-                          : UBackgroundColor,
-                      borderRadius: BorderRadius.circular(UPdMg_5),
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 1,
-                          color: UGreyColor,
-                          offset: Offset(0, 1),
-                        )
-                      ],
-                    ),
-                    child: Text(
-                      semesterName.toString().tr,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: selectedSemesterName == semesterName
-                            ? UBackgroundColor
-                            : UTextColor,
-                        fontSize: UTitleSize,
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
           Expanded(
             child: SingleChildScrollView(
-              padding: EdgeInsets.symmetric(horizontal: 7),
+              padding: EdgeInsets.all(UPdMg_8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: _buildSubjectList(),
@@ -107,25 +44,14 @@ class _Program_SHCState extends State<Program_SHC> {
   }
 
   List<Widget> _buildSubjectList() {
-    var selectedYearData = widget.yearsData.firstWhere((yearData) {
-      if (yearData is Map<dynamic, dynamic>) {
-        return yearData['semester_name'] == selectedSemesterName;
-      }
-      return false;
-    }, orElse: () => {});
+    final subjectsData = widget.yearsData[0]['subject_data'] as List<dynamic>;
+    String total_credit = widget.yearsData[0]['total_credit'] ?? 'N/A';
+    int i = 1;
 
-    if (selectedYearData.isEmpty) {
-      return [
-        Text('No information available for the selected semester.'),
-      ];
-    }
-
-    var semesterData = selectedYearData['semester_data'] as List<dynamic>;
-
-    var subjectWidgets = semesterData.map<Widget>((subjectData) {
+    var subjectWidgets = subjectsData.map<Widget>((subjectData) {
       var subject = subjectData['Subject'];
-      var hour = subjectData['Hour'];
       var credit = subjectData['Credit'];
+      final index = i++;
 
       return Container(
         padding: EdgeInsets.fromLTRB(UPdMg_5, UPdMg_10, UPdMg_5, UZeroPixel),
@@ -134,38 +60,45 @@ class _Program_SHCState extends State<Program_SHC> {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
-                  child: Container(
-                    margin: EdgeInsets.only(right: UPdMg_15),
-                    padding: EdgeInsets.symmetric(vertical: UPdMg_5),
-                    child: Text(
-                      subject.toString().tr,
-                      style: TextStyle(
-                        fontSize: UTitleSize,
-                        fontWeight: UBodyWeight,
-                        color: UTextColor,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: UPdMg_5),
+                        margin: EdgeInsets.only(right: UPdMg_5),
+                        child: NoWeightTitleTheme(index.toString() + '.'),
                       ),
-                    ),
+                      Expanded(
+                        child: Container(
+                          margin: EdgeInsets.only(right: UPdMg_15),
+                          padding: EdgeInsets.symmetric(vertical: UPdMg_5),
+                          child: Text(
+                            subject,
+                            style: TextStyle(
+                              fontSize: UTitleSize,
+                              fontWeight: UBodyWeight,
+                              color: UTextColor,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      alignment: Alignment.center,
-                      width: 55,
-                      child: NoWeightTitleTheme(hour.toString()),
-                    ),
-                    SizedBox(width: UWidth10),
-                    Container(
-                      alignment: Alignment.center,
-                      width: 30,
-                      margin: EdgeInsets.only(right: UPdMg_10),
-                      child: NoWeightTitleTheme(credit.toString()),
-                    ),
-                  ],
+                SizedBox(
+                  width: UWidth15,
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: UPdMg_5),
+                  alignment: Alignment.centerRight,
+                  margin: EdgeInsets.only(right: UPdMg_15),
+                  child: NoWeightTitleTheme(
+                      credit.toString().isEmpty || credit == null
+                          ? 'N/A'
+                          : credit),
                 ),
               ],
             ),
@@ -173,16 +106,6 @@ class _Program_SHCState extends State<Program_SHC> {
         ),
       );
     }).toList();
-
-    double totalHours = 0;
-    double totalCredits = 0;
-
-    semesterData.forEach((subjectData) {
-      var hour = subjectData['Hour'];
-      var credit = subjectData['Credit'];
-      totalHours += double.parse(hour ?? '0');
-      totalCredits += double.parse(credit ?? '0');
-    });
 
     return [
       Card(
@@ -213,24 +136,12 @@ class _Program_SHCState extends State<Program_SHC> {
                   TitleTheme(
                     'មុខវិជ្ជា'.tr,
                   ),
-                  Row(
-                    children: [
-                      Container(
-                        width: 55,
-                        alignment: Alignment.centerRight,
-                        child: TitleTheme(
-                          'ម៉ោង'.tr,
-                        ),
-                      ),
-                      SizedBox(width: UWidth15),
-                      Container(
-                        alignment: Alignment.center,
-                        width: 55,
-                        child: TitleTheme(
-                          'ក្រេឌីត'.tr,
-                        ),
-                      ),
-                    ],
+                  Container(
+                    alignment: Alignment.center,
+                    width: 55,
+                    child: TitleTheme(
+                      'ក្រេឌីត'.tr,
+                    ),
                   ),
                 ],
               ),
@@ -238,7 +149,7 @@ class _Program_SHCState extends State<Program_SHC> {
             ...subjectWidgets,
             Container(
               padding:
-                  EdgeInsets.fromLTRB(UPdMg_5, UPdMg_10, UPdMg_5, UPdMg_15),
+                  EdgeInsets.fromLTRB(UPdMg_5, UPdMg_15, UPdMg_5, UPdMg_15),
               width: double.infinity,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -246,25 +157,13 @@ class _Program_SHCState extends State<Program_SHC> {
                   TitleTheme(
                     'សរុប'.tr,
                   ),
-                  Row(
-                    children: [
-                      Container(
-                        width: 55,
-                        alignment: Alignment.center,
-                        child: TitleTheme(
-                          totalHours.toStringAsFixed(0),
-                        ),
-                      ),
-                      SizedBox(
-                        width: UWidth10,
-                      ),
-                      Container(
-                        width: 30,
-                        alignment: Alignment.center,
-                        margin: EdgeInsets.only(right: UPdMg_10),
-                        child: TitleTheme(totalCredits.toStringAsFixed(0)),
-                      ),
-                    ],
+                  Container(
+                    alignment: Alignment.centerRight,
+                    margin: EdgeInsets.only(right: UPdMg_15),
+                    child: TitleTheme(
+                        total_credit.toString().isEmpty || total_credit == null
+                            ? 'N/A'
+                            : total_credit.toString()),
                   ),
                 ],
               ),
