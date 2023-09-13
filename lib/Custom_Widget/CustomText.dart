@@ -141,7 +141,7 @@ Widget buildStudyDataAssign(
             style: TextStyle(fontSize: UTitleSize),
           ),
         ),
-        buildVerticalDividerAtt(),
+        // buildVerticalDividerAtt(),
         Expanded(
           child: Text(
             textValue,

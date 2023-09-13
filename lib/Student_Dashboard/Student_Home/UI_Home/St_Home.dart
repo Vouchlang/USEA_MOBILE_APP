@@ -45,37 +45,35 @@ class _St_HomeState extends State<St_Home> with SingleTickerProviderStateMixin {
     return Scaffold(
       body: pages[currentIndex],
       bottomNavigationBar: Container(
-        color: USecondaryColor,
-        height: 90,
-        child: Center(
-          child: BottomNavigationBar(
-            backgroundColor: USecondaryColor,
-            elevation: 0,
-            onTap: onTap,
-            currentIndex: currentIndex,
-            selectedItemColor: UPrimaryColor,
-            unselectedItemColor: UGreyColor,
-            selectedFontSize: 11,
-            unselectedFontSize: 11,
-            selectedLabelStyle:
-                TextStyle(fontWeight: UTitleWeight, fontSize: UBodySize),
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
-                  size: 20,
-                ),
-                label: 'ទំព័រដើម'.tr,
+        color: Colors.transparent,
+        padding: EdgeInsets.symmetric(vertical: UPdMg_5),
+        child: BottomNavigationBar(
+          backgroundColor: USecondaryColor,
+          elevation: 0,
+          onTap: onTap,
+          currentIndex: currentIndex,
+          selectedItemColor: UPrimaryColor,
+          unselectedItemColor: UGreyColor,
+          selectedFontSize: 11,
+          unselectedFontSize: 11,
+          selectedLabelStyle:
+              TextStyle(fontWeight: UTitleWeight, fontSize: UBodySize),
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+                size: 20,
               ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.account_box,
-                  size: 20,
-                ),
-                label: 'ចូលគណនី'.tr,
+              label: 'ទំព័រដើម'.tr,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.account_box,
+                size: 20,
               ),
-            ],
-          ),
+              label: 'ចូលគណនី'.tr,
+            ),
+          ],
         ),
       ),
     );

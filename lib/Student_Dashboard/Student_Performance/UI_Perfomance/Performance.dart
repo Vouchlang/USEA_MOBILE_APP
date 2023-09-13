@@ -50,24 +50,56 @@ class _PerformanceState extends State<Performance> {
             List<Subject> subjects = [];
 
             semesterData['subjects'].forEach((subjectData) {
+              List<Attendances> attendances = [];
+              List<Scores> scores = [];
+
+              subjectData['attendances'].forEach((attendancesData) {
+                Attendances attendancesObj = Attendances(
+                  attendance_a: attendancesData['attendance_a'] ?? 'N/A',
+                  attendance_al: attendancesData['attendance_al'] ?? 'N/A',
+                  attendance_pm: attendancesData['attendance_pm'] ?? 'N/A',
+                  attendance_ps: attendancesData['attendance_ps'] ?? 'N/A',
+                  attendance_all: attendancesData['attendance_all'] ?? 'N/A',
+                );
+
+                attendances.add(attendancesObj);
+              });
+
+              subjectData['scores'].forEach((scoresData) {
+                Scores scoresObj = Scores(
+                  score_attendance: scoresData['score_attendance'] ?? 'N/A',
+                  score_assignment: scoresData['score_assignment'] ?? 'N/A',
+                  score_mid_term: scoresData['score_mid_term'] ?? 'N/A',
+                  score_final: scoresData['score_final'] ?? 'N/A',
+                  number_attendance: scoresData['number_attendance'] ?? 'N/A',
+                  number_assignment: scoresData['number_assignment'] ?? 'N/A',
+                  number_mid_term: scoresData['number_mid_term'] ?? 'N/A',
+                  number_final: scoresData['number_final'] ?? 'N/A',
+                );
+
+                scores.add(scoresObj);
+              });
+
               Subject subjectObj = Subject(
                 id: subjectData['id'] ?? 'N/A',
                 name_kh: subjectData['name_kh'] ?? 'N/A',
                 name_en: subjectData['name_en'] ?? 'N/A',
-                pscore_attendance: subjectData['pscore_attendance'] ?? 'N/A',
-                pscore_assignment: subjectData['pscore_assignment'] ?? 'N/A',
-                pscore_mid_term: subjectData['pscore_mid_term'] ?? 'N/A',
-                pscore_final: subjectData['pscore_final'] ?? 'N/A',
+                // pscore_attendance: subjectData['pscore_attendance'] ?? 'N/A',
+                // pscore_assignment: subjectData['pscore_assignment'] ?? 'N/A',
+                // pscore_mid_term: subjectData['pscore_mid_term'] ?? 'N/A',
+                // pscore_final: subjectData['pscore_final'] ?? 'N/A',
                 pscore_total: subjectData['pscore_total'] ?? 'N/A',
-                number_attendance: subjectData['number_attendance'] ?? 'N/A',
-                number_assignment: subjectData['number_assignment'] ?? 'N/A',
-                number_mid_term: subjectData['number_mid_term'] ?? 'N/A',
-                number_final: subjectData['number_final'] ?? 'N/A',
-                attendance_a: subjectData['attendance_a'] ?? 'N/A',
-                attendance_al: subjectData['attendance_al'] ?? 'N/A',
-                attendance_pm: subjectData['attendance_pm'] ?? 'N/A',
+                // number_attendance: subjectData['number_attendance'] ?? 'N/A',
+                // number_assignment: subjectData['number_assignment'] ?? 'N/A',
+                // number_mid_term: subjectData['number_mid_term'] ?? 'N/A',
+                // number_final: subjectData['number_final'] ?? 'N/A',
+                // attendance_a: subjectData['attendance_a'] ?? 'N/A',
+                // attendance_al: subjectData['attendance_al'] ?? 'N/A',
+                // attendance_pm: subjectData['attendance_pm'] ?? 'N/A',
                 attendance_ps: subjectData['attendance_ps'] ?? 'N/A',
-                attendance_all: subjectData['attendance_all'] ?? 'N/A',
+                // attendance_all: subjectData['attendance_all'] ?? 'N/A',
+                attendances: attendances,
+                scores: scores,
               );
 
               subjects.add(subjectObj);
@@ -428,28 +460,32 @@ class _PerformanceState extends State<Performance> {
                                                                                                 ],
                                                                                               ),
                                                                                               Column(
-                                                                                                children: [
-                                                                                                  CustomPerformanceDiaglogTextTheme(
-                                                                                                    subject.attendance_al,
-                                                                                                    UTitleSize,
-                                                                                                    UYellowColor,
-                                                                                                  ),
-                                                                                                  CustomPerformanceDiaglogTextTheme(
-                                                                                                    subject.attendance_pm,
-                                                                                                    UTitleSize,
-                                                                                                    UOrangeColor,
-                                                                                                  ),
-                                                                                                  CustomPerformanceDiaglogTextTheme(
-                                                                                                    subject.attendance_a,
-                                                                                                    UTitleSize,
-                                                                                                    URedColor,
-                                                                                                  ),
-                                                                                                  CustomPerformanceDiaglogTextTheme(
-                                                                                                    subject.attendance_ps,
-                                                                                                    UTitleSize,
-                                                                                                    UScoreColor,
-                                                                                                  ),
-                                                                                                ],
+                                                                                                children: subject.attendances.map((att) {
+                                                                                                  return Column(
+                                                                                                    children: [
+                                                                                                      CustomPerformanceDiaglogTextTheme(
+                                                                                                        att.attendance_al,
+                                                                                                        UTitleSize,
+                                                                                                        UYellowColor,
+                                                                                                      ),
+                                                                                                      CustomPerformanceDiaglogTextTheme(
+                                                                                                        att.attendance_pm,
+                                                                                                        UTitleSize,
+                                                                                                        UOrangeColor,
+                                                                                                      ),
+                                                                                                      CustomPerformanceDiaglogTextTheme(
+                                                                                                        att.attendance_a,
+                                                                                                        UTitleSize,
+                                                                                                        URedColor,
+                                                                                                      ),
+                                                                                                      CustomPerformanceDiaglogTextTheme(
+                                                                                                        att.attendance_ps,
+                                                                                                        UTitleSize,
+                                                                                                        UScoreColor,
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  );
+                                                                                                }).toList(),
                                                                                               )
                                                                                             ],
                                                                                           ),
@@ -587,8 +623,8 @@ class _PerformanceState extends State<Performance> {
                                                                                         padding: EdgeInsets.symmetric(vertical: UPdMg_5),
                                                                                         child: Column(
                                                                                           mainAxisSize: MainAxisSize.min,
-                                                                                          children: [
-                                                                                            IntrinsicHeight(
+                                                                                          children: subject.scores.map((score) {
+                                                                                            return IntrinsicHeight(
                                                                                               child: Row(
                                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                                 children: [
@@ -632,30 +668,29 @@ class _PerformanceState extends State<Performance> {
                                                                                                             UPrimaryColor,
                                                                                                           ),
                                                                                                           CustomPerformanceDiaglogTextTheme(
-                                                                                                            '99.98/100',
-                                                                                                            // subject.number_attendance,
+                                                                                                            score.number_attendance,
                                                                                                             UTitleSize,
                                                                                                             UScoreColor,
                                                                                                           ),
                                                                                                           CustomPerformanceDiaglogTextTheme(
-                                                                                                            subject.number_assignment,
+                                                                                                            score.number_assignment,
                                                                                                             UTitleSize,
                                                                                                             UScoreColor,
                                                                                                           ),
                                                                                                           CustomPerformanceDiaglogTextTheme(
-                                                                                                            subject.number_mid_term,
+                                                                                                            score.number_mid_term,
                                                                                                             UTitleSize,
                                                                                                             UScoreColor,
                                                                                                           ),
                                                                                                           CustomPerformanceDiaglogTextTheme(
-                                                                                                            subject.number_final,
+                                                                                                            score.number_final,
                                                                                                             UTitleSize,
                                                                                                             UScoreColor,
                                                                                                           ),
                                                                                                         ],
                                                                                                       ),
                                                                                                       SizedBox(
-                                                                                                        width: 5,
+                                                                                                        width: Get.locale?.languageCode == 'km' ? UWidth15 : UWidth5,
                                                                                                       ),
                                                                                                       Column(
                                                                                                         children: [
@@ -665,23 +700,22 @@ class _PerformanceState extends State<Performance> {
                                                                                                             UPrimaryColor,
                                                                                                           ),
                                                                                                           CustomPerformanceDiaglogTextTheme(
-                                                                                                            '99.65/100',
-                                                                                                            // subject.pscore_attendance
+                                                                                                            score.score_attendance,
                                                                                                             UTitleSize,
                                                                                                             UScoreColor,
                                                                                                           ),
                                                                                                           CustomPerformanceDiaglogTextTheme(
-                                                                                                            subject.pscore_assignment,
+                                                                                                            score.score_assignment,
                                                                                                             UTitleSize,
                                                                                                             UScoreColor,
                                                                                                           ),
                                                                                                           CustomPerformanceDiaglogTextTheme(
-                                                                                                            subject.pscore_mid_term,
+                                                                                                            score.score_mid_term,
                                                                                                             UTitleSize,
                                                                                                             UScoreColor,
                                                                                                           ),
                                                                                                           CustomPerformanceDiaglogTextTheme(
-                                                                                                            subject.pscore_final,
+                                                                                                            score.score_final,
                                                                                                             UTitleSize,
                                                                                                             UScoreColor,
                                                                                                           ),
@@ -691,8 +725,8 @@ class _PerformanceState extends State<Performance> {
                                                                                                   )
                                                                                                 ],
                                                                                               ),
-                                                                                            ),
-                                                                                          ],
+                                                                                            );
+                                                                                          }).toList(),
                                                                                         ),
                                                                                       ),
                                                                                     ),

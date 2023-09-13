@@ -48,7 +48,7 @@ class _Study_InfoState extends State<Study_Info> {
       );
       var response_assignment = await http.post(
         Uri.parse(
-            'http://192.168.1.51/hosting_api/Test_student/st_study_info_assignment_testing.php'),
+            'http://192.168.1.182/usea/api/apidata.php?action=moodle_activities'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
