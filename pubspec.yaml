@@ -59,6 +59,7 @@ dependencies:
   styled_divider: ^1.0.5
   google_nav_bar: ^5.0.6
   percent_indicator: ^4.2.3
+  change_app_package_name: ^1.1.0
 
 
 dev_dependencies:

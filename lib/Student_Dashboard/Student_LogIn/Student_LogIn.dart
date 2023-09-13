@@ -128,60 +128,63 @@ class _Student_LogInState extends State<Student_LogIn> {
     } catch (e) {
       // Handle exceptions here
       print('An error occurred: $e');
-      showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (BuildContext context) {
-          return Dialog(
-            elevation: 2,
-            child: Container(
-              height: 175,
-              margin: EdgeInsets.all(7),
-              padding: EdgeInsets.symmetric(horizontal: UPdMg_10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(URoundedLarge),
-                color: UBackgroundColor,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    'គណនីនិស្សិត'.tr,
-                    style: TextStyle(
-                        fontSize: UTitleSize16, fontWeight: UTitleWeight),
-                  ),
-                  SizedBox(
-                    height: UHeight10,
-                  ),
-                  Text(
-                    'Server Error!!!'.tr,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 13.5, fontFamily: UEFontFamily),
-                  ),
-                  SizedBox(height: 20.0),
-                  Divider(),
-                  InkWell(
-                    onTap: () => Navigator.pop(context),
-                    child: Container(
-                      alignment: Alignment.center,
-                      width: UFullWidth,
-                      child: Text(
-                        'OK',
-                        style: TextStyle(
-                            color: UPrimaryColor,
-                            fontSize: UTitleSize,
-                            fontFamily: UEFontFamily,
-                            fontWeight: UBodyWeight),
-                      ),
+      if (mounted) {
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (BuildContext context) {
+            return Dialog(
+              elevation: 2,
+              child: Container(
+                height: 175,
+                margin: EdgeInsets.all(7),
+                padding: EdgeInsets.symmetric(horizontal: UPdMg_10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(URoundedLarge),
+                  color: UBackgroundColor,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'គណនីនិស្សិត'.tr,
+                      style: TextStyle(
+                          fontSize: UTitleSize16, fontWeight: UTitleWeight),
                     ),
-                  )
-                ],
+                    SizedBox(
+                      height: UHeight10,
+                    ),
+                    Text(
+                      'Server Error!!!'.tr,
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontSize: 13.5, fontFamily: UEFontFamily),
+                    ),
+                    SizedBox(height: 20.0),
+                    Divider(),
+                    InkWell(
+                      onTap: () => Navigator.pop(context),
+                      child: Container(
+                        alignment: Alignment.center,
+                        width: UFullWidth,
+                        child: Text(
+                          'OK',
+                          style: TextStyle(
+                              color: UPrimaryColor,
+                              fontSize: UTitleSize,
+                              fontFamily: UEFontFamily,
+                              fontWeight: UBodyWeight),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-          );
-        },
-      ); // You can add further error handling logic if needed
+            );
+          },
+        ); // You can add further error handling logic if needed
+      }
     }
   }
 
