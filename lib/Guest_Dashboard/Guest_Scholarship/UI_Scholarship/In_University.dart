@@ -24,8 +24,9 @@ class _In_UniversityState extends State<In_University> {
     try {
       var res = await http.get(
         Uri.parse(Get.locale?.languageCode == 'km'
-            ? "https://usea.edu.kh/api/webapi.php?action=scholarship_i_university_kh"
-            : "https://usea.edu.kh/api/webapi.php?action=scholarship_i_university_en"),
+            ? APIUrlGuest + "api/webapi.php?action=scholarship_i_university_kh"
+            : APIUrlGuest +
+                "api/webapi.php?action=scholarship_i_university_en"),
       );
       var r = json.decode(res.body);
       if (mounted) {

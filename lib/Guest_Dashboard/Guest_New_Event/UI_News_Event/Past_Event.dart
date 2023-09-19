@@ -21,8 +21,8 @@ class _Past_EventState extends State<Past_Event> {
   Future<void> getData() async {
     try {
       var res = await http.get(Uri.parse(Get.locale?.languageCode == 'km'
-          ? "https://usea.edu.kh/api/webapi.php?action=past_events_kh"
-          : "https://usea.edu.kh/api/webapi.php?action=past_events_en"));
+          ? APIUrlGuest + "api/webapi.php?action=past_events_kh"
+          : APIUrlGuest + "api/webapi.php?action=past_events_en"));
       var r = json.decode(res.body);
       if (mounted) {
         if (r is List<dynamic>) {

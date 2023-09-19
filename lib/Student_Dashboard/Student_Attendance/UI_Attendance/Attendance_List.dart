@@ -29,12 +29,9 @@ class _AttendanceListState extends State<AttendanceList> {
   }
 
   Future<void> _refreshData() async {
-    String apiUrl =
-        'http://192.168.1.182/usea/api/apidata.php?action=attendance_data';
-
     try {
       final response = await http.post(
-        Uri.parse(apiUrl),
+        Uri.parse(APIUrlStudent + 'apidata.php?action=attendance_data'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,

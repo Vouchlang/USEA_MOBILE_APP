@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
 import '../Class_Program/Class_Program_ACCA.dart';
 // import 'Program_ACCA.dart';
@@ -24,14 +25,14 @@ class _ProgramState extends State<Program> {
   Future<void> fetchData() async {
     final response = await http.get(
       Uri.parse(Get.locale?.languageCode == 'km'
-          ? 'https://usea.edu.kh/api/webapi.php?action=study_program_kh'
-          : 'https://usea.edu.kh/api/webapi.php?action=study_program_en'),
+          ? APIUrlGuest + 'api/webapi.php?action=study_program_kh'
+          : APIUrlGuest + 'api/webapi.php?action=study_program_en'),
     );
 
     final response_acca = await http.get(
       Uri.parse(Get.locale?.languageCode == 'km'
-          ? 'https://usea.edu.kh/api/webapi.php?action=acca_kh'
-          : 'https://usea.edu.kh/api/webapi.php?action=acca_en'),
+          ? APIUrlGuest + 'api/webapi.php?action=acca_kh'
+          : APIUrlGuest + 'api/webapi.php?action=acca_en'),
     );
 
     if (response.statusCode == 200 && response_acca.statusCode == 200) {

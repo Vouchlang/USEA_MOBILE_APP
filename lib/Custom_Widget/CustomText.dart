@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../theme_builder.dart';
 
+String APIUrlGuest = 'https://usea.edu.kh/';
+String APIUrlStudent = 'http://192.168.1.182/api/';
+
 // *@ Divider
 Widget buildDivider() {
   return Container(

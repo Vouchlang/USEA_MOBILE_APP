@@ -25,8 +25,8 @@ class _CareerState extends State<Career> {
     try {
       var res = await http.get(
         Uri.parse(Get.locale?.languageCode == 'km'
-            ? "https://usea.edu.kh/api/webapi.php?action=career_kh"
-            : "https://usea.edu.kh/api/webapi.php?action=career_en"),
+            ? APIUrlGuest + "api/webapi.php?action=career_kh"
+            : APIUrlGuest + "api/webapi.php?action=career_en"),
       );
       var r = json.decode(res.body);
       if (r is List<dynamic>) {

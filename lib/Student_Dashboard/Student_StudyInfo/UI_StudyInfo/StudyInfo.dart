@@ -39,16 +39,16 @@ class _Study_InfoState extends State<Study_Info> {
     try {
       var response = await http.post(
         Uri.parse(Get.locale?.languageCode == 'km'
-            ? 'http://192.168.1.182/usea/api/apidata.php?action=exam_schedule'
-            : 'http://192.168.1.182/usea/api/student_info_data_exam_en.php?action=login_student'),
+            ? APIUrlStudent + 'apidata.php?action=exam_schedule'
+            : APIUrlStudent +
+                'student_info_data_exam_en.php?action=login_student'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
         },
       );
       var response_assignment = await http.post(
-        Uri.parse(
-            'http://192.168.1.182/usea/api/apidata.php?action=moodle_activities'),
+        Uri.parse(APIUrlStudent + 'apidata.php?action=moodle_activities'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,

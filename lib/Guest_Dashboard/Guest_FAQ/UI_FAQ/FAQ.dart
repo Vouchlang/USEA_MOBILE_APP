@@ -21,8 +21,8 @@ class _FAQState extends State<FAQ> {
   Future<void> getData() async {
     try {
       var res = await http.get(Uri.parse(Get.locale?.languageCode == 'km'
-          ? "https://usea.edu.kh/api/webapi.php?action=faq"
-          : "https://usea.edu.kh/api/webapi.php?action=faq_en"));
+          ? APIUrlGuest + "api/webapi.php?action=faq"
+          : APIUrlGuest + "api/webapi.php?action=faq_en"));
       var r = json.decode(res.body);
       if (r is List<dynamic>) {
         faq = r.map((e) => Class_FAQ.fromJson(e)).toList();

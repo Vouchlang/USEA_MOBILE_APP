@@ -26,8 +26,8 @@ class _VideoState extends State<Video_UI> {
     try {
       var res = await http.get(
         Uri.parse(Get.locale?.languageCode == 'km'
-            ? "https://usea.edu.kh/api/webapi.php?action=yt_video"
-            : "https://usea.edu.kh/api/webapi.php?action=yt_video"),
+            ? APIUrlGuest + "api/webapi.php?action=yt_video"
+            : APIUrlGuest + "api/webapi.php?action=yt_video"),
       );
       var r = json.decode(res.body);
       if (r is List<dynamic>) {

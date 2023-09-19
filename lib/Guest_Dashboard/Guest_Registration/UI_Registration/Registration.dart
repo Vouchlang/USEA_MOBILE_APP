@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import '../../../Custom_AppBar.dart';
+import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
 import '../Class_Registration/Class_Registration.dart';
 
@@ -25,8 +26,8 @@ class _RegistrationState extends State<Registration> {
     try {
       http.Response response = await http.get(Uri.parse(
           Get.locale?.languageCode == 'km'
-              ? 'https://usea.edu.kh/api/webapi.php?action=registration_info'
-              : 'https://usea.edu.kh/api/webapi.php?action=registration_info'));
+              ? APIUrlGuest + 'api/webapi.php?action=registration_info'
+              : APIUrlGuest + 'api/webapi.php?action=registration_info'));
       if (response.statusCode == 200) {
         if (mounted) {
           List<dynamic> jsonData = json.decode(response.body);

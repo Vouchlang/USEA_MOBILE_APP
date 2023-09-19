@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:usea_app/Custom_Widget/CustomText.dart';
 import 'package:usea_app/theme_builder.dart';
 import '../Student_Other_Class/Class_Student_User.dart';
 import '/Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
@@ -31,8 +32,7 @@ class _Student_LogInState extends State<Student_LogIn> {
 
     try {
       var response = await http.post(
-        Uri.parse(
-            'http://192.168.1.182/usea/api/login.php?action=login_student'),
+        Uri.parse(APIUrlStudent + 'login.php?action=login_student'),
         body: {
           'student_id': studentId,
           'pwd': password,
