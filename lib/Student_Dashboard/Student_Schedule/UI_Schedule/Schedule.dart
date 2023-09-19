@@ -30,22 +30,35 @@ class _ScheduleState extends State<Schedule> {
   @override
   void initState() {
     super.initState();
-    _refreshData();
+    _onDateSelected(selectedDate);
   }
 
-  Future<void> _refreshData() async {
+  Future<void> _onDateSelected(DateTime day) async {
     setState(() {
-      isLoading = true;
+      selectedDate = day;
     });
 
+    int selectedYear = selectedDate.year;
+    String selectedMonth = DateFormat('MMMM').format(selectedDate);
+    int selectedDay = selectedDate.day;
+
+    selectedDateSchedule = _dataSchedule.where((schedule) {
+      return schedule.wday == DateFormat('dd').format(selectedDate) &&
+          schedule.month == selectedMonth;
+    }).toList();
+
+    await _sendDateToDatabase(selectedYear, selectedMonth, selectedDay);
+  }
+
+  Future<void> _sendDateToDatabase(int year, String month, int day) async {
     try {
       var response = await http.post(
-        Uri.parse(Get.locale?.languageCode == 'km'
-            ? 'http://192.168.1.182/usea/api/apidata.php?action=study_schedule'
-            : 'http://192.168.1.182/usea/api/student_schedule_en.php?action=login_student'),
+        Uri.parse(
+            'http://192.168.1.182/usea/api/apidata.php?action=study_schedule'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
+          'date': '$day-$month-$year',
         },
       );
 
@@ -86,181 +99,158 @@ class _ScheduleState extends State<Schedule> {
     }
   }
 
-  void _onDateSelected(DateTime day) {
-    setState(() {
-      selectedDate = day;
-    });
-
-    String selectedMonth = DateFormat('MMMM').format(selectedDate);
-    selectedDateSchedule = _dataSchedule.where((schedule) {
-      return schedule.wday == DateFormat('dd').format(selectedDate) &&
-          schedule.month == selectedMonth;
-    }).toList();
-
-    _refreshData();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(title: 'កាលវិភាគ'.tr),
-      body: _dataSchedule.isEmpty
-          ? FutureBuilder(
-              future: Future.delayed(Duration(seconds: 10)),
-              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
-                    child: CircularProgressIndicator(
-                      color: UPrimaryColor,
-                    ),
-                  );
-                } else {
-                  return Center(child: Text('គ្មានទិន្ន័យ'.tr));
-                }
-              },
-            )
-          : RefreshIndicator(
-              onRefresh: _refreshData,
-              color: UPrimaryColor,
-              child: ListView(
-                padding: EdgeInsets.symmetric(vertical: UPdMg_10),
-                children: [
-                  CardCalendar(onDateSelected: _onDateSelected),
-                  SizedBox(
-                    height: UHeight5,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(UPdMg_8),
-                    child: Text(
-                      'កាលវិភាគសិក្សា'.tr,
-                      style: TextStyle(
-                        fontSize: UTitleSize16,
-                        color: UPrimaryColor,
-                      ),
-                    ),
-                  ),
-                  selectedDateSchedule.isEmpty
-                      ? FutureBuilder(
-                          future: Future.delayed(Duration(seconds: 3)),
-                          builder: (BuildContext context,
-                              AsyncSnapshot<dynamic> snapshot) {
-                            if (snapshot.connectionState ==
-                                ConnectionState.waiting) {
-                              return Center(
-                                child: CircularProgressIndicator(),
-                              );
-                            } else {
-                              return Center(child: Text('គ្មានទិន្ន័យ'.tr));
-                            }
-                          },
-                        )
-                      : ListView.builder(
-                          physics: ScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: selectedDateSchedule.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.fromLTRB(
-                                      UPdMg_5, UZeroPixel, UPdMg_5, UPdMg_5),
-                                  child: Card(
-                                    elevation: 1,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(UPdMg_10)),
-                                    child: Container(
-                                      padding: EdgeInsets.all(UPdMg_10),
-                                      child: IntrinsicHeight(
-                                        child: Row(
+      body: RefreshIndicator(
+        onRefresh: () async {
+          await _sendDateToDatabase(
+            selectedDate.year,
+            DateFormat('MMMM').format(selectedDate),
+            selectedDate.day,
+          );
+        },
+        color: UPrimaryColor,
+        child: ListView(
+          padding: EdgeInsets.symmetric(vertical: UPdMg_10),
+          children: [
+            CardCalendar(onDateSelected: _onDateSelected),
+            SizedBox(
+              height: UHeight5,
+            ),
+            Padding(
+              padding: EdgeInsets.all(UPdMg_8),
+              child: Text(
+                'កាលវិភាគសិក្សា'.tr,
+                style: TextStyle(
+                  fontSize: UTitleSize16,
+                  color: UPrimaryColor,
+                ),
+              ),
+            ),
+            selectedDateSchedule.isEmpty
+                ? FutureBuilder(
+                    future: Future.delayed(Duration(seconds: 3)),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<dynamic> snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(
+                          child: CircularProgressIndicator(
+                            color: UPrimaryColor,
+                          ),
+                        );
+                      } else {
+                        return Center(child: Text('គ្មានទិន្ន័យ'.tr));
+                      }
+                    },
+                  )
+                : ListView.builder(
+                    physics: ScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: selectedDateSchedule.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(
+                                UPdMg_5, UZeroPixel, UPdMg_5, UPdMg_5),
+                            child: Card(
+                              elevation: 1,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.circular(UPdMg_10)),
+                              child: Container(
+                                padding: EdgeInsets.all(UPdMg_10),
+                                child: IntrinsicHeight(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        width: 40,
+                                        child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.start,
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
                                           children: [
-                                            Container(
-                                              width: 40,
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  ScheduleDate(
-                                                    selectedDateSchedule[index]
-                                                        .wday,
-                                                  ),
-                                                  ScheduleDate(
-                                                    selectedDateSchedule[index]
-                                                        .weekday,
-                                                  ),
-                                                ],
-                                              ),
+                                            ScheduleDate(
+                                              selectedDateSchedule[index].wday,
                                             ),
-                                            VerticalDivider(
-                                              thickness: 0.5,
-                                              color: UGreyColor,
-                                              width: 30,
+                                            ScheduleDate(
+                                              selectedDateSchedule[index]
+                                                  .weekday,
                                             ),
-                                            Expanded(
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  ScheduleTitle(
-                                                    selectedDateSchedule[index]
-                                                        .subject,
-                                                  ),
-                                                  SizedBox(
-                                                    height: UHeight5,
-                                                  ),
-                                                  ScheduleBody(
-                                                    selectedDateSchedule[index]
-                                                        .session,
-                                                  ),
-                                                  ScheduleBody(
-                                                    selectedDateSchedule[index]
-                                                        .room,
-                                                  ),
-                                                  Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.start,
-                                                    children: [
-                                                      Expanded(
-                                                        child: ScheduleBody(
-                                                          selectedDateSchedule[
-                                                                  index]
-                                                              .teacher,
-                                                        ),
-                                                      ),
-                                                      Expanded(
-                                                        child: Container(
-                                                          alignment: Alignment
-                                                              .topRight,
-                                                          child: ScheduleBody(
-                                                            selectedDateSchedule[
-                                                                    index]
-                                                                .phonenumber,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
+                                            ScheduleDate(
+                                              selectedDateSchedule[index].wday,
                                             ),
                                           ],
                                         ),
                                       ),
-                                    ),
+                                      VerticalDivider(
+                                        thickness: 0.5,
+                                        color: UGreyColor,
+                                        width: 30,
+                                      ),
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            ScheduleTitle(
+                                              selectedDateSchedule[index]
+                                                  .subject,
+                                            ),
+                                            SizedBox(
+                                              height: UHeight5,
+                                            ),
+                                            ScheduleBody(
+                                              selectedDateSchedule[index]
+                                                  .session,
+                                            ),
+                                            ScheduleBody(
+                                              selectedDateSchedule[index].room,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Expanded(
+                                                  child: ScheduleBody(
+                                                    selectedDateSchedule[index]
+                                                        .teacher,
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  child: Container(
+                                                    alignment:
+                                                        Alignment.topRight,
+                                                    child: ScheduleBody(
+                                                      selectedDateSchedule[
+                                                              index]
+                                                          .phonenumber,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              ],
-                            );
-                          },
-                        ),
-                ],
-              ),
-            ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+          ],
+        ),
+      ),
     );
   }
 }

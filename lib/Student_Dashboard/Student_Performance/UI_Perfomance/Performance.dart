@@ -429,68 +429,75 @@ class _PerformanceState extends State<Performance> {
                                                                                     width: UFullWidth,
                                                                                     child: Column(
                                                                                       mainAxisSize: MainAxisSize.min,
-                                                                                      children: [
-                                                                                        IntrinsicHeight(
-                                                                                          child: Row(
-                                                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                            children: [
-                                                                                              Column(
-                                                                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                      children: subject.attendances.asMap().entries.map((att) {
+                                                                                        final int index = att.key;
+                                                                                        final attendance = att.value;
+                                                                                        final double marginBottom = (index == subject.attendances.length - 1) ? UPdMg_5 : UPdMg_15;
+
+                                                                                        return Column(
+                                                                                          children: [
+                                                                                            IntrinsicHeight(
+                                                                                              child: Row(
+                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                                 children: [
-                                                                                                  CustomPerformanceDiaglogTextTheme(
-                                                                                                    'យឺត'.tr,
-                                                                                                    UTitleSize,
-                                                                                                    UTextColor,
-                                                                                                  ),
-                                                                                                  CustomPerformanceDiaglogTextTheme(
-                                                                                                    'សុំច្បាប់'.tr,
-                                                                                                    UTitleSize,
-                                                                                                    UTextColor,
-                                                                                                  ),
-                                                                                                  CustomPerformanceDiaglogTextTheme(
-                                                                                                    'អវត្តមាន'.tr,
-                                                                                                    UTitleSize,
-                                                                                                    UTextColor,
-                                                                                                  ),
-                                                                                                  CustomPerformanceDiaglogTextTheme(
-                                                                                                    'វត្តមាន'.tr,
-                                                                                                    UTitleSize,
-                                                                                                    UTextColor,
-                                                                                                  ),
-                                                                                                ],
-                                                                                              ),
-                                                                                              Column(
-                                                                                                children: subject.attendances.map((att) {
-                                                                                                  return Column(
+                                                                                                  Column(
+                                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
                                                                                                     children: [
                                                                                                       CustomPerformanceDiaglogTextTheme(
-                                                                                                        att.attendance_al,
+                                                                                                        'យឺត'.tr,
+                                                                                                        UTitleSize,
+                                                                                                        UTextColor,
+                                                                                                      ),
+                                                                                                      CustomPerformanceDiaglogTextTheme(
+                                                                                                        'សុំច្បាប់'.tr,
+                                                                                                        UTitleSize,
+                                                                                                        UTextColor,
+                                                                                                      ),
+                                                                                                      CustomPerformanceDiaglogTextTheme(
+                                                                                                        'អវត្តមាន'.tr,
+                                                                                                        UTitleSize,
+                                                                                                        UTextColor,
+                                                                                                      ),
+                                                                                                      CustomPerformanceDiaglogTextTheme(
+                                                                                                        'វត្តមាន'.tr,
+                                                                                                        UTitleSize,
+                                                                                                        UTextColor,
+                                                                                                      ),
+                                                                                                      Container(
+                                                                                                        margin: EdgeInsets.only(bottom: marginBottom),
+                                                                                                      )
+                                                                                                    ],
+                                                                                                  ),
+                                                                                                  Column(
+                                                                                                    children: [
+                                                                                                      CustomPerformanceDiaglogTextTheme(
+                                                                                                        attendance.attendance_al,
                                                                                                         UTitleSize,
                                                                                                         UYellowColor,
                                                                                                       ),
                                                                                                       CustomPerformanceDiaglogTextTheme(
-                                                                                                        att.attendance_pm,
+                                                                                                        attendance.attendance_pm,
                                                                                                         UTitleSize,
                                                                                                         UOrangeColor,
                                                                                                       ),
                                                                                                       CustomPerformanceDiaglogTextTheme(
-                                                                                                        att.attendance_a,
+                                                                                                        attendance.attendance_a,
                                                                                                         UTitleSize,
                                                                                                         URedColor,
                                                                                                       ),
                                                                                                       CustomPerformanceDiaglogTextTheme(
-                                                                                                        att.attendance_ps,
+                                                                                                        attendance.attendance_ps,
                                                                                                         UTitleSize,
                                                                                                         UScoreColor,
                                                                                                       ),
                                                                                                     ],
-                                                                                                  );
-                                                                                                }).toList(),
-                                                                                              )
-                                                                                            ],
-                                                                                          ),
-                                                                                        ),
-                                                                                      ],
+                                                                                                  ),
+                                                                                                ],
+                                                                                              ),
+                                                                                            ),
+                                                                                          ],
+                                                                                        );
+                                                                                      }).toList(),
                                                                                     ),
                                                                                   ),
                                                                                 ],
@@ -617,13 +624,17 @@ class _PerformanceState extends State<Performance> {
                                                                                       height: UHeight5,
                                                                                     ),
                                                                                     Container(
-                                                                                      padding: EdgeInsets.all(UPdMg_10),
+                                                                                      padding: EdgeInsets.symmetric(vertical: UPdMg_5, horizontal: UPdMg_10),
                                                                                       width: UFullWidth,
                                                                                       child: Container(
                                                                                         padding: EdgeInsets.symmetric(vertical: UPdMg_5),
                                                                                         child: Column(
                                                                                           mainAxisSize: MainAxisSize.min,
-                                                                                          children: subject.scores.map((score) {
+                                                                                          children: subject.scores.asMap().entries.map((entry) {
+                                                                                            final int index = entry.key;
+                                                                                            final score = entry.value;
+                                                                                            final double marginBottom = (index == subject.scores.length - 1) ? UPdMg_5 : UPdMg_15;
+
                                                                                             return IntrinsicHeight(
                                                                                               child: Row(
                                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -656,6 +667,9 @@ class _PerformanceState extends State<Performance> {
                                                                                                         UTitleSize,
                                                                                                         UTextColor,
                                                                                                       ),
+                                                                                                      Container(
+                                                                                                        margin: EdgeInsets.only(bottom: marginBottom),
+                                                                                                      )
                                                                                                     ],
                                                                                                   ),
                                                                                                   Row(

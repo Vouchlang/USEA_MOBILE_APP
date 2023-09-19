@@ -43,6 +43,7 @@ class LocaleString extends Translations {
           'សប្ដាហ៍': 'សប្ដាហ៍',
           'ម៉ោងសរុប': 'ម៉ោងសរុប',
           '\tម៉ោង/សប្ដាហ៍': '\tម៉ោង/សប្ដាហ៍',
+          '\tស្វែងរកមុខជំនាញ': '\tស្វែងរកមុខជំនាញ',
 
           // Scholarship
           'សាកលវិទ្យាល័យ សៅស៍អ៊ីសថ៍អេយសៀ': 'សាកលវិទ្យាល័យ សៅស៍អ៊ីសថ៍អេយសៀ',
@@ -109,7 +110,7 @@ class LocaleString extends Translations {
           'ឆមាស': 'ឆមាស',
           'ជំនាន់': 'ជំនាន់',
           'វគ្គ': 'វគ្គ',
-          'ឆ្នាំមូលដ្ឋាន': 'ឆ្នាំមូលដ្ឋាន',
+          'ឆ្នាំសិក្សា': 'ឆ្នាំសិក្សា',
           'មហាវិទ្យាល័យ': 'មហាវិទ្យាល័យ',
           'កម្រិតសិក្សា': 'កម្រិតសិក្សា',
           'មុខជំនាញ': 'មុខជំនាញ',
@@ -152,7 +153,7 @@ class LocaleString extends Translations {
           'កិច្ចការផ្ទះ': 'កិច្ចការផ្ទះ',
           'កិច្ចការក្រុម': 'កិច្ចការក្រុម',
           'ពាក់កណ្ដាលឆមាស': 'ពាក់កណ្ដាលឆមាស',
-          'កិច្ចការផ្ទះ&​ស្រាវជ្រាវ': 'កិច្ចការផ្ទះ&​ស្រាវជ្រាវ',
+          'កិច្ចការផ្ទះ និងស្រាវជ្រាវ': 'កិច្ចការផ្ទះ និងស្រាវជ្រាវ',
           'ប្រលងពាក់កណ្ដាលឆមាស': 'ប្រលងពាក់កណ្ដាលឆមាស',
           'ប្រលងបញ្ចប់ឆមាស': 'ប្រលងបញ្ចប់ឆមាស',
           'ប្រឡងសង': 'ប្រឡងសង',
@@ -218,6 +219,8 @@ class LocaleString extends Translations {
           'ឈ្មោះ': 'ឈ្មោះ',
           'បន្ទប់': 'បន្ទប់',
           'សាស្ត្រចារ្យ': 'សាស្ត្រចារ្យ',
+          'ព័ត៌មានការប្រឡង': 'ព័ត៌មានការប្រឡង',
+          'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t': 'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t',
 
           // Student Feedback
           'សូមអធ្យាស្រ័យ': 'សូមអធ្យាស្រ័យ',
@@ -260,6 +263,7 @@ class LocaleString extends Translations {
           'សប្ដាហ៍': 'Weeks',
           'ម៉ោងសរុប': 'Total Hour',
           '\tម៉ោង/សប្ដាហ៍': '\thours/week',
+          '\tស្វែងរកមុខជំនាញ': '\tSearch Major',
 
           // Scholarship
           'សាកលវិទ្យាល័យ សៅស៍អ៊ីសថ៍អេយសៀ': 'University of South-East Asia',
@@ -329,7 +333,7 @@ class LocaleString extends Translations {
           'ឆមាស': 'Semester',
           'ជំនាន់': 'Promotion',
           'វគ្គ': 'Stage',
-          'ឆ្នាំមូលដ្ឋាន': 'Academic Year',
+          'ឆ្នាំសិក្សា': 'Academic Year',
           'មហាវិទ្យាល័យ': 'Faculty',
           'កម្រិតសិក្សា': 'Education',
           'មុខជំនាញ': 'Major',
@@ -372,7 +376,7 @@ class LocaleString extends Translations {
           'កិច្ចការក្រុម': 'Assignment',
           'ពាក់កណ្ដាលឆមាស': 'Mid-term',
           'ប្រឡងសង': 'Re-Exam',
-          'កិច្ចការផ្ទះ&​ស្រាវជ្រាវ': 'Homework',
+          'កិច្ចការផ្ទះ និងស្រាវជ្រាវ': 'Homework',
           'ប្រលងពាក់កណ្ដាលឆមាស': 'Mid-Term Exam',
           'ប្រលងបញ្ចប់ឆមាស': 'Final Exam',
           'លក្ខណៈវិនិច្ឆ័យ': 'Criteria',
@@ -440,11 +444,13 @@ class LocaleString extends Translations {
           'ឈ្មោះ': 'Name',
           'បន្ទប់': 'Room',
           'សាស្ត្រចារ្យ': 'Lecturer',
+          'ព័ត៌មានការប្រឡង': 'Exam Information',
+          'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t': 'Assignment and Research',
 
           // Student Feedback
           'សូមអធ្យាស្រ័យ': 'Apologies for any trouble',
           'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!':
-              'Sorry, you have not been able to provide feedback yet !!!',
+              'Sorry, you have not been able to provide feedback yet!!!',
 
           'គ្មានទិន្ន័យ': 'No Data',
         },

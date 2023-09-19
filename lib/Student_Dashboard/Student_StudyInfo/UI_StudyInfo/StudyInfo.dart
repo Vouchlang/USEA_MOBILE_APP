@@ -139,212 +139,228 @@ class _Study_InfoState extends State<Study_Info> {
               color: UPrimaryColor,
               child: SingleChildScrollView(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _dataStudyInfo.isEmpty
                         ? SizedBox.shrink()
-                        : ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            padding: EdgeInsets.all(UPdMg_5),
-                            itemCount: _dataStudyInfo.length,
-                            itemBuilder: (BuildContext context, index) {
-                              final isLastIndex =
-                                  index == _dataStudyInfo.length - 1;
-                              return Card(
-                                elevation: 1,
-                                shadowColor: ULightGreyColor,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.circular(URoundedLarge),
-                                ),
-                                color: UBackgroundColor,
-                                margin: isLastIndex
-                                    ? EdgeInsets.fromLTRB(
-                                        UPdMg_5, UPdMg_5, UPdMg_5, UPdMg_10)
-                                    : EdgeInsets.all(UPdMg_5),
-                                child: Padding(
-                                  padding: EdgeInsets.all(UPdMg_8),
-                                  child: IntrinsicHeight(
-                                    child: Row(
+                        : Padding(
+                            padding: EdgeInsets.fromLTRB(
+                                UPdMg_10, UPdMg_10, UPdMg_10, 0),
+                            child: Text(
+                              'ព័ត៌មានការប្រឡង'.tr,
+                              style: TextStyle(
+                                color: UPrimaryColor,
+                                fontSize: UTitleSize,
+                                fontWeight: UTitleWeight,
+                              ),
+                            ),
+                          ),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      padding: EdgeInsets.all(UPdMg_5),
+                      itemCount: _dataStudyInfo.length,
+                      itemBuilder: (BuildContext context, index) {
+                        final isLastIndex = index == _dataStudyInfo.length - 1;
+                        return Card(
+                          elevation: 1,
+                          shadowColor: ULightGreyColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(URoundedLarge),
+                          ),
+                          color: UBackgroundColor,
+                          margin: isLastIndex
+                              ? EdgeInsets.fromLTRB(
+                                  UPdMg_5, UPdMg_5, UPdMg_5, UPdMg_10)
+                              : EdgeInsets.all(UPdMg_5),
+                          child: Padding(
+                            padding: EdgeInsets.all(UPdMg_8),
+                            child: IntrinsicHeight(
+                              child: Row(
+                                children: [
+                                  Container(
+                                    width: 50,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
-                                        Container(
-                                          width: 50,
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              NormalDateStudyInfo(
-                                                _dataStudyInfo[index].date,
-                                              ),
-                                              buildDividerAtt(),
-                                              NormalDateStudyInfo(
-                                                  _dataStudyInfo[index].month),
-                                            ],
-                                          ),
+                                        NormalDateStudyInfo(
+                                          _dataStudyInfo[index].date,
                                         ),
-                                        buildVerticalDividerAtt(),
-                                        Container(
-                                          padding:
-                                              EdgeInsets.only(left: UPdMg_8),
-                                          child: IntrinsicWidth(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Container(
-                                                  width: 250,
-                                                  child: TitleAttendance_Theme(
-                                                      _dataStudyInfo[index]
-                                                          .title),
-                                                ),
-                                                buildDividerAtt(),
-                                                RowDataStudyInfo(
-                                                  'មុខវិជ្ជា\t',
-                                                  _dataStudyInfo[index].subject,
-                                                ),
-                                                RowDataStudyInfo(
-                                                  'បន្ទប់\t',
-                                                  _dataStudyInfo[index].room,
-                                                ),
-                                                RowDataStudyInfo(
-                                                  'ម៉ោង\t',
-                                                  _dataStudyInfo[index].time,
-                                                ),
-                                                RowDataStudyInfo(
-                                                  'លេខតុ\t',
-                                                  _dataStudyInfo[index].seat,
-                                                ),
-                                                _dataStudyInfo[index].takeout ==
-                                                        '1'
-                                                    ? Text(
-                                                        'ដកបេក្ខភាព',
-                                                        style: TextStyle(
-                                                          fontSize: UBodySize,
-                                                          fontWeight:
-                                                              UTitleWeight,
-                                                          color: URedColor,
-                                                        ),
-                                                      )
-                                                    : Container(),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
+                                        buildDividerAtt(),
+                                        NormalDateStudyInfo(
+                                            _dataStudyInfo[index].month),
                                       ],
                                     ),
                                   ),
-                                ),
-                              );
-                            },
-                          ),
-                    _dataStudyInfoAssignment.isEmpty
-                        ? SizedBox.shrink()
-                        : ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            padding: EdgeInsets.all(UPdMg_5),
-                            itemCount: _dataStudyInfoAssignment.length,
-                            itemBuilder: (BuildContext context, index) {
-                              final isLastIndex =
-                                  index == _dataStudyInfoAssignment.length - 1;
-                              return Card(
-                                elevation: 2,
-                                shadowColor: ULightGreyColor,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.circular(URoundedLarge),
-                                ),
-                                margin: isLastIndex
-                                    ? EdgeInsets.fromLTRB(
-                                        UPdMg_5, UPdMg_5, UPdMg_5, UPdMg_10)
-                                    : EdgeInsets.all(UPdMg_5),
-                                child: Padding(
-                                  padding: EdgeInsets.all(UPdMg_10),
-                                  child: Column(
-                                    children: [
-                                      Row(
+                                  buildVerticalDividerAtt(),
+                                  Container(
+                                    padding: EdgeInsets.only(left: UPdMg_8),
+                                    child: IntrinsicWidth(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
-                                          Flexible(
-                                            flex: 2,
-                                            child: Text(
-                                              _dataStudyInfoAssignment[index]
-                                                      .expire_date
-                                                      .isEmpty
-                                                  ? 'ថ្ងៃផុតកំណត់៖ '.tr + 'N/A'
-                                                  : 'ថ្ងៃផុតកំណត់៖ '.tr +
-                                                      _dataStudyInfoAssignment[
-                                                              index]
-                                                          .expire_date,
-                                              style: TextStyle(
-                                                fontSize: UTitleSize,
-                                                fontWeight: UTitleWeight,
-                                              ),
-                                            ),
+                                          Container(
+                                            width: 250,
+                                            child: TitleAttendance_Theme(
+                                                _dataStudyInfo[index].title),
                                           ),
-                                          SizedBox(
-                                            width: UWidth15,
+                                          buildDividerAtt(),
+                                          RowDataStudyInfo(
+                                            'មុខវិជ្ជា\t',
+                                            _dataStudyInfo[index].subject,
                                           ),
-                                          Flexible(
-                                            flex: 1,
-                                            child: Text(
-                                              _dataStudyInfoAssignment[index]
-                                                      .expire_time
-                                                      .isEmpty
-                                                  ? 'ម៉ោង '.tr + 'N/A'
-                                                  : 'ម៉ោង '.tr +
-                                                      _dataStudyInfoAssignment[
-                                                              index]
-                                                          .expire_time,
-                                              style: TextStyle(
-                                                fontSize: UTitleSize,
-                                                fontWeight: UTitleWeight,
-                                              ),
-                                            ),
+                                          RowDataStudyInfo(
+                                            'បន្ទប់\t',
+                                            _dataStudyInfo[index].room,
                                           ),
+                                          RowDataStudyInfo(
+                                            'ម៉ោង\t',
+                                            _dataStudyInfo[index].time,
+                                          ),
+                                          RowDataStudyInfo(
+                                            'លេខតុ\t',
+                                            _dataStudyInfo[index].seat,
+                                          ),
+                                          _dataStudyInfo[index].takeout == '1'
+                                              ? Text(
+                                                  'ដកបេក្ខភាព',
+                                                  style: TextStyle(
+                                                    fontSize: UBodySize,
+                                                    fontWeight: UTitleWeight,
+                                                    color: URedColor,
+                                                  ),
+                                                )
+                                              : Container(),
                                         ],
                                       ),
-                                      buildDividerStDetail(),
-                                      buildStudyDataAssign(
-                                          'ឈ្មោះ',
-                                          _dataStudyInfoAssignment[index]
-                                                  .assignment_name
-                                                  .isEmpty
-                                              ? 'N/A'
-                                              : _dataStudyInfoAssignment[index]
-                                                  .assignment_name),
-                                      buildDividerStDetail(),
-                                      buildStudyDataAssign(
-                                          'មុខវិជ្ជា',
-                                          _dataStudyInfoAssignment[index]
-                                                  .subject_name
-                                                  .isEmpty
-                                              ? 'N/A'
-                                              : _dataStudyInfoAssignment[index]
-                                                  .subject_name),
-                                      buildDividerStDetail(),
-                                      buildStudyDataAssign(
-                                          'បន្ទប់',
-                                          _dataStudyInfoAssignment[index]
-                                                  .room_name
-                                                  .isEmpty
-                                              ? 'N/A'
-                                              : _dataStudyInfoAssignment[index]
-                                                  .room_name),
-                                      buildDividerStDetail(),
-                                      buildStudyDataAssign(
-                                          'សាស្ត្រចារ្យ',
-                                          _dataStudyInfoAssignment[index]
-                                                  .lecturer_name
-                                                  .isEmpty
-                                              ? 'N/A'
-                                              : _dataStudyInfoAssignment[index]
-                                                  .lecturer_name),
-                                    ],
+                                    ),
                                   ),
-                                ),
-                              );
-                            },
+                                ],
+                              ),
+                            ),
                           ),
+                        );
+                      },
+                    ),
+                    _dataStudyInfoAssignment.isEmpty
+                        ? SizedBox.shrink()
+                        : Padding(
+                            padding: EdgeInsets.fromLTRB(
+                                UPdMg_10, UPdMg_10, UPdMg_10, 0),
+                            child: Text(
+                              'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t'.tr,
+                              style: TextStyle(
+                                color: UPrimaryColor,
+                                fontSize: UTitleSize,
+                                fontWeight: UTitleWeight,
+                              ),
+                            ),
+                          ),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      padding: EdgeInsets.all(UPdMg_5),
+                      itemCount: _dataStudyInfoAssignment.length,
+                      itemBuilder: (BuildContext context, index) {
+                        final isLastIndex =
+                            index == _dataStudyInfoAssignment.length - 1;
+                        return Card(
+                          elevation: 2,
+                          shadowColor: ULightGreyColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(URoundedLarge),
+                          ),
+                          margin: isLastIndex
+                              ? EdgeInsets.fromLTRB(
+                                  UPdMg_5, UPdMg_5, UPdMg_5, UPdMg_10)
+                              : EdgeInsets.all(UPdMg_5),
+                          child: Padding(
+                            padding: EdgeInsets.all(UPdMg_10),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Flexible(
+                                      flex: 2,
+                                      child: Text(
+                                        _dataStudyInfoAssignment[index]
+                                                .expire_date
+                                                .isEmpty
+                                            ? 'ថ្ងៃផុតកំណត់៖ '.tr + 'N/A'
+                                            : 'ថ្ងៃផុតកំណត់៖ '.tr +
+                                                _dataStudyInfoAssignment[index]
+                                                    .expire_date,
+                                        style: TextStyle(
+                                          fontSize: UTitleSize,
+                                          fontWeight: UTitleWeight,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: UWidth15,
+                                    ),
+                                    Flexible(
+                                      flex: 1,
+                                      child: Text(
+                                        _dataStudyInfoAssignment[index]
+                                                .expire_time
+                                                .isEmpty
+                                            ? 'ម៉ោង '.tr + 'N/A'
+                                            : 'ម៉ោង '.tr +
+                                                _dataStudyInfoAssignment[index]
+                                                    .expire_time,
+                                        style: TextStyle(
+                                          fontSize: UTitleSize,
+                                          fontWeight: UTitleWeight,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                buildDividerStDetail(),
+                                buildStudyDataAssign(
+                                    'ឈ្មោះ',
+                                    _dataStudyInfoAssignment[index]
+                                            .assignment_name
+                                            .isEmpty
+                                        ? 'N/A'
+                                        : _dataStudyInfoAssignment[index]
+                                            .assignment_name),
+                                buildDividerStDetail(),
+                                buildStudyDataAssign(
+                                    'មុខវិជ្ជា',
+                                    _dataStudyInfoAssignment[index]
+                                            .subject_name
+                                            .isEmpty
+                                        ? 'N/A'
+                                        : _dataStudyInfoAssignment[index]
+                                            .subject_name),
+                                buildDividerStDetail(),
+                                buildStudyDataAssign(
+                                    'បន្ទប់',
+                                    _dataStudyInfoAssignment[index]
+                                            .room_name
+                                            .isEmpty
+                                        ? 'N/A'
+                                        : _dataStudyInfoAssignment[index]
+                                            .room_name),
+                                buildDividerStDetail(),
+                                buildStudyDataAssign(
+                                    'សាស្ត្រចារ្យ',
+                                    _dataStudyInfoAssignment[index]
+                                            .lecturer_name
+                                            .isEmpty
+                                        ? 'N/A'
+                                        : _dataStudyInfoAssignment[index]
+                                            .lecturer_name),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),

@@ -315,7 +315,7 @@ class _Student_DetailState extends State<Student_Detail> {
                                   : _dataStDetail[index].term_name),
                           buildVerticalDividerH_45(),
                           buildBodyDetail(
-                              'ឆ្នាំមូលដ្ឋាន',
+                              'ឆ្នាំសិក្សា',
                               _dataStDetail[index].academic_year.isEmpty
                                   ? 'N/A'
                                   : _dataStDetail[index].academic_year),

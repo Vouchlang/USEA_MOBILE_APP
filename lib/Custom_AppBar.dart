@@ -13,14 +13,12 @@ class Custom_AppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       centerTitle: false,
       titleSpacing: 0,
-      title: Container(
-        child: Text(
-          title,
-          style: TextStyle(
-            color: UPrimaryColor,
-            fontSize: 18,
-            fontWeight: UTitleWeight,
-          ),
+      title: Text(
+        title,
+        style: TextStyle(
+          color: UPrimaryColor,
+          fontSize: 18,
+          fontWeight: UTitleWeight,
         ),
       ),
       backgroundColor: UBackgroundColor,

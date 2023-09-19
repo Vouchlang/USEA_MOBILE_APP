@@ -222,7 +222,7 @@ class _ProgramState extends State<Program> {
                   filteredMajorNames: filteredMajorNames,
                   fetchEducationNames: fetchEducationNames,
                   fetchMajorInfoData: fetchMajorInfoData,
-                  programACCA: programACCA, // Pass the programACCA data here
+                  programACCA: programACCA,
                 ),
               );
             },
@@ -511,7 +511,7 @@ class MajorSearchDelegate extends SearchDelegate<String> {
   final Function(String) updateSearchQuery;
   final Function(String) fetchEducationNames;
   final Function(String) fetchMajorInfoData;
-  final List<ProgramACCA> programACCA; // Add this parameter
+  final List<ProgramACCA> programACCA;
 
   MajorSearchDelegate({
     required this.majorNames,
@@ -519,14 +519,18 @@ class MajorSearchDelegate extends SearchDelegate<String> {
     required this.updateSearchQuery,
     required this.fetchEducationNames,
     required this.fetchMajorInfoData,
-    required this.programACCA, // Add this parameter
+    required this.programACCA,
   });
 
   @override
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
-        icon: Icon(Icons.clear),
+        icon: Icon(
+          Icons.clear,
+          color: UPrimaryColor,
+          size: 18,
+        ),
         onPressed: () {
           query = '';
           updateSearchQuery(query);
@@ -584,12 +588,13 @@ class MajorSearchDelegate extends SearchDelegate<String> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(8.0),
           child: Text(
             title,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 18,
+              color: UPrimaryColor, // Set text color tosad
             ),
           ),
         ),
@@ -655,6 +660,7 @@ class MajorSearchDelegate extends SearchDelegate<String> {
   }
 
   @override
+  @override
   Widget buildSuggestions(BuildContext context) {
     final suggestionList = majorNames
         .where((major) => major.toLowerCase().contains(query.toLowerCase()))
@@ -663,12 +669,13 @@ class MajorSearchDelegate extends SearchDelegate<String> {
     return ListView.builder(
       itemCount: suggestionList.length,
       itemBuilder: (context, index) {
-        final majorName = suggestionList[index]; // Get the major name
+        final majorName = suggestionList[index];
 
         return ListTile(
-          title: Text(majorName),
+          title: Text(
+            majorName,
+          ),
           onTap: () {
-            // Navigate to MajorDetailsScreen directly
             navigateToMajorDetails(context, majorName);
           },
         );
@@ -677,9 +684,41 @@ class MajorSearchDelegate extends SearchDelegate<String> {
   }
 
   @override
+  ThemeData appBarTheme(BuildContext context) {
+    final theme = Theme.of(context);
+    return theme.copyWith(
+      appBarTheme: AppBarTheme(
+        backgroundColor: UBackgroundColor,
+        elevation: 1,
+        iconTheme: IconThemeData.fallback(),
+        centerTitle: false,
+        titleSpacing: -10,
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        border: InputBorder.none,
+        fillColor: UBackgroundColor,
+        activeIndicatorBorder: BorderSide(
+          color: UPrimaryColor,
+        ),
+        filled: true,
+        hintStyle: TextStyle(
+          fontSize: 18,
+        ),
+      ),
+    );
+  }
+
+  @override
+  String get searchFieldLabel => '\tស្វែងរកមុខជំនាញ'.tr;
+
+  @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.arrow_back),
+      icon: Icon(
+        Icons.arrow_back_ios,
+        color: UPrimaryColor,
+        size: 18,
+      ),
       onPressed: () {
         close(context, '');
       },
