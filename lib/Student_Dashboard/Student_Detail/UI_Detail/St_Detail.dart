@@ -39,9 +39,8 @@ class _Student_DetailState extends State<Student_Detail> {
     try {
       var response = await http.post(
         Uri.parse(Get.locale?.languageCode == 'km'
-            ? APIUrlStudent + 'student_detail_success.php?action=login_student'
-            : APIUrlStudent +
-                'student_detail_success_en.php?action=login_student'),
+            ? APIUrlStudent + 'action=login_student'
+            : APIUrlStudentEn + 'action=login_student'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,

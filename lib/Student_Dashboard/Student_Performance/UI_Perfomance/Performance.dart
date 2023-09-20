@@ -30,7 +30,7 @@ class _PerformanceState extends State<Performance> {
   Future<void> _refreshData() async {
     try {
       final response = await http.post(
-        Uri.parse(APIUrlStudent + 'apidata.php?action=study_performance'),
+        Uri.parse(APIUrlStudent + 'action=study_performance'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -82,20 +82,8 @@ class _PerformanceState extends State<Performance> {
                 id: subjectData['id'] ?? 'N/A',
                 name_kh: subjectData['name_kh'] ?? 'N/A',
                 name_en: subjectData['name_en'] ?? 'N/A',
-                // pscore_attendance: subjectData['pscore_attendance'] ?? 'N/A',
-                // pscore_assignment: subjectData['pscore_assignment'] ?? 'N/A',
-                // pscore_mid_term: subjectData['pscore_mid_term'] ?? 'N/A',
-                // pscore_final: subjectData['pscore_final'] ?? 'N/A',
                 pscore_total: subjectData['pscore_total'] ?? 'N/A',
-                // number_attendance: subjectData['number_attendance'] ?? 'N/A',
-                // number_assignment: subjectData['number_assignment'] ?? 'N/A',
-                // number_mid_term: subjectData['number_mid_term'] ?? 'N/A',
-                // number_final: subjectData['number_final'] ?? 'N/A',
-                // attendance_a: subjectData['attendance_a'] ?? 'N/A',
-                // attendance_al: subjectData['attendance_al'] ?? 'N/A',
-                // attendance_pm: subjectData['attendance_pm'] ?? 'N/A',
                 attendance_ps: subjectData['attendance_ps'] ?? 'N/A',
-                // attendance_all: subjectData['attendance_all'] ?? 'N/A',
                 attendances: attendances,
                 scores: scores,
               );

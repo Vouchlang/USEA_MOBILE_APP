@@ -53,7 +53,9 @@ class _ScheduleState extends State<Schedule> {
   Future<void> _sendDateToDatabase(int year, String month, int day) async {
     try {
       var response = await http.post(
-        Uri.parse(APIUrlStudent + 'apidata.php?action=study_schedule'),
+        Uri.parse(Get.locale?.languageCode == 'km'
+            ? APIUrlStudent + 'action=study_schedule'
+            : APIUrlStudentEn + 'action=study_schedule'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -180,9 +182,6 @@ class _ScheduleState extends State<Schedule> {
                                             ScheduleDate(
                                               selectedDateSchedule[index]
                                                   .weekday,
-                                            ),
-                                            ScheduleDate(
-                                              selectedDateSchedule[index].wday,
                                             ),
                                           ],
                                         ),

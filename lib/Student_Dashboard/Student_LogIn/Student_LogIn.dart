@@ -32,7 +32,7 @@ class _Student_LogInState extends State<Student_LogIn> {
 
     try {
       var response = await http.post(
-        Uri.parse(APIUrlStudent + 'login.php?action=login_student'),
+        Uri.parse(APIUrlStudent + 'action=login_student'),
         body: {
           'student_id': studentId,
           'pwd': password,

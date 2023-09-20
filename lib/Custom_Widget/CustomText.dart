@@ -3,7 +3,8 @@ import 'package:get/get.dart';
 import '../theme_builder.dart';
 
 String APIUrlGuest = 'https://usea.edu.kh/';
-String APIUrlStudent = 'http://192.168.1.182/api/';
+String APIUrlStudent = 'http://116.212.155.149:9999/api/apidata.php?';
+String APIUrlStudentEn = 'http://116.212.155.149:9999/api/apidata_en.php?';
 
 // *@ Divider
 Widget buildDivider() {

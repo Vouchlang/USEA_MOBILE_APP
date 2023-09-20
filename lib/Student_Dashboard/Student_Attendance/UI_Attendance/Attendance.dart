@@ -33,7 +33,7 @@ class _AttendanceState extends State<Attendance> {
   Future<void> _refreshData() async {
     try {
       final response = await http.post(
-        Uri.parse(APIUrlStudent + 'apidata.php?action=attendance_data'),
+        Uri.parse(APIUrlStudent + 'action=attendance_data'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -41,8 +41,7 @@ class _AttendanceState extends State<Attendance> {
       );
 
       var responseDetail = await http.post(
-        Uri.parse(
-            APIUrlStudent + 'student_detail_success.php?action=login_student'),
+        Uri.parse(APIUrlStudent + 'action=login_student'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,

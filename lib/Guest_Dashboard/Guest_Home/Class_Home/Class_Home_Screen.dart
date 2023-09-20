@@ -58,9 +58,9 @@ List<Home_Screen> guest_home_screen = [
     screen: Contact(),
   ),
   Home_Screen(
-    name: 'អំពីយើង',
-    img: 'assets/image/Guest_About.png',
-    screen: AboutUS(),
+    name: 'FAQ',
+    img: 'assets/image/Guest_QA.png',
+    screen: FAQ(),
   ),
   Home_Screen(
     name: 'ផ្លាស់ប្ដូរភាសា',
@@ -68,9 +68,9 @@ List<Home_Screen> guest_home_screen = [
     screen: Change_Language(),
   ),
   Home_Screen(
-    name: 'FAQ',
-    img: 'assets/image/Guest_QA.png',
-    screen: FAQ(),
+    name: 'អំពីយើង',
+    img: 'assets/image/Guest_About.png',
+    screen: AboutUS(),
   ),
 ];
 

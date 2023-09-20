@@ -36,14 +36,14 @@ class _Payment_UIState extends State<Payment_UI> {
 
     try {
       var responsePayStudy = await http.post(
-        Uri.parse(APIUrlStudent + 'apidata.php?action=payment'),
+        Uri.parse(APIUrlStudent + 'action=payment'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
         },
       );
       var responseOtherPay = await http.post(
-        Uri.parse(APIUrlStudent + 'apidata.php?action=other_payment'),
+        Uri.parse(APIUrlStudent + 'action=other_payment'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -156,11 +156,11 @@ class _Payment_UIState extends State<Payment_UI> {
                 children: [
                   buildTitle('ការបង់ថ្លៃឈ្នួលសិក្សា', buildStudyPayment()),
                   buildTitle(
-                    'ការបង់ថ្លៃឈ្នួលប្រឡងឡើងវិញ',
+                    'ការបង់ថ្លៃឈ្នួលប្រឡងឡើងវិញ (Not Available)',
                     PaymentCards2(),
                   ),
                   buildTitle(
-                    'ការបង់ថ្លៃឈ្នួលរៀនបំពេញក្រេឌីត',
+                    'ការបង់ថ្លៃឈ្នួលរៀនបំពេញក្រេឌីត (Not Available)',
                     PaymentCards3(),
                   ),
                   buildTitle(
@@ -221,8 +221,9 @@ class _Payment_UIState extends State<Payment_UI> {
                             sum + (double.tryParse(payment.moneyPaid) ?? 0.00),
                       );
 
-                      String formattedTotalPaid =
-                          totalPaid == 0.00 ? 'N/A' : totalPaid.toString();
+                      String formattedTotalPaid = totalPaid == 0.00
+                          ? 'N/A'
+                          : totalPaid.toStringAsFixed(2);
 
                       double totalRem = payStudy.payments.isNotEmpty
                           ? double.tryParse(payStudy.payments.last.moneyRem) ??
@@ -302,7 +303,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                             child: Text(
                                               totalRem.toString().isEmpty
                                                   ? 'N/A'
-                                                  : '\$ ${totalRem.toString()}',
+                                                  : '\$ ${totalRem.toStringAsFixed(2)}',
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 fontSize: UBodySize,

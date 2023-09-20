@@ -31,7 +31,7 @@ class _AttendanceListState extends State<AttendanceList> {
   Future<void> _refreshData() async {
     try {
       final response = await http.post(
-        Uri.parse(APIUrlStudent + 'apidata.php?action=attendance_data'),
+        Uri.parse(APIUrlStudent + 'action=attendance_data'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,

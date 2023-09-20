@@ -23,23 +23,7 @@ class Semester {
 }
 
 class Subject {
-  final String id,
-      name_kh,
-      name_en,
-      // pscore_attendance,
-      // pscore_assignment,
-      // pscore_mid_term,
-      // pscore_final,
-      pscore_total,
-      // number_attendance,
-      // number_assignment,
-      // number_mid_term,
-      // number_final,
-      // attendance_a,
-      // attendance_al,
-      // attendance_pm,
-      attendance_ps;
-  // attendance_all;
+  final String id, name_kh, name_en, pscore_total, attendance_ps;
   final List<Attendances> attendances;
   final List<Scores> scores;
 
@@ -47,20 +31,8 @@ class Subject {
     required this.id,
     required this.name_kh,
     required this.name_en,
-    // required this.pscore_attendance,
-    // required this.pscore_assignment,
-    // required this.pscore_mid_term,
-    // required this.pscore_final,
     required this.pscore_total,
-    // required this.number_attendance,
-    // required this.number_assignment,
-    // required this.number_mid_term,
-    // required this.number_final,
-    // required this.attendance_a,
-    // required this.attendance_al,
-    // required this.attendance_pm,
     required this.attendance_ps,
-    // required this.attendance_all,
     required this.attendances,
     required this.scores,
   });
