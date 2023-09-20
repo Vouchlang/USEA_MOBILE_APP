@@ -46,7 +46,7 @@ class History extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                      child: Image.asset('assets/image/logo1.png'),
+                      child: Image.asset('assets/image/logonew1.png'),
                     ),
                     Expanded(
                       child: Image.asset('assets/image/logo2.png'),
