@@ -633,25 +633,22 @@ class MajorSearchDelegate extends SearchDelegate<String> {
           .expand((facultyData) => facultyData.major_data)
           .firstWhere((majorData) => majorData.major_name == majorName);
 
-      Get.to(Program_ACCA(
-        majorName: majorData.major_name,
-        course_hour: majorData.course_hour,
-        educationNames: majorData.subject_data,
-      ));
+      Get.to(() => Program_ACCA(
+            majorName: majorData.major_name,
+            course_hour: majorData.course_hour,
+            educationNames: majorData.subject_data,
+          ));
     } else {
       // Handle navigation for regular programs
       final majorInfoData = await fetchMajorInfoData(majorName);
       final educationNames = await fetchEducationNames(majorName);
 
       if (majorInfoData != null && educationNames != null) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => MajorDetailsScreen(
-              majorName: majorName,
-              majorInfoData: majorInfoData,
-              educationNames: educationNames,
-            ),
+        Get.to(
+          () => MajorDetailsScreen(
+            majorName: majorName,
+            majorInfoData: majorInfoData,
+            educationNames: educationNames,
           ),
         );
       } else {
@@ -660,7 +657,6 @@ class MajorSearchDelegate extends SearchDelegate<String> {
     }
   }
 
-  @override
   @override
   Widget buildSuggestions(BuildContext context) {
     final suggestionList = majorNames

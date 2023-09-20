@@ -380,7 +380,7 @@ class LocaleString extends Translations {
           'ប្រលងពាក់កណ្ដាលឆមាស': 'Mid-Term Exam',
           'ប្រលងបញ្ចប់ឆមាស': 'Final Exam',
           'លក្ខណៈវិនិច្ឆ័យ': 'Criteria',
-          'ពិន្ទុផ្លូវការ': 'Announce Score',
+          'ពិន្ទុផ្លូវការ': 'Final Score',
           'ពិន្ទុជាក់ស្ដែង': 'Score',
 
           'ភាគរយ': 'Percent',
@@ -445,7 +445,7 @@ class LocaleString extends Translations {
           'បន្ទប់': 'Room',
           'សាស្ត្រចារ្យ': 'Lecturer',
           'ព័ត៌មានការប្រឡង': 'Exam Information',
-          'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t': 'Assignment and Research',
+          'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t': 'Assignment',
 
           // Student Feedback
           'សូមអធ្យាស្រ័យ': 'Apologies for any trouble',

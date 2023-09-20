@@ -651,7 +651,7 @@ class _PerformanceState extends State<Performance> {
                                                                                                         UTextColor,
                                                                                                       ),
                                                                                                       CustomPerformanceDiaglogTextTheme(
-                                                                                                        'កិច្ចការផ្ទះ&​ស្រាវជ្រាវ'.tr,
+                                                                                                        'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t'.tr,
                                                                                                         UTitleSize,
                                                                                                         UTextColor,
                                                                                                       ),
