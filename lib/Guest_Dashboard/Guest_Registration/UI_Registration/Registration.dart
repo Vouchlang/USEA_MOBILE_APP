@@ -208,11 +208,6 @@ class _RegistrationState extends State<Registration> {
                                                   SizedBox(
                                                     width: UWidth5,
                                                   ),
-                                                  Container(
-                                                    margin: EdgeInsets.only(
-                                                        bottom: UPdMg_5),
-                                                    child: Text('_ '),
-                                                  ),
                                                   Expanded(
                                                     child: Text(
                                                       info.info_text,
@@ -270,11 +265,6 @@ class _RegistrationState extends State<Registration> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       SizedBox(width: UWidth5),
-                                      Container(
-                                        margin:
-                                            EdgeInsets.only(bottom: UPdMg_5),
-                                        child: Text('_ '),
-                                      ),
                                       Expanded(
                                         child: Text(
                                           details.timeDetail,

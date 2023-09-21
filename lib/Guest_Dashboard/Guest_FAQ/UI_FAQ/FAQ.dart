@@ -101,6 +101,8 @@ class _FAQState extends State<FAQ> {
                                 children: [
                                   Divider(),
                                   Container(
+                                    alignment: Alignment.centerLeft,
+
                                     decoration: BoxDecoration(
                                       borderRadius:
                                           BorderRadius.circular(URoundedLarge),
