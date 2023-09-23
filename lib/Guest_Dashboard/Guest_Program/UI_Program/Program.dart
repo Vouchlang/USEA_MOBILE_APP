@@ -1,3 +1,5 @@
+// ignore_for_file: override_on_non_overriding_member, unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -5,7 +7,6 @@ import 'dart:convert';
 import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
 import '../Class_Program/Class_Program_ACCA.dart';
-// import 'Program_ACCA.dart';
 import 'Program_ACCA.dart';
 import 'Program_Major_Detail_Main.dart';
 
