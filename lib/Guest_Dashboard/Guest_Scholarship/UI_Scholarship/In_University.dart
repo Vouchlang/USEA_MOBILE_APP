@@ -112,7 +112,8 @@ class _In_UniversityState extends State<In_University> {
                                   i_scholarship[index].i_major)),
                           Container(
                               width: UFullWidth,
-                              child: ScholarshipTitleTheme('ថ្ងៃផុតកំណត់៖'.tr)),
+                              child:
+                                  ScholarshipTitleTheme('ថ្ងៃផុតកំណត់៖ '.tr)),
                           Container(
                               width: UFullWidth,
                               child: ScholarshipBodyTheme(

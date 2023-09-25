@@ -98,13 +98,20 @@ class _CareerState extends State<Career> {
                         child: Column(
                           children: [
                             Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Container(
-                                    width: 75,
-                                    height: 75,
-                                    child: Image.network(
-                                      career[index].logo,
-                                    )),
+                                  width: 75,
+                                  height: 75,
+                                  child: career[index].logo.isEmpty
+                                      ? Image.asset(
+                                          'assets/image/Error_Image.jpg',
+                                        )
+                                      : Image.network(
+                                          career[index].logo,
+                                        ),
+                                ),
                                 SizedBox(
                                   width: 15,
                                 ),
@@ -114,7 +121,9 @@ class _CareerState extends State<Career> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       CustomTextTheme(
-                                        career[index].position,
+                                        career[index].position.isEmpty
+                                            ? 'N/A'
+                                            : career[index].position,
                                         UTitleSize,
                                         UPrimaryColor,
                                         UTitleWeight,
@@ -122,9 +131,34 @@ class _CareerState extends State<Career> {
                                       SizedBox(
                                         height: UHeight5,
                                       ),
-                                      BodyTheme(
-                                        career[index].organization,
+                                      CareerBody(
+                                        career[index].organization.isEmpty
+                                            ? 'N/A'
+                                            : career[index].organization,
                                       ),
+                                      SizedBox(
+                                        height: UHeight5,
+                                      ),
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Image.asset(
+                                            'assets/image/Event_Date.png',
+                                            scale: 12,
+                                          ),
+                                          SizedBox(
+                                            width: UWidth5,
+                                          ),
+                                          Expanded(
+                                            child: CareerBody(
+                                              career[index].expired_date.isEmpty
+                                                  ? 'N/A'
+                                                  : career[index].expired_date,
+                                            ),
+                                          ),
+                                        ],
+                                      )
                                     ],
                                   ),
                                 ),

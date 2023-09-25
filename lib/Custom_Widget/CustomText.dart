@@ -208,6 +208,8 @@ Widget ScholarshipBodyTheme(String text) {
 }
 // *@ End Scholarship Body text
 
+// *@ Contact text
+
 Widget buildTextContact(
   String text,
   double size,
@@ -223,6 +225,19 @@ Widget buildTextContact(
     ),
   );
 }
+// *@ End Contact text
+
+// *@ Career text
+Widget CareerBody(String text) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: UBodySize,
+      color: UTextColor,
+    ),
+  );
+}
+// *@ End Career text
 
 // *@ Date Schedule
 Widget ScheduleDate(String text) {
@@ -280,8 +295,8 @@ Widget buildEventDate(
 }
 // *@ End Event Date
 
-//*@ Career Card Row
-Widget buildCareerCardRow(
+//*@ Job History Card Row
+Widget buildJobHistoryCardRow(
   String textTitle,
   textValue,
 ) {
@@ -308,7 +323,7 @@ Widget buildCareerCardRow(
     ],
   );
 }
-// *@ End Career Card Row
+// *@ End Job History Card Row
 
 // *@ Body text
 Widget BodyTheme(String text) {

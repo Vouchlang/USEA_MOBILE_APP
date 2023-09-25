@@ -135,11 +135,11 @@ class _Job_HistoryState extends State<Job_History> {
                               ],
                             ),
                             Divider(),
-                            buildCareerCardRow('ស្ថាប័ន', 'N/A'),
+                            buildJobHistoryCardRow('ស្ថាប័ន', 'N/A'),
                             Divider(),
-                            buildCareerCardRow('មុខតំណែង', 'N/A'),
+                            buildJobHistoryCardRow('មុខតំណែង', 'N/A'),
                             Divider(),
-                            buildCareerCardRow('ប្រាក់បៀវត្ស', 'N/A'),
+                            buildJobHistoryCardRow('ប្រាក់បៀវត្ស', 'N/A'),
                           ],
                         ),
                       ),
@@ -183,25 +183,25 @@ class _Job_HistoryState extends State<Job_History> {
                             ],
                           ),
                           Divider(),
-                          buildCareerCardRow(
+                          buildJobHistoryCardRow(
                               'ស្ថានភាពការងារ',
                               _dataJobHistory[index].status_name.isEmpty
                                   ? 'N/A'
                                   : _dataJobHistory[index].status_name),
                           Divider(),
-                          buildCareerCardRow(
+                          buildJobHistoryCardRow(
                               'ស្ថាប័ន',
                               _dataJobHistory[index].workPlace.isEmpty
                                   ? 'N/A'
                                   : _dataJobHistory[index].workPlace),
                           Divider(),
-                          buildCareerCardRow(
+                          buildJobHistoryCardRow(
                               'មុខតំណែង',
                               _dataJobHistory[index].position.isEmpty
                                   ? 'N/A'
                                   : _dataJobHistory[index].position),
                           Divider(),
-                          buildCareerCardRow(
+                          buildJobHistoryCardRow(
                               'ប្រាក់បៀវត្ស',
                               _dataJobHistory[index].salary.isEmpty
                                   ? 'N/A'
