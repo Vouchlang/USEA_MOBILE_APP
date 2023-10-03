@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -19,8 +21,6 @@ class Video_UI extends StatefulWidget {
 class _VideoState extends State<Video_UI> {
   List<VDO_Class> vdo = [];
   bool isLoading = true;
-  final Uri urlYt =
-      Uri.parse("https://youtube.com/@usea-edu-kh?si=O-C7zB1vDD6KjP0z");
 
   Future<void> getData() async {
     try {
@@ -54,6 +54,16 @@ class _VideoState extends State<Video_UI> {
   void initState() {
     super.initState();
     getData();
+  }
+
+  void _launchYoutube() async {
+    final String urlYt = "https://youtube.com/@usea-edu-kh?si=O-C7zB1vDD6KjP0z";
+
+    if (await canLaunch(urlYt)) {
+      await launch(urlYt);
+    } else {
+      throw 'Could not launch $urlYt';
+    }
   }
 
   @override
@@ -101,15 +111,7 @@ class _VideoState extends State<Video_UI> {
                           ),
                           InkWell(
                             onTap: () {
-                              void _launchOutUniUrl() async {
-                                if (await launchUrl(urlYt)) {
-                                  await launchUrl(urlYt);
-                                } else {
-                                  throw 'Could not launch ${urlYt}';
-                                }
-                              }
-
-                              _launchOutUniUrl();
+                              _launchYoutube();
                             },
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,

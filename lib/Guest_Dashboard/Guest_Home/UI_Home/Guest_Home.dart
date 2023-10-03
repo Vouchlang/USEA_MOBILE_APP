@@ -22,8 +22,6 @@ class Guest_Home extends StatefulWidget {
 }
 
 class _Guest_HomeState extends State<Guest_Home> {
-  final Uri urlYt =
-      Uri.parse("https://youtube.com/@usea-edu-kh?si=O-C7zB1vDD6KjP0z");
   final Uri urlWeb = Uri.parse("https://www.usea.edu.kh/en/Pages/index.php");
 
   late List<Class_Image> image_slides = [];
@@ -89,6 +87,16 @@ class _Guest_HomeState extends State<Guest_Home> {
     }
   }
 
+  void _launchYoutube() async {
+    final String urlYt = "https://youtube.com/@usea-edu-kh?si=O-C7zB1vDD6KjP0z";
+
+    if (await canLaunch(urlYt)) {
+      await launch(urlYt);
+    } else {
+      throw 'Could not launch $urlYt';
+    }
+  }
+
   void openTelegramGroup() async {
     final String telegramUrl = "https://t.me/university_of_south_east_asia";
 
@@ -100,7 +108,8 @@ class _Guest_HomeState extends State<Guest_Home> {
   }
 
   void openTiktok() async {
-    final String tiktokUrl = "https://www.tiktok.com/@university.of.sou";
+    final String tiktokUrl =
+        "https://www.tiktok.com/@usea_edu_kh?is_from_webapp=1&sender_device=pc";
 
     if (await canLaunch(tiktokUrl)) {
       await launch(tiktokUrl);
@@ -354,7 +363,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                       'assets/image/SM_IG.png',
                     ),
                     BuildContainerSM(
-                      () => launchUrl(urlYt),
+                      () => _launchYoutube(),
                       'assets/image/SM_Yt.png',
                     ),
                     BuildContainerSM(

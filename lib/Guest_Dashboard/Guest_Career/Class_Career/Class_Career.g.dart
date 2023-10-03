@@ -2,9 +2,6 @@
 
 part of 'Class_Career.dart';
 
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
 
 Class_Career _$Class_CareerFromJson(Map<String, dynamic> json) => Class_Career(
       logo: json['logo'] as String,

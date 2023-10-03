@@ -320,7 +320,7 @@ class _Study_InfoState extends State<Study_Info> {
                                     ),
                                   ],
                                 ),
-                                buildDividerStDetail(),
+                                Divider(),
                                 buildStudyDataAssign(
                                     'ឈ្មោះ',
                                     _dataStudyInfoAssignment[index]
@@ -329,7 +329,7 @@ class _Study_InfoState extends State<Study_Info> {
                                         ? 'N/A'
                                         : _dataStudyInfoAssignment[index]
                                             .assignment_name),
-                                buildDividerStDetail(),
+                                Divider(),
                                 buildStudyDataAssign(
                                     'មុខវិជ្ជា',
                                     _dataStudyInfoAssignment[index]
@@ -338,7 +338,7 @@ class _Study_InfoState extends State<Study_Info> {
                                         ? 'N/A'
                                         : _dataStudyInfoAssignment[index]
                                             .subject_name),
-                                buildDividerStDetail(),
+                                Divider(),
                                 buildStudyDataAssign(
                                     'បន្ទប់',
                                     _dataStudyInfoAssignment[index]
@@ -347,7 +347,7 @@ class _Study_InfoState extends State<Study_Info> {
                                         ? 'N/A'
                                         : _dataStudyInfoAssignment[index]
                                             .room_name),
-                                buildDividerStDetail(),
+                                Divider(),
                                 buildStudyDataAssign(
                                     'សាស្ត្រចារ្យ',
                                     _dataStudyInfoAssignment[index]

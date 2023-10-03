@@ -30,7 +30,9 @@ class _PerformanceState extends State<Performance> {
   Future<void> _refreshData() async {
     try {
       final response = await http.post(
-        Uri.parse(APIUrlStudent + 'action=study_performance'),
+        Uri.parse(Get.locale?.languageCode == 'km'
+            ? APIUrlStudent + 'action=study_performance'
+            : APIUrlStudentEn + 'action=study_performance'),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -53,6 +55,7 @@ class _PerformanceState extends State<Performance> {
 
               subjectData['attendances'].forEach((attendancesData) {
                 Attendances attendancesObj = Attendances(
+                  title: attendancesData['title'] ?? 'N/A',
                   attendance_a: attendancesData['attendance_a'] ?? 'N/A',
                   attendance_al: attendancesData['attendance_al'] ?? 'N/A',
                   attendance_pm: attendancesData['attendance_pm'] ?? 'N/A',
@@ -65,6 +68,7 @@ class _PerformanceState extends State<Performance> {
 
               subjectData['scores'].forEach((scoresData) {
                 Scores scoresObj = Scores(
+                  title: scoresData['title'] ?? 'N/A',
                   score_attendance: scoresData['score_attendance'] ?? 'N/A',
                   score_assignment: scoresData['score_assignment'] ?? 'N/A',
                   score_mid_term: scoresData['score_mid_term'] ?? 'N/A',
@@ -311,6 +315,9 @@ class _PerformanceState extends State<Performance> {
                                                       .map((subject) {
                                                     return IntrinsicHeight(
                                                       child: Row(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
                                                                 .spaceBetween,
@@ -325,8 +332,9 @@ class _PerformanceState extends State<Performance> {
                                                                   .symmetric(
                                                                       vertical:
                                                                           UPdMg_10),
-                                                              alignment: Alignment
-                                                                  .centerLeft,
+                                                              alignment:
+                                                                  Alignment
+                                                                      .topLeft,
                                                               child: Text(
                                                                 Get.locale
                                                                             ?.languageCode ==
@@ -346,6 +354,9 @@ class _PerformanceState extends State<Performance> {
                                                             ),
                                                           ),
                                                           Row(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
                                                             mainAxisAlignment:
                                                                 MainAxisAlignment
                                                                     .spaceBetween,
@@ -354,7 +365,11 @@ class _PerformanceState extends State<Performance> {
                                                                 width: 50,
                                                                 alignment:
                                                                     Alignment
-                                                                        .center,
+                                                                        .topCenter,
+                                                                padding: EdgeInsets
+                                                                    .symmetric(
+                                                                        vertical:
+                                                                            UPdMg_10),
                                                                 child: InkWell(
                                                                   onTap: () {
                                                                     showDialog(
@@ -422,6 +437,14 @@ class _PerformanceState extends State<Performance> {
 
                                                                                         return Column(
                                                                                           children: [
+                                                                                            Container(
+                                                                                              alignment: Alignment.centerLeft,
+                                                                                              child: CustomPerformanceDiaglogTextThemeTitle(
+                                                                                                attendance.title,
+                                                                                                UTitleSize,
+                                                                                                UPrimaryColor,
+                                                                                              ),
+                                                                                            ),
                                                                                             IntrinsicHeight(
                                                                                               child: Row(
                                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -552,7 +575,11 @@ class _PerformanceState extends State<Performance> {
                                                                 width: 65,
                                                                 alignment:
                                                                     Alignment
-                                                                        .center,
+                                                                        .topCenter,
+                                                                padding: EdgeInsets
+                                                                    .symmetric(
+                                                                        vertical:
+                                                                            UPdMg_10),
                                                                 child: InkWell(
                                                                   onTap: () {
                                                                     showDialog(
@@ -578,177 +605,192 @@ class _PerformanceState extends State<Performance> {
                                                                             ),
                                                                           ),
                                                                           child:
-                                                                              Stack(
-                                                                            children: [
-                                                                              Container(
-                                                                                child: Column(
-                                                                                  mainAxisSize: MainAxisSize.min,
-                                                                                  children: [
-                                                                                    Container(
-                                                                                      padding: EdgeInsets.all(UPdMg_10),
-                                                                                      width: UFullWidth,
-                                                                                      decoration: BoxDecoration(
-                                                                                        borderRadius: BorderRadius.only(
-                                                                                          topLeft: Radius.circular(URoundedLarge),
-                                                                                          topRight: Radius.circular(URoundedLarge),
+                                                                              SingleChildScrollView(
+                                                                            child:
+                                                                                Stack(
+                                                                              children: [
+                                                                                Container(
+                                                                                  child: Column(
+                                                                                    mainAxisSize: MainAxisSize.min,
+                                                                                    children: [
+                                                                                      Container(
+                                                                                        padding: EdgeInsets.all(UPdMg_10),
+                                                                                        width: UFullWidth,
+                                                                                        decoration: BoxDecoration(
+                                                                                          borderRadius: BorderRadius.only(
+                                                                                            topLeft: Radius.circular(URoundedLarge),
+                                                                                            topRight: Radius.circular(URoundedLarge),
+                                                                                          ),
+                                                                                          color: UBGLightBlue,
                                                                                         ),
-                                                                                        color: UBGLightBlue,
-                                                                                      ),
-                                                                                      child: Container(
-                                                                                        margin: EdgeInsets.only(right: 50),
-                                                                                        child: Text(
-                                                                                          subject.name_en,
-                                                                                          style: TextStyle(
-                                                                                            fontSize: UTitleSize,
-                                                                                            fontWeight: UTitleWeight,
-                                                                                            color: UPrimaryColor,
+                                                                                        child: Container(
+                                                                                          margin: EdgeInsets.only(right: 50),
+                                                                                          child: Text(
+                                                                                            subject.name_en,
+                                                                                            style: TextStyle(
+                                                                                              fontSize: UTitleSize,
+                                                                                              fontWeight: UTitleWeight,
+                                                                                              color: UPrimaryColor,
+                                                                                            ),
                                                                                           ),
                                                                                         ),
                                                                                       ),
-                                                                                    ),
-                                                                                    SizedBox(
-                                                                                      height: UHeight5,
-                                                                                    ),
-                                                                                    Container(
-                                                                                      padding: EdgeInsets.symmetric(vertical: UPdMg_5, horizontal: UPdMg_10),
-                                                                                      width: UFullWidth,
-                                                                                      child: Container(
-                                                                                        padding: EdgeInsets.symmetric(vertical: UPdMg_5),
-                                                                                        child: Column(
-                                                                                          mainAxisSize: MainAxisSize.min,
-                                                                                          children: subject.scores.asMap().entries.map((entry) {
-                                                                                            final int index = entry.key;
-                                                                                            final score = entry.value;
-                                                                                            final double marginBottom = (index == subject.scores.length - 1) ? UPdMg_5 : UPdMg_15;
+                                                                                      SizedBox(
+                                                                                        height: UHeight5,
+                                                                                      ),
+                                                                                      Container(
+                                                                                        padding: EdgeInsets.symmetric(vertical: UPdMg_5, horizontal: UPdMg_10),
+                                                                                        width: UFullWidth,
+                                                                                        child: Container(
+                                                                                          padding: EdgeInsets.symmetric(vertical: UPdMg_5),
+                                                                                          child: Column(
+                                                                                            mainAxisSize: MainAxisSize.min,
+                                                                                            children: subject.scores.asMap().entries.map((entry) {
+                                                                                              final int index = entry.key;
+                                                                                              final score = entry.value;
+                                                                                              final double marginBottom = (index == subject.scores.length - 1) ? UPdMg_5 : UPdMg_15;
 
-                                                                                            return IntrinsicHeight(
-                                                                                              child: Row(
-                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                children: [
-                                                                                                  Column(
-                                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                    children: [
-                                                                                                      CustomPerformanceDiaglogTextTheme(
-                                                                                                        'លក្ខណៈវិនិច្ឆ័យ'.tr,
+                                                                                              return IntrinsicHeight(
+                                                                                                child: Column(
+                                                                                                  children: [
+                                                                                                    Container(
+                                                                                                      alignment: Alignment.centerLeft,
+                                                                                                      child: CustomPerformanceDiaglogTextThemeTitle(
+                                                                                                        score.title,
                                                                                                         UTitleSize,
                                                                                                         UPrimaryColor,
                                                                                                       ),
-                                                                                                      CustomPerformanceDiaglogTextTheme(
-                                                                                                        'វត្តមាន'.tr,
-                                                                                                        UTitleSize,
-                                                                                                        UTextColor,
-                                                                                                      ),
-                                                                                                      CustomPerformanceDiaglogTextTheme(
-                                                                                                        'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t'.tr,
-                                                                                                        UTitleSize,
-                                                                                                        UTextColor,
-                                                                                                      ),
-                                                                                                      CustomPerformanceDiaglogTextTheme(
-                                                                                                        'ប្រលងពាក់កណ្ដាលឆមាស'.tr,
-                                                                                                        UTitleSize,
-                                                                                                        UTextColor,
-                                                                                                      ),
-                                                                                                      CustomPerformanceDiaglogTextTheme(
-                                                                                                        'ប្រលងបញ្ចប់ឆមាស'.tr,
-                                                                                                        UTitleSize,
-                                                                                                        UTextColor,
-                                                                                                      ),
-                                                                                                      Container(
-                                                                                                        margin: EdgeInsets.only(bottom: marginBottom),
-                                                                                                      )
-                                                                                                    ],
-                                                                                                  ),
-                                                                                                  Row(
-                                                                                                    children: [
-                                                                                                      Column(
-                                                                                                        children: [
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            'ពិន្ទុជាក់ស្ដែង'.tr,
-                                                                                                            UTitleSize,
-                                                                                                            UPrimaryColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            score.number_attendance,
-                                                                                                            UTitleSize,
-                                                                                                            UScoreColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            score.number_assignment,
-                                                                                                            UTitleSize,
-                                                                                                            UScoreColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            score.number_mid_term,
-                                                                                                            UTitleSize,
-                                                                                                            UScoreColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            score.number_final,
-                                                                                                            UTitleSize,
-                                                                                                            UScoreColor,
-                                                                                                          ),
-                                                                                                        ],
-                                                                                                      ),
-                                                                                                      SizedBox(
-                                                                                                        width: Get.locale?.languageCode == 'km' ? UWidth15 : UWidth5,
-                                                                                                      ),
-                                                                                                      Column(
-                                                                                                        children: [
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            'ពិន្ទុផ្លូវការ'.tr,
-                                                                                                            UTitleSize,
-                                                                                                            UPrimaryColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            score.score_attendance,
-                                                                                                            UTitleSize,
-                                                                                                            UScoreColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            score.score_assignment,
-                                                                                                            UTitleSize,
-                                                                                                            UScoreColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            score.score_mid_term,
-                                                                                                            UTitleSize,
-                                                                                                            UScoreColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            score.score_final,
-                                                                                                            UTitleSize,
-                                                                                                            UScoreColor,
-                                                                                                          ),
-                                                                                                        ],
-                                                                                                      )
-                                                                                                    ],
-                                                                                                  )
-                                                                                                ],
-                                                                                              ),
-                                                                                            );
-                                                                                          }).toList(),
+                                                                                                    ),
+                                                                                                    Row(
+                                                                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                      children: [
+                                                                                                        Column(
+                                                                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                          children: [
+                                                                                                            CustomPerformanceDiaglogTextThemeTitle(
+                                                                                                              'លក្ខណៈវិនិច្ឆ័យ'.tr,
+                                                                                                              UTitleSize,
+                                                                                                              UPrimaryColor,
+                                                                                                            ),
+                                                                                                            CustomPerformanceDiaglogTextTheme(
+                                                                                                              'វត្តមាន'.tr,
+                                                                                                              UTitleSize,
+                                                                                                              UTextColor,
+                                                                                                            ),
+                                                                                                            CustomPerformanceDiaglogTextTheme(
+                                                                                                              'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t'.tr,
+                                                                                                              UTitleSize,
+                                                                                                              UTextColor,
+                                                                                                            ),
+                                                                                                            CustomPerformanceDiaglogTextTheme(
+                                                                                                              'ប្រលងពាក់កណ្ដាលឆមាស'.tr,
+                                                                                                              UTitleSize,
+                                                                                                              UTextColor,
+                                                                                                            ),
+                                                                                                            CustomPerformanceDiaglogTextTheme(
+                                                                                                              'ប្រលងបញ្ចប់ឆមាស'.tr,
+                                                                                                              UTitleSize,
+                                                                                                              UTextColor,
+                                                                                                            ),
+                                                                                                            Container(
+                                                                                                              margin: EdgeInsets.only(bottom: marginBottom),
+                                                                                                            )
+                                                                                                          ],
+                                                                                                        ),
+                                                                                                        Row(
+                                                                                                          children: [
+                                                                                                            Column(
+                                                                                                              children: [
+                                                                                                                CustomPerformanceDiaglogTextThemeTitle(
+                                                                                                                  'ពិន្ទុជាក់ស្ដែង'.tr,
+                                                                                                                  UTitleSize,
+                                                                                                                  UPrimaryColor,
+                                                                                                                ),
+                                                                                                                CustomPerformanceDiaglogTextTheme(
+                                                                                                                  score.number_attendance,
+                                                                                                                  UTitleSize,
+                                                                                                                  UScoreColor,
+                                                                                                                ),
+                                                                                                                CustomPerformanceDiaglogTextTheme(
+                                                                                                                  score.number_assignment,
+                                                                                                                  UTitleSize,
+                                                                                                                  UScoreColor,
+                                                                                                                ),
+                                                                                                                CustomPerformanceDiaglogTextTheme(
+                                                                                                                  score.number_mid_term,
+                                                                                                                  UTitleSize,
+                                                                                                                  UScoreColor,
+                                                                                                                ),
+                                                                                                                CustomPerformanceDiaglogTextTheme(
+                                                                                                                  score.number_final,
+                                                                                                                  UTitleSize,
+                                                                                                                  UScoreColor,
+                                                                                                                ),
+                                                                                                              ],
+                                                                                                            ),
+                                                                                                            SizedBox(
+                                                                                                              width: Get.locale?.languageCode == 'km' ? UWidth15 : UWidth5,
+                                                                                                            ),
+                                                                                                            Column(
+                                                                                                              children: [
+                                                                                                                CustomPerformanceDiaglogTextThemeTitle(
+                                                                                                                  'ពិន្ទុផ្លូវការ'.tr,
+                                                                                                                  UTitleSize,
+                                                                                                                  UPrimaryColor,
+                                                                                                                ),
+                                                                                                                CustomPerformanceDiaglogTextTheme(
+                                                                                                                  score.score_attendance,
+                                                                                                                  UTitleSize,
+                                                                                                                  UScoreColor,
+                                                                                                                ),
+                                                                                                                CustomPerformanceDiaglogTextTheme(
+                                                                                                                  score.score_assignment,
+                                                                                                                  UTitleSize,
+                                                                                                                  UScoreColor,
+                                                                                                                ),
+                                                                                                                CustomPerformanceDiaglogTextTheme(
+                                                                                                                  score.score_mid_term,
+                                                                                                                  UTitleSize,
+                                                                                                                  UScoreColor,
+                                                                                                                ),
+                                                                                                                CustomPerformanceDiaglogTextTheme(
+                                                                                                                  score.score_final,
+                                                                                                                  UTitleSize,
+                                                                                                                  UScoreColor,
+                                                                                                                ),
+                                                                                                              ],
+                                                                                                            )
+                                                                                                          ],
+                                                                                                        )
+                                                                                                      ],
+                                                                                                    ),
+                                                                                                  ],
+                                                                                                ),
+                                                                                              );
+                                                                                            }).toList(),
+                                                                                          ),
                                                                                         ),
                                                                                       ),
-                                                                                    ),
-                                                                                  ],
-                                                                                ),
-                                                                              ),
-                                                                              Positioned(
-                                                                                right: 0,
-                                                                                top: 0,
-                                                                                height: 50,
-                                                                                width: 50,
-                                                                                child: InkWell(
-                                                                                  onTap: () {
-                                                                                    Navigator.of(context).pop();
-                                                                                  },
-                                                                                  child: Image.asset(
-                                                                                    'assets/image/close.png',
-                                                                                    scale: 10,
+                                                                                    ],
                                                                                   ),
                                                                                 ),
-                                                                              ),
-                                                                            ],
+                                                                                Positioned(
+                                                                                  right: 0,
+                                                                                  top: 0,
+                                                                                  height: 50,
+                                                                                  width: 50,
+                                                                                  child: InkWell(
+                                                                                    onTap: () {
+                                                                                      Navigator.of(context).pop();
+                                                                                    },
+                                                                                    child: Image.asset(
+                                                                                      'assets/image/close.png',
+                                                                                      scale: 10,
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                              ],
+                                                                            ),
                                                                           ),
                                                                         );
                                                                       },

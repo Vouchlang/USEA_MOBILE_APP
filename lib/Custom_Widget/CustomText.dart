@@ -5,12 +5,12 @@ import '../theme_builder.dart';
 String APIUrlGuest = 'https://usea.edu.kh/';
 
 // Local Server
-// String APIUrlStudent = 'http://192.168.1.182/api/apidata.php?';
-// String APIUrlStudentEn = 'http://192.168.1.182/api/apidata_en.php?';
+String APIUrlStudent = 'http://192.168.1.182/api/apidata.php?';
+String APIUrlStudentEn = 'http://192.168.1.182/api/apidata_en.php?';
 
 // Public Server
-String APIUrlStudent = 'http://116.212.155.149:9999/api/apidata.php?';
-String APIUrlStudentEn = 'http://116.212.155.149:9999/api/apidata_en.php?';
+// String APIUrlStudent = 'http://116.212.155.149:9999/api/apidata.php?';
+// String APIUrlStudentEn = 'http://116.212.155.149:9999/api/apidata_en.php?';
 
 // *@ Divider
 Widget buildDivider() {
@@ -348,6 +348,18 @@ Widget CustomTextTheme(
         fontWeight: fontWeight,
         color: color,
         fontFamily: UKFontFamily),
+  );
+}
+
+Widget CustomPerformanceDiaglogTextThemeTitle(
+    String text, double size, Color color) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: size,
+      fontWeight: UTitleWeight,
+      color: color,
+    ),
   );
 }
 

@@ -39,13 +39,15 @@ class Subject {
 }
 
 class Attendances {
-  final String attendance_a,
+  final String title,
+      attendance_a,
       attendance_pm,
       attendance_al,
       attendance_all,
       attendance_ps;
 
   Attendances({
+    required this.title,
     required this.attendance_a,
     required this.attendance_pm,
     required this.attendance_al,
@@ -55,7 +57,8 @@ class Attendances {
 }
 
 class Scores {
-  final String score_attendance,
+  final String title,
+      score_attendance,
       score_assignment,
       score_mid_term,
       score_final,
@@ -65,6 +68,7 @@ class Scores {
       number_final;
 
   Scores({
+    required this.title,
     required this.score_attendance,
     required this.score_assignment,
     required this.score_mid_term,
