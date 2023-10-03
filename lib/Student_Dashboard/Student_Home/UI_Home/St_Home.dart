@@ -56,8 +56,10 @@ class _St_HomeState extends State<St_Home> with SingleTickerProviderStateMixin {
           unselectedItemColor: UGreyColor,
           selectedFontSize: 11,
           unselectedFontSize: 11,
-          selectedLabelStyle:
-              TextStyle(fontWeight: UTitleWeight, fontSize: UBodySize),
+          selectedLabelStyle: TextStyle(
+            fontWeight: UTitleWeight,
+            fontSize: UBodySize,
+          ),
           items: [
             BottomNavigationBarItem(
               icon: Icon(

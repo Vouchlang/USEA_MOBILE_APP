@@ -251,7 +251,7 @@ class _Study_InfoState extends State<Study_Info> {
                             padding: EdgeInsets.fromLTRB(
                                 UPdMg_10, UPdMg_10, UPdMg_10, 0),
                             child: Text(
-                              'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t'.tr,
+                              'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t (Not Available)'.tr,
                               style: TextStyle(
                                 color: UPrimaryColor,
                                 fontSize: UTitleSize,

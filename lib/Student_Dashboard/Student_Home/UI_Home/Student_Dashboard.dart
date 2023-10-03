@@ -211,17 +211,19 @@ class _Student_HomeState extends State<Student_Home> {
                         Text(
                           'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
                           style: TextStyle(
-                              color: UPrimaryColor,
-                              fontSize: UBodySize10,
-                              fontFamily: 'KhmerOSmuol'),
+                            color: UPrimaryColor,
+                            fontSize: UBodySize10,
+                            fontFamily: 'KhmerOSmuol',
+                          ),
                         ),
                         Text(
                           'UNIVERSITY OF SOUTH-EAST ASIA',
                           style: TextStyle(
-                              color: UPrimaryColor,
-                              fontSize: UBodySize,
-                              fontFamily: UEFontFamily,
-                              fontWeight: UBodyWeight),
+                            color: UPrimaryColor,
+                            fontSize: UBodySize,
+                            fontFamily: UEFontFamily,
+                            fontWeight: UBodyWeight,
+                          ),
                         ),
                       ],
                     ),
@@ -233,23 +235,24 @@ class _Student_HomeState extends State<Student_Home> {
               width: UWidth15,
             ),
             InkWell(
-                onTap: () {
-                  Get.to(
-                    () => Student_Detail(
-                      data_studentUser: _dataStudentUser,
+              onTap: () {
+                Get.to(
+                  () => Student_Detail(
+                    data_studentUser: _dataStudentUser,
+                  ),
+                );
+              },
+              child: _dataStDetail.isNotEmpty
+                  ? CircleAvatar(
+                      backgroundImage:
+                          NetworkImage(_dataStDetail[0].profile_pic),
+                      radius: 22.5,
+                    )
+                  : Icon(
+                      Icons.account_circle,
+                      size: 40,
                     ),
-                  );
-                },
-                child: _dataStDetail.isNotEmpty
-                    ? CircleAvatar(
-                        backgroundImage:
-                            NetworkImage(_dataStDetail[0].profile_pic),
-                        radius: 22.5,
-                      )
-                    : Icon(
-                        Icons.account_circle,
-                        size: 40,
-                      )),
+            ),
           ],
         ),
         toolbarHeight: 75,
@@ -287,7 +290,7 @@ class _Student_HomeState extends State<Student_Home> {
                         margin: EdgeInsets.symmetric(horizontal: UPdMg_10),
                         elevation: 1,
                         shadowColor: ULightGreyColor,
-                        shape: RoundedRectangleBorder(
+                        shape: RoundedRectangleBorder( 
                             borderRadius:
                                 BorderRadius.circular(URoundedMedium)),
                         child: InkWell(
