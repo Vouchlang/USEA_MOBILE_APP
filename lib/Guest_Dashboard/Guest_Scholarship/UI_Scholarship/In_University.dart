@@ -150,7 +150,7 @@ class _In_UniversityState extends State<In_University> {
 
                                     _launchInUniUrl();
                                   },
-                                  child: CustomTextTheme(
+                                  child: ScholarshipButtonTheme(
                                     'អានបន្ថែម'.tr,
                                     UBodySize,
                                     UPrimaryColor,

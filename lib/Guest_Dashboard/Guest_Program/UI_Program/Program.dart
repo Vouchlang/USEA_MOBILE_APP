@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'dart:convert';
 import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
@@ -590,7 +592,7 @@ class MajorSearchDelegate extends SearchDelegate<String> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(UPdMg_8),
           child: Text(
             title,
             style: TextStyle(
@@ -708,6 +710,9 @@ class MajorSearchDelegate extends SearchDelegate<String> {
 
   @override
   String get searchFieldLabel => '\tស្វែងរកមុខជំនាញ'.tr;
+
+  @override
+  Color get searchIndicatorLabel => UPrimaryColor;
 
   @override
   Widget buildLeading(BuildContext context) {

@@ -208,8 +208,21 @@ Widget ScholarshipBodyTheme(String text) {
 }
 // *@ End Scholarship Body text
 
-// *@ Contact text
+// *@Scholarship Button
+Widget ScholarshipButtonTheme(
+    String text, double size, Color color, FontWeight fontWeight) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: size,
+      fontWeight: fontWeight,
+      color: color,
+    ),
+  );
+}
+// *@ End Scholarship Button
 
+// *@ Contact text
 Widget buildTextContact(
   String text,
   double size,
@@ -220,7 +233,8 @@ Widget buildTextContact(
     textAlign: TextAlign.justify,
     style: TextStyle(
       fontSize: size,
-      fontFamily: UKFontFamily,
+      fontFamily:
+          Get.locale?.languageCode == 'km' ? UKFontFamily : UEFontFamily,
       fontWeight: fontWeight,
     ),
   );
@@ -288,7 +302,6 @@ Widget buildEventDate(
     style: TextStyle(
       fontSize: UBodySize10,
       fontWeight: UBodyWeight,
-      fontFamily: UKFontFamily,
       color: UPrimaryColor,
     ),
   );

@@ -176,12 +176,13 @@ class _RegistrationState extends State<Registration> {
                                             Container(
                                               width: 20,
                                               height: 20,
+                                              margin: EdgeInsets.only(
+                                                  left: UPdMg_5),
                                               child: Image.asset(
                                                 'assets/image/detail.png',
                                                 scale: 15,
                                               ),
                                             ),
-                                            SizedBox(width: UWidth5),
                                             Expanded(
                                               child: Text(
                                                 educationItem.educationName,
@@ -200,7 +201,7 @@ class _RegistrationState extends State<Registration> {
                                           children: [
                                             SizedBox(height: UHeight5),
                                             Container(
-                                              margin: EdgeInsets.only(left: 35),
+                                              margin: EdgeInsets.only(left: 36),
                                               width: double.infinity,
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.min,
@@ -259,7 +260,7 @@ class _RegistrationState extends State<Registration> {
                                 ),
                                 SizedBox(height: UHeight5),
                                 Container(
-                                  margin: EdgeInsets.only(left: 35),
+                                  margin: EdgeInsets.only(left: 36),
                                   width: UFullWidth,
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,

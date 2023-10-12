@@ -849,7 +849,7 @@ class _PerformanceState extends State<Performance> {
                                                   MainAxisAlignment.end,
                                               children: [
                                                 Text(
-                                                  'មធ្យមភាគៈ'.tr,
+                                                  'មធ្យមភាគ'.tr,
                                                   style: TextStyle(
                                                     color: UPrimaryColor,
                                                   ),
@@ -880,7 +880,7 @@ class _PerformanceState extends State<Performance> {
                                                   MainAxisAlignment.end,
                                               children: [
                                                 Text(
-                                                  'ពិន្ទុមធ្យមភាគៈ'.tr,
+                                                  'ពិន្ទុមធ្យមភាគ'.tr,
                                                   style: TextStyle(
                                                     color: UPrimaryColor,
                                                   ),
@@ -911,7 +911,7 @@ class _PerformanceState extends State<Performance> {
                                                   MainAxisAlignment.end,
                                               children: [
                                                 Text(
-                                                  'និទ្ទេសៈ'.tr,
+                                                  'និទ្ទេស'.tr,
                                                   style: TextStyle(
                                                     color: UPrimaryColor,
                                                   ),

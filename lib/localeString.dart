@@ -146,9 +146,9 @@ class LocaleString extends Translations {
           'កាលវិភាគសិក្សា': 'កាលវិភាគសិក្សា',
 
           // Student Perfomance
-          'មធ្យមភាគៈ': 'មធ្យមភាគៈ',
-          'ពិន្ទុមធ្យមភាគៈ': 'ពិន្ទុមធ្យមភាគៈ',
-          'និទ្ទេសៈ': 'និទ្ទេសៈ',
+          'មធ្យមភាគ': 'មធ្យមភាគ',
+          'ពិន្ទុមធ្យមភាគ': 'ពិន្ទុមធ្យមភាគ',
+          'និទ្ទេស': 'និទ្ទេស',
           'ចំណាត់ថ្នាក់ប្រចាំថ្នាក់ៈ': 'ចំណាត់ថ្នាក់ប្រចាំថ្នាក់ៈ',
           'ពិន្ទុ': 'ពិន្ទុ',
           'លំហាត់': 'លំហាត់',
@@ -222,7 +222,8 @@ class LocaleString extends Translations {
           'បន្ទប់': 'បន្ទប់',
           'សាស្ត្រចារ្យ': 'សាស្ត្រចារ្យ',
           'ព័ត៌មានការប្រឡង': 'ព័ត៌មានការប្រឡង',
-          'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t': 'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t',
+          'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t (Not Available)':
+              'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t (Not Available)',
 
           // Student Feedback
           'សូមអធ្យាស្រ័យ': 'សូមអធ្យាស្រ័យ',
@@ -282,7 +283,7 @@ class LocaleString extends Translations {
           'ចូលឆានែលតេឡេក្រាមរបស់សកលវិទ្យាល័យ':
               'Access the University Telegram Channel',
           'ភូមិវត្តបូព៌ សង្កាត់សាលាកំរើក ស្រុកសៀមរាប ខេត្តសៀមរាប​ ព្រះរាជាណាចក្រកម្ពុជា (ទល់មុខវិទ្យាល័យអង្គរ)។':
-              'Wat Bo Village, Sangkat Sala Kamroeuk, Siem Reap District, Siem Reap Province, Kingdom of Cambodia (Opposite Angkor High School).',
+              'Wat Bo Village, Sangkat Salakamroek, Siem Reap District, Siem Reap Province, Kingdom of Cambodia (Opposite Angkor High School).',
 
           // About US
           'ប្រវត្តិ និងអត្ថន័យរបស់និមិត្តសញ្ញា': 'History and Logo meaning',
@@ -369,9 +370,9 @@ class LocaleString extends Translations {
           'កាលវិភាគសិក្សា': 'Schedule',
 
           // Student Performance
-          'មធ្យមភាគៈ': 'Average:',
-          'ពិន្ទុមធ្យមភាគៈ': 'GPA:',
-          'និទ្ទេសៈ': 'Grade:',
+          'មធ្យមភាគ': 'Average',
+          'ពិន្ទុមធ្យមភាគ': 'GPA',
+          'និទ្ទេស': 'Grade',
           'ពិន្ទុ': 'Score',
           'លំហាត់': 'Exercises',
           'កិច្ចការផ្ទះ': 'Homework',
@@ -447,7 +448,8 @@ class LocaleString extends Translations {
           'បន្ទប់': 'Room',
           'សាស្ត្រចារ្យ': 'Lecturer',
           'ព័ត៌មានការប្រឡង': 'Exam Information',
-          'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t': 'Assignment',
+          'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t (Not Available)':
+              'Assignment and Research\t (Not Available)',
 
           // Student Feedback
           'សូមអធ្យាស្រ័យ': 'Apologies for any trouble',

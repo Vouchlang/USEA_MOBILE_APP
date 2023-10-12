@@ -142,7 +142,7 @@ class _Out_UniversityState extends State<Out_University> {
 
                                       _launchOutUniUrl();
                                     },
-                                    child: CustomTextTheme(
+                                    child: ScholarshipButtonTheme(
                                       'អានបន្ថែម'.tr,
                                       UBodySize,
                                       UPrimaryColor,

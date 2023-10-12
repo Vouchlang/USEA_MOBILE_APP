@@ -11,19 +11,19 @@ List<Contact> contact = [
   ),
   Contact(
     icon: 'assets/image/Con_Tel.png',
-    text: '097 405 540',
+    text: '063 900 090',
   ),
   Contact(
     icon: 'assets/image/Con_Tel.png',
-    text: '027 408 438',
+    text: '017 386 678',
   ),
   Contact(
     icon: 'assets/image/Con_Tel.png',
-    text: '095 99 44 93',
+    text: '090 905 902',
   ),
   Contact(
-    icon: 'assets/image/Con_Tele.png',
-    text: 'https://t.me/university_of_south_east_asia',
+    icon: 'assets/image/Con_Tel.png',
+    text: '070 408 438',
   ),
   Contact(
     icon: 'assets/image/Con_Loc.png',

@@ -46,7 +46,6 @@ class _St_HomeState extends State<St_Home> with SingleTickerProviderStateMixin {
       body: pages[currentIndex],
       bottomNavigationBar: Container(
         color: Colors.transparent,
-        padding: EdgeInsets.symmetric(vertical: UPdMg_5),
         child: BottomNavigationBar(
           backgroundColor: USecondaryColor,
           elevation: 0,
@@ -54,7 +53,6 @@ class _St_HomeState extends State<St_Home> with SingleTickerProviderStateMixin {
           currentIndex: currentIndex,
           selectedItemColor: UPrimaryColor,
           unselectedItemColor: UGreyColor,
-          selectedFontSize: 11,
           unselectedFontSize: 11,
           selectedLabelStyle: TextStyle(
             fontWeight: UTitleWeight,
@@ -64,14 +62,14 @@ class _St_HomeState extends State<St_Home> with SingleTickerProviderStateMixin {
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.home,
-                size: 20,
+                size: 25,
               ),
               label: 'ទំព័រដើម'.tr,
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.account_box,
-                size: 20,
+                size: 25,
               ),
               label: 'ចូលគណនី'.tr,
             ),

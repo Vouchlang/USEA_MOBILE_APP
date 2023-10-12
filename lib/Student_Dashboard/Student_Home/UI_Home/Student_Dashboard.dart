@@ -290,7 +290,7 @@ class _Student_HomeState extends State<Student_Home> {
                         margin: EdgeInsets.symmetric(horizontal: UPdMg_10),
                         elevation: 1,
                         shadowColor: ULightGreyColor,
-                        shape: RoundedRectangleBorder( 
+                        shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.circular(URoundedMedium)),
                         child: InkWell(

@@ -195,8 +195,9 @@ class _Guest_HomeState extends State<Guest_Home> {
               height: 36,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: Colors.grey[200]),
+                borderRadius: BorderRadius.circular(50),
+                color: UBtnColor,
+              ),
               child: Center(
                 child: IconButton(
                   onPressed: () {

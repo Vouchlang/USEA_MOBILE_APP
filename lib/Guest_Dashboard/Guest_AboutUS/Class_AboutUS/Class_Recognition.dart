@@ -1,27 +1,17 @@
-class Recognition {
-  late final String image, description, link;
+import 'package:json_annotation/json_annotation.dart';
+part 'Class_Recognition.g.dart';
 
-  Recognition({
+@JsonSerializable()
+class Class_Recognition {
+  late final String image, title, link;
+
+  Class_Recognition({
     required this.image,
-    required this.description,
+    required this.title,
     required this.link,
   });
-}
 
-List<Recognition> recognition = [
-  Recognition(
-      image: 'assets/image/recognition1.jpg',
-      description:
-          'Goverment There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,',
-      link: 'https://www.usea.edu.kh/en/Pages/recognition.php'),
-  Recognition(
-      image: 'assets/image/recognition2.jpg',
-      description:
-          'Goverment There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,',
-      link: 'https://www.usea.edu.kh/en/Pages/recognition.php'),
-  Recognition(
-      image: 'assets/image/recognition2.jpg',
-      description:
-          'Goverment There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,',
-      link: 'https://www.usea.edu.kh/en/Pages/recognition.php'),
-];
+  factory Class_Recognition.fromJson(Map<String, dynamic> json) =>
+      _$Class_RecognitionFromJson(json);
+  Map<String, dynamic> toJson() => _$Class_RecognitionToJson(this);
+}
