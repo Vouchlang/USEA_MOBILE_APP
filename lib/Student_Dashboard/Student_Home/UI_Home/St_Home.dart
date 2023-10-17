@@ -45,7 +45,6 @@ class _St_HomeState extends State<St_Home> with SingleTickerProviderStateMixin {
     return Scaffold(
       body: pages[currentIndex],
       bottomNavigationBar: Container(
-        padding: EdgeInsets.symmetric(vertical: UZeroPixel),
         color: Colors.transparent,
         child: BottomNavigationBar(
           backgroundColor: USecondaryColor,

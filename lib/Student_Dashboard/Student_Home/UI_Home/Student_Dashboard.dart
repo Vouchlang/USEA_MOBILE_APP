@@ -492,36 +492,41 @@ class _Student_HomeState extends State<Student_Home> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(
-                                  Icons.circle,
-                                  size: 20,
-                                  color: UBGChartColor,
-                                ),
-                                Text('\tចំនួនក្រឌីតសរុប'.tr),
-                              ],
+                            Flexible(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    Icons.circle,
+                                    size: 20,
+                                    color: UBGChartColor,
+                                  ),
+                                  Text('\tចំនួនក្រឌីតសរុប'.tr),
+                                ],
+                              ),
                             ),
                             SizedBox(
                               height: UHeight10,
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(
-                                  Icons.circle,
-                                  size: 20,
-                                  color: UPrimaryColor,
-                                ),
-                                Text(
-                                  '\tចំនួនក្រឌីតបានបំពេញ'.tr,
-                                ),
-                              ],
+                            Flexible(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    Icons.circle,
+                                    size: 20,
+                                    color: UPrimaryColor,
+                                  ),
+                                  Text(
+                                    '\tចំនួនក្រឌីតបានបំពេញ'.tr,
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -692,7 +697,7 @@ class _Student_HomeState extends State<Student_Home> {
                     ),
                   ),
                   SizedBox(
-                    height: 7,
+                    height: 20,
                   ),
                 ],
               ),

@@ -169,14 +169,14 @@ class _Guest_HomeState extends State<Guest_Home> {
                         Text(
                           'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
                           style: TextStyle(
-                              color: Theme.of(context).primaryColor,
+                              color: UPrimaryColor,
                               fontSize: UBodySize10,
                               fontFamily: 'KhmerOSmuol'),
                         ),
                         Text(
                           'UNIVERSITY OF SOUTH-EAST ASIA',
                           style: TextStyle(
-                              color: Theme.of(context).primaryColor,
+                              color: UPrimaryColor,
                               fontSize: UBodySize,
                               fontFamily: UEFontFamily,
                               fontWeight: UBodyWeight),
@@ -188,7 +188,7 @@ class _Guest_HomeState extends State<Guest_Home> {
               ),
             ),
             SizedBox(
-              width: 15,
+              width: UWidth15,
             ),
             Container(
               width: 36,
