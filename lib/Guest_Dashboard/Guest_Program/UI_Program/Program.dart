@@ -3,8 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'dart:convert';
 import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
@@ -256,6 +254,7 @@ class _ProgramState extends State<Program> {
                           physics: NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: programData.length,
+                          padding: EdgeInsets.only(bottom: UZeroPixel),
                           itemBuilder: (context, index) {
                             final faculty = programData[index];
                             final facultyName = faculty['faculty_name'];
