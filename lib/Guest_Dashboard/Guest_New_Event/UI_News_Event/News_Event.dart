@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:usea_app/Guest_Dashboard/Guest_New_Event/UI_News_Event/News_Event_New.dart';
 import 'Past_Event.dart';
 import '/theme_builder.dart';
 import '/Custom_AppBar.dart';
@@ -36,6 +37,12 @@ class _New_EventState extends State<New_Event> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            InkWell(
+              onTap: () {
+                Get.to(() => News_Event_New());
+              },
+              child: Text('Go to new News Event'),
+            ),
             Container(
               height: 70,
               child: ListView.builder(

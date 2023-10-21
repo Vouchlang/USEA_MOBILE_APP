@@ -101,7 +101,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                         fontSize: 13.5,
                       ),
                     ),
-                    SizedBox(height: 20.0),
+                    SizedBox(height: 20),
                     Divider(),
                     InkWell(
                       onTap: () => Navigator.pop(context),
@@ -257,7 +257,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                       controller: _textControllerUsername,
                       cursorColor: UGreyColor,
                       cursorWidth: 1,
-                      cursorHeight: 20,
+                      cursorHeight: 30,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(UPdMg_10),
                         hintText: '\t\tបញ្ចូលអត្តលេខ'.tr,
@@ -282,12 +282,6 @@ class _Student_LogInState extends State<Student_LogIn> {
                         errorStyle: TextStyle(
                             fontSize: UBodySize10, fontFamily: UKFontFamily),
                       ),
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'សូមបញ្ចូលអត្តលេខ'.tr;
-                        }
-                        return null;
-                      },
                     ),
                   ),
                   Container(
@@ -309,7 +303,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                       controller: _textControllerPsw,
                       cursorColor: UGreyColor,
                       cursorWidth: 1,
-                      cursorHeight: 20,
+                      cursorHeight: 30,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(UPdMg_10),
                         hintText: '\t\tបញ្ចូលពាក្យសម្ងាត់'.tr,
@@ -344,12 +338,6 @@ class _Student_LogInState extends State<Student_LogIn> {
                           fontFamily: UKFontFamily,
                         ),
                       ),
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'សូមបញ្ចូលពាក្យសម្ងាត់'.tr;
-                        }
-                        return null;
-                      },
                     ),
                   ),
                   SizedBox(

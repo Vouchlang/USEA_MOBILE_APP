@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import '../../Guest_ChangeLanguage/Change_Language.dart';
 import '../../Guest_Program/UI_Program/Program.dart';
+import '../../Guest_Scholarship/UI_Scholarship/Scholarship.dart';
 import '/Guest_Dashboard/Guest_New_Event/UI_News_Event/News_Event.dart';
 import '../../Guest_AboutUS/UI_AboutUS/AboutUS.dart';
 import '../../Guest_Career/UI_Career/Career.dart';
 import '../../Guest_Contact/UI_Contact/Contact.dart';
 import '../../Guest_FAQ/UI_FAQ/FAQ.dart';
 import '../../Guest_Registration/UI_Registration/Registration.dart';
-import '../../Guest_Scholarship/UI_Scholarship/Scholarship.dart';
 import '../../Guest_VDO/UI_VDO/Video.dart';
 
 class Home_Screen {
