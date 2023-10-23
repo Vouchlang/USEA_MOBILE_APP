@@ -16,7 +16,9 @@ class _Staff_LoginState extends State<Staff_Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: 'គណនីបុគ្គលិក'.tr),
+      appBar: Custom_AppBar(
+        title: 'គណនីបុគ្គលិក'.tr,
+      ),
       body: Center(
         child: Text(
           'មកដល់ឆាប់ៗនេះ!!!'.tr,

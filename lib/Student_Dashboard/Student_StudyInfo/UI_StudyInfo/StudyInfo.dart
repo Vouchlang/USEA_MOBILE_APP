@@ -38,18 +38,22 @@ class _Study_InfoState extends State<Study_Info> {
 
     try {
       var response = await http.post(
-        Uri.parse(Get.locale?.languageCode == 'km'
-            ? APIUrlStudent + 'action=exam_schedule'
-            : APIUrlStudentEn + 'action=exam_schedule'),
+        Uri.parse(
+          Get.locale?.languageCode == 'km'
+              ? APIUrlStudent + 'action=exam_schedule'
+              : APIUrlStudentEn + 'action=exam_schedule',
+        ),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
         },
       );
       var response_assignment = await http.post(
-        Uri.parse(Get.locale?.languageCode == 'km'
-            ? APIUrlStudent + 'action=moodle_activities'
-            : APIUrlStudentEn + 'action=moodle_activities'),
+        Uri.parse(
+          Get.locale?.languageCode == 'km'
+              ? APIUrlStudent + 'action=moodle_activities'
+              : APIUrlStudentEn + 'action=moodle_activities',
+        ),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -117,10 +121,16 @@ class _Study_InfoState extends State<Study_Info> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: 'ព័ត៌មានការសិក្សា'.tr),
+      appBar: Custom_AppBar(
+        title: 'ព័ត៌មានការសិក្សា'.tr,
+      ),
       body: _dataStudyInfo.isEmpty && _dataStudyInfoAssignment.isEmpty
           ? FutureBuilder(
-              future: Future.delayed(Duration(seconds: 10)),
+              future: Future.delayed(
+                Duration(
+                  seconds: 10,
+                ),
+              ),
               builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(
@@ -130,7 +140,9 @@ class _Study_InfoState extends State<Study_Info> {
                   );
                 } else {
                   return Center(
-                    child: Text('គ្មានទិន្ន័យ'.tr),
+                    child: Text(
+                      'គ្មានទិន្ន័យ'.tr,
+                    ),
                   );
                 }
               },
@@ -146,7 +158,11 @@ class _Study_InfoState extends State<Study_Info> {
                         ? SizedBox.shrink()
                         : Padding(
                             padding: EdgeInsets.fromLTRB(
-                                UPdMg_10, UPdMg_10, UPdMg_10, 0),
+                              UPdMg_10,
+                              UPdMg_10,
+                              UPdMg_10,
+                              UZeroPixel,
+                            ),
                             child: Text(
                               'ព័ត៌មានការប្រឡង'.tr,
                               style: TextStyle(
@@ -159,7 +175,9 @@ class _Study_InfoState extends State<Study_Info> {
                     ListView.builder(
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
-                      padding: EdgeInsets.all(UPdMg_5),
+                      padding: EdgeInsets.all(
+                        UPdMg_5,
+                      ),
                       itemCount: _dataStudyInfo.length,
                       itemBuilder: (BuildContext context, index) {
                         final isLastIndex = index == _dataStudyInfo.length - 1;
@@ -167,15 +185,25 @@ class _Study_InfoState extends State<Study_Info> {
                           elevation: 1,
                           shadowColor: ULightGreyColor,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(URoundedLarge),
+                            borderRadius: BorderRadius.circular(
+                              URoundedLarge,
+                            ),
                           ),
                           color: UBackgroundColor,
                           margin: isLastIndex
                               ? EdgeInsets.fromLTRB(
-                                  UPdMg_5, UPdMg_5, UPdMg_5, UPdMg_10)
-                              : EdgeInsets.all(UPdMg_5),
+                                  UPdMg_5,
+                                  UPdMg_5,
+                                  UPdMg_5,
+                                  UPdMg_10,
+                                )
+                              : EdgeInsets.all(
+                                  UPdMg_5,
+                                ),
                           child: Padding(
-                            padding: EdgeInsets.all(UPdMg_8),
+                            padding: EdgeInsets.all(
+                              UPdMg_8,
+                            ),
                             child: IntrinsicHeight(
                               child: Row(
                                 children: [
@@ -190,13 +218,16 @@ class _Study_InfoState extends State<Study_Info> {
                                         ),
                                         buildDividerAtt(),
                                         NormalDateStudyInfo(
-                                            _dataStudyInfo[index].month),
+                                          _dataStudyInfo[index].month,
+                                        ),
                                       ],
                                     ),
                                   ),
                                   buildVerticalDividerAtt(),
                                   Container(
-                                    padding: EdgeInsets.only(left: UPdMg_8),
+                                    padding: EdgeInsets.only(
+                                      left: UPdMg_8,
+                                    ),
                                     child: IntrinsicWidth(
                                       child: Column(
                                         crossAxisAlignment:
@@ -205,7 +236,8 @@ class _Study_InfoState extends State<Study_Info> {
                                           Container(
                                             width: 250,
                                             child: TitleAttendance_Theme(
-                                                _dataStudyInfo[index].title),
+                                              _dataStudyInfo[index].title,
+                                            ),
                                           ),
                                           buildDividerAtt(),
                                           RowDataStudyInfo(
@@ -233,7 +265,7 @@ class _Study_InfoState extends State<Study_Info> {
                                                     color: URedColor,
                                                   ),
                                                 )
-                                              : Container(),
+                                              : SizedBox.shrink(),
                                         ],
                                       ),
                                     ),
@@ -249,7 +281,11 @@ class _Study_InfoState extends State<Study_Info> {
                         ? SizedBox.shrink()
                         : Padding(
                             padding: EdgeInsets.fromLTRB(
-                                UPdMg_10, UPdMg_10, UPdMg_10, 0),
+                              UPdMg_10,
+                              UPdMg_10,
+                              UPdMg_10,
+                              UZeroPixel,
+                            ),
                             child: Text(
                               'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t (Not Available)'.tr,
                               style: TextStyle(
@@ -262,7 +298,9 @@ class _Study_InfoState extends State<Study_Info> {
                     ListView.builder(
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
-                      padding: EdgeInsets.all(UPdMg_5),
+                      padding: EdgeInsets.all(
+                        UPdMg_5,
+                      ),
                       itemCount: _dataStudyInfoAssignment.length,
                       itemBuilder: (BuildContext context, index) {
                         final isLastIndex =
@@ -271,14 +309,22 @@ class _Study_InfoState extends State<Study_Info> {
                           elevation: 2,
                           shadowColor: ULightGreyColor,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(URoundedLarge),
+                            borderRadius: BorderRadius.circular(
+                              URoundedLarge,
+                            ),
                           ),
                           margin: isLastIndex
                               ? EdgeInsets.fromLTRB(
-                                  UPdMg_5, UPdMg_5, UPdMg_5, UPdMg_10)
+                                  UPdMg_5,
+                                  UPdMg_5,
+                                  UPdMg_5,
+                                  UPdMg_10,
+                                )
                               : EdgeInsets.all(UPdMg_5),
                           child: Padding(
-                            padding: EdgeInsets.all(UPdMg_10),
+                            padding: EdgeInsets.all(
+                              UPdMg_10,
+                            ),
                             child: Column(
                               children: [
                                 Row(
@@ -322,40 +368,44 @@ class _Study_InfoState extends State<Study_Info> {
                                 ),
                                 Divider(),
                                 buildStudyDataAssign(
-                                    'ឈ្មោះ',
-                                    _dataStudyInfoAssignment[index]
-                                            .assignment_name
-                                            .isEmpty
-                                        ? 'N/A'
-                                        : _dataStudyInfoAssignment[index]
-                                            .assignment_name),
+                                  'ឈ្មោះ',
+                                  _dataStudyInfoAssignment[index]
+                                          .assignment_name
+                                          .isEmpty
+                                      ? 'N/A'
+                                      : _dataStudyInfoAssignment[index]
+                                          .assignment_name,
+                                ),
                                 Divider(),
                                 buildStudyDataAssign(
-                                    'មុខវិជ្ជា',
-                                    _dataStudyInfoAssignment[index]
-                                            .subject_name
-                                            .isEmpty
-                                        ? 'N/A'
-                                        : _dataStudyInfoAssignment[index]
-                                            .subject_name),
+                                  'មុខវិជ្ជា',
+                                  _dataStudyInfoAssignment[index]
+                                          .subject_name
+                                          .isEmpty
+                                      ? 'N/A'
+                                      : _dataStudyInfoAssignment[index]
+                                          .subject_name,
+                                ),
                                 Divider(),
                                 buildStudyDataAssign(
-                                    'បន្ទប់',
-                                    _dataStudyInfoAssignment[index]
-                                            .room_name
-                                            .isEmpty
-                                        ? 'N/A'
-                                        : _dataStudyInfoAssignment[index]
-                                            .room_name),
+                                  'បន្ទប់',
+                                  _dataStudyInfoAssignment[index]
+                                          .room_name
+                                          .isEmpty
+                                      ? 'N/A'
+                                      : _dataStudyInfoAssignment[index]
+                                          .room_name,
+                                ),
                                 Divider(),
                                 buildStudyDataAssign(
-                                    'សាស្ត្រចារ្យ',
-                                    _dataStudyInfoAssignment[index]
-                                            .lecturer_name
-                                            .isEmpty
-                                        ? 'N/A'
-                                        : _dataStudyInfoAssignment[index]
-                                            .lecturer_name),
+                                  'សាស្ត្រចារ្យ',
+                                  _dataStudyInfoAssignment[index]
+                                          .lecturer_name
+                                          .isEmpty
+                                      ? 'N/A'
+                                      : _dataStudyInfoAssignment[index]
+                                          .lecturer_name,
+                                ),
                               ],
                             ),
                           ),

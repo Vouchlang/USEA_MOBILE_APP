@@ -18,9 +18,13 @@ class _ContactState extends State<Contact> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: 'ទំនាក់ទំនង'.tr),
+      appBar: Custom_AppBar(
+        title: 'ទំនាក់ទំនង'.tr,
+      ),
       body: ListView(
-        padding: EdgeInsets.all(UPdMg_10),
+        padding: EdgeInsets.all(
+          UPdMg_10,
+        ),
         children: [
           ListView.builder(
             shrinkWrap: true,
@@ -46,9 +50,14 @@ class _ContactState extends State<Contact> {
                       ),
                       Expanded(
                         child: Container(
-                          padding: EdgeInsets.only(top: 4),
+                          padding: EdgeInsets.only(
+                            top: 4,
+                          ),
                           child: buildTextContact(
-                              contact[index].text.tr, UTitleSize, UBodyWeight),
+                            contact[index].text.tr,
+                            UTitleSize,
+                            UBodyWeight,
+                          ),
                         ),
                       ),
                     ],

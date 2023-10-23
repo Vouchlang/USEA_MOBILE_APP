@@ -28,12 +28,16 @@ class _News_Event_NewState extends State<News_Event_New> {
   Future<void> fetchData() async {
     try {
       final response = await http.get(
-        Uri.parse(Get.locale?.languageCode == 'km'
-            ? APIUrlGuest + 'api/webapi.php?action=events_kh'
-            : APIUrlGuest + 'api/webapi.php?action=events_en'),
+        Uri.parse(
+          Get.locale?.languageCode == 'km'
+              ? APIUrlGuest + 'api/webapi.php?action=events_kh'
+              : APIUrlGuest + 'api/webapi.php?action=events_en',
+        ),
       );
       if (response.statusCode == 200) {
-        final Map<String, dynamic> data = json.decode(response.body);
+        final Map<String, dynamic> data = json.decode(
+          response.body,
+        );
 
         List<Class_News_Events> news_eventList = [];
 
@@ -60,13 +64,17 @@ class _News_Event_NewState extends State<News_Event_New> {
           news_eventList.add(scholarshipObj);
         });
         if (mounted) {
-          setState(() {
-            news_event = news_eventList;
-          });
+          setState(
+            () {
+              news_event = news_eventList;
+            },
+          );
         }
       } else {
         // Handle error case
-        print('Request failed with status: ${response.statusCode}');
+        print(
+          'Request failed with status: ${response.statusCode}',
+        );
       }
     } catch (e) {
       print('Error1: $e');
@@ -83,7 +91,9 @@ class _News_Event_NewState extends State<News_Event_New> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: 'ព្រឹត្តិការណ៍'.tr),
+      appBar: Custom_AppBar(
+        title: 'ព្រឹត្តិការណ៍'.tr,
+      ),
       body: RefreshIndicator(
         onRefresh: fetchData,
         color: UPrimaryColor,
@@ -91,7 +101,11 @@ class _News_Event_NewState extends State<News_Event_New> {
           alignment: Alignment.topCenter,
           child: news_event.isEmpty
               ? FutureBuilder(
-                  future: Future.delayed(Duration(seconds: 10)),
+                  future: Future.delayed(
+                    Duration(
+                      seconds: 10,
+                    ),
+                  ),
                   builder:
                       (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
@@ -101,7 +115,11 @@ class _News_Event_NewState extends State<News_Event_New> {
                         ),
                       );
                     } else {
-                      return Center(child: Text('គ្មានទិន្ន័យ'.tr));
+                      return Center(
+                        child: Text(
+                          'គ្មានទិន្ន័យ'.tr,
+                        ),
+                      );
                     }
                   },
                 )
@@ -130,26 +148,33 @@ class _News_Event_NewState extends State<News_Event_New> {
 
                               return GestureDetector(
                                 onTap: () {
-                                  setState(() {
-                                    selectedNewsEvent = index;
-                                  });
+                                  setState(
+                                    () {
+                                      selectedNewsEvent = index;
+                                    },
+                                  );
                                 },
                                 child: AnimatedContainer(
                                   alignment: Alignment.center,
-                                  duration: Duration(milliseconds: 300),
+                                  duration: Duration(
+                                    milliseconds: 300,
+                                  ),
                                   margin: EdgeInsets.fromLTRB(
                                       UPdMg_10,
                                       UPdMg_10,
                                       isLastIndex ? UPdMg_10 : UZeroPixel,
                                       UPdMg_10),
-                                  padding: EdgeInsets.all(UPdMg_10),
+                                  padding: EdgeInsets.all(
+                                    UPdMg_10,
+                                  ),
                                   width: 165,
                                   decoration: BoxDecoration(
                                     color: selectedNewsEvent == index
                                         ? UPrimaryColor
                                         : UBackgroundColor,
-                                    borderRadius:
-                                        BorderRadius.circular(URoundedMedium),
+                                    borderRadius: BorderRadius.circular(
+                                      URoundedMedium,
+                                    ),
                                     boxShadow: [
                                       BoxShadow(
                                         blurRadius: 1,
@@ -186,43 +211,50 @@ class _News_Event_NewState extends State<News_Event_New> {
                                         UZeroPixel,
                                       ),
                                       child: Card(
-                                        margin:
-                                            EdgeInsets.only(bottom: UPdMg_10),
+                                        margin: EdgeInsets.only(
+                                          bottom: UPdMg_10,
+                                        ),
                                         elevation: 2,
                                         shadowColor: ULightGreyColor,
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(
-                                              URoundedLarge),
+                                            URoundedLarge,
+                                          ),
                                         ),
                                         child: InkWell(
                                           onTap: () {
-                                            Get.to(() => News_Event_Detail(
-                                                data: news_event));
+                                            Get.to(
+                                              () => News_Event_Detail(
+                                                data: news_event,
+                                              ),
+                                            );
                                           },
                                           child: Column(
                                             mainAxisSize: MainAxisSize.min,
                                             children: [
                                               Container(
-                                                height: 150,
+                                                height: 200,
                                                 width: double.maxFinite,
                                                 child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            URoundedLarge),
-                                                    child: news_event
-                                                            .image.isEmpty
-                                                        ? Image.asset(
-                                                            'assets/image/Error_Image.jpg',
-                                                            width: double
-                                                                .maxFinite,
-                                                            fit: BoxFit.cover,
-                                                          )
-                                                        : Image.network(
-                                                            news_event.image,
-                                                            width: double
-                                                                .maxFinite,
-                                                            fit: BoxFit.cover,
-                                                          )),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                    URoundedLarge,
+                                                  ),
+                                                  child: news_event
+                                                          .image.isEmpty
+                                                      ? Image.asset(
+                                                          'assets/image/Error_Image.jpg',
+                                                          width:
+                                                              double.maxFinite,
+                                                          fit: BoxFit.cover,
+                                                        )
+                                                      : Image.network(
+                                                          news_event.image,
+                                                          width:
+                                                              double.maxFinite,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                ),
                                               ),
                                               SizedBox(
                                                 height: UHeight5,
@@ -281,7 +313,9 @@ class _News_Event_NewState extends State<News_Event_New> {
                                                         ),
                                                       ),
                                                     ),
-                                                    SizedBox(height: UHeight5),
+                                                    SizedBox(
+                                                      height: UHeight5,
+                                                    ),
                                                     Row(
                                                       children: [
                                                         Flexible(
@@ -293,8 +327,8 @@ class _News_Event_NewState extends State<News_Event_New> {
                                                                 width: 14,
                                                               ),
                                                               SizedBox(
-                                                                  width:
-                                                                      UWidth5),
+                                                                width: UWidth5,
+                                                              ),
                                                               buildEventDate(
                                                                 news_event
                                                                         .event_date
@@ -307,7 +341,8 @@ class _News_Event_NewState extends State<News_Event_New> {
                                                           ),
                                                         ),
                                                         SizedBox(
-                                                            width: UWidth10),
+                                                          width: UWidth10,
+                                                        ),
                                                         Flexible(
                                                           flex: 1,
                                                           child: Row(
@@ -317,8 +352,8 @@ class _News_Event_NewState extends State<News_Event_New> {
                                                                 width: 14,
                                                               ),
                                                               SizedBox(
-                                                                  width:
-                                                                      UWidth5),
+                                                                width: UWidth5,
+                                                              ),
                                                               buildEventDate(
                                                                 news_event.time
                                                                         .isEmpty
@@ -359,7 +394,9 @@ class _News_Event_NewState extends State<News_Event_New> {
                                     );
                                   } else {
                                     return Center(
-                                      child: Text('គ្មានទិន្ន័យ'.tr),
+                                      child: Text(
+                                        'គ្មានទិន្ន័យ'.tr,
+                                      ),
                                     );
                                   }
                                 },

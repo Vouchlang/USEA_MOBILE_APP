@@ -19,18 +19,22 @@ class _PaymentDialogState extends State<PaymentDialog> {
     return Dialog(
       elevation: 5,
       backgroundColor: UBackgroundColor,
-      insetPadding: EdgeInsets.all(10),
+      insetPadding: EdgeInsets.all(
+        UPdMg_10,
+      ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(10.0),
+          Radius.circular(
+            URoundedLarge,
+          ),
         ),
       ),
       child: Stack(
         children: [
           CardDailog(),
           Positioned(
-            right: 0,
-            top: 0,
+            right: UZeroPixel,
+            top: UZeroPixel,
             height: 50,
             width: 50,
             child: InkWell(
@@ -56,14 +60,18 @@ class _PaymentDialogState extends State<PaymentDialog> {
         children: [
           Container(
             padding: EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 10,
+              vertical: UPdMg_10,
+              horizontal: UPdMg_10,
             ),
             width: UFullWidth,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10.0),
-                topRight: Radius.circular(10.0),
+                topLeft: Radius.circular(
+                  URoundedLarge,
+                ),
+                topRight: Radius.circular(
+                  URoundedLarge,
+                ),
               ),
               color: UBGLightBlue,
             ),
@@ -92,31 +100,48 @@ class _PaymentDialogState extends State<PaymentDialog> {
             children: [
               IntrinsicHeight(
                 child: Padding(
-                  padding: EdgeInsets.all(5.0),
+                  padding: EdgeInsets.all(
+                    UPdMg_5,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      buildHeaderTitle(75, 'កាលបរិច្ឆេទ'),
+                      buildHeaderTitle(
+                        75,
+                        'កាលបរិច្ឆេទ',
+                      ),
                       VerticalDivider(
-                        width: 5,
+                        width: UWidth5,
                         color: UGreyColor,
                       ),
-                      buildHeaderTitle(75, 'លេខវិក័យបត្រ'),
+                      buildHeaderTitle(
+                        75,
+                        'លេខវិក័យបត្រ',
+                      ),
                       VerticalDivider(
-                        width: 5,
+                        width: UWidth5,
                         color: UGreyColor,
                       ),
-                      buildHeaderTitle(45, 'ទឹកប្រាក់ត្រូវបង់'),
+                      buildHeaderTitle(
+                        45,
+                        'ទឹកប្រាក់ត្រូវបង់',
+                      ),
                       VerticalDivider(
-                        width: 5,
+                        width: UWidth5,
                         color: UGreyColor,
                       ),
-                      buildHeaderTitle(45, 'ទឹកប្រាក់បានបង់'),
+                      buildHeaderTitle(
+                        45,
+                        'ទឹកប្រាក់បានបង់',
+                      ),
                       VerticalDivider(
-                        width: 5,
+                        width: UWidth5,
                         color: UGreyColor,
                       ),
-                      buildHeaderTitle(50, 'ទឹកប្រាក់នៅសល់'),
+                      buildHeaderTitle(
+                        50,
+                        'ទឹកប្រាក់នៅសល់',
+                      ),
                     ],
                   ),
                 ),
@@ -131,7 +156,9 @@ class _PaymentDialogState extends State<PaymentDialog> {
                 itemBuilder: (context, index) {
                   final isLastIndex = index == paymentData2.length - 1;
                   return Padding(
-                    padding: EdgeInsets.only(bottom: isLastIndex ? 5 : 0),
+                    padding: EdgeInsets.only(
+                      bottom: isLastIndex ? 5 : UZeroPixel,
+                    ),
                     child: IntrinsicHeight(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -139,7 +166,9 @@ class _PaymentDialogState extends State<PaymentDialog> {
                         children: [
                           IntrinsicHeight(
                             child: Container(
-                              padding: EdgeInsets.all(UPdMg_8),
+                              padding: EdgeInsets.all(
+                                UPdMg_8,
+                              ),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,

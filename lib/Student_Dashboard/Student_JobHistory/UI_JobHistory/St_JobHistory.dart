@@ -35,9 +35,11 @@ class _Job_HistoryState extends State<Job_History> {
     });
     try {
       var response = await http.post(
-        Uri.parse(Get.locale?.languageCode == 'km'
-            ? APIUrlStudent + 'action=login_student'
-            : APIUrlStudentEn + 'action=login_student'),
+        Uri.parse(
+          Get.locale?.languageCode == 'km'
+              ? APIUrlStudent + 'action=login_student'
+              : APIUrlStudentEn + 'action=login_student',
+        ),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -84,10 +86,16 @@ class _Job_HistoryState extends State<Job_History> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: 'ប្រវត្តិការងារ'.tr),
+      appBar: Custom_AppBar(
+        title: 'ប្រវត្តិការងារ'.tr,
+      ),
       body: _dataJobHistory.isEmpty
           ? FutureBuilder(
-              future: Future.delayed(Duration(seconds: 10)),
+              future: Future.delayed(
+                Duration(
+                  seconds: 10,
+                ),
+              ),
               builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(
@@ -97,12 +105,16 @@ class _Job_HistoryState extends State<Job_History> {
                   );
                 } else {
                   return Padding(
-                    padding: EdgeInsets.all(UPdMg_5),
+                    padding: EdgeInsets.all(
+                      UPdMg_5,
+                    ),
                     child: Card(
                       elevation: 2,
                       shadowColor: ULightGreyColor,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(URoundedLarge),
+                        borderRadius: BorderRadius.circular(
+                          URoundedLarge,
+                        ),
                       ),
                       child: Padding(
                         padding: EdgeInsets.all(UPdMg_10),
@@ -128,18 +140,31 @@ class _Job_HistoryState extends State<Job_History> {
                                   width: 125,
                                   child: Text(
                                     'ស្ថានភាពការងារ'.tr,
-                                    style: TextStyle(fontSize: UTitleSize),
+                                    style: TextStyle(
+                                      fontSize: UTitleSize,
+                                    ),
                                   ),
                                 ),
-                                NoWeightTitleTheme('N/A'),
+                                NoWeightTitleTheme(
+                                  'N/A',
+                                ),
                               ],
                             ),
                             Divider(),
-                            buildJobHistoryCardRow('ស្ថាប័ន', 'N/A'),
+                            buildJobHistoryCardRow(
+                              'ស្ថាប័ន',
+                              'N/A',
+                            ),
                             Divider(),
-                            buildJobHistoryCardRow('មុខតំណែង', 'N/A'),
+                            buildJobHistoryCardRow(
+                              'មុខតំណែង',
+                              'N/A',
+                            ),
                             Divider(),
-                            buildJobHistoryCardRow('ប្រាក់បៀវត្ស', 'N/A'),
+                            buildJobHistoryCardRow(
+                              'ប្រាក់បៀវត្ស',
+                              'N/A',
+                            ),
                           ],
                         ),
                       ),
@@ -152,17 +177,23 @@ class _Job_HistoryState extends State<Job_History> {
               onRefresh: _refreshData,
               color: UPrimaryColor,
               child: ListView.builder(
-                padding: EdgeInsets.all(UPdMg_5),
+                padding: EdgeInsets.all(
+                  UPdMg_5,
+                ),
                 itemCount: _dataJobHistory.length,
                 itemBuilder: (context, index) {
                   return Card(
                     elevation: 2,
                     shadowColor: ULightGreyColor,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(URoundedLarge),
+                      borderRadius: BorderRadius.circular(
+                        URoundedLarge,
+                      ),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(UPdMg_10),
+                      padding: EdgeInsets.all(
+                        UPdMg_10,
+                      ),
                       child: Column(
                         children: [
                           Row(
@@ -184,28 +215,32 @@ class _Job_HistoryState extends State<Job_History> {
                           ),
                           Divider(),
                           buildJobHistoryCardRow(
-                              'ស្ថានភាពការងារ',
-                              _dataJobHistory[index].status_name.isEmpty
-                                  ? 'N/A'
-                                  : _dataJobHistory[index].status_name),
+                            'ស្ថានភាពការងារ',
+                            _dataJobHistory[index].status_name.isEmpty
+                                ? 'N/A'
+                                : _dataJobHistory[index].status_name,
+                          ),
                           Divider(),
                           buildJobHistoryCardRow(
-                              'ស្ថាប័ន',
-                              _dataJobHistory[index].workPlace.isEmpty
-                                  ? 'N/A'
-                                  : _dataJobHistory[index].workPlace),
+                            'ស្ថាប័ន',
+                            _dataJobHistory[index].workPlace.isEmpty
+                                ? 'N/A'
+                                : _dataJobHistory[index].workPlace,
+                          ),
                           Divider(),
                           buildJobHistoryCardRow(
-                              'មុខតំណែង',
-                              _dataJobHistory[index].position.isEmpty
-                                  ? 'N/A'
-                                  : _dataJobHistory[index].position),
+                            'មុខតំណែង',
+                            _dataJobHistory[index].position.isEmpty
+                                ? 'N/A'
+                                : _dataJobHistory[index].position,
+                          ),
                           Divider(),
                           buildJobHistoryCardRow(
-                              'ប្រាក់បៀវត្ស',
-                              _dataJobHistory[index].salary.isEmpty
-                                  ? 'N/A'
-                                  : _dataJobHistory[index].salary),
+                            'ប្រាក់បៀវត្ស',
+                            _dataJobHistory[index].salary.isEmpty
+                                ? 'N/A'
+                                : _dataJobHistory[index].salary,
+                          ),
                         ],
                       ),
                     ),

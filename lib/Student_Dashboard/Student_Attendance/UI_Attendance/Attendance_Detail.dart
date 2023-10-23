@@ -17,15 +17,21 @@ class Attendance_Detail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: 'វត្តមាន'.tr),
+      appBar: Custom_AppBar(
+        title: 'វត្តមាន'.tr,
+      ),
       body: SingleChildScrollView(
         child: Card(
           elevation: 2,
           shadowColor: ULightGreyColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(URoundedLarge),
+            borderRadius: BorderRadius.circular(
+              URoundedLarge,
+            ),
           ),
-          margin: EdgeInsets.all(UPdMg_10),
+          margin: EdgeInsets.all(
+            UPdMg_10,
+          ),
           color: UBackgroundColor,
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -38,8 +44,12 @@ class Attendance_Detail extends StatelessWidget {
                 width: UFullWidth,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(URoundedLarge),
-                    topRight: Radius.circular(URoundedLarge),
+                    topLeft: Radius.circular(
+                      URoundedLarge,
+                    ),
+                    topRight: Radius.circular(
+                      URoundedLarge,
+                    ),
                   ),
                   color: UBGLightBlue,
                 ),
@@ -64,11 +74,17 @@ class Attendance_Detail extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
-                                  buildHeader('កាលបរិច្ឆេទ'.tr),
+                                  buildHeader(
+                                    'កាលបរិច្ឆេទ'.tr,
+                                  ),
                                   buildVerticalDividerAtt(),
-                                  buildAttDetailHeader('ម៉ោងសិក្សា'.tr),
+                                  buildAttDetailHeader(
+                                    'ម៉ោងសិក្សា'.tr,
+                                  ),
                                   buildVerticalDividerAtt(),
-                                  buildHeader('វត្តមាន'.tr),
+                                  buildHeader(
+                                    'វត្តមាន'.tr,
+                                  ),
                                 ],
                               ),
                             ),
@@ -87,10 +103,12 @@ class Attendance_Detail extends StatelessWidget {
                                   width: UFullWidth,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.only(
-                                      bottomLeft:
-                                          Radius.circular(URoundedLarge),
-                                      bottomRight:
-                                          Radius.circular(URoundedLarge),
+                                      bottomLeft: Radius.circular(
+                                        URoundedLarge,
+                                      ),
+                                      bottomRight: Radius.circular(
+                                        URoundedLarge,
+                                      ),
                                     ),
                                     color: UBackgroundColor,
                                   ),
@@ -216,15 +234,23 @@ class Attendance_Detail extends StatelessWidget {
                       children: [
                         IntrinsicHeight(
                           child: Padding(
-                            padding: EdgeInsets.all(UPdMg_8),
+                            padding: EdgeInsets.all(
+                              UPdMg_8,
+                            ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                buildHeader('កាលបរិច្ឆេទ'.tr),
+                                buildHeader(
+                                  'កាលបរិច្ឆេទ'.tr,
+                                ),
                                 buildVerticalDividerAtt(),
-                                buildHeader('ម៉ោងសិក្សា'.tr),
+                                buildHeader(
+                                  'ម៉ោងសិក្សា'.tr,
+                                ),
                                 buildVerticalDividerAtt(),
-                                buildHeader('វត្តមាន'.tr),
+                                buildHeader(
+                                  'វត្តមាន'.tr,
+                                ),
                               ],
                             ),
                           ),
@@ -232,15 +258,23 @@ class Attendance_Detail extends StatelessWidget {
                         buildDividerAtt(),
                         IntrinsicHeight(
                           child: Padding(
-                            padding: EdgeInsets.all(UPdMg_8),
+                            padding: EdgeInsets.all(
+                              UPdMg_8,
+                            ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                buildHeaderNA('N/A'.tr),
+                                buildHeaderNA(
+                                  'N/A'.tr,
+                                ),
                                 buildVerticalDividerAtt(),
-                                buildHeaderNA('N/A'.tr),
+                                buildHeaderNA(
+                                  'N/A'.tr,
+                                ),
                                 buildVerticalDividerAtt(),
-                                buildHeaderNA('N/A'.tr),
+                                buildHeaderNA(
+                                  'N/A'.tr,
+                                ),
                               ],
                             ),
                           ),

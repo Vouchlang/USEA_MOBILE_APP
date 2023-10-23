@@ -18,7 +18,9 @@ Widget buildDivider() {
     width: 0.5,
     height: UHeight15,
     color: UGreyColor,
-    margin: EdgeInsets.symmetric(horizontal: UPdMg_5),
+    margin: EdgeInsets.symmetric(
+      horizontal: UPdMg_5,
+    ),
   );
 }
 
@@ -70,7 +72,9 @@ Widget buildVerticalDividerH_45() {
 // *@  End Divider
 
 // *@ Title
-Widget TitleTheme(String text) {
+Widget TitleTheme(
+  String text,
+) {
   return Text(
     text,
     style: TextStyle(
@@ -83,7 +87,9 @@ Widget TitleTheme(String text) {
 // *@  End Title
 
 // *@ Normal Title Attendance UTextColor
-Widget TitleAttendance_Theme(String text) {
+Widget TitleAttendance_Theme(
+  String text,
+) {
   return Text(
     text,
     style: TextStyle(
@@ -96,7 +102,9 @@ Widget TitleAttendance_Theme(String text) {
 // *@ End Normal Title 16px UTextColor
 
 // *@ Normal Date Study Info
-Widget NormalDateStudyInfo(String text) {
+Widget NormalDateStudyInfo(
+  String text,
+) {
   return Text(
     text,
     style: TextStyle(
@@ -109,7 +117,10 @@ Widget NormalDateStudyInfo(String text) {
 // *@ End Normal Date Study Info
 
 // *@ Normal Data Study Info
-Widget RowDataStudyInfo(String title, tData) {
+Widget RowDataStudyInfo(
+  String title,
+  tData,
+) {
   return Row(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -148,10 +159,11 @@ Widget buildStudyDataAssign(
           width: 75,
           child: Text(
             textTitle.tr,
-            style: TextStyle(fontSize: UTitleSize),
+            style: TextStyle(
+              fontSize: UTitleSize,
+            ),
           ),
         ),
-        // buildVerticalDividerAtt(),
         Expanded(
           child: Text(
             textValue,
@@ -159,7 +171,6 @@ Widget buildStudyDataAssign(
               fontSize: UTitleSize,
               fontWeight: UBodyWeight,
               color: UTextColor,
-              // fontFamily: UKFontFamily,
             ),
           ),
         ),
@@ -170,21 +181,24 @@ Widget buildStudyDataAssign(
 // *@ End Data Study Info Assignment Row
 
 // *@ No Weight Title
-Widget NoWeightTitleTheme(String text) {
+Widget NoWeightTitleTheme(
+  String text,
+) {
   return Text(
     text,
     style: TextStyle(
       fontSize: UTitleSize,
       fontWeight: UBodyWeight,
       color: UTextColor,
-      // fontFamily: UKFontFamily,
     ),
   );
 }
 // *@ End No Weight Title
 
 // *@ Scholarship Text
-Widget ScholarshipTitleTheme(String text) {
+Widget ScholarshipTitleTheme(
+  String text,
+) {
   return Text(
     text,
     style: TextStyle(
@@ -197,7 +211,9 @@ Widget ScholarshipTitleTheme(String text) {
 // *@ End Scholarship Text
 
 // *@ Scholarship Body text
-Widget ScholarshipBodyTheme(String text) {
+Widget ScholarshipBodyTheme(
+  String text,
+) {
   return Text(
     text,
     style: TextStyle(
@@ -210,7 +226,11 @@ Widget ScholarshipBodyTheme(String text) {
 
 // *@Scholarship Button
 Widget ScholarshipButtonTheme(
-    String text, double size, Color color, FontWeight fontWeight) {
+  String text,
+  double size,
+  Color color,
+  FontWeight fontWeight,
+) {
   return Text(
     text,
     style: TextStyle(
@@ -242,7 +262,9 @@ Widget buildTextContact(
 // *@ End Contact text
 
 // *@ Career text
-Widget CareerBody(String text) {
+Widget CareerBody(
+  String text,
+) {
   return Text(
     text,
     style: TextStyle(
@@ -254,7 +276,9 @@ Widget CareerBody(String text) {
 // *@ End Career text
 
 // *@ Date Schedule
-Widget ScheduleDate(String text) {
+Widget ScheduleDate(
+  String text,
+) {
   return Text(
     text,
     style: TextStyle(
@@ -282,7 +306,9 @@ Widget ScheduleTitle(
 // *@ End Schedule Title
 
 // *@ Schedule Body
-Widget ScheduleBody(String text) {
+Widget ScheduleBody(
+  String text,
+) {
   return Text(
     text,
     style: TextStyle(
@@ -319,7 +345,9 @@ Widget buildJobHistoryCardRow(
         width: 125,
         child: Text(
           textTitle.tr,
-          style: TextStyle(fontSize: UTitleSize),
+          style: TextStyle(
+            fontSize: UTitleSize,
+          ),
         ),
       ),
       Expanded(
@@ -339,7 +367,9 @@ Widget buildJobHistoryCardRow(
 // *@ End Job History Card Row
 
 // *@ Body text
-Widget BodyTheme(String text) {
+Widget BodyTheme(
+  String text,
+) {
   return Text(
     text,
     style: TextStyle(
@@ -353,19 +383,27 @@ Widget BodyTheme(String text) {
 
 // *@ General custom text
 Widget CustomTextTheme(
-    String text, double size, Color color, FontWeight fontWeight) {
+  String text,
+  double size,
+  Color color,
+  FontWeight fontWeight,
+) {
   return Text(
     text,
     style: TextStyle(
-        fontSize: size,
-        fontWeight: fontWeight,
-        color: color,
-        fontFamily: UKFontFamily),
+      fontSize: size,
+      fontWeight: fontWeight,
+      color: color,
+      fontFamily: UKFontFamily,
+    ),
   );
 }
 
 Widget CustomPerformanceDiaglogTextThemeTitle(
-    String text, double size, Color color) {
+  String text,
+  double size,
+  Color color,
+) {
   return Text(
     text,
     style: TextStyle(
@@ -377,7 +415,10 @@ Widget CustomPerformanceDiaglogTextThemeTitle(
 }
 
 Widget CustomPerformanceDiaglogTextTheme(
-    String text, double size, Color color) {
+  String text,
+  double size,
+  Color color,
+) {
   return Text(
     text,
     style: TextStyle(
@@ -390,7 +431,11 @@ Widget CustomPerformanceDiaglogTextTheme(
 
 // *@ Attendance custom text
 Widget CustomAttTextTheme(
-    String text, double size, Color color, FontWeight fontWeight) {
+  String text,
+  double size,
+  Color color,
+  FontWeight fontWeight,
+) {
   return Text(
     text,
     style: TextStyle(
@@ -409,7 +454,9 @@ Widget buildTitleContainer(
   Alignment align,
 ) {
   return Container(
-    padding: EdgeInsets.symmetric(horizontal: UPdMg_10),
+    padding: EdgeInsets.symmetric(
+      horizontal: UPdMg_10,
+    ),
     width: width,
     alignment: align,
     child: Text(
@@ -425,13 +472,17 @@ Widget buildTitleContainer(
 }
 
 // *@ ScoreTotal
-Widget buildScoreTotal(String text) {
+Widget buildScoreTotal(
+  String text,
+) {
   return Container(
     width: 50,
     alignment: Alignment.centerRight,
     child: Text(
       text,
-      style: TextStyle(color: UPrimaryColor),
+      style: TextStyle(
+        color: UPrimaryColor,
+      ),
     ),
   );
 }
@@ -546,7 +597,9 @@ Widget buildTextBody(
 ) {
   return Container(
     width: 75,
-    margin: EdgeInsets.symmetric(vertical: UPdMg_5),
+    margin: EdgeInsets.symmetric(
+      vertical: UPdMg_5,
+    ),
     child: Text(
       text,
       textAlign: TextAlign.center,
@@ -564,7 +617,9 @@ Widget buildAttTextBody(
 ) {
   return Container(
     width: 100,
-    margin: EdgeInsets.symmetric(vertical: UPdMg_5),
+    margin: EdgeInsets.symmetric(
+      vertical: UPdMg_5,
+    ),
     child: Text(
       text,
       textAlign: TextAlign.center,
@@ -582,7 +637,9 @@ Widget buildTextTitle(
 ) {
   return Container(
     width: 75,
-    margin: EdgeInsets.symmetric(vertical: UPdMg_5),
+    margin: EdgeInsets.symmetric(
+      vertical: UPdMg_5,
+    ),
     child: Text(
       text,
       textAlign: TextAlign.center,
@@ -604,7 +661,12 @@ Widget buildTitle(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Padding(
-        padding: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_10, UPdMg_10, UPdMg_5),
+        padding: EdgeInsets.fromLTRB(
+          UPdMg_10,
+          UPdMg_10,
+          UPdMg_10,
+          UPdMg_5,
+        ),
         child: Text(
           text.tr,
           style: TextStyle(
@@ -802,7 +864,9 @@ Widget buildHistory(
           'assets/image/dot.png',
           width: UWidth5,
         ),
-        margin: EdgeInsets.only(top: UPdMg_10),
+        margin: EdgeInsets.only(
+          top: UPdMg_10,
+        ),
       ),
       SizedBox(
         width: UWidth5,
@@ -828,7 +892,12 @@ Widget buildTitleVision(
   text2,
 ) {
   return Container(
-    margin: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_10, UPdMg_10, UZeroPixel),
+    margin: EdgeInsets.fromLTRB(
+      UPdMg_10,
+      UPdMg_10,
+      UPdMg_10,
+      UZeroPixel,
+    ),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -836,13 +905,16 @@ Widget buildTitleVision(
         Text(
           text1,
           style: TextStyle(
-              fontSize: UTitleSize,
-              color: UPrimaryColor,
-              fontFamily: UEFontFamily,
-              fontWeight: UBodyWeight),
+            fontSize: UTitleSize,
+            color: UPrimaryColor,
+            fontFamily: UEFontFamily,
+            fontWeight: UBodyWeight,
+          ),
         ),
         Container(
-          margin: EdgeInsets.only(left: UPdMg_12),
+          margin: EdgeInsets.only(
+            left: UPdMg_12,
+          ),
           child: Text(
             text2,
             textAlign: TextAlign.justify,
@@ -863,10 +935,11 @@ Widget buildTopBodyVision(
   return Text(
     text,
     style: TextStyle(
-        fontSize: UTitleSize,
-        color: UPrimaryColor,
-        fontFamily: UEFontFamily,
-        fontWeight: UBodyWeight),
+      fontSize: UTitleSize,
+      color: UPrimaryColor,
+      fontFamily: UEFontFamily,
+      fontWeight: UBodyWeight,
+    ),
   );
 }
 
@@ -878,7 +951,9 @@ Widget buildLowBodyVision(
     mainAxisAlignment: MainAxisAlignment.start,
     children: [
       Container(
-        margin: EdgeInsets.only(top: UPdMg_10),
+        margin: EdgeInsets.only(
+          top: UPdMg_10,
+        ),
         child: Image.asset(
           'assets/image/dot.png',
           width: 4,
@@ -922,18 +997,26 @@ Widget buildPresidentMessage(
   String text,
 ) {
   return Container(
-    margin: EdgeInsets.symmetric(horizontal: UPdMg_10),
+    margin: EdgeInsets.symmetric(
+      horizontal: UPdMg_10,
+    ),
     child: Text(
       text,
       textAlign: TextAlign.justify,
-      style: TextStyle(fontSize: UTitleSize, fontFamily: UEFontFamily),
+      style: TextStyle(
+        fontSize: UTitleSize,
+        fontFamily: UEFontFamily,
+      ),
     ),
   );
 }
 // *@ End PresidentMessage
 
 //@ Custom InkWell Social Media
-Widget BuildContainerSM(Function()? onTap, String imageName) {
+Widget BuildContainerSM(
+  Function()? onTap,
+  String imageName,
+) {
   return InkWell(
     onTap: onTap,
     child: Image.asset(

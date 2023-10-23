@@ -35,7 +35,9 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: widget.majorName.tr),
+      appBar: Custom_AppBar(
+        title: widget.majorName.tr,
+      ),
       body: Column(
         children: [
           Container(
@@ -50,22 +52,34 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                 final isLastIndex = index == widget.educationNames.length - 1;
                 return InkWell(
                   onTap: () {
-                    setState(() {
-                      selectedEducationName = educationName;
-                    });
+                    setState(
+                      () {
+                        selectedEducationName = educationName;
+                      },
+                    );
                   },
                   child: AnimatedContainer(
                     alignment: Alignment.center,
-                    duration: Duration(milliseconds: 300),
-                    margin: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_10,
-                        isLastIndex ? UPdMg_10 : 0, UPdMg_10),
-                    padding: EdgeInsets.all(UPdMg_10),
+                    duration: Duration(
+                      milliseconds: 300,
+                    ),
+                    margin: EdgeInsets.fromLTRB(
+                      UPdMg_10,
+                      UPdMg_10,
+                      isLastIndex ? UPdMg_10 : UZeroPixel,
+                      UPdMg_10,
+                    ),
+                    padding: EdgeInsets.all(
+                      UPdMg_10,
+                    ),
                     width: 165,
                     decoration: BoxDecoration(
                       color: educationName == selectedEducationName
                           ? UPrimaryColor
                           : UBackgroundColor,
-                      borderRadius: BorderRadius.circular(URoundedMedium),
+                      borderRadius: BorderRadius.circular(
+                        URoundedMedium,
+                      ),
                       boxShadow: [
                         BoxShadow(
                           blurRadius: 1,
@@ -91,7 +105,9 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
           ),
           Expanded(
             child: SingleChildScrollView(
-              padding: EdgeInsets.all(UPdMg_10),
+              padding: EdgeInsets.all(
+                UPdMg_10,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -111,9 +127,13 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                           ),
                         )
                       : Center(
-                          child: Text('គ្មានទិន្ន័យ'.tr),
+                          child: Text(
+                            'គ្មានទិន្ន័យ'.tr,
+                          ),
                         ),
-                  SizedBox(height: UHeight10),
+                  SizedBox(
+                    height: UHeight10,
+                  ),
                   GridView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
@@ -154,7 +174,9 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                           color: UBackgroundColor,
                           shadowColor: ULightGreyColor,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(URoundedLarge),
+                            borderRadius: BorderRadius.circular(
+                              URoundedLarge,
+                            ),
                           ),
                           child: InkWell(
                             onTap: () {
@@ -181,16 +203,23 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                                     return Dialog(
                                       elevation: 3,
                                       shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(
-                                        URoundedLarge,
-                                      )),
+                                        borderRadius: BorderRadius.circular(
+                                          URoundedLarge,
+                                        ),
+                                      ),
                                       child: Container(
-                                        margin: EdgeInsets.all(7),
-                                        padding: EdgeInsets.all(UPdMg_10),
+                                        margin: EdgeInsets.all(
+                                          7,
+                                        ),
+                                        padding: EdgeInsets.all(
+                                          UPdMg_10,
+                                        ),
                                         decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            color: UBackgroundColor),
+                                          borderRadius: BorderRadius.circular(
+                                            20,
+                                          ),
+                                          color: UBackgroundColor,
+                                        ),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
@@ -216,7 +245,9 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                                             ),
                                             Container(
                                               height: 50,
-                                              padding: EdgeInsets.all(UPdMg_5),
+                                              padding: EdgeInsets.all(
+                                                UPdMg_5,
+                                              ),
                                               alignment: Alignment.center,
                                               child: TextButton(
                                                 child: Text(
@@ -240,7 +271,9 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                               }
                             },
                             child: Container(
-                              padding: EdgeInsets.all(UPdMg_10),
+                              padding: EdgeInsets.all(
+                                UPdMg_10,
+                              ),
                               alignment: Alignment.center,
                               child: Text(
                                 yearName.tr,

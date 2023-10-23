@@ -28,12 +28,16 @@ class _Program_SHCState extends State<Program_SHC> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: widget.majorName.tr),
+      appBar: Custom_AppBar(
+        title: widget.majorName.tr,
+      ),
       body: Column(
         children: [
           Expanded(
             child: SingleChildScrollView(
-              padding: EdgeInsets.all(UPdMg_8),
+              padding: EdgeInsets.all(
+                UPdMg_8,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: _buildSubjectList(),
@@ -56,7 +60,12 @@ class _Program_SHCState extends State<Program_SHC> {
       final index = i++;
 
       return Container(
-        padding: EdgeInsets.fromLTRB(UPdMg_5, UPdMg_10, UPdMg_5, UZeroPixel),
+        padding: EdgeInsets.fromLTRB(
+          UPdMg_5,
+          UPdMg_10,
+          UPdMg_5,
+          UZeroPixel,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -69,14 +78,22 @@ class _Program_SHCState extends State<Program_SHC> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        padding: EdgeInsets.symmetric(vertical: UPdMg_5),
-                        margin: EdgeInsets.only(right: UPdMg_5),
+                        padding: EdgeInsets.symmetric(
+                          vertical: UPdMg_5,
+                        ),
+                        margin: EdgeInsets.only(
+                          right: UPdMg_5,
+                        ),
                         child: NoWeightTitleTheme(index.toString() + '.'),
                       ),
                       Expanded(
                         child: Container(
-                          margin: EdgeInsets.only(right: UPdMg_15),
-                          padding: EdgeInsets.symmetric(vertical: UPdMg_5),
+                          margin: EdgeInsets.only(
+                            right: UPdMg_15,
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            vertical: UPdMg_5,
+                          ),
                           child: Text(
                             subject,
                             style: TextStyle(
@@ -94,13 +111,18 @@ class _Program_SHCState extends State<Program_SHC> {
                   width: UWidth15,
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: UPdMg_5),
+                  padding: EdgeInsets.symmetric(
+                    vertical: UPdMg_5,
+                  ),
                   alignment: Alignment.centerRight,
-                  margin: EdgeInsets.only(right: UPdMg_15),
+                  margin: EdgeInsets.only(
+                    right: UPdMg_15,
+                  ),
                   child: NoWeightTitleTheme(
-                      credit.toString().isEmpty || credit == null
-                          ? 'N/A'
-                          : credit),
+                    credit.toString().isEmpty || credit == null
+                        ? 'N/A'
+                        : credit,
+                  ),
                 ),
               ],
             ),
@@ -114,7 +136,9 @@ class _Program_SHCState extends State<Program_SHC> {
         elevation: 2,
         shadowColor: ULightGreyColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(URoundedLarge),
+          borderRadius: BorderRadius.circular(
+            URoundedLarge,
+          ),
         ),
         color: UBackgroundColor,
         child: Column(
@@ -128,7 +152,9 @@ class _Program_SHCState extends State<Program_SHC> {
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(UPdMg_10),
+                  top: Radius.circular(
+                    UPdMg_10,
+                  ),
                 ),
                 color: UBGLightBlue,
               ),
@@ -150,8 +176,12 @@ class _Program_SHCState extends State<Program_SHC> {
             ),
             ...subjectWidgets,
             Container(
-              padding:
-                  EdgeInsets.fromLTRB(UPdMg_5, UPdMg_15, UPdMg_5, UPdMg_15),
+              padding: EdgeInsets.fromLTRB(
+                UPdMg_5,
+                UPdMg_15,
+                UPdMg_5,
+                UPdMg_15,
+              ),
               width: double.infinity,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -161,11 +191,14 @@ class _Program_SHCState extends State<Program_SHC> {
                   ),
                   Container(
                     alignment: Alignment.centerRight,
-                    margin: EdgeInsets.only(right: UPdMg_15),
+                    margin: EdgeInsets.only(
+                      right: UPdMg_15,
+                    ),
                     child: TitleTheme(
-                        total_credit.toString().isEmpty || total_credit == null
-                            ? 'N/A'
-                            : total_credit.toString()),
+                      total_credit.toString().isEmpty || total_credit == null
+                          ? 'N/A'
+                          : total_credit.toString(),
+                    ),
                   ),
                 ],
               ),

@@ -32,7 +32,9 @@ class _Student_LogInState extends State<Student_LogIn> {
 
     try {
       var response = await http.post(
-        Uri.parse(APIUrlStudent + 'action=login_student'),
+        Uri.parse(
+          APIUrlStudent + 'action=login_student',
+        ),
         body: {
           'student_id': studentId,
           'pwd': password,
@@ -56,7 +58,10 @@ class _Student_LogInState extends State<Student_LogIn> {
 
           SharedPreferences sharedPref = await SharedPreferences.getInstance();
           sharedPref.setBool('login', true);
-          saveStudentUser(sharedPref, dataList_StudentUser);
+          saveStudentUser(
+            sharedPref,
+            dataList_StudentUser,
+          );
 
           Get.off(
             () => St_Home(
@@ -75,10 +80,16 @@ class _Student_LogInState extends State<Student_LogIn> {
               elevation: 2,
               child: Container(
                 height: 175,
-                margin: EdgeInsets.all(7),
-                padding: EdgeInsets.symmetric(horizontal: UPdMg_10),
+                margin: EdgeInsets.all(
+                  7,
+                ),
+                padding: EdgeInsets.symmetric(
+                  horizontal: UPdMg_10,
+                ),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(URoundedLarge),
+                  borderRadius: BorderRadius.circular(
+                    URoundedLarge,
+                  ),
                   color: UBackgroundColor,
                 ),
                 child: Column(
@@ -88,7 +99,9 @@ class _Student_LogInState extends State<Student_LogIn> {
                     Text(
                       'គណនីនិស្សិត'.tr,
                       style: TextStyle(
-                          fontSize: UTitleSize16, fontWeight: UTitleWeight),
+                        fontSize: UTitleSize16,
+                        fontWeight: UTitleWeight,
+                      ),
                     ),
                     SizedBox(
                       height: UHeight10,
@@ -101,7 +114,9 @@ class _Student_LogInState extends State<Student_LogIn> {
                         fontSize: 13.5,
                       ),
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Divider(),
                     InkWell(
                       onTap: () => Navigator.pop(context),
@@ -111,10 +126,11 @@ class _Student_LogInState extends State<Student_LogIn> {
                         child: Text(
                           'OK',
                           style: TextStyle(
-                              color: UPrimaryColor,
-                              fontSize: UTitleSize,
-                              fontFamily: UEFontFamily,
-                              fontWeight: UBodyWeight),
+                            color: UPrimaryColor,
+                            fontSize: UTitleSize,
+                            fontFamily: UEFontFamily,
+                            fontWeight: UBodyWeight,
+                          ),
                         ),
                       ),
                     )
@@ -137,10 +153,16 @@ class _Student_LogInState extends State<Student_LogIn> {
               elevation: 2,
               child: Container(
                 height: 175,
-                margin: EdgeInsets.all(7),
-                padding: EdgeInsets.symmetric(horizontal: UPdMg_10),
+                margin: EdgeInsets.all(
+                  7,
+                ),
+                padding: EdgeInsets.symmetric(
+                  horizontal: UPdMg_10,
+                ),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(URoundedLarge),
+                  borderRadius: BorderRadius.circular(
+                    URoundedLarge,
+                  ),
                   color: UBackgroundColor,
                 ),
                 child: Column(
@@ -150,7 +172,9 @@ class _Student_LogInState extends State<Student_LogIn> {
                     Text(
                       'គណនីនិស្សិត'.tr,
                       style: TextStyle(
-                          fontSize: UTitleSize16, fontWeight: UTitleWeight),
+                        fontSize: UTitleSize16,
+                        fontWeight: UTitleWeight,
+                      ),
                     ),
                     SizedBox(
                       height: UHeight10,
@@ -158,8 +182,10 @@ class _Student_LogInState extends State<Student_LogIn> {
                     Text(
                       'Server Error!!!'.tr,
                       textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontSize: 13.5, fontFamily: UEFontFamily),
+                      style: TextStyle(
+                        fontSize: 13.5,
+                        fontFamily: UEFontFamily,
+                      ),
                     ),
                     SizedBox(height: 20.0),
                     Divider(),
@@ -171,10 +197,11 @@ class _Student_LogInState extends State<Student_LogIn> {
                         child: Text(
                           'OK',
                           style: TextStyle(
-                              color: UPrimaryColor,
-                              fontSize: UTitleSize,
-                              fontFamily: UEFontFamily,
-                              fontWeight: UBodyWeight),
+                            color: UPrimaryColor,
+                            fontSize: UTitleSize,
+                            fontFamily: UEFontFamily,
+                            fontWeight: UBodyWeight,
+                          ),
                         ),
                       ),
                     )
@@ -192,16 +219,23 @@ class _Student_LogInState extends State<Student_LogIn> {
       SharedPreferences sharedPreferences, List<StudentUser> studentUserList) {
     final jsonData =
         studentUserList.map((studentUser) => studentUser.toJson()).toList();
-    sharedPreferences.setString('student_user', json.encode(jsonData));
+    sharedPreferences.setString(
+      'student_user',
+      json.encode(jsonData),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
-      appBar: Custom_AppBar(title: 'គណនីនិសិ្សត'.tr),
+      appBar: Custom_AppBar(
+        title: 'គណនីនិសិ្សត'.tr,
+      ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.only(top: 20),
+        padding: EdgeInsets.only(
+          top: 20,
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -217,18 +251,20 @@ class _Student_LogInState extends State<Student_LogIn> {
             Text(
               'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
               style: TextStyle(
-                  fontFamily: 'KhmerOSmuol',
-                  color: UPrimaryColor,
-                  fontSize: UTitleSize16),
+                fontFamily: 'KhmerOSmuol',
+                color: UPrimaryColor,
+                fontSize: UTitleSize16,
+              ),
             ),
             Text(
               'UNIVERSITY OF SOUTH-EAST ASIA',
               style: TextStyle(
-                  letterSpacing: 1.5,
-                  fontFamily: UEFontFamily,
-                  color: UPrimaryColor,
-                  fontSize: UTitleSize16,
-                  fontWeight: UBodyWeight),
+                letterSpacing: 1.5,
+                fontFamily: UEFontFamily,
+                color: UPrimaryColor,
+                fontSize: UTitleSize16,
+                fontWeight: UBodyWeight,
+              ),
             ),
             SizedBox(
               height: UHeight15,
@@ -239,7 +275,9 @@ class _Student_LogInState extends State<Student_LogIn> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Container(
-                    padding: EdgeInsets.only(left: 30),
+                    padding: EdgeInsets.only(
+                      left: 30,
+                    ),
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'អត្តលេខនិស្សិត'.tr,
@@ -251,7 +289,9 @@ class _Student_LogInState extends State<Student_LogIn> {
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(
-                        vertical: UPdMg_10, horizontal: 30),
+                      vertical: UPdMg_10,
+                      horizontal: 30,
+                    ),
                     alignment: Alignment.center,
                     child: TextFormField(
                       controller: _textControllerUsername,
@@ -259,7 +299,9 @@ class _Student_LogInState extends State<Student_LogIn> {
                       cursorWidth: 1,
                       cursorHeight: 30,
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(UPdMg_10),
+                        contentPadding: EdgeInsets.all(
+                          UPdMg_10,
+                        ),
                         hintText: '\t\tបញ្ចូលអត្តលេខ'.tr,
                         hintStyle: TextStyle(
                           fontSize: UBodySize10,
@@ -276,16 +318,22 @@ class _Student_LogInState extends State<Student_LogIn> {
                           ),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: UGreyColor),
+                          borderSide: BorderSide(
+                            color: UGreyColor,
+                          ),
                         ),
                         suffixIconColor: UGreyColor,
                         errorStyle: TextStyle(
-                            fontSize: UBodySize10, fontFamily: UKFontFamily),
+                          fontSize: UBodySize10,
+                          fontFamily: UKFontFamily,
+                        ),
                       ),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 30),
+                    padding: EdgeInsets.only(
+                      left: 30,
+                    ),
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'ពាក្យសម្ងាត់'.tr,
@@ -296,7 +344,9 @@ class _Student_LogInState extends State<Student_LogIn> {
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(
-                        vertical: UPdMg_10, horizontal: 30),
+                      vertical: UPdMg_10,
+                      horizontal: 30,
+                    ),
                     alignment: Alignment.center,
                     child: TextFormField(
                       obscureText: _obscureText,
@@ -305,7 +355,9 @@ class _Student_LogInState extends State<Student_LogIn> {
                       cursorWidth: 1,
                       cursorHeight: 30,
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(UPdMg_10),
+                        contentPadding: EdgeInsets.all(
+                          UPdMg_10,
+                        ),
                         hintText: '\t\tបញ្ចូលពាក្យសម្ងាត់'.tr,
                         hintStyle: TextStyle(
                           fontSize: 10,
@@ -353,13 +405,17 @@ class _Student_LogInState extends State<Student_LogIn> {
                 height: 40,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(UPdMg_5),
+                  borderRadius: BorderRadius.circular(
+                    UPdMg_5,
+                  ),
                   color: UPrimaryColor,
                 ),
                 child: Text(
                   'ចូល'.tr,
-                  style:
-                      TextStyle(color: UBackgroundColor, fontSize: UTitleSize),
+                  style: TextStyle(
+                    color: UBackgroundColor,
+                    fontSize: UTitleSize,
+                  ),
                 ),
               ),
             ),

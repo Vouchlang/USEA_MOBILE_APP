@@ -31,7 +31,9 @@ class _AttendanceListState extends State<AttendanceList> {
   Future<void> _refreshData() async {
     try {
       final response = await http.post(
-        Uri.parse(APIUrlStudent + 'action=attendance_data'),
+        Uri.parse(
+          APIUrlStudent + 'action=attendance_data',
+        ),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -129,10 +131,16 @@ class _AttendanceListState extends State<AttendanceList> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: 'វត្តមាន'.tr),
+      appBar: Custom_AppBar(
+        title: 'វត្តមាន'.tr,
+      ),
       body: attendances.isEmpty
           ? FutureBuilder(
-              future: Future.delayed(Duration(seconds: 10)),
+              future: Future.delayed(
+                Duration(
+                  seconds: 10,
+                ),
+              ),
               builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(
@@ -142,7 +150,9 @@ class _AttendanceListState extends State<AttendanceList> {
                   );
                 } else {
                   return Center(
-                    child: Text('គ្មានទិន្ន័យ'.tr),
+                    child: Text(
+                      'គ្មានទិន្ន័យ'.tr,
+                    ),
                   );
                 }
               },
@@ -151,7 +161,9 @@ class _AttendanceListState extends State<AttendanceList> {
               onRefresh: _refreshData,
               color: UPrimaryColor,
               child: Padding(
-                padding: EdgeInsets.all(UPdMg_5),
+                padding: EdgeInsets.all(
+                  UPdMg_5,
+                ),
                 child: ListView(
                   shrinkWrap: true,
                   children: [
@@ -169,26 +181,34 @@ class _AttendanceListState extends State<AttendanceList> {
 
                             return GestureDetector(
                               onTap: () {
-                                setState(() {
-                                  selectedYearIndex = index;
-                                });
+                                setState(
+                                  () {
+                                    selectedYearIndex = index;
+                                  },
+                                );
                               },
                               child: AnimatedContainer(
                                 alignment: Alignment.center,
-                                duration: Duration(milliseconds: 300),
+                                duration: Duration(
+                                  milliseconds: 300,
+                                ),
                                 margin: EdgeInsets.fromLTRB(
-                                    UPdMg_10,
-                                    UPdMg_10,
-                                    isLastIndex ? UPdMg_10 : UZeroPixel,
-                                    UPdMg_10),
-                                padding: EdgeInsets.all(UPdMg_10),
+                                  UPdMg_10,
+                                  UPdMg_10,
+                                  isLastIndex ? UPdMg_10 : UZeroPixel,
+                                  UPdMg_10,
+                                ),
+                                padding: EdgeInsets.all(
+                                  UPdMg_10,
+                                ),
                                 width: 120,
                                 decoration: BoxDecoration(
                                   color: selectedYearIndex == index
                                       ? UPrimaryColor
                                       : UBackgroundColor,
-                                  borderRadius:
-                                      BorderRadius.circular(URoundedMedium),
+                                  borderRadius: BorderRadius.circular(
+                                    URoundedMedium,
+                                  ),
                                   boxShadow: [
                                     BoxShadow(
                                       blurRadius: 1,
@@ -249,7 +269,9 @@ class _AttendanceListState extends State<AttendanceList> {
                                   height: UHeight10,
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.all(UPdMg_5),
+                                  padding: EdgeInsets.all(
+                                    UPdMg_5,
+                                  ),
                                   child: Center(
                                     child: TitleTheme(
                                       'ឆមាសទី ${year.semester_no}'.tr,
@@ -266,7 +288,8 @@ class _AttendanceListState extends State<AttendanceList> {
                                         (subject) => Card(
                                           shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadius.circular(
-                                                URoundedLarge),
+                                              URoundedLarge,
+                                            ),
                                           ),
                                           elevation: 1,
                                           child: Container(

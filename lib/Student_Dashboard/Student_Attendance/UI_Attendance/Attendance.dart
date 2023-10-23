@@ -33,7 +33,9 @@ class _AttendanceState extends State<Attendance> {
   Future<void> _refreshData() async {
     try {
       final response = await http.post(
-        Uri.parse(APIUrlStudent + 'action=attendance_data'),
+        Uri.parse(
+          APIUrlStudent + 'action=attendance_data',
+        ),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -41,7 +43,9 @@ class _AttendanceState extends State<Attendance> {
       );
 
       var responseDetail = await http.post(
-        Uri.parse(APIUrlStudent + 'action=login_student'),
+        Uri.parse(
+          APIUrlStudent + 'action=login_student',
+        ),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -147,10 +151,16 @@ class _AttendanceState extends State<Attendance> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: 'វត្តមាន'.tr),
+      appBar: Custom_AppBar(
+        title: 'វត្តមាន'.tr,
+      ),
       body: attendances.isEmpty
           ? FutureBuilder(
-              future: Future.delayed(Duration(seconds: 10)),
+              future: Future.delayed(
+                Duration(
+                  seconds: 10,
+                ),
+              ),
               builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(
@@ -160,7 +170,9 @@ class _AttendanceState extends State<Attendance> {
                   );
                 } else {
                   return Center(
-                    child: Text('គ្មានទិន្ន័យ'.tr),
+                    child: Text(
+                      'គ្មានទិន្ន័យ'.tr,
+                    ),
                   );
                 }
               },
@@ -179,41 +191,66 @@ class _AttendanceState extends State<Attendance> {
                   children: [
                     Padding(
                       padding: EdgeInsets.fromLTRB(
-                          UPdMg_5, UZeroPixel, UPdMg_5, UPdMg_5),
+                        UPdMg_5,
+                        UZeroPixel,
+                        UPdMg_5,
+                        UPdMg_5,
+                      ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          buildAttList('វត្តមាន\t', UScoreColor),
-                          buildAttList('យឺត', UYellowColor),
-                          buildAttList('សុំច្បាប់', UOrangeColor),
-                          buildAttList('អវត្តមាន', URedColor),
+                          buildAttList(
+                            'វត្តមាន\t',
+                            UScoreColor,
+                          ),
+                          buildAttList(
+                            'យឺត',
+                            UYellowColor,
+                          ),
+                          buildAttList(
+                            'សុំច្បាប់',
+                            UOrangeColor,
+                          ),
+                          buildAttList(
+                            'អវត្តមាន',
+                            URedColor,
+                          ),
                         ],
                       ),
                     ),
                     _buildLastSemesterSubjects(),
-                    SizedBox(height: UHeight10),
+                    SizedBox(
+                      height: UHeight10,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Container(
                           alignment: Alignment.center,
-                          margin: EdgeInsets.only(right: UPdMg_5),
+                          margin: EdgeInsets.only(
+                            right: UPdMg_5,
+                          ),
                           padding: EdgeInsets.symmetric(
                             vertical: UPdMg_5,
                             horizontal: UPdMg_10,
                           ),
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(URoundedMedium),
+                            borderRadius: BorderRadius.circular(
+                              URoundedMedium,
+                            ),
                             color: UBtnColor,
                             boxShadow: [
-                              BoxShadow(color: UBtnColor),
+                              BoxShadow(
+                                color: UBtnColor,
+                              ),
                             ],
                           ),
                           child: InkWell(
                             onTap: () {
                               Get.to(
                                 () => AttendanceList(
-                                    data_studentUser: widget.data_studentUser),
+                                  data_studentUser: widget.data_studentUser,
+                                ),
                               );
                             },
                             child: CustomTextTheme(
@@ -238,15 +275,19 @@ class _AttendanceState extends State<Attendance> {
       // Filter the attendances list to get only the desired year and semester
       final filteredYear = attendances.firstWhere(
         (year) => year.year_no == _dataStDetail[0].year_name,
-        orElse: () =>
-            Attendances(year_no: _dataStDetail[0].year_name, semesters: []),
+        orElse: () => Attendances(
+          year_no: _dataStDetail[0].year_name,
+          semesters: [],
+        ),
       );
 
       if (filteredYear.semesters.isNotEmpty) {
         final filteredSemester = filteredYear.semesters.firstWhere(
           (semester) => semester.semester_no == _dataStDetail[0].semester_name,
           orElse: () => Semester(
-              semester_no: _dataStDetail[0].semester_name, subjects: []),
+            semester_no: _dataStDetail[0].semester_name,
+            subjects: [],
+          ),
         );
 
         if (filteredSemester.subjects.isNotEmpty) {
@@ -259,7 +300,9 @@ class _AttendanceState extends State<Attendance> {
 
                 return Card(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(URoundedLarge),
+                    borderRadius: BorderRadius.circular(
+                      URoundedLarge,
+                    ),
                   ),
                   elevation: 1,
                   child: Padding(
@@ -271,16 +314,18 @@ class _AttendanceState extends State<Attendance> {
                     ),
                     child: InkWell(
                       onTap: () {
-                        setState(() {
-                          Get.to(
-                            () => Attendance_Detail(
-                              subjectDate: subject.dates,
-                              subjectName: Get.locale?.languageCode == 'km'
-                                  ? subject.name_kh
-                                  : subject.name_en,
-                            ),
-                          );
-                        });
+                        setState(
+                          () {
+                            Get.to(
+                              () => Attendance_Detail(
+                                subjectDate: subject.dates,
+                                subjectName: Get.locale?.languageCode == 'km'
+                                    ? subject.name_kh
+                                    : subject.name_en,
+                              ),
+                            );
+                          },
+                        );
                       },
                       child: IntrinsicHeight(
                         child: Row(
@@ -308,10 +353,18 @@ class _AttendanceState extends State<Attendance> {
                                 ),
                                 Row(
                                   children: [
-                                    buildCHText(subject.credit.toString()),
-                                    buildCHText('\tក្រេឌីត\t'.tr),
-                                    buildCHText(subject.hour.toString()),
-                                    buildCHText('\tម៉ោង'.tr),
+                                    buildCHText(
+                                      subject.credit.toString(),
+                                    ),
+                                    buildCHText(
+                                      '\tក្រេឌីត\t'.tr,
+                                    ),
+                                    buildCHText(
+                                      subject.hour.toString(),
+                                    ),
+                                    buildCHText(
+                                      '\tម៉ោង'.tr,
+                                    ),
                                   ],
                                 )
                               ],
@@ -319,13 +372,25 @@ class _AttendanceState extends State<Attendance> {
                             SizedBox(
                               width: UWidth5,
                             ),
-                            buildNum(subject.attendance_al, UYellowColor),
+                            buildNum(
+                              subject.attendance_al,
+                              UYellowColor,
+                            ),
                             buildDivider(),
-                            buildNum(subject.attendance_pm, UOrangeColor),
+                            buildNum(
+                              subject.attendance_pm,
+                              UOrangeColor,
+                            ),
                             buildDivider(),
-                            buildNum(subject.attendance_a, URedColor),
+                            buildNum(
+                              subject.attendance_a,
+                              URedColor,
+                            ),
                             buildDivider(),
-                            buildNum(subject.attendance_ps, UScoreColor),
+                            buildNum(
+                              subject.attendance_ps,
+                              UScoreColor,
+                            ),
                           ],
                         ),
                       ),
@@ -335,17 +400,23 @@ class _AttendanceState extends State<Attendance> {
               });
         } else {
           return Center(
-            child: Text('No subjects in the last semester of the last year.'),
+            child: Text(
+              'No subjects in the last semester of the last year.',
+            ),
           );
         }
       } else {
         return Center(
-          child: Text('No semesters in the last year.'),
+          child: Text(
+            'No semesters in the last year.',
+          ),
         );
       }
     } else {
       return Center(
-        child: Text('No data available for attendance.'),
+        child: Text(
+          'No data available for attendance.',
+        ),
       );
     }
   }

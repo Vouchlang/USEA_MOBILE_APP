@@ -14,14 +14,18 @@ class PaymentCards2 extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.all(UPdMg_5),
+          padding: EdgeInsets.all(
+            UPdMg_5,
+          ),
           child: Card(
             shape: RoundedRectangleBorder(
               side: BorderSide(
                 color: ULightGreyColor,
                 width: 0.5,
               ),
-              borderRadius: BorderRadius.circular(URoundedLarge),
+              borderRadius: BorderRadius.circular(
+                URoundedLarge,
+              ),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -29,19 +33,36 @@ class PaymentCards2 extends StatelessWidget {
               children: [
                 IntrinsicHeight(
                   child: Padding(
-                    padding: EdgeInsets.all(UPdMg_5),
+                    padding: EdgeInsets.all(
+                      UPdMg_5,
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        buildHeaderTitle(75, 'កាលបរិច្ឆេទ'),
+                        buildHeaderTitle(
+                          75,
+                          'កាលបរិច្ឆេទ',
+                        ),
                         buildVerticalDividerW_5(),
-                        buildHeaderTitle(75, 'លេខវិក័យបត្រ'),
+                        buildHeaderTitle(
+                          75,
+                          'លេខវិក័យបត្រ',
+                        ),
                         buildVerticalDividerW_2(),
-                        buildHeaderTitle(45, 'ទឹកប្រាក់ត្រូវបង់'),
+                        buildHeaderTitle(
+                          45,
+                          'ទឹកប្រាក់ត្រូវបង់',
+                        ),
                         buildVerticalDividerW_2(),
-                        buildHeaderTitle(45, 'ទឹកប្រាក់បានបង់'),
+                        buildHeaderTitle(
+                          45,
+                          'ទឹកប្រាក់បានបង់',
+                        ),
                         buildVerticalDividerW_2(),
-                        buildHeaderTitle(50, 'ទឹកប្រាក់នៅសល់'),
+                        buildHeaderTitle(
+                          50,
+                          'ទឹកប្រាក់នៅសល់',
+                        ),
                       ],
                     ),
                   ),
@@ -57,7 +78,9 @@ class PaymentCards2 extends StatelessWidget {
                     final isLastIndex = index == paymentData2.length - 1;
 
                     return Padding(
-                      padding: EdgeInsets.only(bottom: isLastIndex ? 5 : 0),
+                      padding: EdgeInsets.only(
+                        bottom: isLastIndex ? 5 : UZeroPixel,
+                      ),
                       child: IntrinsicHeight(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -66,7 +89,9 @@ class PaymentCards2 extends StatelessWidget {
                             IntrinsicHeight(
                               child: Container(
                                 alignment: Alignment.center,
-                                padding: EdgeInsets.all(UPdMg_5),
+                                padding: EdgeInsets.all(
+                                  UPdMg_5,
+                                ),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
@@ -130,14 +155,18 @@ class PaymentCards3 extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.all(UPdMg_5),
+          padding: EdgeInsets.all(
+            UPdMg_5,
+          ),
           child: Card(
             shape: RoundedRectangleBorder(
               side: BorderSide(
                 color: ULightGreyColor,
                 width: 0.5,
               ),
-              borderRadius: BorderRadius.circular(URoundedLarge),
+              borderRadius: BorderRadius.circular(
+                URoundedLarge,
+              ),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -145,19 +174,36 @@ class PaymentCards3 extends StatelessWidget {
               children: [
                 IntrinsicHeight(
                   child: Padding(
-                    padding: EdgeInsets.all(UPdMg_5),
+                    padding: EdgeInsets.all(
+                      UPdMg_5,
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        buildHeaderTitle(75, 'កាលបរិច្ឆេទ'),
+                        buildHeaderTitle(
+                          75,
+                          'កាលបរិច្ឆេទ',
+                        ),
                         buildVerticalDividerW_5(),
-                        buildHeaderTitle(75, 'លេខវិក័យបត្រ'),
+                        buildHeaderTitle(
+                          75,
+                          'លេខវិក័យបត្រ',
+                        ),
                         buildVerticalDividerW_5(),
-                        buildHeaderTitle(45, 'ទឹកប្រាក់ត្រូវបង់'),
+                        buildHeaderTitle(
+                          45,
+                          'ទឹកប្រាក់ត្រូវបង់',
+                        ),
                         buildVerticalDividerW_5(),
-                        buildHeaderTitle(45, 'ទឹកប្រាក់បានបង់'),
+                        buildHeaderTitle(
+                          45,
+                          'ទឹកប្រាក់បានបង់',
+                        ),
                         buildVerticalDividerW_5(),
-                        buildHeaderTitle(50, 'ទឹកប្រាក់នៅសល់'),
+                        buildHeaderTitle(
+                          50,
+                          'ទឹកប្រាក់នៅសល់',
+                        ),
                       ],
                     ),
                   ),
@@ -173,7 +219,9 @@ class PaymentCards3 extends StatelessWidget {
                     final isLastIndex = index == paymentData3.length - 1;
 
                     return Padding(
-                      padding: EdgeInsets.only(bottom: isLastIndex ? 5 : 0),
+                      padding: EdgeInsets.only(
+                        bottom: isLastIndex ? 5 : UZeroPixel,
+                      ),
                       child: IntrinsicHeight(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,

@@ -58,7 +58,9 @@ class _Student_HomeState extends State<Student_Home> {
 
     try {
       var response_stUser = await http.post(
-        Uri.parse(APIUrlStudent + 'action=login_student'),
+        Uri.parse(
+          APIUrlStudent + 'action=login_student',
+        ),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -66,7 +68,9 @@ class _Student_HomeState extends State<Student_Home> {
       );
 
       var response_credit = await http.post(
-        Uri.parse(APIUrlStudent + 'action=study_credit'),
+        Uri.parse(
+          APIUrlStudent + 'action=study_credit',
+        ),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -74,7 +78,9 @@ class _Student_HomeState extends State<Student_Home> {
       );
 
       var response_survey = await http.post(
-        Uri.parse(APIUrlStudent + 'action=login_student'),
+        Uri.parse(
+          APIUrlStudent + 'action=login_student',
+        ),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -82,7 +88,9 @@ class _Student_HomeState extends State<Student_Home> {
       );
 
       var response_stDetail = await http.post(
-        Uri.parse(APIUrlStudent + 'action=login_student'),
+        Uri.parse(
+          APIUrlStudent + 'action=login_student',
+        ),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -90,7 +98,9 @@ class _Student_HomeState extends State<Student_Home> {
       );
 
       var response_feedback = await http.post(
-        Uri.parse(APIUrlStudent + 'action=feedback'),
+        Uri.parse(
+          APIUrlStudent + 'action=feedback',
+        ),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -244,8 +254,9 @@ class _Student_HomeState extends State<Student_Home> {
               },
               child: _dataStDetail.isNotEmpty
                   ? CircleAvatar(
-                      backgroundImage:
-                          NetworkImage(_dataStDetail[0].profile_pic),
+                      backgroundImage: NetworkImage(
+                        _dataStDetail[0].profile_pic,
+                      ),
                       radius: 22.5,
                     )
                   : Icon(
@@ -262,7 +273,11 @@ class _Student_HomeState extends State<Student_Home> {
       ),
       body: _dataStDetail.isEmpty
           ? FutureBuilder(
-              future: Future.delayed(Duration(seconds: 10)),
+              future: Future.delayed(
+                Duration(
+                  seconds: 10,
+                ),
+              ),
               builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(
@@ -271,7 +286,11 @@ class _Student_HomeState extends State<Student_Home> {
                     ),
                   );
                 } else {
-                  return Center(child: Text('គ្មានទិន្ន័យ'.tr));
+                  return Center(
+                    child: Text(
+                      'គ្មានទិន្ន័យ'.tr,
+                    ),
+                  );
                 }
               },
             )
@@ -287,12 +306,16 @@ class _Student_HomeState extends State<Student_Home> {
                   (() {
                     if (_dataSurvey.isNotEmpty && _dataSurvey.length > 1) {
                       return Card(
-                        margin: EdgeInsets.symmetric(horizontal: UPdMg_10),
+                        margin: EdgeInsets.symmetric(
+                          horizontal: UPdMg_10,
+                        ),
                         elevation: 1,
                         shadowColor: ULightGreyColor,
                         shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.circular(URoundedMedium)),
+                          borderRadius: BorderRadius.circular(
+                            URoundedMedium,
+                          ),
+                        ),
                         child: InkWell(
                           onTap: () {
                             showDialog(
@@ -305,10 +328,16 @@ class _Student_HomeState extends State<Student_Home> {
                                     URoundedLarge,
                                   )),
                                   child: Container(
-                                    margin: EdgeInsets.all(7),
-                                    padding: EdgeInsets.all(UPdMg_10),
+                                    margin: EdgeInsets.all(
+                                      7,
+                                    ),
+                                    padding: EdgeInsets.all(
+                                      UPdMg_10,
+                                    ),
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
+                                        borderRadius: BorderRadius.circular(
+                                          20,
+                                        ),
                                         color: UBackgroundColor),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
@@ -336,7 +365,9 @@ class _Student_HomeState extends State<Student_Home> {
                                         ),
                                         Container(
                                           height: 70,
-                                          padding: EdgeInsets.all(UPdMg_5),
+                                          padding: EdgeInsets.all(
+                                            UPdMg_5,
+                                          ),
                                           alignment: Alignment.center,
                                           child: ListView.builder(
                                             shrinkWrap: true,
@@ -403,7 +434,9 @@ class _Student_HomeState extends State<Student_Home> {
                             );
                           },
                           child: Container(
-                            margin: EdgeInsets.all(UPdMg_5),
+                            margin: EdgeInsets.all(
+                              UPdMg_5,
+                            ),
                             child: Text(
                               'សូមជួយធ្វើការវាយតម្លៃ'.tr,
                               textAlign: TextAlign.center,
@@ -418,12 +451,16 @@ class _Student_HomeState extends State<Student_Home> {
                     } else if (_dataSurvey.isNotEmpty &&
                         _dataSurvey.length == 1) {
                       return Card(
-                        margin: EdgeInsets.symmetric(horizontal: UPdMg_10),
+                        margin: EdgeInsets.symmetric(
+                          horizontal: UPdMg_10,
+                        ),
                         elevation: 1,
                         shadowColor: ULightGreyColor,
                         shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.circular(URoundedMedium)),
+                          borderRadius: BorderRadius.circular(
+                            URoundedMedium,
+                          ),
+                        ),
                         child: InkWell(
                           onTap: () {
                             void _launchSurvey() async {
@@ -437,7 +474,9 @@ class _Student_HomeState extends State<Student_Home> {
                             _launchSurvey();
                           },
                           child: Container(
-                            margin: EdgeInsets.all(UPdMg_5),
+                            margin: EdgeInsets.all(
+                              UPdMg_5,
+                            ),
                             child: Text(
                               'សូមជួយធ្វើការវាយតម្លៃ'.tr,
                               textAlign: TextAlign.center,
@@ -459,7 +498,9 @@ class _Student_HomeState extends State<Student_Home> {
                   Container(
                     alignment: Alignment.center,
                     height: 180,
-                    padding: EdgeInsets.symmetric(horizontal: UPdMg_5),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: UPdMg_5,
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -504,7 +545,9 @@ class _Student_HomeState extends State<Student_Home> {
                                     size: 20,
                                     color: UBGChartColor,
                                   ),
-                                  Text('\tចំនួនក្រឌីតសរុប'.tr),
+                                  Text(
+                                    '\tចំនួនក្រឌីតសរុប'.tr,
+                                  ),
                                 ],
                               ),
                             ),
@@ -543,14 +586,18 @@ class _Student_HomeState extends State<Student_Home> {
                     mainAxisSpacing: 3.5,
                     crossAxisSpacing: 3,
                     childAspectRatio: 1.90,
-                    padding: EdgeInsets.symmetric(horizontal: 7),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 7,
+                    ),
                     children: List.generate(
                       st_home_screen.length,
                       (index) => Card(
                         elevation: 2,
                         shadowColor: ULightGreyColor,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(UPdMg_10),
+                          borderRadius: BorderRadius.circular(
+                            UPdMg_10,
+                          ),
                         ),
                         child: InkWell(
                           onTap: () {
@@ -568,11 +615,17 @@ class _Student_HomeState extends State<Student_Home> {
                                             10,
                                           )),
                                           child: Container(
-                                            margin: EdgeInsets.all(7),
-                                            padding: EdgeInsets.all(UPdMg_10),
+                                            margin: EdgeInsets.all(
+                                              7,
+                                            ),
+                                            padding: EdgeInsets.all(
+                                              UPdMg_10,
+                                            ),
                                             decoration: BoxDecoration(
                                                 borderRadius:
-                                                    BorderRadius.circular(20),
+                                                    BorderRadius.circular(
+                                                  20,
+                                                ),
                                                 color: UBackgroundColor),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.min,
@@ -600,8 +653,9 @@ class _Student_HomeState extends State<Student_Home> {
                                                 ),
                                                 Container(
                                                   height: 50,
-                                                  padding:
-                                                      EdgeInsets.all(UPdMg_5),
+                                                  padding: EdgeInsets.all(
+                                                    UPdMg_5,
+                                                  ),
                                                   alignment: Alignment.center,
                                                   child: TextButton(
                                                     child: Text(
@@ -671,7 +725,9 @@ class _Student_HomeState extends State<Student_Home> {
                             }
                           },
                           child: Container(
-                            padding: EdgeInsets.only(left: UPdMg_15),
+                            padding: EdgeInsets.only(
+                              left: UPdMg_15,
+                            ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,

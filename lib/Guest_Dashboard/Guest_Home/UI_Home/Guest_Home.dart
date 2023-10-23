@@ -37,7 +37,9 @@ class _Guest_HomeState extends State<Guest_Home> {
   Future<void> getImageData() async {
     try {
       var res = await http.get(
-        Uri.parse("https://usea.edu.kh/api/webapi.php?action=slide_home"),
+        Uri.parse(
+          "https://usea.edu.kh/api/webapi.php?action=slide_home",
+        ),
       );
       var r = json.decode(res.body);
       if (r is List<dynamic>) {
@@ -121,11 +123,15 @@ class _Guest_HomeState extends State<Guest_Home> {
   @override
   Widget build(BuildContext context) {
     Widget buildImage(String image_slide, int index) => Container(
-          margin: EdgeInsets.symmetric(horizontal: UPdMg_5),
+          margin: EdgeInsets.symmetric(
+            horizontal: UPdMg_5,
+          ),
           width: UFullWidth,
           height: UFullWidth,
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(URoundedLarge),
+            borderRadius: BorderRadius.circular(
+              URoundedLarge,
+            ),
             child: Image.network(
               image_slide,
               fit: BoxFit.fill,
@@ -169,17 +175,19 @@ class _Guest_HomeState extends State<Guest_Home> {
                         Text(
                           'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
                           style: TextStyle(
-                              color: UPrimaryColor,
-                              fontSize: UBodySize10,
-                              fontFamily: 'KhmerOSmuol'),
+                            color: UPrimaryColor,
+                            fontSize: UBodySize10,
+                            fontFamily: 'KhmerOSmuol',
+                          ),
                         ),
                         Text(
                           'UNIVERSITY OF SOUTH-EAST ASIA',
                           style: TextStyle(
-                              color: UPrimaryColor,
-                              fontSize: UBodySize,
-                              fontFamily: UEFontFamily,
-                              fontWeight: UBodyWeight),
+                            color: UPrimaryColor,
+                            fontSize: UBodySize,
+                            fontFamily: UEFontFamily,
+                            fontWeight: UBodyWeight,
+                          ),
                         ),
                       ],
                     ),
@@ -195,7 +203,9 @@ class _Guest_HomeState extends State<Guest_Home> {
               height: 36,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
+                borderRadius: BorderRadius.circular(
+                  50,
+                ),
                 color: UBtnColor,
               ),
               child: Center(
@@ -237,7 +247,9 @@ class _Guest_HomeState extends State<Guest_Home> {
             Container(
               height: 175,
               width: double.infinity,
-              padding: EdgeInsets.symmetric(horizontal: UPdMg_5),
+              padding: EdgeInsets.symmetric(
+                horizontal: UPdMg_5,
+              ),
               child: isLoading
                   ? CircularProgressIndicator(
                       color: UPrimaryColor,
@@ -247,7 +259,9 @@ class _Guest_HomeState extends State<Guest_Home> {
                         height: double.infinity,
                         pageSnapping: true,
                         enableInfiniteScroll: true,
-                        autoPlayInterval: Duration(seconds: 10),
+                        autoPlayInterval: Duration(
+                          seconds: 10,
+                        ),
                         viewportFraction: 1,
                         enlargeCenterPage: true,
                         enlargeStrategy: CenterPageEnlargeStrategy.zoom,
@@ -284,14 +298,18 @@ class _Guest_HomeState extends State<Guest_Home> {
               mainAxisSpacing: 3.5,
               crossAxisSpacing: 3,
               childAspectRatio: 1.90,
-              padding: EdgeInsets.symmetric(horizontal: 7),
+              padding: EdgeInsets.symmetric(
+                horizontal: 7,
+              ),
               children: List.generate(
                 guest_home_screen.length,
                 (index) => Card(
                   elevation: 2,
                   shadowColor: ULightGreyColor,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(UPdMg_10),
+                    borderRadius: BorderRadius.circular(
+                      UPdMg_10,
+                    ),
                   ),
                   child: InkWell(
                     onTap: () {
@@ -307,8 +325,9 @@ class _Guest_HomeState extends State<Guest_Home> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  guest_home_screen[index].screen),
+                            builder: (context) =>
+                                guest_home_screen[index].screen,
+                          ),
                         );
                       }
                     },
@@ -345,11 +364,20 @@ class _Guest_HomeState extends State<Guest_Home> {
               elevation: 2,
               shadowColor: ULightGreyColor,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(URoundedLarge),
+                borderRadius: BorderRadius.circular(
+                  URoundedLarge,
+                ),
               ),
-              margin: EdgeInsets.fromLTRB(UPdMg_10, 0, UPdMg_10, UPdMg_10),
+              margin: EdgeInsets.fromLTRB(
+                UPdMg_10,
+                UZeroPixel,
+                UPdMg_10,
+                UPdMg_10,
+              ),
               child: Padding(
-                padding: EdgeInsets.all(UPdMg_10),
+                padding: EdgeInsets.all(
+                  UPdMg_10,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,

@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../Custom_AppBar.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
@@ -32,9 +31,13 @@ class Program_ACCA extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: majorName.tr),
+      appBar: Custom_AppBar(
+        title: majorName.tr,
+      ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(UPdMg_8),
+        padding: EdgeInsets.all(
+          UPdMg_8,
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -42,7 +45,9 @@ class Program_ACCA extends StatelessWidget {
               elevation: 2,
               shadowColor: ULightGreyColor,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(URoundedLarge),
+                borderRadius: BorderRadius.circular(
+                  URoundedLarge,
+                ),
               ),
               color: UBackgroundColor,
               child: Column(
@@ -56,7 +61,9 @@ class Program_ACCA extends StatelessWidget {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(UPdMg_10),
+                        top: Radius.circular(
+                          UPdMg_10,
+                        ),
                       ),
                       color: UBGLightBlue,
                     ),
@@ -90,7 +97,11 @@ class Program_ACCA extends StatelessWidget {
                   ),
                   Container(
                     padding: EdgeInsets.fromLTRB(
-                        UPdMg_5, UPdMg_10, UPdMg_5, UZeroPixel),
+                      UPdMg_5,
+                      UPdMg_10,
+                      UPdMg_5,
+                      UZeroPixel,
+                    ),
                     child: Column(
                         children: educationNames.map((subject) {
                       return Row(
@@ -99,8 +110,12 @@ class Program_ACCA extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Container(
-                              margin: EdgeInsets.only(right: UPdMg_15),
-                              padding: EdgeInsets.symmetric(vertical: UPdMg_5),
+                              margin: EdgeInsets.only(
+                                right: UPdMg_15,
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                vertical: UPdMg_5,
+                              ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -144,13 +159,14 @@ class Program_ACCA extends StatelessWidget {
                                         ),
                                       ),
                                       buildCHText(
-                                          subject.hour_per_week.isEmpty ||
-                                                  subject.hour_per_week == null
-                                              ? 'N/A'
-                                              : subject.hour_per_week
-                                                      .toString()
-                                                      .tr +
-                                                  '\tម៉ោង/សប្ដាហ៍'.tr)
+                                        subject.hour_per_week.isEmpty ||
+                                                subject.hour_per_week == null
+                                            ? 'N/A'
+                                            : subject.hour_per_week
+                                                    .toString()
+                                                    .tr +
+                                                '\tម៉ោង/សប្ដាហ៍'.tr,
+                                      )
                                     ],
                                   )
                                 ],
@@ -163,30 +179,36 @@ class Program_ACCA extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Container(
-                                    padding:
-                                        EdgeInsets.symmetric(vertical: UPdMg_5),
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: UPdMg_5,
+                                    ),
                                     alignment: Alignment.center,
                                     width: 55,
                                     child: NoWeightTitleTheme(
-                                        subject.weeks.isEmpty ||
-                                                subject.weeks == null
-                                            ? 'N/A'
-                                            : subject.weeks.toString()),
+                                      subject.weeks.isEmpty ||
+                                              subject.weeks == null
+                                          ? 'N/A'
+                                          : subject.weeks.toString(),
+                                    ),
                                   ),
                                   SizedBox(width: UWidth15),
                                   Container(
-                                    padding:
-                                        EdgeInsets.symmetric(vertical: UPdMg_5),
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: UPdMg_5,
+                                    ),
                                     alignment: Alignment.center,
                                     width: Get.locale?.languageCode == 'km'
                                         ? 30
                                         : 40,
-                                    margin: EdgeInsets.only(right: UPdMg_10),
+                                    margin: EdgeInsets.only(
+                                      right: UPdMg_10,
+                                    ),
                                     child: NoWeightTitleTheme(
-                                        subject.total_hour.isEmpty ||
-                                                subject.total_hour == null
-                                            ? 'N/A'
-                                            : subject.total_hour.toString()),
+                                      subject.total_hour.isEmpty ||
+                                              subject.total_hour == null
+                                          ? 'N/A'
+                                          : subject.total_hour.toString(),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -197,8 +219,12 @@ class Program_ACCA extends StatelessWidget {
                     }).toList()),
                   ),
                   Container(
-                    padding:
-                        EdgeInsets.fromLTRB(UPdMg_5, UPdMg_10, 20, UPdMg_15),
+                    padding: EdgeInsets.fromLTRB(
+                      UPdMg_5,
+                      UPdMg_10,
+                      20,
+                      UPdMg_15,
+                    ),
                     width: double.infinity,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

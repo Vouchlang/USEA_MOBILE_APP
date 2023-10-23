@@ -24,10 +24,13 @@ class _RegistrationState extends State<Registration> {
 
   Future<void> fetchData() async {
     try {
-      http.Response response = await http.get(Uri.parse(
+      http.Response response = await http.get(
+        Uri.parse(
           Get.locale?.languageCode == 'km'
               ? APIUrlGuest + 'api/webapi.php?action=registration_info'
-              : APIUrlGuest + 'api/webapi.php?action=registration_info'));
+              : APIUrlGuest + 'api/webapi.php?action=registration_info',
+        ),
+      );
       if (response.statusCode == 200) {
         if (mounted) {
           List<dynamic> jsonData = json.decode(response.body);
@@ -76,11 +79,17 @@ class _RegistrationState extends State<Registration> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: 'ការចុះឈ្មោះ'.tr),
+      appBar: Custom_AppBar(
+        title: 'ការចុះឈ្មោះ'.tr,
+      ),
       body: educationDataList.isEmpty
           ? Center(
               child: FutureBuilder<void>(
-                future: Future.delayed(Duration(seconds: 10)),
+                future: Future.delayed(
+                  Duration(
+                    seconds: 10,
+                  ),
+                ),
                 builder: (context, snapshot) =>
                     snapshot.connectionState == ConnectionState.done
                         ? Text('គ្មានទិន្ន័យ'.tr)
@@ -90,19 +99,27 @@ class _RegistrationState extends State<Registration> {
               ),
             )
           : ListView.builder(
-              padding: EdgeInsets.all(UPdMg_10),
+              padding: EdgeInsets.all(
+                UPdMg_10,
+              ),
               itemCount: educationDataList.length,
               itemBuilder: (context, index) {
                 final educationData = educationDataList[index];
                 return Card(
                   elevation: 2,
-                  margin: EdgeInsets.only(bottom: UPdMg_10),
+                  margin: EdgeInsets.only(
+                    bottom: UPdMg_10,
+                  ),
                   shadowColor: ULightGreyColor,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(URoundedLarge),
+                    borderRadius: BorderRadius.circular(
+                      URoundedLarge,
+                    ),
                   ),
                   child: Container(
-                    padding: EdgeInsets.all(UPdMg_10),
+                    padding: EdgeInsets.all(
+                      UPdMg_10,
+                    ),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -120,7 +137,9 @@ class _RegistrationState extends State<Registration> {
                             ),
                           ),
                         ),
-                        SizedBox(height: UHeight5),
+                        SizedBox(
+                          height: UHeight5,
+                        ),
                         ListView.builder(
                           shrinkWrap: true,
                           physics: ClampingScrollPhysics(),
@@ -139,13 +158,17 @@ class _RegistrationState extends State<Registration> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Container(
-                                        margin: EdgeInsets.only(top: 1),
+                                        margin: EdgeInsets.only(
+                                          top: 1,
+                                        ),
                                         width: 20,
                                         height: 20,
                                         child: Image.asset(
                                             'assets/image/date_time.png'),
                                       ),
-                                      SizedBox(width: UWidth5),
+                                      SizedBox(
+                                        width: UWidth5,
+                                      ),
                                       Expanded(
                                         child: Text(
                                           details.dateTitle,
@@ -164,7 +187,9 @@ class _RegistrationState extends State<Registration> {
                                   Column(
                                     children: [
                                       Container(
-                                        margin: EdgeInsets.only(left: UPdMg_15),
+                                        margin: EdgeInsets.only(
+                                          left: UPdMg_15,
+                                        ),
                                         width: UFullWidth,
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -199,9 +224,13 @@ class _RegistrationState extends State<Registration> {
                                       for (var info in educationItem.infoList)
                                         Column(
                                           children: [
-                                            SizedBox(height: UHeight5),
+                                            SizedBox(
+                                              height: UHeight5,
+                                            ),
                                             Container(
-                                              margin: EdgeInsets.only(left: 36),
+                                              margin: EdgeInsets.only(
+                                                left: 36,
+                                              ),
                                               width: double.infinity,
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.min,
@@ -223,12 +252,16 @@ class _RegistrationState extends State<Registration> {
                                                 ],
                                               ),
                                             ),
-                                            SizedBox(height: UHeight5),
+                                            SizedBox(
+                                              height: UHeight5,
+                                            ),
                                           ],
                                         ),
                                     ],
                                   ),
-                                SizedBox(height: UHeight5),
+                                SizedBox(
+                                  height: UHeight5,
+                                ),
                                 Container(
                                   width: UFullWidth,
                                   child: Row(
@@ -237,11 +270,14 @@ class _RegistrationState extends State<Registration> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Container(
-                                        margin: EdgeInsets.only(top: 1),
+                                        margin: EdgeInsets.only(
+                                          top: 1,
+                                        ),
                                         width: 20,
                                         height: 20,
                                         child: Image.asset(
-                                            'assets/image/date_time.png'),
+                                          'assets/image/date_time.png',
+                                        ),
                                       ),
                                       SizedBox(width: UWidth5),
                                       Expanded(
@@ -258,14 +294,20 @@ class _RegistrationState extends State<Registration> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(height: UHeight5),
+                                SizedBox(
+                                  height: UHeight5,
+                                ),
                                 Container(
-                                  margin: EdgeInsets.only(left: 36),
+                                  margin: EdgeInsets.only(
+                                    left: 36,
+                                  ),
                                   width: UFullWidth,
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      SizedBox(width: UWidth5),
+                                      SizedBox(
+                                        width: UWidth5,
+                                      ),
                                       Expanded(
                                         child: Text(
                                           details.timeDetail,

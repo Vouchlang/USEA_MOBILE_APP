@@ -39,7 +39,9 @@ class _Video_DisplayState extends State<Video_Display> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
-      appBar: Custom_AppBar(title: 'វីដេអូ'.tr),
+      appBar: Custom_AppBar(
+        title: 'វីដេអូ'.tr,
+      ),
       body: ListView(
         children: [
           YoutubePlayer(
@@ -97,7 +99,9 @@ class _Video_DisplayState extends State<Video_Display> {
             decoration: BoxDecoration(
               color: UBackgroundColor,
               borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(UPdMg_10),
+                bottom: Radius.circular(
+                  UPdMg_10,
+                ),
               ),
               boxShadow: [
                 BoxShadow(
@@ -114,14 +118,23 @@ class _Video_DisplayState extends State<Video_Display> {
             width: double.infinity,
             alignment: Alignment.center,
             child: buildTitleBody(
-                widget.vdo[_currentVideoIndex].title, UTitleSize, UTitleWeight),
+              widget.vdo[_currentVideoIndex].title,
+              UTitleSize,
+              UTitleWeight,
+            ),
           ),
           SizedBox(height: UHeight5),
           Container(
-              padding: EdgeInsets.all(UPdMg_10),
-              width: double.infinity,
-              child: buildTitleBody(widget.vdo[_currentVideoIndex].caption,
-                  UTitleSize, UBodyWeight)),
+            padding: EdgeInsets.all(
+              UPdMg_10,
+            ),
+            width: double.infinity,
+            child: buildTitleBody(
+              widget.vdo[_currentVideoIndex].caption,
+              UTitleSize,
+              UBodyWeight,
+            ),
+          ),
         ],
       ),
     );

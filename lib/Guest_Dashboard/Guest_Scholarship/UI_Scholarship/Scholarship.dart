@@ -30,9 +30,11 @@ class _ScholarshipState extends State<Scholarship> {
   Future<void> fetchData() async {
     try {
       final response = await http.get(
-        Uri.parse(Get.locale?.languageCode == 'km'
-            ? APIUrlGuest + 'api/webapi.php?action=scholarship_kh'
-            : APIUrlGuest + 'api/webapi.php?action=scholarship_en'),
+        Uri.parse(
+          Get.locale?.languageCode == 'km'
+              ? APIUrlGuest + 'api/webapi.php?action=scholarship_kh'
+              : APIUrlGuest + 'api/webapi.php?action=scholarship_en',
+        ),
       );
       if (response.statusCode == 200) {
         final Map<String, dynamic> data = json.decode(response.body);
@@ -43,7 +45,6 @@ class _ScholarshipState extends State<Scholarship> {
           List<Scholarship_Data> scholarship_data = [];
 
           scholarshipData['scholarship_data']?.forEach((scholarshipDatas) {
-
             Scholarship_Data scholarship_DataObj = Scholarship_Data(
               school_name: scholarshipDatas['school_name'] ?? 'N/A',
               education_level: scholarshipDatas['education_level'] ?? 'N/A',
@@ -86,7 +87,9 @@ class _ScholarshipState extends State<Scholarship> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: 'អាហារូបករណ៍'.tr),
+      appBar: Custom_AppBar(
+        title: 'អាហារូបករណ៍'.tr,
+      ),
       body: RefreshIndicator(
         onRefresh: fetchData,
         color: UPrimaryColor,
@@ -94,7 +97,11 @@ class _ScholarshipState extends State<Scholarship> {
           alignment: Alignment.topCenter,
           child: scholarships.isEmpty
               ? FutureBuilder(
-                  future: Future.delayed(Duration(seconds: 10)),
+                  future: Future.delayed(
+                    Duration(
+                      seconds: 10,
+                    ),
+                  ),
                   builder:
                       (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
@@ -104,7 +111,11 @@ class _ScholarshipState extends State<Scholarship> {
                         ),
                       );
                     } else {
-                      return Center(child: Text('គ្មានទិន្ន័យ'.tr));
+                      return Center(
+                        child: Text(
+                          'គ្មានទិន្ន័យ'.tr,
+                        ),
+                      );
                     }
                   },
                 )
@@ -139,20 +150,26 @@ class _ScholarshipState extends State<Scholarship> {
                                   },
                                   child: AnimatedContainer(
                                     alignment: Alignment.center,
-                                    duration: Duration(milliseconds: 300),
+                                    duration: Duration(
+                                      milliseconds: 300,
+                                    ),
                                     margin: EdgeInsets.fromLTRB(
-                                        UPdMg_10,
-                                        UPdMg_10,
-                                        isLastIndex ? UPdMg_10 : UZeroPixel,
-                                        UPdMg_10),
-                                    padding: EdgeInsets.all(UPdMg_10),
+                                      UPdMg_10,
+                                      UPdMg_10,
+                                      isLastIndex ? UPdMg_10 : UZeroPixel,
+                                      UPdMg_10,
+                                    ),
+                                    padding: EdgeInsets.all(
+                                      UPdMg_10,
+                                    ),
                                     width: 165,
                                     decoration: BoxDecoration(
                                       color: selectedScholarship == index
                                           ? UPrimaryColor
                                           : UBackgroundColor,
-                                      borderRadius:
-                                          BorderRadius.circular(URoundedMedium),
+                                      borderRadius: BorderRadius.circular(
+                                        URoundedMedium,
+                                      ),
                                       boxShadow: [
                                         BoxShadow(
                                           blurRadius: 1,
@@ -193,13 +210,17 @@ class _ScholarshipState extends State<Scholarship> {
                                     child: Card(
                                       elevation: 2,
                                       shadowColor: ULightGreyColor,
-                                      margin: EdgeInsets.only(bottom: UPdMg_10),
+                                      margin: EdgeInsets.only(
+                                        bottom: UPdMg_10,
+                                      ),
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(
                                             URoundedLarge),
                                       ),
                                       child: Container(
-                                        padding: EdgeInsets.all(UPdMg_10),
+                                        padding: EdgeInsets.all(
+                                          UPdMg_10,
+                                        ),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           mainAxisAlignment:
@@ -208,33 +229,43 @@ class _ScholarshipState extends State<Scholarship> {
                                               CrossAxisAlignment.end,
                                           children: [
                                             Container(
-                                                width: UFullWidth,
-                                                child: ScholarshipTitleTheme(
-                                                    scholarship.school_name)),
+                                              width: UFullWidth,
+                                              child: ScholarshipTitleTheme(
+                                                scholarship.school_name,
+                                              ),
+                                            ),
                                             Container(
-                                                width: UFullWidth,
-                                                child: ScholarshipTitleTheme(
-                                                    scholarship
-                                                        .education_level)),
+                                              width: UFullWidth,
+                                              child: ScholarshipTitleTheme(
+                                                scholarship.education_level,
+                                              ),
+                                            ),
                                             Container(
-                                                width: UFullWidth,
-                                                child: ScholarshipTitleTheme(
-                                                    scholarship.major_name)),
+                                              width: UFullWidth,
+                                              child: ScholarshipTitleTheme(
+                                                scholarship.major_name,
+                                              ),
+                                            ),
                                             Container(
-                                                width: UFullWidth,
-                                                child: ScholarshipTitleTheme(
-                                                    'ថ្ងៃផុតកំណត់៖ '.tr)),
+                                              width: UFullWidth,
+                                              child: ScholarshipTitleTheme(
+                                                'ថ្ងៃផុតកំណត់៖ '.tr,
+                                              ),
+                                            ),
                                             Container(
-                                                width: UFullWidth,
-                                                child: ScholarshipBodyTheme(
-                                                    scholarship.expire_date)),
+                                              width: UFullWidth,
+                                              child: ScholarshipBodyTheme(
+                                                scholarship.expire_date,
+                                              ),
+                                            ),
                                             Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.end,
                                               children: [
                                                 Container(
                                                   margin: EdgeInsets.only(
-                                                      top: UPdMg_10),
+                                                    top: UPdMg_10,
+                                                  ),
                                                   alignment: Alignment.center,
                                                   padding: EdgeInsets.symmetric(
                                                     vertical: UPdMg_5,
@@ -243,37 +274,39 @@ class _ScholarshipState extends State<Scholarship> {
                                                   decoration: BoxDecoration(
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            URoundedMedium),
+                                                      URoundedMedium,
+                                                    ),
                                                     color: UBtnColor,
                                                     boxShadow: [
                                                       BoxShadow(
-                                                          color: UBtnColor),
+                                                        color: UBtnColor,
+                                                      ),
                                                     ],
                                                   ),
                                                   child: InkWell(
-                                                      onTap: () {
-                                                        void
-                                                            _launchOutUniUrl() async {
-                                                          if (await canLaunch(
-                                                              scholarship
-                                                                  .link)) {
-                                                            await launch(
-                                                                scholarship
-                                                                    .link);
-                                                          } else {
-                                                            throw 'Could not launch ${scholarship.link}';
-                                                          }
+                                                    onTap: () {
+                                                      void
+                                                          _launchOutUniUrl() async {
+                                                        if (await canLaunch(
+                                                            scholarship.link)) {
+                                                          await launch(
+                                                            scholarship.link,
+                                                          );
+                                                        } else {
+                                                          throw 'Could not launch ${scholarship.link}';
                                                         }
+                                                      }
 
-                                                        _launchOutUniUrl();
-                                                      },
-                                                      child:
-                                                          ScholarshipButtonTheme(
-                                                        'អានបន្ថែម'.tr,
-                                                        UBodySize,
-                                                        UPrimaryColor,
-                                                        UTitleWeight,
-                                                      )),
+                                                      _launchOutUniUrl();
+                                                    },
+                                                    child:
+                                                        ScholarshipButtonTheme(
+                                                      'អានបន្ថែម'.tr,
+                                                      UBodySize,
+                                                      UPrimaryColor,
+                                                      UTitleWeight,
+                                                    ),
+                                                  ),
                                                 ),
                                               ],
                                             ),
@@ -285,7 +318,11 @@ class _ScholarshipState extends State<Scholarship> {
                                 },
                               ).toList())
                             : FutureBuilder(
-                                future: Future.delayed(Duration(seconds: 10)),
+                                future: Future.delayed(
+                                  Duration(
+                                    seconds: 10,
+                                  ),
+                                ),
                                 builder: (BuildContext context,
                                     AsyncSnapshot<dynamic> snapshot) {
                                   if (snapshot.connectionState ==
@@ -297,7 +334,9 @@ class _ScholarshipState extends State<Scholarship> {
                                     );
                                   } else {
                                     return Center(
-                                      child: Text('គ្មានទិន្ន័យ'.tr),
+                                      child: Text(
+                                        'គ្មានទិន្ន័យ'.tr,
+                                      ),
                                     );
                                   }
                                 },

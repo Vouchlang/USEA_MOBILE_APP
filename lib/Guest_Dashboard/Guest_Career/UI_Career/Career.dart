@@ -24,9 +24,11 @@ class _CareerState extends State<Career> {
   Future<void> getData() async {
     try {
       var res = await http.get(
-        Uri.parse(Get.locale?.languageCode == 'km'
-            ? APIUrlGuest + "api/webapi.php?action=career_kh"
-            : APIUrlGuest + "api/webapi.php?action=career_en"),
+        Uri.parse(
+          Get.locale?.languageCode == 'km'
+              ? APIUrlGuest + "api/webapi.php?action=career_kh"
+              : APIUrlGuest + "api/webapi.php?action=career_en",
+        ),
       );
       var r = json.decode(res.body);
       if (r is List<dynamic>) {
@@ -58,31 +60,44 @@ class _CareerState extends State<Career> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: 'មជ្ឈមណ្ឌលការងារ'.tr),
+      appBar: Custom_AppBar(
+        title: 'មជ្ឈមណ្ឌលការងារ'.tr,
+      ),
       body: Center(
         child: career.isEmpty
             ? Center(
                 child: FutureBuilder<void>(
-                  future: Future.delayed(Duration(seconds: 10)),
+                  future: Future.delayed(
+                    Duration(
+                      seconds: 10,
+                    ),
+                  ),
                   builder: (context, snapshot) =>
                       snapshot.connectionState == ConnectionState.done
-                          ? Text('គ្មានទិន្ន័យ'.tr)
+                          ? Text(
+                              'គ្មានទិន្ន័យ'.tr,
+                            )
                           : CircularProgressIndicator(
                               color: UPrimaryColor,
                             ),
                 ),
               )
             : ListView.builder(
-                padding:
-                    EdgeInsets.symmetric(vertical: UPdMg_10, horizontal: 20),
+                padding: EdgeInsets.symmetric(
+                  vertical: UPdMg_10,
+                  horizontal: 20,
+                ),
                 itemCount: career.length,
                 itemBuilder: (context, index) {
                   final isFinalIndex = index == career.length - 1;
                   return Padding(
-                    padding:
-                        EdgeInsets.only(bottom: isFinalIndex ? UPdMg_10 : 0),
+                    padding: EdgeInsets.only(
+                      bottom: isFinalIndex ? UPdMg_10 : 0,
+                    ),
                     child: Container(
-                      padding: EdgeInsets.only(top: UPdMg_5),
+                      padding: EdgeInsets.only(
+                        top: UPdMg_5,
+                      ),
                       child: InkWell(
                         onTap: () {
                           void _launchCareerUrl() async {

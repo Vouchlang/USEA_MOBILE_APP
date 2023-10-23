@@ -48,7 +48,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
               style: TextStyle(
                   fontSize: 15,
                   fontFamily: 'KhmerOSmuol',
-                  color: UPrimaryColor),
+                  color: UPrimaryColor,),
             ),
             Text(
               'UNIVERSITY OF SOUTH-EAST ASIA',
@@ -57,7 +57,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
                   fontSize: 17.5,
                   color: UPrimaryColor,
                   fontWeight: UBodyWeight,
-                  fontFamily: UEFontFamily),
+                  fontFamily: UEFontFamily,),
             ),
             SizedBox(
               height: UHeight5,

@@ -25,9 +25,11 @@ class _VideoState extends State<Video_UI> {
   Future<void> getData() async {
     try {
       var res = await http.get(
-        Uri.parse(Get.locale?.languageCode == 'km'
-            ? APIUrlGuest + "api/webapi.php?action=yt_video"
-            : APIUrlGuest + "api/webapi.php?action=yt_video"),
+        Uri.parse(
+          Get.locale?.languageCode == 'km'
+              ? APIUrlGuest + "api/webapi.php?action=yt_video"
+              : APIUrlGuest + "api/webapi.php?action=yt_video",
+        ),
       );
       var r = json.decode(res.body);
       if (r is List<dynamic>) {
@@ -70,11 +72,17 @@ class _VideoState extends State<Video_UI> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: 'វីដេអូ'.tr),
+      appBar: Custom_AppBar(
+        title: 'វីដេអូ'.tr,
+      ),
       body: vdo.isEmpty
           ? Center(
               child: FutureBuilder<void>(
-                future: Future.delayed(Duration(seconds: 10)),
+                future: Future.delayed(
+                  Duration(
+                    seconds: 10,
+                  ),
+                ),
                 builder: (context, snapshot) =>
                     snapshot.connectionState == ConnectionState.done
                         ? Text('គ្មានទិន្ន័យ'.tr)
@@ -84,12 +92,16 @@ class _VideoState extends State<Video_UI> {
               ),
             )
           : SingleChildScrollView(
-              padding: EdgeInsets.all(UPdMg_10),
+              padding: EdgeInsets.all(
+                UPdMg_10,
+              ),
               child: Container(
                 child: Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(bottom: UPdMg_10),
+                      margin: EdgeInsets.only(
+                        bottom: UPdMg_10,
+                      ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -132,7 +144,9 @@ class _VideoState extends State<Video_UI> {
                                   ),
                                 ),
                                 Container(
-                                  margin: EdgeInsets.only(bottom: 1),
+                                  margin: EdgeInsets.only(
+                                    bottom: 1,
+                                  ),
                                   child: Icon(
                                     Icons.arrow_forward_ios,
                                     size: UBodySize,
@@ -160,7 +174,9 @@ class _VideoState extends State<Video_UI> {
                             );
                           },
                           child: Container(
-                            margin: EdgeInsets.only(bottom: UPdMg_10),
+                            margin: EdgeInsets.only(
+                              bottom: UPdMg_10,
+                            ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -174,8 +190,9 @@ class _VideoState extends State<Video_UI> {
                                       width: 160,
                                       height: 90,
                                       decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(UPdMg_10),
+                                        borderRadius: BorderRadius.circular(
+                                          UPdMg_10,
+                                        ),
                                         image: DecorationImage(
                                           image: NetworkImage(
                                             vdo[index].youtube_thumbnail,
@@ -195,13 +212,21 @@ class _VideoState extends State<Video_UI> {
                                             MainAxisAlignment.start,
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
-                                          buildListText(vdo[index].title, 2,
-                                              UTitleSize, UTitleWeight),
+                                          buildListText(
+                                            vdo[index].title,
+                                            2,
+                                            UTitleSize,
+                                            UTitleWeight,
+                                          ),
                                           SizedBox(
                                             height: UHeight5,
                                           ),
-                                          buildListText(vdo[index].caption, 2,
-                                              UBodySize10, UBodyWeight),
+                                          buildListText(
+                                            vdo[index].caption,
+                                            2,
+                                            UBodySize10,
+                                            UBodyWeight,
+                                          ),
                                         ],
                                       ),
                                     ),

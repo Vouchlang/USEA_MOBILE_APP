@@ -53,9 +53,11 @@ class _ScheduleState extends State<Schedule> {
   Future<void> _sendDateToDatabase(int year, String month, int day) async {
     try {
       var response = await http.post(
-        Uri.parse(Get.locale?.languageCode == 'km'
-            ? APIUrlStudent + 'action=study_schedule'
-            : APIUrlStudentEn + 'action=study_schedule'),
+        Uri.parse(
+          Get.locale?.languageCode == 'km'
+              ? APIUrlStudent + 'action=study_schedule'
+              : APIUrlStudentEn + 'action=study_schedule',
+        ),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -104,7 +106,9 @@ class _ScheduleState extends State<Schedule> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: 'កាលវិភាគ'.tr),
+      appBar: Custom_AppBar(
+        title: 'កាលវិភាគ'.tr,
+      ),
       body: RefreshIndicator(
         onRefresh: () async {
           await _sendDateToDatabase(
@@ -115,14 +119,18 @@ class _ScheduleState extends State<Schedule> {
         },
         color: UPrimaryColor,
         child: ListView(
-          padding: EdgeInsets.symmetric(vertical: UPdMg_10),
+          padding: EdgeInsets.symmetric(
+            vertical: UPdMg_10,
+          ),
           children: [
             CardCalendar(onDateSelected: _onDateSelected),
             SizedBox(
               height: UHeight5,
             ),
             Padding(
-              padding: EdgeInsets.all(UPdMg_8),
+              padding: EdgeInsets.all(
+                UPdMg_8,
+              ),
               child: Text(
                 'កាលវិភាគសិក្សា'.tr,
                 style: TextStyle(
@@ -133,7 +141,11 @@ class _ScheduleState extends State<Schedule> {
             ),
             selectedDateSchedule.isEmpty
                 ? FutureBuilder(
-                    future: Future.delayed(Duration(seconds: 3)),
+                    future: Future.delayed(
+                      Duration(
+                        seconds: 3,
+                      ),
+                    ),
                     builder: (BuildContext context,
                         AsyncSnapshot<dynamic> snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
@@ -143,7 +155,11 @@ class _ScheduleState extends State<Schedule> {
                           ),
                         );
                       } else {
-                        return Center(child: Text('គ្មានទិន្ន័យ'.tr));
+                        return Center(
+                          child: Text(
+                            'គ្មានទិន្ន័យ'.tr,
+                          ),
+                        );
                       }
                     },
                   )
@@ -156,14 +172,22 @@ class _ScheduleState extends State<Schedule> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.fromLTRB(
-                                UPdMg_5, UZeroPixel, UPdMg_5, UPdMg_5),
+                              UPdMg_5,
+                              UZeroPixel,
+                              UPdMg_5,
+                              UPdMg_5,
+                            ),
                             child: Card(
                               elevation: 1,
                               shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.circular(UPdMg_10)),
+                                borderRadius: BorderRadius.circular(
+                                  UPdMg_10,
+                                ),
+                              ),
                               child: Container(
-                                padding: EdgeInsets.all(UPdMg_10),
+                                padding: EdgeInsets.all(
+                                  UPdMg_10,
+                                ),
                                 child: IntrinsicHeight(
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,

@@ -25,15 +25,19 @@ class _ProgramState extends State<Program> {
 
   Future<void> fetchData() async {
     final response = await http.get(
-      Uri.parse(Get.locale?.languageCode == 'km'
-          ? APIUrlGuest + 'api/webapi.php?action=study_program_kh'
-          : APIUrlGuest + 'api/webapi.php?action=study_program_en'),
+      Uri.parse(
+        Get.locale?.languageCode == 'km'
+            ? APIUrlGuest + 'api/webapi.php?action=study_program_kh'
+            : APIUrlGuest + 'api/webapi.php?action=study_program_en',
+      ),
     );
 
     final response_acca = await http.get(
-      Uri.parse(Get.locale?.languageCode == 'km'
-          ? APIUrlGuest + 'api/webapi.php?action=acca_kh'
-          : APIUrlGuest + 'api/webapi.php?action=acca_en'),
+      Uri.parse(
+        Get.locale?.languageCode == 'km'
+            ? APIUrlGuest + 'api/webapi.php?action=acca_kh'
+            : APIUrlGuest + 'api/webapi.php?action=acca_en',
+      ),
     );
 
     if (response.statusCode == 200 && response_acca.statusCode == 200) {
@@ -92,25 +96,30 @@ class _ProgramState extends State<Program> {
       });
 
       if (mounted) {
-        setState(() {
-          programACCA = accaList;
+        setState(
+          () {
+            programACCA = accaList;
 
-          programData = List<Map<String, dynamic>>.from(programDataList);
-          majorNames = [...majorNames];
-          for (final data in programData) {
-            final majorNamesForFaculty =
-                (data['faculty_data']['major_name'] as List)
-                    .map<String>((major) => major['major_name'] as String)
-                    .toList();
-            majorNames.addAll(majorNamesForFaculty);
-          }
-          for (final program in programACCA) {
-            majorNames.addAll(program.fac_data.expand((facultyData) =>
-                facultyData.major_data
-                    .map((majorData) => majorData.major_name)));
-          }
-          filteredMajorNames = majorNames;
-        });
+            programData = List<Map<String, dynamic>>.from(programDataList);
+            majorNames = [...majorNames];
+            for (final data in programData) {
+              final majorNamesForFaculty =
+                  (data['faculty_data']['major_name'] as List)
+                      .map<String>((major) => major['major_name'] as String)
+                      .toList();
+              majorNames.addAll(majorNamesForFaculty);
+            }
+            for (final program in programACCA) {
+              majorNames.addAll(
+                program.fac_data.expand(
+                  (facultyData) => facultyData.major_data
+                      .map((majorData) => majorData.major_name),
+                ),
+              );
+            }
+            filteredMajorNames = majorNames;
+          },
+        );
       }
     } else {
       // Handle errors
@@ -132,8 +141,11 @@ class _ProgramState extends State<Program> {
           searchQuery = query;
           final translatedQuery = query.tr;
           filteredMajorNames = majorNames
-              .where((major) =>
-                  major.toLowerCase().contains(translatedQuery.toLowerCase()))
+              .where(
+                (major) => major.toLowerCase().contains(
+                      translatedQuery.toLowerCase(),
+                    ),
+              )
               .toList();
         });
       }
@@ -194,12 +206,14 @@ class _ProgramState extends State<Program> {
       appBar: AppBar(
         titleSpacing: 0,
         centerTitle: false,
-        title: Text('កម្មវិធីសិក្សា'.tr,
-            style: TextStyle(
-              color: UPrimaryColor,
-              fontSize: 18,
-              fontWeight: UTitleWeight,
-            )),
+        title: Text(
+          'កម្មវិធីសិក្សា'.tr,
+          style: TextStyle(
+            color: UPrimaryColor,
+            fontSize: 18,
+            fontWeight: UTitleWeight,
+          ),
+        ),
         backgroundColor: UBackgroundColor,
         elevation: 1,
         iconTheme: IconThemeData.fallback(),
@@ -235,10 +249,16 @@ class _ProgramState extends State<Program> {
           ? Center(
               child: Center(
                 child: FutureBuilder<void>(
-                  future: Future.delayed(Duration(seconds: 10)),
+                  future: Future.delayed(
+                    Duration(
+                      seconds: 10,
+                    ),
+                  ),
                   builder: (context, snapshot) =>
                       snapshot.connectionState == ConnectionState.done
-                          ? Text('គ្មានទិន្ន័យ'.tr)
+                          ? Text(
+                              'គ្មានទិន្ន័យ'.tr,
+                            )
                           : CircularProgressIndicator(
                               color: UPrimaryColor,
                             ),
@@ -280,21 +300,25 @@ class _ProgramState extends State<Program> {
                               elevation: 2,
                               shadowColor: UGreyColor,
                               shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.circular(URoundedLarge),
+                                borderRadius: BorderRadius.circular(
+                                  URoundedLarge,
+                                ),
                               ),
                               child: Container(
-                                padding:
-                                    EdgeInsets.symmetric(vertical: UPdMg_5),
+                                padding: EdgeInsets.symmetric(
+                                  vertical: UPdMg_5,
+                                ),
                                 child: Theme(
                                   data: Theme.of(context).copyWith(
-                                      dividerColor: Colors.transparent),
+                                    dividerColor: Colors.transparent,
+                                  ),
                                   child: ExpansionTile(
                                     collapsedIconColor: UPrimaryColor,
                                     iconColor: UPrimaryColor,
                                     textColor: UTextColor,
                                     key: PageStorageKey(
-                                        facultyName.toString().tr),
+                                      facultyName.toString().tr,
+                                    ),
                                     title: Row(
                                       children: [
                                         Image.network(
@@ -302,13 +326,17 @@ class _ProgramState extends State<Program> {
                                           scale: 6,
                                           errorBuilder:
                                               (context, error, stackTrace) {
-                                            return Icon(Icons.error);
+                                            return Icon(
+                                              Icons.error,
+                                            );
                                           },
                                         ),
                                         SizedBox(width: UWidth10),
                                         Expanded(
-                                            child: Text(
-                                                facultyName.toString().tr)),
+                                          child: Text(
+                                            facultyName.toString().tr,
+                                          ),
+                                        ),
                                       ],
                                     ),
                                     children:
@@ -325,27 +353,32 @@ class _ProgramState extends State<Program> {
                                         ),
                                         child: InkWell(
                                           onTap: () {
-                                            Get.to(() => MajorDetailsScreen(
-                                                  majorName: majorName,
-                                                  majorInfoData: major,
-                                                  educationNames: degreeDetails
-                                                      .map<String>((degree) =>
-                                                          degree['degree_name']
-                                                              as String)
-                                                      .toList(),
-                                                ));
+                                            Get.to(
+                                              () => MajorDetailsScreen(
+                                                majorName: majorName,
+                                                majorInfoData: major,
+                                                educationNames: degreeDetails
+                                                    .map<String>((degree) =>
+                                                        degree['degree_name']
+                                                            as String)
+                                                    .toList(),
+                                              ),
+                                            );
                                           },
                                           child: Container(
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(
-                                                      URoundedMedium),
+                                                URoundedMedium,
+                                              ),
                                               border: Border.all(
-                                                  color: UBGLightBlue),
+                                                color: UBGLightBlue,
+                                              ),
                                             ),
                                             padding: EdgeInsets.symmetric(
-                                                vertical: UPdMg_8,
-                                                horizontal: UPdMg_5),
+                                              vertical: UPdMg_8,
+                                              horizontal: UPdMg_5,
+                                            ),
                                             child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment
@@ -388,7 +421,9 @@ class _ProgramState extends State<Program> {
                           physics: NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: programACCA.length,
-                          padding: EdgeInsets.only(bottom: UPdMg_10),
+                          padding: EdgeInsets.only(
+                            bottom: UPdMg_10,
+                          ),
                           itemBuilder: (BuildContext context, index) {
                             final program = programACCA[index];
                             final fac_icon = program.fac_data[0].fac_icon;
@@ -403,21 +438,25 @@ class _ProgramState extends State<Program> {
                               elevation: 2,
                               shadowColor: UGreyColor,
                               shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.circular(URoundedLarge),
+                                borderRadius: BorderRadius.circular(
+                                  URoundedLarge,
+                                ),
                               ),
                               child: Container(
-                                padding:
-                                    EdgeInsets.symmetric(vertical: UPdMg_5),
+                                padding: EdgeInsets.symmetric(
+                                  vertical: UPdMg_5,
+                                ),
                                 child: Theme(
                                   data: Theme.of(context).copyWith(
-                                      dividerColor: Colors.transparent),
+                                    dividerColor: Colors.transparent,
+                                  ),
                                   child: ExpansionTile(
                                     collapsedIconColor: UPrimaryColor,
                                     iconColor: UPrimaryColor,
                                     textColor: UTextColor,
                                     key: PageStorageKey(
-                                        program.fac_name.toString().tr),
+                                      program.fac_name.toString().tr,
+                                    ),
                                     title: Row(
                                       children: [
                                         Image.network(
@@ -425,7 +464,9 @@ class _ProgramState extends State<Program> {
                                           scale: 6,
                                           errorBuilder:
                                               (context, error, stackTrace) {
-                                            return Icon(Icons.error);
+                                            return Icon(
+                                              Icons.error,
+                                            );
                                           },
                                         ),
                                         SizedBox(width: UWidth10),
@@ -443,26 +484,30 @@ class _ProgramState extends State<Program> {
                                         ),
                                         child: InkWell(
                                           onTap: () {
-                                            Get.to(() => Program_ACCA(
-                                                  majorName:
-                                                      majorData.major_name,
-                                                  course_hour:
-                                                      majorData.course_hour,
-                                                  educationNames:
-                                                      majorData.subject_data,
-                                                ));
+                                            Get.to(
+                                              () => Program_ACCA(
+                                                majorName: majorData.major_name,
+                                                course_hour:
+                                                    majorData.course_hour,
+                                                educationNames:
+                                                    majorData.subject_data,
+                                              ),
+                                            );
                                           },
                                           child: Container(
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(
-                                                      URoundedMedium),
+                                                URoundedMedium,
+                                              ),
                                               border: Border.all(
-                                                  color: UBGLightBlue),
+                                                color: UBGLightBlue,
+                                              ),
                                             ),
                                             padding: EdgeInsets.symmetric(
-                                                vertical: UPdMg_8,
-                                                horizontal: UPdMg_5),
+                                              vertical: UPdMg_8,
+                                              horizontal: UPdMg_5,
+                                            ),
                                             child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment
@@ -548,20 +593,27 @@ class MajorSearchDelegate extends SearchDelegate<String> {
 
     if (filteredMajorNames.length == 1) {
       final majorName = filteredMajorNames[0];
-      navigateToMajorDetails(context, majorName);
+      navigateToMajorDetails(
+        context,
+        majorName,
+      );
       return Container();
     }
 
     final regularProgramResults = filteredMajorNames
-        .where((major) =>
-            major.toLowerCase().contains(query.toLowerCase()) &&
-            !major.contains('ACCA')) // Filter regular program results
+        .where(
+          (major) =>
+              major.toLowerCase().contains(query.toLowerCase()) &&
+              !major.contains('ACCA'),
+        ) // Filter regular program results
         .toList();
 
     final accaProgramResults = filteredMajorNames
-        .where((major) =>
-            major.toLowerCase().contains(query.toLowerCase()) &&
-            major.contains('ACCA')) // Filter ACCA program results
+        .where(
+          (major) =>
+              major.toLowerCase().contains(query.toLowerCase()) &&
+              major.contains('ACCA'),
+        ) // Filter ACCA program results
         .toList();
 
     return Column(
@@ -591,7 +643,9 @@ class MajorSearchDelegate extends SearchDelegate<String> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.all(UPdMg_8),
+          padding: EdgeInsets.all(
+            UPdMg_8,
+          ),
           child: Text(
             title,
             style: TextStyle(
@@ -610,7 +664,10 @@ class MajorSearchDelegate extends SearchDelegate<String> {
             return ListTile(
               title: Text(majorName),
               onTap: () {
-                navigateToMajorDetails(context, majorName);
+                navigateToMajorDetails(
+                  context,
+                  majorName,
+                );
               },
             );
           },
@@ -633,13 +690,17 @@ class MajorSearchDelegate extends SearchDelegate<String> {
 
       final majorData = programACCAObj.fac_data
           .expand((facultyData) => facultyData.major_data)
-          .firstWhere((majorData) => majorData.major_name == majorName);
+          .firstWhere(
+            (majorData) => majorData.major_name == majorName,
+          );
 
-      Get.to(() => Program_ACCA(
-            majorName: majorData.major_name,
-            course_hour: majorData.course_hour,
-            educationNames: majorData.subject_data,
-          ));
+      Get.to(
+        () => Program_ACCA(
+          majorName: majorData.major_name,
+          course_hour: majorData.course_hour,
+          educationNames: majorData.subject_data,
+        ),
+      );
     } else {
       // Handle navigation for regular programs
       final majorInfoData = await fetchMajorInfoData(majorName);
@@ -654,7 +715,11 @@ class MajorSearchDelegate extends SearchDelegate<String> {
           ),
         );
       } else {
-        Center(child: Text('គ្មានទិន្ន័យ'.tr));
+        Center(
+          child: Text(
+            'គ្មានទិន្ន័យ'.tr,
+          ),
+        );
       }
     }
   }
@@ -662,7 +727,11 @@ class MajorSearchDelegate extends SearchDelegate<String> {
   @override
   Widget buildSuggestions(BuildContext context) {
     final suggestionList = majorNames
-        .where((major) => major.toLowerCase().contains(query.toLowerCase()))
+        .where(
+          (major) => major.toLowerCase().contains(
+                query.toLowerCase(),
+              ),
+        )
         .toList();
 
     return ListView.builder(
@@ -675,7 +744,10 @@ class MajorSearchDelegate extends SearchDelegate<String> {
             majorName,
           ),
           onTap: () {
-            navigateToMajorDetails(context, majorName);
+            navigateToMajorDetails(
+              context,
+              majorName,
+            );
           },
         );
       },
