@@ -250,6 +250,10 @@ class _Student_HomeState extends State<Student_Home> {
                   () => Student_Detail(
                     data_studentUser: _dataStudentUser,
                   ),
+                  transition: Transition.rightToLeftWithFade,
+                  duration: Duration(
+                    milliseconds: 100,
+                  ),
                 );
               },
               child: _dataStDetail.isNotEmpty
@@ -683,11 +687,19 @@ class _Student_HomeState extends State<Student_Home> {
                                 () => Schedule(
                                   data_studentUser: _dataStudentUser,
                                 ),
+                                transition: Transition.rightToLeftWithFade,
+                                duration: Duration(
+                                  milliseconds: 100,
+                                ),
                               );
                             } else if (index.isEqual(1)) {
                               Get.to(
                                 () => Performance(
                                   data_studentUser: _dataStudentUser,
+                                ),
+                                transition: Transition.rightToLeftWithFade,
+                                duration: Duration(
+                                  milliseconds: 100,
                                 ),
                               );
                             } else if (index.isEqual(2)) {
@@ -695,11 +707,19 @@ class _Student_HomeState extends State<Student_Home> {
                                 () => Attendance(
                                   data_studentUser: _dataStudentUser,
                                 ),
+                                transition: Transition.rightToLeftWithFade,
+                                duration: Duration(
+                                  milliseconds: 100,
+                                ),
                               );
                             } else if (index.isEqual(3)) {
                               Get.to(
                                 () => Payment_UI(
                                   data_studentUser: _dataStudentUser,
+                                ),
+                                transition: Transition.rightToLeftWithFade,
+                                duration: Duration(
+                                  milliseconds: 100,
                                 ),
                               );
                             } else if (index.isEqual(4)) {
@@ -707,11 +727,19 @@ class _Student_HomeState extends State<Student_Home> {
                                 () => Job_History(
                                   data_studentUser: _dataStudentUser,
                                 ),
+                                transition: Transition.rightToLeftWithFade,
+                                duration: Duration(
+                                  milliseconds: 100,
+                                ),
                               );
                             } else if (index.isEqual(5)) {
                               Get.to(
                                 () => Study_Info(
                                   data_studentUser: _dataStudentUser,
+                                ),
+                                transition: Transition.rightToLeftWithFade,
+                                duration: Duration(
+                                  milliseconds: 100,
                                 ),
                               );
                             } else if (index.isEqual(7)) {
@@ -719,9 +747,19 @@ class _Student_HomeState extends State<Student_Home> {
                                 () => Achievements(
                                   data_studentUser: _dataStudentUser,
                                 ),
+                                transition: Transition.rightToLeftWithFade,
+                                duration: Duration(
+                                  milliseconds: 100,
+                                ),
                               );
                             } else {
-                              Get.to(() => st_home_screen[index].screen);
+                              Get.to(
+                                () => st_home_screen[index].screen,
+                                transition: Transition.rightToLeftWithFade,
+                                duration: Duration(
+                                  milliseconds: 100,
+                                ),
+                              );
                             }
                           },
                           child: Container(

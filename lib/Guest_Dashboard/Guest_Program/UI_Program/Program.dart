@@ -331,7 +331,9 @@ class _ProgramState extends State<Program> {
                                             );
                                           },
                                         ),
-                                        SizedBox(width: UWidth10),
+                                        SizedBox(
+                                          width: UWidth10,
+                                        ),
                                         Expanded(
                                           child: Text(
                                             facultyName.toString().tr,
@@ -362,6 +364,11 @@ class _ProgramState extends State<Program> {
                                                         degree['degree_name']
                                                             as String)
                                                     .toList(),
+                                              ),
+                                              transition: Transition
+                                                  .rightToLeftWithFade,
+                                              duration: Duration(
+                                                milliseconds: 100,
                                               ),
                                             );
                                           },
@@ -491,6 +498,11 @@ class _ProgramState extends State<Program> {
                                                     majorData.course_hour,
                                                 educationNames:
                                                     majorData.subject_data,
+                                              ),
+                                              transition: Transition
+                                                  .rightToLeftWithFade,
+                                              duration: Duration(
+                                                milliseconds: 100,
                                               ),
                                             );
                                           },
@@ -651,7 +663,7 @@ class MajorSearchDelegate extends SearchDelegate<String> {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 18,
-              color: UPrimaryColor, // Set text color tosad
+              color: UPrimaryColor,
             ),
           ),
         ),
@@ -660,7 +672,6 @@ class MajorSearchDelegate extends SearchDelegate<String> {
           shrinkWrap: true,
           itemBuilder: (context, index) {
             final majorName = results[index];
-
             return ListTile(
               title: Text(majorName),
               onTap: () {
@@ -700,6 +711,10 @@ class MajorSearchDelegate extends SearchDelegate<String> {
           course_hour: majorData.course_hour,
           educationNames: majorData.subject_data,
         ),
+        transition: Transition.rightToLeftWithFade,
+        duration: Duration(
+          milliseconds: 100,
+        ),
       );
     } else {
       // Handle navigation for regular programs
@@ -712,6 +727,10 @@ class MajorSearchDelegate extends SearchDelegate<String> {
             majorName: majorName,
             majorInfoData: majorInfoData,
             educationNames: educationNames,
+          ),
+          transition: Transition.rightToLeftWithFade,
+          duration: Duration(
+            milliseconds: 100,
           ),
         );
       } else {

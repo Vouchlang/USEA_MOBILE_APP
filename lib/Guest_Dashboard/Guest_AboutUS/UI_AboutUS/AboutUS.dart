@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:usea_app/Guest_Dashboard/Guest_AboutUS/UI_AboutUS/History.dart';
+import 'package:usea_app/Guest_Dashboard/Guest_AboutUS/UI_AboutUS/President_Message.dart';
+import 'package:usea_app/Guest_Dashboard/Guest_AboutUS/UI_AboutUS/Recognition.dart';
+import 'package:usea_app/Guest_Dashboard/Guest_AboutUS/UI_AboutUS/Stucture.dart';
+import 'package:usea_app/Guest_Dashboard/Guest_AboutUS/UI_AboutUS/Vision.dart';
+import '../Class_AboutUS/Class_AboutUS.dart';
 import '/theme_builder.dart';
 import '/Custom_AppBar.dart';
-import '../Class_AboutUS/Class_AboutUS.dart';
 
 class AboutUS extends StatelessWidget {
   const AboutUS({Key? key}) : super(key: key);
@@ -11,24 +16,76 @@ class AboutUS extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: 'អំពីយើង'.tr),
+      appBar: Custom_AppBar(
+        title: 'អំពីយើង'.tr,
+      ),
       body: ListView.builder(
-        itemCount: aboutUS.length,
+        itemCount: about_US.length,
         itemBuilder: (context, index) {
           return Container(
-            margin: EdgeInsets.fromLTRB(6, UPdMg_5, 6, 0),
+            margin: EdgeInsets.fromLTRB(
+              6,
+              UPdMg_5,
+              6,
+              UZeroPixel,
+            ),
             child: Card(
               elevation: 2,
               shadowColor: ULightGreyColor,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(URoundedLarge)),
+                borderRadius: BorderRadius.circular(
+                  URoundedLarge,
+                ),
+              ),
               child: InkWell(
                 onTap: () {
-                  Get.to(() => aboutUS[index].screen);
+                  if (index.isEqual(0)) {
+                    Get.to(
+                      () => History(),
+                      transition: Transition.rightToLeftWithFade,
+                      duration: Duration(
+                        milliseconds: 100,
+                      ),
+                    );
+                  } else if (index.isEqual(1)) {
+                    Get.to(
+                      () => Structure(),
+                      transition: Transition.rightToLeftWithFade,
+                      duration: Duration(
+                        milliseconds: 100,
+                      ),
+                    );
+                  } else if (index.isEqual(2)) {
+                    Get.to(
+                      () => President(),
+                      transition: Transition.rightToLeftWithFade,
+                      duration: Duration(
+                        milliseconds: 100,
+                      ),
+                    );
+                  } else if (index.isEqual(3)) {
+                    Get.to(
+                      () => Vision(),
+                      transition: Transition.rightToLeftWithFade,
+                      duration: Duration(
+                        milliseconds: 100,
+                      ),
+                    );
+                  } else if (index.isEqual(4)) {
+                    Get.to(
+                      () => Recognition(),
+                      transition: Transition.rightToLeftWithFade,
+                      duration: Duration(
+                        milliseconds: 100,
+                      ),
+                    );
+                  }
                 },
                 child: Container(
                   padding: EdgeInsets.symmetric(
-                      vertical: UPdMg_15, horizontal: UPdMg_10),
+                    vertical: UPdMg_15,
+                    horizontal: UPdMg_10,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -36,7 +93,7 @@ class AboutUS extends StatelessWidget {
                         child: Row(
                           children: [
                             Image.asset(
-                              aboutUS[index].img,
+                              about_US[index].img,
                               scale: 6,
                             ),
                             SizedBox(
@@ -44,11 +101,12 @@ class AboutUS extends StatelessWidget {
                             ),
                             Expanded(
                               child: Text(
-                                aboutUS[index].text.tr,
+                                about_US[index].text.tr,
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
-                                    fontSize: UTitleSize16,
-                                    fontWeight: UBodyWeight),
+                                  fontSize: UTitleSize16,
+                                  fontWeight: UBodyWeight,
+                                ),
                               ),
                             ),
                           ],

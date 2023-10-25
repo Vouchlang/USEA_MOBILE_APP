@@ -26,7 +26,7 @@ class _RecognitionState extends State<Recognition> {
       var res = await http.get(
         Uri.parse(Get.locale?.languageCode == 'km'
             ? APIUrlGuest + "api/webapi.php?action=recognition_kh"
-            : APIUrlGuest + "api/webapi.php?action=recognition_en"),
+            : APIUrlGuest + "api/webapi.php?action=recognition_en",),
       );
       var r = json.decode(res.body);
       if (r is List<dynamic>) {
@@ -58,7 +58,7 @@ class _RecognitionState extends State<Recognition> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: 'ការទទួលស្គាល់'.tr),
+      appBar: Custom_AppBar(title: 'ការទទួលស្គាល់'.tr,),
       body: recognition.isEmpty
           ? Center(
               child: FutureBuilder<void>(
@@ -76,7 +76,7 @@ class _RecognitionState extends State<Recognition> {
               itemBuilder: (context, index) {
                 final isFinalIndex = index == recognition.length - 1;
                 return Padding(
-                  padding: EdgeInsets.only(bottom: isFinalIndex ? UPdMg_10 : 0),
+                  padding: EdgeInsets.only(bottom: isFinalIndex ? UPdMg_10 : UZeroPixel,),
                   child: Column(
                     children: [
                       Container(
@@ -121,9 +121,9 @@ class _RecognitionState extends State<Recognition> {
                                       onTap: () {
                                         void _launchRecognitionUrl() async {
                                           if (await canLaunch(
-                                              recognition[index].link)) {
+                                              recognition[index].link,)) {
                                             await launch(
-                                                recognition[index].link);
+                                                recognition[index].link,);
                                           } else {
                                             throw 'Could not launch ${recognition[index].link}';
                                           }
@@ -134,10 +134,10 @@ class _RecognitionState extends State<Recognition> {
                                       child: Container(
                                         width: 80,
                                         alignment: Alignment.center,
-                                        padding: EdgeInsets.all(UPdMg_5),
+                                        padding: EdgeInsets.all(UPdMg_5,),
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(
-                                              URoundedMedium),
+                                              URoundedMedium,),
                                           color: UBtnColor,
                                         ),
                                         child: Text(

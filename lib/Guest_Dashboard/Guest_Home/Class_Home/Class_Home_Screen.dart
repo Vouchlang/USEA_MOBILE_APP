@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../Guest_ChangeLanguage/Change_Language.dart';
+import '../../Guest_New_Event/UI_News_Event/News_Event_New.dart';
 import '../../Guest_Program/UI_Program/Program.dart';
 import '../../Guest_Scholarship/UI_Scholarship/Scholarship.dart';
-import '/Guest_Dashboard/Guest_New_Event/UI_News_Event/News_Event.dart';
 import '../../Guest_AboutUS/UI_AboutUS/AboutUS.dart';
 import '../../Guest_Career/UI_Career/Career.dart';
 import '../../Guest_Contact/UI_Contact/Contact.dart';
@@ -25,7 +25,7 @@ List<Home_Screen> guest_home_screen = [
   Home_Screen(
     name: 'ព្រឹត្តិការណ៍',
     img: 'assets/image/Guest_News.png',
-    screen: New_Event(),
+    screen: News_Event(),
   ),
   Home_Screen(
     name: 'ការចុះឈ្មោះ',

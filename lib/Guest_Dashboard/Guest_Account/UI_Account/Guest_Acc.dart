@@ -59,6 +59,10 @@ class Guest_AccState extends State<Guest_Acc> {
       () => St_Home(
         data_studentUser: studentUser,
       ),
+      transition: Transition.rightToLeftWithFade,
+      duration: Duration(
+        milliseconds: 100,
+      ),
     );
   }
 
@@ -74,7 +78,9 @@ class Guest_AccState extends State<Guest_Acc> {
             decoration: BoxDecoration(
               color: USecondaryColor,
               image: DecorationImage(
-                image: AssetImage('assets/image/guess_acc.png'),
+                image: AssetImage(
+                  'assets/image/guess_acc.png',
+                ),
                 fit: BoxFit.fitWidth,
                 alignment: Alignment.topCenter,
               ),
@@ -87,7 +93,9 @@ class Guest_AccState extends State<Guest_Acc> {
             mainAxisSpacing: 3.5,
             crossAxisSpacing: 3,
             childAspectRatio: 1.90,
-            padding: EdgeInsets.symmetric(horizontal: 7),
+            padding: EdgeInsets.symmetric(
+              horizontal: 7,
+            ),
             children: List.generate(
               account_screen.length,
               (index) => Card(
@@ -95,11 +103,19 @@ class Guest_AccState extends State<Guest_Acc> {
                 color: UBackgroundColor,
                 shadowColor: ULightGreyColor,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(URoundedLarge),
+                  borderRadius: BorderRadius.circular(
+                    URoundedLarge,
+                  ),
                 ),
                 child: InkWell(
                   onTap: () {
-                    Get.to(() => account_screen[index].screen);
+                    Get.to(
+                      () => account_screen[index].screen,
+                      transition: Transition.rightToLeftWithFade,
+                      duration: Duration(
+                        milliseconds: 100,
+                      ),
+                    );
                   },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

@@ -11,13 +11,13 @@ class President extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: 'សាររបស់សាកលវិទ្យាធិការ'.tr),
+      appBar: Custom_AppBar(title: 'សាររបស់សាកលវិទ្យាធិការ'.tr,),
       body: Container(
         height: UFullWidth,
         child: ListView(
           children: [
             Container(
-              margin: EdgeInsets.only(bottom: UPdMg_10),
+              margin: EdgeInsets.only(bottom: UPdMg_10,),
               height: 300,
               child: Image.asset(
                 'assets/image/president.png',

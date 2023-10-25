@@ -67,6 +67,10 @@ class _Student_LogInState extends State<Student_LogIn> {
             () => St_Home(
               data_studentUser: dataList_StudentUser,
             ),
+            transition: Transition.rightToLeftWithFade,
+            duration: Duration(
+              milliseconds: 100,
+            ),
           );
         } else {
           print('Error');

@@ -194,6 +194,10 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                                     yearName: selectedYearName,
                                     yearsData: yearData['year_data'],
                                   ),
+                                  transition: Transition.rightToLeftWithFade,
+                                  duration: Duration(
+                                    milliseconds: 100,
+                                  ),
                                 );
                               } else {
                                 showDialog(

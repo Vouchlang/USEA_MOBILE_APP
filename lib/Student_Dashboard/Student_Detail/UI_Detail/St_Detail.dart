@@ -167,6 +167,10 @@ class _Student_DetailState extends State<Student_Detail> {
                             await prefs.clear();
                             Get.off(
                               () => Home(),
+                              transition: Transition.rightToLeftWithFade,
+                              duration: Duration(
+                                milliseconds: 100,
+                              ),
                             );
                           },
                         ),

@@ -11,7 +11,9 @@ class Vision extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: 'ចក្ខុវិស័យ បេសកកម្ម និងគុណតម្លៃ'.tr),
+      appBar: Custom_AppBar(
+        title: 'ចក្ខុវិស័យ បេសកកម្ម និងគុណតម្លៃ'.tr,
+      ),
       body: ListView(
         children: [
           buildTitleVision(
@@ -31,7 +33,12 @@ class Vision extends StatelessWidget {
             'Knowledge, Skills, Excellence, Society',
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_10, UPdMg_10, 0),
+            margin: EdgeInsets.fromLTRB(
+              UPdMg_10,
+              UPdMg_10,
+              UPdMg_10,
+              UZeroPixel,
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +47,9 @@ class Vision extends StatelessWidget {
                   '4.1. Knowledge',
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: UPdMg_12),
+                  margin: EdgeInsets.only(
+                    left: UPdMg_12,
+                  ),
                   child: Column(
                     children: [
                       buildLowBodyVision(
@@ -62,7 +71,12 @@ class Vision extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_10, UPdMg_10, 0),
+            margin: EdgeInsets.fromLTRB(
+              UPdMg_10,
+              UPdMg_10,
+              UPdMg_10,
+              UZeroPixel,
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,7 +85,9 @@ class Vision extends StatelessWidget {
                   '4.2. Skills',
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: UPdMg_12),
+                  margin: EdgeInsets.only(
+                    left: UPdMg_12,
+                  ),
                   child: Column(
                     children: [
                       buildLowBodyVision(
@@ -93,14 +109,21 @@ class Vision extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(UPdMg_10, UPdMg_10, UPdMg_10, 0),
+            margin: EdgeInsets.fromLTRB(
+              UPdMg_10,
+              UPdMg_10,
+              UPdMg_10,
+              UZeroPixel,
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 buildTopBodyVision('4.4. Social'),
                 Container(
-                  margin: EdgeInsets.only(left: UPdMg_12),
+                  margin: EdgeInsets.only(
+                    left: UPdMg_12,
+                  ),
                   child: Column(
                     children: [
                       buildLowBodyVision(
@@ -122,7 +145,9 @@ class Vision extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.all(UPdMg_10),
+            margin: EdgeInsets.all(
+              UPdMg_10,
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -131,7 +156,9 @@ class Vision extends StatelessWidget {
                   '5. Goal & Objective',
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: UPdMg_12),
+                  margin: EdgeInsets.only(
+                    left: UPdMg_12,
+                  ),
                   child: Column(
                     children: [
                       buildLowBodyVision(

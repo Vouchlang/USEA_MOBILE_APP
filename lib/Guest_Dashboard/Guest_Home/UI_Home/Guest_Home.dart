@@ -213,10 +213,11 @@ class _Guest_HomeState extends State<Guest_Home> {
                   onPressed: () {
                     setState(
                       () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (ctx) => Notifications(),
+                        Get.to(
+                          () => Notifications(),
+                          transition: Transition.rightToLeftWithFade,
+                          duration: Duration(
+                            milliseconds: 100,
                           ),
                         );
                       },
@@ -251,8 +252,29 @@ class _Guest_HomeState extends State<Guest_Home> {
                 horizontal: UPdMg_5,
               ),
               child: isLoading
-                  ? CircularProgressIndicator(
-                      color: UPrimaryColor,
+                  ? FutureBuilder(
+                      future: Future.delayed(
+                        Duration(
+                          seconds: 10,
+                        ),
+                      ),
+                      builder: (BuildContext context,
+                          AsyncSnapshot<dynamic> snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Center(
+                            child: CircularProgressIndicator(
+                              color: UPrimaryColor,
+                            ),
+                          );
+                        } else {
+                          return Center(
+                            child: Text(
+                              'គ្មានទិន្ន័យ'.tr,
+                            ),
+                          );
+                        }
+                      },
                     )
                   : CarouselSlider.builder(
                       options: CarouselOptions(
@@ -322,11 +344,11 @@ class _Guest_HomeState extends State<Guest_Home> {
                           },
                         );
                       } else {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                guest_home_screen[index].screen,
+                        Get.to(
+                          () => guest_home_screen[index].screen,
+                          transition: Transition.rightToLeftWithFade,
+                          duration: Duration(
+                            milliseconds: 100,
                           ),
                         );
                       }

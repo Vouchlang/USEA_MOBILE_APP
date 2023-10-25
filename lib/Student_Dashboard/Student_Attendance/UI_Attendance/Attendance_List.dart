@@ -310,6 +310,11 @@ class _AttendanceListState extends State<AttendanceList> {
                                                         : subject.name_en,
                                                     subjectDate: subject.dates,
                                                   ),
+                                                  transition: Transition
+                                                      .rightToLeftWithFade,
+                                                  duration: Duration(
+                                                    milliseconds: 100,
+                                                  ),
                                                 );
                                               },
                                               child: Row(

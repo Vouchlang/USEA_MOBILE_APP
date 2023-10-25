@@ -8,14 +8,14 @@ import '../../../theme_builder.dart';
 import '../Class_News_Event/Class_News_Event.dart';
 import 'News_Event_Detail.dart';
 
-class News_Event_New extends StatefulWidget {
-  const News_Event_New({super.key});
+class News_Event extends StatefulWidget {
+  const News_Event({super.key});
 
   @override
-  State<News_Event_New> createState() => _News_Event_NewState();
+  State<News_Event> createState() => _News_EventState();
 }
 
-class _News_Event_NewState extends State<News_Event_New> {
+class _News_EventState extends State<News_Event> {
   late List<Class_News_Events> news_event = [];
   int selectedNewsEvent = 0;
 
@@ -226,6 +226,11 @@ class _News_Event_NewState extends State<News_Event_New> {
                                             Get.to(
                                               () => News_Event_Detail(
                                                 data: news_event,
+                                              ),
+                                              transition: Transition
+                                                  .rightToLeftWithFade,
+                                              duration: Duration(
+                                                milliseconds: 100,
                                               ),
                                             );
                                           },

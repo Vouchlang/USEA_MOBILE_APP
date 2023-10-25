@@ -251,6 +251,10 @@ class _AttendanceState extends State<Attendance> {
                                 () => AttendanceList(
                                   data_studentUser: widget.data_studentUser,
                                 ),
+                                transition: Transition.rightToLeftWithFade,
+                                duration: Duration(
+                                  milliseconds: 100,
+                                ),
                               );
                             },
                             child: CustomTextTheme(
@@ -322,6 +326,10 @@ class _AttendanceState extends State<Attendance> {
                                 subjectName: Get.locale?.languageCode == 'km'
                                     ? subject.name_kh
                                     : subject.name_en,
+                              ),
+                              transition: Transition.rightToLeftWithFade,
+                              duration: Duration(
+                                milliseconds: 100,
                               ),
                             );
                           },
