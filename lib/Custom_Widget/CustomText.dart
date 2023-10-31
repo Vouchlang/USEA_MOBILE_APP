@@ -5,12 +5,14 @@ import '../theme_builder.dart';
 String APIUrlGuest = 'https://usea.edu.kh/';
 
 // Local Server
-// String APIUrlStudent = 'http://192.168.2.230/api/apidata.php?';
-// String APIUrlStudentEn = 'http://192.168.2.230/api/apidata_en.php?';
+String APIUrlStudent = 'http://192.168.2.230/api/apidata.php?';
+String APIUrlStudentEn = 'http://192.168.2.230/api/apidata_en.php?';
 
 // Public Server
-String APIUrlStudent = 'http://116.212.155.149:9999/api/apidata.php?';
-String APIUrlStudentEn = 'http://116.212.155.149:9999/api/apidata_en.php?';
+// String APIUrlStudent = 'http://116.212.155.149:9999/api/apidata.php?';
+// String APIUrlStudentEn = 'http://116.212.155.149:9999/api/apidata_en.php?';
+
+String NoDataTXT = 'គ្មានទិន្ន័យ'.tr;
 
 // *@ Divider
 Widget buildDivider() {
@@ -65,7 +67,7 @@ Widget buildVerticalDividerW_2() {
 Widget buildVerticalDividerH_45() {
   return Container(
     width: 1,
-    height: 45,
+    height: UHeight45,
     color: UGreyColor,
   );
 }
@@ -476,7 +478,7 @@ Widget buildScoreTotal(
   String text,
 ) {
   return Container(
-    width: 50,
+    width: UWidth50,
     alignment: Alignment.centerRight,
     child: Text(
       text,
@@ -782,7 +784,7 @@ Widget buildTailDetail(
     children: [
       Image.asset(
         image,
-        scale: 5,
+        scale: UScale_5,
       ),
       SizedBox(
         width: UWidth10,
@@ -1017,11 +1019,63 @@ Widget BuildContainerSM(
   Function()? onTap,
   String imageName,
 ) {
-  return InkWell(
-    onTap: onTap,
-    child: Image.asset(
-      imageName,
-      scale: UPdMg_5,
+  return Expanded(
+    child: InkWell(
+      onTap: onTap,
+      child: Image.asset(
+        imageName,
+        scale: UScale_5,
+      ),
     ),
+  );
+}
+
+void pushWithTransition(BuildContext context, Widget screen) {
+  Navigator.of(context).push(
+    PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => screen,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(3.0, 0.0);
+        const end = Offset.zero;
+        const curve = Curves.easeInOut;
+        final tween = Tween(begin: begin, end: end).chain(
+          CurveTween(curve: curve),
+        );
+        var forwardAnimation = animation.drive(tween);
+
+        return SlideTransition(
+          position: forwardAnimation,
+          child: child,
+        );
+      },
+      transitionDuration: Duration(
+        milliseconds: 100,
+      ),
+    ),
+  );
+}
+
+Widget buildFutureBuild() {
+  return FutureBuilder(
+    future: Future.delayed(
+      Duration(
+        seconds: 15,
+      ),
+    ),
+    builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return Center(
+          child: CircularProgressIndicator(
+            color: UPrimaryColor,
+          ),
+        );
+      } else {
+        return Center(
+          child: Text(
+            NoDataTXT,
+          ),
+        );
+      }
+    },
   );
 }

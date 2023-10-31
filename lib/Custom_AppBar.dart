@@ -17,7 +17,7 @@ class Custom_AppBar extends StatelessWidget implements PreferredSizeWidget {
         title,
         style: TextStyle(
           color: UPrimaryColor,
-          fontSize: 18,
+          fontSize: UFontSize18,
           fontWeight: UTitleWeight,
         ),
       ),

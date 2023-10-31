@@ -84,7 +84,9 @@ class _Program_SHCState extends State<Program_SHC> {
                         margin: EdgeInsets.only(
                           right: UPdMg_5,
                         ),
-                        child: NoWeightTitleTheme(index.toString() + '.'),
+                        child: NoWeightTitleTheme(
+                          index.toString() + '.',
+                        ),
                       ),
                       Expanded(
                         child: Container(

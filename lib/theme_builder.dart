@@ -9,19 +9,21 @@ const UYellowColor = Color(0xffE4AC40);
 const UOrangeColor = Color(0xffDF713F);
 const URedColor = Color(0xffD71818);
 const UScoreColor = Color(0xff38920D);
-const UBackgroundColor = Color(0xffFFFFFF);
 const UTextColor = Color(0xff000000);
 const UGreyColor = Colors.grey;
 const ULightGreyColor = Color.fromARGB(255, 200, 200, 200);
 const UBtnColor = Color(0x142D74F5);
 const UBGChartColor = Color.fromARGB(25, 0, 32, 96);
+const UTransParentColor = Colors.transparent;
 
 //  * @ Background Color
 const UBGLightBlue = Color(0xffE9F2FF);
+const UBackgroundColor = Color(0xffFFFFFF);
 
 const UZeroPixel = 0.0;
 
 //  * @ FontSize & Weight Theme
+const UFontSize18 = 18.0;
 const UTitleSize16 = 16.0;
 const UTitleSize = 14.0;
 const UBodySize = 12.0;
@@ -34,12 +36,20 @@ const FontWeight UBodyWeight = FontWeight.w500;
 const UKFontFamily = "KhmerOSbattambang";
 const UEFontFamily = "Poppins";
 
+//  * @ Scale Theme
+const UScale_5 = 5.0;
+const UScale_6 = 6.0;
+const UScale_10 = 10.0;
+const UScale_15 = 15.0;
+
 //  * @ Padding & Margin Theme
-const UPdMg_5 = 5.0; // UPd_Mg_ExtraSmall
-const UPdMg_8 = 8.0; // UPd_Mg_Small
-const UPdMg_10 = 10.0; // UPd_Mg_Medium
-const UPdMg_12 = 12.0; // UPd_Mg_Large
-const UPdMg_15 = 15.0; // UPd_Mg_Extra
+const UPdMg_5 = 5.0;
+const UPdMg_7 = 7.0;
+const UPdMg_8 = 8.0;
+const UPdMg_10 = 10.0;
+const UPdMg_12 = 12.0;
+const UPdMg_15 = 15.0;
+const UPdMg_20 = 20.0;
 
 //  * @ Rounded Theme
 const URoundedMedium = 5.0;
@@ -47,12 +57,28 @@ const URoundedLarge = 10.0;
 
 //  * @ SizedBox Weight & Height Theme
 const UHeight5 = 5.0;
+const UHeight7 = 7.0;
 const UHeight10 = 10.0;
 const UHeight15 = 15.0;
+const UHeight20 = 20.0;
+const UHeight25 = 25.0;
+const UHeight30 = 30.0;
+const UHeight35 = 35.0;
+const UHeight40 = 40.0;
+const UHeight45 = 45.0;
+const UHeight50 = 50.0;
 
 const UWidth5 = 5.0;
+const UWidth7 = 7.0;
 const UWidth10 = 10.0;
 const UWidth15 = 15.0;
+const UWidth20 = 20.0;
+const UWidth25 = 25.0;
+const UWidth30 = 30.0;
+const UWidth35 = 35.0;
+const UWidth40 = 40.0;
+const UWidth45 = 45.0;
+const UWidth50 = 50.0;
 
 //  * @ Shadow Theme
 const UBoxShadow = Shadow(

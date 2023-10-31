@@ -97,7 +97,7 @@ class _Student_DetailState extends State<Student_Detail> {
             URoundedLarge,
           )),
           child: Container(
-            margin: EdgeInsets.all(7),
+            margin: EdgeInsets.all(UPdMg_7),
             padding: EdgeInsets.all(
               UPdMg_10,
             ),
@@ -131,7 +131,7 @@ class _Student_DetailState extends State<Student_Detail> {
                   height: UHeight5,
                 ),
                 Container(
-                  height: 50,
+                  height: UHeight50,
                   padding: EdgeInsets.all(
                     UPdMg_5,
                   ),
@@ -197,7 +197,7 @@ class _Student_DetailState extends State<Student_Detail> {
           'ព័ត៌មានលម្អិតរបស់និស្សិត'.tr,
           style: TextStyle(
             color: UPrimaryColor,
-            fontSize: 18,
+            fontSize: UFontSize18,
             fontWeight: UTitleWeight,
           ),
         ),
@@ -226,28 +226,7 @@ class _Student_DetailState extends State<Student_Detail> {
         ],
       ),
       body: _dataStDetail.isEmpty
-          ? FutureBuilder(
-              future: Future.delayed(
-                Duration(
-                  seconds: 10,
-                ),
-              ),
-              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
-                    child: CircularProgressIndicator(
-                      color: UPrimaryColor,
-                    ),
-                  );
-                } else {
-                  return Center(
-                    child: Text(
-                      'គ្មានទិន្ន័យ'.tr,
-                    ),
-                  );
-                }
-              },
-            )
+          ? buildFutureBuild()
           : RefreshIndicator(
               onRefresh: _refreshData,
               color: UPrimaryColor,
@@ -260,7 +239,7 @@ class _Student_DetailState extends State<Student_Detail> {
                       Container(
                         padding: EdgeInsets.symmetric(
                           vertical: UPdMg_10,
-                          horizontal: 20,
+                          horizontal: UPdMg_20,
                         ),
                         child: Row(
                           children: [
@@ -271,7 +250,7 @@ class _Student_DetailState extends State<Student_Detail> {
                               radius: 50,
                             ),
                             SizedBox(
-                              width: 20,
+                              width: UWidth20,
                             ),
                             Expanded(
                               child: Column(
@@ -353,7 +332,7 @@ class _Student_DetailState extends State<Student_Detail> {
                       Container(
                         margin: EdgeInsets.symmetric(
                           vertical: UPdMg_10,
-                          horizontal: 20,
+                          horizontal: UPdMg_20,
                         ),
                         child: Column(
                           children: [

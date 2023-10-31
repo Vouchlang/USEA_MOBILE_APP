@@ -82,9 +82,13 @@ class _News_EventState extends State<News_Event> {
   }
 
   void selectNewsEvent(int index) {
-    setState(() {
-      selectedNewsEvent = index;
-    });
+    if (mounted) {
+      setState(
+        () {
+          selectedNewsEvent = index;
+        },
+      );
+    }
   }
 
   @override
@@ -94,323 +98,259 @@ class _News_EventState extends State<News_Event> {
       appBar: Custom_AppBar(
         title: 'ព្រឹត្តិការណ៍'.tr,
       ),
-      body: RefreshIndicator(
-        onRefresh: fetchData,
-        color: UPrimaryColor,
-        child: Container(
-          alignment: Alignment.topCenter,
-          child: news_event.isEmpty
-              ? FutureBuilder(
-                  future: Future.delayed(
-                    Duration(
-                      seconds: 10,
+      body: Container(
+        alignment: Alignment.topCenter,
+        child: news_event.isEmpty
+            ? buildFutureBuild()
+            : SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox(
+                      height: UHeight5,
                     ),
-                  ),
-                  builder:
-                      (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(
-                        child: CircularProgressIndicator(
-                          color: UPrimaryColor,
-                        ),
-                      );
-                    } else {
-                      return Center(
-                        child: Text(
-                          'គ្មានទិន្ន័យ'.tr,
-                        ),
-                      );
-                    }
-                  },
-                )
-              : RefreshIndicator(
-                  onRefresh: fetchData,
-                  color: UPrimaryColor,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(
-                          height: UHeight5,
-                        ),
-                        Container(
-                          height: 70,
-                          alignment: Alignment.center,
-                          width: UFullWidth,
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemCount: news_event.length,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              final isLastIndex =
-                                  index == news_event.length - 1;
+                    Container(
+                      height: 70,
+                      alignment: Alignment.center,
+                      width: UFullWidth,
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: news_event.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          final isLastIndex = index == news_event.length - 1;
 
-                              return GestureDetector(
-                                onTap: () {
-                                  setState(
-                                    () {
-                                      selectedNewsEvent = index;
-                                    },
-                                  );
+                          return GestureDetector(
+                            onTap: () {
+                              setState(
+                                () {
+                                  selectedNewsEvent = index;
                                 },
-                                child: AnimatedContainer(
-                                  alignment: Alignment.center,
-                                  duration: Duration(
-                                    milliseconds: 300,
-                                  ),
-                                  margin: EdgeInsets.fromLTRB(
-                                      UPdMg_10,
-                                      UPdMg_10,
-                                      isLastIndex ? UPdMg_10 : UZeroPixel,
-                                      UPdMg_10),
-                                  padding: EdgeInsets.all(
-                                    UPdMg_10,
-                                  ),
-                                  width: 165,
-                                  decoration: BoxDecoration(
-                                    color: selectedNewsEvent == index
-                                        ? UPrimaryColor
-                                        : UBackgroundColor,
-                                    borderRadius: BorderRadius.circular(
-                                      URoundedMedium,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 1,
-                                        color: ULightGreyColor,
-                                        offset: Offset(0, 1),
-                                      ),
-                                    ],
-                                  ),
-                                  child: Text(
-                                    news_event[index].event_name.tr,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize: UTitleSize,
-                                      color: selectedNewsEvent == index
-                                          ? UBackgroundColor
-                                          : UTextColor,
-                                    ),
-                                  ),
-                                ),
                               );
                             },
-                          ),
-                        ),
-                        news_event[selectedNewsEvent].events.isNotEmpty
-                            ? Column(
-                                children:
-                                    news_event[selectedNewsEvent].events.map(
-                                  (news_event) {
-                                    return Container(
-                                      padding: EdgeInsets.fromLTRB(
-                                        UPdMg_10,
-                                        UZeroPixel,
-                                        UPdMg_10,
-                                        UZeroPixel,
+                            child: AnimatedContainer(
+                              alignment: Alignment.center,
+                              duration: Duration(
+                                milliseconds: 300,
+                              ),
+                              margin: EdgeInsets.fromLTRB(
+                                UPdMg_10,
+                                UPdMg_10,
+                                isLastIndex ? UPdMg_10 : UZeroPixel,
+                                UPdMg_10,
+                              ),
+                              width: 165,
+                              decoration: BoxDecoration(
+                                color: selectedNewsEvent == index
+                                    ? UPrimaryColor
+                                    : UBackgroundColor,
+                                borderRadius: BorderRadius.circular(
+                                  URoundedMedium,
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 1,
+                                    color: ULightGreyColor,
+                                    offset: Offset(0, 1),
+                                  ),
+                                ],
+                              ),
+                              child: Text(
+                                news_event[index].event_name.tr,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: UTitleSize,
+                                  color: selectedNewsEvent == index
+                                      ? UBackgroundColor
+                                      : UTextColor,
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    news_event[selectedNewsEvent].events.isNotEmpty
+                        ? Column(
+                            children: news_event[selectedNewsEvent].events.map(
+                              (news_event) {
+                                return Container(
+                                  padding: EdgeInsets.fromLTRB(
+                                    UPdMg_10,
+                                    UZeroPixel,
+                                    UPdMg_10,
+                                    UZeroPixel,
+                                  ),
+                                  child: Card(
+                                    margin: EdgeInsets.only(
+                                      bottom: UPdMg_10,
+                                    ),
+                                    elevation: 2,
+                                    shadowColor: ULightGreyColor,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        URoundedLarge,
                                       ),
-                                      child: Card(
-                                        margin: EdgeInsets.only(
-                                          bottom: UPdMg_10,
-                                        ),
-                                        elevation: 2,
-                                        shadowColor: ULightGreyColor,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            URoundedLarge,
+                                    ),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Get.to(
+                                          () => News_Event_Detail(
+                                            data: news_event,
                                           ),
-                                        ),
-                                        child: InkWell(
-                                          onTap: () {
-                                            Get.to(
-                                              () => News_Event_Detail(
-                                                data: news_event,
+                                          transition:
+                                              Transition.rightToLeftWithFade,
+                                          duration: Duration(
+                                            milliseconds: 100,
+                                          ),
+                                        );
+                                      },
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Container(
+                                            height: 200,
+                                            width: double.maxFinite,
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                URoundedLarge,
                                               ),
-                                              transition: Transition
-                                                  .rightToLeftWithFade,
-                                              duration: Duration(
-                                                milliseconds: 100,
-                                              ),
-                                            );
-                                          },
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              Container(
-                                                height: 200,
-                                                width: double.maxFinite,
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                    URoundedLarge,
-                                                  ),
-                                                  child: news_event
-                                                          .image.isEmpty
-                                                      ? Image.asset(
-                                                          'assets/image/Error_Image.jpg',
-                                                          width:
-                                                              double.maxFinite,
-                                                          fit: BoxFit.cover,
-                                                        )
-                                                      : Image.network(
-                                                          news_event.image,
-                                                          width:
-                                                              double.maxFinite,
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: UHeight5,
-                                              ),
-                                              Container(
-                                                padding: EdgeInsets.fromLTRB(
-                                                  UPdMg_10,
-                                                  UZeroPixel,
-                                                  UPdMg_10,
-                                                  UPdMg_10,
-                                                ),
-                                                child: Column(
-                                                  children: [
-                                                    Container(
-                                                      width: UFullWidth,
-                                                      alignment:
-                                                          Alignment.center,
-                                                      child: Text(
-                                                        news_event.title.isEmpty
-                                                            ? 'N/A'
-                                                            : news_event.title,
-                                                        textAlign:
-                                                            TextAlign.justify,
-                                                        maxLines: 1,
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        style: TextStyle(
-                                                          fontSize: UTitleSize,
-                                                          fontWeight:
-                                                              UTitleWeight,
-                                                          fontFamily:
-                                                              UKFontFamily,
-                                                        ),
-                                                      ),
+                                              child: news_event.image.isEmpty
+                                                  ? Image.asset(
+                                                      'assets/image/Error_Image.jpg',
+                                                      width: double.maxFinite,
+                                                      fit: BoxFit.cover,
+                                                    )
+                                                  : Image.network(
+                                                      news_event.image,
+                                                      width: double.maxFinite,
+                                                      fit: BoxFit.cover,
                                                     ),
-                                                    SizedBox(height: UHeight5),
-                                                    Container(
-                                                      width: double.infinity,
-                                                      child: Text(
-                                                        news_event.description
-                                                                .isEmpty
-                                                            ? 'N/A'
-                                                            : news_event
-                                                                .description,
-                                                        maxLines: 2,
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        textAlign:
-                                                            TextAlign.justify,
-                                                        style: TextStyle(
-                                                          fontSize: UBodySize,
-                                                          fontWeight:
-                                                              UBodyWeight,
-                                                          fontFamily:
-                                                              UKFontFamily,
-                                                        ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: UHeight5,
+                                          ),
+                                          Container(
+                                            padding: EdgeInsets.fromLTRB(
+                                              UPdMg_10,
+                                              UZeroPixel,
+                                              UPdMg_10,
+                                              UPdMg_10,
+                                            ),
+                                            child: Column(
+                                              children: [
+                                                Container(
+                                                  width: UFullWidth,
+                                                  alignment: Alignment.center,
+                                                  child: Text(
+                                                    news_event.title.isEmpty
+                                                        ? 'N/A'
+                                                        : news_event.title,
+                                                    textAlign:
+                                                        TextAlign.justify,
+                                                    maxLines: 1,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: TextStyle(
+                                                      fontSize: UTitleSize,
+                                                      fontWeight: UTitleWeight,
+                                                      fontFamily: UKFontFamily,
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: UHeight5,
+                                                ),
+                                                Container(
+                                                  width: double.infinity,
+                                                  child: Text(
+                                                    news_event
+                                                            .description.isEmpty
+                                                        ? 'N/A'
+                                                        : news_event
+                                                            .description,
+                                                    maxLines: 2,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    textAlign:
+                                                        TextAlign.justify,
+                                                    style: TextStyle(
+                                                      fontSize: UBodySize,
+                                                      fontWeight: UBodyWeight,
+                                                      fontFamily: UKFontFamily,
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: UHeight5,
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Flexible(
+                                                      flex: 2,
+                                                      child: Row(
+                                                        children: [
+                                                          Image.asset(
+                                                            'assets/image/Event_Date.png',
+                                                            width: UWidth15,
+                                                          ),
+                                                          SizedBox(
+                                                            width: UWidth5,
+                                                          ),
+                                                          buildEventDate(
+                                                            news_event
+                                                                    .event_date
+                                                                    .isEmpty
+                                                                ? 'N/A'
+                                                                : news_event
+                                                                    .event_date,
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
                                                     SizedBox(
-                                                      height: UHeight5,
+                                                      width: UWidth10,
                                                     ),
-                                                    Row(
-                                                      children: [
-                                                        Flexible(
-                                                          flex: 2,
-                                                          child: Row(
-                                                            children: [
-                                                              Image.asset(
-                                                                'assets/image/Event_Date.png',
-                                                                width: 14,
-                                                              ),
-                                                              SizedBox(
-                                                                width: UWidth5,
-                                                              ),
-                                                              buildEventDate(
-                                                                news_event
-                                                                        .event_date
-                                                                        .isEmpty
-                                                                    ? 'N/A'
-                                                                    : news_event
-                                                                        .event_date,
-                                                              ),
-                                                            ],
+                                                    Flexible(
+                                                      flex: 1,
+                                                      child: Row(
+                                                        children: [
+                                                          Image.asset(
+                                                            'assets/image/Event_Time.png',
+                                                            width: UWidth15,
                                                           ),
-                                                        ),
-                                                        SizedBox(
-                                                          width: UWidth10,
-                                                        ),
-                                                        Flexible(
-                                                          flex: 1,
-                                                          child: Row(
-                                                            children: [
-                                                              Image.asset(
-                                                                'assets/image/Event_Time.png',
-                                                                width: 14,
-                                                              ),
-                                                              SizedBox(
-                                                                width: UWidth5,
-                                                              ),
-                                                              buildEventDate(
-                                                                news_event.time
-                                                                        .isEmpty
-                                                                    ? 'N/A'
-                                                                    : news_event
-                                                                        .time,
-                                                              ),
-                                                            ],
+                                                          SizedBox(
+                                                            width: UWidth5,
                                                           ),
-                                                        ),
-                                                      ],
+                                                          buildEventDate(
+                                                            news_event.time
+                                                                    .isEmpty
+                                                                ? 'N/A'
+                                                                : news_event
+                                                                    .time,
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ],
                                                 ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
+                                              ],
+                                            ),
+                                          )
+                                        ],
                                       ),
-                                    );
-                                  },
-                                ).toList(),
-                              )
-                            : FutureBuilder(
-                                future: Future.delayed(
-                                  Duration(
-                                    seconds: 10,
+                                    ),
                                   ),
-                                ),
-                                builder: (BuildContext context,
-                                    AsyncSnapshot<dynamic> snapshot) {
-                                  if (snapshot.connectionState ==
-                                      ConnectionState.waiting) {
-                                    return Center(
-                                      child: CircularProgressIndicator(
-                                        color: UPrimaryColor,
-                                      ),
-                                    );
-                                  } else {
-                                    return Center(
-                                      child: Text(
-                                        'គ្មានទិន្ន័យ'.tr,
-                                      ),
-                                    );
-                                  }
-                                },
-                              )
-                      ],
-                    ),
-                  ),
+                                );
+                              },
+                            ).toList(),
+                          )
+                        : buildFutureBuild()
+                  ],
                 ),
-        ),
+              ),
       ),
     );
   }

@@ -5,14 +5,16 @@ import 'package:usea_app/theme_builder.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '../../Student_Other_Class/Class_Student_User.dart';
 import '../Class_Payment/Class_Payment.dart';
-import 'Components/Card_payment.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class Payment_UI extends StatefulWidget {
   final List<StudentUser> data_studentUser;
 
-  Payment_UI({super.key, required this.data_studentUser});
+  Payment_UI({
+    super.key,
+    required this.data_studentUser,
+  });
 
   @override
   State<Payment_UI> createState() => _Payment_UIState();
@@ -108,8 +110,11 @@ class _Payment_UIState extends State<Payment_UI> {
         var dataOtherPay = jsonDecode(responseOtherPay.body);
         if (mounted) {
           setState(() {
-            _dataOther = List<OtherPayClass>.from(dataOtherPay['pay_other_data']
-                .map((dataOtherPay) => OtherPayClass.fromJson(dataOtherPay),),);
+            _dataOther = List<OtherPayClass>.from(
+              dataOtherPay['pay_other_data'].map(
+                (dataOtherPay) => OtherPayClass.fromJson(dataOtherPay),
+              ),
+            );
 
             isLoading = false;
           });
@@ -141,28 +146,7 @@ class _Payment_UIState extends State<Payment_UI> {
         title: 'ការបង់ប្រាក់'.tr,
       ),
       body: _dataPayStudy.isEmpty
-          ? FutureBuilder(
-              future: Future.delayed(
-                Duration(
-                  seconds: 10,
-                ),
-              ),
-              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
-                    child: CircularProgressIndicator(
-                      color: UPrimaryColor,
-                    ),
-                  );
-                } else {
-                  return Center(
-                    child: Text(
-                      'គ្មានទិន្ន័យ'.tr,
-                    ),
-                  );
-                }
-              },
-            )
+          ? buildFutureBuild()
           : RefreshIndicator(
               onRefresh: _refreshData,
               color: UPrimaryColor,
@@ -172,14 +156,14 @@ class _Payment_UIState extends State<Payment_UI> {
                     'ការបង់ថ្លៃឈ្នួលសិក្សា',
                     buildStudyPayment(),
                   ),
-                  buildTitle(
-                    'ការបង់ថ្លៃឈ្នួលប្រឡងឡើងវិញ (Not Available)',
-                    PaymentCards2(),
-                  ),
-                  buildTitle(
-                    'ការបង់ថ្លៃឈ្នួលរៀនបំពេញក្រេឌីត (Not Available)',
-                    PaymentCards3(),
-                  ),
+                  // buildTitle(
+                  //   'ការបង់ថ្លៃឈ្នួលប្រឡងឡើងវិញ (Not Available)',
+                  //   PaymentCards2(),
+                  // ),
+                  // buildTitle(
+                  //   'ការបង់ថ្លៃឈ្នួលរៀនបំពេញក្រេឌីត (Not Available)',
+                  //   PaymentCards3(),
+                  // ),
                   buildTitle(
                     'ការបង់ថ្លៃឈ្នួលដកលិខិតបញ្ជាក់ការសិក្សាផ្សេងៗ',
                     buildOtherPayment(),
@@ -218,7 +202,7 @@ class _Payment_UIState extends State<Payment_UI> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     buildHeaderTitle(
-                      40,
+                      UWidth40,
                       'ឆ្នាំ',
                     ),
                     buildVerticalDividerAtt(),
@@ -285,7 +269,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                         MainAxisAlignment.spaceAround,
                                     children: [
                                       buildBody(
-                                        40,
+                                        UWidth40,
                                         payStudy.yearName.isEmpty
                                             ? 'N/A'
                                             : 'ឆ្នាំទី​ '.tr +
@@ -335,7 +319,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                               border: Border(
                                                 bottom: BorderSide(
                                                   color: URedColor,
-                                                  width: 1.0,
+                                                  width: 1,
                                                 ),
                                               ),
                                             ),
@@ -678,15 +662,15 @@ class _Payment_UIState extends State<Payment_UI> {
           Positioned(
             right: UZeroPixel,
             top: UZeroPixel,
-            height: 50,
-            width: 50,
+            height: UHeight50,
+            width: UWidth50,
             child: InkWell(
               onTap: () {
                 Navigator.of(context).pop();
               },
               child: Image.asset(
                 'assets/image/close.png',
-                scale: 10,
+                scale: UScale_10,
               ),
             ),
           ),
@@ -898,13 +882,15 @@ class _Payment_UIState extends State<Payment_UI> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.all(UPdMg_8),
+            padding: EdgeInsets.all(
+              UPdMg_8,
+            ),
             child: IntrinsicHeight(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   buildBody(
-                    40,
+                    UWidth40,
                     'N/A',
                     UTextColor,
                   ),

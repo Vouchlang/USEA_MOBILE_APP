@@ -12,11 +12,12 @@ class Program_ACCA extends StatelessWidget {
   String course_hour;
 
   List<Subject_Data> educationNames;
-  Program_ACCA(
-      {super.key,
-      required this.majorName,
-      required this.course_hour,
-      required this.educationNames});
+  Program_ACCA({
+    super.key,
+    required this.majorName,
+    required this.course_hour,
+    required this.educationNames,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +26,9 @@ class Program_ACCA extends StatelessWidget {
     educationNames.forEach((subject) {
       double weeks = double.tryParse(subject.total_hour) ?? 0.0;
       totalHour += weeks;
-      formattedTotal = totalHour
-          .toStringAsFixed(totalHour.truncateToDouble() == totalHour ? 0 : 1);
+      formattedTotal = totalHour.toStringAsFixed(
+        totalHour.truncateToDouble() == totalHour ? 0 : 1,
+      );
     });
 
     return Scaffold(
@@ -191,15 +193,17 @@ class Program_ACCA extends StatelessWidget {
                                           : subject.weeks.toString(),
                                     ),
                                   ),
-                                  SizedBox(width: UWidth15),
+                                  SizedBox(
+                                    width: UWidth15,
+                                  ),
                                   Container(
                                     padding: EdgeInsets.symmetric(
                                       vertical: UPdMg_5,
                                     ),
                                     alignment: Alignment.center,
                                     width: Get.locale?.languageCode == 'km'
-                                        ? 30
-                                        : 40,
+                                        ? UWidth30
+                                        : UWidth40,
                                     margin: EdgeInsets.only(
                                       right: UPdMg_10,
                                     ),
@@ -222,7 +226,7 @@ class Program_ACCA extends StatelessWidget {
                     padding: EdgeInsets.fromLTRB(
                       UPdMg_5,
                       UPdMg_10,
-                      20,
+                      UPdMg_20,
                       UPdMg_15,
                     ),
                     width: double.infinity,

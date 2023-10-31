@@ -148,29 +148,7 @@ class _PerformanceState extends State<Performance> {
         child: Container(
           alignment: Alignment.topCenter,
           child: performances.isEmpty
-              ? FutureBuilder(
-                  future: Future.delayed(
-                    Duration(
-                      seconds: 10,
-                    ),
-                  ),
-                  builder:
-                      (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(
-                        child: CircularProgressIndicator(
-                          color: UPrimaryColor,
-                        ),
-                      );
-                    } else {
-                      return Center(
-                        child: Text(
-                          'គ្មានទិន្ន័យ'.tr,
-                        ),
-                      );
-                    }
-                  },
-                )
+              ? buildFutureBuild()
               : RefreshIndicator(
                   onRefresh: _refreshData,
                   color: UPrimaryColor,
@@ -392,7 +370,7 @@ class _PerformanceState extends State<Performance> {
                                                                     .spaceBetween,
                                                             children: [
                                                               Container(
-                                                                width: 50,
+                                                                width: UWidth50,
                                                                 alignment:
                                                                     Alignment
                                                                         .topCenter,
@@ -442,8 +420,12 @@ class _PerformanceState extends State<Performance> {
                                                                                     width: UFullWidth,
                                                                                     decoration: BoxDecoration(
                                                                                       borderRadius: BorderRadius.only(
-                                                                                        topLeft: Radius.circular(URoundedLarge),
-                                                                                        topRight: Radius.circular(URoundedLarge),
+                                                                                        topLeft: Radius.circular(
+                                                                                          URoundedLarge,
+                                                                                        ),
+                                                                                        topRight: Radius.circular(
+                                                                                          URoundedLarge,
+                                                                                        ),
                                                                                       ),
                                                                                       color: UBGLightBlue,
                                                                                     ),
@@ -557,15 +539,15 @@ class _PerformanceState extends State<Performance> {
                                                                               Positioned(
                                                                                 right: UZeroPixel,
                                                                                 top: UZeroPixel,
-                                                                                height: 50,
-                                                                                width: 50,
+                                                                                height: UHeight50,
+                                                                                width: UWidth50,
                                                                                 child: InkWell(
                                                                                   onTap: () {
                                                                                     Navigator.of(context).pop();
                                                                                   },
                                                                                   child: Image.asset(
                                                                                     'assets/image/close.png',
-                                                                                    scale: 10,
+                                                                                    scale: UScale_10,
                                                                                   ),
                                                                                 ),
                                                                               ),
@@ -841,15 +823,15 @@ class _PerformanceState extends State<Performance> {
                                                                                 Positioned(
                                                                                   right: UZeroPixel,
                                                                                   top: UZeroPixel,
-                                                                                  height: 50,
-                                                                                  width: 50,
+                                                                                  height: UHeight50,
+                                                                                  width: UWidth50,
                                                                                   child: InkWell(
                                                                                     onTap: () {
                                                                                       Navigator.of(context).pop();
                                                                                     },
                                                                                     child: Image.asset(
                                                                                       'assets/image/close.png',
-                                                                                      scale: 10,
+                                                                                      scale: UScale_10,
                                                                                     ),
                                                                                   ),
                                                                                 ),
@@ -1012,30 +994,7 @@ class _PerformanceState extends State<Performance> {
                                   );
                                 }).toList(),
                               )
-                            : FutureBuilder(
-                                future: Future.delayed(
-                                  Duration(
-                                    seconds: 10,
-                                  ),
-                                ),
-                                builder: (BuildContext context,
-                                    AsyncSnapshot<dynamic> snapshot) {
-                                  if (snapshot.connectionState ==
-                                      ConnectionState.waiting) {
-                                    return Center(
-                                      child: CircularProgressIndicator(
-                                        color: UPrimaryColor,
-                                      ),
-                                    );
-                                  } else {
-                                    return Center(
-                                      child: Text(
-                                        'គ្មានទិន្ន័យ'.tr,
-                                      ),
-                                    );
-                                  }
-                                },
-                              )
+                            : buildFutureBuild()
                       ],
                     ),
                   ),

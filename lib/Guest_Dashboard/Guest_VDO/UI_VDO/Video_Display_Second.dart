@@ -100,7 +100,7 @@ class _Video_DisplayState extends State<Video_Display> {
               color: UBackgroundColor,
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(
-                  UPdMg_10,
+                  URoundedLarge,
                 ),
               ),
               boxShadow: [
@@ -123,7 +123,9 @@ class _Video_DisplayState extends State<Video_Display> {
               UTitleWeight,
             ),
           ),
-          SizedBox(height: UHeight5),
+          SizedBox(
+            height: UHeight5,
+          ),
           Container(
             padding: EdgeInsets.all(
               UPdMg_10,

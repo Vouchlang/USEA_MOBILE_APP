@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
 import '../../../Custom_AppBar.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
@@ -83,21 +82,7 @@ class _RegistrationState extends State<Registration> {
         title: 'ការចុះឈ្មោះ'.tr,
       ),
       body: educationDataList.isEmpty
-          ? Center(
-              child: FutureBuilder<void>(
-                future: Future.delayed(
-                  Duration(
-                    seconds: 10,
-                  ),
-                ),
-                builder: (context, snapshot) =>
-                    snapshot.connectionState == ConnectionState.done
-                        ? Text('គ្មានទិន្ន័យ'.tr)
-                        : CircularProgressIndicator(
-                            color: UPrimaryColor,
-                          ),
-              ),
-            )
+          ? buildFutureBuild()
           : ListView.builder(
               padding: EdgeInsets.all(
                 UPdMg_10,
@@ -161,10 +146,11 @@ class _RegistrationState extends State<Registration> {
                                         margin: EdgeInsets.only(
                                           top: 1,
                                         ),
-                                        width: 20,
-                                        height: 20,
+                                        width: UWidth20,
+                                        height: UHeight20,
                                         child: Image.asset(
-                                            'assets/image/date_time.png'),
+                                          'assets/image/date_time.png',
+                                        ),
                                       ),
                                       SizedBox(
                                         width: UWidth5,
@@ -199,10 +185,11 @@ class _RegistrationState extends State<Registration> {
                                               CrossAxisAlignment.center,
                                           children: [
                                             Container(
-                                              width: 20,
-                                              height: 20,
+                                              width: UWidth20,
+                                              height: UHeight20,
                                               margin: EdgeInsets.only(
-                                                  left: UPdMg_5),
+                                                left: UPdMg_5,
+                                              ),
                                               child: Image.asset(
                                                 'assets/image/detail.png',
                                                 scale: 15,
@@ -273,8 +260,8 @@ class _RegistrationState extends State<Registration> {
                                         margin: EdgeInsets.only(
                                           top: 1,
                                         ),
-                                        width: 20,
-                                        height: 20,
+                                        width: UWidth20,
+                                        height: UHeight20,
                                         child: Image.asset(
                                           'assets/image/date_time.png',
                                         ),

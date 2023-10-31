@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:usea_app/Student_Dashboard/Student_Attendance/UI_Attendance/Attendance_Detail.dart';
 import 'dart:convert';
 import '../../../Custom_AppBar.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
 import '../../Student_Other_Class/Class_Student_User.dart';
 import '../Class_Attendance/Class_Attendance.dart';
+import 'Attendance_Detail.dart';
 
 class AttendanceList extends StatefulWidget {
   final List<StudentUser> data_studentUser;
@@ -135,28 +135,7 @@ class _AttendanceListState extends State<AttendanceList> {
         title: 'វត្តមាន'.tr,
       ),
       body: attendances.isEmpty
-          ? FutureBuilder(
-              future: Future.delayed(
-                Duration(
-                  seconds: 10,
-                ),
-              ),
-              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
-                    child: CircularProgressIndicator(
-                      color: UPrimaryColor,
-                    ),
-                  );
-                } else {
-                  return Center(
-                    child: Text(
-                      'គ្មានទិន្ន័យ'.tr,
-                    ),
-                  );
-                }
-              },
-            )
+          ? buildFutureBuild()
           : RefreshIndicator(
               onRefresh: _refreshData,
               color: UPrimaryColor,
@@ -231,7 +210,9 @@ class _AttendanceListState extends State<AttendanceList> {
                             );
                           }),
                     ),
-                    SizedBox(height: UHeight5),
+                    SizedBox(
+                      height: UHeight5,
+                    ),
                     Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: UPdMg_10,

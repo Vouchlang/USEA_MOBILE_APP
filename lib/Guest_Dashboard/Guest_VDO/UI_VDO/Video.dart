@@ -76,21 +76,7 @@ class _VideoState extends State<Video_UI> {
         title: 'វីដេអូ'.tr,
       ),
       body: vdo.isEmpty
-          ? Center(
-              child: FutureBuilder<void>(
-                future: Future.delayed(
-                  Duration(
-                    seconds: 10,
-                  ),
-                ),
-                builder: (context, snapshot) =>
-                    snapshot.connectionState == ConnectionState.done
-                        ? Text('គ្មានទិន្ន័យ'.tr)
-                        : CircularProgressIndicator(
-                            color: UPrimaryColor,
-                          ),
-              ),
-            )
+          ? buildFutureBuild()
           : SingleChildScrollView(
               padding: EdgeInsets.all(
                 UPdMg_10,

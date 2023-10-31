@@ -5,6 +5,7 @@ import 'package:usea_app/Guest_Dashboard/Guest_AboutUS/UI_AboutUS/President_Mess
 import 'package:usea_app/Guest_Dashboard/Guest_AboutUS/UI_AboutUS/Recognition.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_AboutUS/UI_AboutUS/Stucture.dart';
 import 'package:usea_app/Guest_Dashboard/Guest_AboutUS/UI_AboutUS/Vision.dart';
+import '../../../Custom_Widget/CustomText.dart';
 import '../Class_AboutUS/Class_AboutUS.dart';
 import '/theme_builder.dart';
 import '/Custom_AppBar.dart';
@@ -40,44 +41,29 @@ class AboutUS extends StatelessWidget {
               child: InkWell(
                 onTap: () {
                   if (index.isEqual(0)) {
-                    Get.to(
-                      () => History(),
-                      transition: Transition.rightToLeftWithFade,
-                      duration: Duration(
-                        milliseconds: 100,
-                      ),
+                    pushWithTransition(
+                      context,
+                      History(),
                     );
                   } else if (index.isEqual(1)) {
-                    Get.to(
-                      () => Structure(),
-                      transition: Transition.rightToLeftWithFade,
-                      duration: Duration(
-                        milliseconds: 100,
-                      ),
+                    pushWithTransition(
+                      context,
+                      Structure(),
                     );
                   } else if (index.isEqual(2)) {
-                    Get.to(
-                      () => President(),
-                      transition: Transition.rightToLeftWithFade,
-                      duration: Duration(
-                        milliseconds: 100,
-                      ),
+                    pushWithTransition(
+                      context,
+                      President(),
                     );
                   } else if (index.isEqual(3)) {
-                    Get.to(
-                      () => Vision(),
-                      transition: Transition.rightToLeftWithFade,
-                      duration: Duration(
-                        milliseconds: 100,
-                      ),
+                    pushWithTransition(
+                      context,
+                      Vision(),
                     );
                   } else if (index.isEqual(4)) {
-                    Get.to(
-                      () => Recognition(),
-                      transition: Transition.rightToLeftWithFade,
-                      duration: Duration(
-                        milliseconds: 100,
-                      ),
+                    pushWithTransition(
+                      context,
+                      Recognition(),
                     );
                   }
                 },
@@ -94,7 +80,7 @@ class AboutUS extends StatelessWidget {
                           children: [
                             Image.asset(
                               about_US[index].img,
-                              scale: 6,
+                              scale: UScale_6,
                             ),
                             SizedBox(
                               width: UWidth10,
@@ -115,9 +101,9 @@ class AboutUS extends StatelessWidget {
                       Container(
                         child: Image.asset(
                           'assets/image/Right_Arrow.png',
-                          scale: 15,
+                          scale: UScale_15,
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),

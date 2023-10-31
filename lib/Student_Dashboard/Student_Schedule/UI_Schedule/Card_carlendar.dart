@@ -54,7 +54,7 @@ class _CardCalendarState extends State<CardCalendar> {
                     color: UPrimaryColor,
                   ),
                   todayDecoration: BoxDecoration(
-                    color: Color.fromARGB(0, 255, 255, 255),
+                    color: UTransParentColor,
                   ),
                   selectedTextStyle: TextStyle(
                     fontWeight: UTitleWeight,
@@ -67,7 +67,7 @@ class _CardCalendarState extends State<CardCalendar> {
                 ),
                 headerStyle: HeaderStyle(
                   headerPadding: EdgeInsets.symmetric(
-                    horizontal: 20.0,
+                    horizontal: UWidth20,
                     vertical: UPdMg_10,
                   ),
                   titleTextStyle: TextStyle(
@@ -106,7 +106,7 @@ class _CardCalendarState extends State<CardCalendar> {
                       decoration: BoxDecoration(
                         color: isSameDay(date, today)
                             ? UPrimaryColor
-                            : Colors.transparent,
+                            : UTransParentColor,
                       ),
                       child: Text(
                         '${date.day}',

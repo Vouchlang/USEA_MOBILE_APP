@@ -17,7 +17,9 @@ class _Splash_ScreenState extends State<Splash_Screen> {
     super.initState();
 
     Future.delayed(
-      Duration(seconds: 3),
+      Duration(
+        seconds: 3,
+      ),
     ).then(
       (value) {
         Get.off(() => Home());
@@ -46,18 +48,20 @@ class _Splash_ScreenState extends State<Splash_Screen> {
             Text(
               'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
               style: TextStyle(
-                  fontSize: 15,
-                  fontFamily: 'KhmerOSmuol',
-                  color: UPrimaryColor,),
+                fontSize: 15,
+                fontFamily: 'KhmerOSmuol',
+                color: UPrimaryColor,
+              ),
             ),
             Text(
               'UNIVERSITY OF SOUTH-EAST ASIA',
               textAlign: TextAlign.justify,
               style: TextStyle(
-                  fontSize: 17.5,
-                  color: UPrimaryColor,
-                  fontWeight: UBodyWeight,
-                  fontFamily: UEFontFamily,),
+                fontSize: 17.5,
+                color: UPrimaryColor,
+                fontWeight: UBodyWeight,
+                fontFamily: UEFontFamily,
+              ),
             ),
             SizedBox(
               height: UHeight5,

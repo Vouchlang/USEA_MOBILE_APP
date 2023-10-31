@@ -140,29 +140,7 @@ class _ScheduleState extends State<Schedule> {
               ),
             ),
             selectedDateSchedule.isEmpty
-                ? FutureBuilder(
-                    future: Future.delayed(
-                      Duration(
-                        seconds: 3,
-                      ),
-                    ),
-                    builder: (BuildContext context,
-                        AsyncSnapshot<dynamic> snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Center(
-                          child: CircularProgressIndicator(
-                            color: UPrimaryColor,
-                          ),
-                        );
-                      } else {
-                        return Center(
-                          child: Text(
-                            'គ្មានទិន្ន័យ'.tr,
-                          ),
-                        );
-                      }
-                    },
-                  )
+                ? buildFutureBuild()
                 : ListView.builder(
                     physics: ScrollPhysics(),
                     shrinkWrap: true,
@@ -193,7 +171,7 @@ class _ScheduleState extends State<Schedule> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Container(
-                                        width: 40,
+                                        width: UWidth40,
                                         child: Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
@@ -213,7 +191,7 @@ class _ScheduleState extends State<Schedule> {
                                       VerticalDivider(
                                         thickness: 0.5,
                                         color: UGreyColor,
-                                        width: 30,
+                                        width: UWidth30,
                                       ),
                                       Expanded(
                                         child: Column(

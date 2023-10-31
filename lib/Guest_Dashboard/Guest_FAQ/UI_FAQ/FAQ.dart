@@ -20,9 +20,13 @@ class _FAQState extends State<FAQ> {
 
   Future<void> getData() async {
     try {
-      var res = await http.get(Uri.parse(Get.locale?.languageCode == 'km'
-          ? APIUrlGuest + "api/webapi.php?action=faq"
-          : APIUrlGuest + "api/webapi.php?action=faq_en"));
+      var res = await http.get(
+        Uri.parse(
+          Get.locale?.languageCode == 'km'
+              ? APIUrlGuest + "api/webapi.php?action=faq"
+              : APIUrlGuest + "api/webapi.php?action=faq_en",
+        ),
+      );
       var r = json.decode(res.body);
       if (r is List<dynamic>) {
         faq = r.map((e) => Class_FAQ.fromJson(e)).toList();
@@ -55,20 +59,12 @@ class _FAQState extends State<FAQ> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: 'FAQ'),
+      appBar: Custom_AppBar(
+        title: 'FAQ',
+      ),
       body: Center(
         child: faq.isEmpty
-            ? Center(
-                child: FutureBuilder<void>(
-                  future: Future.delayed(Duration(seconds: 10)),
-                  builder: (context, snapshot) =>
-                      snapshot.connectionState == ConnectionState.done
-                          ? Text('គ្មានទិន្ន័យ'.tr)
-                          : CircularProgressIndicator(
-                              color: UPrimaryColor,
-                            ),
-                ),
-              )
+            ? buildFutureBuild()
             : Container(
                 margin: EdgeInsets.symmetric(horizontal: UPdMg_10),
                 width: double.infinity,
@@ -78,34 +74,45 @@ class _FAQState extends State<FAQ> {
                     final isLastIndex = index == faq.length - 1;
                     return Card(
                       margin: isLastIndex
-                          ? EdgeInsets.symmetric(vertical: UPdMg_10)
-                          : EdgeInsets.only(top: UPdMg_10),
+                          ? EdgeInsets.symmetric(
+                              vertical: UPdMg_10,
+                            )
+                          : EdgeInsets.only(
+                              top: UPdMg_10,
+                            ),
                       elevation: 2,
                       shadowColor: ULightGreyColor,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(URoundedLarge),
+                        borderRadius: BorderRadius.circular(
+                          URoundedLarge,
+                        ),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: UPdMg_10),
+                        padding: EdgeInsets.symmetric(
+                          vertical: UPdMg_10,
+                        ),
                         child: Column(
                           children: [
                             Theme(
-                              data: Theme.of(context)
-                                  .copyWith(dividerColor: Colors.transparent),
+                              data: Theme.of(context).copyWith(
+                                dividerColor: UTransParentColor,
+                              ),
                               child: ExpansionTile(
                                 collapsedIconColor: UPrimaryColor,
                                 iconColor: UPrimaryColor,
                                 title: buildFAQ(
-                                    faq[index].question, TextAlign.left),
+                                  faq[index].question,
+                                  TextAlign.left,
+                                ),
                                 textColor: UTextColor,
                                 children: [
                                   Divider(),
                                   Container(
                                     alignment: Alignment.centerLeft,
-
                                     decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.circular(URoundedLarge),
+                                      borderRadius: BorderRadius.circular(
+                                        URoundedLarge,
+                                      ),
                                     ),
                                     padding: EdgeInsets.fromLTRB(
                                       UPdMg_15,

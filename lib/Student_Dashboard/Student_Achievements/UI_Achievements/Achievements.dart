@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../../../Custom_AppBar.dart';
+import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
 import '../../Student_Other_Class/Class_Student_User.dart';
 import '../Class_Achievements/Class_Achievements.dart';
@@ -43,7 +44,8 @@ class _AchievementsState extends State<Achievements> {
     try {
       var response = await http.post(
         Uri.parse(
-            'http://192.168.2.194/hosting_api/Test_student/st_achievement_testing.php'),
+          'http://192.168.2.194/hosting_api/Test_student/st_achievement_testing.php',
+        ),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
@@ -86,28 +88,7 @@ class _AchievementsState extends State<Achievements> {
       ),
       body: (_achievementData == null ||
               _achievementData!.achievementData.isEmpty)
-          ? FutureBuilder(
-              future: Future.delayed(
-                Duration(
-                  seconds: 10,
-                ),
-              ),
-              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
-                    child: CircularProgressIndicator(
-                      color: UPrimaryColor,
-                    ),
-                  );
-                } else {
-                  return Center(
-                    child: Text(
-                      'គ្មានទិន្ន័យ'.tr,
-                    ),
-                  );
-                }
-              },
-            )
+          ? buildFutureBuild()
           : RefreshIndicator(
               onRefresh: _refreshData,
               color: UPrimaryColor,
@@ -131,7 +112,7 @@ class _AchievementsState extends State<Achievements> {
                         return _achievementData!.achievementData.isEmpty
                             ? Center(
                                 child: Text(
-                                  'No Data',
+                                  'គ្មានទិន្ន័យ'.tr,
                                 ),
                               )
                             : Column(
@@ -164,7 +145,8 @@ class _AchievementsState extends State<Achievements> {
                                             ? UPrimaryColor
                                             : UBackgroundColor,
                                         borderRadius: BorderRadius.circular(
-                                            URoundedMedium),
+                                          URoundedMedium,
+                                        ),
                                         boxShadow: [
                                           BoxShadow(
                                             blurRadius: 1,

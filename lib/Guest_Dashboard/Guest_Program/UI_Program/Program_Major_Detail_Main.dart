@@ -248,7 +248,7 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                                               height: UHeight5,
                                             ),
                                             Container(
-                                              height: 50,
+                                              height: UHeight50,
                                               padding: EdgeInsets.all(
                                                 UPdMg_5,
                                               ),

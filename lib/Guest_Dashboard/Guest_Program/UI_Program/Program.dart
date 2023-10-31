@@ -210,7 +210,7 @@ class _ProgramState extends State<Program> {
           'កម្មវិធីសិក្សា'.tr,
           style: TextStyle(
             color: UPrimaryColor,
-            fontSize: 18,
+            fontSize: UFontSize18,
             fontWeight: UTitleWeight,
           ),
         ),
@@ -246,25 +246,7 @@ class _ProgramState extends State<Program> {
         ],
       ),
       body: (programData == null || programData.isEmpty) && programACCA.isEmpty
-          ? Center(
-              child: Center(
-                child: FutureBuilder<void>(
-                  future: Future.delayed(
-                    Duration(
-                      seconds: 10,
-                    ),
-                  ),
-                  builder: (context, snapshot) =>
-                      snapshot.connectionState == ConnectionState.done
-                          ? Text(
-                              'គ្មានទិន្ន័យ'.tr,
-                            )
-                          : CircularProgressIndicator(
-                              color: UPrimaryColor,
-                            ),
-                ),
-              ),
-            )
+          ? buildFutureBuild()
           : SingleChildScrollView(
               child: Column(
                 children: [
@@ -310,7 +292,7 @@ class _ProgramState extends State<Program> {
                                 ),
                                 child: Theme(
                                   data: Theme.of(context).copyWith(
-                                    dividerColor: Colors.transparent,
+                                    dividerColor: UTransParentColor,
                                   ),
                                   child: ExpansionTile(
                                     collapsedIconColor: UPrimaryColor,
@@ -455,7 +437,7 @@ class _ProgramState extends State<Program> {
                                 ),
                                 child: Theme(
                                   data: Theme.of(context).copyWith(
-                                    dividerColor: Colors.transparent,
+                                    dividerColor: UTransParentColor,
                                   ),
                                   child: ExpansionTile(
                                     collapsedIconColor: UPrimaryColor,
@@ -468,7 +450,7 @@ class _ProgramState extends State<Program> {
                                       children: [
                                         Image.network(
                                           fac_icon,
-                                          scale: 6,
+                                          scale: UScale_6,
                                           errorBuilder:
                                               (context, error, stackTrace) {
                                             return Icon(
@@ -476,8 +458,12 @@ class _ProgramState extends State<Program> {
                                             );
                                           },
                                         ),
-                                        SizedBox(width: UWidth10),
-                                        Text(program.fac_name),
+                                        SizedBox(
+                                          width: UWidth10,
+                                        ),
+                                        Text(
+                                          program.fac_name,
+                                        ),
                                       ],
                                     ),
                                     children: program.fac_data.map((major) {
@@ -662,7 +648,7 @@ class MajorSearchDelegate extends SearchDelegate<String> {
             title,
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 18,
+              fontSize: UFontSize18,
               color: UPrimaryColor,
             ),
           ),
@@ -792,7 +778,7 @@ class MajorSearchDelegate extends SearchDelegate<String> {
         ),
         filled: true,
         hintStyle: TextStyle(
-          fontSize: 18,
+          fontSize: UFontSize18,
         ),
       ),
     );

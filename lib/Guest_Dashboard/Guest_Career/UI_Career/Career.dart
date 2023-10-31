@@ -65,34 +65,18 @@ class _CareerState extends State<Career> {
       ),
       body: Center(
         child: career.isEmpty
-            ? Center(
-                child: FutureBuilder<void>(
-                  future: Future.delayed(
-                    Duration(
-                      seconds: 10,
-                    ),
-                  ),
-                  builder: (context, snapshot) =>
-                      snapshot.connectionState == ConnectionState.done
-                          ? Text(
-                              'គ្មានទិន្ន័យ'.tr,
-                            )
-                          : CircularProgressIndicator(
-                              color: UPrimaryColor,
-                            ),
-                ),
-              )
+            ? buildFutureBuild()
             : ListView.builder(
                 padding: EdgeInsets.symmetric(
                   vertical: UPdMg_10,
-                  horizontal: 20,
+                  horizontal: UPdMg_20,
                 ),
                 itemCount: career.length,
                 itemBuilder: (context, index) {
                   final isFinalIndex = index == career.length - 1;
                   return Padding(
                     padding: EdgeInsets.only(
-                      bottom: isFinalIndex ? UPdMg_10 : 0,
+                      bottom: isFinalIndex ? UPdMg_10 : UZeroPixel,
                     ),
                     child: Container(
                       padding: EdgeInsets.only(
@@ -128,7 +112,7 @@ class _CareerState extends State<Career> {
                                         ),
                                 ),
                                 SizedBox(
-                                  width: 15,
+                                  width: UWidth15,
                                 ),
                                 Expanded(
                                   child: Column(
@@ -180,12 +164,12 @@ class _CareerState extends State<Career> {
                               ],
                             ),
                             SizedBox(
-                              height: 5,
+                              height: UHeight5,
                             ),
                             if (!isFinalIndex)
                               Divider(
                                 thickness: 0.5,
-                                height: 25,
+                                height: UHeight25,
                                 color: UGreyColor,
                               ),
                           ],

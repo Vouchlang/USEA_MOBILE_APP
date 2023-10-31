@@ -50,12 +50,12 @@ class PaymentCards2 extends StatelessWidget {
                         ),
                         buildVerticalDividerW_2(),
                         buildHeaderTitle(
-                          45,
+                          UWidth45,
                           'ទឹកប្រាក់ត្រូវបង់',
                         ),
                         buildVerticalDividerW_2(),
                         buildHeaderTitle(
-                          45,
+                          UWidth45,
                           'ទឹកប្រាក់បានបង់',
                         ),
                         buildVerticalDividerW_2(),
@@ -79,7 +79,7 @@ class PaymentCards2 extends StatelessWidget {
 
                     return Padding(
                       padding: EdgeInsets.only(
-                        bottom: isLastIndex ? 5 : UZeroPixel,
+                        bottom: isLastIndex ? UPdMg_5 : UZeroPixel,
                       ),
                       child: IntrinsicHeight(
                         child: Column(
@@ -110,19 +110,19 @@ class PaymentCards2 extends StatelessWidget {
                                     ),
                                     buildVerticalDividerW_2(),
                                     buildBody(
-                                      45,
+                                      UWidth45,
                                       paymentData2[index].amountToPaid2,
                                       UTextColor,
                                     ),
                                     buildVerticalDividerW_2(),
                                     buildBody(
-                                      45,
+                                      UWidth45,
                                       paymentData2[index].amountPaid2,
                                       UTextColor,
                                     ),
                                     buildVerticalDividerW_2(),
                                     buildBody(
-                                      50,
+                                      UWidth50,
                                       paymentData2[index].balance2,
                                       URedColor,
                                     ),
@@ -191,17 +191,17 @@ class PaymentCards3 extends StatelessWidget {
                         ),
                         buildVerticalDividerW_5(),
                         buildHeaderTitle(
-                          45,
+                          UWidth45,
                           'ទឹកប្រាក់ត្រូវបង់',
                         ),
                         buildVerticalDividerW_5(),
                         buildHeaderTitle(
-                          45,
+                          UWidth45,
                           'ទឹកប្រាក់បានបង់',
                         ),
                         buildVerticalDividerW_5(),
                         buildHeaderTitle(
-                          50,
+                          UWidth50,
                           'ទឹកប្រាក់នៅសល់',
                         ),
                       ],
@@ -220,7 +220,7 @@ class PaymentCards3 extends StatelessWidget {
 
                     return Padding(
                       padding: EdgeInsets.only(
-                        bottom: isLastIndex ? 5 : UZeroPixel,
+                        bottom: isLastIndex ? UPdMg_5 : UZeroPixel,
                       ),
                       child: IntrinsicHeight(
                         child: Column(
@@ -230,7 +230,9 @@ class PaymentCards3 extends StatelessWidget {
                             IntrinsicHeight(
                               child: Container(
                                 alignment: Alignment.center,
-                                padding: EdgeInsets.all(UPdMg_5),
+                                padding: EdgeInsets.all(
+                                  UPdMg_5,
+                                ),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
@@ -249,19 +251,19 @@ class PaymentCards3 extends StatelessWidget {
                                     ),
                                     buildVerticalDividerW_2(),
                                     buildBody(
-                                      45,
+                                      UWidth45,
                                       paymentData3[index].amountToPaid3,
                                       UTextColor,
                                     ),
                                     buildVerticalDividerW_2(),
                                     buildBody(
-                                      45,
+                                      UWidth45,
                                       paymentData3[index].amountPaid3,
                                       UTextColor,
                                     ),
                                     buildVerticalDividerW_2(),
                                     buildBody(
-                                      50,
+                                      UWidth50,
                                       paymentData3[index].balance3,
                                       URedColor,
                                     ),

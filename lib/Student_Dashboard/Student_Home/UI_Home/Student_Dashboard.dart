@@ -6,15 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_Home/Class_Home/Class_Home_Screen.dart';
-import 'package:usea_app/Student_Dashboard/Student_Attendance/UI_Attendance/Attendance.dart';
-import 'package:usea_app/Student_Dashboard/Student_Detail/UI_Detail/St_Detail.dart';
-import 'package:usea_app/Student_Dashboard/Student_JobHistory/UI_JobHistory/St_JobHistory.dart';
-import 'package:usea_app/Student_Dashboard/Student_Other_Class/Class_Feedback.dart';
+import '../../../Guest_Dashboard/Guest_Home/Class_Home/Class_Home_Screen.dart';
+import '../../Student_Attendance/UI_Attendance/Attendance.dart';
+import '../../Student_Detail/UI_Detail/St_Detail.dart';
+import '../../Student_JobHistory/UI_JobHistory/St_JobHistory.dart';
 import 'package:usea_app/theme_builder.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '../../Student_Achievements/UI_Achievements/Achievements.dart';
 import '../../Student_Detail/Class_Detail/Class_St_Detail.dart';
+import '../../Student_Other_Class/Class_Feedback.dart';
 import '../../Student_Other_Class/Class_Student_User.dart';
 import '../../Student_Other_Class/Class_Survey_Status.dart';
 import '../../Student_Payment/UI_Payment/Payment.dart';
@@ -276,28 +276,7 @@ class _Student_HomeState extends State<Student_Home> {
         elevation: 1,
       ),
       body: _dataStDetail.isEmpty
-          ? FutureBuilder(
-              future: Future.delayed(
-                Duration(
-                  seconds: 10,
-                ),
-              ),
-              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
-                    child: CircularProgressIndicator(
-                      color: UPrimaryColor,
-                    ),
-                  );
-                } else {
-                  return Center(
-                    child: Text(
-                      'គ្មានទិន្ន័យ'.tr,
-                    ),
-                  );
-                }
-              },
-            )
+          ? buildFutureBuild()
           : RefreshIndicator(
               onRefresh: _refreshData,
               color: UPrimaryColor,
@@ -328,21 +307,23 @@ class _Student_HomeState extends State<Student_Home> {
                                 return Dialog(
                                   elevation: 3,
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(
-                                    URoundedLarge,
-                                  )),
+                                    borderRadius: BorderRadius.circular(
+                                      URoundedLarge,
+                                    ),
+                                  ),
                                   child: Container(
                                     margin: EdgeInsets.all(
-                                      7,
+                                      UPdMg_7,
                                     ),
                                     padding: EdgeInsets.all(
                                       UPdMg_10,
                                     ),
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(
-                                          20,
-                                        ),
-                                        color: UBackgroundColor),
+                                      borderRadius: BorderRadius.circular(
+                                        20,
+                                      ),
+                                      color: UBackgroundColor,
+                                    ),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
@@ -422,7 +403,7 @@ class _Student_HomeState extends State<Student_Home> {
                                                       _dataSurvey.length - 1)
                                                     VerticalDivider(
                                                       width: UWidth10,
-                                                      color: Colors.transparent,
+                                                      color: UTransParentColor,
                                                       thickness: 0,
                                                     ),
                                                 ],
@@ -512,7 +493,7 @@ class _Student_HomeState extends State<Student_Home> {
                       children: [
                         CircularPercentIndicator(
                           radius: 90.0,
-                          lineWidth: 15.0,
+                          lineWidth: UWidth15,
                           percent: percentIndicator,
                           progressColor: UPrimaryColor,
                           animateFromLastPercent: true,
@@ -591,7 +572,7 @@ class _Student_HomeState extends State<Student_Home> {
                     crossAxisSpacing: 3,
                     childAspectRatio: 1.90,
                     padding: EdgeInsets.symmetric(
-                      horizontal: 7,
+                      horizontal: UPdMg_7,
                     ),
                     children: List.generate(
                       st_home_screen.length,
@@ -614,23 +595,24 @@ class _Student_HomeState extends State<Student_Home> {
                                         return Dialog(
                                           elevation: 3,
                                           shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                            10,
-                                          )),
+                                            borderRadius: BorderRadius.circular(
+                                              URoundedLarge,
+                                            ),
+                                          ),
                                           child: Container(
                                             margin: EdgeInsets.all(
-                                              7,
+                                              UPdMg_7,
                                             ),
                                             padding: EdgeInsets.all(
                                               UPdMg_10,
                                             ),
                                             decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                  20,
-                                                ),
-                                                color: UBackgroundColor),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                20,
+                                              ),
+                                              color: UBackgroundColor,
+                                            ),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
@@ -656,7 +638,7 @@ class _Student_HomeState extends State<Student_Home> {
                                                   height: UHeight5,
                                                 ),
                                                 Container(
-                                                  height: 50,
+                                                  height: UHeight50,
                                                   padding: EdgeInsets.all(
                                                     UPdMg_5,
                                                   ),
@@ -772,10 +754,10 @@ class _Student_HomeState extends State<Student_Home> {
                               children: [
                                 Image.asset(
                                   st_home_screen[index].img,
-                                  scale: 6,
+                                  scale: UScale_6,
                                 ),
                                 SizedBox(
-                                  height: 7,
+                                  height: UHeight7,
                                 ),
                                 Text(
                                   st_home_screen[index].name.tr,
@@ -791,7 +773,7 @@ class _Student_HomeState extends State<Student_Home> {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: UHeight20,
                   ),
                 ],
               ),

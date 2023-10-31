@@ -125,28 +125,7 @@ class _Study_InfoState extends State<Study_Info> {
         title: 'ព័ត៌មានការសិក្សា'.tr,
       ),
       body: _dataStudyInfo.isEmpty && _dataStudyInfoAssignment.isEmpty
-          ? FutureBuilder(
-              future: Future.delayed(
-                Duration(
-                  seconds: 10,
-                ),
-              ),
-              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
-                    child: CircularProgressIndicator(
-                      color: UPrimaryColor,
-                    ),
-                  );
-                } else {
-                  return Center(
-                    child: Text(
-                      'គ្មានទិន្ន័យ'.tr,
-                    ),
-                  );
-                }
-              },
-            )
+          ? buildFutureBuild()
           : RefreshIndicator(
               onRefresh: _refreshData,
               color: UPrimaryColor,
@@ -208,7 +187,7 @@ class _Study_InfoState extends State<Study_Info> {
                               child: Row(
                                 children: [
                                   Container(
-                                    width: 50,
+                                    width: UWidth50,
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
@@ -320,7 +299,9 @@ class _Study_InfoState extends State<Study_Info> {
                                   UPdMg_5,
                                   UPdMg_10,
                                 )
-                              : EdgeInsets.all(UPdMg_5),
+                              : EdgeInsets.all(
+                                  UPdMg_5,
+                                ),
                           child: Padding(
                             padding: EdgeInsets.all(
                               UPdMg_10,

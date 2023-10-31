@@ -73,7 +73,7 @@
 //   Widget build(BuildContext context) {
 //     return Scaffold(
 //       backgroundColor: Theme.of(context).secondaryHeaderColor,
-//       appBar: Custom_AppBar(title: 'វីដេអូ'.tr),
+//       appBar: Custom_AppBar(title: 'វីដេអូ'.tr,),
 //       body: ListView(
 //         children: [
 //           YoutubePlayer(

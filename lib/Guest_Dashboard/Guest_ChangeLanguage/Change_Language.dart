@@ -69,12 +69,18 @@ class ChangeLanguage extends StatelessWidget {
 
     return Dialog(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(
+          URoundedLarge,
+        ),
       ),
       elevation: 3,
       child: Container(
-        margin: EdgeInsets.all(7),
-        padding: EdgeInsets.all(10),
+        margin: EdgeInsets.all(
+          UPdMg_7,
+        ),
+        padding: EdgeInsets.all(
+          UPdMg_10,
+        ),
         decoration: BoxDecoration(
           color: UBackgroundColor,
         ),
@@ -88,17 +94,21 @@ class ChangeLanguage extends StatelessWidget {
                 fontWeight: UTitleWeight,
               ),
             ),
-            SizedBox(height: 5),
+            SizedBox(
+              height: UHeight5,
+            ),
             Text(
               'សូមជ្រើសរើសភាសា'.tr,
               style: TextStyle(
                 fontSize: UBodySize,
               ),
             ),
-            SizedBox(height: 5),
+            SizedBox(
+              height: UHeight5,
+            ),
             Container(
               height: 70,
-              padding: EdgeInsets.all(5),
+              padding: EdgeInsets.all(UPdMg_5),
               alignment: Alignment.center,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
@@ -118,7 +128,9 @@ class ChangeLanguage extends StatelessWidget {
                             locale[index]['logo'],
                             scale: 4.5,
                           ),
-                          SizedBox(height: 5),
+                          SizedBox(
+                            height: UHeight5,
+                          ),
                           Text(
                             locale[index]['name'].toString().tr,
                             style: TextStyle(
@@ -138,7 +150,7 @@ class ChangeLanguage extends StatelessWidget {
                 },
                 separatorBuilder: (context, index) {
                   return VerticalDivider(
-                    width: 40,
+                    width: UWidth40,
                     thickness: 0.5,
                     color: UGreyColor,
                   );

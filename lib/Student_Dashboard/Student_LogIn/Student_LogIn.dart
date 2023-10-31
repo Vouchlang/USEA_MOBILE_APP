@@ -85,7 +85,7 @@ class _Student_LogInState extends State<Student_LogIn> {
               child: Container(
                 height: 175,
                 margin: EdgeInsets.all(
-                  7,
+                  UPdMg_7,
                 ),
                 padding: EdgeInsets.symmetric(
                   horizontal: UPdMg_10,
@@ -119,7 +119,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: UHeight20,
                     ),
                     Divider(),
                     InkWell(
@@ -146,7 +146,6 @@ class _Student_LogInState extends State<Student_LogIn> {
         );
       }
     } catch (e) {
-      // Handle exceptions here
       print('An error occurred: $e');
       if (mounted) {
         showDialog(
@@ -191,7 +190,9 @@ class _Student_LogInState extends State<Student_LogIn> {
                         fontFamily: UEFontFamily,
                       ),
                     ),
-                    SizedBox(height: 20.0),
+                    SizedBox(
+                      height: UHeight20,
+                    ),
                     Divider(),
                     InkWell(
                       onTap: () => Navigator.pop(context),
@@ -238,7 +239,7 @@ class _Student_LogInState extends State<Student_LogIn> {
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.only(
-          top: 20,
+          top: UPdMg_20,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -247,7 +248,7 @@ class _Student_LogInState extends State<Student_LogIn> {
           children: [
             Image.asset(
               'assets/image/logo3.png',
-              scale: 15,
+              scale: UScale_15,
             ),
             SizedBox(
               height: UHeight15,
@@ -301,7 +302,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                       controller: _textControllerUsername,
                       cursorColor: UGreyColor,
                       cursorWidth: 1,
-                      cursorHeight: 30,
+                      cursorHeight: UHeight30,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(
                           UPdMg_10,
@@ -357,14 +358,14 @@ class _Student_LogInState extends State<Student_LogIn> {
                       controller: _textControllerPsw,
                       cursorColor: UGreyColor,
                       cursorWidth: 1,
-                      cursorHeight: 30,
+                      cursorHeight: UHeight30,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(
                           UPdMg_10,
                         ),
                         hintText: '\t\tបញ្ចូលពាក្យសម្ងាត់'.tr,
                         hintStyle: TextStyle(
-                          fontSize: 10,
+                          fontSize: UBodySize10,
                           color: UGreyColor,
                         ),
                         border: OutlineInputBorder(),
@@ -406,7 +407,7 @@ class _Student_LogInState extends State<Student_LogIn> {
               onTap: _submitForm,
               child: Container(
                 width: 100,
-                height: 40,
+                height: UHeight40 ,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(

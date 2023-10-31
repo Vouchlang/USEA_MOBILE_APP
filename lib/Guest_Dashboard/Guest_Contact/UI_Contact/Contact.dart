@@ -38,8 +38,8 @@ class _ContactState extends State<Contact> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        width: 30,
-                        height: 30,
+                        width: UWidth30,
+                        height: UHeight30,
                         child: Image.asset(
                           contact[index].icon,
                           fit: BoxFit.cover,

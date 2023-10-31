@@ -24,9 +24,11 @@ class _RecognitionState extends State<Recognition> {
   Future<void> getData() async {
     try {
       var res = await http.get(
-        Uri.parse(Get.locale?.languageCode == 'km'
-            ? APIUrlGuest + "api/webapi.php?action=recognition_kh"
-            : APIUrlGuest + "api/webapi.php?action=recognition_en",),
+        Uri.parse(
+          Get.locale?.languageCode == 'km'
+              ? APIUrlGuest + "api/webapi.php?action=recognition_kh"
+              : APIUrlGuest + "api/webapi.php?action=recognition_en",
+        ),
       );
       var r = json.decode(res.body);
       if (r is List<dynamic>) {
@@ -58,29 +60,25 @@ class _RecognitionState extends State<Recognition> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: 'ការទទួលស្គាល់'.tr,),
+      appBar: Custom_AppBar(
+        title: 'ការទទួលស្គាល់'.tr,
+      ),
       body: recognition.isEmpty
-          ? Center(
-              child: FutureBuilder<void>(
-                future: Future.delayed(Duration(seconds: 10)),
-                builder: (context, snapshot) =>
-                    snapshot.connectionState == ConnectionState.done
-                        ? Text('គ្មានទិន្ន័យ'.tr)
-                        : CircularProgressIndicator(
-                            color: UPrimaryColor,
-                          ),
-              ),
-            )
+          ? buildFutureBuild()
           : ListView.builder(
               itemCount: recognition.length,
               itemBuilder: (context, index) {
                 final isFinalIndex = index == recognition.length - 1;
                 return Padding(
-                  padding: EdgeInsets.only(bottom: isFinalIndex ? UPdMg_10 : UZeroPixel,),
+                  padding: EdgeInsets.only(
+                    bottom: isFinalIndex ? UPdMg_10 : UZeroPixel,
+                  ),
                   child: Column(
                     children: [
                       Container(
-                        margin: EdgeInsets.all(UPdMg_10),
+                        margin: EdgeInsets.all(
+                          UPdMg_10,
+                        ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,9 +119,11 @@ class _RecognitionState extends State<Recognition> {
                                       onTap: () {
                                         void _launchRecognitionUrl() async {
                                           if (await canLaunch(
-                                              recognition[index].link,)) {
+                                            recognition[index].link,
+                                          )) {
                                             await launch(
-                                                recognition[index].link,);
+                                              recognition[index].link,
+                                            );
                                           } else {
                                             throw 'Could not launch ${recognition[index].link}';
                                           }
@@ -134,10 +134,13 @@ class _RecognitionState extends State<Recognition> {
                                       child: Container(
                                         width: 80,
                                         alignment: Alignment.center,
-                                        padding: EdgeInsets.all(UPdMg_5,),
+                                        padding: EdgeInsets.all(
+                                          UPdMg_5,
+                                        ),
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(
-                                              URoundedMedium,),
+                                            URoundedMedium,
+                                          ),
                                           color: UBtnColor,
                                         ),
                                         child: Text(

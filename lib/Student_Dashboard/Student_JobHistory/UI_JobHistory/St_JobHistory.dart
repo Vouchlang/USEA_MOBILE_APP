@@ -93,7 +93,7 @@ class _Job_HistoryState extends State<Job_History> {
           ? FutureBuilder(
               future: Future.delayed(
                 Duration(
-                  seconds: 10,
+                  seconds: 15,
                 ),
               ),
               builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {

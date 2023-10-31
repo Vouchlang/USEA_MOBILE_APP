@@ -33,7 +33,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     return Scaffold(
       body: pages[currentIndex],
       bottomNavigationBar: Container(
-        color: Colors.transparent,
+        color: UTransParentColor,
         child: BottomNavigationBar(
           backgroundColor: USecondaryColor,
           elevation: 0,

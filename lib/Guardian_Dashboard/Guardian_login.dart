@@ -16,7 +16,9 @@ class _Guardian_LoginState extends State<Guardian_Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(title: 'គណនីអាណាព្យាបាល'.tr,),
+      appBar: Custom_AppBar(
+        title: 'គណនីអាណាព្យាបាល'.tr,
+      ),
       body: Center(
         child: Text(
           'មកដល់ឆាប់ៗនេះ!!!'.tr,

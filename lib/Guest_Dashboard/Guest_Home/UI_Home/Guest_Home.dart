@@ -57,7 +57,6 @@ class _Guest_HomeState extends State<Guest_Home> {
       }
     } catch (e) {
       print('Error fetching data: $e');
-      // handle the error here
     } finally {
       if (mounted) {
         setState(() {
@@ -252,30 +251,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                 horizontal: UPdMg_5,
               ),
               child: isLoading
-                  ? FutureBuilder(
-                      future: Future.delayed(
-                        Duration(
-                          seconds: 10,
-                        ),
-                      ),
-                      builder: (BuildContext context,
-                          AsyncSnapshot<dynamic> snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return Center(
-                            child: CircularProgressIndicator(
-                              color: UPrimaryColor,
-                            ),
-                          );
-                        } else {
-                          return Center(
-                            child: Text(
-                              'គ្មានទិន្ន័យ'.tr,
-                            ),
-                          );
-                        }
-                      },
-                    )
+                  ? buildFutureBuild()
                   : CarouselSlider.builder(
                       options: CarouselOptions(
                         height: double.infinity,
@@ -287,8 +263,9 @@ class _Guest_HomeState extends State<Guest_Home> {
                         viewportFraction: 1,
                         enlargeCenterPage: true,
                         enlargeStrategy: CenterPageEnlargeStrategy.zoom,
-                        onPageChanged: ((index, reason) =>
-                            setState(() => activeIndex = index)),
+                        onPageChanged: ((index, reason) => setState(
+                              () => activeIndex = index,
+                            )),
                       ),
                       itemCount: image_slides.length,
                       itemBuilder: (context, index, realIndex) {
@@ -305,13 +282,13 @@ class _Guest_HomeState extends State<Guest_Home> {
                     ),
             ),
             SizedBox(
-              height: 7,
+              height: UHeight7,
             ),
             Center(
               child: buildIndicator(),
             ),
             SizedBox(
-              height: 7,
+              height: UHeight7,
             ),
             GridView.count(
               shrinkWrap: true,
@@ -321,7 +298,7 @@ class _Guest_HomeState extends State<Guest_Home> {
               crossAxisSpacing: 3,
               childAspectRatio: 1.90,
               padding: EdgeInsets.symmetric(
-                horizontal: 7,
+                horizontal: UPdMg_7,
               ),
               children: List.generate(
                 guest_home_screen.length,
@@ -354,17 +331,19 @@ class _Guest_HomeState extends State<Guest_Home> {
                       }
                     },
                     child: Container(
-                      padding: EdgeInsets.only(left: UPdMg_15),
+                      padding: EdgeInsets.only(
+                        left: UPdMg_15,
+                      ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Image.asset(
                             guest_home_screen[index].img,
-                            scale: 6,
+                            scale: UScale_6,
                           ),
                           SizedBox(
-                            height: 7,
+                            height: UHeight7,
                           ),
                           Text(
                             guest_home_screen[index].name.tr,
@@ -380,7 +359,7 @@ class _Guest_HomeState extends State<Guest_Home> {
               ),
             ),
             SizedBox(
-              height: 7,
+              height: UHeight7,
             ),
             Card(
               elevation: 2,
