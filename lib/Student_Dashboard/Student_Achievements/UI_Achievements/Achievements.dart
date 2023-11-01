@@ -130,13 +130,13 @@ class _AchievementsState extends State<Achievements> {
                                         milliseconds: 300,
                                       ),
                                       margin: EdgeInsets.fromLTRB(
-                                        UPdMg_10,
-                                        UPdMg_10,
-                                        isLastIndex ? UPdMg_10 : UZeroPixel,
-                                        UPdMg_10,
+                                        UPdMg10,
+                                        UPdMg10,
+                                        isLastIndex ? UPdMg10 : UZeroPixel,
+                                        UPdMg10,
                                       ),
                                       padding: EdgeInsets.all(
-                                        UPdMg_10,
+                                        UPdMg10,
                                       ),
                                       width: 165,
                                       decoration: BoxDecoration(
@@ -178,15 +178,15 @@ class _AchievementsState extends State<Achievements> {
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     padding: EdgeInsets.fromLTRB(
-                      UPdMg_10,
+                      UPdMg10,
                       UZeroPixel,
-                      UPdMg_10,
-                      UPdMg_10,
+                      UPdMg10,
+                      UPdMg10,
                     ),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
-                      crossAxisSpacing: UPdMg_10,
-                      mainAxisSpacing: UPdMg_10,
+                      crossAxisSpacing: UPdMg10,
+                      mainAxisSpacing: UPdMg10,
                     ),
                     itemCount: _achievementData != null &&
                             _selectedAchievementTypeIndex >= 0 &&
@@ -203,7 +203,7 @@ class _AchievementsState extends State<Achievements> {
                         color: UGreyColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(
-                            UPdMg_10,
+                            UPdMg10,
                           ),
                         ),
                         margin: EdgeInsets.all(
@@ -211,7 +211,7 @@ class _AchievementsState extends State<Achievements> {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(
-                            UPdMg_10,
+                            UPdMg10,
                           ),
                           child: _achievementData != null &&
                                   _selectedAchievementTypeIndex >= 0 &&

@@ -177,7 +177,7 @@ class _Payment_UIState extends State<Payment_UI> {
   Widget buildStudyPayment() {
     return Container(
       padding: EdgeInsets.all(
-        UPdMg_5,
+        UPdMg5,
       ),
       child: Card(
         shape: RoundedRectangleBorder(
@@ -196,7 +196,7 @@ class _Payment_UIState extends State<Payment_UI> {
             IntrinsicHeight(
               child: Container(
                 padding: EdgeInsets.all(
-                  UPdMg_10,
+                  UPdMg10,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -251,7 +251,7 @@ class _Payment_UIState extends State<Payment_UI> {
 
                       return Padding(
                         padding: EdgeInsets.only(
-                          bottom: isLastIndex ? UPdMg_5 : UZeroPixel,
+                          bottom: isLastIndex ? UPdMg5 : UZeroPixel,
                         ),
                         child: IntrinsicHeight(
                           child: Column(
@@ -260,8 +260,8 @@ class _Payment_UIState extends State<Payment_UI> {
                             children: [
                               Container(
                                 padding: EdgeInsets.symmetric(
-                                  vertical: UPdMg_8,
-                                  horizontal: UPdMg_10,
+                                  vertical: UPdMg8,
+                                  horizontal: UPdMg10,
                                 ),
                                 child: IntrinsicHeight(
                                   child: Row(
@@ -360,12 +360,12 @@ class _Payment_UIState extends State<Payment_UI> {
       elevation: 5,
       backgroundColor: UBackgroundColor,
       insetPadding: EdgeInsets.all(
-        UPdMg_10,
+        UPdMg10,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(
-            UPdMg_10,
+            UPdMg10,
           ),
         ),
       ),
@@ -376,16 +376,16 @@ class _Payment_UIState extends State<Payment_UI> {
             children: [
               Container(
                 padding: EdgeInsets.all(
-                  UPdMg_10,
+                  UPdMg10,
                 ),
                 width: UFullWidth,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(
-                      UPdMg_10,
+                      UPdMg10,
                     ),
                     topRight: Radius.circular(
-                      UPdMg_10,
+                      UPdMg10,
                     ),
                   ),
                   color: UBGLightBlue,
@@ -417,7 +417,7 @@ class _Payment_UIState extends State<Payment_UI> {
                   IntrinsicHeight(
                     child: Padding(
                       padding: EdgeInsets.all(
-                        UPdMg_5,
+                        UPdMg5,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -464,7 +464,7 @@ class _Payment_UIState extends State<Payment_UI> {
                               IntrinsicHeight(
                                 child: Container(
                                   padding: EdgeInsets.all(
-                                    UPdMg_8,
+                                    UPdMg8,
                                   ),
                                   child: Row(
                                     mainAxisAlignment:
@@ -524,7 +524,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                 ? Padding(
                                     padding: EdgeInsets.only(
                                       bottom:
-                                          isLastIndex ? UPdMg_5 : UZeroPixel,
+                                          isLastIndex ? UPdMg5 : UZeroPixel,
                                     ),
                                     child: IntrinsicHeight(
                                       child: Column(
@@ -536,7 +536,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                           IntrinsicHeight(
                                             child: Container(
                                               padding: EdgeInsets.all(
-                                                UPdMg_5,
+                                                UPdMg5,
                                               ),
                                               child: Row(
                                                 mainAxisAlignment:
@@ -587,14 +587,14 @@ class _Payment_UIState extends State<Payment_UI> {
                                 : Padding(
                                     padding: EdgeInsets.only(
                                       bottom:
-                                          isLastIndex ? UPdMg_5 : UZeroPixel,
+                                          isLastIndex ? UPdMg5 : UZeroPixel,
                                     ),
                                     child: Column(
                                       children: [
                                         IntrinsicHeight(
                                           child: Container(
                                             padding: EdgeInsets.all(
-                                              UPdMg_5,
+                                              UPdMg5,
                                             ),
                                             child: Row(
                                               mainAxisAlignment:
@@ -670,7 +670,7 @@ class _Payment_UIState extends State<Payment_UI> {
               },
               child: Image.asset(
                 'assets/image/close.png',
-                scale: UScale_10,
+                scale: UScale10,
               ),
             ),
           ),
@@ -684,7 +684,7 @@ class _Payment_UIState extends State<Payment_UI> {
       children: [
         Padding(
           padding: EdgeInsets.all(
-            UPdMg_5,
+            UPdMg5,
           ),
           child: Card(
             shape: RoundedRectangleBorder(
@@ -704,7 +704,7 @@ class _Payment_UIState extends State<Payment_UI> {
                   IntrinsicHeight(
                     child: Padding(
                       padding: EdgeInsets.all(
-                        UPdMg_5,
+                        UPdMg5,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -743,7 +743,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                 child: Container(
                                   alignment: Alignment.center,
                                   padding: EdgeInsets.all(
-                                    UPdMg_5,
+                                    UPdMg5,
                                   ),
                                   child: Row(
                                     mainAxisAlignment:
@@ -788,7 +788,7 @@ class _Payment_UIState extends State<Payment_UI> {
 
                             return Padding(
                               padding: EdgeInsets.only(
-                                bottom: isLastIndex ? UPdMg_5 : UZeroPixel,
+                                bottom: isLastIndex ? UPdMg5 : UZeroPixel,
                               ),
                               child: IntrinsicHeight(
                                 child: Column(
@@ -799,7 +799,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                       child: Container(
                                         alignment: Alignment.center,
                                         padding: EdgeInsets.all(
-                                          UPdMg_5,
+                                          UPdMg5,
                                         ),
                                         child: Row(
                                           mainAxisAlignment:
@@ -883,7 +883,7 @@ class _Payment_UIState extends State<Payment_UI> {
         children: [
           Container(
             padding: EdgeInsets.all(
-              UPdMg_8,
+              UPdMg8,
             ),
             child: IntrinsicHeight(
               child: Row(

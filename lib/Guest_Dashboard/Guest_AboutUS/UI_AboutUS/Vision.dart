@@ -34,9 +34,9 @@ class Vision extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.fromLTRB(
-              UPdMg_10,
-              UPdMg_10,
-              UPdMg_10,
+              UPdMg10,
+              UPdMg10,
+              UPdMg10,
               UZeroPixel,
             ),
             child: Column(
@@ -48,7 +48,7 @@ class Vision extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.only(
-                    left: UPdMg_12,
+                    left: UPdMg12,
                   ),
                   child: Column(
                     children: [
@@ -72,9 +72,9 @@ class Vision extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.fromLTRB(
-              UPdMg_10,
-              UPdMg_10,
-              UPdMg_10,
+              UPdMg10,
+              UPdMg10,
+              UPdMg10,
               UZeroPixel,
             ),
             child: Column(
@@ -86,7 +86,7 @@ class Vision extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.only(
-                    left: UPdMg_12,
+                    left: UPdMg12,
                   ),
                   child: Column(
                     children: [
@@ -110,9 +110,9 @@ class Vision extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.fromLTRB(
-              UPdMg_10,
-              UPdMg_10,
-              UPdMg_10,
+              UPdMg10,
+              UPdMg10,
+              UPdMg10,
               UZeroPixel,
             ),
             child: Column(
@@ -122,7 +122,7 @@ class Vision extends StatelessWidget {
                 buildTopBodyVision('4.4. Social'),
                 Container(
                   margin: EdgeInsets.only(
-                    left: UPdMg_12,
+                    left: UPdMg12,
                   ),
                   child: Column(
                     children: [
@@ -146,7 +146,7 @@ class Vision extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.all(
-              UPdMg_10,
+              UPdMg10,
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -157,7 +157,7 @@ class Vision extends StatelessWidget {
                 ),
                 Container(
                   margin: EdgeInsets.only(
-                    left: UPdMg_12,
+                    left: UPdMg12,
                   ),
                   child: Column(
                     children: [

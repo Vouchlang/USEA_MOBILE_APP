@@ -112,8 +112,8 @@ class _Video_DisplayState extends State<Video_Display> {
               ],
             ),
             padding: EdgeInsets.symmetric(
-              vertical: UPdMg_5,
-              horizontal: UPdMg_10,
+              vertical: UPdMg5,
+              horizontal: UPdMg10,
             ),
             width: double.infinity,
             alignment: Alignment.center,
@@ -128,7 +128,7 @@ class _Video_DisplayState extends State<Video_Display> {
           ),
           Container(
             padding: EdgeInsets.all(
-              UPdMg_10,
+              UPdMg10,
             ),
             width: double.infinity,
             child: buildTitleBody(

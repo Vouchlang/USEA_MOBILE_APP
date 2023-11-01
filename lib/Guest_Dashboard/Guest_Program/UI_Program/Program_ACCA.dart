@@ -38,7 +38,7 @@ class Program_ACCA extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(
-          UPdMg_8,
+          UPdMg8,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -57,14 +57,14 @@ class Program_ACCA extends StatelessWidget {
                 children: [
                   Container(
                     padding: EdgeInsets.symmetric(
-                      vertical: UPdMg_15,
-                      horizontal: UPdMg_5,
+                      vertical: UPdMg15,
+                      horizontal: UPdMg5,
                     ),
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.vertical(
                         top: Radius.circular(
-                          UPdMg_10,
+                          UPdMg10,
                         ),
                       ),
                       color: UBGLightBlue,
@@ -99,9 +99,9 @@ class Program_ACCA extends StatelessWidget {
                   ),
                   Container(
                     padding: EdgeInsets.fromLTRB(
-                      UPdMg_5,
-                      UPdMg_10,
-                      UPdMg_5,
+                      UPdMg5,
+                      UPdMg10,
+                      UPdMg5,
                       UZeroPixel,
                     ),
                     child: Column(
@@ -113,10 +113,10 @@ class Program_ACCA extends StatelessWidget {
                           Expanded(
                             child: Container(
                               margin: EdgeInsets.only(
-                                right: UPdMg_15,
+                                right: UPdMg15,
                               ),
                               padding: EdgeInsets.symmetric(
-                                vertical: UPdMg_5,
+                                vertical: UPdMg5,
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -182,7 +182,7 @@ class Program_ACCA extends StatelessWidget {
                                 children: [
                                   Container(
                                     padding: EdgeInsets.symmetric(
-                                      vertical: UPdMg_5,
+                                      vertical: UPdMg5,
                                     ),
                                     alignment: Alignment.center,
                                     width: 55,
@@ -198,14 +198,14 @@ class Program_ACCA extends StatelessWidget {
                                   ),
                                   Container(
                                     padding: EdgeInsets.symmetric(
-                                      vertical: UPdMg_5,
+                                      vertical: UPdMg5,
                                     ),
                                     alignment: Alignment.center,
                                     width: Get.locale?.languageCode == 'km'
                                         ? UWidth30
                                         : UWidth40,
                                     margin: EdgeInsets.only(
-                                      right: UPdMg_10,
+                                      right: UPdMg10,
                                     ),
                                     child: NoWeightTitleTheme(
                                       subject.total_hour.isEmpty ||
@@ -224,10 +224,10 @@ class Program_ACCA extends StatelessWidget {
                   ),
                   Container(
                     padding: EdgeInsets.fromLTRB(
-                      UPdMg_5,
-                      UPdMg_10,
-                      UPdMg_20,
-                      UPdMg_15,
+                      UPdMg5,
+                      UPdMg10,
+                      UPdMg20,
+                      UPdMg15,
                     ),
                     width: double.infinity,
                     child: Row(

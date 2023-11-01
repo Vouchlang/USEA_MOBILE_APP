@@ -21,7 +21,7 @@ Widget buildDivider() {
     height: UHeight15,
     color: UGreyColor,
     margin: EdgeInsets.symmetric(
-      horizontal: UPdMg_5,
+      horizontal: UPdMg5,
     ),
   );
 }
@@ -457,7 +457,7 @@ Widget buildTitleContainer(
 ) {
   return Container(
     padding: EdgeInsets.symmetric(
-      horizontal: UPdMg_10,
+      horizontal: UPdMg10,
     ),
     width: width,
     alignment: align,
@@ -600,7 +600,7 @@ Widget buildTextBody(
   return Container(
     width: 75,
     margin: EdgeInsets.symmetric(
-      vertical: UPdMg_5,
+      vertical: UPdMg5,
     ),
     child: Text(
       text,
@@ -620,7 +620,7 @@ Widget buildAttTextBody(
   return Container(
     width: 100,
     margin: EdgeInsets.symmetric(
-      vertical: UPdMg_5,
+      vertical: UPdMg5,
     ),
     child: Text(
       text,
@@ -640,7 +640,7 @@ Widget buildTextTitle(
   return Container(
     width: 75,
     margin: EdgeInsets.symmetric(
-      vertical: UPdMg_5,
+      vertical: UPdMg5,
     ),
     child: Text(
       text,
@@ -664,10 +664,10 @@ Widget buildTitle(
     children: [
       Padding(
         padding: EdgeInsets.fromLTRB(
-          UPdMg_10,
-          UPdMg_10,
-          UPdMg_10,
-          UPdMg_5,
+          UPdMg10,
+          UPdMg10,
+          UPdMg10,
+          UPdMg5,
         ),
         child: Text(
           text.tr,
@@ -784,7 +784,7 @@ Widget buildTailDetail(
     children: [
       Image.asset(
         image,
-        scale: UScale_5,
+        scale: UScale5,
       ),
       SizedBox(
         width: UWidth10,
@@ -867,7 +867,7 @@ Widget buildHistory(
           width: UWidth5,
         ),
         margin: EdgeInsets.only(
-          top: UPdMg_10,
+          top: UPdMg10,
         ),
       ),
       SizedBox(
@@ -895,9 +895,9 @@ Widget buildTitleVision(
 ) {
   return Container(
     margin: EdgeInsets.fromLTRB(
-      UPdMg_10,
-      UPdMg_10,
-      UPdMg_10,
+      UPdMg10,
+      UPdMg10,
+      UPdMg10,
       UZeroPixel,
     ),
     child: Column(
@@ -915,7 +915,7 @@ Widget buildTitleVision(
         ),
         Container(
           margin: EdgeInsets.only(
-            left: UPdMg_12,
+            left: UPdMg12,
           ),
           child: Text(
             text2,
@@ -954,7 +954,7 @@ Widget buildLowBodyVision(
     children: [
       Container(
         margin: EdgeInsets.only(
-          top: UPdMg_10,
+          top: UPdMg10,
         ),
         child: Image.asset(
           'assets/image/dot.png',
@@ -1000,7 +1000,7 @@ Widget buildPresidentMessage(
 ) {
   return Container(
     margin: EdgeInsets.symmetric(
-      horizontal: UPdMg_10,
+      horizontal: UPdMg10,
     ),
     child: Text(
       text,
@@ -1024,7 +1024,7 @@ Widget BuildContainerSM(
       onTap: onTap,
       child: Image.asset(
         imageName,
-        scale: UScale_5,
+        scale: UScale5,
       ),
     ),
   );

@@ -36,7 +36,7 @@ class _Program_SHCState extends State<Program_SHC> {
           Expanded(
             child: SingleChildScrollView(
               padding: EdgeInsets.all(
-                UPdMg_8,
+                UPdMg8,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,9 +61,9 @@ class _Program_SHCState extends State<Program_SHC> {
 
       return Container(
         padding: EdgeInsets.fromLTRB(
-          UPdMg_5,
-          UPdMg_10,
-          UPdMg_5,
+          UPdMg5,
+          UPdMg10,
+          UPdMg5,
           UZeroPixel,
         ),
         child: Column(
@@ -79,10 +79,10 @@ class _Program_SHCState extends State<Program_SHC> {
                     children: [
                       Container(
                         padding: EdgeInsets.symmetric(
-                          vertical: UPdMg_5,
+                          vertical: UPdMg5,
                         ),
                         margin: EdgeInsets.only(
-                          right: UPdMg_5,
+                          right: UPdMg5,
                         ),
                         child: NoWeightTitleTheme(
                           index.toString() + '.',
@@ -91,10 +91,10 @@ class _Program_SHCState extends State<Program_SHC> {
                       Expanded(
                         child: Container(
                           margin: EdgeInsets.only(
-                            right: UPdMg_15,
+                            right: UPdMg15,
                           ),
                           padding: EdgeInsets.symmetric(
-                            vertical: UPdMg_5,
+                            vertical: UPdMg5,
                           ),
                           child: Text(
                             subject,
@@ -114,11 +114,11 @@ class _Program_SHCState extends State<Program_SHC> {
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(
-                    vertical: UPdMg_5,
+                    vertical: UPdMg5,
                   ),
                   alignment: Alignment.centerRight,
                   margin: EdgeInsets.only(
-                    right: UPdMg_15,
+                    right: UPdMg15,
                   ),
                   child: NoWeightTitleTheme(
                     credit.toString().isEmpty || credit == null
@@ -148,14 +148,14 @@ class _Program_SHCState extends State<Program_SHC> {
           children: [
             Container(
               padding: EdgeInsets.symmetric(
-                vertical: UPdMg_15,
-                horizontal: UPdMg_5,
+                vertical: UPdMg15,
+                horizontal: UPdMg5,
               ),
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(
-                    UPdMg_10,
+                    UPdMg10,
                   ),
                 ),
                 color: UBGLightBlue,
@@ -179,10 +179,10 @@ class _Program_SHCState extends State<Program_SHC> {
             ...subjectWidgets,
             Container(
               padding: EdgeInsets.fromLTRB(
-                UPdMg_5,
-                UPdMg_15,
-                UPdMg_5,
-                UPdMg_15,
+                UPdMg5,
+                UPdMg15,
+                UPdMg5,
+                UPdMg15,
               ),
               width: double.infinity,
               child: Row(
@@ -194,7 +194,7 @@ class _Program_SHCState extends State<Program_SHC> {
                   Container(
                     alignment: Alignment.centerRight,
                     margin: EdgeInsets.only(
-                      right: UPdMg_15,
+                      right: UPdMg15,
                     ),
                     child: TitleTheme(
                       total_credit.toString().isEmpty || total_credit == null

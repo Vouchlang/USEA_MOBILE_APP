@@ -290,7 +290,7 @@ class _Student_HomeState extends State<Student_Home> {
                     if (_dataSurvey.isNotEmpty && _dataSurvey.length > 1) {
                       return Card(
                         margin: EdgeInsets.symmetric(
-                          horizontal: UPdMg_10,
+                          horizontal: UPdMg10,
                         ),
                         elevation: 1,
                         shadowColor: ULightGreyColor,
@@ -313,10 +313,10 @@ class _Student_HomeState extends State<Student_Home> {
                                   ),
                                   child: Container(
                                     margin: EdgeInsets.all(
-                                      UPdMg_7,
+                                      UPdMg7,
                                     ),
                                     padding: EdgeInsets.all(
-                                      UPdMg_10,
+                                      UPdMg10,
                                     ),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(
@@ -351,7 +351,7 @@ class _Student_HomeState extends State<Student_Home> {
                                         Container(
                                           height: 70,
                                           padding: EdgeInsets.all(
-                                            UPdMg_5,
+                                            UPdMg5,
                                           ),
                                           alignment: Alignment.center,
                                           child: ListView.builder(
@@ -420,7 +420,7 @@ class _Student_HomeState extends State<Student_Home> {
                           },
                           child: Container(
                             margin: EdgeInsets.all(
-                              UPdMg_5,
+                              UPdMg5,
                             ),
                             child: Text(
                               'សូមជួយធ្វើការវាយតម្លៃ'.tr,
@@ -437,7 +437,7 @@ class _Student_HomeState extends State<Student_Home> {
                         _dataSurvey.length == 1) {
                       return Card(
                         margin: EdgeInsets.symmetric(
-                          horizontal: UPdMg_10,
+                          horizontal: UPdMg10,
                         ),
                         elevation: 1,
                         shadowColor: ULightGreyColor,
@@ -460,7 +460,7 @@ class _Student_HomeState extends State<Student_Home> {
                           },
                           child: Container(
                             margin: EdgeInsets.all(
-                              UPdMg_5,
+                              UPdMg5,
                             ),
                             child: Text(
                               'សូមជួយធ្វើការវាយតម្លៃ'.tr,
@@ -484,7 +484,7 @@ class _Student_HomeState extends State<Student_Home> {
                     alignment: Alignment.center,
                     height: 180,
                     padding: EdgeInsets.symmetric(
-                      horizontal: UPdMg_5,
+                      horizontal: UPdMg5,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -572,7 +572,7 @@ class _Student_HomeState extends State<Student_Home> {
                     crossAxisSpacing: 3,
                     childAspectRatio: 1.90,
                     padding: EdgeInsets.symmetric(
-                      horizontal: UPdMg_7,
+                      horizontal: UPdMg7,
                     ),
                     children: List.generate(
                       st_home_screen.length,
@@ -581,7 +581,7 @@ class _Student_HomeState extends State<Student_Home> {
                         shadowColor: ULightGreyColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(
-                            UPdMg_10,
+                            UPdMg10,
                           ),
                         ),
                         child: InkWell(
@@ -601,10 +601,10 @@ class _Student_HomeState extends State<Student_Home> {
                                           ),
                                           child: Container(
                                             margin: EdgeInsets.all(
-                                              UPdMg_7,
+                                              UPdMg7,
                                             ),
                                             padding: EdgeInsets.all(
-                                              UPdMg_10,
+                                              UPdMg10,
                                             ),
                                             decoration: BoxDecoration(
                                               borderRadius:
@@ -640,7 +640,7 @@ class _Student_HomeState extends State<Student_Home> {
                                                 Container(
                                                   height: UHeight50,
                                                   padding: EdgeInsets.all(
-                                                    UPdMg_5,
+                                                    UPdMg5,
                                                   ),
                                                   alignment: Alignment.center,
                                                   child: TextButton(
@@ -746,7 +746,7 @@ class _Student_HomeState extends State<Student_Home> {
                           },
                           child: Container(
                             padding: EdgeInsets.only(
-                              left: UPdMg_15,
+                              left: UPdMg15,
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -754,7 +754,7 @@ class _Student_HomeState extends State<Student_Home> {
                               children: [
                                 Image.asset(
                                   st_home_screen[index].img,
-                                  scale: UScale_6,
+                                  scale: UScale6,
                                 ),
                                 SizedBox(
                                   height: UHeight7,

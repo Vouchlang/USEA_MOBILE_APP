@@ -164,7 +164,7 @@ class _PerformanceState extends State<Performance> {
                           alignment: Alignment.center,
                           width: UFullWidth,
                           padding: EdgeInsets.symmetric(
-                            horizontal: UPdMg_5,
+                            horizontal: UPdMg5,
                           ),
                           child: ListView.builder(
                               shrinkWrap: true,
@@ -187,13 +187,13 @@ class _PerformanceState extends State<Performance> {
                                       milliseconds: 300,
                                     ),
                                     margin: EdgeInsets.fromLTRB(
-                                      UPdMg_10,
-                                      UPdMg_10,
-                                      isLastIndex ? UPdMg_10 : UZeroPixel,
-                                      UPdMg_10,
+                                      UPdMg10,
+                                      UPdMg10,
+                                      isLastIndex ? UPdMg10 : UZeroPixel,
+                                      UPdMg10,
                                     ),
                                     padding: EdgeInsets.all(
-                                      UPdMg_10,
+                                      UPdMg10,
                                     ),
                                     width: 120,
                                     decoration: BoxDecoration(
@@ -233,7 +233,7 @@ class _PerformanceState extends State<Performance> {
                                     .map((semester) {
                                   return Container(
                                     margin: EdgeInsets.only(
-                                      bottom: UPdMg_5,
+                                      bottom: UPdMg5,
                                     ),
                                     child: Card(
                                       elevation: 1,
@@ -248,7 +248,7 @@ class _PerformanceState extends State<Performance> {
                                         ),
                                       ),
                                       margin: EdgeInsets.all(
-                                        UPdMg_10,
+                                        UPdMg10,
                                       ),
                                       color: UBackgroundColor,
                                       child: Column(
@@ -256,8 +256,8 @@ class _PerformanceState extends State<Performance> {
                                         children: [
                                           Container(
                                             padding: EdgeInsets.symmetric(
-                                              vertical: UPdMg_15,
-                                              horizontal: UPdMg_10,
+                                              vertical: UPdMg15,
+                                              horizontal: UPdMg10,
                                             ),
                                             width: UFullWidth,
                                             decoration: BoxDecoration(
@@ -312,7 +312,7 @@ class _PerformanceState extends State<Performance> {
                                           ),
                                           Container(
                                             padding: EdgeInsets.all(
-                                              UPdMg_10,
+                                              UPdMg10,
                                             ),
                                             width: UFullWidth,
                                             child: Column(
@@ -333,12 +333,12 @@ class _PerformanceState extends State<Performance> {
                                                             child: Container(
                                                               margin: EdgeInsets
                                                                   .only(
-                                                                right: UPdMg_15,
+                                                                right: UPdMg15,
                                                               ),
                                                               padding: EdgeInsets
                                                                   .symmetric(
                                                                 vertical:
-                                                                    UPdMg_10,
+                                                                    UPdMg10,
                                                               ),
                                                               alignment:
                                                                   Alignment
@@ -377,7 +377,7 @@ class _PerformanceState extends State<Performance> {
                                                                 padding: EdgeInsets
                                                                     .symmetric(
                                                                   vertical:
-                                                                      UPdMg_10,
+                                                                      UPdMg10,
                                                                 ),
                                                                 child: InkWell(
                                                                   onTap: () {
@@ -396,7 +396,7 @@ class _PerformanceState extends State<Performance> {
                                                                               UBackgroundColor,
                                                                           insetPadding:
                                                                               EdgeInsets.all(
-                                                                            UPdMg_10,
+                                                                            UPdMg10,
                                                                           ),
                                                                           shape:
                                                                               RoundedRectangleBorder(
@@ -415,7 +415,7 @@ class _PerformanceState extends State<Performance> {
                                                                                 children: [
                                                                                   Container(
                                                                                     padding: EdgeInsets.all(
-                                                                                      UPdMg_10,
+                                                                                      UPdMg10,
                                                                                     ),
                                                                                     width: UFullWidth,
                                                                                     decoration: BoxDecoration(
@@ -448,7 +448,7 @@ class _PerformanceState extends State<Performance> {
                                                                                   ),
                                                                                   Container(
                                                                                     padding: EdgeInsets.all(
-                                                                                      UPdMg_10,
+                                                                                      UPdMg10,
                                                                                     ),
                                                                                     width: UFullWidth,
                                                                                     child: Column(
@@ -456,7 +456,7 @@ class _PerformanceState extends State<Performance> {
                                                                                       children: subject.attendances.asMap().entries.map((att) {
                                                                                         final int index = att.key;
                                                                                         final attendance = att.value;
-                                                                                        final double marginBottom = (index == subject.attendances.length - 1) ? UPdMg_5 : UPdMg_15;
+                                                                                        final double marginBottom = (index == subject.attendances.length - 1) ? UPdMg5 : UPdMg15;
 
                                                                                         return Column(
                                                                                           children: [
@@ -547,7 +547,7 @@ class _PerformanceState extends State<Performance> {
                                                                                   },
                                                                                   child: Image.asset(
                                                                                     'assets/image/close.png',
-                                                                                    scale: UScale_10,
+                                                                                    scale: UScale10,
                                                                                   ),
                                                                                 ),
                                                                               ),
@@ -605,7 +605,7 @@ class _PerformanceState extends State<Performance> {
                                                                 padding: EdgeInsets
                                                                     .symmetric(
                                                                   vertical:
-                                                                      UPdMg_10,
+                                                                      UPdMg10,
                                                                 ),
                                                                 child: InkWell(
                                                                   onTap: () {
@@ -624,7 +624,7 @@ class _PerformanceState extends State<Performance> {
                                                                               UBackgroundColor,
                                                                           insetPadding:
                                                                               EdgeInsets.all(
-                                                                            UPdMg_10,
+                                                                            UPdMg10,
                                                                           ),
                                                                           shape:
                                                                               RoundedRectangleBorder(
@@ -646,7 +646,7 @@ class _PerformanceState extends State<Performance> {
                                                                                     children: [
                                                                                       Container(
                                                                                         padding: EdgeInsets.all(
-                                                                                          UPdMg_10,
+                                                                                          UPdMg10,
                                                                                         ),
                                                                                         width: UFullWidth,
                                                                                         decoration: BoxDecoration(
@@ -679,20 +679,20 @@ class _PerformanceState extends State<Performance> {
                                                                                       ),
                                                                                       Container(
                                                                                         padding: EdgeInsets.symmetric(
-                                                                                          vertical: UPdMg_5,
-                                                                                          horizontal: UPdMg_10,
+                                                                                          vertical: UPdMg5,
+                                                                                          horizontal: UPdMg10,
                                                                                         ),
                                                                                         width: UFullWidth,
                                                                                         child: Container(
                                                                                           padding: EdgeInsets.symmetric(
-                                                                                            vertical: UPdMg_5,
+                                                                                            vertical: UPdMg5,
                                                                                           ),
                                                                                           child: Column(
                                                                                             mainAxisSize: MainAxisSize.min,
                                                                                             children: subject.scores.asMap().entries.map((entry) {
                                                                                               final int index = entry.key;
                                                                                               final score = entry.value;
-                                                                                              final double marginBottom = (index == subject.scores.length - 1) ? UPdMg_5 : UPdMg_15;
+                                                                                              final double marginBottom = (index == subject.scores.length - 1) ? UPdMg5 : UPdMg15;
 
                                                                                               return IntrinsicHeight(
                                                                                                 child: Column(
@@ -831,7 +831,7 @@ class _PerformanceState extends State<Performance> {
                                                                                     },
                                                                                     child: Image.asset(
                                                                                       'assets/image/close.png',
-                                                                                      scale: UScale_10,
+                                                                                      scale: UScale10,
                                                                                     ),
                                                                                   ),
                                                                                 ),
@@ -888,9 +888,9 @@ class _PerformanceState extends State<Performance> {
                                           ),
                                           Container(
                                             padding: EdgeInsets.fromLTRB(
-                                              UPdMg_10,
-                                              UPdMg_10,
-                                              UPdMg_10,
+                                              UPdMg10,
+                                              UPdMg10,
+                                              UPdMg10,
                                               UZeroPixel,
                                             ),
                                             child: Row(
@@ -906,7 +906,7 @@ class _PerformanceState extends State<Performance> {
                                                 Container(
                                                   width: 65,
                                                   padding: EdgeInsets.only(
-                                                    right: UPdMg_15,
+                                                    right: UPdMg15,
                                                   ),
                                                   alignment:
                                                       Alignment.centerRight,
@@ -922,9 +922,9 @@ class _PerformanceState extends State<Performance> {
                                           ),
                                           Container(
                                             padding: EdgeInsets.fromLTRB(
-                                              UPdMg_10,
-                                              UPdMg_10,
-                                              UPdMg_10,
+                                              UPdMg10,
+                                              UPdMg10,
+                                              UPdMg10,
                                               UZeroPixel,
                                             ),
                                             child: Row(
@@ -940,7 +940,7 @@ class _PerformanceState extends State<Performance> {
                                                 Container(
                                                   width: 65,
                                                   padding: EdgeInsets.only(
-                                                    right: UPdMg_15,
+                                                    right: UPdMg15,
                                                   ),
                                                   alignment:
                                                       Alignment.centerRight,
@@ -956,10 +956,10 @@ class _PerformanceState extends State<Performance> {
                                           ),
                                           Container(
                                             padding: EdgeInsets.fromLTRB(
-                                              UPdMg_10,
-                                              UPdMg_10,
-                                              UPdMg_10,
-                                              UPdMg_15,
+                                              UPdMg10,
+                                              UPdMg10,
+                                              UPdMg10,
+                                              UPdMg15,
                                             ),
                                             child: Row(
                                               mainAxisAlignment:
@@ -974,7 +974,7 @@ class _PerformanceState extends State<Performance> {
                                                 Container(
                                                   width: 65,
                                                   padding: EdgeInsets.only(
-                                                    right: UPdMg_15,
+                                                    right: UPdMg15,
                                                   ),
                                                   alignment:
                                                       Alignment.centerRight,

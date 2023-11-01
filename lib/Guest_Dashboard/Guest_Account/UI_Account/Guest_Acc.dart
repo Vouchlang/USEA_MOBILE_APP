@@ -94,7 +94,7 @@ class Guest_AccState extends State<Guest_Acc> {
             crossAxisSpacing: 3,
             childAspectRatio: 1.90,
             padding: EdgeInsets.symmetric(
-              horizontal: UPdMg_7,
+              horizontal: UPdMg7,
             ),
             children: List.generate(
               account_screen.length,
@@ -122,7 +122,7 @@ class Guest_AccState extends State<Guest_Acc> {
                     children: [
                       Image.asset(
                         account_screen[index].img,
-                        scale: UScale_6,
+                        scale: UScale6,
                       ),
                       SizedBox(
                         height: 7,

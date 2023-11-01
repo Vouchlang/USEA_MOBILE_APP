@@ -120,7 +120,7 @@ class _ScheduleState extends State<Schedule> {
         color: UPrimaryColor,
         child: ListView(
           padding: EdgeInsets.symmetric(
-            vertical: UPdMg_10,
+            vertical: UPdMg10,
           ),
           children: [
             CardCalendar(onDateSelected: _onDateSelected),
@@ -129,7 +129,7 @@ class _ScheduleState extends State<Schedule> {
             ),
             Padding(
               padding: EdgeInsets.all(
-                UPdMg_8,
+                UPdMg8,
               ),
               child: Text(
                 'កាលវិភាគសិក្សា'.tr,
@@ -150,21 +150,21 @@ class _ScheduleState extends State<Schedule> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.fromLTRB(
-                              UPdMg_5,
+                              UPdMg5,
                               UZeroPixel,
-                              UPdMg_5,
-                              UPdMg_5,
+                              UPdMg5,
+                              UPdMg5,
                             ),
                             child: Card(
                               elevation: 1,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
-                                  UPdMg_10,
+                                  UPdMg10,
                                 ),
                               ),
                               child: Container(
                                 padding: EdgeInsets.all(
-                                  UPdMg_10,
+                                  UPdMg10,
                                 ),
                                 child: IntrinsicHeight(
                                   child: Row(

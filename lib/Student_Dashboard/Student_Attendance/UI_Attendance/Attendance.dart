@@ -161,8 +161,8 @@ class _AttendanceState extends State<Attendance> {
               color: UPrimaryColor,
               child: Container(
                 padding: EdgeInsets.symmetric(
-                  horizontal: UPdMg_5,
-                  vertical: UPdMg_15,
+                  horizontal: UPdMg5,
+                  vertical: UPdMg15,
                 ),
                 child: ListView(
                   shrinkWrap: true,
@@ -170,10 +170,10 @@ class _AttendanceState extends State<Attendance> {
                   children: [
                     Padding(
                       padding: EdgeInsets.fromLTRB(
-                        UPdMg_5,
+                        UPdMg5,
                         UZeroPixel,
-                        UPdMg_5,
-                        UPdMg_5,
+                        UPdMg5,
+                        UPdMg5,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -207,11 +207,11 @@ class _AttendanceState extends State<Attendance> {
                         Container(
                           alignment: Alignment.center,
                           margin: EdgeInsets.only(
-                            right: UPdMg_5,
+                            right: UPdMg5,
                           ),
                           padding: EdgeInsets.symmetric(
-                            vertical: UPdMg_5,
-                            horizontal: UPdMg_10,
+                            vertical: UPdMg5,
+                            horizontal: UPdMg10,
                           ),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(
@@ -290,10 +290,10 @@ class _AttendanceState extends State<Attendance> {
                   elevation: 1,
                   child: Padding(
                     padding: EdgeInsets.fromLTRB(
-                      UPdMg_10,
-                      UPdMg_15,
-                      UPdMg_15,
-                      UPdMg_15,
+                      UPdMg10,
+                      UPdMg15,
+                      UPdMg15,
+                      UPdMg15,
                     ),
                     child: InkWell(
                       onTap: () {

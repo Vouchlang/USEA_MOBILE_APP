@@ -106,7 +106,7 @@ class _Job_HistoryState extends State<Job_History> {
                 } else {
                   return Padding(
                     padding: EdgeInsets.all(
-                      UPdMg_5,
+                      UPdMg5,
                     ),
                     child: Card(
                       elevation: 2,
@@ -117,7 +117,7 @@ class _Job_HistoryState extends State<Job_History> {
                         ),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(UPdMg_10),
+                        padding: EdgeInsets.all(UPdMg10),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -178,7 +178,7 @@ class _Job_HistoryState extends State<Job_History> {
               color: UPrimaryColor,
               child: ListView.builder(
                 padding: EdgeInsets.all(
-                  UPdMg_5,
+                  UPdMg5,
                 ),
                 itemCount: _dataJobHistory.length,
                 itemBuilder: (context, index) {
@@ -192,7 +192,7 @@ class _Job_HistoryState extends State<Job_History> {
                     ),
                     child: Padding(
                       padding: EdgeInsets.all(
-                        UPdMg_10,
+                        UPdMg10,
                       ),
                       child: Column(
                         children: [

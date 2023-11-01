@@ -85,10 +85,10 @@ class _Student_LogInState extends State<Student_LogIn> {
               child: Container(
                 height: 175,
                 margin: EdgeInsets.all(
-                  UPdMg_7,
+                  UPdMg7,
                 ),
                 padding: EdgeInsets.symmetric(
-                  horizontal: UPdMg_10,
+                  horizontal: UPdMg10,
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(
@@ -160,7 +160,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                   7,
                 ),
                 padding: EdgeInsets.symmetric(
-                  horizontal: UPdMg_10,
+                  horizontal: UPdMg10,
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(
@@ -239,7 +239,7 @@ class _Student_LogInState extends State<Student_LogIn> {
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.only(
-          top: UPdMg_20,
+          top: UPdMg20,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -248,7 +248,7 @@ class _Student_LogInState extends State<Student_LogIn> {
           children: [
             Image.asset(
               'assets/image/logo3.png',
-              scale: UScale_15,
+              scale: UScale15,
             ),
             SizedBox(
               height: UHeight15,
@@ -294,7 +294,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(
-                      vertical: UPdMg_10,
+                      vertical: UPdMg10,
                       horizontal: 30,
                     ),
                     alignment: Alignment.center,
@@ -305,7 +305,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                       cursorHeight: UHeight30,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(
-                          UPdMg_10,
+                          UPdMg10,
                         ),
                         hintText: '\t\tបញ្ចូលអត្តលេខ'.tr,
                         hintStyle: TextStyle(
@@ -349,7 +349,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(
-                      vertical: UPdMg_10,
+                      vertical: UPdMg10,
                       horizontal: 30,
                     ),
                     alignment: Alignment.center,
@@ -361,7 +361,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                       cursorHeight: UHeight30,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(
-                          UPdMg_10,
+                          UPdMg10,
                         ),
                         hintText: '\t\tបញ្ចូលពាក្យសម្ងាត់'.tr,
                         hintStyle: TextStyle(
@@ -411,7 +411,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(
-                    UPdMg_5,
+                    UPdMg5,
                   ),
                   color: UPrimaryColor,
                 ),

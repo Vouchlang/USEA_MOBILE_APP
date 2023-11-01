@@ -15,7 +15,7 @@ class PaymentCards2 extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.all(
-            UPdMg_5,
+            UPdMg5,
           ),
           child: Card(
             shape: RoundedRectangleBorder(
@@ -34,7 +34,7 @@ class PaymentCards2 extends StatelessWidget {
                 IntrinsicHeight(
                   child: Padding(
                     padding: EdgeInsets.all(
-                      UPdMg_5,
+                      UPdMg5,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -79,7 +79,7 @@ class PaymentCards2 extends StatelessWidget {
 
                     return Padding(
                       padding: EdgeInsets.only(
-                        bottom: isLastIndex ? UPdMg_5 : UZeroPixel,
+                        bottom: isLastIndex ? UPdMg5 : UZeroPixel,
                       ),
                       child: IntrinsicHeight(
                         child: Column(
@@ -90,7 +90,7 @@ class PaymentCards2 extends StatelessWidget {
                               child: Container(
                                 alignment: Alignment.center,
                                 padding: EdgeInsets.all(
-                                  UPdMg_5,
+                                  UPdMg5,
                                 ),
                                 child: Row(
                                   mainAxisAlignment:
@@ -156,7 +156,7 @@ class PaymentCards3 extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.all(
-            UPdMg_5,
+            UPdMg5,
           ),
           child: Card(
             shape: RoundedRectangleBorder(
@@ -175,7 +175,7 @@ class PaymentCards3 extends StatelessWidget {
                 IntrinsicHeight(
                   child: Padding(
                     padding: EdgeInsets.all(
-                      UPdMg_5,
+                      UPdMg5,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -220,7 +220,7 @@ class PaymentCards3 extends StatelessWidget {
 
                     return Padding(
                       padding: EdgeInsets.only(
-                        bottom: isLastIndex ? UPdMg_5 : UZeroPixel,
+                        bottom: isLastIndex ? UPdMg5 : UZeroPixel,
                       ),
                       child: IntrinsicHeight(
                         child: Column(
@@ -231,7 +231,7 @@ class PaymentCards3 extends StatelessWidget {
                               child: Container(
                                 alignment: Alignment.center,
                                 padding: EdgeInsets.all(
-                                  UPdMg_5,
+                                  UPdMg5,
                                 ),
                                 child: Row(
                                   mainAxisAlignment:

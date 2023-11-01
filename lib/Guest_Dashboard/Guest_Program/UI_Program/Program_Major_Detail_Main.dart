@@ -64,13 +64,13 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                       milliseconds: 300,
                     ),
                     margin: EdgeInsets.fromLTRB(
-                      UPdMg_10,
-                      UPdMg_10,
-                      isLastIndex ? UPdMg_10 : UZeroPixel,
-                      UPdMg_10,
+                      UPdMg10,
+                      UPdMg10,
+                      isLastIndex ? UPdMg10 : UZeroPixel,
+                      UPdMg10,
                     ),
                     padding: EdgeInsets.all(
-                      UPdMg_10,
+                      UPdMg10,
                     ),
                     width: 165,
                     decoration: BoxDecoration(
@@ -106,7 +106,7 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
           Expanded(
             child: SingleChildScrollView(
               padding: EdgeInsets.all(
-                UPdMg_10,
+                UPdMg10,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -216,7 +216,7 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                                           7,
                                         ),
                                         padding: EdgeInsets.all(
-                                          UPdMg_10,
+                                          UPdMg10,
                                         ),
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(
@@ -250,7 +250,7 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                                             Container(
                                               height: UHeight50,
                                               padding: EdgeInsets.all(
-                                                UPdMg_5,
+                                                UPdMg5,
                                               ),
                                               alignment: Alignment.center,
                                               child: TextButton(
@@ -276,7 +276,7 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                             },
                             child: Container(
                               padding: EdgeInsets.all(
-                                UPdMg_10,
+                                UPdMg10,
                               ),
                               alignment: Alignment.center,
                               child: Text(

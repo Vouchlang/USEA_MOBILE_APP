@@ -134,10 +134,10 @@ class _News_EventState extends State<News_Event> {
                                 milliseconds: 300,
                               ),
                               margin: EdgeInsets.fromLTRB(
-                                UPdMg_10,
-                                UPdMg_10,
-                                isLastIndex ? UPdMg_10 : UZeroPixel,
-                                UPdMg_10,
+                                UPdMg10,
+                                UPdMg10,
+                                isLastIndex ? UPdMg10 : UZeroPixel,
+                                UPdMg10,
                               ),
                               width: 165,
                               decoration: BoxDecoration(
@@ -176,14 +176,14 @@ class _News_EventState extends State<News_Event> {
                               (news_event) {
                                 return Container(
                                   padding: EdgeInsets.fromLTRB(
-                                    UPdMg_10,
+                                    UPdMg10,
                                     UZeroPixel,
-                                    UPdMg_10,
+                                    UPdMg10,
                                     UZeroPixel,
                                   ),
                                   child: Card(
                                     margin: EdgeInsets.only(
-                                      bottom: UPdMg_10,
+                                      bottom: UPdMg10,
                                     ),
                                     elevation: 2,
                                     shadowColor: ULightGreyColor,
@@ -234,10 +234,10 @@ class _News_EventState extends State<News_Event> {
                                           ),
                                           Container(
                                             padding: EdgeInsets.fromLTRB(
-                                              UPdMg_10,
+                                              UPdMg10,
                                               UZeroPixel,
-                                              UPdMg_10,
-                                              UPdMg_10,
+                                              UPdMg10,
+                                              UPdMg10,
                                             ),
                                             child: Column(
                                               children: [

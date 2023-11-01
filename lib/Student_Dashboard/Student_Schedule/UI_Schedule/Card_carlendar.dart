@@ -24,8 +24,8 @@ class _CardCalendarState extends State<CardCalendar> {
       physics: NeverScrollableScrollPhysics(),
       child: Container(
         padding: EdgeInsets.symmetric(
-          vertical: UPdMg_5,
-          horizontal: UPdMg_10,
+          vertical: UPdMg5,
+          horizontal: UPdMg10,
         ),
         child: Column(
           children: [
@@ -39,7 +39,7 @@ class _CardCalendarState extends State<CardCalendar> {
                   ),
                 ],
                 borderRadius: BorderRadius.circular(
-                  UPdMg_10,
+                  UPdMg10,
                 ),
               ),
               child: TableCalendar(
@@ -68,7 +68,7 @@ class _CardCalendarState extends State<CardCalendar> {
                 headerStyle: HeaderStyle(
                   headerPadding: EdgeInsets.symmetric(
                     horizontal: UWidth20,
-                    vertical: UPdMg_10,
+                    vertical: UPdMg10,
                   ),
                   titleTextStyle: TextStyle(
                     color: UPrimaryColor,
@@ -101,7 +101,9 @@ class _CardCalendarState extends State<CardCalendar> {
                 calendarBuilders: CalendarBuilders(
                   defaultBuilder: (context, date, _) {
                     return Container(
-                      margin: EdgeInsets.all(UPdMg_5),
+                      margin: EdgeInsets.all(
+                        UPdMg5,
+                      ),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         color: isSameDay(date, today)

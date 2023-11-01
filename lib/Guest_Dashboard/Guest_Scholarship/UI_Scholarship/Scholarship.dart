@@ -128,10 +128,10 @@ class _ScholarshipState extends State<Scholarship> {
                                   milliseconds: 300,
                                 ),
                                 margin: EdgeInsets.fromLTRB(
-                                  UPdMg_10,
-                                  UPdMg_10,
-                                  isLastIndex ? UPdMg_10 : UZeroPixel,
-                                  UPdMg_10,
+                                  UPdMg10,
+                                  UPdMg10,
+                                  isLastIndex ? UPdMg10 : UZeroPixel,
+                                  UPdMg10,
                                 ),
                                 width: 165,
                                 decoration: BoxDecoration(
@@ -173,16 +173,16 @@ class _ScholarshipState extends State<Scholarship> {
                             (scholarship) {
                               return Container(
                                 padding: EdgeInsets.fromLTRB(
-                                  UPdMg_10,
+                                  UPdMg10,
                                   UZeroPixel,
-                                  UPdMg_10,
+                                  UPdMg10,
                                   UZeroPixel,
                                 ),
                                 child: Card(
                                   elevation: 2,
                                   shadowColor: ULightGreyColor,
                                   margin: EdgeInsets.only(
-                                    bottom: UPdMg_10,
+                                    bottom: UPdMg10,
                                   ),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(
@@ -191,7 +191,7 @@ class _ScholarshipState extends State<Scholarship> {
                                   ),
                                   child: Container(
                                     padding: EdgeInsets.all(
-                                      UPdMg_10,
+                                      UPdMg10,
                                     ),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
@@ -235,12 +235,12 @@ class _ScholarshipState extends State<Scholarship> {
                                           children: [
                                             Container(
                                               margin: EdgeInsets.only(
-                                                top: UPdMg_10,
+                                                top: UPdMg10,
                                               ),
                                               alignment: Alignment.center,
                                               padding: EdgeInsets.symmetric(
-                                                vertical: UPdMg_5,
-                                                horizontal: UPdMg_10,
+                                                vertical: UPdMg5,
+                                                horizontal: UPdMg10,
                                               ),
                                               decoration: BoxDecoration(
                                                 borderRadius:

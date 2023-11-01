@@ -97,9 +97,9 @@ class _Student_DetailState extends State<Student_Detail> {
             URoundedLarge,
           )),
           child: Container(
-            margin: EdgeInsets.all(UPdMg_7),
+            margin: EdgeInsets.all(UPdMg7),
             padding: EdgeInsets.all(
-              UPdMg_10,
+              UPdMg10,
             ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(
@@ -133,7 +133,7 @@ class _Student_DetailState extends State<Student_Detail> {
                 Container(
                   height: UHeight50,
                   padding: EdgeInsets.all(
-                    UPdMg_5,
+                    UPdMg5,
                   ),
                   alignment: Alignment.center,
                   child: IntrinsicHeight(
@@ -238,8 +238,8 @@ class _Student_DetailState extends State<Student_Detail> {
                     children: [
                       Container(
                         padding: EdgeInsets.symmetric(
-                          vertical: UPdMg_10,
-                          horizontal: UPdMg_20,
+                          vertical: UPdMg10,
+                          horizontal: UPdMg20,
                         ),
                         child: Row(
                           children: [
@@ -331,8 +331,8 @@ class _Student_DetailState extends State<Student_Detail> {
                       buildDividerStDetail(),
                       Container(
                         margin: EdgeInsets.symmetric(
-                          vertical: UPdMg_10,
-                          horizontal: UPdMg_20,
+                          vertical: UPdMg10,
+                          horizontal: UPdMg20,
                         ),
                         child: Column(
                           children: [

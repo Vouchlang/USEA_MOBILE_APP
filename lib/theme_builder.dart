@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 // * @ Colors Theme
 const UPrimaryColor = Color(0xff002060);
-const USecondaryColor = Color(0xFFF5F7FE);
+const USecondaryColor = Color(0xFFF5F7FE); 
 const UYellowColor = Color(0xffE4AC40);
 const UOrangeColor = Color(0xffDF713F);
 const URedColor = Color(0xffD71818);
@@ -37,19 +37,19 @@ const UKFontFamily = "KhmerOSbattambang";
 const UEFontFamily = "Poppins";
 
 //  * @ Scale Theme
-const UScale_5 = 5.0;
-const UScale_6 = 6.0;
-const UScale_10 = 10.0;
-const UScale_15 = 15.0;
+const UScale5 = 5.0;
+const UScale6 = 6.0;
+const UScale10 = 10.0;
+const UScale15 = 15.0;
 
 //  * @ Padding & Margin Theme
-const UPdMg_5 = 5.0;
-const UPdMg_7 = 7.0;
-const UPdMg_8 = 8.0;
-const UPdMg_10 = 10.0;
-const UPdMg_12 = 12.0;
-const UPdMg_15 = 15.0;
-const UPdMg_20 = 20.0;
+const UPdMg5 = 5.0;
+const UPdMg7 = 7.0;
+const UPdMg8 = 8.0;
+const UPdMg10 = 10.0;
+const UPdMg12 = 12.0;
+const UPdMg15 = 15.0;
+const UPdMg20 = 20.0;
 
 //  * @ Rounded Theme
 const URoundedMedium = 5.0;

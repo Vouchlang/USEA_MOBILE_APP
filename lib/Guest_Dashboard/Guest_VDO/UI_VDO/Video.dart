@@ -79,14 +79,14 @@ class _VideoState extends State<Video_UI> {
           ? buildFutureBuild()
           : SingleChildScrollView(
               padding: EdgeInsets.all(
-                UPdMg_10,
+                UPdMg10,
               ),
               child: Container(
                 child: Column(
                   children: [
                     Container(
                       margin: EdgeInsets.only(
-                        bottom: UPdMg_10,
+                        bottom: UPdMg10,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -95,8 +95,8 @@ class _VideoState extends State<Video_UI> {
                           Container(
                             alignment: Alignment.center,
                             padding: EdgeInsets.symmetric(
-                              vertical: UPdMg_5,
-                              horizontal: UPdMg_10,
+                              vertical: UPdMg5,
+                              horizontal: UPdMg10,
                             ),
                             child: Text(
                               'វីដេអូពី Youtube'.tr,
@@ -118,7 +118,7 @@ class _VideoState extends State<Video_UI> {
                                 Container(
                                   alignment: Alignment.center,
                                   padding: EdgeInsets.symmetric(
-                                    vertical: UPdMg_5,
+                                    vertical: UPdMg5,
                                   ),
                                   child: Text(
                                     'មើលទាំងអស់ '.tr,
@@ -161,7 +161,7 @@ class _VideoState extends State<Video_UI> {
                           },
                           child: Container(
                             margin: EdgeInsets.only(
-                              bottom: UPdMg_10,
+                              bottom: UPdMg10,
                             ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -177,7 +177,7 @@ class _VideoState extends State<Video_UI> {
                                       height: 90,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(
-                                          UPdMg_10,
+                                          UPdMg10,
                                         ),
                                         image: DecorationImage(
                                           image: NetworkImage(

@@ -85,7 +85,7 @@ class _RegistrationState extends State<Registration> {
           ? buildFutureBuild()
           : ListView.builder(
               padding: EdgeInsets.all(
-                UPdMg_10,
+                UPdMg10,
               ),
               itemCount: educationDataList.length,
               itemBuilder: (context, index) {
@@ -93,7 +93,7 @@ class _RegistrationState extends State<Registration> {
                 return Card(
                   elevation: 2,
                   margin: EdgeInsets.only(
-                    bottom: UPdMg_10,
+                    bottom: UPdMg10,
                   ),
                   shadowColor: ULightGreyColor,
                   shape: RoundedRectangleBorder(
@@ -103,7 +103,7 @@ class _RegistrationState extends State<Registration> {
                   ),
                   child: Container(
                     padding: EdgeInsets.all(
-                      UPdMg_10,
+                      UPdMg10,
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -174,7 +174,7 @@ class _RegistrationState extends State<Registration> {
                                     children: [
                                       Container(
                                         margin: EdgeInsets.only(
-                                          left: UPdMg_15,
+                                          left: UPdMg15,
                                         ),
                                         width: UFullWidth,
                                         child: Row(
@@ -188,7 +188,7 @@ class _RegistrationState extends State<Registration> {
                                               width: UWidth20,
                                               height: UHeight20,
                                               margin: EdgeInsets.only(
-                                                left: UPdMg_5,
+                                                left: UPdMg5,
                                               ),
                                               child: Image.asset(
                                                 'assets/image/detail.png',

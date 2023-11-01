@@ -19,7 +19,7 @@ class News_Event_Detail extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.only(
-            bottom: UPdMg_10,
+            bottom: UPdMg10,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -54,8 +54,8 @@ class News_Event_Detail extends StatelessWidget {
                   ],
                 ),
                 padding: EdgeInsets.symmetric(
-                  vertical: UPdMg_10,
-                  horizontal: UPdMg_5,
+                  vertical: UPdMg10,
+                  horizontal: UPdMg5,
                 ),
                 alignment: Alignment.center,
                 width: double.maxFinite,
@@ -75,7 +75,7 @@ class News_Event_Detail extends StatelessWidget {
               Container(
                 width: UFullWidth,
                 margin: EdgeInsets.symmetric(
-                  horizontal: UPdMg_10,
+                  horizontal: UPdMg10,
                 ),
                 child: Text(
                   data.description.isEmpty ? 'N/A' : data.description,

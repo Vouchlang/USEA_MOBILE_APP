@@ -26,7 +26,7 @@ class AboutUS extends StatelessWidget {
           return Container(
             margin: EdgeInsets.fromLTRB(
               6,
-              UPdMg_5,
+              UPdMg5,
               6,
               UZeroPixel,
             ),
@@ -69,8 +69,8 @@ class AboutUS extends StatelessWidget {
                 },
                 child: Container(
                   padding: EdgeInsets.symmetric(
-                    vertical: UPdMg_15,
-                    horizontal: UPdMg_10,
+                    vertical: UPdMg15,
+                    horizontal: UPdMg10,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -80,7 +80,7 @@ class AboutUS extends StatelessWidget {
                           children: [
                             Image.asset(
                               about_US[index].img,
-                              scale: UScale_6,
+                              scale: UScale6,
                             ),
                             SizedBox(
                               width: UWidth10,
@@ -101,7 +101,7 @@ class AboutUS extends StatelessWidget {
                       Container(
                         child: Image.asset(
                           'assets/image/Right_Arrow.png',
-                          scale: UScale_15,
+                          scale: UScale15,
                         ),
                       ),
                     ],

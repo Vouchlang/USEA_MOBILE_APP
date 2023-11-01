@@ -76,10 +76,10 @@ class ChangeLanguage extends StatelessWidget {
       elevation: 3,
       child: Container(
         margin: EdgeInsets.all(
-          UPdMg_7,
+          UPdMg7,
         ),
         padding: EdgeInsets.all(
-          UPdMg_10,
+          UPdMg10,
         ),
         decoration: BoxDecoration(
           color: UBackgroundColor,
@@ -108,7 +108,7 @@ class ChangeLanguage extends StatelessWidget {
             ),
             Container(
               height: 70,
-              padding: EdgeInsets.all(UPdMg_5),
+              padding: EdgeInsets.all(UPdMg5),
               alignment: Alignment.center,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,

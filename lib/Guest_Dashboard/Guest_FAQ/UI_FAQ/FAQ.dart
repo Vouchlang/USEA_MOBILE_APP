@@ -66,7 +66,7 @@ class _FAQState extends State<FAQ> {
         child: faq.isEmpty
             ? buildFutureBuild()
             : Container(
-                margin: EdgeInsets.symmetric(horizontal: UPdMg_10),
+                margin: EdgeInsets.symmetric(horizontal: UPdMg10),
                 width: double.infinity,
                 child: ListView.builder(
                   itemCount: faq.length,
@@ -75,10 +75,10 @@ class _FAQState extends State<FAQ> {
                     return Card(
                       margin: isLastIndex
                           ? EdgeInsets.symmetric(
-                              vertical: UPdMg_10,
+                              vertical: UPdMg10,
                             )
                           : EdgeInsets.only(
-                              top: UPdMg_10,
+                              top: UPdMg10,
                             ),
                       elevation: 2,
                       shadowColor: ULightGreyColor,
@@ -89,7 +89,7 @@ class _FAQState extends State<FAQ> {
                       ),
                       child: Padding(
                         padding: EdgeInsets.symmetric(
-                          vertical: UPdMg_10,
+                          vertical: UPdMg10,
                         ),
                         child: Column(
                           children: [
@@ -115,10 +115,10 @@ class _FAQState extends State<FAQ> {
                                       ),
                                     ),
                                     padding: EdgeInsets.fromLTRB(
-                                      UPdMg_15,
-                                      UPdMg_10,
-                                      UPdMg_15,
-                                      UPdMg_5,
+                                      UPdMg15,
+                                      UPdMg10,
+                                      UPdMg15,
+                                      UPdMg5,
                                     ),
                                     child: buildFAQ(
                                       faq[index].answer,

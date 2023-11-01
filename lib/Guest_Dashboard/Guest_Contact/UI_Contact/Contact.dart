@@ -23,7 +23,7 @@ class _ContactState extends State<Contact> {
       ),
       body: ListView(
         padding: EdgeInsets.all(
-          UPdMg_10,
+          UPdMg10,
         ),
         children: [
           ListView.builder(

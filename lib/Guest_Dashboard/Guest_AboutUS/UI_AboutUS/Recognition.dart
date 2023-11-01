@@ -71,13 +71,13 @@ class _RecognitionState extends State<Recognition> {
                 final isFinalIndex = index == recognition.length - 1;
                 return Padding(
                   padding: EdgeInsets.only(
-                    bottom: isFinalIndex ? UPdMg_10 : UZeroPixel,
+                    bottom: isFinalIndex ? UPdMg10 : UZeroPixel,
                   ),
                   child: Column(
                     children: [
                       Container(
                         margin: EdgeInsets.all(
-                          UPdMg_10,
+                          UPdMg10,
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -135,7 +135,7 @@ class _RecognitionState extends State<Recognition> {
                                         width: 80,
                                         alignment: Alignment.center,
                                         padding: EdgeInsets.all(
-                                          UPdMg_5,
+                                          UPdMg5,
                                         ),
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(

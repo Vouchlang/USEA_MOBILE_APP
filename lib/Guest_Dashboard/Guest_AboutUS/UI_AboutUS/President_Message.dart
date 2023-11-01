@@ -20,7 +20,7 @@ class President extends StatelessWidget {
           children: [
             Container(
               margin: EdgeInsets.only(
-                bottom: UPdMg_10,
+                bottom: UPdMg10,
               ),
               height: 300,
               child: Image.asset(

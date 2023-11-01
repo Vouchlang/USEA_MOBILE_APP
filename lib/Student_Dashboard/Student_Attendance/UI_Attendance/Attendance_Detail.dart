@@ -30,7 +30,7 @@ class Attendance_Detail extends StatelessWidget {
             ),
           ),
           margin: EdgeInsets.all(
-            UPdMg_10,
+            UPdMg10,
           ),
           color: UBackgroundColor,
           child: Column(
@@ -38,8 +38,8 @@ class Attendance_Detail extends StatelessWidget {
             children: [
               Container(
                 padding: EdgeInsets.symmetric(
-                  vertical: UPdMg_15,
-                  horizontal: UPdMg_10,
+                  vertical: UPdMg15,
+                  horizontal: UPdMg10,
                 ),
                 width: UFullWidth,
                 decoration: BoxDecoration(
@@ -68,7 +68,7 @@ class Attendance_Detail extends StatelessWidget {
                           IntrinsicHeight(
                             child: Padding(
                               padding: EdgeInsets.symmetric(
-                                vertical: UPdMg_10,
+                                vertical: UPdMg10,
                               ),
                               child: Row(
                                 mainAxisAlignment:
@@ -235,7 +235,7 @@ class Attendance_Detail extends StatelessWidget {
                         IntrinsicHeight(
                           child: Padding(
                             padding: EdgeInsets.all(
-                              UPdMg_8,
+                              UPdMg8,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -259,7 +259,7 @@ class Attendance_Detail extends StatelessWidget {
                         IntrinsicHeight(
                           child: Padding(
                             padding: EdgeInsets.all(
-                              UPdMg_8,
+                              UPdMg8,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,

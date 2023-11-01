@@ -274,9 +274,9 @@ class _ProgramState extends State<Program> {
                             return Card(
                               color: UBackgroundColor,
                               margin: EdgeInsets.fromLTRB(
-                                UPdMg_10,
-                                UPdMg_10,
-                                UPdMg_10,
+                                UPdMg10,
+                                UPdMg10,
+                                UPdMg10,
                                 UZeroPixel,
                               ),
                               elevation: 2,
@@ -288,7 +288,7 @@ class _ProgramState extends State<Program> {
                               ),
                               child: Container(
                                 padding: EdgeInsets.symmetric(
-                                  vertical: UPdMg_5,
+                                  vertical: UPdMg5,
                                 ),
                                 child: Theme(
                                   data: Theme.of(context).copyWith(
@@ -330,10 +330,10 @@ class _ProgramState extends State<Program> {
 
                                       return Container(
                                         padding: EdgeInsets.fromLTRB(
-                                          UPdMg_15,
+                                          UPdMg15,
                                           UZeroPixel,
-                                          UPdMg_15,
-                                          UPdMg_10,
+                                          UPdMg15,
+                                          UPdMg10,
                                         ),
                                         child: InkWell(
                                           onTap: () {
@@ -365,8 +365,8 @@ class _ProgramState extends State<Program> {
                                               ),
                                             ),
                                             padding: EdgeInsets.symmetric(
-                                              vertical: UPdMg_8,
-                                              horizontal: UPdMg_5,
+                                              vertical: UPdMg8,
+                                              horizontal: UPdMg5,
                                             ),
                                             child: Row(
                                               mainAxisAlignment:
@@ -411,7 +411,7 @@ class _ProgramState extends State<Program> {
                           shrinkWrap: true,
                           itemCount: programACCA.length,
                           padding: EdgeInsets.only(
-                            bottom: UPdMg_10,
+                            bottom: UPdMg10,
                           ),
                           itemBuilder: (BuildContext context, index) {
                             final program = programACCA[index];
@@ -419,9 +419,9 @@ class _ProgramState extends State<Program> {
                             return Card(
                               color: UBackgroundColor,
                               margin: EdgeInsets.fromLTRB(
-                                UPdMg_10,
-                                UPdMg_10,
-                                UPdMg_10,
+                                UPdMg10,
+                                UPdMg10,
+                                UPdMg10,
                                 UZeroPixel,
                               ),
                               elevation: 2,
@@ -433,7 +433,7 @@ class _ProgramState extends State<Program> {
                               ),
                               child: Container(
                                 padding: EdgeInsets.symmetric(
-                                  vertical: UPdMg_5,
+                                  vertical: UPdMg5,
                                 ),
                                 child: Theme(
                                   data: Theme.of(context).copyWith(
@@ -450,7 +450,7 @@ class _ProgramState extends State<Program> {
                                       children: [
                                         Image.network(
                                           fac_icon,
-                                          scale: UScale_6,
+                                          scale: UScale6,
                                           errorBuilder:
                                               (context, error, stackTrace) {
                                             return Icon(
@@ -470,10 +470,10 @@ class _ProgramState extends State<Program> {
                                       final majorData = major.major_data[index];
                                       return Container(
                                         padding: EdgeInsets.fromLTRB(
-                                          UPdMg_15,
+                                          UPdMg15,
                                           UZeroPixel,
-                                          UPdMg_15,
-                                          UPdMg_10,
+                                          UPdMg15,
+                                          UPdMg10,
                                         ),
                                         child: InkWell(
                                           onTap: () {
@@ -503,8 +503,8 @@ class _ProgramState extends State<Program> {
                                               ),
                                             ),
                                             padding: EdgeInsets.symmetric(
-                                              vertical: UPdMg_8,
-                                              horizontal: UPdMg_5,
+                                              vertical: UPdMg8,
+                                              horizontal: UPdMg5,
                                             ),
                                             child: Row(
                                               mainAxisAlignment:
@@ -642,7 +642,7 @@ class MajorSearchDelegate extends SearchDelegate<String> {
       children: [
         Padding(
           padding: EdgeInsets.all(
-            UPdMg_8,
+            UPdMg8,
           ),
           child: Text(
             title,

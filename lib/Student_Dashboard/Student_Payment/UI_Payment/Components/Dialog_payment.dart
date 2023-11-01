@@ -20,7 +20,7 @@ class _PaymentDialogState extends State<PaymentDialog> {
       elevation: 5,
       backgroundColor: UBackgroundColor,
       insetPadding: EdgeInsets.all(
-        UPdMg_10,
+        UPdMg10,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
@@ -43,7 +43,7 @@ class _PaymentDialogState extends State<PaymentDialog> {
               },
               child: Image.asset(
                 'assets/image/close.png',
-                scale: UScale_10,
+                scale: UScale10,
               ),
             ),
           ),
@@ -60,8 +60,8 @@ class _PaymentDialogState extends State<PaymentDialog> {
         children: [
           Container(
             padding: EdgeInsets.symmetric(
-              vertical: UPdMg_10,
-              horizontal: UPdMg_10,
+              vertical: UPdMg10,
+              horizontal: UPdMg10,
             ),
             width: UFullWidth,
             decoration: BoxDecoration(
@@ -101,7 +101,7 @@ class _PaymentDialogState extends State<PaymentDialog> {
               IntrinsicHeight(
                 child: Padding(
                   padding: EdgeInsets.all(
-                    UPdMg_5,
+                    UPdMg5,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -157,7 +157,7 @@ class _PaymentDialogState extends State<PaymentDialog> {
                   final isLastIndex = index == paymentData2.length - 1;
                   return Padding(
                     padding: EdgeInsets.only(
-                      bottom: isLastIndex ? UPdMg_5 : UZeroPixel,
+                      bottom: isLastIndex ? UPdMg5 : UZeroPixel,
                     ),
                     child: IntrinsicHeight(
                       child: Column(
@@ -167,7 +167,7 @@ class _PaymentDialogState extends State<PaymentDialog> {
                           IntrinsicHeight(
                             child: Container(
                               padding: EdgeInsets.all(
-                                UPdMg_8,
+                                UPdMg8,
                               ),
                               child: Row(
                                 mainAxisAlignment:

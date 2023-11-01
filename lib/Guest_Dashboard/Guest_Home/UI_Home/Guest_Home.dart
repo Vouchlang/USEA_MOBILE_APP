@@ -123,7 +123,7 @@ class _Guest_HomeState extends State<Guest_Home> {
   Widget build(BuildContext context) {
     Widget buildImage(String image_slide, int index) => Container(
           margin: EdgeInsets.symmetric(
-            horizontal: UPdMg_5,
+            horizontal: UPdMg5,
           ),
           width: UFullWidth,
           height: UFullWidth,
@@ -248,7 +248,7 @@ class _Guest_HomeState extends State<Guest_Home> {
               height: 175,
               width: double.infinity,
               padding: EdgeInsets.symmetric(
-                horizontal: UPdMg_5,
+                horizontal: UPdMg5,
               ),
               child: isLoading
                   ? buildFutureBuild()
@@ -298,7 +298,7 @@ class _Guest_HomeState extends State<Guest_Home> {
               crossAxisSpacing: 3,
               childAspectRatio: 1.90,
               padding: EdgeInsets.symmetric(
-                horizontal: UPdMg_7,
+                horizontal: UPdMg7,
               ),
               children: List.generate(
                 guest_home_screen.length,
@@ -307,7 +307,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                   shadowColor: ULightGreyColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(
-                      UPdMg_10,
+                      UPdMg10,
                     ),
                   ),
                   child: InkWell(
@@ -332,7 +332,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                     },
                     child: Container(
                       padding: EdgeInsets.only(
-                        left: UPdMg_15,
+                        left: UPdMg15,
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -340,7 +340,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                         children: [
                           Image.asset(
                             guest_home_screen[index].img,
-                            scale: UScale_6,
+                            scale: UScale6,
                           ),
                           SizedBox(
                             height: UHeight7,
@@ -370,14 +370,14 @@ class _Guest_HomeState extends State<Guest_Home> {
                 ),
               ),
               margin: EdgeInsets.fromLTRB(
-                UPdMg_10,
+                UPdMg10,
                 UZeroPixel,
-                UPdMg_10,
-                UPdMg_10,
+                UPdMg10,
+                UPdMg10,
               ),
               child: Padding(
                 padding: EdgeInsets.all(
-                  UPdMg_10,
+                  UPdMg10,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

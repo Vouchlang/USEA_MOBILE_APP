@@ -137,9 +137,9 @@ class _Study_InfoState extends State<Study_Info> {
                         ? SizedBox.shrink()
                         : Padding(
                             padding: EdgeInsets.fromLTRB(
-                              UPdMg_10,
-                              UPdMg_10,
-                              UPdMg_10,
+                              UPdMg10,
+                              UPdMg10,
+                              UPdMg10,
                               UZeroPixel,
                             ),
                             child: Text(
@@ -155,7 +155,7 @@ class _Study_InfoState extends State<Study_Info> {
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
                       padding: EdgeInsets.all(
-                        UPdMg_5,
+                        UPdMg5,
                       ),
                       itemCount: _dataStudyInfo.length,
                       itemBuilder: (BuildContext context, index) {
@@ -171,17 +171,17 @@ class _Study_InfoState extends State<Study_Info> {
                           color: UBackgroundColor,
                           margin: isLastIndex
                               ? EdgeInsets.fromLTRB(
-                                  UPdMg_5,
-                                  UPdMg_5,
-                                  UPdMg_5,
-                                  UPdMg_10,
+                                  UPdMg5,
+                                  UPdMg5,
+                                  UPdMg5,
+                                  UPdMg10,
                                 )
                               : EdgeInsets.all(
-                                  UPdMg_5,
+                                  UPdMg5,
                                 ),
                           child: Padding(
                             padding: EdgeInsets.all(
-                              UPdMg_8,
+                              UPdMg8,
                             ),
                             child: IntrinsicHeight(
                               child: Row(
@@ -205,7 +205,7 @@ class _Study_InfoState extends State<Study_Info> {
                                   buildVerticalDividerAtt(),
                                   Container(
                                     padding: EdgeInsets.only(
-                                      left: UPdMg_8,
+                                      left: UPdMg8,
                                     ),
                                     child: IntrinsicWidth(
                                       child: Column(
@@ -260,9 +260,9 @@ class _Study_InfoState extends State<Study_Info> {
                         ? SizedBox.shrink()
                         : Padding(
                             padding: EdgeInsets.fromLTRB(
-                              UPdMg_10,
-                              UPdMg_10,
-                              UPdMg_10,
+                              UPdMg10,
+                              UPdMg10,
+                              UPdMg10,
                               UZeroPixel,
                             ),
                             child: Text(
@@ -278,7 +278,7 @@ class _Study_InfoState extends State<Study_Info> {
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
                       padding: EdgeInsets.all(
-                        UPdMg_5,
+                        UPdMg5,
                       ),
                       itemCount: _dataStudyInfoAssignment.length,
                       itemBuilder: (BuildContext context, index) {
@@ -294,17 +294,17 @@ class _Study_InfoState extends State<Study_Info> {
                           ),
                           margin: isLastIndex
                               ? EdgeInsets.fromLTRB(
-                                  UPdMg_5,
-                                  UPdMg_5,
-                                  UPdMg_5,
-                                  UPdMg_10,
+                                  UPdMg5,
+                                  UPdMg5,
+                                  UPdMg5,
+                                  UPdMg10,
                                 )
                               : EdgeInsets.all(
-                                  UPdMg_5,
+                                  UPdMg5,
                                 ),
                           child: Padding(
                             padding: EdgeInsets.all(
-                              UPdMg_10,
+                              UPdMg10,
                             ),
                             child: Column(
                               children: [

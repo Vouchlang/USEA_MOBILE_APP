@@ -141,7 +141,7 @@ class _AttendanceListState extends State<AttendanceList> {
               color: UPrimaryColor,
               child: Padding(
                 padding: EdgeInsets.all(
-                  UPdMg_5,
+                  UPdMg5,
                 ),
                 child: ListView(
                   shrinkWrap: true,
@@ -172,13 +172,13 @@ class _AttendanceListState extends State<AttendanceList> {
                                   milliseconds: 300,
                                 ),
                                 margin: EdgeInsets.fromLTRB(
-                                  UPdMg_10,
-                                  UPdMg_10,
-                                  isLastIndex ? UPdMg_10 : UZeroPixel,
-                                  UPdMg_10,
+                                  UPdMg10,
+                                  UPdMg10,
+                                  isLastIndex ? UPdMg10 : UZeroPixel,
+                                  UPdMg10,
                                 ),
                                 padding: EdgeInsets.all(
-                                  UPdMg_10,
+                                  UPdMg10,
                                 ),
                                 width: 120,
                                 decoration: BoxDecoration(
@@ -215,8 +215,8 @@ class _AttendanceListState extends State<AttendanceList> {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(
-                        horizontal: UPdMg_10,
-                        vertical: UPdMg_5,
+                        horizontal: UPdMg10,
+                        vertical: UPdMg5,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -251,7 +251,7 @@ class _AttendanceListState extends State<AttendanceList> {
                                 ),
                                 Padding(
                                   padding: EdgeInsets.all(
-                                    UPdMg_5,
+                                    UPdMg5,
                                   ),
                                   child: Center(
                                     child: TitleTheme(
@@ -275,10 +275,10 @@ class _AttendanceListState extends State<AttendanceList> {
                                           elevation: 1,
                                           child: Container(
                                             padding: const EdgeInsets.fromLTRB(
-                                              UPdMg_10,
-                                              UPdMg_15,
-                                              UPdMg_15,
-                                              UPdMg_15,
+                                              UPdMg10,
+                                              UPdMg15,
+                                              UPdMg15,
+                                              UPdMg15,
                                             ),
                                             child: InkWell(
                                               onTap: () {

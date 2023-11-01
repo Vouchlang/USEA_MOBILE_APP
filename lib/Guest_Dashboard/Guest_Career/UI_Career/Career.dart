@@ -68,19 +68,19 @@ class _CareerState extends State<Career> {
             ? buildFutureBuild()
             : ListView.builder(
                 padding: EdgeInsets.symmetric(
-                  vertical: UPdMg_10,
-                  horizontal: UPdMg_20,
+                  vertical: UPdMg10,
+                  horizontal: UPdMg20,
                 ),
                 itemCount: career.length,
                 itemBuilder: (context, index) {
                   final isFinalIndex = index == career.length - 1;
                   return Padding(
                     padding: EdgeInsets.only(
-                      bottom: isFinalIndex ? UPdMg_10 : UZeroPixel,
+                      bottom: isFinalIndex ? UPdMg10 : UZeroPixel,
                     ),
                     child: Container(
                       padding: EdgeInsets.only(
-                        top: UPdMg_5,
+                        top: UPdMg5,
                       ),
                       child: InkWell(
                         onTap: () {
