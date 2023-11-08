@@ -40,7 +40,7 @@ class _VideoState extends State<Video_UI> {
         ];
       }
     } catch (e) {
-      print('Error fetching data: $e');
+      print('Failed to fetch video: $e');
     } finally {
       if (mounted) {
         setState(

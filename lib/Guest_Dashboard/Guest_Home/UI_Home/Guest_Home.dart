@@ -56,7 +56,7 @@ class _Guest_HomeState extends State<Guest_Home> {
         }
       }
     } catch (e) {
-      print('Error fetching data: $e');
+      print('Failed to fetch guest home: $e');
     } finally {
       if (mounted) {
         setState(() {

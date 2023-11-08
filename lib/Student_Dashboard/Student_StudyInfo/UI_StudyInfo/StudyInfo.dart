@@ -102,7 +102,7 @@ class _Study_InfoState extends State<Study_Info> {
         }
       }
     } catch (error) {
-      print('Error: $error');
+      print('Failed to fetch studt info: $error');
       if (mounted) {
         setState(() {
           isLoading = false;

@@ -37,7 +37,7 @@ class _CareerState extends State<Career> {
         career = [Class_Career.fromJson(r)];
       }
     } catch (e) {
-      print('Error fetching data: $e');
+      print('Failed to fetch career: $e');
       // handle the error here
     } finally {
       if (mounted) {

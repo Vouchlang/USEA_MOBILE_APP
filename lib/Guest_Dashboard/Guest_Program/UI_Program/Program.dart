@@ -24,106 +24,110 @@ class _ProgramState extends State<Program> {
   String searchQuery = '';
 
   Future<void> fetchData() async {
-    final response = await http.get(
-      Uri.parse(
-        Get.locale?.languageCode == 'km'
-            ? APIUrlGuest + 'api/webapi.php?action=study_program_kh'
-            : APIUrlGuest + 'api/webapi.php?action=study_program_en',
-      ),
-    );
+    try {
+      final response = await http.get(
+        Uri.parse(
+          Get.locale?.languageCode == 'km'
+              ? APIUrlGuest + 'api/webapi.php?action=study_program_kh'
+              : APIUrlGuest + 'api/webapi.php?action=study_program_en',
+        ),
+      );
 
-    final response_acca = await http.get(
-      Uri.parse(
-        Get.locale?.languageCode == 'km'
-            ? APIUrlGuest + 'api/webapi.php?action=acca_kh'
-            : APIUrlGuest + 'api/webapi.php?action=acca_en',
-      ),
-    );
+      final response_acca = await http.get(
+        Uri.parse(
+          Get.locale?.languageCode == 'km'
+              ? APIUrlGuest + 'api/webapi.php?action=acca_kh'
+              : APIUrlGuest + 'api/webapi.php?action=acca_en',
+        ),
+      );
 
-    if (response.statusCode == 200 && response_acca.statusCode == 200) {
-      final Map<String, dynamic> jsonData = jsonDecode(response.body);
-      final List<dynamic> programDataList = jsonData['program_data'];
+      if (response.statusCode == 200 && response_acca.statusCode == 200) {
+        final Map<String, dynamic> jsonData = jsonDecode(response.body);
+        final List<dynamic> programDataList = jsonData['program_data'];
 
-      // Acca
-      final Map<String, dynamic> jsonData_ACCA =
-          json.decode(response_acca.body);
+        // Acca
+        final Map<String, dynamic> jsonData_ACCA =
+            json.decode(response_acca.body);
 
-      List<ProgramACCA> accaList = [];
+        List<ProgramACCA> accaList = [];
 
-      jsonData_ACCA['program_acca']?.forEach((facData) {
-        List<Faculty_Data> fac_data = [];
+        jsonData_ACCA['program_acca']?.forEach((facData) {
+          List<Faculty_Data> fac_data = [];
 
-        facData['faculty_data']?.forEach((majorData) {
-          List<Major_Data> major_data = [];
+          facData['faculty_data']?.forEach((majorData) {
+            List<Major_Data> major_data = [];
 
-          majorData['major_data']?.forEach((subjectData) {
-            List<Subject_Data> subject_data = [];
+            majorData['major_data']?.forEach((subjectData) {
+              List<Subject_Data> subject_data = [];
 
-            subjectData['subject_data']?.forEach((data) {
-              Subject_Data subObj = Subject_Data(
-                no: data['No'] ?? 'N/A',
-                subject: data['subject'] ?? 'N/A',
-                hour_per_week: data['hour_per_week'] ?? 'N/A',
-                weeks: data['weeks'] ?? 'N/A',
-                total_hour: data['total_hour'] ?? 'N/A',
-              );
+              subjectData['subject_data']?.forEach((data) {
+                Subject_Data subObj = Subject_Data(
+                  no: data['No'] ?? 'N/A',
+                  subject: data['subject'] ?? 'N/A',
+                  hour_per_week: data['hour_per_week'] ?? 'N/A',
+                  weeks: data['weeks'] ?? 'N/A',
+                  total_hour: data['total_hour'] ?? 'N/A',
+                );
 
-              subject_data.add(subObj);
+                subject_data.add(subObj);
+              });
+
+              Major_Data majorObj = Major_Data(
+                  major_name: subjectData['major_name'] ?? 'N/A',
+                  course_hour: subjectData['course_hour'] ?? 'N/A',
+                  subject_data: subject_data);
+
+              major_data.add(majorObj); // Add majorObj to major_data
             });
 
-            Major_Data majorObj = Major_Data(
-                major_name: subjectData['major_name'] ?? 'N/A',
-                course_hour: subjectData['course_hour'] ?? 'N/A',
-                subject_data: subject_data);
+            Faculty_Data facObj = Faculty_Data(
+              fac_icon: majorData['fac_icon'] ?? 'N/A',
+              major_data: major_data,
+            );
 
-            major_data.add(majorObj); // Add majorObj to major_data
+            fac_data.add(facObj); // Add facObj to fac_data
           });
 
-          Faculty_Data facObj = Faculty_Data(
-            fac_icon: majorData['fac_icon'] ?? 'N/A',
-            major_data: major_data,
+          ProgramACCA programacca = ProgramACCA(
+            fac_name: facData['faculty_name'] ?? 'N/A',
+            fac_data: fac_data,
           );
 
-          fac_data.add(facObj); // Add facObj to fac_data
+          accaList.add(programacca);
         });
 
-        ProgramACCA programacca = ProgramACCA(
-          fac_name: facData['faculty_name'] ?? 'N/A',
-          fac_data: fac_data,
-        );
+        if (mounted) {
+          setState(
+            () {
+              programACCA = accaList;
 
-        accaList.add(programacca);
-      });
-
-      if (mounted) {
-        setState(
-          () {
-            programACCA = accaList;
-
-            programData = List<Map<String, dynamic>>.from(programDataList);
-            majorNames = [...majorNames];
-            for (final data in programData) {
-              final majorNamesForFaculty =
-                  (data['faculty_data']['major_name'] as List)
-                      .map<String>((major) => major['major_name'] as String)
-                      .toList();
-              majorNames.addAll(majorNamesForFaculty);
-            }
-            for (final program in programACCA) {
-              majorNames.addAll(
-                program.fac_data.expand(
-                  (facultyData) => facultyData.major_data
-                      .map((majorData) => majorData.major_name),
-                ),
-              );
-            }
-            filteredMajorNames = majorNames;
-          },
-        );
+              programData = List<Map<String, dynamic>>.from(programDataList);
+              majorNames = [...majorNames];
+              for (final data in programData) {
+                final majorNamesForFaculty =
+                    (data['faculty_data']['major_name'] as List)
+                        .map<String>((major) => major['major_name'] as String)
+                        .toList();
+                majorNames.addAll(majorNamesForFaculty);
+              }
+              for (final program in programACCA) {
+                majorNames.addAll(
+                  program.fac_data.expand(
+                    (facultyData) => facultyData.major_data
+                        .map((majorData) => majorData.major_name),
+                  ),
+                );
+              }
+              filteredMajorNames = majorNames;
+            },
+          );
+        }
+      } else {
+        // Handle errors
+        print('Failed to load data');
       }
-    } else {
-      // Handle errors
-      print('Failed to load data');
+    } catch (e) {
+      print('Failed to fetch program: $e');
     }
   }
 

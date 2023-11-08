@@ -77,7 +77,7 @@ class _News_EventState extends State<News_Event> {
         );
       }
     } catch (e) {
-      print('Error1: $e');
+      print('Failed to fetch news event: $e');
     }
   }
 

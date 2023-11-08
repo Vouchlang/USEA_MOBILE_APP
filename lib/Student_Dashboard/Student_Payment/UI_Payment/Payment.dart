@@ -129,7 +129,7 @@ class _Payment_UIState extends State<Payment_UI> {
         }
       }
     } catch (error) {
-      print('Error: $error');
+      print('Failed to fetch payment: $error');
       if (mounted) {
         setState(() {
           isLoading = false;

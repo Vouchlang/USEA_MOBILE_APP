@@ -157,7 +157,7 @@ class _Student_HomeState extends State<Student_Home> {
         }
       }
     } catch (error) {
-      print('Error: $error');
+      print('Failed to fetch data: $error');
       if (mounted) {
         setState(() {
           isLoading = false;

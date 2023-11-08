@@ -70,7 +70,7 @@ class _Student_DetailState extends State<Student_Detail> {
         }
       }
     } catch (error) {
-      print('Error: $error');
+      print('Failed to fetch student detail: $error');
       if (mounted) {
         setState(() {
           isLoading = false;

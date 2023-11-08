@@ -117,7 +117,7 @@ class _AttendanceListState extends State<AttendanceList> {
       }
     } catch (e) {
       // Handle error case
-      print('Error: $e');
+      print('Failed to fetch attendance: $e');
     }
   }
 
@@ -222,10 +222,6 @@ class _AttendanceListState extends State<AttendanceList> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           buildAttList(
-                            'វត្តមាន\t',
-                            UScoreColor,
-                          ),
-                          buildAttList(
                             'យឺត',
                             UYellowColor,
                           ),
@@ -236,6 +232,10 @@ class _AttendanceListState extends State<AttendanceList> {
                           buildAttList(
                             'អវត្តមាន',
                             URedColor,
+                          ),
+                          buildAttList(
+                            'វត្តមាន\t',
+                            UScoreColor,
                           ),
                         ],
                       ),

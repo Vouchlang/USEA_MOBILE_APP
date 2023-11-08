@@ -125,7 +125,7 @@ class _PerformanceState extends State<Performance> {
       }
     } catch (e) {
       // Handle error case
-      print('Error1: $e');
+      print('Failed to fetch performance: $e');
     }
   }
 

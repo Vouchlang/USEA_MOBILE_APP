@@ -70,7 +70,7 @@ class _RegistrationState extends State<Registration> {
         print('Failed to fetch data. Status code: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error fetching data: $e');
+      print('Failed to fetch registration: $e');
     }
   }
 

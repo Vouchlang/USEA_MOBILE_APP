@@ -36,7 +36,7 @@ class _FAQState extends State<FAQ> {
         ];
       }
     } catch (e) {
-      print('Error fetching data: $e');
+      print('Failed to fetch FAQ: $e');
       // handle the error here
     } finally {
       if (mounted) {

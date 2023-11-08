@@ -67,7 +67,7 @@ class _Job_HistoryState extends State<Job_History> {
         }
       }
     } catch (error) {
-      print('Error: $error');
+      print('Failed to fetch job history: $error');
       if (mounted) {
         setState(() {
           isLoading = false;

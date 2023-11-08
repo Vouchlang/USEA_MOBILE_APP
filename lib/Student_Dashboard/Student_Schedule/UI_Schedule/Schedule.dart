@@ -93,7 +93,7 @@ class _ScheduleState extends State<Schedule> {
         }
       }
     } catch (error) {
-      print('Error: $error');
+      print('Failed to fetch schedule: $error');
       if (mounted) {
         setState(() {
           isLoading = false;

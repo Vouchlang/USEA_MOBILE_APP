@@ -73,7 +73,7 @@ class _ScholarshipState extends State<Scholarship> {
         print('Request failed with status: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error1: $e');
+      print('Failed to fetch scholarship: $e');
     }
   }
 

@@ -37,7 +37,7 @@ class _RecognitionState extends State<Recognition> {
         recognition = [Class_Recognition.fromJson(r)];
       }
     } catch (e) {
-      print('Error fetching data: $e');
+      print('Failed to fetch recognition: $e');
       // handle the error here
     } finally {
       if (mounted) {
