@@ -5,12 +5,12 @@ import '../theme_builder.dart';
 String APIUrlGuest = 'https://usea.edu.kh/';
 
 // Local Server
-String APIUrlStudent = 'http://192.168.2.230/api/apidata.php?';
-String APIUrlStudentEn = 'http://192.168.2.230/api/apidata_en.php?';
+// String APIUrlStudent = 'http://192.168.2.230/api/apidata.php?';
+// String APIUrlStudentEn = 'http://192.168.2.230/api/apidata_en.php?';
 
 // Public Server
-// String APIUrlStudent = 'http://116.212.155.149:9999/api/apidata.php?';
-// String APIUrlStudentEn = 'http://116.212.155.149:9999/api/apidata_en.php?';
+String APIUrlStudent = 'http://116.212.155.149:9999/api/apidata.php?';
+String APIUrlStudentEn = 'http://116.212.155.149:9999/api/apidata_en.php?';
 
 String NoDataTXT = 'គ្មានទិន្ន័យ'.tr;
 
@@ -431,6 +431,22 @@ Widget CustomPerformanceDiaglogTextTheme(
   );
 }
 
+Widget CustomPerformanceDiaglogTextThemeBold(
+  String text,
+  double size,
+  Color color,
+) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: size,
+      fontWeight: UBodyWeight,
+      color: color,
+      fontFamily: UEFontFamily,
+    ),
+  );
+}
+
 // *@ Attendance custom text
 Widget CustomAttTextTheme(
   String text,
@@ -529,7 +545,7 @@ Widget buildCHText(
   );
 }
 
-Widget buildNum(
+Widget buildNumAtt(
   String text,
   Color color,
 ) {
@@ -538,6 +554,8 @@ Widget buildNum(
     style: TextStyle(
       color: color,
       fontSize: UTitleSize,
+      fontWeight: UBodyWeight,
+      fontFamily: UEFontFamily,
     ),
   );
 }

@@ -359,22 +359,22 @@ class _AttendanceState extends State<Attendance> {
                             SizedBox(
                               width: UWidth5,
                             ),
-                            buildNum(
+                            buildNumAtt(
                               subject.attendance_al,
                               UYellowColor,
                             ),
                             buildDivider(),
-                            buildNum(
+                            buildNumAtt(
                               subject.attendance_pm,
                               UOrangeColor,
                             ),
                             buildDivider(),
-                            buildNum(
+                            buildNumAtt(
                               subject.attendance_a,
                               URedColor,
                             ),
                             buildDivider(),
-                            buildNum(
+                            buildNumAtt(
                               subject.attendance_ps,
                               UScoreColor,
                             ),

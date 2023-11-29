@@ -454,9 +454,9 @@ class _PerformanceState extends State<Performance> {
                                                                                     child: Column(
                                                                                       mainAxisSize: MainAxisSize.min,
                                                                                       children: subject.attendances.asMap().entries.map((att) {
-                                                                                        final int index = att.key;
+                                                                                        // final int index = att.key;
                                                                                         final attendance = att.value;
-                                                                                        final double marginBottom = (index == subject.attendances.length - 1) ? UPdMg5 : UPdMg15;
+                                                                                        // final double marginBottom = (index == subject.attendances.length - 1) ? UPdMg5 : UPdMg15;
 
                                                                                         return Column(
                                                                                           children: [
@@ -469,62 +469,76 @@ class _PerformanceState extends State<Performance> {
                                                                                               ),
                                                                                             ),
                                                                                             IntrinsicHeight(
-                                                                                              child: Row(
-                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                              child: Column(
                                                                                                 children: [
-                                                                                                  Column(
+                                                                                                  Row(
                                                                                                     crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                                     children: [
                                                                                                       CustomPerformanceDiaglogTextTheme(
                                                                                                         'យឺត'.tr,
                                                                                                         UTitleSize,
                                                                                                         UTextColor,
                                                                                                       ),
+                                                                                                      CustomPerformanceDiaglogTextThemeBold(
+                                                                                                        attendance.attendance_al,
+                                                                                                        UTitleSize,
+                                                                                                        UYellowColor,
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  ),
+                                                                                                  Row(
+                                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                    children: [
                                                                                                       CustomPerformanceDiaglogTextTheme(
                                                                                                         'សុំច្បាប់'.tr,
                                                                                                         UTitleSize,
                                                                                                         UTextColor,
                                                                                                       ),
+                                                                                                      CustomPerformanceDiaglogTextThemeBold(
+                                                                                                        attendance.attendance_pm,
+                                                                                                        UTitleSize,
+                                                                                                        UOrangeColor,
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  ),
+                                                                                                  Row(
+                                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                    children: [
                                                                                                       CustomPerformanceDiaglogTextTheme(
                                                                                                         'អវត្តមាន'.tr,
                                                                                                         UTitleSize,
                                                                                                         UTextColor,
                                                                                                       ),
+                                                                                                      CustomPerformanceDiaglogTextThemeBold(
+                                                                                                        attendance.attendance_a,
+                                                                                                        UTitleSize,
+                                                                                                        URedColor,
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  ),
+                                                                                                  Row(
+                                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                    children: [
                                                                                                       CustomPerformanceDiaglogTextTheme(
                                                                                                         'វត្តមាន'.tr,
                                                                                                         UTitleSize,
                                                                                                         UTextColor,
                                                                                                       ),
-                                                                                                      Container(
-                                                                                                        margin: EdgeInsets.only(
-                                                                                                          bottom: marginBottom,
-                                                                                                        ),
-                                                                                                      )
-                                                                                                    ],
-                                                                                                  ),
-                                                                                                  Column(
-                                                                                                    children: [
-                                                                                                      CustomPerformanceDiaglogTextTheme(
-                                                                                                        attendance.attendance_al,
-                                                                                                        UTitleSize,
-                                                                                                        UYellowColor,
-                                                                                                      ),
-                                                                                                      CustomPerformanceDiaglogTextTheme(
-                                                                                                        attendance.attendance_pm,
-                                                                                                        UTitleSize,
-                                                                                                        UOrangeColor,
-                                                                                                      ),
-                                                                                                      CustomPerformanceDiaglogTextTheme(
-                                                                                                        attendance.attendance_a,
-                                                                                                        UTitleSize,
-                                                                                                        URedColor,
-                                                                                                      ),
-                                                                                                      CustomPerformanceDiaglogTextTheme(
+                                                                                                      CustomPerformanceDiaglogTextThemeBold(
                                                                                                         attendance.attendance_ps,
                                                                                                         UTitleSize,
                                                                                                         UScoreColor,
                                                                                                       ),
                                                                                                     ],
+                                                                                                  ),
+                                                                                                  Container(
+                                                                                                    margin: EdgeInsets.only(
+                                                                                                      bottom: 5,
+                                                                                                    ),
                                                                                                   ),
                                                                                                 ],
                                                                                               ),
@@ -584,7 +598,7 @@ class _PerformanceState extends State<Performance> {
                                                                         fontSize:
                                                                             UTitleSize,
                                                                         fontWeight:
-                                                                            UTitleWeight,
+                                                                            UBodyWeight,
                                                                       ),
                                                                     ),
                                                                   ),
@@ -692,7 +706,7 @@ class _PerformanceState extends State<Performance> {
                                                                                             children: subject.scores.asMap().entries.map((entry) {
                                                                                               final int index = entry.key;
                                                                                               final score = entry.value;
-                                                                                              final double marginBottom = (index == subject.scores.length - 1) ? UPdMg5 : UPdMg15;
+                                                                                              final double marginBottom = (index == subject.scores.length - 1) ? UPdMg5 : 15;
 
                                                                                               return IntrinsicHeight(
                                                                                                 child: Column(
@@ -722,7 +736,7 @@ class _PerformanceState extends State<Performance> {
                                                                                                               UTextColor,
                                                                                                             ),
                                                                                                             CustomPerformanceDiaglogTextTheme(
-                                                                                                              'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t'.tr,
+                                                                                                              'កិច្ចការផ្ទះ និងស្រាវជ្រាវ'.tr,
                                                                                                               UTitleSize,
                                                                                                               UTextColor,
                                                                                                             ),
@@ -740,7 +754,7 @@ class _PerformanceState extends State<Performance> {
                                                                                                               margin: EdgeInsets.only(
                                                                                                                 bottom: marginBottom,
                                                                                                               ),
-                                                                                                            )
+                                                                                                            ),
                                                                                                           ],
                                                                                                         ),
                                                                                                         Row(
@@ -771,6 +785,11 @@ class _PerformanceState extends State<Performance> {
                                                                                                                   score.number_final,
                                                                                                                   UTitleSize,
                                                                                                                   UScoreColor,
+                                                                                                                ),
+                                                                                                                Container(
+                                                                                                                  margin: EdgeInsets.only(
+                                                                                                                    bottom: marginBottom,
+                                                                                                                  ),
                                                                                                                 ),
                                                                                                               ],
                                                                                                             ),
@@ -804,8 +823,13 @@ class _PerformanceState extends State<Performance> {
                                                                                                                   UTitleSize,
                                                                                                                   UScoreColor,
                                                                                                                 ),
+                                                                                                                Container(
+                                                                                                                  margin: EdgeInsets.only(
+                                                                                                                    bottom: marginBottom,
+                                                                                                                  ),
+                                                                                                                ),
                                                                                                               ],
-                                                                                                            )
+                                                                                                            ),
                                                                                                           ],
                                                                                                         )
                                                                                                       ],
@@ -870,7 +894,7 @@ class _PerformanceState extends State<Performance> {
                                                                         fontSize:
                                                                             UTitleSize,
                                                                         fontWeight:
-                                                                            UTitleWeight,
+                                                                            UBodyWeight,
                                                                       ),
                                                                     ),
                                                                   ),
