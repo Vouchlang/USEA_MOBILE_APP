@@ -12,10 +12,16 @@ void main() async {
   String languageCode = prefs.getString('language') ?? 'km';
   String font = prefs.getString('font') ?? UKFontFamily;
   SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(statusBarColor: UBackgroundColor),
+    SystemUiOverlayStyle(
+      statusBarColor: UBackgroundColor,
+    ),
   );
-  SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.landscapeRight
+  ]);
 
   runApp(
     new GetMaterialApp(

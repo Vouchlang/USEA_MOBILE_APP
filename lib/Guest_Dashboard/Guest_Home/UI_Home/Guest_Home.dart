@@ -13,6 +13,7 @@ import '/theme_builder.dart';
 import '../../Guest_Notification/UI_Notification/Notifications.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'FullScreenImage.dart';
 
 class Guest_Home extends StatefulWidget {
   const Guest_Home({Key? key}) : super(key: key);
@@ -23,8 +24,8 @@ class Guest_Home extends StatefulWidget {
 
 class _Guest_HomeState extends State<Guest_Home> {
   final Uri urlWeb = Uri.parse("https://www.usea.edu.kh/en/Pages/index.php");
-
   late List<Class_Image> image_slides = [];
+  int activeIndex = 0;
 
   bool isLoading = true;
 
@@ -65,8 +66,6 @@ class _Guest_HomeState extends State<Guest_Home> {
       }
     }
   }
-
-  int activeIndex = 0;
 
   void _launchFacebookPage() async {
     final String facebookPageUrl = "https://www.facebook.com/usea.edu.kh";
@@ -121,23 +120,6 @@ class _Guest_HomeState extends State<Guest_Home> {
 
   @override
   Widget build(BuildContext context) {
-    Widget buildImage(String image_slide, int index) => Container(
-          margin: EdgeInsets.symmetric(
-            horizontal: UPdMg5,
-          ),
-          width: UFullWidth,
-          height: UFullWidth,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(
-              URoundedLarge,
-            ),
-            child: Image.network(
-              image_slide,
-              fit: BoxFit.fill,
-            ),
-          ),
-        );
-
     Widget buildIndicator() => AnimatedSmoothIndicator(
           activeIndex: activeIndex,
           count: image_slides.length,
@@ -183,7 +165,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                           'UNIVERSITY OF SOUTH-EAST ASIA',
                           style: TextStyle(
                             color: UPrimaryColor,
-                            fontSize: UBodySize,
+                            fontSize: 11.75,
                             fontFamily: UEFontFamily,
                             fontWeight: UBodyWeight,
                           ),
@@ -245,42 +227,67 @@ class _Guest_HomeState extends State<Guest_Home> {
               height: UHeight10,
             ),
             Container(
-              height: 175,
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(
-                horizontal: UPdMg5,
-              ),
-              child: isLoading
-                  ? buildFutureBuild()
-                  : CarouselSlider.builder(
-                      options: CarouselOptions(
-                        height: double.infinity,
-                        pageSnapping: true,
-                        enableInfiniteScroll: true,
-                        autoPlayInterval: Duration(
-                          seconds: 10,
+                height: 175,
+                width: double.infinity,
+                padding: EdgeInsets.symmetric(
+                  horizontal: UPdMg5,
+                ),
+                child: isLoading
+                    ? buildFutureBuild()
+                    : CarouselSlider.builder(
+                        options: CarouselOptions(
+                          height: double.infinity,
+                          pageSnapping: true,
+                          enableInfiniteScroll: true,
+                          autoPlayInterval: Duration(seconds: 10),
+                          viewportFraction: 1,
+                          enlargeCenterPage: true,
+                          enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+                          onPageChanged: ((index, reason) =>
+                              setState(() => activeIndex = index)),
                         ),
-                        viewportFraction: 1,
-                        enlargeCenterPage: true,
-                        enlargeStrategy: CenterPageEnlargeStrategy.zoom,
-                        onPageChanged: ((index, reason) => setState(
-                              () => activeIndex = index,
-                            )),
-                      ),
-                      itemCount: image_slides.length,
-                      itemBuilder: (context, index, realIndex) {
-                        if (index >= 0 && index < image_slides.length) {
-                          final image_slide = image_slides[index].image_url;
-                          return buildImage(image_slide, index);
-                        } else {
-                          return Image.asset(
-                            "assets/image/Error_Image.jpg",
-                            fit: BoxFit.fill,
-                          );
-                        }
-                      },
-                    ),
-            ),
+                        itemCount: image_slides.length,
+                        itemBuilder: (context, index, realIndex) {
+                          if (index >= 0 && index < image_slides.length) {
+                            final image_slide = image_slides[index].image_url;
+                            return InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => FullScreenImage1(
+                                        imageUrls: image_slides
+                                            .map((image) => image.image_url)
+                                            .toList(),
+                                        currentIndex: index,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(
+                                    horizontal: UPdMg5,
+                                  ),
+                                  width: UFullWidth,
+                                  height: UFullWidth,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(
+                                      URoundedLarge,
+                                    ),
+                                    child: Image.network(
+                                      image_slide,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                ));
+                          } else {
+                            return Image.asset(
+                              "assets/image/Error_Image.jpg",
+                              fit: BoxFit.cover,
+                            );
+                          }
+                        },
+                      )),
             SizedBox(
               height: UHeight7,
             ),

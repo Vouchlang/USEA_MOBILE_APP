@@ -230,7 +230,7 @@ class _Student_HomeState extends State<Student_Home> {
                           'UNIVERSITY OF SOUTH-EAST ASIA',
                           style: TextStyle(
                             color: UPrimaryColor,
-                            fontSize: UBodySize,
+                            fontSize: 11.75,
                             fontFamily: UEFontFamily,
                             fontWeight: UBodyWeight,
                           ),
