@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '/theme_builder.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -174,6 +175,10 @@ class _Video_DisplayState extends State<Video_Display> {
   @override
   void dispose() {
     _youtubeController.dispose();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     super.dispose();
   }
 }
