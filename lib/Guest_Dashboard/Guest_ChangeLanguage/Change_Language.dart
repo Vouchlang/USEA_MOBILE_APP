@@ -115,6 +115,8 @@ class ChangeLanguage extends StatelessWidget {
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
                   return InkWell(
+                    highlightColor: UTransParentColor,
+                    splashColor: UTransParentColor,
                     child: Container(
                       height: 75,
                       width: 95,

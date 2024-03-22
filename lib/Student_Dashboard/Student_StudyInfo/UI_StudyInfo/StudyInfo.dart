@@ -11,9 +11,12 @@ import '../Class_StudyInfo/Class_Study_Info.dart';
 
 class Study_Info extends StatefulWidget {
   final List<StudentUser> data_studentUser;
+  final String sourceScreen;
+
   const Study_Info({
     super.key,
     required this.data_studentUser,
+    required this.sourceScreen,
   });
 
   @override
@@ -46,6 +49,9 @@ class _Study_InfoState extends State<Study_Info> {
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
+          'guardian_id': widget.sourceScreen == guardian_sourceScreen
+              ? widget.data_studentUser[0].guardian_id
+              : 'N/A',
         },
       );
       var response_assignment = await http.post(
@@ -57,6 +63,9 @@ class _Study_InfoState extends State<Study_Info> {
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
+          'guardian_id': widget.sourceScreen == guardian_sourceScreen
+              ? widget.data_studentUser[0].guardian_id
+              : 'N/A',
         },
       );
 
@@ -124,7 +133,8 @@ class _Study_InfoState extends State<Study_Info> {
       appBar: Custom_AppBar(
         title: 'ព័ត៌មានការសិក្សា'.tr,
       ),
-      body: _dataStudyInfo.isEmpty && _dataStudyInfoAssignment.isEmpty
+      body: _dataStudyInfo.isEmpty
+          //  _dataStudyInfo.isEmpty && _dataStudyInfoAssignment.isEmpty
           ? buildFutureBuild()
           : RefreshIndicator(
               onRefresh: _refreshData,
@@ -256,143 +266,143 @@ class _Study_InfoState extends State<Study_Info> {
                         );
                       },
                     ),
-                    _dataStudyInfoAssignment.isEmpty
-                        ? SizedBox.shrink()
-                        : Padding(
-                            padding: EdgeInsets.fromLTRB(
-                              UPdMg10,
-                              UPdMg10,
-                              UPdMg10,
-                              UZeroPixel,
-                            ),
-                            child: Text(
-                              'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t (Not Available)'.tr,
-                              style: TextStyle(
-                                color: UPrimaryColor,
-                                fontSize: UTitleSize,
-                                fontWeight: UTitleWeight,
-                              ),
-                            ),
-                          ),
-                    ListView.builder(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      padding: EdgeInsets.all(
-                        UPdMg5,
-                      ),
-                      itemCount: _dataStudyInfoAssignment.length,
-                      itemBuilder: (BuildContext context, index) {
-                        final isLastIndex =
-                            index == _dataStudyInfoAssignment.length - 1;
-                        return Card(
-                          elevation: 2,
-                          shadowColor: ULightGreyColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                              URoundedLarge,
-                            ),
-                          ),
-                          margin: isLastIndex
-                              ? EdgeInsets.fromLTRB(
-                                  UPdMg5,
-                                  UPdMg5,
-                                  UPdMg5,
-                                  UPdMg10,
-                                )
-                              : EdgeInsets.all(
-                                  UPdMg5,
-                                ),
-                          child: Padding(
-                            padding: EdgeInsets.all(
-                              UPdMg10,
-                            ),
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    Flexible(
-                                      flex: 2,
-                                      child: Text(
-                                        _dataStudyInfoAssignment[index]
-                                                .expire_date
-                                                .isEmpty
-                                            ? 'ថ្ងៃផុតកំណត់៖ '.tr + 'N/A'
-                                            : 'ថ្ងៃផុតកំណត់៖ '.tr +
-                                                _dataStudyInfoAssignment[index]
-                                                    .expire_date,
-                                        style: TextStyle(
-                                          fontSize: UTitleSize,
-                                          fontWeight: UTitleWeight,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: UWidth15,
-                                    ),
-                                    Flexible(
-                                      flex: 1,
-                                      child: Text(
-                                        _dataStudyInfoAssignment[index]
-                                                .expire_time
-                                                .isEmpty
-                                            ? 'ម៉ោង '.tr + 'N/A'
-                                            : 'ម៉ោង '.tr +
-                                                _dataStudyInfoAssignment[index]
-                                                    .expire_time,
-                                        style: TextStyle(
-                                          fontSize: UTitleSize,
-                                          fontWeight: UTitleWeight,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Divider(),
-                                buildStudyDataAssign(
-                                  'ឈ្មោះ',
-                                  _dataStudyInfoAssignment[index]
-                                          .assignment_name
-                                          .isEmpty
-                                      ? 'N/A'
-                                      : _dataStudyInfoAssignment[index]
-                                          .assignment_name,
-                                ),
-                                Divider(),
-                                buildStudyDataAssign(
-                                  'មុខវិជ្ជា',
-                                  _dataStudyInfoAssignment[index]
-                                          .subject_name
-                                          .isEmpty
-                                      ? 'N/A'
-                                      : _dataStudyInfoAssignment[index]
-                                          .subject_name,
-                                ),
-                                Divider(),
-                                buildStudyDataAssign(
-                                  'បន្ទប់',
-                                  _dataStudyInfoAssignment[index]
-                                          .room_name
-                                          .isEmpty
-                                      ? 'N/A'
-                                      : _dataStudyInfoAssignment[index]
-                                          .room_name,
-                                ),
-                                Divider(),
-                                buildStudyDataAssign(
-                                  'សាស្ត្រចារ្យ',
-                                  _dataStudyInfoAssignment[index]
-                                          .lecturer_name
-                                          .isEmpty
-                                      ? 'N/A'
-                                      : _dataStudyInfoAssignment[index]
-                                          .lecturer_name,
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
+                    // _dataStudyInfoAssignment.isEmpty
+                    //     ? SizedBox.shrink()
+                    //     : Padding(
+                    //         padding: EdgeInsets.fromLTRB(
+                    //           UPdMg10,
+                    //           UPdMg10,
+                    //           UPdMg10,
+                    //           UZeroPixel,
+                    //         ),
+                    //         child: Text(
+                    //           'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t (Not Available)'.tr,
+                    //           style: TextStyle(
+                    //             color: UPrimaryColor,
+                    //             fontSize: UTitleSize,
+                    //             fontWeight: UTitleWeight,
+                    //           ),
+                    //         ),
+                    //       ),
+                    // ListView.builder(
+                    //   shrinkWrap: true,
+                    //   physics: NeverScrollableScrollPhysics(),
+                    //   padding: EdgeInsets.all(
+                    //     UPdMg5,
+                    //   ),
+                    //   itemCount: _dataStudyInfoAssignment.length,
+                    //   itemBuilder: (BuildContext context, index) {
+                    //     final isLastIndex =
+                    //         index == _dataStudyInfoAssignment.length - 1;
+                    //     return Card(
+                    //       elevation: 2,
+                    //       shadowColor: ULightGreyColor,
+                    //       shape: RoundedRectangleBorder(
+                    //         borderRadius: BorderRadius.circular(
+                    //           URoundedLarge,
+                    //         ),
+                    //       ),
+                    //       margin: isLastIndex
+                    //           ? EdgeInsets.fromLTRB(
+                    //               UPdMg5,
+                    //               UPdMg5,
+                    //               UPdMg5,
+                    //               UPdMg10,
+                    //             )
+                    //           : EdgeInsets.all(
+                    //               UPdMg5,
+                    //             ),
+                    //       child: Padding(
+                    //         padding: EdgeInsets.all(
+                    //           UPdMg10,
+                    //         ),
+                    //         child: Column(
+                    //           children: [
+                    //             Row(
+                    //               children: [
+                    //                 Flexible(
+                    //                   flex: 2,
+                    //                   child: Text(
+                    //                     _dataStudyInfoAssignment[index]
+                    //                             .expire_date
+                    //                             .isEmpty
+                    //                         ? 'ថ្ងៃផុតកំណត់៖ '.tr + 'N/A'
+                    //                         : 'ថ្ងៃផុតកំណត់៖ '.tr +
+                    //                             _dataStudyInfoAssignment[index]
+                    //                                 .expire_date,
+                    //                     style: TextStyle(
+                    //                       fontSize: UTitleSize,
+                    //                       fontWeight: UTitleWeight,
+                    //                     ),
+                    //                   ),
+                    //                 ),
+                    //                 SizedBox(
+                    //                   width: UWidth15,
+                    //                 ),
+                    //                 Flexible(
+                    //                   flex: 1,
+                    //                   child: Text(
+                    //                     _dataStudyInfoAssignment[index]
+                    //                             .expire_time
+                    //                             .isEmpty
+                    //                         ? 'ម៉ោង '.tr + 'N/A'
+                    //                         : 'ម៉ោង '.tr +
+                    //                             _dataStudyInfoAssignment[index]
+                    //                                 .expire_time,
+                    //                     style: TextStyle(
+                    //                       fontSize: UTitleSize,
+                    //                       fontWeight: UTitleWeight,
+                    //                     ),
+                    //                   ),
+                    //                 ),
+                    //               ],
+                    //             ),
+                    //             Divider(),
+                    //             buildStudyDataAssign(
+                    //               'ឈ្មោះ',
+                    //               _dataStudyInfoAssignment[index]
+                    //                       .assignment_name
+                    //                       .isEmpty
+                    //                   ? 'N/A'
+                    //                   : _dataStudyInfoAssignment[index]
+                    //                       .assignment_name,
+                    //             ),
+                    //             Divider(),
+                    //             buildStudyDataAssign(
+                    //               'មុខវិជ្ជា',
+                    //               _dataStudyInfoAssignment[index]
+                    //                       .subject_name
+                    //                       .isEmpty
+                    //                   ? 'N/A'
+                    //                   : _dataStudyInfoAssignment[index]
+                    //                       .subject_name,
+                    //             ),
+                    //             Divider(),
+                    //             buildStudyDataAssign(
+                    //               'បន្ទប់',
+                    //               _dataStudyInfoAssignment[index]
+                    //                       .room_name
+                    //                       .isEmpty
+                    //                   ? 'N/A'
+                    //                   : _dataStudyInfoAssignment[index]
+                    //                       .room_name,
+                    //             ),
+                    //             Divider(),
+                    //             buildStudyDataAssign(
+                    //               'សាស្ត្រចារ្យ',
+                    //               _dataStudyInfoAssignment[index]
+                    //                       .lecturer_name
+                    //                       .isEmpty
+                    //                   ? 'N/A'
+                    //                   : _dataStudyInfoAssignment[index]
+                    //                       .lecturer_name,
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //     );
+                    //   },
+                    // ),
                   ],
                 ),
               ),

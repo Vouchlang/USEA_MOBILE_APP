@@ -38,6 +38,8 @@ class _PaymentDialogState extends State<PaymentDialog> {
             height: UHeight50,
             width: UWidth50,
             child: InkWell(
+              highlightColor: UTransParentColor,
+              splashColor: UTransParentColor,
               onTap: () {
                 Navigator.of(context).pop();
               },

@@ -10,8 +10,12 @@ import '../Class_Performance/Class_Performance.dart';
 
 class Performance extends StatefulWidget {
   final List<StudentUser> data_studentUser;
+  final String sourceScreen;
 
-  Performance({required this.data_studentUser});
+  Performance({
+    required this.data_studentUser,
+    required this.sourceScreen,
+  });
 
   @override
   _PerformanceState createState() => _PerformanceState();
@@ -38,6 +42,9 @@ class _PerformanceState extends State<Performance> {
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
+          'guardian_id': widget.sourceScreen == guardian_sourceScreen
+              ? widget.data_studentUser[0].guardian_id
+              : 'N/A',
         },
       );
 
@@ -380,6 +387,12 @@ class _PerformanceState extends State<Performance> {
                                                                       UPdMg10,
                                                                 ),
                                                                 child: InkWell(
+                                                                  highlightColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  splashColor:
+                                                                      Colors
+                                                                          .transparent,
                                                                   onTap: () {
                                                                     showDialog(
                                                                       context:
@@ -556,6 +569,8 @@ class _PerformanceState extends State<Performance> {
                                                                                 height: UHeight50,
                                                                                 width: UWidth50,
                                                                                 child: InkWell(
+                                                                                  highlightColor: UTransParentColor,
+                                                                                  splashColor: UTransParentColor,
                                                                                   onTap: () {
                                                                                     Navigator.of(context).pop();
                                                                                   },
@@ -573,6 +588,11 @@ class _PerformanceState extends State<Performance> {
                                                                   },
                                                                   child:
                                                                       Container(
+                                                                    margin: EdgeInsets.fromLTRB(
+                                                                        UPdMg5,
+                                                                        UZeroPixel,
+                                                                        UPdMg5,
+                                                                        UZeroPixel),
                                                                     decoration:
                                                                         BoxDecoration(
                                                                       border:
@@ -622,6 +642,12 @@ class _PerformanceState extends State<Performance> {
                                                                       UPdMg10,
                                                                 ),
                                                                 child: InkWell(
+                                                                  highlightColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  splashColor:
+                                                                      Colors
+                                                                          .transparent,
                                                                   onTap: () {
                                                                     showDialog(
                                                                       context:
@@ -850,6 +876,8 @@ class _PerformanceState extends State<Performance> {
                                                                                   height: UHeight50,
                                                                                   width: UWidth50,
                                                                                   child: InkWell(
+                                                                                    highlightColor: UTransParentColor,
+                                                                                    splashColor: UTransParentColor,
                                                                                     onTap: () {
                                                                                       Navigator.of(context).pop();
                                                                                     },
@@ -868,6 +896,13 @@ class _PerformanceState extends State<Performance> {
                                                                   },
                                                                   child:
                                                                       Container(
+                                                                    margin: EdgeInsets
+                                                                        .fromLTRB(
+                                                                      UPdMg5,
+                                                                      UZeroPixel,
+                                                                      UPdMg5,
+                                                                      UZeroPixel,
+                                                                    ),
                                                                     decoration:
                                                                         BoxDecoration(
                                                                       border:

@@ -1,25 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '/Guest_Dashboard/Guest_Account/UI_Account/Guest_Acc.dart';
-import '/Guest_Dashboard/Guest_Home/UI_Home/Guest_Home.dart';
-import '/theme_builder.dart';
+import 'package:usea_app/Guardian_Dashboard/Guardian_Home/UI_Home/Guardian_Dashboard.dart';
+import '../../../Guest_Dashboard/Guest_Home/UI_Home/Guest_Home.dart';
+import '../../../theme_builder.dart';
+import '../../Guardian_Other_Class/Class_Guardian_User.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+class Guardian_Home extends StatefulWidget {
+  final List<GuardianUser> data_guardianUser;
+
+  const Guardian_Home({required this.data_guardianUser, super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<Guardian_Home> createState() => _Guardian_HomeState();
 }
 
-class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
+class _Guardian_HomeState extends State<Guardian_Home> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   late TabController controller;
 
-  List pages = [
-    Guest_Home(),
-    Guest_Acc(),
-  ];
+  int currentIndex = 1;
 
-  int currentIndex = 0;
   void onTap(int index) {
     setState(
       () {
@@ -30,6 +34,12 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    List pages = [
+      Guest_Home(),
+      Guardian_Dashboard(
+        data_guardianUser: widget.data_guardianUser,
+      ),
+    ];
     return Scaffold(
       body: pages[currentIndex],
       bottomNavigationBar: Theme(
@@ -44,7 +54,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           color: UTransParentColor,
           child: BottomNavigationBar(
             backgroundColor: USecondaryColor,
-            elevation: 0,
+            elevation: UZeroPixel,
             onTap: onTap,
             currentIndex: currentIndex,
             selectedItemColor: UPrimaryColor,

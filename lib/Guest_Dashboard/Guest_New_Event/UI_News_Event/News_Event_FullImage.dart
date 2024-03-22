@@ -2,20 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../theme_builder.dart';
 
-class FullScreenImage1 extends StatefulWidget {
-  final List<String> imageUrls;
-  final int currentIndex;
+class News_Event_FullImage extends StatefulWidget {
+  final String imageUrls;
 
-  FullScreenImage1({
+  News_Event_FullImage({
     required this.imageUrls,
-    required this.currentIndex,
   });
 
   @override
-  _FullScreenImage1State createState() => _FullScreenImage1State();
+  _News_Event_FullImageState createState() => _News_Event_FullImageState();
 }
 
-class _FullScreenImage1State extends State<FullScreenImage1> {
+class _News_Event_FullImageState extends State<News_Event_FullImage> {
   bool isFullScreen = true;
 
   @override
@@ -24,6 +22,7 @@ class _FullScreenImage1State extends State<FullScreenImage1> {
       DeviceOrientation.landscapeRight,
       DeviceOrientation.landscapeLeft,
     ]);
+
     return Scaffold(
       backgroundColor: USecondaryColor,
       body: Stack(
@@ -33,7 +32,7 @@ class _FullScreenImage1State extends State<FullScreenImage1> {
             width: UFullWidth,
             color: UTextColor,
             child: Image.network(
-              widget.imageUrls[widget.currentIndex],
+              widget.imageUrls,
               fit: BoxFit.contain,
             ),
           ),

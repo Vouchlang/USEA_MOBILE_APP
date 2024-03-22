@@ -227,7 +227,9 @@ class _ProgramState extends State<Program> {
             color: UPrimaryColor,
             size: 18,
           ),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => Navigator.of(context).pop(
+            Transition.leftToRightWithFade,
+          ),
         ),
         actions: [
           IconButton(
@@ -340,6 +342,8 @@ class _ProgramState extends State<Program> {
                                           UPdMg10,
                                         ),
                                         child: InkWell(
+                                          highlightColor: UTransParentColor,
+                                          splashColor: UTransParentColor,
                                           onTap: () {
                                             Get.to(
                                               () => MajorDetailsScreen(
@@ -480,6 +484,8 @@ class _ProgramState extends State<Program> {
                                           UPdMg10,
                                         ),
                                         child: InkWell(
+                                          highlightColor: UTransParentColor,
+                                          splashColor: UTransParentColor,
                                           onTap: () {
                                             Get.to(
                                               () => Program_ACCA(

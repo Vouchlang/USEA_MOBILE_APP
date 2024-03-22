@@ -108,8 +108,7 @@ class _Guest_HomeState extends State<Guest_Home> {
   }
 
   void openTiktok() async {
-    final String tiktokUrl =
-        "https://www.tiktok.com/@usea_edu_kh?is_from_webapp=1&sender_device=pc";
+    final String tiktokUrl = "https://www.tiktok.com/@usea_siemreap";
 
     if (await canLaunch(tiktokUrl)) {
       await launch(tiktokUrl);
@@ -191,6 +190,8 @@ class _Guest_HomeState extends State<Guest_Home> {
               ),
               child: Center(
                 child: IconButton(
+                  highlightColor: UTransParentColor,
+                  splashColor: UTransParentColor,
                   onPressed: () {
                     setState(
                       () {
@@ -251,6 +252,8 @@ class _Guest_HomeState extends State<Guest_Home> {
                           if (index >= 0 && index < image_slides.length) {
                             final image_slide = image_slides[index].image_url;
                             return InkWell(
+                                highlightColor: UTransParentColor,
+                                splashColor: UTransParentColor,
                                 onTap: () {
                                   Navigator.push(
                                     context,
@@ -318,6 +321,8 @@ class _Guest_HomeState extends State<Guest_Home> {
                     ),
                   ),
                   child: InkWell(
+                    highlightColor: UTransParentColor,
+                    splashColor: UTransParentColor,
                     onTap: () {
                       if (index.isEqual(8)) {
                         showDialog(

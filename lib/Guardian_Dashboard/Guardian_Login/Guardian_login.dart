@@ -2,19 +2,19 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:usea_app/Custom_Widget/CustomText.dart';
+import 'package:usea_app/Guardian_Dashboard/Guardian_Home/UI_Home/Guardian_Home.dart';
 import 'package:usea_app/theme_builder.dart';
-import '../Student_Other_Class/Class_Student_User.dart';
-import '/Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../Custom_Widget/CustomText.dart';
+import '../Guardian_Other_Class/Class_Guardian_User.dart';
 import '/Custom_AppBar.dart';
 
-class Student_LogIn extends StatefulWidget {
+class Guardian_Login extends StatefulWidget {
   @override
-  State<Student_LogIn> createState() => _Student_LogInState();
+  State<Guardian_Login> createState() => _Guardian_LoginState();
 }
 
-class _Student_LogInState extends State<Student_LogIn> {
+class _Guardian_LoginState extends State<Guardian_Login> {
   final _formKey = GlobalKey<FormState>();
   final _textControllerUsername = TextEditingController();
   final _textControllerPsw = TextEditingController();
@@ -33,10 +33,10 @@ class _Student_LogInState extends State<Student_LogIn> {
     try {
       var response = await http.post(
         Uri.parse(
-          APIUrlStudent + 'action=login_student',
+          APIUrlStudent + 'action=login_parents',
         ),
         body: {
-          'student_id': studentId,
+          'guardian_id': studentId,
           'pwd': password,
         },
       );
@@ -44,30 +44,28 @@ class _Student_LogInState extends State<Student_LogIn> {
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         if (data != null) {
-          final studentUserData = data['student_users'];
+          final guardianUserData = data['guardian_users'];
 
-          List<StudentUser> dataList_StudentUser = [];
-          for (var item in studentUserData) {
-            StudentUser dataModel1 = StudentUser(
-              name_kh: item['name_kh'] ?? 'N/A',
-              student_id: item['student_id'] ?? 'N/A',
-              pwd: item['pwd'] ?? 'N/A',
-              guardian_id: item['guardian_id'] ?? 'N/A',
+          List<GuardianUser> dataList_GuardianUser = [];
+          for (var item in guardianUserData) {
+            GuardianUser dataModel1 = GuardianUser(
+              name_kh: item['name_kh'],
+              guardian_id: item['guardian_id'],
+              pwd: item['pwd'],
             );
-            dataList_StudentUser.add(dataModel1);
+            dataList_GuardianUser.add(dataModel1);
           }
 
           SharedPreferences sharedPref = await SharedPreferences.getInstance();
           sharedPref.setBool('login', true);
-          saveStudentUser(
+          saveGuardianUser(
             sharedPref,
-            dataList_StudentUser,
+            dataList_GuardianUser,
           );
 
           Get.off(
-            () => St_Home(
-              data_studentUser: dataList_StudentUser,
-              sourceScreen: st_sourceScreen,
+            () => Guardian_Home(
+              data_guardianUser: dataList_GuardianUser,
             ),
             transition: Transition.rightToLeftWithFade,
             duration: Duration(
@@ -103,7 +101,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'គណនីនិស្សិត'.tr,
+                      'គណនីអាណាព្យបាល'.tr,
                       style: TextStyle(
                         fontSize: UTitleSize16,
                         fontWeight: UTitleWeight,
@@ -113,7 +111,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                       height: UHeight10,
                     ),
                     Text(
-                      'អត្តលេខនិស្សិត ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវ។ សូមបញ្ចូលម្ដងទៀត!!!'
+                      'អត្តលេខអាណាព្យបាល ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវ។ សូមបញ្ចូលម្ដងទៀត!!!'
                           .tr,
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -177,7 +175,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'គណនីនិស្សិត'.tr,
+                      'គណនីអាណាព្យាបាល'.tr,
                       style: TextStyle(
                         fontSize: UTitleSize16,
                         fontWeight: UTitleWeight,
@@ -226,12 +224,12 @@ class _Student_LogInState extends State<Student_LogIn> {
     }
   }
 
-  void saveStudentUser(
-      SharedPreferences sharedPreferences, List<StudentUser> studentUserList) {
+  void saveGuardianUser(SharedPreferences sharedPreferences,
+      List<GuardianUser> guardianUserList) {
     final jsonData =
-        studentUserList.map((studentUser) => studentUser.toJson()).toList();
+        guardianUserList.map((guardianUser) => guardianUser.toJson()).toList();
     sharedPreferences.setString(
-      'student_user',
+      'guardian_user',
       json.encode(jsonData),
     );
   }
@@ -241,7 +239,7 @@ class _Student_LogInState extends State<Student_LogIn> {
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: Custom_AppBar(
-        title: 'គណនីនិសិ្សត'.tr,
+        title: 'គណនីអាណាព្យាបាល'.tr,
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.only(
@@ -291,7 +289,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                     ),
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      'អត្តលេខនិស្សិត'.tr,
+                      'អត្តលេខអាណាព្យាបាល'.tr,
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         fontSize: UBodySize,

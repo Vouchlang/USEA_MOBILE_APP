@@ -10,10 +10,12 @@ import '../Class_JobHistory/Class_Job_History.dart';
 
 class Job_History extends StatefulWidget {
   final List<StudentUser> data_studentUser;
+  final String sourceScreen;
 
   const Job_History({
     Key? key,
     required this.data_studentUser,
+    required this.sourceScreen,
   }) : super(key: key);
 
   @override
@@ -43,6 +45,9 @@ class _Job_HistoryState extends State<Job_History> {
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
+          'guardian_id': widget.sourceScreen == guardian_sourceScreen
+              ? widget.data_studentUser[0].guardian_id
+              : 'N/A',
         },
       );
 

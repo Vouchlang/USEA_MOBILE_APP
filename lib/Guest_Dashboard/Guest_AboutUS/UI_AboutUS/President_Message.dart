@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '/Custom_AppBar.dart';
 import '/Custom_Widget/CustomText.dart';
 import '/theme_builder.dart';
+import 'AboutUS_FullImage.dart';
 
 class President extends StatelessWidget {
   const President({Key? key}) : super(key: key);
@@ -18,14 +19,29 @@ class President extends StatelessWidget {
         height: UFullWidth,
         child: ListView(
           children: [
-            Container(
-              margin: EdgeInsets.only(
-                bottom: UPdMg10,
-              ),
-              height: 300,
-              child: Image.asset(
-                'assets/image/president.png',
-                fit: BoxFit.fitHeight,
+            InkWell(
+              highlightColor: UTransParentColor,
+              splashColor: UTransParentColor,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AboutUS_FullImage(
+                      imageUrls: 'assets/image/president.png',
+                      screenNav: screenNav,
+                    ),
+                  ),
+                );
+              },
+              child: Container(
+                margin: EdgeInsets.only(
+                  bottom: UPdMg10,
+                ),
+                height: 300,
+                child: Image.asset(
+                  'assets/image/president.png',
+                  fit: BoxFit.fitHeight,
+                ),
               ),
             ),
             buildPresidentMessage(

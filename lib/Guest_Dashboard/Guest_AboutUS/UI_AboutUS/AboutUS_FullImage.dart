@@ -1,29 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
 
-class FullScreenImage1 extends StatefulWidget {
-  final List<String> imageUrls;
-  final int currentIndex;
+class AboutUS_FullImage extends StatefulWidget {
+  final String imageUrls;
+  final String screenNav;
 
-  FullScreenImage1({
+  AboutUS_FullImage({
     required this.imageUrls,
-    required this.currentIndex,
+    required this.screenNav,
   });
 
   @override
-  _FullScreenImage1State createState() => _FullScreenImage1State();
+  _AboutUS_FullImageState createState() => _AboutUS_FullImageState();
 }
 
-class _FullScreenImage1State extends State<FullScreenImage1> {
+class _AboutUS_FullImageState extends State<AboutUS_FullImage> {
   bool isFullScreen = true;
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-    ]);
+    widget.screenNav == screenNav
+        ? SystemChrome.setPreferredOrientations([
+            DeviceOrientation.portraitUp,
+            DeviceOrientation.portraitDown,
+          ])
+        : SystemChrome.setPreferredOrientations([
+            DeviceOrientation.landscapeRight,
+            DeviceOrientation.landscapeLeft,
+          ]);
+
     return Scaffold(
       backgroundColor: USecondaryColor,
       body: Stack(
@@ -32,9 +39,9 @@ class _FullScreenImage1State extends State<FullScreenImage1> {
             height: UFullWidth,
             width: UFullWidth,
             color: UTextColor,
-            child: Image.network(
-              widget.imageUrls[widget.currentIndex],
-              fit: BoxFit.contain,
+            child: Image.asset(
+              widget.imageUrls,
+              fit: BoxFit.cover,
             ),
           ),
           Positioned(

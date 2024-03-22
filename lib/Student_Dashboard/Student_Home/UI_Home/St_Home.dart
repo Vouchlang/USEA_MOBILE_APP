@@ -7,10 +7,13 @@ import 'Student_Dashboard.dart';
 
 class St_Home extends StatefulWidget {
   final List<StudentUser> data_studentUser;
+  final String sourceScreen;
+  
 
   const St_Home({
     Key? key,
     required this.data_studentUser,
+    required this.sourceScreen,
   }) : super(key: key);
 
   @override
@@ -40,40 +43,50 @@ class _St_HomeState extends State<St_Home> with SingleTickerProviderStateMixin {
       Guest_Home(),
       Student_Home(
         data_studentUser: widget.data_studentUser,
+        sourceScreen: widget.sourceScreen,
       ),
     ];
     return Scaffold(
       body: pages[currentIndex],
-      bottomNavigationBar: Container(
-        color: Colors.transparent,
-        child: BottomNavigationBar(
-          backgroundColor: USecondaryColor,
-          elevation: UZeroPixel,
-          onTap: onTap,
-          currentIndex: currentIndex,
-          selectedItemColor: UPrimaryColor,
-          unselectedItemColor: UGreyColor,
-          unselectedFontSize: 11,
-          selectedLabelStyle: TextStyle(
-            fontWeight: UTitleWeight,
-            fontSize: UBodySize,
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+          splashColor: UTransParentColor,
+          highlightColor: UTransParentColor,
+          bottomNavigationBarTheme: BottomNavigationBarThemeData(
+            selectedItemColor: UTransParentColor,
           ),
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-                size: 25,
-              ),
-              label: 'ទំព័រដើម'.tr,
+        ),
+        child: Container(
+          color: UTransParentColor,
+          child: BottomNavigationBar(
+            backgroundColor: USecondaryColor,
+            elevation: UZeroPixel,
+            onTap: onTap,
+            currentIndex: currentIndex,
+            selectedItemColor: UPrimaryColor,
+            unselectedItemColor: UGreyColor,
+            unselectedFontSize: 11,
+            selectedLabelStyle: TextStyle(
+              fontWeight: UTitleWeight,
+              fontSize: UBodySize,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.account_box,
-                size: 25,
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                  size: 25,
+                ),
+                label: 'ទំព័រដើម'.tr,
               ),
-              label: 'ចូលគណនី'.tr,
-            ),
-          ],
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.account_box,
+                  size: 25,
+                ),
+                label: 'ចូលគណនី'.tr,
+              ),
+            ],
+          ),
         ),
       ),
     );

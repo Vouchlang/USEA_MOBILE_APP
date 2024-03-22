@@ -12,8 +12,11 @@ import 'package:intl/intl.dart';
 
 class Schedule extends StatefulWidget {
   final List<StudentUser> data_studentUser;
+  final String sourceScreen;
+
   Schedule({
     required this.data_studentUser,
+    required this.sourceScreen,
   });
 
   @override
@@ -61,6 +64,9 @@ class _ScheduleState extends State<Schedule> {
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
+          'guardian_id': widget.sourceScreen == guardian_sourceScreen
+              ? widget.data_studentUser[0].guardian_id
+              : 'N/A',
           'date': '$day-$month-$year',
         },
       );

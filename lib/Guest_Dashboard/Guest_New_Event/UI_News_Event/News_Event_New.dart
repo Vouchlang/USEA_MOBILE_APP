@@ -193,6 +193,8 @@ class _News_EventState extends State<News_Event> {
                                       ),
                                     ),
                                     child: InkWell(
+                                      highlightColor: UTransParentColor,
+                                      splashColor: UTransParentColor,
                                       onTap: () {
                                         Get.to(
                                           () => News_Event_Detail(

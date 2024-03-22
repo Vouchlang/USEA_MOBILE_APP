@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme_builder.dart';
 import '../../Guest_ChangeLanguage/Change_Language.dart';
 import '../../Guest_New_Event/UI_News_Event/News_Event_New.dart';
 import '../../Guest_Program/UI_Program/Program.dart';
@@ -51,6 +52,7 @@ List<Home_Screen> guest_home_screen = [
     name: 'វីដេអូ',
     img: 'assets/image/Guest_VDO.png',
     screen: Video_UI(),
+    // screen: Video_Display1(),
   ),
   Home_Screen(
     name: 'ទំនាក់ទំនង',
@@ -79,6 +81,8 @@ List<Home_Screen> st_home_screen = [
     name: 'កាលវិភាគ',
     img: 'assets/image/Stu_Schedule.png',
     screen: InkWell(
+      highlightColor: UTransParentColor,
+      splashColor: UTransParentColor,
       onTap: () {},
     ),
   ),
@@ -86,6 +90,8 @@ List<Home_Screen> st_home_screen = [
     name: 'ដំណើរការសិក្សា',
     img: 'assets/image/Stu_Performance.png',
     screen: InkWell(
+      highlightColor: UTransParentColor,
+      splashColor: UTransParentColor,
       onTap: () {},
     ),
   ),
@@ -93,6 +99,8 @@ List<Home_Screen> st_home_screen = [
     name: 'វត្តមាន',
     img: 'assets/image/Stu_Att.png',
     screen: InkWell(
+      highlightColor: UTransParentColor,
+      splashColor: UTransParentColor,
       onTap: () {},
     ),
   ),
@@ -100,6 +108,8 @@ List<Home_Screen> st_home_screen = [
     name: 'ការបង់ប្រាក់',
     img: 'assets/image/Stu_Payment.png',
     screen: InkWell(
+      highlightColor: UTransParentColor,
+      splashColor: UTransParentColor,
       onTap: () {},
     ),
   ),
@@ -107,6 +117,8 @@ List<Home_Screen> st_home_screen = [
     name: 'ប្រវត្តិការងារ',
     img: 'assets/image/Stu_Job_History.png',
     screen: InkWell(
+      highlightColor: UTransParentColor,
+      splashColor: UTransParentColor,
       onTap: () {},
     ),
   ),
@@ -114,6 +126,8 @@ List<Home_Screen> st_home_screen = [
     name: 'ព័ត៌មានការសិក្សា',
     img: 'assets/image/Stu_Study_Info.png',
     screen: InkWell(
+      highlightColor: UTransParentColor,
+      splashColor: UTransParentColor,
       onTap: () {},
     ),
   ),
@@ -121,6 +135,8 @@ List<Home_Screen> st_home_screen = [
     name: 'មតិកែលម្អ',
     img: 'assets/image/Stu_Survey.png',
     screen: InkWell(
+      highlightColor: UTransParentColor,
+      splashColor: UTransParentColor,
       onTap: () {},
     ),
   ),
@@ -128,6 +144,8 @@ List<Home_Screen> st_home_screen = [
     name: 'សមិទ្ធិផល',
     img: 'assets/image/Stu_Achievement.png',
     screen: InkWell(
+      highlightColor: UTransParentColor,
+      splashColor: UTransParentColor,
       onTap: () {},
     ),
   ),

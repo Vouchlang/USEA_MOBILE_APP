@@ -10,10 +10,12 @@ import 'package:http/http.dart' as http;
 
 class Payment_UI extends StatefulWidget {
   final List<StudentUser> data_studentUser;
+  final String sourceScreen;
 
   Payment_UI({
     super.key,
     required this.data_studentUser,
+    required this.sourceScreen,
   });
 
   @override
@@ -44,6 +46,9 @@ class _Payment_UIState extends State<Payment_UI> {
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
+          'guardian_id': widget.sourceScreen == guardian_sourceScreen
+              ? widget.data_studentUser[0].guardian_id
+              : 'N/A',
         },
       );
       var responseOtherPay = await http.post(
@@ -53,6 +58,9 @@ class _Payment_UIState extends State<Payment_UI> {
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
+          'guardian_id': widget.sourceScreen == guardian_sourceScreen
+              ? widget.data_studentUser[0].guardian_id
+              : 'N/A',
         },
       );
 
@@ -294,6 +302,8 @@ class _Payment_UIState extends State<Payment_UI> {
                                       ),
                                       buildVerticalDividerAtt(),
                                       InkWell(
+                                        highlightColor: UTransParentColor,
+                                        splashColor: UTransParentColor,
                                         onTap: () {
                                           showDialog(
                                             context: context,
@@ -523,8 +533,7 @@ class _Payment_UIState extends State<Payment_UI> {
                             return payStudy.payments.isEmpty
                                 ? Padding(
                                     padding: EdgeInsets.only(
-                                      bottom:
-                                          isLastIndex ? UPdMg5 : UZeroPixel,
+                                      bottom: isLastIndex ? UPdMg5 : UZeroPixel,
                                     ),
                                     child: IntrinsicHeight(
                                       child: Column(
@@ -586,8 +595,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                   )
                                 : Padding(
                                     padding: EdgeInsets.only(
-                                      bottom:
-                                          isLastIndex ? UPdMg5 : UZeroPixel,
+                                      bottom: isLastIndex ? UPdMg5 : UZeroPixel,
                                     ),
                                     child: Column(
                                       children: [
@@ -665,6 +673,8 @@ class _Payment_UIState extends State<Payment_UI> {
             height: UHeight50,
             width: UWidth50,
             child: InkWell(
+              highlightColor: UTransParentColor,
+              splashColor: UTransParentColor,
               onTap: () {
                 Navigator.of(context).pop();
               },

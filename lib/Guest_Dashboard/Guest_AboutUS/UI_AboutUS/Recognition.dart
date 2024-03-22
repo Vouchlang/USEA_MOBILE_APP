@@ -116,6 +116,8 @@ class _RecognitionState extends State<Recognition> {
                                   Container(
                                     alignment: Alignment.centerRight,
                                     child: InkWell(
+                                      highlightColor: UTransParentColor,
+                                      splashColor: UTransParentColor,
                                       onTap: () {
                                         void _launchRecognitionUrl() async {
                                           if (await canLaunch(

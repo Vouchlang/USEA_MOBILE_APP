@@ -13,8 +13,13 @@ import 'Attendance_List.dart';
 
 class Attendance extends StatefulWidget {
   final List<StudentUser> data_studentUser;
+  final String sourceScreen;
 
-  const Attendance({super.key, required this.data_studentUser});
+  const Attendance({
+    super.key,
+    required this.data_studentUser,
+    required this.sourceScreen,
+  });
 
   @override
   State<Attendance> createState() => _AttendanceState();
@@ -39,6 +44,9 @@ class _AttendanceState extends State<Attendance> {
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
+          'guardian_id': widget.sourceScreen == guardian_sourceScreen
+              ? widget.data_studentUser[0].guardian_id
+              : 'N/A',
         },
       );
 
@@ -49,6 +57,9 @@ class _AttendanceState extends State<Attendance> {
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
+          'guardian_id': widget.sourceScreen == guardian_sourceScreen
+              ? widget.data_studentUser[0].guardian_id
+              : 'N/A',
         },
       );
 
@@ -204,38 +215,41 @@ class _AttendanceState extends State<Attendance> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Container(
-                          alignment: Alignment.center,
-                          margin: EdgeInsets.only(
-                            right: UPdMg5,
-                          ),
-                          padding: EdgeInsets.symmetric(
-                            vertical: UPdMg5,
-                            horizontal: UPdMg10,
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                              URoundedMedium,
-                            ),
-                            color: UBtnColor,
-                            boxShadow: [
-                              BoxShadow(
-                                color: UBtnColor,
+                        InkWell(
+                          highlightColor: UTransParentColor,
+                          splashColor: UTransParentColor,
+                          onTap: () {
+                            Get.to(
+                              () => AttendanceList(
+                                data_studentUser: widget.data_studentUser,
+                                sourceScreen: widget.sourceScreen,
                               ),
-                            ],
-                          ),
-                          child: InkWell(
-                            onTap: () {
-                              Get.to(
-                                () => AttendanceList(
-                                  data_studentUser: widget.data_studentUser,
+                              transition: Transition.rightToLeftWithFade,
+                              duration: Duration(
+                                milliseconds: 100,
+                              ),
+                            );
+                          },
+                          child: Container(
+                            alignment: Alignment.center,
+                            margin: EdgeInsets.only(
+                              right: UPdMg5,
+                            ),
+                            padding: EdgeInsets.symmetric(
+                              vertical: UPdMg5,
+                              horizontal: UPdMg10,
+                            ),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                URoundedMedium,
+                              ),
+                              color: UBtnColor,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: UBtnColor,
                                 ),
-                                transition: Transition.rightToLeftWithFade,
-                                duration: Duration(
-                                  milliseconds: 100,
-                                ),
-                              );
-                            },
+                              ],
+                            ),
                             child: CustomTextTheme(
                               'មើលទាំងអស់'.tr,
                               UBodySize,
@@ -288,32 +302,34 @@ class _AttendanceState extends State<Attendance> {
                     ),
                   ),
                   elevation: 1,
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(
-                      UPdMg10,
-                      UPdMg15,
-                      UPdMg15,
-                      UPdMg15,
-                    ),
-                    child: InkWell(
-                      onTap: () {
-                        setState(
-                          () {
-                            Get.to(
-                              () => Attendance_Detail(
-                                subjectDate: subject.dates,
-                                subjectName: Get.locale?.languageCode == 'km'
-                                    ? subject.name_kh
-                                    : subject.name_en,
-                              ),
-                              transition: Transition.rightToLeftWithFade,
-                              duration: Duration(
-                                milliseconds: 100,
-                              ),
-                            );
-                          },
-                        );
-                      },
+                  child: InkWell(
+                    highlightColor: UTransParentColor,
+                    splashColor: UTransParentColor,
+                    onTap: () {
+                      setState(
+                        () {
+                          Get.to(
+                            () => Attendance_Detail(
+                              subjectDate: subject.dates,
+                              subjectName: Get.locale?.languageCode == 'km'
+                                  ? subject.name_kh
+                                  : subject.name_en,
+                            ),
+                            transition: Transition.rightToLeftWithFade,
+                            duration: Duration(
+                              milliseconds: 100,
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(
+                        UPdMg10,
+                        UPdMg15,
+                        UPdMg15,
+                        UPdMg15,
+                      ),
                       child: IntrinsicHeight(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,

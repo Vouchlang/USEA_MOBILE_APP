@@ -233,43 +233,44 @@ class _ScholarshipState extends State<Scholarship> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.end,
                                           children: [
-                                            Container(
-                                              margin: EdgeInsets.only(
-                                                top: UPdMg10,
-                                              ),
-                                              alignment: Alignment.center,
-                                              padding: EdgeInsets.symmetric(
-                                                vertical: UPdMg5,
-                                                horizontal: UPdMg10,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                  URoundedMedium,
-                                                ),
-                                                color: UBtnColor,
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    color: UBtnColor,
-                                                  ),
-                                                ],
-                                              ),
-                                              child: InkWell(
-                                                onTap: () {
-                                                  void
-                                                      _launchOutUniUrl() async {
-                                                    if (await canLaunch(
-                                                        scholarship.link)) {
-                                                      await launch(
-                                                        scholarship.link,
-                                                      );
-                                                    } else {
-                                                      throw 'Could not launch ${scholarship.link}';
-                                                    }
+                                            InkWell(
+                                              highlightColor: UTransParentColor,
+                                              splashColor: UTransParentColor,
+                                              onTap: () {
+                                                void _launchOutUniUrl() async {
+                                                  if (await canLaunch(
+                                                      scholarship.link)) {
+                                                    await launch(
+                                                      scholarship.link,
+                                                    );
+                                                  } else {
+                                                    throw 'Could not launch ${scholarship.link}';
                                                   }
+                                                }
 
-                                                  _launchOutUniUrl();
-                                                },
+                                                _launchOutUniUrl();
+                                              },
+                                              child: Container(
+                                                margin: EdgeInsets.only(
+                                                  top: UPdMg10,
+                                                ),
+                                                alignment: Alignment.center,
+                                                padding: EdgeInsets.symmetric(
+                                                  vertical: UPdMg5,
+                                                  horizontal: UPdMg10,
+                                                ),
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                    URoundedMedium,
+                                                  ),
+                                                  color: UBtnColor,
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      color: UBtnColor,
+                                                    ),
+                                                  ],
+                                                ),
                                                 child: ScholarshipButtonTheme(
                                                   'អានបន្ថែម'.tr,
                                                   UBodySize,

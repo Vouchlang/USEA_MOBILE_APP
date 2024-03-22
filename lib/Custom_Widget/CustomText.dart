@@ -5,14 +5,17 @@ import '../theme_builder.dart';
 String APIUrlGuest = 'https://usea.edu.kh/';
 
 // Local Server
-// String APIUrlStudent = 'http://192.168.2.230/api/apidata.php?';
-// String APIUrlStudentEn = 'http://192.168.2.230/api/apidata_en.php?';
+String APIUrlStudent = 'http://192.168.0.111:9999/api/apidata.php?';
+String APIUrlStudentEn = 'http://192.168.0.111:9999/api/apidata_en.php?';
 
 // Public Server
-String APIUrlStudent = 'http://116.212.155.149:9999/api/apidata.php?';
-String APIUrlStudentEn = 'http://116.212.155.149:9999/api/apidata_en.php?';
+// String APIUrlStudent = 'http://116.212.155.149:9999/api/apidata.php?';
+// String APIUrlStudentEn = 'http://116.212.155.149:9999/api/apidata_en.php?';
 
 String NoDataTXT = 'គ្មានទិន្ន័យ'.tr;
+String st_sourceScreen = 'studentScreen';
+String guardian_sourceScreen = 'guardianScreen';
+String screenNav = 'presidentScreen';
 
 // *@ Divider
 Widget buildDivider() {
@@ -1032,13 +1035,13 @@ Widget buildPresidentMessage(
 }
 // *@ End PresidentMessage
 
-//@ Custom InkWell Social Media
+//@ Custom GestureDetector Social Media
 Widget BuildContainerSM(
   Function()? onTap,
   String imageName,
 ) {
   return Expanded(
-    child: InkWell(
+    child: GestureDetector(
       onTap: onTap,
       child: Image.asset(
         imageName,

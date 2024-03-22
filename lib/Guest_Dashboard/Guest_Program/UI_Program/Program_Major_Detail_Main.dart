@@ -51,6 +51,8 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                 String educationName = widget.educationNames[index];
                 final isLastIndex = index == widget.educationNames.length - 1;
                 return InkWell(
+                  highlightColor: UTransParentColor,
+                  splashColor: UTransParentColor,
                   onTap: () {
                     setState(
                       () {
@@ -179,6 +181,8 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                             ),
                           ),
                           child: InkWell(
+                            highlightColor: UTransParentColor,
+                            splashColor: UTransParentColor,
                             onTap: () {
                               setState(() {
                                 selectedYearName = yearName;

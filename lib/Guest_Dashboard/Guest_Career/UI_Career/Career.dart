@@ -83,6 +83,8 @@ class _CareerState extends State<Career> {
                         top: UPdMg5,
                       ),
                       child: InkWell(
+                        highlightColor: UTransParentColor,
+                        splashColor: UTransParentColor,
                         onTap: () {
                           void _launchCareerUrl() async {
                             if (await canLaunch(career[index].link)) {

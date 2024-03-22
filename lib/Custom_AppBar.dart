@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '/theme_builder.dart';
 
 class Custom_AppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -25,12 +26,16 @@ class Custom_AppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 1,
       iconTheme: IconThemeData.fallback(),
       leading: IconButton(
+        highlightColor: UTransParentColor,
+        splashColor: UTransParentColor,
         icon: Icon(
           Icons.arrow_back_ios,
           color: UPrimaryColor,
           size: 18,
         ),
-        onPressed: () => Navigator.of(context).pop(),
+        onPressed: () => Navigator.of(context).pop(
+          Transition.leftToRightWithFade,
+        ),
       ),
     );
   }

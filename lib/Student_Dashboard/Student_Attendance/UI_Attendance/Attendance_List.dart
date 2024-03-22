@@ -11,8 +11,12 @@ import 'Attendance_Detail.dart';
 
 class AttendanceList extends StatefulWidget {
   final List<StudentUser> data_studentUser;
+  final String sourceScreen;
 
-  AttendanceList({required this.data_studentUser});
+  AttendanceList({
+    required this.data_studentUser,
+    required this.sourceScreen,
+  });
 
   @override
   State<AttendanceList> createState() => _AttendanceListState();
@@ -37,6 +41,9 @@ class _AttendanceListState extends State<AttendanceList> {
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
+          'guardian_id': widget.sourceScreen == guardian_sourceScreen
+              ? widget.data_studentUser[0].guardian_id
+              : 'N/A',
         },
       );
 
@@ -273,31 +280,34 @@ class _AttendanceListState extends State<AttendanceList> {
                                             ),
                                           ),
                                           elevation: 1,
-                                          child: Container(
-                                            padding: const EdgeInsets.fromLTRB(
-                                              UPdMg10,
-                                              UPdMg15,
-                                              UPdMg15,
-                                              UPdMg15,
-                                            ),
-                                            child: InkWell(
-                                              onTap: () {
-                                                Get.to(
-                                                  () => Attendance_Detail(
-                                                    subjectName: Get.locale
-                                                                ?.languageCode ==
-                                                            'km'
-                                                        ? subject.name_kh
-                                                        : subject.name_en,
-                                                    subjectDate: subject.dates,
-                                                  ),
-                                                  transition: Transition
-                                                      .rightToLeftWithFade,
-                                                  duration: Duration(
-                                                    milliseconds: 100,
-                                                  ),
-                                                );
-                                              },
+                                          child: InkWell(
+                                            highlightColor: UTransParentColor,
+                                            splashColor: UTransParentColor,
+                                            onTap: () {
+                                              Get.to(
+                                                () => Attendance_Detail(
+                                                  subjectName: Get.locale
+                                                              ?.languageCode ==
+                                                          'km'
+                                                      ? subject.name_kh
+                                                      : subject.name_en,
+                                                  subjectDate: subject.dates,
+                                                ),
+                                                transition: Transition
+                                                    .rightToLeftWithFade,
+                                                duration: Duration(
+                                                  milliseconds: 100,
+                                                ),
+                                              );
+                                            },
+                                            child: Container(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                UPdMg10,
+                                                UPdMg15,
+                                                UPdMg15,
+                                                UPdMg15,
+                                              ),
                                               child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
@@ -326,7 +336,7 @@ class _AttendanceListState extends State<AttendanceList> {
                                                         ),
                                                       ),
                                                       SizedBox(
-                                                        height: 5,
+                                                        height: UHeight5,
                                                       ),
                                                       Row(
                                                         children: [

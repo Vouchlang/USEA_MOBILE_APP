@@ -5,9 +5,12 @@ import 'theme_builder.dart';
 import 'Splash_Screen.dart';
 import 'localeString.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wakelock/wakelock.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  Wakelock.enable();
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   String languageCode = prefs.getString('language') ?? 'km';
   String font = prefs.getString('font') ?? UKFontFamily;
@@ -19,8 +22,6 @@ void main() async {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
-    DeviceOrientation.landscapeLeft,
-    DeviceOrientation.landscapeRight
   ]);
 
   runApp(

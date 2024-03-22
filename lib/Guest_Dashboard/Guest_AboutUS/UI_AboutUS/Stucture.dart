@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '/Custom_AppBar.dart';
 import '/Custom_Widget/CustomText.dart';
 import '/theme_builder.dart';
+import 'AboutUS_FullImage.dart';
 
 class Structure extends StatelessWidget {
   const Structure({Key? key}) : super(key: key);
@@ -17,11 +18,26 @@ class Structure extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              height: 200,
-              child: Image.asset(
-                'assets/image/usea_structure.jpg',
-                fit: BoxFit.cover,
+            InkWell(
+              highlightColor: UTransParentColor,
+              splashColor: UTransParentColor,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AboutUS_FullImage(
+                      imageUrls: 'assets/image/usea_structure.jpg',
+                      screenNav: 'structureScreen',
+                    ),
+                  ),
+                );
+              },
+              child: Container(
+                height: 200,
+                child: Image.asset(
+                  'assets/image/usea_structure.jpg',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             SizedBox(

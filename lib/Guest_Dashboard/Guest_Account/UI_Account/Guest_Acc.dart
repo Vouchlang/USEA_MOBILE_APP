@@ -2,6 +2,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:usea_app/Custom_Widget/CustomText.dart';
+import 'package:usea_app/Guardian_Dashboard/Guardian_Home/UI_Home/Guardian_Home.dart';
+import 'package:usea_app/Guardian_Dashboard/Guardian_Other_Class/Class_Guardian_User.dart';
 import '../../../Student_Dashboard/Student_Other_Class/Class_Student_User.dart';
 import '/Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
 import '/theme_builder.dart';
@@ -17,6 +20,7 @@ class Guest_Acc extends StatefulWidget {
 class Guest_AccState extends State<Guest_Acc> {
   static const String KEYLOGIN = 'login';
   static const String KEYSTUDENT_USER = 'student_user';
+  static const String KEYGUARDIAN_USER = 'guardian_user';
 
   @override
   void initState() {
@@ -30,10 +34,16 @@ class Guest_AccState extends State<Guest_Acc> {
 
     if (isLoggedIn != null && isLoggedIn) {
       List<StudentUser> dataStudentUser = getSavedStudentUser(sharePref);
-
-      if (isLoggedIn) {
+      if (dataStudentUser.isNotEmpty) {
         navigateToSt_HomeScreen(dataStudentUser);
+        return; // Make sure to return to avoid executing the code below
       }
+    }
+
+    // If not a student, check for a guardian user
+    List<GuardianUser> dataGuardianUser = getSavedGuardianUser(sharePref);
+    if (dataGuardianUser.isNotEmpty) {
+      navigateToGuardian_HomeScreen(dataGuardianUser);
     }
   }
 
@@ -58,6 +68,36 @@ class Guest_AccState extends State<Guest_Acc> {
     Get.off(
       () => St_Home(
         data_studentUser: studentUser,
+        sourceScreen: st_sourceScreen,
+      ),
+      transition: Transition.rightToLeftWithFade,
+      duration: Duration(
+        milliseconds: 100,
+      ),
+    );
+  }
+
+  List<GuardianUser> getSavedGuardianUser(SharedPreferences sharedPreferences) {
+    final guardianUserString = sharedPreferences.getString(KEYGUARDIAN_USER);
+    if (guardianUserString != null) {
+      final jsonData = json.decode(guardianUserString);
+      List<GuardianUser> guardianUserList = [];
+      for (var item in jsonData) {
+        GuardianUser guardianUser = GuardianUser.fromJson(item);
+        guardianUserList.add(guardianUser);
+      }
+      return guardianUserList;
+    } else {
+      return [];
+    }
+  }
+
+  void navigateToGuardian_HomeScreen(
+    List<GuardianUser> guardianUser,
+  ) {
+    Get.off(
+      () => Guardian_Home(
+        data_guardianUser: guardianUser,
       ),
       transition: Transition.rightToLeftWithFade,
       duration: Duration(
@@ -108,6 +148,8 @@ class Guest_AccState extends State<Guest_Acc> {
                   ),
                 ),
                 child: InkWell(
+                  highlightColor: UTransParentColor,
+                  splashColor: UTransParentColor,
                   onTap: () {
                     Get.to(
                       () => account_screen[index].screen,

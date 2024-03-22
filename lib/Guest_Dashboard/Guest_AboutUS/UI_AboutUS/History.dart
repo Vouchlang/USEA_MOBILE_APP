@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '/Custom_AppBar.dart';
 import '/Custom_Widget/CustomText.dart';
 import '/theme_builder.dart';
+import 'AboutUS_FullImage.dart';
 
 class History extends StatelessWidget {
   const History({Key? key}) : super(key: key);
@@ -21,13 +22,28 @@ class History extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                height: 200,
-                width: UFullWidth,
-                color: UGreyColor,
-                child: Image.asset(
-                  'assets/image/usea_building.jpg',
-                  fit: BoxFit.cover,
+              InkWell(
+                highlightColor: UTransParentColor,
+                splashColor: UTransParentColor,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AboutUS_FullImage(
+                        imageUrls: 'assets/image/usea_building.jpg',
+                        screenNav: 'historyScreen',
+                      ),
+                    ),
+                  );
+                },
+                child: Container(
+                  height: 200,
+                  width: UFullWidth,
+                  color: UGreyColor,
+                  child: Image.asset(
+                    'assets/image/usea_building.jpg',
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               Container(

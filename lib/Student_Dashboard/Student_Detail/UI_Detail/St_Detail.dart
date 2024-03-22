@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:usea_app/Student_Dashboard/Student_Detail/UI_Detail/St_ProfilePic.dart';
 import '../../Student_Other_Class/Class_Student_User.dart';
 import '/theme_builder.dart';
 import '/Custom_Widget/CustomText.dart';
@@ -11,10 +12,12 @@ import '../Class_Detail/Class_St_Detail.dart';
 
 class Student_Detail extends StatefulWidget {
   final List<StudentUser> data_studentUser;
+  final String sourceScreen;
 
   const Student_Detail({
     Key? key,
     required this.data_studentUser,
+    required this.sourceScreen,
   }) : super(key: key);
 
   @override
@@ -46,6 +49,9 @@ class _Student_DetailState extends State<Student_Detail> {
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
+          'guardian_id': widget.sourceScreen == guardian_sourceScreen
+              ? widget.data_studentUser[0].guardian_id
+              : 'N/A',
         },
       );
 
@@ -205,6 +211,8 @@ class _Student_DetailState extends State<Student_Detail> {
         elevation: 1,
         iconTheme: IconThemeData.fallback(),
         leading: IconButton(
+          highlightColor: UTransParentColor,
+          splashColor: UTransParentColor,
           icon: Icon(
             Icons.arrow_back_ios,
             color: UPrimaryColor,
@@ -213,16 +221,24 @@ class _Student_DetailState extends State<Student_Detail> {
           onPressed: () => Navigator.of(context).pop(),
         ),
         actions: [
-          IconButton(
-            icon: Icon(
-              Icons.logout,
-              color: UPrimaryColor,
-              size: 18,
-            ),
-            onPressed: () {
-              _logout();
-            },
-          ),
+          (() {
+            if (widget.sourceScreen == st_sourceScreen) {
+              return IconButton(
+                highlightColor: UTransParentColor,
+                splashColor: UTransParentColor,
+                icon: Icon(
+                  Icons.logout,
+                  color: UPrimaryColor,
+                  size: 18,
+                ),
+                onPressed: () {
+                  _logout();
+                },
+              );
+            } else {
+              return SizedBox.shrink();
+            }
+          })(),
         ],
       ),
       body: _dataStDetail.isEmpty
@@ -243,11 +259,26 @@ class _Student_DetailState extends State<Student_Detail> {
                         ),
                         child: Row(
                           children: [
-                            CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                _dataStDetail[index].profile_pic,
+                            InkWell(
+                              highlightColor: UTransParentColor,
+                              splashColor: UTransParentColor,
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => St_ProfilePic(
+                                      imageUrls:
+                                          _dataStDetail[index].profile_pic,
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: CircleAvatar(
+                                backgroundImage: NetworkImage(
+                                  _dataStDetail[index].profile_pic,
+                                ),
+                                radius: 50,
                               ),
-                              radius: 50,
                             ),
                             SizedBox(
                               width: UWidth20,

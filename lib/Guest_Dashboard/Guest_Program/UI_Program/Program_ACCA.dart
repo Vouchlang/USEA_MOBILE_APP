@@ -156,7 +156,7 @@ class Program_ACCA extends StatelessWidget {
                                             : subject.no.toString() + '.\t',
                                         style: TextStyle(
                                           fontWeight: UBodyWeight,
-                                          color: Colors.transparent,
+                                          color: UTransParentColor,
                                           fontFamily: UKFontFamily,
                                         ),
                                       ),

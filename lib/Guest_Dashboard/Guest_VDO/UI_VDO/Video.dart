@@ -9,7 +9,8 @@ import '/theme_builder.dart';
 import '../Class_VDO/Class_Video.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'Video_Display_Second.dart';
+
+import 'Video_Display.dart';
 
 class Video_UI extends StatefulWidget {
   Video_UI({Key? key}) : super(key: key);
@@ -108,6 +109,8 @@ class _VideoState extends State<Video_UI> {
                             ),
                           ),
                           InkWell(
+                            highlightColor: UTransParentColor,
+                            splashColor: UTransParentColor,
                             onTap: () {
                               _launchYoutube();
                             },
@@ -151,11 +154,17 @@ class _VideoState extends State<Video_UI> {
                       itemCount: vdo.length,
                       itemBuilder: (context, index) {
                         return InkWell(
+                          highlightColor: UTransParentColor,
+                          splashColor: UTransParentColor,
                           onTap: () {
                             Get.to(
                               () => Video_Display(
                                 data: vdo[index],
                                 vdo: vdo,
+                              ),
+                              transition: Transition.rightToLeftWithFade,
+                              duration: Duration(
+                                milliseconds: 100,
                               ),
                             );
                           },

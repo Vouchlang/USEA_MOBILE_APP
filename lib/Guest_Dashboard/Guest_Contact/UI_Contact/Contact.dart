@@ -73,6 +73,8 @@ class _ContactState extends State<Contact> {
             height: 200,
             color: UGreyColor,
             child: InkWell(
+              highlightColor: UTransParentColor,
+              splashColor: UTransParentColor,
               onTap: () => launchUrlString(
                   'https://www.google.com/maps/place/University+of+South-East+Asia/@13.35045,103.863545,19z/data=!4m14!1m7!3m6!1s0x311017b78db22261:0x5f0e53c2eeaa7c81!2sThe+university+of+south+east+Asia!8m2!3d13.3632533!4d103.856403!16s%2Fg%2F11sjz02kw7!3m5!1s0x311017793e991fc3:0x106790c63625b714!8m2!3d13.3505943!4d103.863927!16s%2Fm%2F0cp4m02'),
               child: Image.asset(

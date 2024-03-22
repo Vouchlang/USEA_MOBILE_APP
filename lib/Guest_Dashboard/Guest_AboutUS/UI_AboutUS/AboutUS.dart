@@ -39,6 +39,8 @@ class AboutUS extends StatelessWidget {
                 ),
               ),
               child: InkWell(
+                highlightColor: UTransParentColor,
+                splashColor: UTransParentColor,
                 onTap: () {
                   if (index.isEqual(0)) {
                     pushWithTransition(
