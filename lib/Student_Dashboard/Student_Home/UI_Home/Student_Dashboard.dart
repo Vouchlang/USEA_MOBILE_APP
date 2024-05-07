@@ -213,11 +213,6 @@ class _Student_HomeState extends State<Student_Home> {
   @override
   Widget build(BuildContext context) {
     double percentIndicator = calculatePercentIndicator();
-    print(_dataStudentUser[0].guardian_id);
-    print(_dataStudentUser[0].student_id);
-    print(_dataStudentUser[0].pwd);
-    print(_dataStudentUser[0].name_kh);
-    print(widget.sourceScreen);
 
     return Scaffold(
       backgroundColor: USecondaryColor,
@@ -230,7 +225,7 @@ class _Student_HomeState extends State<Student_Home> {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/image/usea_logo.png',
+                    imageAsset + 'usea_logo.png',
                     scale: 30,
                   ),
                   SizedBox(
@@ -800,7 +795,7 @@ class _Student_HomeState extends State<Student_Home> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Image.asset(
-                                        'assets/image/Acc_Guardian.png',
+                                        imageAsset + 'Acc_Guardian.png',
                                         scale: UScale6,
                                       ),
                                       SizedBox(

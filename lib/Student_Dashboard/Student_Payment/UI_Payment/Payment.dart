@@ -679,7 +679,7 @@ class _Payment_UIState extends State<Payment_UI> {
                 Navigator.of(context).pop();
               },
               child: Image.asset(
-                'assets/image/close.png',
+                imageAsset + 'close.png',
                 scale: UScale10,
               ),
             ),

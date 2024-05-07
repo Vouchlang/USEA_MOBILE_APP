@@ -1,7 +1,9 @@
 class AchievementData {
   List<AchievementTypeData> achievementData;
 
-  AchievementData({required this.achievementData});
+  AchievementData({
+    required this.achievementData,
+  });
 
   factory AchievementData.fromJson(Map<String, dynamic> json) {
     return AchievementData(
@@ -22,7 +24,10 @@ class AchievementTypeData {
   String achievementType;
   List<AchievementImageData> data;
 
-  AchievementTypeData({required this.achievementType, required this.data});
+  AchievementTypeData({
+    required this.achievementType,
+    required this.data,
+  });
 
   factory AchievementTypeData.fromJson(Map<String, dynamic> json) {
     return AchievementTypeData(
@@ -44,7 +49,9 @@ class AchievementTypeData {
 class AchievementImageData {
   String image;
 
-  AchievementImageData({required this.image});
+  AchievementImageData({
+    required this.image,
+  });
 
   factory AchievementImageData.fromJson(Map<String, dynamic> json) {
     return AchievementImageData(

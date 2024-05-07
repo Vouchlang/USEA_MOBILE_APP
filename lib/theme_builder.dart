@@ -6,10 +6,7 @@ import 'package:flutter/material.dart';
 const UPrimaryColor = Color(0xff002060);
 const USecondaryColor = Color(0xFFF5F7FE);
 const UYellowColor = Colors.amber;
-// const UYellowColor = Color(0xffE4AC40);
 const UOrangeColor = Color(0xffDF713F);
-// const UOrangeColor = Color.fromARGB(255, 255, 155, 24);
-
 const URedColor = Color(0xffD71818);
 const UScoreColor = Color(0xff38920D);
 const UTextColor = Color(0xff000000);
@@ -18,11 +15,14 @@ const ULightGreyColor = Color.fromARGB(255, 200, 200, 200);
 const UBtnColor = Color(0x142D74F5);
 const UBGChartColor = Color.fromARGB(25, 0, 32, 96);
 const UTransParentColor = Colors.transparent;
+// const UYellowColor = Color(0xffE4AC40);
+// const UOrangeColor = Color.fromARGB(255, 255, 155, 24);
 
 //  * @ Background Color
 const UBGLightBlue = Color(0xffE9F2FF);
 const UBackgroundColor = Color(0xffFFFFFF);
 
+// zero value
 const UZeroPixel = 0.0;
 
 //  * @ FontSize & Weight Theme
@@ -90,5 +90,5 @@ const UBoxShadow = Shadow(
   color: Color.fromARGB(10, 0, 0, 0),
 );
 
-// *@ Width and Height
+// *@ Infinity Width and Height
 const UFullWidth = double.infinity;

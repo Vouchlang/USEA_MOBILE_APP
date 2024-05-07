@@ -7,9 +7,7 @@ import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
 
 class Program_SHC extends StatefulWidget {
-  final String majorName;
-  final String educationName;
-  final String yearName;
+  final String majorName, educationName, yearName;
   final List<dynamic> yearsData;
 
   Program_SHC({

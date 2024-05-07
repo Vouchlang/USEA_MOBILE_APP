@@ -88,7 +88,7 @@ class _RecognitionState extends State<Recognition> {
                               width: 125,
                               child: Image.network(
                                 recognition[index].image.isEmpty
-                                    ? 'assets/image/Error_Image.jpg'
+                                    ? imageAsset + 'Error_Image.jpg'
                                     : recognition[index].image,
                                 fit: BoxFit.cover,
                               ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../Custom_AppBar.dart';
+import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
 
 class Notifications extends StatefulWidget {
@@ -16,16 +17,7 @@ class _NotificationsState extends State<Notifications> {
       appBar: Custom_AppBar(
         title: 'ព័ត៌មានថ្មីៗ'.tr,
       ),
-      body: Center(
-        child: Text(
-          'មកដល់ឆាប់ៗនេះ!!!'.tr,
-          style: TextStyle(
-            color: UPrimaryColor,
-            fontSize: UTitleSize16,
-            fontWeight: UTitleWeight,
-          ),
-        ),
-      ),
+      body: buildComingSoon(),
     );
   }
 }

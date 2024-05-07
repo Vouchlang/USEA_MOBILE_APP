@@ -226,6 +226,7 @@ class _Student_LogInState extends State<Student_LogIn> {
     }
   }
 
+  // Save student user
   void saveStudentUser(
       SharedPreferences sharedPreferences, List<StudentUser> studentUserList) {
     final jsonData =
@@ -253,7 +254,7 @@ class _Student_LogInState extends State<Student_LogIn> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/image/logo3.png',
+              imageAsset + 'logo3.png',
               scale: UScale15,
             ),
             SizedBox(

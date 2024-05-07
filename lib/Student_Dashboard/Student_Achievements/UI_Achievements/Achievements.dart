@@ -258,18 +258,9 @@ class _AchievementsState extends State<Achievements> {
     return Scaffold(
       backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(
-        title: 'គណនីសាស្ត្រាចារ្យ'.tr,
+        title: 'សមិទ្ធិផល'.tr,
       ),
-      body: Center(
-        child: Text(
-          'មកដល់ឆាប់ៗនេះ!!!'.tr,
-          style: TextStyle(
-            color: UPrimaryColor,
-            fontSize: UTitleSize16,
-            fontWeight: UTitleWeight,
-          ),
-        ),
-      ),
+      body: buildComingSoon(),
     );
   }
 }

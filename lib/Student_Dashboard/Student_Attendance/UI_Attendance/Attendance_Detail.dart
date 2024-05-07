@@ -9,9 +9,11 @@ class Attendance_Detail extends StatelessWidget {
   final String subjectName;
   final List<Dates> subjectDate;
 
-  const Attendance_Detail(
-      {Key? key, required this.subjectDate, required this.subjectName})
-      : super(key: key);
+  const Attendance_Detail({
+    Key? key,
+    required this.subjectDate,
+    required this.subjectName,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

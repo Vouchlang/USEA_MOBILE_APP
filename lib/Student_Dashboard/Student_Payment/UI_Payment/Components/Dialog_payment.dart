@@ -44,7 +44,7 @@ class _PaymentDialogState extends State<PaymentDialog> {
                 Navigator.of(context).pop();
               },
               child: Image.asset(
-                'assets/image/close.png',
+                imageAsset + 'close.png',
                 scale: UScale10,
               ),
             ),
@@ -190,7 +190,6 @@ class _PaymentDialogState extends State<PaymentDialog> {
                                     paymentData2[index].invoiceNum2,
                                     UTextColor,
                                   ),
-
                                   VerticalDivider(
                                     width: UWidth5,
                                     color: UGreyColor,

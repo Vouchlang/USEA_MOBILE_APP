@@ -164,7 +164,6 @@ class _AttendanceListState extends State<AttendanceList> {
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
                             final isLastIndex = index == attendances.length - 1;
-
                             return GestureDetector(
                               onTap: () {
                                 setState(

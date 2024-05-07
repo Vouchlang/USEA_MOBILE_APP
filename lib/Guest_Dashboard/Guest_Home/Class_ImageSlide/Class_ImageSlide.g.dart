@@ -11,4 +11,6 @@ Class_Image _$Class_ImageFromJson(Map<String, dynamic> json) => Class_Image(
     );
 
 Map<String, dynamic> _$Class_ImageToJson(Class_Image instance) =>
-    <String, dynamic>{'image_url': instance.image_url};
+    <String, dynamic>{
+      'image_url': instance.image_url,
+    };

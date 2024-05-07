@@ -173,7 +173,7 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
                   height: UHeight5,
                 ),
                 Text(
-                  'តើអ្នកប្រាកដថាអ្នកនឹងចាកចេញពីគណនីនិសិ្សតដែរឬទេ?'.tr,
+                  'តើអ្នកប្រាកដថាអ្នកនឹងចាកចេញពីគណនីអាណាព្យាបាលដែរឬទេ?'.tr,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: UBodySize,
@@ -216,7 +216,7 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
                           onPressed: () async {
                             SharedPreferences prefs =
                                 await SharedPreferences.getInstance();
-                            await prefs.clear();
+                            await prefs.remove('guardian_user');
                             Get.off(
                               () => Home(),
                               transition: Transition.rightToLeftWithFade,
@@ -251,7 +251,7 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/image/usea_logo.png',
+                    imageAsset + 'usea_logo.png',
                     scale: 30,
                   ),
                   SizedBox(

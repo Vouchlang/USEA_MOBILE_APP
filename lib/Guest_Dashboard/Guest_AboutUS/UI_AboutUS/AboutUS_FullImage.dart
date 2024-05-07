@@ -4,8 +4,7 @@ import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
 
 class AboutUS_FullImage extends StatefulWidget {
-  final String imageUrls;
-  final String screenNav;
+  final String imageUrls, screenNav;
 
   AboutUS_FullImage({
     required this.imageUrls,
@@ -41,7 +40,7 @@ class _AboutUS_FullImageState extends State<AboutUS_FullImage> {
             color: UTextColor,
             child: Image.asset(
               widget.imageUrls,
-              fit: BoxFit.cover,
+              fit: BoxFit.contain,
             ),
           ),
           Positioned(

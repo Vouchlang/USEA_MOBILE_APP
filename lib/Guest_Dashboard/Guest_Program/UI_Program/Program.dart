@@ -73,9 +73,10 @@ class _ProgramState extends State<Program> {
               });
 
               Major_Data majorObj = Major_Data(
-                  major_name: subjectData['major_name'] ?? 'N/A',
-                  course_hour: subjectData['course_hour'] ?? 'N/A',
-                  subject_data: subject_data);
+                major_name: subjectData['major_name'] ?? 'N/A',
+                course_hour: subjectData['course_hour'] ?? 'N/A',
+                subject_data: subject_data,
+              );
 
               major_data.add(majorObj); // Add majorObj to major_data
             });

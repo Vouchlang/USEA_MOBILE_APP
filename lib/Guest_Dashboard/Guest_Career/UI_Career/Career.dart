@@ -107,7 +107,7 @@ class _CareerState extends State<Career> {
                                   height: 75,
                                   child: career[index].logo.isEmpty
                                       ? Image.asset(
-                                          'assets/image/Error_Image.jpg',
+                                          imageAsset + 'Error_Image.jpg',
                                         )
                                       : Image.network(
                                           career[index].logo,
@@ -145,7 +145,7 @@ class _CareerState extends State<Career> {
                                             CrossAxisAlignment.center,
                                         children: [
                                           Image.asset(
-                                            'assets/image/Event_Date.png',
+                                            imageAsset + 'Event_Date.png',
                                             scale: 12,
                                           ),
                                           SizedBox(

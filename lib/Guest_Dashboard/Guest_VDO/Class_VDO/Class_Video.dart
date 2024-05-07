@@ -5,11 +5,12 @@ part 'Class_Video.g.dart';
 class VDO_Class {
   final String youtube_thumbnail, title, caption, link;
 
-  VDO_Class(
-      {required this.youtube_thumbnail,
-      required this.title,
-      required this.caption,
-      required this.link});
+  VDO_Class({
+    required this.youtube_thumbnail,
+    required this.title,
+    required this.caption,
+    required this.link,
+  });
 
   factory VDO_Class.fromJson(Map<String, dynamic> json) =>
       _$VDO_ClassFromJson(json);

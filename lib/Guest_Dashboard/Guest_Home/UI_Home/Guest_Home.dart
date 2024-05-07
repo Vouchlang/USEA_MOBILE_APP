@@ -141,7 +141,7 @@ class _Guest_HomeState extends State<Guest_Home> {
               child: Row(
                 children: [
                   Image.asset(
-                    'assets/image/usea_logo.png',
+                    imageAsset + 'usea_logo.png',
                     scale: 30,
                   ),
                   SizedBox(
@@ -398,27 +398,27 @@ class _Guest_HomeState extends State<Guest_Home> {
                   children: [
                     BuildContainerSM(
                       () => _launchFacebookPage(),
-                      'assets/image/SM_Facebook.png',
+                      imageAsset + 'SM_Facebook.png',
                     ),
                     BuildContainerSM(
                       () => _launchInstagram(),
-                      'assets/image/SM_IG.png',
+                      imageAsset + 'SM_IG.png',
                     ),
                     BuildContainerSM(
                       () => _launchYoutube(),
-                      'assets/image/SM_Yt.png',
+                      imageAsset + 'SM_Yt.png',
                     ),
                     BuildContainerSM(
                       () => openTelegramGroup(),
-                      'assets/image/SM_Telegram.png',
+                      imageAsset + 'SM_Telegram.png',
                     ),
                     BuildContainerSM(
                       () => launchUrl(urlWeb),
-                      'assets/image/SM_Website.png',
+                      imageAsset + 'SM_Website.png',
                     ),
                     BuildContainerSM(
                       () => openTiktok(),
-                      'assets/image/SM_TK.png',
+                      imageAsset + 'SM_TK.png',
                     )
                   ],
                 ),

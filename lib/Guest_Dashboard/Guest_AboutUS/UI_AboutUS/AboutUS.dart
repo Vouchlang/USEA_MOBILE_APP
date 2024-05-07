@@ -102,7 +102,7 @@ class AboutUS extends StatelessWidget {
                       ),
                       Container(
                         child: Image.asset(
-                          'assets/image/Right_Arrow.png',
+                          imageAsset + 'Right_Arrow.png',
                           scale: UScale15,
                         ),
                       ),

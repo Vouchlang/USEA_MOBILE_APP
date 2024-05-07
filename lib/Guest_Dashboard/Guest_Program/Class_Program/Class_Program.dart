@@ -1,7 +1,9 @@
 class ProgramDataModel {
   final Map<String, Map<String, dynamic>> programData;
 
-  ProgramDataModel({required this.programData});
+  ProgramDataModel({
+    required this.programData,
+  });
 
   factory ProgramDataModel.fromJson(Map<String, dynamic> json) {
     return ProgramDataModel(

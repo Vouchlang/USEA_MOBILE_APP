@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../theme_builder.dart';
 
+// Guest API URL
 String APIUrlGuest = 'https://usea.edu.kh/';
 
 // Local Server
@@ -16,6 +17,21 @@ String NoDataTXT = 'គ្មានទិន្ន័យ'.tr;
 String st_sourceScreen = 'studentScreen';
 String guardian_sourceScreen = 'guardianScreen';
 String screenNav = 'presidentScreen';
+String imageAsset = 'assets/image/';
+
+// Coming Soon
+Widget buildComingSoon() {
+  return Center(
+    child: Text(
+      'មកដល់ឆាប់ៗនេះ!!!'.tr,
+      style: TextStyle(
+        color: UPrimaryColor,
+        fontSize: UTitleSize16,
+        fontWeight: UTitleWeight,
+      ),
+    ),
+  );
+}
 
 // *@ Divider
 Widget buildDivider() {
@@ -884,7 +900,7 @@ Widget buildHistory(
     children: [
       Container(
         child: Image.asset(
-          'assets/image/dot.png',
+          imageAsset + 'dot.png',
           width: UWidth5,
         ),
         margin: EdgeInsets.only(
@@ -978,7 +994,7 @@ Widget buildLowBodyVision(
           top: UPdMg10,
         ),
         child: Image.asset(
-          'assets/image/dot.png',
+          imageAsset + 'dot.png',
           width: 4,
         ),
       ),
@@ -1076,6 +1092,7 @@ void pushWithTransition(BuildContext context, Widget screen) {
   );
 }
 
+// Build Loading
 Widget buildFutureBuild() {
   return FutureBuilder(
     future: Future.delayed(

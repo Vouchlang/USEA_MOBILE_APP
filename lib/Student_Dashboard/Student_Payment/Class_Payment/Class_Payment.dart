@@ -112,12 +112,13 @@ class Payment {
 class OtherPayClass {
   final String o_invoice, o_pdate, o_money_pay, o_money_paid, o_money_rem;
 
-  OtherPayClass(
-      {required this.o_pdate,
-      required this.o_invoice,
-      required this.o_money_pay,
-      required this.o_money_paid,
-      required this.o_money_rem});
+  OtherPayClass({
+    required this.o_pdate,
+    required this.o_invoice,
+    required this.o_money_pay,
+    required this.o_money_paid,
+    required this.o_money_rem,
+  });
 
   factory OtherPayClass.fromJson(Map<String, dynamic> json) {
     return OtherPayClass(

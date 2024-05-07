@@ -170,7 +170,7 @@ class _Student_DetailState extends State<Student_Detail> {
                           onPressed: () async {
                             SharedPreferences prefs =
                                 await SharedPreferences.getInstance();
-                            await prefs.clear();
+                            await prefs.remove('student_user');
                             Get.off(
                               () => Home(),
                               transition: Transition.rightToLeftWithFade,
@@ -263,13 +263,9 @@ class _Student_DetailState extends State<Student_Detail> {
                               highlightColor: UTransParentColor,
                               splashColor: UTransParentColor,
                               onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => St_ProfilePic(
-                                      imageUrls:
-                                          _dataStDetail[index].profile_pic,
-                                    ),
+                                Get.to(
+                                  () => St_ProfilePic(
+                                    imageUrls: _dataStDetail[index].profile_pic,
                                   ),
                                 );
                               },
@@ -368,61 +364,61 @@ class _Student_DetailState extends State<Student_Detail> {
                         child: Column(
                           children: [
                             buildTailDetail(
-                              'assets/image/Stu_Faculty.png',
+                              imageAsset + 'Stu_Faculty.png',
                               'មហាវិទ្យាល័យ'.tr,
                               _dataStDetail[index].faculty_name,
                             ),
                             buildDividerStDetail(),
                             buildTailDetail(
-                              'assets/image/Stu_Degree.png',
+                              imageAsset + 'Stu_Degree.png',
                               'កម្រិតសិក្សា'.tr,
                               _dataStDetail[index].degree_name,
                             ),
                             buildDividerStDetail(),
                             buildTailDetail(
-                              'assets/image/Stu_Major.png',
+                              imageAsset + 'Stu_Major.png',
                               'មុខជំនាញ'.tr,
                               _dataStDetail[index].major_name,
                             ),
                             buildDividerStDetail(),
                             buildTailDetail(
-                              'assets/image/Stu_Room.png',
+                              imageAsset + 'Stu_Room.png',
                               'បន្ទប់សិក្សា'.tr,
                               _dataStDetail[index].room_name,
                             ),
                             buildDividerStDetail(),
                             buildTailDetail(
-                              'assets/image/Stu_Shift.png',
+                              imageAsset + 'Stu_Shift.png',
                               'វេនសិក្សា'.tr,
                               _dataStDetail[index].shift_name,
                             ),
                             buildDividerStDetail(),
                             buildTailDetail(
-                              'assets/image/Stu_Status.png',
+                              imageAsset + 'Stu_Status.png',
                               'ស្ថានភាពសិក្សា'.tr,
                               _dataStDetail[index].status_name,
                             ),
                             buildDividerStDetail(),
                             buildTailDetail(
-                              'assets/image/Stu_DOB.png',
+                              imageAsset + 'Stu_DOB.png',
                               'ថ្ងៃកំណើត'.tr,
                               _dataStDetail[index].date_of_birth,
                             ),
                             buildDividerStDetail(),
                             buildTailDetail(
-                              'assets/image/Stu_Tel.png',
+                              imageAsset + 'Stu_Tel.png',
                               'លេខទូរស័ព្ទ'.tr,
                               _dataStDetail[index].phone_number,
                             ),
                             buildDividerStDetail(),
                             buildTailDetail(
-                              'assets/image/Stu_Job.png',
+                              imageAsset + 'Stu_Job.png',
                               'មុខតំណែង'.tr,
                               _dataStDetail[index].job,
                             ),
                             buildDividerStDetail(),
                             buildTailDetail(
-                              'assets/image/Stu_Workplace.png',
+                              imageAsset + 'Stu_Workplace.png',
                               'ស្ថាប័ន'.tr,
                               _dataStDetail[index].work_place,
                             ),

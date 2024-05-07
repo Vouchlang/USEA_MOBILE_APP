@@ -101,7 +101,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'គណនីអាណាព្យបាល'.tr,
+                      'គណនីអាណាព្យាបាល'.tr,
                       style: TextStyle(
                         fontSize: UTitleSize16,
                         fontWeight: UTitleWeight,
@@ -111,7 +111,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                       height: UHeight10,
                     ),
                     Text(
-                      'អត្តលេខអាណាព្យបាល ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវ។ សូមបញ្ចូលម្ដងទៀត!!!'
+                      'អត្តលេខអាណាព្យាបាល ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវ។ សូមបញ្ចូលម្ដងទៀត!!!'
                           .tr,
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -224,6 +224,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
     }
   }
 
+  // Save guardian user
   void saveGuardianUser(SharedPreferences sharedPreferences,
       List<GuardianUser> guardianUserList) {
     final jsonData =
@@ -251,7 +252,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/image/logo3.png',
+              imageAsset + 'logo3.png',
               scale: UScale15,
             ),
             SizedBox(

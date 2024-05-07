@@ -575,7 +575,7 @@ class _PerformanceState extends State<Performance> {
                                                                                     Navigator.of(context).pop();
                                                                                   },
                                                                                   child: Image.asset(
-                                                                                    'assets/image/close.png',
+                                                                                    imageAsset + 'close.png',
                                                                                     scale: UScale10,
                                                                                   ),
                                                                                 ),
@@ -882,7 +882,7 @@ class _PerformanceState extends State<Performance> {
                                                                                       Navigator.of(context).pop();
                                                                                     },
                                                                                     child: Image.asset(
-                                                                                      'assets/image/close.png',
+                                                                                      imageAsset + 'close.png',
                                                                                       scale: UScale10,
                                                                                     ),
                                                                                   ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
 import '../../Guest_ChangeLanguage/Change_Language.dart';
 import '../../Guest_New_Event/UI_News_Event/News_Event_New.dart';
@@ -25,53 +26,52 @@ class Home_Screen {
 List<Home_Screen> guest_home_screen = [
   Home_Screen(
     name: 'ព្រឹត្តិការណ៍',
-    img: 'assets/image/Guest_News.png',
+    img: imageAsset + 'Guest_News.png',
     screen: News_Event(),
   ),
   Home_Screen(
     name: 'ការចុះឈ្មោះ',
-    img: 'assets/image/Guest_Regis.png',
+    img: imageAsset + 'Guest_Regis.png',
     screen: Registration(),
   ),
   Home_Screen(
     name: 'កម្មវិធីសិក្សា',
-    img: 'assets/image/Guest_Program.png',
+    img: imageAsset + 'Guest_Program.png',
     screen: Program(),
   ),
   Home_Screen(
     name: 'អាហារូបករណ៍',
-    img: 'assets/image/Guest_Scholarship.png',
+    img: imageAsset + 'Guest_Scholarship.png',
     screen: Scholarship(),
   ),
   Home_Screen(
     name: 'មជ្ឈមណ្ឌលការងារ',
-    img: 'assets/image/Guest_Career.png',
+    img: imageAsset + 'Guest_Career.png',
     screen: Career(),
   ),
   Home_Screen(
     name: 'វីដេអូ',
-    img: 'assets/image/Guest_VDO.png',
+    img: imageAsset + 'Guest_VDO.png',
     screen: Video_UI(),
-    // screen: Video_Display1(),
   ),
   Home_Screen(
     name: 'ទំនាក់ទំនង',
-    img: 'assets/image/Guest_Contact.png',
+    img: imageAsset + 'Guest_Contact.png',
     screen: Contact(),
   ),
   Home_Screen(
     name: 'FAQ',
-    img: 'assets/image/Guest_QA.png',
+    img: imageAsset + 'Guest_QA.png',
     screen: FAQ(),
   ),
   Home_Screen(
     name: 'ផ្លាស់ប្ដូរភាសា',
-    img: 'assets/image/Guest_Language.png',
+    img: imageAsset + 'Guest_Language.png',
     screen: Change_Language(),
   ),
   Home_Screen(
     name: 'អំពីយើង',
-    img: 'assets/image/Guest_About.png',
+    img: imageAsset + 'Guest_About.png',
     screen: AboutUS(),
   ),
 ];
@@ -79,7 +79,7 @@ List<Home_Screen> guest_home_screen = [
 List<Home_Screen> st_home_screen = [
   Home_Screen(
     name: 'កាលវិភាគ',
-    img: 'assets/image/Stu_Schedule.png',
+    img: imageAsset + 'Stu_Schedule.png',
     screen: InkWell(
       highlightColor: UTransParentColor,
       splashColor: UTransParentColor,
@@ -88,7 +88,7 @@ List<Home_Screen> st_home_screen = [
   ),
   Home_Screen(
     name: 'ដំណើរការសិក្សា',
-    img: 'assets/image/Stu_Performance.png',
+    img: imageAsset + 'Stu_Performance.png',
     screen: InkWell(
       highlightColor: UTransParentColor,
       splashColor: UTransParentColor,
@@ -97,7 +97,7 @@ List<Home_Screen> st_home_screen = [
   ),
   Home_Screen(
     name: 'វត្តមាន',
-    img: 'assets/image/Stu_Att.png',
+    img: imageAsset + 'Stu_Att.png',
     screen: InkWell(
       highlightColor: UTransParentColor,
       splashColor: UTransParentColor,
@@ -106,7 +106,7 @@ List<Home_Screen> st_home_screen = [
   ),
   Home_Screen(
     name: 'ការបង់ប្រាក់',
-    img: 'assets/image/Stu_Payment.png',
+    img: imageAsset + 'Stu_Payment.png',
     screen: InkWell(
       highlightColor: UTransParentColor,
       splashColor: UTransParentColor,
@@ -115,7 +115,7 @@ List<Home_Screen> st_home_screen = [
   ),
   Home_Screen(
     name: 'ប្រវត្តិការងារ',
-    img: 'assets/image/Stu_Job_History.png',
+    img: imageAsset + 'Stu_Job_History.png',
     screen: InkWell(
       highlightColor: UTransParentColor,
       splashColor: UTransParentColor,
@@ -124,7 +124,7 @@ List<Home_Screen> st_home_screen = [
   ),
   Home_Screen(
     name: 'ព័ត៌មានការសិក្សា',
-    img: 'assets/image/Stu_Study_Info.png',
+    img: imageAsset + 'Stu_Study_Info.png',
     screen: InkWell(
       highlightColor: UTransParentColor,
       splashColor: UTransParentColor,
@@ -133,7 +133,7 @@ List<Home_Screen> st_home_screen = [
   ),
   Home_Screen(
     name: 'មតិកែលម្អ',
-    img: 'assets/image/Stu_Survey.png',
+    img: imageAsset + 'Stu_Survey.png',
     screen: InkWell(
       highlightColor: UTransParentColor,
       splashColor: UTransParentColor,
@@ -142,7 +142,7 @@ List<Home_Screen> st_home_screen = [
   ),
   Home_Screen(
     name: 'សមិទ្ធិផល',
-    img: 'assets/image/Stu_Achievement.png',
+    img: imageAsset + 'Stu_Achievement.png',
     screen: InkWell(
       highlightColor: UTransParentColor,
       splashColor: UTransParentColor,

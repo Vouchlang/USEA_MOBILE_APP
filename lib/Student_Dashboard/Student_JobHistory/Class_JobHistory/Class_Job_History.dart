@@ -11,11 +11,11 @@ class JobHistory {
 
   factory JobHistory.fromJson(Map<String, dynamic> json) {
     return JobHistory(
-      date_start_work: json['date_start_work'],
-      status_name: json['status_name'],
-      workPlace: json['work_place'],
-      position: json['position'],
-      salary: json['salary'],
+      date_start_work: json['date_start_work'] ?? 'N/A',
+      status_name: json['status_name'] ?? 'N/A',
+      workPlace: json['work_place'] ?? 'N/A',
+      position: json['position'] ?? 'N/A',
+      salary: json['salary'] ?? 'N/A',
     );
   }
 }

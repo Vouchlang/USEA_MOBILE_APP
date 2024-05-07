@@ -22,20 +22,17 @@ class Structure extends StatelessWidget {
               highlightColor: UTransParentColor,
               splashColor: UTransParentColor,
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => AboutUS_FullImage(
-                      imageUrls: 'assets/image/usea_structure.jpg',
-                      screenNav: 'structureScreen',
-                    ),
+                Get.to(
+                  () => AboutUS_FullImage(
+                    imageUrls: imageAsset + 'usea_structure.jpg',
+                    screenNav: 'structureScreen',
                   ),
                 );
               },
               child: Container(
                 height: 200,
                 child: Image.asset(
-                  'assets/image/usea_structure.jpg',
+                  imageAsset + 'usea_structure.jpg',
                   fit: BoxFit.cover,
                 ),
               ),

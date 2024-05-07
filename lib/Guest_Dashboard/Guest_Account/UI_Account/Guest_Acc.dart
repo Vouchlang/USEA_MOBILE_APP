@@ -28,6 +28,7 @@ class Guest_AccState extends State<Guest_Acc> {
     whereToGo();
   }
 
+  // Navigate to Screen
   void whereToGo() async {
     var sharePref = await SharedPreferences.getInstance();
     var isLoggedIn = sharePref.getBool(KEYLOGIN);
@@ -47,6 +48,7 @@ class Guest_AccState extends State<Guest_Acc> {
     }
   }
 
+  // Save student user
   List<StudentUser> getSavedStudentUser(SharedPreferences sharedPreferences) {
     final studentUserString = sharedPreferences.getString(KEYSTUDENT_USER);
     if (studentUserString != null) {
@@ -62,6 +64,7 @@ class Guest_AccState extends State<Guest_Acc> {
     }
   }
 
+  // Navigate to home screen
   void navigateToSt_HomeScreen(
     List<StudentUser> studentUser,
   ) {
@@ -77,6 +80,7 @@ class Guest_AccState extends State<Guest_Acc> {
     );
   }
 
+  // Save Guadian user
   List<GuardianUser> getSavedGuardianUser(SharedPreferences sharedPreferences) {
     final guardianUserString = sharedPreferences.getString(KEYGUARDIAN_USER);
     if (guardianUserString != null) {
@@ -92,6 +96,7 @@ class Guest_AccState extends State<Guest_Acc> {
     }
   }
 
+  // Navigate to Guardian Screen
   void navigateToGuardian_HomeScreen(
     List<GuardianUser> guardianUser,
   ) {
@@ -119,7 +124,7 @@ class Guest_AccState extends State<Guest_Acc> {
               color: USecondaryColor,
               image: DecorationImage(
                 image: AssetImage(
-                  'assets/image/guess_acc.png',
+                  imageAsset + 'guess_acc.png',
                 ),
                 fit: BoxFit.fitWidth,
                 alignment: Alignment.topCenter,

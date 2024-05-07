@@ -23,13 +23,10 @@ class President extends StatelessWidget {
               highlightColor: UTransParentColor,
               splashColor: UTransParentColor,
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => AboutUS_FullImage(
-                      imageUrls: 'assets/image/president.png',
-                      screenNav: screenNav,
-                    ),
+                Get.to(
+                  () => AboutUS_FullImage(
+                    imageUrls: imageAsset + 'president1.png',
+                    screenNav: screenNav,
                   ),
                 );
               },
@@ -37,9 +34,8 @@ class President extends StatelessWidget {
                 margin: EdgeInsets.only(
                   bottom: UPdMg10,
                 ),
-                height: 300,
                 child: Image.asset(
-                  'assets/image/president.png',
+                  imageAsset + 'president1.png',
                   fit: BoxFit.fitHeight,
                 ),
               ),

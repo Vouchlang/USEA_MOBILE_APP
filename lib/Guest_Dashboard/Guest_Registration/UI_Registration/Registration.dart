@@ -45,10 +45,14 @@ class _RegistrationState extends State<Registration> {
                 List<dynamic> infoList = education['list'];
                 List<InfoList> infos = infoList.map((info) {
                   String info_text = info['info'];
-                  return InfoList(info_text: info_text);
+                  return InfoList(
+                    info_text: info_text,
+                  );
                 }).toList();
                 return EducationItem(
-                    educationName: educationName, infoList: infos);
+                  educationName: educationName,
+                  infoList: infos,
+                );
               }).toList();
               String timeTitle = detail['time_title'];
               String timeDetail = detail['time_detail'];
@@ -59,7 +63,10 @@ class _RegistrationState extends State<Registration> {
                 timeDetail: timeDetail,
               );
             }).toList();
-            return EducationData(title: title, details: educationDetails);
+            return EducationData(
+              title: title,
+              details: educationDetails,
+            );
           }).toList();
 
           setState(() {
@@ -149,7 +156,7 @@ class _RegistrationState extends State<Registration> {
                                         width: UWidth20,
                                         height: UHeight20,
                                         child: Image.asset(
-                                          'assets/image/date_time.png',
+                                          imageAsset + 'date_time.png',
                                         ),
                                       ),
                                       SizedBox(
@@ -191,7 +198,7 @@ class _RegistrationState extends State<Registration> {
                                                 left: UPdMg5,
                                               ),
                                               child: Image.asset(
-                                                'assets/image/detail.png',
+                                                imageAsset + 'detail.png',
                                                 scale: 15,
                                               ),
                                             ),
@@ -263,7 +270,7 @@ class _RegistrationState extends State<Registration> {
                                         width: UWidth20,
                                         height: UHeight20,
                                         child: Image.asset(
-                                          'assets/image/date_time.png',
+                                          imageAsset + 'date_time.png',
                                         ),
                                       ),
                                       SizedBox(width: UWidth5),

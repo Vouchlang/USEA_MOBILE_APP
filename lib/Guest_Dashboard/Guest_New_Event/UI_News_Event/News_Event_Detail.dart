@@ -31,12 +31,13 @@ class News_Event_Detail extends StatelessWidget {
                 splashColor: UTransParentColor,
                 onTap: () {
                   final imageUrl = data.image;
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => News_Event_FullImage(
-                        imageUrls: imageUrl,
-                      ),
+                  Get.to(
+                    () => News_Event_FullImage(
+                      imageUrls: imageUrl,
+                    ),
+                    transition: Transition.rightToLeftWithFade,
+                    duration: Duration(
+                      milliseconds: 100,
                     ),
                   );
                 },

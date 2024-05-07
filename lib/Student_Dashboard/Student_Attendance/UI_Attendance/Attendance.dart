@@ -64,9 +64,7 @@ class _AttendanceState extends State<Attendance> {
       );
 
       if (response.statusCode == 200 && responseDetail.statusCode == 200) {
-        //Student Detail
         var data = jsonDecode(responseDetail.body);
-
         if (mounted) {
           setState(() {
             _dataStDetail = List<StDetail>.from(

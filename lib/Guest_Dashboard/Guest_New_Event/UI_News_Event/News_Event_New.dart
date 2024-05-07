@@ -220,7 +220,8 @@ class _News_EventState extends State<News_Event> {
                                               ),
                                               child: news_event.image.isEmpty
                                                   ? Image.asset(
-                                                      'assets/image/Error_Image.jpg',
+                                                      imageAsset +
+                                                          'Error_Image.jpg',
                                                       width: double.maxFinite,
                                                       fit: BoxFit.cover,
                                                     )
@@ -295,7 +296,8 @@ class _News_EventState extends State<News_Event> {
                                                       child: Row(
                                                         children: [
                                                           Image.asset(
-                                                            'assets/image/Event_Date.png',
+                                                            imageAsset +
+                                                                'Event_Date.png',
                                                             width: UWidth15,
                                                           ),
                                                           SizedBox(
@@ -320,7 +322,8 @@ class _News_EventState extends State<News_Event> {
                                                       child: Row(
                                                         children: [
                                                           Image.asset(
-                                                            'assets/image/Event_Time.png',
+                                                            imageAsset +
+                                                                'Event_Time.png',
                                                             width: UWidth15,
                                                           ),
                                                           SizedBox(

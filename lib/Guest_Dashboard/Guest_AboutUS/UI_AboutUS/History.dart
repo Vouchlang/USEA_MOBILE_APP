@@ -26,13 +26,10 @@ class History extends StatelessWidget {
                 highlightColor: UTransParentColor,
                 splashColor: UTransParentColor,
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AboutUS_FullImage(
-                        imageUrls: 'assets/image/usea_building.jpg',
-                        screenNav: 'historyScreen',
-                      ),
+                  Get.to(
+                    () => AboutUS_FullImage(
+                      imageUrls: imageAsset + 'usea_building.jpg',
+                      screenNav: 'historyScreen',
                     ),
                   );
                 },
@@ -41,7 +38,7 @@ class History extends StatelessWidget {
                   width: UFullWidth,
                   color: UGreyColor,
                   child: Image.asset(
-                    'assets/image/usea_building.jpg',
+                    imageAsset + 'usea_building.jpg',
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -69,17 +66,17 @@ class History extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Image.asset(
-                        'assets/image/logonew1.png',
+                        imageAsset + 'logonew1.png',
                       ),
                     ),
                     Expanded(
                       child: Image.asset(
-                        'assets/image/logo2.png',
+                        imageAsset + 'logo2.png',
                       ),
                     ),
                     Expanded(
                       child: Image.asset(
-                        'assets/image/logo3.png',
+                        imageAsset + 'logo3.png',
                       ),
                     ),
                   ],

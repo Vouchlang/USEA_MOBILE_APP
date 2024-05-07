@@ -44,7 +44,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           color: UTransParentColor,
           child: BottomNavigationBar(
             backgroundColor: USecondaryColor,
-            elevation: 0,
+            elevation: UZeroPixel,
             onTap: onTap,
             currentIndex: currentIndex,
             selectedItemColor: UPrimaryColor,

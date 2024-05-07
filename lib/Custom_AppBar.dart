@@ -13,7 +13,7 @@ class Custom_AppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: false,
-      titleSpacing: 0,
+      titleSpacing: UZeroPixel,
       title: Text(
         title,
         style: TextStyle(

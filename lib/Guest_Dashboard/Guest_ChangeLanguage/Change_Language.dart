@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../Custom_Widget/CustomText.dart';
 import '/theme_builder.dart';
 
 final List<Map<String, dynamic>> locale = [
   {
     'name': 'ភាសាខ្មែរ',
-    'logo': 'assets/image/CL_Khmer.png',
+    'logo': imageAsset + 'CL_Khmer.png',
     'locale': Locale('km', 'KH'),
     'font': UKFontFamily
   },
   {
     'name': 'ភាសាអង់គ្លេស',
-    'logo': 'assets/image/CL_English.png',
+    'logo': imageAsset + 'CL_English.png',
     'locale': Locale('en', 'US'),
     'font': UEFontFamily
   },

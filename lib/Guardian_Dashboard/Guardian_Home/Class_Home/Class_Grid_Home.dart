@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
 
 class Grid_Home_Screen {
@@ -16,7 +17,7 @@ class Grid_Home_Screen {
 List<Grid_Home_Screen> guardian_Grid_Home_Screen = [
   Grid_Home_Screen(
     name: 'មតិកែលម្អ',
-    img: 'assets/image/Stu_Survey.png',
+    img: imageAsset + 'Stu_Survey.png',
     screen: InkWell(
       highlightColor: UTransParentColor,
       splashColor: UTransParentColor,

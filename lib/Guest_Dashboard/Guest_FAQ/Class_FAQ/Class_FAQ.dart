@@ -5,7 +5,10 @@ part 'Class_FAQ.g.dart';
 class Class_FAQ {
   late final String question, answer;
 
-  Class_FAQ({required this.question, required this.answer});
+  Class_FAQ({
+    required this.question,
+    required this.answer,
+  });
 
   factory Class_FAQ.fromJson(Map<String, dynamic> json) =>
       _$Class_FAQFromJson(json);

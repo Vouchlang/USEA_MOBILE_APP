@@ -2,7 +2,10 @@ class EducationData {
   String title;
   List<EducationDetail> details;
 
-  EducationData({required this.title, required this.details});
+  EducationData({
+    required this.title,
+    required this.details,
+  });
 
   factory EducationData.fromJson(Map<String, dynamic> json) {
     return EducationData(
@@ -39,7 +42,10 @@ class EducationItem {
   String educationName;
   List<InfoList> infoList;
 
-  EducationItem({required this.educationName, required this.infoList});
+  EducationItem({
+    required this.educationName,
+    required this.infoList,
+  });
 
   factory EducationItem.fromJson(Map<String, dynamic> json) {
     return EducationItem(
@@ -52,7 +58,9 @@ class EducationItem {
 class InfoList {
   String info_text;
 
-  InfoList({required this.info_text});
+  InfoList({
+    required this.info_text,
+  });
 
   factory InfoList.fromJson(Map<String, dynamic> json) {
     return InfoList(
