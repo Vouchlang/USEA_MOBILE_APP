@@ -9,8 +9,8 @@ import '/theme_builder.dart';
 import '../Class_VDO/Class_Video.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-
 import 'Video_Display.dart';
+import 'dart:math';
 
 class Video_UI extends StatefulWidget {
   Video_UI({Key? key}) : super(key: key);
@@ -20,8 +20,11 @@ class Video_UI extends StatefulWidget {
 }
 
 class _VideoState extends State<Video_UI> {
-  List<VDO_Class> vdo = [];
+  late List<VDO_Class> vdo = [];
   bool isLoading = true;
+  int currentPage = 0;
+  final int resultsPerPage = 5;
+  int startPage = 0;
 
   Future<void> getData() async {
     try {
@@ -79,162 +82,328 @@ class _VideoState extends State<Video_UI> {
       body: vdo.isEmpty
           ? buildFutureBuild()
           : SingleChildScrollView(
-              padding: EdgeInsets.all(
+              padding: const EdgeInsets.all(
                 UPdMg10,
               ),
-              child: Container(
-                child: Column(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(
-                        bottom: UPdMg10,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.symmetric(
+                          vertical: UPdMg5,
+                        ),
+                        child: Text(
+                          'វីដេអូពី Youtube'.tr,
+                          style: const TextStyle(
+                            fontSize: UTitleSize16,
+                            fontWeight: UTitleWeight,
+                            color: UPrimaryColor,
+                          ),
+                        ),
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            alignment: Alignment.center,
-                            padding: EdgeInsets.symmetric(
-                              vertical: UPdMg5,
-                              horizontal: UPdMg10,
-                            ),
-                            child: Text(
-                              'វីដេអូពី Youtube'.tr,
-                              style: TextStyle(
-                                fontSize: UTitleSize16,
-                                fontWeight: UTitleWeight,
-                                color: UPrimaryColor,
+                      InkWell(
+                        highlightColor: UTransParentColor,
+                        splashColor: UTransParentColor,
+                        onTap: () {
+                          _launchYoutube();
+                        },
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              alignment: Alignment.center,
+                              child: Text(
+                                'មើលទាំងអស់ '.tr,
+                                style: const TextStyle(
+                                  fontSize: UBodySize,
+                                  fontWeight: UBodyWeight,
+                                  color: UPrimaryColor,
+                                ),
                               ),
                             ),
+                            Container(
+                              margin: const EdgeInsets.only(
+                                bottom: 2,
+                              ),
+                              child: const Icon(
+                                Icons.arrow_forward_ios,
+                                size: UBodySize,
+                                color: UPrimaryColor,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      for (int i = 0;
+                          i <
+                              min(
+                                resultsPerPage,
+                                (vdo.length - (currentPage * resultsPerPage)),
+                              );
+                          i++)
+                        Card(
+                          elevation: 1,
+                          color: UBackgroundColor,
+                          shadowColor: ULightGreyColor,
+                          margin: const EdgeInsets.only(
+                            top: UPdMg10,
                           ),
+                          child: InkWell(
+                            highlightColor: UTransParentColor,
+                            splashColor: UTransParentColor,
+                            onTap: () {
+                              Get.to(
+                                () => Video_Display(
+                                  data: vdo[(currentPage * resultsPerPage) + i],
+                                  vdo: vdo,
+                                ),
+                                transition: Transition.rightToLeftWithFade,
+                                duration: const Duration(
+                                  milliseconds: 100,
+                                ),
+                              );
+                            },
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: 170,
+                                  height: 110,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(
+                                        URoundedLarge,
+                                      ),
+                                      bottomLeft: Radius.circular(
+                                        URoundedLarge,
+                                      ),
+                                    ),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: NetworkImage(
+                                            vdo[(currentPage * resultsPerPage) +
+                                                    i]
+                                                .youtube_thumbnail,
+                                          ),
+                                          fit: BoxFit.cover,
+                                          alignment: Alignment.center,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                buildWidth10(),
+                                Expanded(
+                                  child: Container(
+                                    padding: EdgeInsets.only(
+                                      top: UPdMg5,
+                                      right: UPdMg7,
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        buildListText(
+                                          vdo[(currentPage * resultsPerPage) +
+                                                  i]
+                                              .title,
+                                          2,
+                                          UTitleSize,
+                                          UTitleWeight,
+                                        ),
+                                        buildHeight5(),
+                                        buildListText(
+                                          vdo[(currentPage * resultsPerPage) +
+                                                  i]
+                                              .caption,
+                                          2,
+                                          UBodySize,
+                                          UBodyWeight,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(
+                      UPdMg10,
+                      UZeroPixel,
+                      UPdMg10,
+                      UPdMg15,
+                    ),
+                    margin: EdgeInsets.only(
+                      top: UPdMg15,
+                    ),
+                    alignment: Alignment.center,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        //first page button
+                        startPage > 0 &&
+                                ((MediaQuery.of(context).size.width - 210) / 30)
+                                        .floor() <
+                                    (vdo.length / resultsPerPage).ceil()
+                            ? InkWell(
+                                highlightColor: UTransParentColor,
+                                splashColor: UTransParentColor,
+                                onTap: () {
+                                  setState(() {
+                                    startPage = 0;
+                                    currentPage = 0;
+                                  });
+                                },
+                                child: Icon(
+                                  Icons.first_page,
+                                  color: UPrimaryColor,
+                                ),
+                              )
+                            : const SizedBox.shrink(),
+                        //move backward button
+                        startPage > 0 &&
+                                ((MediaQuery.of(context).size.width - 210) / 30)
+                                        .floor() <
+                                    (vdo.length / resultsPerPage).ceil()
+                            ? InkWell(
+                                highlightColor: UTransParentColor,
+                                splashColor: UTransParentColor,
+                                onTap: () {
+                                  setState(() {
+                                    currentPage--;
+                                    startPage--;
+                                  });
+                                },
+                                child: Icon(
+                                  Icons.navigate_before,
+                                  color: UPrimaryColor,
+                                ),
+                              )
+                            : const SizedBox.shrink(),
+                        //numbered page buttons
+                        for (int i = startPage;
+                            i <
+                                min(
+                                    (((MediaQuery.of(context).size.width -
+                                                    210) /
+                                                30)
+                                            .floor() +
+                                        startPage),
+                                    (vdo.length / resultsPerPage).ceil());
+                            i++)
                           InkWell(
                             highlightColor: UTransParentColor,
                             splashColor: UTransParentColor,
                             onTap: () {
-                              _launchYoutube();
+                              setState(() {
+                                currentPage = i;
+                              });
                             },
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  alignment: Alignment.center,
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: UPdMg5,
-                                  ),
-                                  child: Text(
-                                    'មើលទាំងអស់ '.tr,
-                                    style: TextStyle(
-                                      fontSize: UBodySize,
-                                      fontWeight: UBodyWeight,
-                                      color: UPrimaryColor,
-                                    ),
-                                  ),
+                            child: Container(
+                              width: 30,
+                              height: 30,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                  50,
                                 ),
-                                Container(
-                                  margin: EdgeInsets.only(
-                                    bottom: 1,
-                                  ),
-                                  child: Icon(
-                                    Icons.arrow_forward_ios,
-                                    size: UBodySize,
-                                    color: UPrimaryColor,
-                                  ),
-                                )
-                              ],
+                                color: currentPage == i
+                                    ? UPrimaryColor
+                                    : UTransParentColor,
+                              ),
+                              child: Text(
+                                (i + 1).toString(),
+                                style: TextStyle(
+                                  color: currentPage == i
+                                      ? UBackgroundColor
+                                      : UPrimaryColor,
+                                  fontFamily: UEFontFamily,
+                                  fontSize: UTitleSize,
+                                ),
+                              ),
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    ListView.builder(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: vdo.length,
-                      itemBuilder: (context, index) {
-                        return InkWell(
-                          highlightColor: UTransParentColor,
-                          splashColor: UTransParentColor,
-                          onTap: () {
-                            Get.to(
-                              () => Video_Display(
-                                data: vdo[index],
-                                vdo: vdo,
-                              ),
-                              transition: Transition.rightToLeftWithFade,
-                              duration: Duration(
-                                milliseconds: 100,
-                              ),
-                            );
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(
-                              bottom: UPdMg10,
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      width: 160,
-                                      height: 90,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(
-                                          UPdMg10,
-                                        ),
-                                        image: DecorationImage(
-                                          image: NetworkImage(
-                                            vdo[index].youtube_thumbnail,
-                                          ),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: UWidth10,
-                                    ),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          buildListText(
-                                            vdo[index].title,
-                                            2,
-                                            UTitleSize,
-                                            UTitleWeight,
-                                          ),
-                                          SizedBox(
-                                            height: UHeight5,
-                                          ),
-                                          buildListText(
-                                            vdo[index].caption,
-                                            2,
-                                            UBodySize10,
-                                            UBodyWeight,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
+                        //move forward button
+                        (vdo.length / resultsPerPage).ceil() >
+                                    ((MediaQuery.of(context).size.width - 210) /
+                                            30)
+                                        .floor() &&
+                                ((vdo.length / resultsPerPage).ceil() -
+                                        startPage) >
+                                    ((MediaQuery.of(context).size.width - 210) /
+                                            30)
+                                        .floor()
+                            ? InkWell(
+                                highlightColor: UTransParentColor,
+                                splashColor: UTransParentColor,
+                                onTap: () {
+                                  setState(() {
+                                    currentPage++;
+                                    startPage++;
+                                  });
+                                },
+                                child: Icon(
+                                  Icons.navigate_next,
+                                  color: UPrimaryColor,
                                 ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
+                              )
+                            : const SizedBox.shrink(),
+                        //last page button
+                        (vdo.length / resultsPerPage).ceil() >
+                                    ((MediaQuery.of(context).size.width - 210) /
+                                            30)
+                                        .floor() &&
+                                ((vdo.length / resultsPerPage).ceil() -
+                                        startPage) >
+                                    ((MediaQuery.of(context).size.width - 210) /
+                                            30)
+                                        .floor()
+                            ? InkWell(
+                                highlightColor: UTransParentColor,
+                                splashColor: UTransParentColor,
+                                onTap: () {
+                                  setState(() {
+                                    startPage = (vdo.length / resultsPerPage)
+                                            .ceil() -
+                                        ((MediaQuery.of(context).size.width -
+                                                    210) /
+                                                30)
+                                            .floor();
+                                    currentPage =
+                                        (vdo.length / resultsPerPage).ceil() -
+                                            1;
+                                  });
+                                },
+                                child: Icon(
+                                  Icons.last_page,
+                                  color: UPrimaryColor,
+                                ),
+                              )
+                            : const SizedBox.shrink(),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
     );

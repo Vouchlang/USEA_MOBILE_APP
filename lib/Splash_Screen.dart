@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
+import 'Custom_Widget/CustomText.dart';
 import 'Home.dart';
 import 'theme_builder.dart';
 
@@ -17,12 +18,12 @@ class _Splash_ScreenState extends State<Splash_Screen> {
     super.initState();
 
     Future.delayed(
-      Duration(
+      const Duration(
         seconds: 3,
       ),
     ).then(
       (value) {
-        Get.off(() => Home());
+        Get.off(() => const Home());
       },
     );
   }
@@ -37,15 +38,13 @@ class _Splash_ScreenState extends State<Splash_Screen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/image/logo3.png',
+              imageAsset + 'logo3.png',
               fit: BoxFit.cover,
               height: 200,
               width: 200,
             ),
-            SizedBox(
-              height: UHeight10,
-            ),
-            Text(
+            buildHeight10(),
+            const Text(
               'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
               style: TextStyle(
                 fontSize: 15,
@@ -53,7 +52,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
                 color: UPrimaryColor,
               ),
             ),
-            Text(
+            const Text(
               'UNIVERSITY OF SOUTH-EAST ASIA',
               textAlign: TextAlign.justify,
               style: TextStyle(
@@ -63,10 +62,8 @@ class _Splash_ScreenState extends State<Splash_Screen> {
                 fontFamily: UEFontFamily,
               ),
             ),
-            SizedBox(
-              height: UHeight5,
-            ),
-            SpinKitThreeBounce(
+            buildHeight5(),
+            const SpinKitThreeBounce(
               color: UPrimaryColor,
               size: 15,
             ),

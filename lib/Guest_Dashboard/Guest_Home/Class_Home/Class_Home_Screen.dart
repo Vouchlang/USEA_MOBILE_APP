@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
 import '../../Guest_ChangeLanguage/Change_Language.dart';
-import '../../Guest_New_Event/UI_News_Event/News_Event_New.dart';
+import '../../Guest_New_Event/UI_News_Event/News_Event.dart';
 import '../../Guest_Program/UI_Program/Program.dart';
 import '../../Guest_Scholarship/UI_Scholarship/Scholarship.dart';
 import '../../Guest_AboutUS/UI_AboutUS/AboutUS.dart';
@@ -27,7 +27,7 @@ List<Home_Screen> guest_home_screen = [
   Home_Screen(
     name: 'ព្រឹត្តិការណ៍',
     img: imageAsset + 'Guest_News.png',
-    screen: News_Event(),
+    screen: const News_Event(),
   ),
   Home_Screen(
     name: 'ការចុះឈ្មោះ',
@@ -42,12 +42,12 @@ List<Home_Screen> guest_home_screen = [
   Home_Screen(
     name: 'អាហារូបករណ៍',
     img: imageAsset + 'Guest_Scholarship.png',
-    screen: Scholarship(),
+    screen: const Scholarship(),
   ),
   Home_Screen(
     name: 'មជ្ឈមណ្ឌលការងារ',
     img: imageAsset + 'Guest_Career.png',
-    screen: Career(),
+    screen: const Career(),
   ),
   Home_Screen(
     name: 'វីដេអូ',
@@ -57,12 +57,12 @@ List<Home_Screen> guest_home_screen = [
   Home_Screen(
     name: 'ទំនាក់ទំនង',
     img: imageAsset + 'Guest_Contact.png',
-    screen: Contact(),
+    screen: const Contact(),
   ),
   Home_Screen(
     name: 'FAQ',
     img: imageAsset + 'Guest_QA.png',
-    screen: FAQ(),
+    screen: const FAQ(),
   ),
   Home_Screen(
     name: 'ផ្លាស់ប្ដូរភាសា',
@@ -72,7 +72,7 @@ List<Home_Screen> guest_home_screen = [
   Home_Screen(
     name: 'អំពីយើង',
     img: imageAsset + 'Guest_About.png',
-    screen: AboutUS(),
+    screen: const AboutUS(),
   ),
 ];
 

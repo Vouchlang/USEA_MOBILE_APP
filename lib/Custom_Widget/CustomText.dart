@@ -6,14 +6,13 @@ import '../theme_builder.dart';
 String APIUrlGuest = 'https://usea.edu.kh/';
 
 // Local Server
-// String APIUrlStudent = 'http://192.168.0.111:9999/api/apidata.php?';
-// String APIUrlStudentEn = 'http://192.168.0.111:9999/api/apidata_en.php?';
+// String APIUrlStudent = 'http://192.168.0.192:9999/api/apidata.php?';
+// String APIUrlStudentEn = 'http://192.168.0.192:9999/api/apidata_en.php?';
 
 // Public Server
 String APIUrlStudent = 'http://116.212.155.149:9999/api/apidata.php?';
 String APIUrlStudentEn = 'http://116.212.155.149:9999/api/apidata_en.php?';
 
-String NoDataTXT = 'គ្មានទិន្ន័យ'.tr;
 String st_sourceScreen = 'studentScreen';
 String guardian_sourceScreen = 'guardianScreen';
 String screenNav = 'presidentScreen';
@@ -24,7 +23,7 @@ Widget buildComingSoon() {
   return Center(
     child: Text(
       'មកដល់ឆាប់ៗនេះ!!!'.tr,
-      style: TextStyle(
+      style: const TextStyle(
         color: UPrimaryColor,
         fontSize: UTitleSize16,
         fontWeight: UTitleWeight,
@@ -32,6 +31,7 @@ Widget buildComingSoon() {
     ),
   );
 }
+// *@  End Coming Soon
 
 // *@ Divider
 Widget buildDivider() {
@@ -39,14 +39,14 @@ Widget buildDivider() {
     width: 0.5,
     height: UHeight15,
     color: UGreyColor,
-    margin: EdgeInsets.symmetric(
+    margin: const EdgeInsets.symmetric(
       horizontal: UPdMg5,
     ),
   );
 }
 
 Widget buildDividerAtt() {
-  return Divider(
+  return const Divider(
     thickness: 0.5,
     height: UHeight10,
     color: UGreyColor,
@@ -54,21 +54,22 @@ Widget buildDividerAtt() {
 }
 
 Widget buildVerticalDividerAtt() {
-  return VerticalDivider(
+  return const VerticalDivider(
     thickness: 0.5,
     color: UGreyColor,
   );
 }
 
 Widget buildDividerStDetail() {
-  return Divider(
+  return const Divider(
     thickness: 0.5,
     color: UGreyColor,
+    height: UHeight30,
   );
 }
 
 Widget buildVerticalDividerW_5() {
-  return VerticalDivider(
+  return const VerticalDivider(
     thickness: 0.5,
     width: UWidth5,
     color: UGreyColor,
@@ -76,21 +77,85 @@ Widget buildVerticalDividerW_5() {
 }
 
 Widget buildVerticalDividerW_2() {
-  return VerticalDivider(
+  return const VerticalDivider(
     thickness: 0.5,
-    width: 2,
+    width: 1,
     color: UGreyColor,
   );
 }
 
 Widget buildVerticalDividerH_45() {
   return Container(
-    width: 1,
-    height: UHeight45,
+    width: 0.5,
+    height: UHeight35,
     color: UGreyColor,
   );
 }
 // *@  End Divider
+
+// *@ Width
+Widget buildWidth5() {
+  return const SizedBox(
+    width: UWidth5,
+  );
+}
+
+Widget buildWidth7() {
+  return const SizedBox(
+    width: UWidth7,
+  );
+}
+
+Widget buildWidth10() {
+  return const SizedBox(
+    width: UWidth10,
+  );
+}
+
+Widget buildWidth15() {
+  return const SizedBox(
+    width: UWidth15,
+  );
+}
+
+Widget buildWidth20() {
+  return const SizedBox(
+    width: UWidth20,
+  );
+}
+// *@ End Width
+
+// *@ Height
+Widget buildHeight5() {
+  return const SizedBox(
+    height: UHeight5,
+  );
+}
+
+Widget buildHeight7() {
+  return const SizedBox(
+    height: UHeight7,
+  );
+}
+
+Widget buildHeight10() {
+  return const SizedBox(
+    height: UHeight10,
+  );
+}
+
+Widget buildHeight15() {
+  return const SizedBox(
+    height: UHeight15,
+  );
+}
+
+Widget buildHeight20() {
+  return const SizedBox(
+    height: UHeight20,
+  );
+}
+// *@ End Height
 
 // *@ Title
 Widget TitleTheme(
@@ -98,7 +163,7 @@ Widget TitleTheme(
 ) {
   return Text(
     text,
-    style: TextStyle(
+    style: const TextStyle(
       fontSize: UTitleSize,
       fontWeight: UTitleWeight,
       color: UPrimaryColor,
@@ -113,10 +178,11 @@ Widget TitleAttendance_Theme(
 ) {
   return Text(
     text,
-    style: TextStyle(
+    style: const TextStyle(
       fontSize: UTitleSize16,
       fontWeight: UTitleWeight,
       color: UTextColor,
+      height: UTextHeight,
     ),
   );
 }
@@ -127,11 +193,12 @@ Widget NormalDateStudyInfo(
   String text,
 ) {
   return Text(
-    text,
-    style: TextStyle(
+    text.tr,
+    style: const TextStyle(
       fontSize: UTitleSize,
       fontWeight: UTitleWeight,
       color: UTextColor,
+      height: UTextHeight,
     ),
   );
 }
@@ -145,21 +212,28 @@ Widget RowDataStudyInfo(
   return Row(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Text(
-        title.tr,
-        style: TextStyle(
-          fontSize: UBodySize,
-          color: UTextColor,
+      Container(
+        width: UWidth50,
+        child: Text(
+          title.tr,
+          style: const TextStyle(
+            fontSize: UBodySize,
+            color: UTextColor,
+            height: UTextHeight,
+          ),
         ),
       ),
       Container(
-        width: 200,
+        width: 190,
         alignment: Alignment.centerLeft,
         child: Text(
           tData,
           style: TextStyle(
             fontSize: UBodySize,
+            fontFamily:
+                Get.locale?.languageCode == 'km' ? UKFontFamily : UEFontFamily,
             color: UTextColor,
+            height: UTextHeight,
           ),
         ),
       ),
@@ -180,7 +254,7 @@ Widget buildStudyDataAssign(
           width: 75,
           child: Text(
             textTitle.tr,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: UTitleSize,
             ),
           ),
@@ -188,7 +262,7 @@ Widget buildStudyDataAssign(
         Expanded(
           child: Text(
             textValue,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: UTitleSize,
               fontWeight: UBodyWeight,
               color: UTextColor,
@@ -207,10 +281,11 @@ Widget NoWeightTitleTheme(
 ) {
   return Text(
     text,
-    style: TextStyle(
+    style: const TextStyle(
       fontSize: UTitleSize,
       fontWeight: UBodyWeight,
       color: UTextColor,
+      height: UTextHeight,
     ),
   );
 }
@@ -220,12 +295,16 @@ Widget NoWeightTitleTheme(
 Widget ScholarshipTitleTheme(
   String text,
 ) {
-  return Text(
-    text,
-    style: TextStyle(
-      fontSize: UTitleSize,
-      fontWeight: UTitleWeight,
-      color: UTextColor,
+  return Container(
+    height: UHeight30,
+    child: Text(
+      text,
+      style: const TextStyle(
+        fontSize: UTitleSize,
+        fontWeight: UTitleWeight,
+        color: UTextColor,
+        height: UTextHeight,
+      ),
     ),
   );
 }
@@ -237,9 +316,11 @@ Widget ScholarshipBodyTheme(
 ) {
   return Text(
     text,
-    style: TextStyle(
+    style: const TextStyle(
       fontSize: UBodySize,
+      fontWeight: UBodyWeight,
       color: UTextColor,
+      height: UTextHeight,
     ),
   );
 }
@@ -288,9 +369,10 @@ Widget CareerBody(
 ) {
   return Text(
     text,
-    style: TextStyle(
+    style: const TextStyle(
       fontSize: UBodySize,
       color: UTextColor,
+      height: UTextHeight,
     ),
   );
 }
@@ -302,10 +384,11 @@ Widget ScheduleDate(
 ) {
   return Text(
     text,
-    style: TextStyle(
+    style: const TextStyle(
       fontSize: UTitleSize,
       fontWeight: UTitleWeight,
       color: UTextColor,
+      height: UTextHeight,
     ),
   );
 }
@@ -317,10 +400,10 @@ Widget ScheduleTitle(
 ) {
   return Text(
     text,
-    style: TextStyle(
+    style: const TextStyle(
       fontSize: UTitleSize16,
       fontWeight: UTitleWeight,
-      color: UTextColor,
+      color: UPrimaryColor,
     ),
   );
 }
@@ -332,9 +415,10 @@ Widget ScheduleBody(
 ) {
   return Text(
     text,
-    style: TextStyle(
+    style: const TextStyle(
       fontSize: UBodySize,
       color: UTextColor,
+      height: UTextHeight,
     ),
   );
 }
@@ -346,7 +430,7 @@ Widget buildEventDate(
 ) {
   return Text(
     text,
-    style: TextStyle(
+    style: const TextStyle(
       fontSize: UBodySize10,
       fontWeight: UBodyWeight,
       color: UPrimaryColor,
@@ -360,29 +444,34 @@ Widget buildJobHistoryCardRow(
   String textTitle,
   textValue,
 ) {
-  return Row(
-    children: [
-      Container(
-        width: 125,
-        child: Text(
-          textTitle.tr,
-          style: TextStyle(
-            fontSize: UTitleSize,
+  return Container(
+    padding: EdgeInsets.all(
+      UPdMg10,
+    ),
+    child: Row(
+      children: [
+        Container(
+          width: 125,
+          child: Text(
+            textTitle.tr,
+            style: const TextStyle(
+              fontSize: UTitleSize,
+            ),
           ),
         ),
-      ),
-      Expanded(
-        child: Text(
-          textValue,
-          style: TextStyle(
-            fontSize: UTitleSize,
-            fontWeight: UBodyWeight,
-            color: UTextColor,
-            fontFamily: UKFontFamily,
+        Expanded(
+          child: Text(
+            textValue,
+            style: const TextStyle(
+              fontSize: UTitleSize,
+              fontWeight: UBodyWeight,
+              color: UTextColor,
+              fontFamily: UKFontFamily,
+            ),
           ),
         ),
-      ),
-    ],
+      ],
+    ),
   );
 }
 // *@ End Job History Card Row
@@ -393,7 +482,7 @@ Widget BodyTheme(
 ) {
   return Text(
     text,
-    style: TextStyle(
+    style: const TextStyle(
       fontSize: UBodySize,
       color: UTextColor,
       fontFamily: UKFontFamily,
@@ -416,21 +505,29 @@ Widget CustomTextTheme(
       fontWeight: fontWeight,
       color: color,
       fontFamily: UKFontFamily,
+      height: UTextHeight,
     ),
   );
 }
+// *@ End General custom text
 
+// *@ Performance
 Widget CustomPerformanceDiaglogTextThemeTitle(
   String text,
   double size,
   Color color,
 ) {
-  return Text(
-    text,
-    style: TextStyle(
-      fontSize: size,
-      fontWeight: UTitleWeight,
-      color: color,
+  return Container(
+    padding: EdgeInsets.symmetric(
+      vertical: UPdMg5,
+    ),
+    child: Text(
+      text,
+      style: TextStyle(
+        fontSize: size,
+        fontWeight: UTitleWeight,
+        color: color,
+      ),
     ),
   );
 }
@@ -440,12 +537,17 @@ Widget CustomPerformanceDiaglogTextTheme(
   double size,
   Color color,
 ) {
-  return Text(
-    text,
-    style: TextStyle(
-      fontSize: size,
-      fontWeight: UBodyWeight,
-      color: color,
+  return Container(
+    padding: EdgeInsets.symmetric(
+      vertical: UPdMg5,
+    ),
+    child: Text(
+      text,
+      style: TextStyle(
+        fontSize: size,
+        fontWeight: UBodyWeight,
+        color: color,
+      ),
     ),
   );
 }
@@ -455,16 +557,22 @@ Widget CustomPerformanceDiaglogTextThemeBold(
   double size,
   Color color,
 ) {
-  return Text(
-    text,
-    style: TextStyle(
-      fontSize: size,
-      fontWeight: UBodyWeight,
-      color: color,
-      fontFamily: UEFontFamily,
+  return Container(
+    padding: EdgeInsets.symmetric(
+      vertical: UPdMg5,
+    ),
+    child: Text(
+      text,
+      style: TextStyle(
+        fontSize: size,
+        fontWeight: UBodyWeight,
+        color: color,
+        fontFamily: UEFontFamily,
+      ),
     ),
   );
 }
+// *@ End Performance
 
 // *@ Attendance custom text
 Widget CustomAttTextTheme(
@@ -499,7 +607,7 @@ Widget buildTitleContainer(
     child: Text(
       text.tr,
       textAlign: TextAlign.center,
-      style: TextStyle(
+      style: const TextStyle(
         color: UPrimaryColor,
         fontSize: UTitleSize,
         fontWeight: UTitleWeight,
@@ -507,6 +615,7 @@ Widget buildTitleContainer(
     ),
   );
 }
+// *@ End Screen_Performance widget
 
 // *@ ScoreTotal
 Widget buildScoreTotal(
@@ -517,7 +626,7 @@ Widget buildScoreTotal(
     alignment: Alignment.centerRight,
     child: Text(
       text,
-      style: TextStyle(
+      style: const TextStyle(
         color: UPrimaryColor,
       ),
     ),
@@ -525,7 +634,7 @@ Widget buildScoreTotal(
 }
 // *@ End ScoreTotal
 
-// *@ Attendance Score Type
+// *@ Attendance
 Widget buildAttList(
   String text,
   Color color,
@@ -537,12 +646,10 @@ Widget buildAttList(
         color: color,
         size: UBodySize,
       ),
-      SizedBox(
-        width: UWidth5,
-      ),
+      buildWidth5(),
       Text(
         text.tr,
-        style: TextStyle(
+        style: const TextStyle(
           color: UTextColor,
           fontSize: UBodySize,
         ),
@@ -550,15 +657,13 @@ Widget buildAttList(
     ],
   );
 }
-// *@ End Attendance Score Type
 
-// *@ Card Attendance
 Widget buildCHText(
   String text,
 ) {
   return Text(
     text,
-    style: TextStyle(
+    style: const TextStyle(
       fontSize: UBodySize10,
     ),
   );
@@ -587,7 +692,7 @@ Widget buildHeaderNA(
     child: Text(
       text.tr,
       textAlign: TextAlign.center,
-      style: TextStyle(
+      style: const TextStyle(
         color: UTextColor,
         fontSize: UBodySize,
         fontWeight: UTitleWeight,
@@ -600,11 +705,11 @@ Widget buildHeader(
   String text,
 ) {
   return Container(
-    width: 75,
+    width: 80,
     child: Text(
       text.tr,
       textAlign: TextAlign.center,
-      style: TextStyle(
+      style: const TextStyle(
         color: UPrimaryColor,
         fontSize: UBodySize,
         fontWeight: UTitleWeight,
@@ -621,7 +726,7 @@ Widget buildAttDetailHeader(
     child: Text(
       text.tr,
       textAlign: TextAlign.center,
-      style: TextStyle(
+      style: const TextStyle(
         color: UPrimaryColor,
         fontSize: UBodySize,
         fontWeight: UTitleWeight,
@@ -635,7 +740,7 @@ Widget buildTextBody(
   Color color,
 ) {
   return Container(
-    width: 75,
+    width: 80,
     margin: EdgeInsets.symmetric(
       vertical: UPdMg5,
     ),
@@ -708,9 +813,9 @@ Widget buildTitle(
         ),
         child: Text(
           text.tr,
-          style: TextStyle(
+          style: const TextStyle(
             color: UPrimaryColor,
-            fontSize: UBodySize,
+            fontSize: UTitleSize,
             fontWeight: UTitleWeight,
           ),
         ),
@@ -731,7 +836,7 @@ Widget buildHeaderTitle(
     child: Text(
       text.tr,
       textAlign: TextAlign.center,
-      style: TextStyle(
+      style: const TextStyle(
         color: UPrimaryColor,
         fontSize: UBodySize,
         fontWeight: UTitleWeight,
@@ -757,6 +862,15 @@ Widget buildBody(
     ),
   );
 }
+
+Widget buildVerticalDivider(
+  double num,
+) {
+  return VerticalDivider(
+    width: num,
+    color: UGreyColor,
+  );
+}
 // *@ End Payments
 
 // *@ Student Detail
@@ -776,6 +890,7 @@ Widget buildHeaderDetail(
         fontFamily: font,
         fontSize: size,
         fontWeight: fontWeight,
+        height: UTextHeight,
       ),
     ),
   );
@@ -792,17 +907,18 @@ Widget buildBodyDetail(
     children: [
       Text(
         text1.tr,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: UBodySize,
           color: UPrimaryColor,
+          fontWeight: UTitleWeight,
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 2,
       ),
       Text(
         text2,
-        style: TextStyle(
+        style: const TextStyle(
           fontFamily: UEFontFamily,
           fontSize: UTitleSize,
         ),
@@ -816,38 +932,43 @@ Widget buildTailDetail(
   title,
   text,
 ) {
-  return Row(
-    mainAxisSize: MainAxisSize.min,
-    children: [
-      Image.asset(
-        image,
-        scale: UScale5,
-      ),
-      SizedBox(
-        width: UWidth10,
-      ),
-      Expanded(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              title,
-              style: TextStyle(
-                color: UPrimaryColor,
-                fontSize: UBodySize,
-              ),
-            ),
-            Text(
-              text,
-              style: TextStyle(
-                fontSize: UTitleSize,
-              ),
-            ),
-          ],
+  return Container(
+    padding: EdgeInsets.symmetric(
+      horizontal: UPdMg10,
+    ),
+    child: Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Image.asset(
+          image,
+          scale: UScale5,
         ),
-      )
-    ],
+        buildWidth10(),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  color: UPrimaryColor,
+                  fontSize: UBodySize,
+                  fontWeight: UTitleWeight,
+                ),
+              ),
+              buildHeight5(),
+              Text(
+                text,
+                style: const TextStyle(
+                  fontSize: UTitleSize,
+                ),
+              ),
+            ],
+          ),
+        )
+      ],
+    ),
   );
 }
 // *@ End Student Detail
@@ -861,11 +982,12 @@ Widget buildListText(
 ) {
   return Text(
     text,
-    textAlign: TextAlign.justify,
+    textAlign:
+        Get.locale?.languageCode == 'km' ? TextAlign.left : TextAlign.justify,
     maxLines: line,
     overflow: TextOverflow.ellipsis,
     style: TextStyle(
-      height: 1.7,
+      height: UTextHeight,
       fontSize: size,
       fontFamily: UKFontFamily,
       fontWeight: fontWeight,
@@ -877,20 +999,22 @@ Widget buildTitleBody(
   String text,
   double size,
   FontWeight fontWeight,
+  TextAlign alignment,
 ) {
   return Text(
     text,
-    textAlign: TextAlign.justify,
+    textAlign: alignment,
     style: TextStyle(
       fontSize: size,
       fontFamily: UKFontFamily,
       fontWeight: fontWeight,
+      height: UTextHeight,
     ),
   );
 }
 // *@ End VDO
 
-// *@ AboutUS
+// *@ History
 Widget buildHistory(
   String text,
 ) {
@@ -903,18 +1027,16 @@ Widget buildHistory(
           imageAsset + 'dot.png',
           width: UWidth5,
         ),
-        margin: EdgeInsets.only(
+        margin: const EdgeInsets.only(
           top: UPdMg10,
         ),
       ),
-      SizedBox(
-        width: UWidth5,
-      ),
+      buildWidth5(),
       Expanded(
         child: Text(
           text,
           textAlign: TextAlign.justify,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: UTitleSize,
             fontFamily: UEFontFamily,
           ),
@@ -923,7 +1045,7 @@ Widget buildHistory(
     ],
   );
 }
-// *@ End AboutUS
+// *@ End History
 
 // *@ Vision
 Widget buildTitleVision(
@@ -931,7 +1053,7 @@ Widget buildTitleVision(
   text2,
 ) {
   return Container(
-    margin: EdgeInsets.fromLTRB(
+    margin: const EdgeInsets.fromLTRB(
       UPdMg10,
       UPdMg10,
       UPdMg10,
@@ -943,23 +1065,25 @@ Widget buildTitleVision(
       children: [
         Text(
           text1,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: UTitleSize,
             color: UPrimaryColor,
             fontFamily: UEFontFamily,
-            fontWeight: UBodyWeight,
+            fontWeight: UTitleWeight,
+            height: UTextHeight,
           ),
         ),
         Container(
-          margin: EdgeInsets.only(
+          margin: const EdgeInsets.only(
             left: UPdMg12,
           ),
           child: Text(
             text2,
             textAlign: TextAlign.justify,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: UTitleSize,
               fontFamily: UEFontFamily,
+              height: UTextHeight,
             ),
           ),
         )
@@ -973,11 +1097,12 @@ Widget buildTopBodyVision(
 ) {
   return Text(
     text,
-    style: TextStyle(
+    style: const TextStyle(
       fontSize: UTitleSize,
       color: UPrimaryColor,
       fontFamily: UEFontFamily,
-      fontWeight: UBodyWeight,
+      fontWeight: UTitleWeight,
+      height: UTextHeight,
     ),
   );
 }
@@ -990,7 +1115,7 @@ Widget buildLowBodyVision(
     mainAxisAlignment: MainAxisAlignment.start,
     children: [
       Container(
-        margin: EdgeInsets.only(
+        margin: const EdgeInsets.only(
           top: UPdMg10,
         ),
         child: Image.asset(
@@ -998,22 +1123,22 @@ Widget buildLowBodyVision(
           width: 4,
         ),
       ),
-      SizedBox(
-        width: UWidth5,
-      ),
+      buildWidth5(),
       Expanded(
         child: Text(
           text,
           textAlign: TextAlign.justify,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: UTitleSize,
             fontFamily: UEFontFamily,
+            height: UTextHeight,
           ),
         ),
       )
     ],
   );
 }
+// *@ End Vision
 
 // *@ FAQ
 Widget buildFAQ(
@@ -1023,9 +1148,10 @@ Widget buildFAQ(
   return Text(
     text,
     textAlign: align,
-    style: TextStyle(
+    style: const TextStyle(
       fontSize: UTitleSize16,
       color: UTextColor,
+      height: UTextHeight,
     ),
   );
 }
@@ -1036,22 +1162,24 @@ Widget buildPresidentMessage(
   String text,
 ) {
   return Container(
-    margin: EdgeInsets.symmetric(
+    margin: const EdgeInsets.symmetric(
       horizontal: UPdMg10,
+      vertical: UPdMg10,
     ),
     child: Text(
       text,
       textAlign: TextAlign.justify,
-      style: TextStyle(
+      style: const TextStyle(
         fontSize: UTitleSize,
         fontFamily: UEFontFamily,
+        height: UTextHeight,
       ),
     ),
   );
 }
 // *@ End PresidentMessage
 
-//@ Custom GestureDetector Social Media
+// *@ Custom GestureDetector Social Media
 Widget BuildContainerSM(
   Function()? onTap,
   String imageName,
@@ -1066,13 +1194,14 @@ Widget BuildContainerSM(
     ),
   );
 }
+// *@ End Custom GestureDetector Social Media
 
 void pushWithTransition(BuildContext context, Widget screen) {
   Navigator.of(context).push(
     PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => screen,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = Offset(3.0, 0.0);
+        const begin = Offset(3.0, UZeroPixel);
         const end = Offset.zero;
         const curve = Curves.easeInOut;
         final tween = Tween(begin: begin, end: end).chain(
@@ -1085,35 +1214,295 @@ void pushWithTransition(BuildContext context, Widget screen) {
           child: child,
         );
       },
-      transitionDuration: Duration(
+      transitionDuration: const Duration(
         milliseconds: 100,
       ),
     ),
   );
 }
 
-// Build Loading
+// *@ Build Loading
 Widget buildFutureBuild() {
   return FutureBuilder(
     future: Future.delayed(
-      Duration(
-        seconds: 15,
+      const Duration(
+        seconds: 5,
       ),
     ),
     builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
       if (snapshot.connectionState == ConnectionState.waiting) {
         return Center(
-          child: CircularProgressIndicator(
+          child: const CircularProgressIndicator(
             color: UPrimaryColor,
           ),
         );
       } else {
         return Center(
-          child: Text(
-            NoDataTXT,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                imageAsset + 'no_data.png',
+                scale: 3,
+              ),
+              buildHeight10(),
+              Text(
+                'គ្មានទិន្ន័យ'.tr,
+                style: const TextStyle(
+                  color: UPrimaryColor,
+                  fontSize: UTitleSize,
+                  fontWeight: UTitleWeight,
+                ),
+              ),
+            ],
           ),
         );
       }
     },
   );
 }
+// *@ End Build Loading
+
+// *@ PresidentMessage
+Widget buildStudentDashboard_Name(
+  String text,
+  font,
+) {
+  return Text(
+    text,
+    style: TextStyle(
+      color: UPrimaryColor,
+      fontSize: UTitleSize16,
+      fontFamily: font,
+      fontWeight: UBodyWeight,
+    ),
+  );
+}
+// *@ End PresidentMessage
+
+// *@ Contact
+Widget buildContact(
+  String image,
+  text,
+  double size,
+  FontWeight fontWeight,
+) {
+  return Row(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Container(
+        width: UWidth30,
+        height: UHeight30,
+        child: Image.asset(
+          image,
+          fit: BoxFit.cover,
+        ),
+      ),
+      buildWidth10(),
+      Expanded(
+        child: Container(
+          padding: EdgeInsets.only(
+            top: 4,
+          ),
+          child: SelectableText(
+            text,
+            textAlign: Get.locale?.languageCode == 'km'
+                ? TextAlign.left
+                : TextAlign.justify,
+            style: TextStyle(
+              fontSize: size,
+              fontWeight: fontWeight,
+              height: UTextHeight,
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
+}
+// *@ End Contact
+
+// *@ Button on Map
+Widget buildBtnMap(
+  Function() mode,
+  IconData icons,
+) {
+  return GestureDetector(
+    onTap: mode,
+    child: Container(
+      width: UWidth35,
+      height: UHeight35,
+      decoration: BoxDecoration(
+        color: UPrimaryColor,
+        shape: BoxShape.rectangle,
+        borderRadius: BorderRadius.circular(
+          URoundedMedium,
+        ),
+      ),
+      child: Icon(
+        icons,
+        size: 24.0,
+        color: UBackgroundColor,
+      ),
+    ),
+  );
+}
+// *@ End Button on Map
+
+// *@ Student Total Credit
+Widget buildTotalCredit(
+  String text,
+  Color creditColor,
+) {
+  return Flexible(
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(
+          Icons.circle,
+          size: UBodySize,
+          color: creditColor,
+        ),
+        Text(
+          text.tr,
+          style: const TextStyle(
+            fontSize: UTitleSize,
+            fontWeight: UTitleWeight,
+          ),
+        ),
+      ],
+    ),
+  );
+}
+// *@ End Student Total Credit
+
+// *@ University Name
+Widget buildUniversityName(
+  Color uniNameCol,
+) {
+  return Row(
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      Card(
+        shape: RoundedRectangleBorder(
+          side: const BorderSide(
+            color: UBackgroundColor,
+            width: 1,
+          ),
+          borderRadius: BorderRadius.circular(
+            50,
+          ),
+        ),
+        child: Image.asset(
+          imageAsset + 'usea_logo.png',
+          scale: 40,
+        ),
+      ),
+      buildWidth5(),
+      Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
+            style: TextStyle(
+              color: uniNameCol,
+              fontSize: 11,
+              fontFamily: 'KhmerOSmuol',
+            ),
+          ),
+          buildHeight5(),
+          Text(
+            'UNIVERSITY OF SOUTH-EAST ASIA',
+            style: TextStyle(
+              color: uniNameCol,
+              fontSize: 13,
+              fontFamily: UEFontFamily,
+              fontWeight: UBodyWeight,
+            ),
+          ),
+        ],
+      ),
+    ],
+  );
+}
+// *@ End University Name
+
+// *@ Back Button
+Widget buildBackBtn(Function()? onPressed) {
+  return Stack(
+    children: [
+      Positioned(
+        top: UHeight5,
+        right: 1,
+        child: IconButton(
+          highlightColor: UTransParentColor,
+          splashColor: UTransParentColor,
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: UPrimaryColor,
+            size: 18,
+          ),
+          onPressed: onPressed,
+        ),
+      ),
+      IconButton(
+        padding: EdgeInsets.only(
+          top: UPdMg8,
+          left: 14,
+        ),
+        highlightColor: UTransParentColor,
+        splashColor: UTransParentColor,
+        icon: const Icon(
+          Icons.arrow_back_ios,
+          color: UPrimaryColor,
+          size: 18,
+        ),
+        onPressed: onPressed,
+      ),
+    ],
+  );
+}
+// *@ End Back Button
+
+// *@ Navigate Button
+Widget buildNavBtn(
+  Function() setState,
+  String text,
+) {
+  return InkWell(
+    highlightColor: UTransParentColor,
+    splashColor: UTransParentColor,
+    onTap: setState,
+    child: Card(
+      elevation: 1,
+      color: UBackgroundColor,
+      shadowColor: ULightGreyColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(
+          URoundedMedium,
+        ),
+      ),
+      child: Container(
+        width: 100,
+        height: UHeight35,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(
+            URoundedMedium,
+          ),
+          color: UBtnColor,
+        ),
+        child: CustomTextTheme(
+          text.tr,
+          UBodySize,
+          UPrimaryColor,
+          UTitleWeight,
+        ),
+      ),
+    ),
+  );
+}
+// *@ End Navigate Button

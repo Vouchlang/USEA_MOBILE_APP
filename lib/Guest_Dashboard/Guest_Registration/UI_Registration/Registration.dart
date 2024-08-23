@@ -91,15 +91,16 @@ class _RegistrationState extends State<Registration> {
       body: educationDataList.isEmpty
           ? buildFutureBuild()
           : ListView.builder(
-              padding: EdgeInsets.all(
+              padding: const EdgeInsets.all(
                 UPdMg10,
               ),
               itemCount: educationDataList.length,
               itemBuilder: (context, index) {
                 final educationData = educationDataList[index];
                 return Card(
-                  elevation: 2,
-                  margin: EdgeInsets.only(
+                  elevation: 1,
+                  color: UBackgroundColor,
+                  margin: const EdgeInsets.only(
                     bottom: UPdMg10,
                   ),
                   shadowColor: ULightGreyColor,
@@ -109,7 +110,7 @@ class _RegistrationState extends State<Registration> {
                     ),
                   ),
                   child: Container(
-                    padding: EdgeInsets.all(
+                    padding: const EdgeInsets.all(
                       UPdMg10,
                     ),
                     child: Column(
@@ -121,17 +122,16 @@ class _RegistrationState extends State<Registration> {
                           alignment: Alignment.center,
                           child: Text(
                             educationData.title,
-                            textAlign: TextAlign.justify,
-                            style: TextStyle(
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
                               fontSize: UTitleSize16,
                               fontFamily: UKFontFamily,
                               fontWeight: UTitleWeight,
+                              height: UTextHeight,
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: UHeight5,
-                        ),
+                        buildHeight5(),
                         ListView.builder(
                           shrinkWrap: true,
                           physics: ClampingScrollPhysics(),
@@ -150,7 +150,7 @@ class _RegistrationState extends State<Registration> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Container(
-                                        margin: EdgeInsets.only(
+                                        margin: const EdgeInsets.only(
                                           top: 1,
                                         ),
                                         width: UWidth20,
@@ -159,17 +159,16 @@ class _RegistrationState extends State<Registration> {
                                           imageAsset + 'date_time.png',
                                         ),
                                       ),
-                                      SizedBox(
-                                        width: UWidth5,
-                                      ),
+                                      buildWidth5(),
                                       Expanded(
                                         child: Text(
                                           details.dateTitle,
                                           textAlign: TextAlign.left,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: UTitleSize,
                                             fontFamily: UKFontFamily,
                                             fontWeight: UTitleWeight,
+                                            height: UTextHeight,
                                           ),
                                         ),
                                       ),
@@ -180,7 +179,7 @@ class _RegistrationState extends State<Registration> {
                                   Column(
                                     children: [
                                       Container(
-                                        margin: EdgeInsets.only(
+                                        margin: const EdgeInsets.only(
                                           left: UPdMg15,
                                         ),
                                         width: UFullWidth,
@@ -194,7 +193,7 @@ class _RegistrationState extends State<Registration> {
                                             Container(
                                               width: UWidth20,
                                               height: UHeight20,
-                                              margin: EdgeInsets.only(
+                                              margin: const EdgeInsets.only(
                                                 left: UPdMg5,
                                               ),
                                               child: Image.asset(
@@ -205,10 +204,11 @@ class _RegistrationState extends State<Registration> {
                                             Expanded(
                                               child: Text(
                                                 educationItem.educationName,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                   fontSize: UTitleSize,
                                                   fontFamily: UKFontFamily,
                                                   fontWeight: UTitleWeight,
+                                                  height: UTextHeight,
                                                 ),
                                               ),
                                             ),
@@ -218,44 +218,37 @@ class _RegistrationState extends State<Registration> {
                                       for (var info in educationItem.infoList)
                                         Column(
                                           children: [
-                                            SizedBox(
-                                              height: UHeight5,
-                                            ),
+                                            buildHeight5(),
                                             Container(
-                                              margin: EdgeInsets.only(
+                                              margin: const EdgeInsets.only(
                                                 left: 36,
                                               ),
                                               width: double.infinity,
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.min,
                                                 children: [
-                                                  SizedBox(
-                                                    width: UWidth5,
-                                                  ),
+                                                  buildWidth5(),
                                                   Expanded(
                                                     child: Text(
                                                       info.info_text,
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                         fontSize: UBodySize,
                                                         fontFamily:
                                                             UKFontFamily,
                                                         fontWeight: UBodyWeight,
+                                                        height: UTextHeight,
                                                       ),
                                                     ),
                                                   ),
                                                 ],
                                               ),
                                             ),
-                                            SizedBox(
-                                              height: UHeight5,
-                                            ),
+                                            buildHeight5(),
                                           ],
                                         ),
                                     ],
                                   ),
-                                SizedBox(
-                                  height: UHeight5,
-                                ),
+                                buildHeight5(),
                                 Container(
                                   width: UFullWidth,
                                   child: Row(
@@ -264,7 +257,7 @@ class _RegistrationState extends State<Registration> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Container(
-                                        margin: EdgeInsets.only(
+                                        margin: const EdgeInsets.only(
                                           top: 1,
                                         ),
                                         width: UWidth20,
@@ -273,42 +266,40 @@ class _RegistrationState extends State<Registration> {
                                           imageAsset + 'date_time.png',
                                         ),
                                       ),
-                                      SizedBox(width: UWidth5),
+                                      buildWidth5(),
                                       Expanded(
                                         child: Text(
                                           details.timeTitle,
                                           textAlign: TextAlign.left,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: UTitleSize,
                                             fontFamily: UKFontFamily,
                                             fontWeight: UTitleWeight,
+                                            height: UTextHeight,
                                           ),
                                         ),
                                       ),
                                     ],
                                   ),
                                 ),
-                                SizedBox(
-                                  height: UHeight5,
-                                ),
+                                buildHeight5(),
                                 Container(
-                                  margin: EdgeInsets.only(
+                                  margin: const EdgeInsets.only(
                                     left: 36,
                                   ),
                                   width: UFullWidth,
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      SizedBox(
-                                        width: UWidth5,
-                                      ),
+                                      buildWidth5(),
                                       Expanded(
                                         child: Text(
                                           details.timeDetail,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: UBodySize,
                                             fontFamily: UKFontFamily,
                                             fontWeight: UBodyWeight,
+                                            height: UTextHeight,
                                           ),
                                         ),
                                       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../Custom_Widget/CustomText.dart';
 import '../../../Custom_AppBar.dart';
 import '../../../theme_builder.dart';
 import 'Program_SHC.dart';
@@ -62,7 +63,7 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                   },
                   child: AnimatedContainer(
                     alignment: Alignment.center,
-                    duration: Duration(
+                    duration: const Duration(
                       milliseconds: 300,
                     ),
                     margin: EdgeInsets.fromLTRB(
@@ -71,8 +72,8 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                       isLastIndex ? UPdMg10 : UZeroPixel,
                       UPdMg10,
                     ),
-                    padding: EdgeInsets.all(
-                      UPdMg10,
+                    padding: const EdgeInsets.all(
+                      UPdMg5,
                     ),
                     width: 165,
                     decoration: BoxDecoration(
@@ -83,7 +84,7 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                         URoundedMedium,
                       ),
                       boxShadow: [
-                        BoxShadow(
+                        const BoxShadow(
                           blurRadius: 1,
                           color: ULightGreyColor,
                           offset: Offset(0, 1),
@@ -98,6 +99,7 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                             ? UBackgroundColor
                             : UTextColor,
                         fontSize: UTitleSize,
+                        fontWeight: UTitleWeight,
                       ),
                     ),
                   ),
@@ -107,7 +109,7 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
           ),
           Expanded(
             child: SingleChildScrollView(
-              padding: EdgeInsets.all(
+              padding: const EdgeInsets.all(
                 UPdMg10,
               ),
               child: Column(
@@ -122,10 +124,13 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                                       orElse: () => {})['degree_detail']
                                   ['major_info'] ??
                               'គ្មានទិន្ន័យ'.tr,
-                          textAlign: TextAlign.justify,
-                          style: TextStyle(
+                          textAlign: Get.locale?.languageCode == 'km'
+                              ? TextAlign.left
+                              : TextAlign.justify,
+                          style: const TextStyle(
                             fontSize: UTitleSize,
                             fontFamily: UKFontFamily,
+                            height: UTextHeight,
                           ),
                         )
                       : Center(
@@ -133,9 +138,7 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                             'គ្មានទិន្ន័យ'.tr,
                           ),
                         ),
-                  SizedBox(
-                    height: UHeight10,
-                  ),
+                  buildHeight10(),
                   GridView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
@@ -172,7 +175,7 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                         String yearName = yearData['year_name'];
 
                         return Card(
-                          elevation: 2,
+                          elevation: 1,
                           color: UBackgroundColor,
                           shadowColor: ULightGreyColor,
                           shape: RoundedRectangleBorder(
@@ -199,7 +202,7 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                                     yearsData: yearData['year_data'],
                                   ),
                                   transition: Transition.rightToLeftWithFade,
-                                  duration: Duration(
+                                  duration: const Duration(
                                     milliseconds: 100,
                                   ),
                                 );
@@ -216,10 +219,10 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                                         ),
                                       ),
                                       child: Container(
-                                        margin: EdgeInsets.all(
-                                          7,
+                                        margin: const EdgeInsets.all(
+                                          UPdMg7,
                                         ),
-                                        padding: EdgeInsets.all(
+                                        padding: const EdgeInsets.all(
                                           UPdMg10,
                                         ),
                                         decoration: BoxDecoration(
@@ -233,34 +236,30 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                                           children: [
                                             Text(
                                               'សូមអធ្យាស្រ័យ'.tr,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 fontSize: UTitleSize,
                                                 fontWeight: UTitleWeight,
                                               ),
                                             ),
-                                            SizedBox(
-                                              height: UHeight5,
-                                            ),
+                                            buildHeight5(),
                                             Text(
                                               'គ្មានទិន្ន័យ'.tr,
                                               textAlign: TextAlign.center,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 fontSize: UBodySize,
                                               ),
                                             ),
-                                            SizedBox(
-                                              height: UHeight5,
-                                            ),
+                                            buildHeight5(),
                                             Container(
                                               height: UHeight50,
-                                              padding: EdgeInsets.all(
+                                              padding: const EdgeInsets.all(
                                                 UPdMg5,
                                               ),
                                               alignment: Alignment.center,
                                               child: TextButton(
                                                 child: Text(
                                                   'បោះបង់'.tr,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     color: UPrimaryColor,
                                                     fontSize: UBodySize,
                                                   ),
@@ -279,24 +278,25 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                               }
                             },
                             child: Container(
-                              padding: EdgeInsets.all(
+                              padding: const EdgeInsets.all(
                                 UPdMg10,
                               ),
                               alignment: Alignment.center,
                               child: Text(
                                 yearName.tr,
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: UTitleSize,
                                   fontWeight: UTitleWeight,
                                   color: UTextColor,
+                                  height: UTextHeight,
                                 ),
                               ),
                             ),
                           ),
                         );
                       } else {
-                        return SizedBox
+                        return const SizedBox
                             .shrink(); // Return an empty widget if degreeData is null
                       }
                     },

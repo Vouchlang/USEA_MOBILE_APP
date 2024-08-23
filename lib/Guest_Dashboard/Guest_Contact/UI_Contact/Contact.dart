@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '/theme_builder.dart';
 import '/Custom_AppBar.dart';
 import '/Custom_Widget/CustomText.dart';
-import '../Class_Contact/Class_Contact.dart';
 
 class Contact extends StatefulWidget {
   const Contact({Key? key}) : super(key: key);
@@ -14,6 +13,52 @@ class Contact extends StatefulWidget {
 }
 
 class _ContactState extends State<Contact> {
+  late GoogleMapController mapController;
+  BitmapDescriptor markerIcon = BitmapDescriptor.defaultMarker;
+  final LatLng _pGooglePlex = LatLng(13.350682787083263, 103.86438269625718);
+
+  @override
+  void initState() {
+    addCustomIcon();
+    super.initState();
+  }
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+
+  void _zoomIn() {
+    mapController.animateCamera(CameraUpdate.zoomIn());
+  }
+
+  // Method to zoom out
+  void _zoomOut() {
+    mapController.animateCamera(CameraUpdate.zoomOut());
+  }
+
+  MapType _currentMapType = MapType.normal;
+
+  // Method to change the map type
+  void _onMapTypeButtonPressed() {
+    setState(() {
+      _currentMapType = _currentMapType == MapType.normal
+          ? MapType.satellite
+          : MapType.normal;
+    });
+  }
+
+  void addCustomIcon() {
+    BitmapDescriptor.asset(
+      const ImageConfiguration(),
+      imageAsset + 'usea_logo.png',
+      height: UHeight35,
+    ).then((icon) {
+      setState(() {
+        markerIcon = icon;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,67 +66,150 @@ class _ContactState extends State<Contact> {
       appBar: Custom_AppBar(
         title: 'ទំនាក់ទំនង'.tr,
       ),
-      body: ListView(
-        padding: EdgeInsets.all(
-          UPdMg10,
-        ),
+      body: Stack(
         children: [
-          ListView.builder(
-            shrinkWrap: true,
-            physics: ScrollPhysics(),
-            itemCount: contact.length,
-            itemBuilder: (context, index) {
-              return Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: UWidth30,
-                        height: UHeight30,
-                        child: Image.asset(
-                          contact[index].icon,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      SizedBox(
-                        width: UWidth10,
-                      ),
-                      Expanded(
-                        child: Container(
-                          padding: EdgeInsets.only(
-                            top: 4,
-                          ),
-                          child: buildTextContact(
-                            contact[index].text.tr,
-                            UTitleSize,
-                            UBodyWeight,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: UHeight10,
-                  ),
-                ],
-              );
+          GoogleMap(
+            onMapCreated: _onMapCreated,
+            mapType: _currentMapType,
+            myLocationEnabled: true,
+            zoomControlsEnabled: false,
+            initialCameraPosition: CameraPosition(
+              target: _pGooglePlex,
+              zoom: 13,
+            ),
+            markers: {
+              Marker(
+                icon: markerIcon,
+                markerId: const MarkerId(
+                  'University of South-East Asia',
+                ),
+                position: const LatLng(
+                  13.350682787083263,
+                  103.86438269625718,
+                ),
+              ),
             },
           ),
-          Container(
-            height: 200,
-            color: UGreyColor,
-            child: InkWell(
-              highlightColor: UTransParentColor,
-              splashColor: UTransParentColor,
-              onTap: () => launchUrlString(
-                  'https://www.google.com/maps/place/University+of+South-East+Asia/@13.35045,103.863545,19z/data=!4m14!1m7!3m6!1s0x311017b78db22261:0x5f0e53c2eeaa7c81!2sThe+university+of+south+east+Asia!8m2!3d13.3632533!4d103.856403!16s%2Fg%2F11sjz02kw7!3m5!1s0x311017793e991fc3:0x106790c63625b714!8m2!3d13.3505943!4d103.863927!16s%2Fm%2F0cp4m02'),
-              child: Image.asset(
-                imageAsset + 'Map.png',
-                fit: BoxFit.cover,
-              ),
+          Positioned(
+            top: UPdMg20,
+            right: UPdMg15,
+            child: Column(
+              children: [
+                buildBtnMap(
+                  _onMapTypeButtonPressed,
+                  Icons.layers_outlined,
+                ),
+                buildHeight5(),
+                buildBtnMap(
+                  _zoomIn,
+                  Icons.add,
+                ),
+                buildHeight5(),
+                buildBtnMap(
+                  _zoomOut,
+                  Icons.remove,
+                ),
+              ],
             ),
+          ),
+          DraggableScrollableSheet(
+            snapAnimationDuration: const Duration(
+              microseconds: 100,
+            ),
+            maxChildSize: 0.75,
+            minChildSize: 0.1,
+            initialChildSize: 0.5,
+            snap: true,
+            builder: (
+              BuildContext context,
+              ScrollController scrollController,
+            ) {
+              return Container(
+                padding: const EdgeInsets.all(
+                  UPdMg20,
+                ),
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(
+                      25,
+                    ),
+                    topRight: Radius.circular(
+                      25,
+                    ),
+                  ),
+                  shape: BoxShape.rectangle,
+                  color: UBackgroundColor,
+                ),
+                child: ListView(
+                  shrinkWrap: true,
+                  controller: scrollController,
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  children: [
+                    Center(
+                      child: Container(
+                        width: 75,
+                        margin: const EdgeInsets.only(
+                          bottom: UPdMg10,
+                        ),
+                        height: UHeight5,
+                        decoration: const BoxDecoration(
+                          color: UPrimaryColor,
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(
+                              URoundedLarge,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    buildHeight15(),
+                    buildContact(
+                      imageAsset + 'Con_Email.png',
+                      'info@usea.edu.kh',
+                      UTitleSize,
+                      UBodyWeight,
+                    ),
+                    buildHeight15(),
+                    buildContact(
+                      imageAsset + 'Con_Tel.png',
+                      '063 900 090',
+                      UTitleSize,
+                      UBodyWeight,
+                    ),
+                    buildHeight15(),
+                    buildContact(
+                      imageAsset + 'Con_Tel.png',
+                      '017 386 678',
+                      UTitleSize,
+                      UBodyWeight,
+                    ),
+                    buildHeight15(),
+                    buildContact(
+                      imageAsset + 'Con_Tel.png',
+                      '090 905 902',
+                      UTitleSize,
+                      UBodyWeight,
+                    ),
+                    buildHeight15(),
+                    buildContact(
+                      imageAsset + 'Con_Tel.png',
+                      '070 408 438',
+                      UTitleSize,
+                      UBodyWeight,
+                    ),
+                    buildHeight15(),
+                    buildContact(
+                      imageAsset + 'Con_Loc.png',
+                      'ភូមិវត្តបូព៌ សង្កាត់សាលាកំរើក ស្រុកសៀមរាប ខេត្តសៀមរាប​ ព្រះរាជាណាចក្រកម្ពុជា (ទល់មុខវិទ្យាល័យអង្គរ)។'
+                          .tr,
+                      UTitleSize,
+                      UBodyWeight,
+                    ),
+                  ],
+                ),
+              );
+            },
           ),
         ],
       ),

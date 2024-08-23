@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:usea_app/Student_Dashboard/Student_Attendance/UI_Attendance/Attendance_Detail.dart';
+import '../../../Student_Dashboard/Student_Attendance/UI_Attendance/Attendance_Detail.dart';
 import '../../../Custom_AppBar.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
@@ -168,24 +168,27 @@ class _AttendanceState extends State<Attendance> {
           : RefreshIndicator(
               onRefresh: _refreshData,
               color: UPrimaryColor,
+              backgroundColor: UBackgroundColor,
               child: Container(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   horizontal: UPdMg5,
-                  vertical: UPdMg15,
                 ),
                 child: ListView(
                   shrinkWrap: true,
-                  physics: AlwaysScrollableScrollPhysics(),
+                  physics: const AlwaysScrollableScrollPhysics(),
                   children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(
+                    Container(
+                      margin: const EdgeInsets.only(
+                        top: UPdMg15,
+                      ),
+                      padding: const EdgeInsets.fromLTRB(
                         UPdMg5,
                         UZeroPixel,
                         UPdMg5,
-                        UPdMg5,
+                        UPdMg10,
                       ),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           buildAttList(
                             'យឺត',
@@ -207,55 +210,29 @@ class _AttendanceState extends State<Attendance> {
                       ),
                     ),
                     _buildLastSemesterSubjects(),
-                    SizedBox(
-                      height: UHeight10,
-                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        InkWell(
-                          highlightColor: UTransParentColor,
-                          splashColor: UTransParentColor,
-                          onTap: () {
-                            Get.to(
-                              () => AttendanceList(
-                                data_studentUser: widget.data_studentUser,
-                                sourceScreen: widget.sourceScreen,
-                              ),
-                              transition: Transition.rightToLeftWithFade,
-                              duration: Duration(
-                                milliseconds: 100,
-                              ),
-                            );
-                          },
-                          child: Container(
-                            alignment: Alignment.center,
-                            margin: EdgeInsets.only(
-                              right: UPdMg5,
-                            ),
-                            padding: EdgeInsets.symmetric(
-                              vertical: UPdMg5,
-                              horizontal: UPdMg10,
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                URoundedMedium,
-                              ),
-                              color: UBtnColor,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: UBtnColor,
-                                ),
-                              ],
-                            ),
-                            child: CustomTextTheme(
-                              'មើលទាំងអស់'.tr,
-                              UBodySize,
-                              UPrimaryColor,
-                              UBodyWeight,
-                            ),
+                        Container(
+                          margin: EdgeInsets.only(
+                            bottom: UPdMg10,
                           ),
-                        ),
+                          child: buildNavBtn(
+                            () {
+                              Get.to(
+                                () => AttendanceList(
+                                  data_studentUser: widget.data_studentUser,
+                                  sourceScreen: widget.sourceScreen,
+                                ),
+                                transition: Transition.rightToLeftWithFade,
+                                duration: const Duration(
+                                  milliseconds: 100,
+                                ),
+                              );
+                            },
+                            'មើលទាំងអស់',
+                          ),
+                        )
                       ],
                     ),
                   ],
@@ -293,128 +270,154 @@ class _AttendanceState extends State<Attendance> {
               itemBuilder: (BuildContext context, int index) {
                 final subject = filteredSemester.subjects[index];
 
-                return Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                      URoundedLarge,
-                    ),
-                  ),
-                  elevation: 1,
-                  child: InkWell(
-                    highlightColor: UTransParentColor,
-                    splashColor: UTransParentColor,
-                    onTap: () {
-                      setState(
-                        () {
-                          Get.to(
-                            () => Attendance_Detail(
-                              subjectDate: subject.dates,
-                              subjectName: Get.locale?.languageCode == 'km'
-                                  ? subject.name_kh
-                                  : subject.name_en,
-                            ),
-                            transition: Transition.rightToLeftWithFade,
-                            duration: Duration(
-                              milliseconds: 100,
-                            ),
+                return Stack(
+                  children: [
+                    Card(
+                      color: UBackgroundColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                          URoundedLarge,
+                        ),
+                      ),
+                      margin: const EdgeInsets.fromLTRB(
+                        UPdMg5,
+                        UZeroPixel,
+                        UPdMg5,
+                        UPdMg10,
+                      ),
+                      elevation: 1,
+                      shadowColor: ULightGreyColor,
+                      child: InkWell(
+                        highlightColor: UTransParentColor,
+                        splashColor: UTransParentColor,
+                        onTap: () {
+                          setState(
+                            () {
+                              Get.to(
+                                () => Attendance_Detail(
+                                  subjectDate: subject.dates,
+                                  subjectName: Get.locale?.languageCode == 'km'
+                                      ? subject.name_kh
+                                      : subject.name_en,
+                                ),
+                                transition: Transition.rightToLeftWithFade,
+                                duration: const Duration(
+                                  milliseconds: 100,
+                                ),
+                              );
+                            },
                           );
                         },
-                      );
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.fromLTRB(
-                        UPdMg10,
-                        UPdMg15,
-                        UPdMg15,
-                        UPdMg15,
-                      ),
-                      child: IntrinsicHeight(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(
+                            UPdMg10,
+                            UPdMg15,
+                            UPdMg15,
+                            UPdMg15,
+                          ),
+                          child: IntrinsicHeight(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Container(
-                                  width: 165,
-                                  child: Text(
-                                    Get.locale?.languageCode == 'km'
-                                        ? subject.name_kh
-                                        : subject.name_en,
-                                    style: TextStyle(
-                                      height: 1.5,
-                                      fontSize: UTitleSize,
-                                      fontWeight: UTitleWeight,
-                                      color: UTextColor,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: UHeight5,
-                                ),
-                                Row(
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    buildCHText(
-                                      subject.credit.toString(),
+                                    Container(
+                                      width: 165,
+                                      child: Text(
+                                        Get.locale?.languageCode == 'km'
+                                            ? subject.name_kh
+                                            : subject.name_en,
+                                        style: const TextStyle(
+                                          height: 1.5,
+                                          fontSize: UTitleSize,
+                                          fontWeight: UTitleWeight,
+                                          color: UTextColor,
+                                        ),
+                                      ),
                                     ),
-                                    buildCHText(
-                                      '\tក្រេឌីត\t'.tr,
-                                    ),
-                                    buildCHText(
-                                      subject.hour.toString(),
-                                    ),
-                                    buildCHText(
-                                      '\tម៉ោង'.tr,
-                                    ),
+                                    buildHeight5(),
+                                    Row(
+                                      children: [
+                                        buildCHText(
+                                          subject.credit.toString(),
+                                        ),
+                                        buildCHText(
+                                          '\tក្រេឌីត\t'.tr,
+                                        ),
+                                        buildCHText(
+                                          subject.hour.toString(),
+                                        ),
+                                        buildCHText(
+                                          '\tម៉ោង'.tr,
+                                        ),
+                                      ],
+                                    )
                                   ],
-                                )
+                                ),
+                                buildWidth5(),
+                                buildNumAtt(
+                                  subject.attendance_al,
+                                  UYellowColor,
+                                ),
+                                buildDivider(),
+                                buildNumAtt(
+                                  subject.attendance_pm,
+                                  UOrangeColor,
+                                ),
+                                buildDivider(),
+                                buildNumAtt(
+                                  subject.attendance_a,
+                                  URedColor,
+                                ),
+                                buildDivider(),
+                                buildNumAtt(
+                                  subject.attendance_ps,
+                                  UScoreColor,
+                                ),
                               ],
                             ),
-                            SizedBox(
-                              width: UWidth5,
-                            ),
-                            buildNumAtt(
-                              subject.attendance_al,
-                              UYellowColor,
-                            ),
-                            buildDivider(),
-                            buildNumAtt(
-                              subject.attendance_pm,
-                              UOrangeColor,
-                            ),
-                            buildDivider(),
-                            buildNumAtt(
-                              subject.attendance_a,
-                              URedColor,
-                            ),
-                            buildDivider(),
-                            buildNumAtt(
-                              subject.attendance_ps,
-                              UScoreColor,
-                            ),
-                          ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
+
+                    //Re Study Status
+                    Positioned(
+                      right: 12,
+                      top: UHeight7,
+                      child: Container(
+                        width: UWidth7,
+                        height: UWidth7,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                            URoundedLarge,
+                          ),
+                          color: subject.credit.toString() != '3'
+                              ? UTransParentColor
+                              : UTransParentColor,
+                        ),
+                      ),
+                    ),
+                  ],
                 );
               });
         } else {
-          return Center(
+          return const Center(
             child: Text(
               'No subjects in the last semester of the last year.',
             ),
           );
         }
       } else {
-        return Center(
+        return const Center(
           child: Text(
             'No semesters in the last year.',
           ),
         );
       }
     } else {
-      return Center(
+      return const Center(
         child: Text(
           'No data available for attendance.',
         ),

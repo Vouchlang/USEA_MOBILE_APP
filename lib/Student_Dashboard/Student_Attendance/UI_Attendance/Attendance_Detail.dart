@@ -31,20 +31,21 @@ class Attendance_Detail extends StatelessWidget {
               URoundedLarge,
             ),
           ),
-          margin: EdgeInsets.all(
-            UPdMg10,
+          margin: const EdgeInsets.symmetric(
+            vertical: UPdMg15,
+            horizontal: UPdMg10,
           ),
           color: UBackgroundColor,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   vertical: UPdMg15,
                   horizontal: UPdMg10,
                 ),
                 width: UFullWidth,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(
                       URoundedLarge,
@@ -69,7 +70,7 @@ class Attendance_Detail extends StatelessWidget {
                         children: [
                           IntrinsicHeight(
                             child: Padding(
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                 vertical: UPdMg10,
                               ),
                               child: Row(
@@ -95,7 +96,7 @@ class Attendance_Detail extends StatelessWidget {
                           Flexible(
                             child: ListView.builder(
                               shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               itemCount: subjectDate.length,
                               itemBuilder: (context, outerIndex) {
                                 final subject = subjectDate[outerIndex];
@@ -103,7 +104,7 @@ class Attendance_Detail extends StatelessWidget {
                                     outerIndex == subjectDate.length - 1;
                                 return Container(
                                   width: UFullWidth,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(
                                         URoundedLarge,
@@ -133,29 +134,30 @@ class Attendance_Detail extends StatelessWidget {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               mainAxisSize: MainAxisSize.min,
-                                              children: subject.sessions
-                                                  .map((session) {
-                                                final isLastItem = session ==
-                                                    subject.sessions.last;
-                                                return Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  children: [
-                                                    buildAttTextBody(
-                                                        session.session_all,
-                                                        UTextColor),
-                                                    !isLastItem
-                                                        ? Container(
-                                                            width: 100,
-                                                            height: 0.5,
-                                                            color: UGreyColor,
-                                                          )
-                                                        : Container(
-                                                            width: 100,
-                                                          ),
-                                                  ],
-                                                );
-                                              }).toList(),
+                                              children: subject.sessions.map(
+                                                (session) {
+                                                  final isLastItem = session ==
+                                                      subject.sessions.last;
+                                                  return Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    children: [
+                                                      buildAttTextBody(
+                                                          session.session_all,
+                                                          UTextColor),
+                                                      !isLastItem
+                                                          ? Container(
+                                                              width: 100,
+                                                              height: 0.5,
+                                                              color: UGreyColor,
+                                                            )
+                                                          : const SizedBox(
+                                                              width: 100,
+                                                            ),
+                                                    ],
+                                                  );
+                                                },
+                                              ).toList(),
                                             ),
                                             buildVerticalDividerAtt(),
                                             Column(
@@ -173,34 +175,35 @@ class Attendance_Detail extends StatelessWidget {
                                                       MainAxisSize.min,
                                                   children: [
                                                     buildTextBody(
-                                                        session.absent_status ==
-                                                                'awop'
-                                                            ? 'អវត្តមាន'.tr
-                                                            : session.absent_status ==
-                                                                    'al'
-                                                                ? 'យឺត'.tr
-                                                                : session.absent_status ==
-                                                                        'awp'
-                                                                    ? 'សុំច្បាប់'
-                                                                        .tr
-                                                                    : session.absent_status ==
-                                                                            'ps'
-                                                                        ? 'វត្តមាន\t'
-                                                                            .tr
-                                                                        : 'N/A',
-                                                        session.absent_status ==
-                                                                'awop'
-                                                            ? URedColor
-                                                            : session.absent_status ==
-                                                                    'al'
-                                                                ? UYellowColor
-                                                                : session.absent_status ==
-                                                                        'awp'
-                                                                    ? UOrangeColor
-                                                                    : session.absent_status ==
-                                                                            'ps'
-                                                                        ? UScoreColor
-                                                                        : UTextColor),
+                                                      session.absent_status ==
+                                                              'awop'
+                                                          ? 'អវត្តមាន'.tr
+                                                          : session.absent_status ==
+                                                                  'al'
+                                                              ? 'យឺត'.tr
+                                                              : session.absent_status ==
+                                                                      'awp'
+                                                                  ? 'សុំច្បាប់'
+                                                                      .tr
+                                                                  : session.absent_status ==
+                                                                          'ps'
+                                                                      ? 'វត្តមាន\t'
+                                                                          .tr
+                                                                      : 'N/A',
+                                                      session.absent_status ==
+                                                              'awop'
+                                                          ? URedColor
+                                                          : session.absent_status ==
+                                                                  'al'
+                                                              ? UYellowColor
+                                                              : session.absent_status ==
+                                                                      'awp'
+                                                                  ? UOrangeColor
+                                                                  : session.absent_status ==
+                                                                          'ps'
+                                                                      ? UScoreColor
+                                                                      : UTextColor,
+                                                    ),
                                                     !isLastItem
                                                         ? Container(
                                                             width: 75,
@@ -219,9 +222,7 @@ class Attendance_Detail extends StatelessWidget {
                                       ),
                                       !isLastIndex
                                           ? buildDividerAtt()
-                                          : SizedBox(
-                                              height: UHeight5,
-                                            ),
+                                          : buildHeight5(),
                                     ],
                                   ),
                                 );
@@ -236,7 +237,7 @@ class Attendance_Detail extends StatelessWidget {
                       children: [
                         IntrinsicHeight(
                           child: Padding(
-                            padding: EdgeInsets.all(
+                            padding: const EdgeInsets.all(
                               UPdMg8,
                             ),
                             child: Row(
@@ -260,7 +261,7 @@ class Attendance_Detail extends StatelessWidget {
                         buildDividerAtt(),
                         IntrinsicHeight(
                           child: Padding(
-                            padding: EdgeInsets.all(
+                            padding: const EdgeInsets.all(
                               UPdMg8,
                             ),
                             child: Row(

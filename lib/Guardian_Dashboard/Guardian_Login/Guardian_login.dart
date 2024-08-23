@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:usea_app/Guardian_Dashboard/Guardian_Home/UI_Home/Guardian_Home.dart';
-import 'package:usea_app/theme_builder.dart';
+import '../../../Guardian_Dashboard/Guardian_Home/UI_Home/Guardian_Home.dart';
+import '../../../theme_builder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Custom_Widget/CustomText.dart';
 import '../Guardian_Other_Class/Class_Guardian_User.dart';
@@ -24,6 +24,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
   @override
   void initState() {
     super.initState();
+    print(Get.locale?.languageCode == 'km');
   }
 
   Future<void> _submitForm() async {
@@ -107,9 +108,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                         fontWeight: UTitleWeight,
                       ),
                     ),
-                    SizedBox(
-                      height: UHeight10,
-                    ),
+                    buildHeight10(),
                     Text(
                       'អត្តលេខអាណាព្យាបាល ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវ។ សូមបញ្ចូលម្ដងទៀត!!!'
                           .tr,
@@ -118,9 +117,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                         fontSize: 13.5,
                       ),
                     ),
-                    SizedBox(
-                      height: UHeight20,
-                    ),
+                    buildHeight20(),
                     Divider(),
                     InkWell(
                       highlightColor: UTransParentColor,
@@ -181,9 +178,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                         fontWeight: UTitleWeight,
                       ),
                     ),
-                    SizedBox(
-                      height: UHeight10,
-                    ),
+                    buildHeight10(),
                     Text(
                       'Server Error!!!'.tr,
                       textAlign: TextAlign.center,
@@ -192,9 +187,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                         fontFamily: UEFontFamily,
                       ),
                     ),
-                    SizedBox(
-                      height: UHeight20,
-                    ),
+                    buildHeight20(),
                     Divider(),
                     InkWell(
                       highlightColor: UTransParentColor,
@@ -255,9 +248,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
               imageAsset + 'logo3.png',
               scale: UScale15,
             ),
-            SizedBox(
-              height: UHeight15,
-            ),
+            buildHeight15(),
             Text(
               'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
               style: TextStyle(
@@ -276,9 +267,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                 fontWeight: UBodyWeight,
               ),
             ),
-            SizedBox(
-              height: UHeight15,
-            ),
+            buildHeight15(),
             Form(
               key: _formKey,
               child: Column(
@@ -294,6 +283,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         fontSize: UBodySize,
+                        fontWeight: UTitleWeight,
                       ),
                     ),
                   ),
@@ -307,6 +297,9 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                       controller: _textControllerUsername,
                       cursorColor: UGreyColor,
                       cursorWidth: 1,
+                      style: TextStyle(
+                        fontFamily: UEFontFamily,
+                      ),
                       cursorHeight: UHeight30,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(
@@ -316,6 +309,9 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                         hintStyle: TextStyle(
                           fontSize: UBodySize10,
                           color: UGreyColor,
+                          fontFamily: Get.locale?.languageCode == 'km'
+                              ? UKFontFamily
+                              : UEFontFamily,
                         ),
                         border: OutlineInputBorder(),
                         suffixIcon: IconButton(
@@ -349,6 +345,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                       'ពាក្យសម្ងាត់'.tr,
                       style: TextStyle(
                         fontSize: UBodySize,
+                        fontWeight: UTitleWeight,
                       ),
                     ),
                   ),
@@ -363,6 +360,9 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                       controller: _textControllerPsw,
                       cursorColor: UGreyColor,
                       cursorWidth: 1,
+                      style: TextStyle(
+                        fontFamily: UEFontFamily,
+                      ),
                       cursorHeight: UHeight30,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(
@@ -372,6 +372,9 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                         hintStyle: TextStyle(
                           fontSize: UBodySize10,
                           color: UGreyColor,
+                          fontFamily: Get.locale?.languageCode == 'km'
+                              ? UKFontFamily
+                              : UEFontFamily,
                         ),
                         border: OutlineInputBorder(),
                         suffixIcon: IconButton(
@@ -402,9 +405,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: UHeight10,
-                  ),
+                  buildHeight10(),
                 ],
               ),
             ),

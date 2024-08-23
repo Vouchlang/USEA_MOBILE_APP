@@ -10,7 +10,6 @@ import '../Class_Program/Class_Program_ACCA.dart';
 class Program_ACCA extends StatelessWidget {
   String majorName;
   String course_hour;
-
   List<Subject_Data> educationNames;
   Program_ACCA({
     super.key,
@@ -21,23 +20,13 @@ class Program_ACCA extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double totalHour = 0;
-    late String formattedTotal;
-    educationNames.forEach((subject) {
-      double weeks = double.tryParse(subject.total_hour) ?? 0.0;
-      totalHour += weeks;
-      formattedTotal = totalHour.toStringAsFixed(
-        totalHour.truncateToDouble() == totalHour ? 0 : 1,
-      );
-    });
-
     return Scaffold(
       backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(
         title: majorName.tr,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(
+        padding: const EdgeInsets.all(
           UPdMg8,
         ),
         child: Column(
@@ -56,12 +45,12 @@ class Program_ACCA extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       vertical: UPdMg15,
                       horizontal: UPdMg5,
                     ),
                     width: double.infinity,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.vertical(
                         top: Radius.circular(
                           UPdMg10,
@@ -84,10 +73,10 @@ class Program_ACCA extends StatelessWidget {
                                 'សប្ដាហ៍'.tr,
                               ),
                             ),
-                            SizedBox(width: UWidth10),
+                            buildWidth5(),
                             Container(
-                              width: Get.locale?.languageCode == 'km' ? 65 : 75,
-                              alignment: Alignment.center,
+                              width: Get.locale?.languageCode == 'km' ? 65 : 80,
+                              alignment: Alignment.centerRight,
                               child: TitleTheme(
                                 'ម៉ោងសរុប'.tr,
                               ),
@@ -98,7 +87,7 @@ class Program_ACCA extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(
+                    padding: const EdgeInsets.fromLTRB(
                       UPdMg5,
                       UPdMg10,
                       UPdMg5,
@@ -112,10 +101,10 @@ class Program_ACCA extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Container(
-                              margin: EdgeInsets.only(
+                              margin: const EdgeInsets.only(
                                 right: UPdMg15,
                               ),
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                 vertical: UPdMg5,
                               ),
                               child: Column(
@@ -138,7 +127,7 @@ class Program_ACCA extends StatelessWidget {
                                                         null
                                                 ? 'N/A'
                                                 : subject.subject.toString().tr,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: UTitleSize,
                                               fontWeight: UBodyWeight,
                                               color: UTextColor,
@@ -154,7 +143,7 @@ class Program_ACCA extends StatelessWidget {
                                         subject.no.isEmpty || subject.no == null
                                             ? 'N/A'
                                             : subject.no.toString() + '.\t',
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontWeight: UBodyWeight,
                                           color: UTransParentColor,
                                           fontFamily: UKFontFamily,
@@ -181,7 +170,7 @@ class Program_ACCA extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Container(
-                                    padding: EdgeInsets.symmetric(
+                                    padding: const EdgeInsets.symmetric(
                                       vertical: UPdMg5,
                                     ),
                                     alignment: Alignment.center,
@@ -193,18 +182,16 @@ class Program_ACCA extends StatelessWidget {
                                           : subject.weeks.toString(),
                                     ),
                                   ),
-                                  SizedBox(
-                                    width: UWidth15,
-                                  ),
+                                  buildWidth15(),
                                   Container(
-                                    padding: EdgeInsets.symmetric(
+                                    padding: const EdgeInsets.symmetric(
                                       vertical: UPdMg5,
                                     ),
                                     alignment: Alignment.center,
                                     width: Get.locale?.languageCode == 'km'
                                         ? UWidth30
                                         : UWidth40,
-                                    margin: EdgeInsets.only(
+                                    margin: const EdgeInsets.only(
                                       right: UPdMg10,
                                     ),
                                     child: NoWeightTitleTheme(
@@ -223,7 +210,7 @@ class Program_ACCA extends StatelessWidget {
                     }).toList()),
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(
+                    padding: const EdgeInsets.fromLTRB(
                       UPdMg5,
                       UPdMg10,
                       UPdMg20,

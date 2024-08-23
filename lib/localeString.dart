@@ -94,11 +94,12 @@ class LocaleString extends Translations {
           'ព័ត៌មានការសិក្សា': 'ព័ត៌មានការសិក្សា',
           'មតិកែលម្អ': 'មតិកែលម្អ',
           'សមិទ្ធិផល': 'សមិទ្ធិផល',
+          'ស្វាគមន៍': 'ស្វាគមន៍',
 
           // Student Login
           'គណនីនិសិ្សត': 'គណនីនិសិ្សត',
           'អត្តលេខនិស្សិត': 'អត្តលេខនិស្សិត',
-          '\t\tបញ្ចូលអត្តលេខ': '\t\tបញ្ចូលអត្តលេខ',
+          '\t\tបញ្ចូលអត្តលេខ\t': '\t\tបញ្ចូលអត្តលេខ\t',
           'សូមបញ្ចូលអត្តលេខ': 'សូមបញ្ចូលអត្តលេខ',
           'ពាក្យសម្ងាត់': 'ពាក្យសម្ងាត់',
           '\t\tបញ្ចូលពាក្យសម្ងាត់': '\t\tបញ្ចូលពាក្យសម្ងាត់',
@@ -144,6 +145,18 @@ class LocaleString extends Translations {
 
           // Student Schedule
           'កាលវិភាគសិក្សា': 'កាលវិភាគសិក្សា',
+          'January': 'មករា',
+          'February': 'កុម្ភៈ',
+          'March': 'មីនា',
+          'April': 'មេសា',
+          'May': 'ឧសភា',
+          'June': 'មិថុនា',
+          'July': 'កក្កដា',
+          'August': 'សីហា',
+          'September': 'កញ្ញា',
+          'October': 'តុលា',
+          'November': 'វិច្ឋិកា',
+          'December': 'ធ្នូ',
 
           // Student Perfomance
           'មធ្យមភាគ': 'មធ្យមភាគ',
@@ -163,6 +176,7 @@ class LocaleString extends Translations {
           'ពិន្ទុផ្លូវការ': 'ពិន្ទុផ្លូវការ',
           'ពិន្ទុជាក់ស្ដែង': 'ពិន្ទុជាក់ស្ដែង',
           'ភាគរយ': 'ភាគរយ',
+          'ពិន្ទុសរុប': 'ពិន្ទុសរុប',
 
           // Student Attendance
           'វត្តមាន\t': 'វត្តមាន\t',
@@ -229,6 +243,10 @@ class LocaleString extends Translations {
           'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!':
               'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!',
           'គ្មានទិន្ន័យ': 'គ្មានទិន្ន័យ',
+
+          // Student Achievement
+          'សូមអបអរសាទរ': 'សូមអបអរសាទរ',
+          'មិនទាន់បានបញ្ចប់': 'មិនទាន់បានបញ្ចប់',
 
           // Guardian Login
           'អត្តលេខអាណាព្យាបាល': 'អត្តលេខអាណាព្យាបាល',
@@ -331,11 +349,12 @@ class LocaleString extends Translations {
           'ព័ត៌មានការសិក្សា': 'Study Info',
           'មតិកែលម្អ': 'Feedback',
           'សមិទ្ធិផល': 'Achievements',
+          'ស្វាគមន៍': 'Welcome!',
 
           // Student Login
           'គណនីនិសិ្សត': 'Student Account',
           'អត្តលេខនិស្សិត': 'Student ID',
-          '\t\tបញ្ចូលអត្តលេខ': '\t\tInput Student ID',
+          '\t\tបញ្ចូលអត្តលេខ\t': '\t\tInput Student ID\t',
           'សូមបញ្ចូលអត្តលេខ': 'Please Input Student ID',
           'ពាក្យសម្ងាត់': 'Password',
           '\t\tបញ្ចូលពាក្យសម្ងាត់': '\t\tInput Password',
@@ -372,7 +391,7 @@ class LocaleString extends Translations {
           '\tចំនួនក្រឌីតបានបំពេញ': '\tRemaining Credits',
           'សូមជួយវាយដម្លៃការបង្រៀនរបស់សាស្ត្រាចារ្យ':
               'Please evaluate the lecture of the professor',
-          'សូមជួយធ្វើការវាយតម្លៃ': 'Please help evaluate',
+          'សូមជួយធ្វើការវាយតម្លៃ': 'Could you please help evaluate this?',
           'ការវាយតម្លៃ': 'Evaluation',
           'សូមជ្រើសរើសប្រភេទនៃការវាយតម្លៃ!!!':
               'Please select number of survey!!!',
@@ -381,6 +400,18 @@ class LocaleString extends Translations {
 
           // Student Schedule
           'កាលវិភាគសិក្សា': 'Schedule',
+          'January': 'January',
+          'February': 'February',
+          'March': 'March',
+          'April': 'April',
+          'May': 'May',
+          'June': 'June',
+          'July': 'July',
+          'August': 'August',
+          'September': 'September',
+          'October': 'October',
+          'November': 'November',
+          'December': 'December',
 
           // Student Performance
           'មធ្យមភាគ': 'Average',
@@ -399,6 +430,7 @@ class LocaleString extends Translations {
           'ពិន្ទុផ្លូវការ': 'Final Score',
           'ពិន្ទុជាក់ស្ដែង': 'Score',
           'ភាគរយ': 'Percent',
+          'ពិន្ទុសរុប': 'Total Score',
 
           // Student Attendance
           'វត្តមាន\t': 'Present',
@@ -468,6 +500,10 @@ class LocaleString extends Translations {
           'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!':
               'Sorry, you have not been able to provide feedback yet!!!',
           'គ្មានទិន្ន័យ': 'No Data',
+
+          // Student Achievement
+          'សូមអបអរសាទរ': 'Congratulations',
+          'មិនទាន់បានបញ្ចប់': 'Achievement Locked',
 
           // Guardian Login
           'អត្តលេខអាណាព្យាបាល': 'Guardian ID',

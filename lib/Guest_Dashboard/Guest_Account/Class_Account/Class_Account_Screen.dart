@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:usea_app/Guardian_Dashboard/Guardian_Login/Guardian_login.dart';
-import 'package:usea_app/Lecturer_Dashboard/Lecturer_Login.dart';
-import 'package:usea_app/Staff_Dashboard/Staff_Login.dart';
+import '../../../Guardian_Dashboard/Guardian_Login/Guardian_login.dart';
+import '../../../Lecturer_Dashboard/Lecturer_Login.dart';
+import '../../../Staff_Dashboard/Staff_Login.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '/Student_Dashboard/Student_LogIn/Student_LogIn.dart';
 
@@ -30,11 +30,11 @@ final List<Account_Screen> account_screen = [
   Account_Screen(
     name: 'គណនីបុគ្គលិក',
     img: imageAsset + 'Acc_Staff.png',
-    screen: Staff_Login(),
+    screen: const Staff_Login(),
   ),
   Account_Screen(
     name: 'គណនីសាស្ត្រាចារ្យ',
     img: imageAsset + 'Acc_Lecturer.png',
-    screen: Lecturer_Login(),
+    screen: const Lecturer_Login(),
   ),
 ];

@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:usea_app/Custom_Widget/CustomText.dart';
-import 'package:usea_app/Guardian_Dashboard/Guardian_Home/UI_Home/Guardian_Home.dart';
-import 'package:usea_app/Guardian_Dashboard/Guardian_Other_Class/Class_Guardian_User.dart';
+import '../../../Custom_Widget/CustomText.dart';
+import '../../../Guardian_Dashboard/Guardian_Home/UI_Home/Guardian_Home.dart';
+import '../../../Guardian_Dashboard/Guardian_Other_Class/Class_Guardian_User.dart';
 import '../../../Student_Dashboard/Student_Other_Class/Class_Student_User.dart';
 import '/Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
 import '/theme_builder.dart';
@@ -74,7 +74,7 @@ class Guest_AccState extends State<Guest_Acc> {
         sourceScreen: st_sourceScreen,
       ),
       transition: Transition.rightToLeftWithFade,
-      duration: Duration(
+      duration: const Duration(
         milliseconds: 100,
       ),
     );
@@ -105,7 +105,7 @@ class Guest_AccState extends State<Guest_Acc> {
         data_guardianUser: guardianUser,
       ),
       transition: Transition.rightToLeftWithFade,
-      duration: Duration(
+      duration: const Duration(
         milliseconds: 100,
       ),
     );
@@ -116,7 +116,8 @@ class Guest_AccState extends State<Guest_Acc> {
     return Scaffold(
       backgroundColor: USecondaryColor,
       body: ListView(
-        physics: ScrollPhysics(),
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
         children: [
           Container(
             height: 350,
@@ -159,7 +160,7 @@ class Guest_AccState extends State<Guest_Acc> {
                     Get.to(
                       () => account_screen[index].screen,
                       transition: Transition.rightToLeftWithFade,
-                      duration: Duration(
+                      duration: const Duration(
                         milliseconds: 100,
                       ),
                     );
@@ -171,12 +172,10 @@ class Guest_AccState extends State<Guest_Acc> {
                         account_screen[index].img,
                         scale: UScale6,
                       ),
-                      SizedBox(
-                        height: 7,
-                      ),
+                      buildHeight7(),
                       Text(
                         account_screen[index].name.tr,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: UTitleSize,
                         ),
                       )

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/Guardian_Dashboard/Guardian_Home/UI_Home/Guardian_Dashboard.dart';
+import '../../../Guardian_Dashboard/Guardian_Home/UI_Home/Guardian_Dashboard.dart';
 import '../../../Guest_Dashboard/Guest_Home/UI_Home/Guest_Home.dart';
 import '../../../theme_builder.dart';
 import '../../Guardian_Other_Class/Class_Guardian_User.dart';
@@ -53,9 +53,9 @@ class _Guardian_HomeState extends State<Guardian_Home> {
         child: Container(
           color: UTransParentColor,
           child: BottomNavigationBar(
-            backgroundColor: USecondaryColor,
-            elevation: UZeroPixel,
+            backgroundColor: UBackgroundColor,
             onTap: onTap,
+            elevation: 15,
             currentIndex: currentIndex,
             selectedItemColor: UPrimaryColor,
             unselectedItemColor: UGreyColor,

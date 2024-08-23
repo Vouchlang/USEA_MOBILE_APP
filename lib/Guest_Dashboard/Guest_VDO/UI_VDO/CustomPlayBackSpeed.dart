@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:usea_app/theme_builder.dart';
+import '../../../theme_builder.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class CustomPlaybackSpeedButton extends StatefulWidget {
@@ -21,7 +21,9 @@ class _CustomPlaybackSpeedButtonState extends State<CustomPlaybackSpeedButton> {
     return IconButton(
       iconSize: 20,
       color: USecondaryColor,
-      icon: Icon(Icons.speed),
+      icon: const Icon(
+        Icons.speed,
+      ),
       onPressed: () {
         showPlaybackSpeedMenu(context);
       },
@@ -49,7 +51,7 @@ class _CustomPlaybackSpeedButtonState extends State<CustomPlaybackSpeedButton> {
     final selectedSpeed = await showMenu(
       context: context,
       position: position,
-      items: [
+      items: const [
         PopupMenuItem(
           value: 0.25,
           child: Text('0.25x'),

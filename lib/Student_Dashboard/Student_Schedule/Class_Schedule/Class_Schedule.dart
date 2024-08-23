@@ -21,14 +21,14 @@ class ScheduleClass {
 
   factory ScheduleClass.fromJson(Map<String, dynamic> json) {
     return ScheduleClass(
-      wday: json['date'],
-      month: json['month'],
-      weekday: json['weekday'],
-      session: json['session'],
-      subject: json['subject'],
-      teacher: json['teacherName'],
-      phonenumber: json['tel'],
-      room: json['classroom'],
+      wday: json['date'] ?? 'N/A',
+      month: json['month'] ?? 'N/A',
+      weekday: json['weekday'] ?? 'N/A',
+      session: json['session'] ?? 'N/A',
+      subject: json['subject'] ?? 'N/A',
+      teacher: json['teacherName'] ?? 'N/A',
+      phonenumber: json['tel'] ?? 'N/A',
+      room: json['classroom'] ?? 'N/A',
     );
   }
 }

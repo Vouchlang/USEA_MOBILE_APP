@@ -44,21 +44,22 @@ class History extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.all(
+                margin: const EdgeInsets.all(
                   UPdMg10,
                 ),
-                child: Text(
+                child: const Text(
                   'The University of South-East Asia was established on July 7, 2006 by four dedicated Cambodian shareholders in response to the government educational development program of  building and enhancing  human resources  through higher education. It is located in Siem Reap province, Cambodia and about 314 km from Phnom Penh, the capital city of Cambodia. Siem Reap province is one of the important economic regions in Cambodia. Because it is rich in ancient temples and other resorts that attract local and international visitors. USEA was recognized by the Royal Government of Cambodia and operating through Sub-decree No. 63 duly signed by his Excellency Prime Minister Hun Sen. The Ministry of Education, Youth and Sports (MoEYS) recognized USEA by issuing Prakas No. 802 dated 09 July 2007.  USEA gained its double accreditation in 2006-2009 and 2010-13 granted by the Accreditation Committee of Cambodia (ACC).  USEA had its first enrollment of 600 bachelor students and at present with  a total enrollment of 2,980.  The enrollment in the undergraduate program is 2,780 and 200 in the MBA program. The top three faculties are: Faculty of Business and Tourism, Faculty of Art, Humanities and Languages and Faculty of Science and Technology. The graduate rate of employment is 95%.',
                   textAlign: TextAlign.justify,
                   style: TextStyle(
                     fontSize: UTitleSize,
                     fontFamily: UEFontFamily,
+                    height: UTextHeight,
                   ),
                 ),
               ),
               Container(
                 height: 100,
-                margin: EdgeInsets.all(
+                margin: const EdgeInsets.all(
                   UPdMg10,
                 ),
                 child: Row(
@@ -83,7 +84,7 @@ class History extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(
+                margin: const EdgeInsets.fromLTRB(
                   UPdMg10,
                   UZeroPixel,
                   UPdMg10,

@@ -23,7 +23,7 @@ class Guest_Home extends StatefulWidget {
 }
 
 class _Guest_HomeState extends State<Guest_Home> {
-  final Uri urlWeb = Uri.parse("https://www.usea.edu.kh/en/Pages/index.php");
+  final Uri urlWeb = Uri.parse(APIUrlGuest + "en/Pages/index.php");
   late List<Class_Image> image_slides = [];
   int activeIndex = 0;
 
@@ -39,7 +39,7 @@ class _Guest_HomeState extends State<Guest_Home> {
     try {
       var res = await http.get(
         Uri.parse(
-          "https://usea.edu.kh/api/webapi.php?action=slide_home",
+          APIUrlGuest + "api/webapi.php?action=slide_home",
         ),
       );
       var r = json.decode(res.body);
@@ -119,201 +119,243 @@ class _Guest_HomeState extends State<Guest_Home> {
 
   @override
   Widget build(BuildContext context) {
-    Widget buildIndicator() => AnimatedSmoothIndicator(
-          activeIndex: activeIndex,
-          count: image_slides.length,
-          effect: WormEffect(
-            activeDotColor: UPrimaryColor,
-            dotColor: UGreyColor,
-            dotHeight: 8,
-            dotWidth: 8,
-          ),
-        );
+    Widget buildIndicator() {
+      return image_slides.length > 0
+          ? Center(
+              child: AnimatedSmoothIndicator(
+                activeIndex: activeIndex,
+                count: image_slides.length,
+                effect: WormEffect(
+                  activeDotColor: UPrimaryColor,
+                  dotColor: UGreyColor,
+                  dotHeight: 8,
+                  dotWidth: 8,
+                ),
+              ),
+            )
+          : SizedBox.shrink();
+    }
 
     return Scaffold(
       backgroundColor: USecondaryColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
-              child: Row(
-                children: [
-                  Image.asset(
-                    imageAsset + 'usea_logo.png',
-                    scale: 30,
+            buildUniversityName(
+              UPrimaryColor,
+            ),
+            Row(
+              children: [
+                Card(
+                  elevation: 1,
+                  color: UBackgroundColor,
+                  shadowColor: ULightGreyColor,
+                  surfaceTintColor: UBtnColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                      50,
+                    ),
                   ),
-                  SizedBox(
-                    width: UWidth5,
-                  ),
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Container(
+                    width: 36,
+                    height: 36,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(
+                        50,
+                      ),
+                      color: UBtnColor,
+                    ),
+                    child: Stack(
                       children: [
-                        Text(
-                          'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
-                          style: TextStyle(
-                            color: UPrimaryColor,
-                            fontSize: UBodySize10,
-                            fontFamily: 'KhmerOSmuol',
+                        Center(
+                          child: IconButton(
+                            highlightColor: UTransParentColor,
+                            splashColor: UTransParentColor,
+                            onPressed: () {
+                              setState(
+                                () {
+                                  Get.to(
+                                    () => Notifications(),
+                                    transition: Transition.rightToLeftWithFade,
+                                    duration: const Duration(
+                                      milliseconds: 100,
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                            icon: Icon(
+                              Icons.notifications,
+                              color: Theme.of(context).primaryColor,
+                              size: 20,
+                            ),
                           ),
                         ),
-                        Text(
-                          'UNIVERSITY OF SOUTH-EAST ASIA',
-                          style: TextStyle(
-                            color: UPrimaryColor,
-                            fontSize: 11.75,
-                            fontFamily: UEFontFamily,
-                            fontWeight: UBodyWeight,
+                        Positioned(
+                          top: UPdMg12,
+                          right: UPdMg10,
+                          child: Container(
+                            height: UHeight5,
+                            width: UHeight5,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                50,
+                              ),
+                              color: UTransParentColor,
+                            ),
                           ),
                         ),
                       ],
                     ),
                   ),
-                ],
-              ),
-            ),
-            SizedBox(
-              width: UWidth15,
-            ),
-            Container(
-              width: 36,
-              height: 36,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(
-                  50,
                 ),
-                color: UBtnColor,
-              ),
-              child: Center(
-                child: IconButton(
-                  highlightColor: UTransParentColor,
-                  splashColor: UTransParentColor,
-                  onPressed: () {
-                    setState(
-                      () {
-                        Get.to(
-                          () => Notifications(),
-                          transition: Transition.rightToLeftWithFade,
-                          duration: Duration(
-                            milliseconds: 100,
-                          ),
-                        );
-                      },
-                    );
-                  },
-                  icon: Icon(
-                    Icons.notifications,
-                    color: Theme.of(context).primaryColor,
-                    size: 20,
-                  ),
-                ),
-              ),
+                buildWidth5(),
+              ],
             ),
           ],
         ),
+        titleSpacing: UWidth5,
         toolbarHeight: 75,
-        centerTitle: true,
-        backgroundColor: USecondaryColor,
+        centerTitle: false,
+        surfaceTintColor: UBackgroundColor,
+        backgroundColor: UBackgroundColor,
+        shadowColor: ULightGreyColor,
         elevation: 1,
+        scrolledUnderElevation: 1,
       ),
       body: Center(
         child: ListView(
           shrinkWrap: true,
           children: [
-            SizedBox(
-              height: UHeight10,
-            ),
             Container(
-                height: 175,
-                width: double.infinity,
-                padding: EdgeInsets.symmetric(
-                  horizontal: UPdMg5,
-                ),
-                child: isLoading
-                    ? buildFutureBuild()
-                    : CarouselSlider.builder(
-                        options: CarouselOptions(
-                          height: double.infinity,
-                          pageSnapping: true,
-                          enableInfiniteScroll: true,
-                          autoPlayInterval: Duration(seconds: 10),
-                          viewportFraction: 1,
-                          enlargeCenterPage: true,
-                          enlargeStrategy: CenterPageEnlargeStrategy.zoom,
-                          onPageChanged: ((index, reason) =>
-                              setState(() => activeIndex = index)),
+              height: 175,
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(
+                horizontal: UPdMg5,
+              ),
+              margin: const EdgeInsets.only(
+                top: UPdMg10,
+              ),
+              child: isLoading
+                  ? FutureBuilder(
+                      future: Future.delayed(
+                        const Duration(
+                          seconds: 5,
                         ),
-                        itemCount: image_slides.length,
-                        itemBuilder: (context, index, realIndex) {
-                          if (index >= 0 && index < image_slides.length) {
-                            final image_slide = image_slides[index].image_url;
-                            return InkWell(
-                                highlightColor: UTransParentColor,
-                                splashColor: UTransParentColor,
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => FullScreenImage1(
-                                        imageUrls: image_slides
-                                            .map((image) => image.image_url)
-                                            .toList(),
-                                        currentIndex: index,
-                                      ),
-                                    ),
-                                  );
-                                },
-                                child: Container(
-                                  margin: EdgeInsets.symmetric(
-                                    horizontal: UPdMg5,
+                      ),
+                      builder: (BuildContext context,
+                          AsyncSnapshot<dynamic> snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Center(
+                            child: const CircularProgressIndicator(
+                              color: UPrimaryColor,
+                            ),
+                          );
+                        } else {
+                          return Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  imageAsset + 'no_data.png',
+                                  scale: 4,
+                                ),
+                                buildHeight10(),
+                                Text(
+                                  'គ្មានទិន្ន័យ'.tr,
+                                  style: const TextStyle(
+                                    color: UPrimaryColor,
+                                    fontSize: UTitleSize,
+                                    fontWeight: UTitleWeight,
                                   ),
-                                  width: UFullWidth,
-                                  height: UFullWidth,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(
-                                      URoundedLarge,
-                                    ),
-                                    child: Image.network(
-                                      image_slide,
-                                      fit: BoxFit.fill,
-                                    ),
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                      },
+                    )
+                  : CarouselSlider.builder(
+                      options: CarouselOptions(
+                        height: 175,
+                        autoPlayInterval: const Duration(
+                          seconds: 10,
+                        ),
+                        autoPlay: true,
+                        viewportFraction: 1,
+                        enlargeCenterPage: true,
+                        enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+                        onPageChanged: ((index, reason) =>
+                            setState(() => activeIndex = index)),
+                      ),
+                      itemCount: image_slides.length,
+                      itemBuilder: (context, index, realIndex) {
+                        if (index >= 0 && index < image_slides.length) {
+                          final image_slide = image_slides[index].image_url;
+                          return InkWell(
+                            highlightColor: UTransParentColor,
+                            splashColor: UTransParentColor,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => FullScreenImage1(
+                                    imageUrls: image_slides
+                                        .map((image) => image.image_url)
+                                        .toList(),
+                                    currentIndex: index,
                                   ),
-                                ));
-                          } else {
-                            return Image.asset(
-                              "assets/image/Error_Image.jpg",
-                              fit: BoxFit.cover,
-                            );
-                          }
-                        },
-                      )),
-            SizedBox(
-              height: UHeight7,
+                                ),
+                              );
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.symmetric(
+                                horizontal: UPdMg5,
+                              ),
+                              width: UFullWidth,
+                              height: UFullWidth,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(
+                                  URoundedLarge,
+                                ),
+                                child: Image.network(
+                                  image_slide,
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                            ),
+                          );
+                        } else {
+                          return Image.asset(
+                            imageAsset + "Error_Image.jpg",
+                            fit: BoxFit.cover,
+                          );
+                        }
+                      },
+                    ),
             ),
-            Center(
-              child: buildIndicator(),
-            ),
-            SizedBox(
-              height: UHeight7,
-            ),
+            buildHeight7(),
+            buildIndicator(),
+            buildHeight7(),
             GridView.count(
               shrinkWrap: true,
-              physics: ScrollPhysics(),
+              physics: const ScrollPhysics(),
               crossAxisCount: 2,
               mainAxisSpacing: 3.5,
               crossAxisSpacing: 3,
               childAspectRatio: 1.90,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: UPdMg7,
               ),
               children: List.generate(
                 guest_home_screen.length,
                 (index) => Card(
-                  elevation: 2,
+                  elevation: 1.5,
+                  color: UBackgroundColor,
                   shadowColor: ULightGreyColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(
@@ -336,14 +378,14 @@ class _Guest_HomeState extends State<Guest_Home> {
                         Get.to(
                           () => guest_home_screen[index].screen,
                           transition: Transition.rightToLeftWithFade,
-                          duration: Duration(
+                          duration: const Duration(
                             milliseconds: 100,
                           ),
                         );
                       }
                     },
                     child: Container(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                         left: UPdMg15,
                       ),
                       child: Column(
@@ -354,7 +396,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                             guest_home_screen[index].img,
                             scale: UScale6,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: UHeight7,
                           ),
                           Text(
@@ -370,25 +412,24 @@ class _Guest_HomeState extends State<Guest_Home> {
                 ),
               ),
             ),
-            SizedBox(
-              height: UHeight7,
-            ),
+            buildHeight7(),
             Card(
-              elevation: 2,
+              elevation: 1.5,
+              color: UBackgroundColor,
               shadowColor: ULightGreyColor,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(
                   URoundedLarge,
                 ),
               ),
-              margin: EdgeInsets.fromLTRB(
+              margin: const EdgeInsets.fromLTRB(
                 UPdMg10,
                 UZeroPixel,
                 UPdMg10,
-                UPdMg10,
+                UPdMg5,
               ),
               child: Padding(
-                padding: EdgeInsets.all(
+                padding: const EdgeInsets.all(
                   UPdMg10,
                 ),
                 child: Row(
@@ -424,6 +465,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                 ),
               ),
             ),
+            buildHeight15(),
           ],
         ),
       ),

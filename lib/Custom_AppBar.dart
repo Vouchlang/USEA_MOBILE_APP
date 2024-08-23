@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../Custom_Widget/CustomText.dart';
 import '/theme_builder.dart';
 
 class Custom_AppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -12,28 +13,24 @@ class Custom_AppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      shadowColor: ULightGreyColor,
+      backgroundColor: UBackgroundColor,
+      surfaceTintColor: UBackgroundColor,
+      scrolledUnderElevation: 1,
+      elevation: 1,
       centerTitle: false,
       titleSpacing: UZeroPixel,
       title: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           color: UPrimaryColor,
           fontSize: UFontSize18,
           fontWeight: UTitleWeight,
         ),
       ),
-      backgroundColor: UBackgroundColor,
-      elevation: 1,
-      iconTheme: IconThemeData.fallback(),
-      leading: IconButton(
-        highlightColor: UTransParentColor,
-        splashColor: UTransParentColor,
-        icon: Icon(
-          Icons.arrow_back_ios,
-          color: UPrimaryColor,
-          size: 18,
-        ),
-        onPressed: () => Navigator.of(context).pop(
+      iconTheme: const IconThemeData.fallback(),
+      leading: buildBackBtn(
+        () => Navigator.of(context).pop(
           Transition.leftToRightWithFade,
         ),
       ),
@@ -41,5 +38,5 @@ class Custom_AppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

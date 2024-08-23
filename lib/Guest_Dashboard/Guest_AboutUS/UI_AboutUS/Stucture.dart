@@ -29,20 +29,16 @@ class Structure extends StatelessWidget {
                   ),
                 );
               },
-              child: Container(
-                height: 200,
-                child: Image.asset(
-                  imageAsset + 'usea_structure.jpg',
-                  fit: BoxFit.cover,
-                ),
+              child: Image.asset(
+                imageAsset + 'usea_structure.jpg',
+                fit: BoxFit.cover,
               ),
             ),
-            SizedBox(
-              height: UHeight10,
-            ),
+            buildHeight10(),
             buildPresidentMessage(
               'USEA has the Board of Trustees governing the university for its final decision on academic and administrative matters. The President is the authority in the university assisted by Assistant to the Vice President, advisors, academic board, specialized committee and three Vice Presidents managing the assigned offices. USEA has the Board of Trustees governing the university for its final decision on academic and administrative matters. The President is the authority in the university assisted by Assistant to the Vice President, advisors, academic board, specialized committee and three Vice Presidents managing the assigned offices.',
             ),
+            buildHeight10(),
           ],
         ),
       ),

@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:usea_app/Guardian_Dashboard/Guardian_Home/Class_Home/Class_Home.dart';
-import 'package:usea_app/Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
+import '../../../Guardian_Dashboard/Guardian_Home/Class_Home/Class_Home.dart';
+import '../../../Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '../../../Home.dart';
 import '../../../Student_Dashboard/Student_Other_Class/Class_Feedback.dart';
@@ -169,9 +169,7 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
                     fontWeight: UTitleWeight,
                   ),
                 ),
-                SizedBox(
-                  height: UHeight5,
-                ),
+                buildHeight5(),
                 Text(
                   'តើអ្នកប្រាកដថាអ្នកនឹងចាកចេញពីគណនីអាណាព្យាបាលដែរឬទេ?'.tr,
                   textAlign: TextAlign.center,
@@ -179,9 +177,7 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
                     fontSize: UBodySize,
                   ),
                 ),
-                SizedBox(
-                  height: UHeight5,
-                ),
+                buildHeight5(),
                 Container(
                   height: UHeight50,
                   padding: EdgeInsets.all(
@@ -245,69 +241,38 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
-              child: Row(
-                children: [
-                  Image.asset(
-                    imageAsset + 'usea_logo.png',
-                    scale: 30,
-                  ),
-                  SizedBox(
-                    width: UWidth5,
-                  ),
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
-                          style: TextStyle(
-                            color: UPrimaryColor,
-                            fontSize: UBodySize10,
-                            fontFamily: 'KhmerOSmuol',
-                          ),
-                        ),
-                        Text(
-                          'UNIVERSITY OF SOUTH-EAST ASIA',
-                          style: TextStyle(
-                            color: UPrimaryColor,
-                            fontSize: 11.75,
-                            fontFamily: UEFontFamily,
-                            fontWeight: UBodyWeight,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+            buildUniversityName(
+              UPrimaryColor,
             ),
-            SizedBox(
-              width: UWidth15,
+            Row(
+              children: [
+                IconButton(
+                  splashColor: UTransParentColor,
+                  highlightColor: UTransParentColor,
+                  icon: Icon(
+                    Icons.logout,
+                    color: UPrimaryColor,
+                    size: 18,
+                  ),
+                  onPressed: () {
+                    _logout();
+                  },
+                ),
+                buildWidth5(),
+              ],
             ),
           ],
         ),
-        actions: [
-          IconButton(
-            splashColor: UTransParentColor,
-            highlightColor: UTransParentColor,
-            icon: Icon(
-              Icons.logout,
-              color: UPrimaryColor,
-              size: 18,
-            ),
-            onPressed: () {
-              _logout();
-            },
-          ),
-        ],
+        titleSpacing: 5,
         toolbarHeight: 75,
-        centerTitle: true,
+        centerTitle: false,
+        surfaceTintColor: UBackgroundColor,
         backgroundColor: UBackgroundColor,
+        shadowColor: ULightGreyColor,
         elevation: 1,
+        scrolledUnderElevation: 1,
       ),
       body: _dataGdDetail.isEmpty || _dataGuardianUser.isEmpty
           ? buildFutureBuild()
@@ -343,7 +308,8 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
                           );
                         },
                         child: Card(
-                          elevation: 1,
+                          elevation: 1.5,
+                          color: UBackgroundColor,
                           shadowColor: ULightGreyColor,
                           margin: EdgeInsets.only(
                             top: index == 0 ? UHeight15 : UHeight10,
@@ -374,9 +340,7 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
                                         ),
                                         radius: 50,
                                       ),
-                                      SizedBox(
-                                        width: UWidth20,
-                                      ),
+                                      buildWidth20(),
                                       Expanded(
                                         child: Column(
                                           mainAxisAlignment:
@@ -472,9 +436,7 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
                       );
                     },
                   ),
-                  SizedBox(
-                    height: UHeight10,
-                  ),
+                  buildHeight10(),
                   GridView.count(
                     shrinkWrap: true,
                     physics: ScrollPhysics(),
@@ -488,7 +450,8 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
                     children: List.generate(
                       guardian_Grid_Home_Screen.length,
                       (index) => Card(
-                        elevation: 2,
+                        elevation: 1.5,
+                        color: UBackgroundColor,
                         shadowColor: ULightGreyColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(
@@ -506,6 +469,7 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
                                     barrierDismissible: false,
                                     builder: (BuildContext context) {
                                       return Dialog(
+                                        backgroundColor: URedColor,
                                         elevation: 3,
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(
@@ -523,7 +487,7 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
                                             borderRadius: BorderRadius.circular(
                                               20,
                                             ),
-                                            color: UBackgroundColor,
+                                            color: URedColor,
                                           ),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.min,
@@ -535,9 +499,7 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
                                                   fontWeight: UTitleWeight,
                                                 ),
                                               ),
-                                              SizedBox(
-                                                height: UHeight5,
-                                              ),
+                                              buildHeight5(),
                                               Text(
                                                 'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!'
                                                     .tr,
@@ -546,9 +508,7 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
                                                   fontSize: UBodySize,
                                                 ),
                                               ),
-                                              SizedBox(
-                                                height: UHeight5,
-                                              ),
+                                              buildHeight5(),
                                               Container(
                                                 height: UHeight50,
                                                 padding: EdgeInsets.all(
@@ -587,9 +547,7 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
                                   guardian_Grid_Home_Screen[index].img,
                                   scale: UScale6,
                                 ),
-                                SizedBox(
-                                  height: UHeight7,
-                                ),
+                                buildHeight7(),
                                 Text(
                                   guardian_Grid_Home_Screen[index].name.tr,
                                   style: TextStyle(

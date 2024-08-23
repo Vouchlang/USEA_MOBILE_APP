@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../Custom_AppBar.dart';
 import '../Custom_Widget/CustomText.dart';
 import '../theme_builder.dart';
 
-class Staff_Login extends StatefulWidget {
+class Staff_Login extends StatelessWidget {
   const Staff_Login({super.key});
 
-  @override
-  State<Staff_Login> createState() => _Staff_LoginState();
-}
-
-class _Staff_LoginState extends State<Staff_Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

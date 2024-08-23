@@ -12,11 +12,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
-  late TabController controller;
-
   List pages = [
-    Guest_Home(),
-    Guest_Acc(),
+    const Guest_Home(),
+    const Guest_Acc(),
   ];
 
   int currentIndex = 0;
@@ -36,41 +34,39 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         data: Theme.of(context).copyWith(
           splashColor: UTransParentColor,
           highlightColor: UTransParentColor,
-          bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
             selectedItemColor: UTransParentColor,
           ),
         ),
-        child: Container(
-          color: UTransParentColor,
-          child: BottomNavigationBar(
-            backgroundColor: USecondaryColor,
-            elevation: UZeroPixel,
-            onTap: onTap,
-            currentIndex: currentIndex,
-            selectedItemColor: UPrimaryColor,
-            unselectedItemColor: UGreyColor,
-            unselectedFontSize: 11,
-            selectedLabelStyle: TextStyle(
-              fontWeight: UTitleWeight,
-              fontSize: UBodySize,
-            ),
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
-                  size: 25,
-                ),
-                label: 'ទំព័រដើម'.tr,
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.account_box,
-                  size: 25,
-                ),
-                label: 'ចូលគណនី'.tr,
-              ),
-            ],
+        child: BottomNavigationBar(
+          backgroundColor: UBackgroundColor,
+          elevation: 15,
+          onTap: onTap,
+          useLegacyColorScheme: true,
+          currentIndex: currentIndex,
+          selectedItemColor: UPrimaryColor,
+          unselectedItemColor: UGreyColor,
+          unselectedFontSize: 11,
+          selectedLabelStyle: const TextStyle(
+            fontWeight: UTitleWeight,
+            fontSize: UBodySize,
           ),
+          items: [
+            BottomNavigationBarItem(
+              icon: const Icon(
+                Icons.home,
+                size: 25,
+              ),
+              label: 'ទំព័រដើម'.tr,
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(
+                Icons.account_box,
+                size: 25,
+              ),
+              label: 'ចូលគណនី'.tr,
+            ),
+          ],
         ),
       ),
     );

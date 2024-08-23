@@ -47,21 +47,28 @@ class AchievementTypeData {
 }
 
 class AchievementImageData {
-  String image;
+  String image, image_title;
+  int image_status;
 
   AchievementImageData({
     required this.image,
+    required this.image_title,
+    required this.image_status,
   });
 
   factory AchievementImageData.fromJson(Map<String, dynamic> json) {
     return AchievementImageData(
       image: json['image'],
+      image_title: json['image_title'],
+      image_status: json['image_status'] as int,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'image': image,
+      'image_title': image_title,
+      'image_status': image_status,
     };
   }
 }

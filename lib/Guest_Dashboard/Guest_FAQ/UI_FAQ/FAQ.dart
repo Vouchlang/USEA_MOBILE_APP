@@ -66,7 +66,9 @@ class _FAQState extends State<FAQ> {
         child: faq.isEmpty
             ? buildFutureBuild()
             : Container(
-                margin: EdgeInsets.symmetric(horizontal: UPdMg10),
+                margin: const EdgeInsets.symmetric(
+                  horizontal: UPdMg10,
+                ),
                 width: double.infinity,
                 child: ListView.builder(
                   itemCount: faq.length,
@@ -74,13 +76,14 @@ class _FAQState extends State<FAQ> {
                     final isLastIndex = index == faq.length - 1;
                     return Card(
                       margin: isLastIndex
-                          ? EdgeInsets.symmetric(
+                          ? const EdgeInsets.symmetric(
                               vertical: UPdMg10,
                             )
-                          : EdgeInsets.only(
+                          : const EdgeInsets.only(
                               top: UPdMg10,
                             ),
-                      elevation: 2,
+                      elevation: 1,
+                      color: UBackgroundColor,
                       shadowColor: ULightGreyColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(
@@ -88,7 +91,7 @@ class _FAQState extends State<FAQ> {
                         ),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           vertical: UPdMg10,
                         ),
                         child: Column(
@@ -102,11 +105,12 @@ class _FAQState extends State<FAQ> {
                                 iconColor: UPrimaryColor,
                                 title: buildFAQ(
                                   faq[index].question,
-                                  TextAlign.left,
+                                  Get.locale?.languageCode == 'km'
+                                      ? TextAlign.left
+                                      : TextAlign.justify,
                                 ),
                                 textColor: UTextColor,
                                 children: [
-                                  Divider(),
                                   Container(
                                     alignment: Alignment.centerLeft,
                                     decoration: BoxDecoration(
@@ -114,7 +118,7 @@ class _FAQState extends State<FAQ> {
                                         URoundedLarge,
                                       ),
                                     ),
-                                    padding: EdgeInsets.fromLTRB(
+                                    padding: const EdgeInsets.fromLTRB(
                                       UPdMg15,
                                       UPdMg10,
                                       UPdMg15,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_New_Event/UI_News_Event/News_Event_FullImage.dart';
+import '../../../Custom_Widget/CustomText.dart';
+import '../../../Guest_Dashboard/Guest_New_Event/UI_News_Event/News_Event_FullImage.dart';
 import '../Class_News_Event/Class_News_Event.dart';
 import '/Custom_AppBar.dart';
 import '/theme_builder.dart';
@@ -19,7 +20,7 @@ class News_Event_Detail extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.only(
+          margin: const EdgeInsets.only(
             bottom: UPdMg10,
           ),
           child: Column(
@@ -36,7 +37,7 @@ class News_Event_Detail extends StatelessWidget {
                       imageUrls: imageUrl,
                     ),
                     transition: Transition.rightToLeftWithFade,
-                    duration: Duration(
+                    duration: const Duration(
                       milliseconds: 100,
                     ),
                   );
@@ -55,8 +56,8 @@ class News_Event_Detail extends StatelessWidget {
                 ),
               ),
               Container(
-                decoration: BoxDecoration(
-                  color: USecondaryColor,
+                decoration: const BoxDecoration(
+                  color: UBackgroundColor,
                   borderRadius: BorderRadius.vertical(
                     bottom: Radius.circular(
                       URoundedLarge,
@@ -64,42 +65,47 @@ class News_Event_Detail extends StatelessWidget {
                   ),
                   boxShadow: [
                     BoxShadow(
-                      offset: Offset(0, 1),
+                      offset: Offset(
+                        0,
+                        1,
+                      ),
                       color: ULightGreyColor,
                       blurRadius: 1,
                     )
                   ],
                 ),
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   vertical: UPdMg10,
-                  horizontal: UPdMg5,
+                  horizontal: UPdMg7,
                 ),
                 alignment: Alignment.center,
                 width: double.maxFinite,
                 child: Text(
                   data.title.isEmpty ? 'N/A' : data.title,
-                  textAlign: TextAlign.justify,
-                  style: TextStyle(
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
                     fontSize: UTitleSize,
                     fontWeight: UTitleWeight,
                     fontFamily: UKFontFamily,
+                    height: UTextHeight,
                   ),
                 ),
               ),
-              SizedBox(
-                height: UHeight10,
-              ),
+              buildHeight10(),
               Container(
                 width: UFullWidth,
-                margin: EdgeInsets.symmetric(
+                margin: const EdgeInsets.symmetric(
                   horizontal: UPdMg10,
                 ),
                 child: Text(
                   data.description.isEmpty ? 'N/A' : data.description,
-                  textAlign: TextAlign.justify,
-                  style: TextStyle(
+                  textAlign: Get.locale?.languageCode == 'km'
+                      ? TextAlign.left
+                      : TextAlign.justify,
+                  style: const TextStyle(
                     fontSize: UBodySize,
                     fontFamily: UKFontFamily,
+                    height: UTextHeight,
                   ),
                 ),
               ),

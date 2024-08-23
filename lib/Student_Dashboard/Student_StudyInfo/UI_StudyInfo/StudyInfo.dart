@@ -26,6 +26,8 @@ class Study_Info extends StatefulWidget {
 class _Study_InfoState extends State<Study_Info> {
   bool isLoading = false;
   late List<StudyInfoData> _dataStudyInfo = [];
+
+  // ignore: unused_field
   late List<StudyInfoAssignmentData> _dataStudyInfoAssignment = [];
 
   @override
@@ -139,25 +141,27 @@ class _Study_InfoState extends State<Study_Info> {
           : RefreshIndicator(
               onRefresh: _refreshData,
               color: UPrimaryColor,
+              backgroundColor: UBackgroundColor,
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _dataStudyInfo.isEmpty
-                        ? SizedBox.shrink()
+                        ? const SizedBox.shrink()
                         : Padding(
-                            padding: EdgeInsets.fromLTRB(
+                            padding: const EdgeInsets.fromLTRB(
                               UPdMg10,
-                              UPdMg10,
+                              UPdMg15,
                               UPdMg10,
                               UZeroPixel,
                             ),
                             child: Text(
                               'ព័ត៌មានការប្រឡង'.tr,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: UPrimaryColor,
                                 fontSize: UTitleSize,
                                 fontWeight: UTitleWeight,
+                                height: UTextHeight,
                               ),
                             ),
                           ),
@@ -180,87 +184,127 @@ class _Study_InfoState extends State<Study_Info> {
                           ),
                           color: UBackgroundColor,
                           margin: isLastIndex
-                              ? EdgeInsets.fromLTRB(
+                              ? const EdgeInsets.fromLTRB(
                                   UPdMg5,
                                   UPdMg5,
                                   UPdMg5,
                                   UPdMg10,
                                 )
-                              : EdgeInsets.all(
+                              : const EdgeInsets.fromLTRB(
                                   UPdMg5,
+                                  UZeroPixel,
+                                  UPdMg5,
+                                  UPdMg10,
                                 ),
-                          child: Padding(
-                            padding: EdgeInsets.all(
-                              UPdMg8,
-                            ),
-                            child: IntrinsicHeight(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: UWidth50,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                          child: IntrinsicHeight(
+                            child: Column(
+                              children: [
+                                Container(
+                                  alignment: Alignment.center,
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: UPdMg15,
+                                    horizontal: UPdMg10,
+                                  ),
+                                  width: UFullWidth,
+                                  decoration: const BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(
+                                        URoundedLarge,
+                                      ),
+                                      topRight: Radius.circular(
+                                        URoundedLarge,
+                                      ),
+                                    ),
+                                    color: UBGLightBlue,
+                                  ),
+                                  child: Text(
+                                    _dataStudyInfo[index].title,
+                                    style: const TextStyle(
+                                      fontSize: UTitleSize16,
+                                      fontWeight: UTitleWeight,
+                                      color: UPrimaryColor,
+                                      height: UTextHeight,
+                                    ),
+                                  ),
+                                ),
+                                IntrinsicHeight(
+                                  child: Container(
+                                    padding: const EdgeInsets.all(
+                                      UPdMg10,
+                                    ),
+                                    child: Row(
                                       children: [
-                                        NormalDateStudyInfo(
-                                          _dataStudyInfo[index].date,
+                                        IntrinsicHeight(
+                                          child: Container(
+                                            width: 55,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                NormalDateStudyInfo(
+                                                  _dataStudyInfo[index].month,
+                                                ),
+                                                buildDividerAtt(),
+                                                NormalDateStudyInfo(
+                                                  _dataStudyInfo[index].date,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                         ),
-                                        buildDividerAtt(),
-                                        NormalDateStudyInfo(
-                                          _dataStudyInfo[index].month,
+                                        buildVerticalDividerAtt(),
+                                        Container(
+                                          padding: const EdgeInsets.only(
+                                            left: UPdMg8,
+                                          ),
+                                          child: IntrinsicWidth(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                RowDataStudyInfo(
+                                                  'មុខវិជ្ជា\t',
+                                                  _dataStudyInfo[index].subject,
+                                                ),
+                                                RowDataStudyInfo(
+                                                  'បន្ទប់\t',
+                                                  _dataStudyInfo[index].room,
+                                                ),
+                                                RowDataStudyInfo(
+                                                  'ម៉ោង\t',
+                                                  _dataStudyInfo[index].time,
+                                                ),
+                                                RowDataStudyInfo(
+                                                  'លេខតុ\t',
+                                                  _dataStudyInfo[index].seat,
+                                                ),
+                                                _dataStudyInfo[index].takeout ==
+                                                        '1'
+                                                    ? Text(
+                                                        'ដកបេក្ខភាព'.tr,
+                                                        style: TextStyle(
+                                                          fontSize: UBodySize,
+                                                          fontWeight:
+                                                              UTitleWeight,
+                                                          color: URedColor,
+                                                          fontFamily: Get.locale
+                                                                      ?.languageCode ==
+                                                                  'km'
+                                                              ? UKFontFamily
+                                                              : UEFontFamily,
+                                                          height: UTextHeight,
+                                                        ),
+                                                      )
+                                                    : const SizedBox.shrink(),
+                                              ],
+                                            ),
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                  buildVerticalDividerAtt(),
-                                  Container(
-                                    padding: EdgeInsets.only(
-                                      left: UPdMg8,
-                                    ),
-                                    child: IntrinsicWidth(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            width: 250,
-                                            child: TitleAttendance_Theme(
-                                              _dataStudyInfo[index].title,
-                                            ),
-                                          ),
-                                          buildDividerAtt(),
-                                          RowDataStudyInfo(
-                                            'មុខវិជ្ជា\t',
-                                            _dataStudyInfo[index].subject,
-                                          ),
-                                          RowDataStudyInfo(
-                                            'បន្ទប់\t',
-                                            _dataStudyInfo[index].room,
-                                          ),
-                                          RowDataStudyInfo(
-                                            'ម៉ោង\t',
-                                            _dataStudyInfo[index].time,
-                                          ),
-                                          RowDataStudyInfo(
-                                            'លេខតុ\t',
-                                            _dataStudyInfo[index].seat,
-                                          ),
-                                          _dataStudyInfo[index].takeout == '1'
-                                              ? Text(
-                                                  'ដកបេក្ខភាព',
-                                                  style: TextStyle(
-                                                    fontSize: UBodySize,
-                                                    fontWeight: UTitleWeight,
-                                                    color: URedColor,
-                                                  ),
-                                                )
-                                              : SizedBox.shrink(),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         );

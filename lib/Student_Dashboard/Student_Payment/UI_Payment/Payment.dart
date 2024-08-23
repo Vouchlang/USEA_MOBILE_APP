@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/Custom_AppBar.dart';
-import 'package:usea_app/theme_builder.dart';
+import '../../../Custom_AppBar.dart';
+import '../../../theme_builder.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '../../Student_Other_Class/Class_Student_User.dart';
 import '../Class_Payment/Class_Payment.dart';
@@ -158,7 +158,11 @@ class _Payment_UIState extends State<Payment_UI> {
           : RefreshIndicator(
               onRefresh: _refreshData,
               color: UPrimaryColor,
+              backgroundColor: UBackgroundColor,
               child: ListView(
+                padding: EdgeInsets.only(
+                  top: UPdMg10,
+                ),
                 children: [
                   buildTitle(
                     'ការបង់ថ្លៃឈ្នួលសិក្សា',
@@ -184,13 +188,16 @@ class _Payment_UIState extends State<Payment_UI> {
 
   Widget buildStudyPayment() {
     return Container(
-      padding: EdgeInsets.all(
+      padding: const EdgeInsets.all(
         UPdMg5,
       ),
       child: Card(
+        elevation: 1,
+        color: UBackgroundColor,
+        shadowColor: ULightGreyColor,
         shape: RoundedRectangleBorder(
-          side: BorderSide(
-            color: UGreyColor,
+          side: const BorderSide(
+            color: UTransParentColor,
             width: 0.5,
           ),
           borderRadius: BorderRadius.circular(
@@ -203,7 +210,7 @@ class _Payment_UIState extends State<Payment_UI> {
           children: [
             IntrinsicHeight(
               child: Container(
-                padding: EdgeInsets.all(
+                padding: const EdgeInsets.all(
                   UPdMg10,
                 ),
                 child: Row(
@@ -267,7 +274,7 @@ class _Payment_UIState extends State<Payment_UI> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                   vertical: UPdMg8,
                                   horizontal: UPdMg10,
                                 ),
@@ -314,7 +321,8 @@ class _Payment_UIState extends State<Payment_UI> {
                                                   shrinkWrap: true,
                                                   children: [
                                                     _buildPaymentDetailsDialog(
-                                                        payStudy),
+                                                      payStudy,
+                                                    ),
                                                   ],
                                                 ),
                                               );
@@ -328,7 +336,12 @@ class _Payment_UIState extends State<Payment_UI> {
                                             decoration: BoxDecoration(
                                               border: Border(
                                                 bottom: BorderSide(
-                                                  color: URedColor,
+                                                  color:
+                                                      totalRem.toStringAsFixed(
+                                                                  2) ==
+                                                              '0.00'
+                                                          ? UScoreColor
+                                                          : URedColor,
                                                   width: 1,
                                                 ),
                                               ),
@@ -340,7 +353,11 @@ class _Payment_UIState extends State<Payment_UI> {
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 fontSize: UBodySize,
-                                                color: URedColor,
+                                                color: totalRem.toStringAsFixed(
+                                                            2) ==
+                                                        '0.00'
+                                                    ? UScoreColor
+                                                    : URedColor,
                                               ),
                                             ),
                                           ),
@@ -352,7 +369,7 @@ class _Payment_UIState extends State<Payment_UI> {
                               ),
                               !isLastIndex
                                   ? buildDividerAtt()
-                                  : SizedBox.shrink(),
+                                  : const SizedBox.shrink(),
                             ],
                           ),
                         ),
@@ -369,10 +386,10 @@ class _Payment_UIState extends State<Payment_UI> {
     return Dialog(
       elevation: 5,
       backgroundColor: UBackgroundColor,
-      insetPadding: EdgeInsets.all(
+      insetPadding: const EdgeInsets.all(
         UPdMg10,
       ),
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(
             UPdMg10,
@@ -385,11 +402,12 @@ class _Payment_UIState extends State<Payment_UI> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                padding: EdgeInsets.all(
-                  UPdMg10,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: UPdMg10,
+                  vertical: UPdMg15,
                 ),
                 width: UFullWidth,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(
                       UPdMg10,
@@ -408,7 +426,7 @@ class _Payment_UIState extends State<Payment_UI> {
                       payStudy.yearName.isEmpty
                           ? 'N/A'
                           : 'ឆ្នាំទី​ '.tr + payStudy.yearName,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: UPrimaryColor,
                         fontSize: UTitleSize,
                         fontWeight: UTitleWeight,
@@ -417,16 +435,14 @@ class _Payment_UIState extends State<Payment_UI> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: UHeight5,
-              ),
+              buildHeight5(),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   IntrinsicHeight(
                     child: Padding(
-                      padding: EdgeInsets.all(
+                      padding: const EdgeInsets.all(
                         UPdMg5,
                       ),
                       child: Row(
@@ -436,25 +452,22 @@ class _Payment_UIState extends State<Payment_UI> {
                             75,
                             'កាលបរិច្ឆេទ',
                           ),
-                          VerticalDivider(
-                            width: 2,
-                            color: UGreyColor,
+                          buildVerticalDivider(
+                            2,
                           ),
                           buildHeaderTitle(
                             90,
                             'លេខវិក័យបត្រ',
                           ),
-                          VerticalDivider(
-                            width: 2,
-                            color: UGreyColor,
+                          buildVerticalDivider(
+                            2,
                           ),
                           buildHeaderTitle(
                             75,
                             'ទឹកប្រាក់បានបង់',
                           ),
-                          VerticalDivider(
-                            width: 2,
-                            color: UGreyColor,
+                          buildVerticalDivider(
+                            2,
                           ),
                           buildHeaderTitle(
                             75,
@@ -473,7 +486,7 @@ class _Payment_UIState extends State<Payment_UI> {
                             children: [
                               IntrinsicHeight(
                                 child: Container(
-                                  padding: EdgeInsets.all(
+                                  padding: const EdgeInsets.all(
                                     UPdMg8,
                                   ),
                                   child: Row(
@@ -485,27 +498,24 @@ class _Payment_UIState extends State<Payment_UI> {
                                         'N/A',
                                         UTextColor,
                                       ),
-                                      VerticalDivider(
-                                        width: UWidth5,
-                                        color: UGreyColor,
+                                      buildVerticalDivider(
+                                        5,
                                       ),
                                       buildBody(
                                         75,
                                         'N/A',
                                         UTextColor,
                                       ),
-                                      VerticalDivider(
-                                        width: UWidth5,
-                                        color: UGreyColor,
+                                      buildVerticalDivider(
+                                        5,
                                       ),
                                       buildBody(
                                         75,
                                         'N/A',
                                         UTextColor,
                                       ),
-                                      VerticalDivider(
-                                        width: UWidth5,
-                                        color: UGreyColor,
+                                      buildVerticalDivider(
+                                        5,
                                       ),
                                       buildBody(
                                         75,
@@ -544,7 +554,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                         children: [
                                           IntrinsicHeight(
                                             child: Container(
-                                              padding: EdgeInsets.all(
+                                              padding: const EdgeInsets.all(
                                                 UPdMg5,
                                               ),
                                               child: Row(
@@ -557,27 +567,24 @@ class _Payment_UIState extends State<Payment_UI> {
                                                     'N/A',
                                                     UTextColor,
                                                   ),
-                                                  VerticalDivider(
-                                                    width: UWidth5,
-                                                    color: UGreyColor,
+                                                  buildVerticalDivider(
+                                                    5,
                                                   ),
                                                   buildBody(
                                                     90,
                                                     'N/A',
                                                     UTextColor,
                                                   ),
-                                                  VerticalDivider(
-                                                    width: UWidth5,
-                                                    color: UGreyColor,
+                                                  buildVerticalDivider(
+                                                    5,
                                                   ),
                                                   buildBody(
                                                     75,
                                                     'N/A',
                                                     UTextColor,
                                                   ),
-                                                  VerticalDivider(
-                                                    width: UWidth5,
-                                                    color: UGreyColor,
+                                                  buildVerticalDivider(
+                                                    5,
                                                   ),
                                                   buildBody(
                                                     75,
@@ -617,9 +624,8 @@ class _Payment_UIState extends State<Payment_UI> {
                                                           .pdate,
                                                   UTextColor,
                                                 ),
-                                                VerticalDivider(
-                                                  width: 2,
-                                                  color: UGreyColor,
+                                                buildVerticalDivider(
+                                                  2,
                                                 ),
                                                 buildBody(
                                                   90,
@@ -630,9 +636,8 @@ class _Payment_UIState extends State<Payment_UI> {
                                                           .invoiceNum,
                                                   UTextColor,
                                                 ),
-                                                VerticalDivider(
-                                                  width: 2,
-                                                  color: UGreyColor,
+                                                buildVerticalDivider(
+                                                  2,
                                                 ),
                                                 buildBody(
                                                   75,
@@ -642,9 +647,8 @@ class _Payment_UIState extends State<Payment_UI> {
                                                       : '\$ ${payStudy.payments[index].moneyPaid}',
                                                   UTextColor,
                                                 ),
-                                                VerticalDivider(
-                                                  width: 2,
-                                                  color: UGreyColor,
+                                                buildVerticalDivider(
+                                                  2,
                                                 ),
                                                 buildBody(
                                                   75,
@@ -669,9 +673,9 @@ class _Payment_UIState extends State<Payment_UI> {
           ),
           Positioned(
             right: UZeroPixel,
-            top: UZeroPixel,
-            height: UHeight50,
-            width: UWidth50,
+            top: UPdMg5,
+            width: UHeight50,
+            height: UHeight40,
             child: InkWell(
               highlightColor: UTransParentColor,
               splashColor: UTransParentColor,
@@ -697,9 +701,12 @@ class _Payment_UIState extends State<Payment_UI> {
             UPdMg5,
           ),
           child: Card(
+            elevation: 1,
+            color: UBackgroundColor,
+            shadowColor: ULightGreyColor,
             shape: RoundedRectangleBorder(
-              side: BorderSide(
-                color: ULightGreyColor,
+              side: const BorderSide(
+                color: UTransParentColor,
                 width: 0.5,
               ),
               borderRadius: BorderRadius.circular(
@@ -713,14 +720,15 @@ class _Payment_UIState extends State<Payment_UI> {
                 children: [
                   IntrinsicHeight(
                     child: Padding(
-                      padding: EdgeInsets.all(
-                        UPdMg5,
+                      padding: const EdgeInsets.symmetric(
+                        vertical: UPdMg8,
+                        horizontal: UPdMg5,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           buildHeaderTitle(
-                            70,
+                            75,
                             'កាលបរិច្ឆេទ',
                           ),
                           buildVerticalDividerW_2(),
@@ -752,8 +760,9 @@ class _Payment_UIState extends State<Payment_UI> {
                               IntrinsicHeight(
                                 child: Container(
                                   alignment: Alignment.center,
-                                  padding: EdgeInsets.all(
-                                    UPdMg5,
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: UPdMg8,
+                                    horizontal: UPdMg5,
                                   ),
                                   child: Row(
                                     mainAxisAlignment:
@@ -808,8 +817,9 @@ class _Payment_UIState extends State<Payment_UI> {
                                     IntrinsicHeight(
                                       child: Container(
                                         alignment: Alignment.center,
-                                        padding: EdgeInsets.all(
-                                          UPdMg5,
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: UPdMg8,
+                                          horizontal: UPdMg5,
                                         ),
                                         child: Row(
                                           mainAxisAlignment:
@@ -817,7 +827,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                           children: [
                                             // * datePayment
                                             Container(
-                                              width: 70,
+                                              width: 75,
                                               child: Text(
                                                 textAlign: TextAlign.center,
                                                 _dataOther[index]
@@ -827,7 +837,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                                     : _dataOther[index]
                                                         .o_pdate
                                                         .tr,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                   fontSize: 11.75,
                                                   color: UTextColor,
                                                 ),
@@ -892,7 +902,7 @@ class _Payment_UIState extends State<Payment_UI> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.all(
+            padding: const EdgeInsets.all(
               UPdMg8,
             ),
             child: IntrinsicHeight(

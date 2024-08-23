@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_AboutUS/UI_AboutUS/History.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_AboutUS/UI_AboutUS/President_Message.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_AboutUS/UI_AboutUS/Recognition.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_AboutUS/UI_AboutUS/Stucture.dart';
-import 'package:usea_app/Guest_Dashboard/Guest_AboutUS/UI_AboutUS/Vision.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '../Class_AboutUS/Class_AboutUS.dart';
 import '/theme_builder.dart';
@@ -22,16 +17,17 @@ class AboutUS extends StatelessWidget {
       ),
       body: ListView.builder(
         itemCount: about_US.length,
+        padding: const EdgeInsets.all(
+          UPdMg10,
+        ),
         itemBuilder: (context, index) {
           return Container(
-            margin: EdgeInsets.fromLTRB(
-              6,
-              UPdMg5,
-              6,
-              UZeroPixel,
+            margin: const EdgeInsets.only(
+              bottom: UPdMg5,
             ),
             child: Card(
-              elevation: 2,
+              elevation: 1,
+              color: UBackgroundColor,
               shadowColor: ULightGreyColor,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(
@@ -42,35 +38,33 @@ class AboutUS extends StatelessWidget {
                 highlightColor: UTransParentColor,
                 splashColor: UTransParentColor,
                 onTap: () {
-                  if (index.isEqual(0)) {
-                    pushWithTransition(
-                      context,
-                      History(),
-                    );
-                  } else if (index.isEqual(1)) {
-                    pushWithTransition(
-                      context,
-                      Structure(),
-                    );
-                  } else if (index.isEqual(2)) {
-                    pushWithTransition(
-                      context,
-                      President(),
-                    );
-                  } else if (index.isEqual(3)) {
-                    pushWithTransition(
-                      context,
-                      Vision(),
-                    );
-                  } else if (index.isEqual(4)) {
-                    pushWithTransition(
-                      context,
-                      Recognition(),
-                    );
-                  }
+                  Navigator.of(context).push(
+                    PageRouteBuilder(
+                      pageBuilder: (context, animation, secondaryAnimation) =>
+                          about_US[index].screen,
+                      transitionsBuilder:
+                          (context, animation, secondaryAnimation, child) {
+                        const begin = Offset(3.0, UZeroPixel);
+                        const end = Offset.zero;
+                        const curve = Curves.easeInOut;
+                        final tween = Tween(begin: begin, end: end).chain(
+                          CurveTween(curve: curve),
+                        );
+                        var forwardAnimation = animation.drive(tween);
+
+                        return SlideTransition(
+                          position: forwardAnimation,
+                          child: child,
+                        );
+                      },
+                      transitionDuration: const Duration(
+                        milliseconds: 100,
+                      ),
+                    ),
+                  );
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     vertical: UPdMg15,
                     horizontal: UPdMg10,
                   ),
@@ -82,18 +76,16 @@ class AboutUS extends StatelessWidget {
                           children: [
                             Image.asset(
                               about_US[index].img,
-                              scale: UScale6,
+                              scale: 6,
                             ),
-                            SizedBox(
-                              width: UWidth10,
-                            ),
+                            buildWidth10(),
                             Expanded(
                               child: Text(
                                 about_US[index].text.tr,
                                 textAlign: TextAlign.left,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: UTitleSize16,
-                                  fontWeight: UBodyWeight,
+                                  fontWeight: UTitleWeight,
                                 ),
                               ),
                             ),

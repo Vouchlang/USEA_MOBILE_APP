@@ -41,7 +41,7 @@ class _FullScreenImage1State extends State<FullScreenImage1> {
             bottom: UPdMg10,
             right: UPdMg10,
             child: IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.fullscreen_exit,
                 color: USecondaryColor,
                 size: 25,

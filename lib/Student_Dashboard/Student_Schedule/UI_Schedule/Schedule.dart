@@ -125,22 +125,23 @@ class _ScheduleState extends State<Schedule> {
         },
         color: UPrimaryColor,
         child: ListView(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             vertical: UPdMg10,
           ),
           children: [
-            CardCalendar(onDateSelected: _onDateSelected),
-            SizedBox(
-              height: UHeight5,
+            CardCalendar(
+              onDateSelected: _onDateSelected,
             ),
+            buildHeight5(),
             Padding(
-              padding: EdgeInsets.all(
+              padding: const EdgeInsets.all(
                 UPdMg8,
               ),
               child: Text(
                 'កាលវិភាគសិក្សា'.tr,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: UTitleSize16,
+                  fontWeight: UTitleWeight,
                   color: UPrimaryColor,
                 ),
               ),
@@ -154,100 +155,134 @@ class _ScheduleState extends State<Schedule> {
                     itemBuilder: (BuildContext context, int index) {
                       return Column(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(
-                              UPdMg5,
-                              UZeroPixel,
-                              UPdMg5,
-                              UPdMg5,
-                            ),
-                            child: Card(
-                              elevation: 1,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                  UPdMg10,
-                                ),
+                          Card(
+                            elevation: 1,
+                            color: UBackgroundColor,
+                            shadowColor: ULightGreyColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                UPdMg10,
                               ),
-                              child: Container(
-                                padding: EdgeInsets.all(
-                                  UPdMg10,
+                            ),
+                            margin: EdgeInsets.fromLTRB(
+                              UPdMg10,
+                              UPdMg5,
+                              UPdMg10,
+                              UPdMg10,
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  alignment: Alignment.center,
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: UPdMg15,
+                                    horizontal: UPdMg10,
+                                  ),
+                                  width: UFullWidth,
+                                  decoration: const BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(
+                                        URoundedLarge,
+                                      ),
+                                      topRight: Radius.circular(
+                                        URoundedLarge,
+                                      ),
+                                    ),
+                                    color: UBGLightBlue,
+                                  ),
+                                  child: ScheduleTitle(
+                                    selectedDateSchedule[index].subject,
+                                  ),
                                 ),
-                                child: IntrinsicHeight(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        width: UWidth40,
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            ScheduleDate(
-                                              selectedDateSchedule[index].wday,
-                                            ),
-                                            ScheduleDate(
-                                              selectedDateSchedule[index]
-                                                  .weekday,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      VerticalDivider(
-                                        thickness: 0.5,
-                                        color: UGreyColor,
-                                        width: UWidth30,
-                                      ),
-                                      Expanded(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            ScheduleTitle(
-                                              selectedDateSchedule[index]
-                                                  .subject,
-                                            ),
-                                            SizedBox(
-                                              height: UHeight5,
-                                            ),
-                                            ScheduleBody(
-                                              selectedDateSchedule[index]
-                                                  .session,
-                                            ),
-                                            ScheduleBody(
-                                              selectedDateSchedule[index].room,
-                                            ),
-                                            Row(
+                                Padding(
+                                  padding: const EdgeInsets.all(
+                                    UPdMg10,
+                                  ),
+                                  child: IntrinsicHeight(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          width: UWidth40,
+                                          child: IntrinsicHeight(
+                                            child: Column(
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.start,
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
                                               children: [
-                                                Expanded(
-                                                  child: ScheduleBody(
-                                                    selectedDateSchedule[index]
-                                                        .teacher,
-                                                  ),
+                                                ScheduleDate(
+                                                  selectedDateSchedule[index]
+                                                      .wday,
                                                 ),
-                                                Expanded(
-                                                  child: Container(
-                                                    alignment:
-                                                        Alignment.topRight,
-                                                    child: ScheduleBody(
-                                                      selectedDateSchedule[
-                                                              index]
-                                                          .phonenumber,
-                                                    ),
-                                                  ),
+                                                const SizedBox(
+                                                  height: 2,
+                                                ),
+                                                ScheduleDate(
+                                                  selectedDateSchedule[index]
+                                                      .weekday,
                                                 ),
                                               ],
                                             ),
-                                          ],
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                        const VerticalDivider(
+                                          thickness: 0.5,
+                                          color: UGreyColor,
+                                          width: UWidth30,
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              ScheduleBody(
+                                                selectedDateSchedule[index]
+                                                    .session,
+                                              ),
+                                              const SizedBox(
+                                                height: 2,
+                                              ),
+                                              ScheduleBody(
+                                                selectedDateSchedule[index]
+                                                    .room,
+                                              ),
+                                              const SizedBox(
+                                                height: 2,
+                                              ),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Expanded(
+                                                    child: ScheduleBody(
+                                                      selectedDateSchedule[
+                                                              index]
+                                                          .teacher,
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    child: Container(
+                                                      alignment:
+                                                          Alignment.topRight,
+                                                      child: ScheduleBody(
+                                                        selectedDateSchedule[
+                                                                index]
+                                                            .phonenumber,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
+                              ],
                             ),
                           ),
                         ],

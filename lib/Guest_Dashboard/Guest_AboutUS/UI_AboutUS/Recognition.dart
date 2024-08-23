@@ -66,104 +66,84 @@ class _RecognitionState extends State<Recognition> {
       body: recognition.isEmpty
           ? buildFutureBuild()
           : ListView.builder(
+              shrinkWrap: true,
               itemCount: recognition.length,
+              padding: const EdgeInsets.only(
+                top: UPdMg5,
+              ),
               itemBuilder: (context, index) {
                 final isFinalIndex = index == recognition.length - 1;
-                return Padding(
-                  padding: EdgeInsets.only(
-                    bottom: isFinalIndex ? UPdMg10 : UZeroPixel,
+                return Card(
+                  elevation: 1,
+                  color: UBackgroundColor,
+                  shadowColor: ULightGreyColor,
+                  margin: EdgeInsets.fromLTRB(
+                    UPdMg10,
+                    UPdMg10,
+                    UPdMg10,
+                    isFinalIndex ? UPdMg15 : UZeroPixel,
                   ),
-                  child: Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.all(
-                          UPdMg10,
+                  child: Container(
+                    padding: const EdgeInsets.all(
+                      UPdMg10,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          height: 175,
+                          width: 125,
+                          child: Image.network(
+                            recognition[index].image.isEmpty
+                                ? imageAsset + 'Error_Image.jpg'
+                                : recognition[index].image,
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              height: 175,
-                              width: 125,
-                              child: Image.network(
-                                recognition[index].image.isEmpty
-                                    ? imageAsset + 'Error_Image.jpg'
-                                    : recognition[index].image,
-                                fit: BoxFit.cover,
+                        buildWidth10(),
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                recognition[index].title.isEmpty
+                                    ? 'N/A'
+                                    : recognition[index].title,
+                                textAlign: TextAlign.justify,
+                                style: const TextStyle(
+                                  fontSize: UTitleSize,
+                                  fontWeight: UTitleWeight,
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                              width: UWidth10,
-                            ),
-                            Expanded(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    recognition[index].title.isEmpty
-                                        ? 'N/A'
-                                        : recognition[index].title,
-                                    textAlign: TextAlign.justify,
-                                    style: TextStyle(
-                                      fontSize: UTitleSize,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: UHeight10,
-                                  ),
-                                  Container(
-                                    alignment: Alignment.centerRight,
-                                    child: InkWell(
-                                      highlightColor: UTransParentColor,
-                                      splashColor: UTransParentColor,
-                                      onTap: () {
-                                        void _launchRecognitionUrl() async {
-                                          if (await canLaunch(
-                                            recognition[index].link,
-                                          )) {
-                                            await launch(
-                                              recognition[index].link,
-                                            );
-                                          } else {
-                                            throw 'Could not launch ${recognition[index].link}';
-                                          }
-                                        }
+                              buildHeight10(),
+                              Container(
+                                alignment: Alignment.centerRight,
+                                child: buildNavBtn(
+                                  () {
+                                    void _launchRecognitionUrl() async {
+                                      if (await canLaunch(
+                                        recognition[index].link,
+                                      )) {
+                                        await launch(
+                                          recognition[index].link,
+                                        );
+                                      } else {
+                                        throw 'Could not launch ${recognition[index].link}';
+                                      }
+                                    }
 
-                                        _launchRecognitionUrl();
-                                      },
-                                      child: Container(
-                                        width: 80,
-                                        alignment: Alignment.center,
-                                        padding: EdgeInsets.all(
-                                          UPdMg5,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(
-                                            URoundedMedium,
-                                          ),
-                                          color: UBtnColor,
-                                        ),
-                                        child: Text(
-                                          'អានបន្ថែម'.tr,
-                                          style: TextStyle(
-                                            fontSize: UBodySize,
-                                            fontWeight: UBodyWeight,
-                                            color: UPrimaryColor,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                                    _launchRecognitionUrl();
+                                  },
+                                  'អានបន្ថែម',
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      if (!isFinalIndex) buildDividerAtt(),
-                    ],
+                      ],
+                    ),
                   ),
                 );
               },

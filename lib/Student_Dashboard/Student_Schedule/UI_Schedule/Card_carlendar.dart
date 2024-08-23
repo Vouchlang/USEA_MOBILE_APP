@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart';
 import '/theme_builder.dart';
@@ -23,19 +24,29 @@ class _CardCalendarState extends State<CardCalendar> {
     return SingleChildScrollView(
       physics: NeverScrollableScrollPhysics(),
       child: Container(
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           vertical: UPdMg5,
           horizontal: UPdMg10,
         ),
         child: Column(
           children: [
             Container(
+              padding: const EdgeInsets.fromLTRB(
+                UPdMg5,
+                UZeroPixel,
+                UPdMg5,
+                UPdMg5,
+              ),
               decoration: BoxDecoration(
                 color: UBackgroundColor,
                 boxShadow: [
-                  BoxShadow(
-                    blurRadius: 2.0,
-                    color: UGreyColor,
+                  const BoxShadow(
+                    blurRadius: 2,
+                    color: ULightGreyColor,
+                    offset: Offset(
+                      UZeroPixel,
+                      1,
+                    ),
                   ),
                 ],
                 borderRadius: BorderRadius.circular(
@@ -49,39 +60,47 @@ class _CardCalendarState extends State<CardCalendar> {
                       DateFormat.E(locale).format(date).substring(0, 2),
                 ),
                 calendarStyle: CalendarStyle(
-                  todayTextStyle: TextStyle(
+                  todayTextStyle: const TextStyle(
                     fontWeight: UTitleWeight,
                     color: UPrimaryColor,
                   ),
-                  todayDecoration: BoxDecoration(
+                  todayDecoration: const BoxDecoration(
                     color: UTransParentColor,
                   ),
-                  selectedTextStyle: TextStyle(
+                  selectedTextStyle: const TextStyle(
                     fontWeight: UTitleWeight,
                     color: USecondaryColor,
                   ),
                   selectedDecoration: BoxDecoration(
                     color: UPrimaryColor,
-                    shape: BoxShape.circle,
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(
+                      URoundedMedium,
+                    ),
                   ),
                 ),
                 headerStyle: HeaderStyle(
-                  headerPadding: EdgeInsets.symmetric(
+                  titleTextFormatter: (date, locale) {
+                    return DateFormat.yMMMM(locale).format(date).tr;
+                  },
+                  headerPadding: const EdgeInsets.symmetric(
                     horizontal: UWidth20,
                     vertical: UPdMg10,
                   ),
-                  titleTextStyle: TextStyle(
+                  titleTextStyle: const TextStyle(
                     color: UPrimaryColor,
                     fontSize: UTitleSize16,
+                    fontWeight: UTitleWeight,
+                    fontFamily: UEFontFamily,
                   ),
-                  leftChevronIcon: Icon(
-                    Icons.arrow_back_ios,
-                    size: 20,
+                  leftChevronIcon: const Icon(
+                    Icons.arrow_left_sharp,
+                    size: 35,
                     color: UPrimaryColor,
                   ),
-                  rightChevronIcon: Icon(
-                    Icons.arrow_forward_ios,
-                    size: 20,
+                  rightChevronIcon: const Icon(
+                    Icons.arrow_right_sharp,
+                    size: 35,
                     color: UPrimaryColor,
                   ),
                   formatButtonVisible: false,
@@ -90,30 +109,45 @@ class _CardCalendarState extends State<CardCalendar> {
                 availableGestures: AvailableGestures.all,
                 selectedDayPredicate: (day) => isSameDay(day, today),
                 focusedDay: today,
-                firstDay: DateTime(2018, 12, 31),
-                lastDay: DateTime(2025, 12, 31),
+                firstDay: DateTime(
+                  2018,
+                  1,
+                  1,
+                ),
+                lastDay: DateTime(
+                  2028,
+                  12,
+                  31,
+                ),
                 onDaySelected: (day, focusedDay) {
                   widget.onDateSelected(day);
                   setState(() {
                     today = day;
                   });
                 },
-                calendarBuilders: CalendarBuilders( 
+                calendarBuilders: CalendarBuilders(
                   defaultBuilder: (context, date, _) {
                     return Container(
-                      margin: EdgeInsets.all(
+                      margin: const EdgeInsets.all(
                         UPdMg5,
                       ),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: isSameDay(date, today)
+                        color: isSameDay(
+                          date,
+                          today,
+                        )
                             ? UPrimaryColor
-                            : UTransParentColor,
+                            : UBtnColor,
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.circular(
+                          URoundedMedium,
+                        ),
                       ),
                       child: Text(
                         '${date.day}',
                         style: TextStyle(
-                          color: isSunday(date) ? URedColor : null,
+                          color: isSunday(date) ? URedColor : UPrimaryColor,
                         ),
                       ),
                     );

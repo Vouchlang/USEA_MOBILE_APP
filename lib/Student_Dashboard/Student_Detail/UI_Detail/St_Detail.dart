@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:usea_app/Student_Dashboard/Student_Detail/UI_Detail/St_ProfilePic.dart';
+import '../../../Student_Dashboard/Student_Detail/UI_Detail/St_ProfilePic.dart';
 import '../../Student_Other_Class/Class_Student_User.dart';
 import '/theme_builder.dart';
 import '/Custom_Widget/CustomText.dart';
@@ -103,8 +103,10 @@ class _Student_DetailState extends State<Student_Detail> {
             URoundedLarge,
           )),
           child: Container(
-            margin: EdgeInsets.all(UPdMg7),
-            padding: EdgeInsets.all(
+            margin: const EdgeInsets.all(
+              UPdMg7,
+            ),
+            padding: const EdgeInsets.all(
               UPdMg10,
             ),
             decoration: BoxDecoration(
@@ -118,27 +120,23 @@ class _Student_DetailState extends State<Student_Detail> {
               children: [
                 Text(
                   'ចាកចេញ'.tr,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: UTitleSize,
                     fontWeight: UTitleWeight,
                   ),
                 ),
-                SizedBox(
-                  height: UHeight5,
-                ),
+                buildHeight5(),
                 Text(
                   'តើអ្នកប្រាកដថាអ្នកនឹងចាកចេញពីគណនីនិសិ្សតដែរឬទេ?'.tr,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: UBodySize,
                   ),
                 ),
-                SizedBox(
-                  height: UHeight5,
-                ),
+                buildHeight5(),
                 Container(
                   height: UHeight50,
-                  padding: EdgeInsets.all(
+                  padding: const EdgeInsets.all(
                     UPdMg5,
                   ),
                   alignment: Alignment.center,
@@ -146,39 +144,43 @@ class _Student_DetailState extends State<Student_Detail> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        TextButton(
+                        InkWell(
+                          highlightColor: UTransParentColor,
+                          splashColor: UTransParentColor,
+                          onTap: () {
+                            Navigator.of(context).pop();
+                          },
                           child: Text(
                             'បោះបង់'.tr,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: UPrimaryColor,
                               fontSize: UBodySize,
                             ),
                           ),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
                         ),
                         buildVerticalDividerAtt(),
-                        TextButton(
-                          child: Text(
-                            'ចាកចេញ'.tr,
-                            style: TextStyle(
-                              color: URedColor,
-                              fontSize: UBodySize,
-                            ),
-                          ),
-                          onPressed: () async {
+                        InkWell(
+                          highlightColor: UTransParentColor,
+                          splashColor: UTransParentColor,
+                          onTap: () async {
                             SharedPreferences prefs =
                                 await SharedPreferences.getInstance();
                             await prefs.remove('student_user');
                             Get.off(
-                              () => Home(),
+                              () => const Home(),
                               transition: Transition.rightToLeftWithFade,
-                              duration: Duration(
+                              duration: const Duration(
                                 milliseconds: 100,
                               ),
                             );
                           },
+                          child: Text(
+                            'ចាកចេញ'.tr,
+                            style: const TextStyle(
+                              color: URedColor,
+                              fontSize: UBodySize,
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -198,27 +200,25 @@ class _Student_DetailState extends State<Student_Detail> {
       backgroundColor: USecondaryColor,
       appBar: AppBar(
         centerTitle: false,
-        titleSpacing: 0,
+        titleSpacing: UZeroPixel,
         title: Text(
           'ព័ត៌មានលម្អិតរបស់និស្សិត'.tr,
-          style: TextStyle(
+          style: const TextStyle(
             color: UPrimaryColor,
             fontSize: UFontSize18,
             fontWeight: UTitleWeight,
           ),
         ),
+        surfaceTintColor: UBackgroundColor,
         backgroundColor: UBackgroundColor,
         elevation: 1,
-        iconTheme: IconThemeData.fallback(),
-        leading: IconButton(
-          highlightColor: UTransParentColor,
-          splashColor: UTransParentColor,
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: UPrimaryColor,
-            size: 18,
+        scrolledUnderElevation: 1,
+        shadowColor: ULightGreyColor,
+        iconTheme: const IconThemeData.fallback(),
+        leading: buildBackBtn(
+          () => Navigator.of(context).pop(
+            Transition.leftToRightWithFade,
           ),
-          onPressed: () => Navigator.of(context).pop(),
         ),
         actions: [
           (() {
@@ -226,7 +226,7 @@ class _Student_DetailState extends State<Student_Detail> {
               return IconButton(
                 highlightColor: UTransParentColor,
                 splashColor: UTransParentColor,
-                icon: Icon(
+                icon: const Icon(
                   Icons.logout,
                   color: UPrimaryColor,
                   size: 18,
@@ -236,7 +236,7 @@ class _Student_DetailState extends State<Student_Detail> {
                 },
               );
             } else {
-              return SizedBox.shrink();
+              return const SizedBox.shrink();
             }
           })(),
         ],
@@ -246,183 +246,230 @@ class _Student_DetailState extends State<Student_Detail> {
           : RefreshIndicator(
               onRefresh: _refreshData,
               color: UPrimaryColor,
+              backgroundColor: UBackgroundColor,
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: _dataStDetail.length,
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                          vertical: UPdMg10,
-                          horizontal: UPdMg20,
+                      Card(
+                        margin: const EdgeInsets.only(
+                          left: UPdMg12,
+                          right: UPdMg12,
+                          top: UPdMg15,
+                          bottom: UPdMg5,
                         ),
-                        child: Row(
-                          children: [
-                            InkWell(
-                              highlightColor: UTransParentColor,
-                              splashColor: UTransParentColor,
-                              onTap: () {
-                                Get.to(
-                                  () => St_ProfilePic(
-                                    imageUrls: _dataStDetail[index].profile_pic,
-                                  ),
-                                );
-                              },
-                              child: CircleAvatar(
-                                backgroundImage: NetworkImage(
-                                  _dataStDetail[index].profile_pic,
-                                ),
-                                radius: 50,
-                              ),
-                            ),
-                            SizedBox(
-                              width: UWidth20,
-                            ),
-                            Expanded(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  buildHeaderDetail(
-                                    _dataStDetail[index].name_kh.isEmpty
-                                        ? 'N/A'
-                                        : _dataStDetail[index].name_kh,
-                                    UKFontFamily,
-                                    UTitleSize16,
-                                    UTitleWeight,
-                                  ),
-                                  buildHeaderDetail(
-                                    _dataStDetail[index].name_en.isEmpty
-                                        ? 'N/A'
-                                        : _dataStDetail[index].name_en,
-                                    UEFontFamily,
-                                    UTitleSize16,
-                                    UBodyWeight,
-                                  ),
-                                  buildHeaderDetail(
-                                    _dataStDetail[index].student_id.isEmpty
-                                        ? 'N/A'
-                                        : _dataStDetail[index].student_id,
-                                    UEFontFamily,
-                                    UBodySize,
-                                    UBodyWeight,
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      buildDividerStDetail(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          buildBodyDetail(
-                            'ឆ្នាំ',
-                            _dataStDetail[index].year_name.isEmpty
-                                ? 'N/A'
-                                : _dataStDetail[index].year_name,
+                        elevation: 1,
+                        color: UBackgroundColor,
+                        shadowColor: ULightGreyColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            UPdMg10,
                           ),
-                          buildVerticalDividerH_45(),
-                          buildBodyDetail(
-                            'ឆមាស',
-                            _dataStDetail[index].semester_name.isEmpty
-                                ? 'N/A'
-                                : _dataStDetail[index].semester_name,
-                          ),
-                          buildVerticalDividerH_45(),
-                          buildBodyDetail(
-                            'ជំនាន់',
-                            _dataStDetail[index].stage_name.isEmpty
-                                ? 'N/A'
-                                : _dataStDetail[index].stage_name,
-                          ),
-                          buildVerticalDividerH_45(),
-                          buildBodyDetail(
-                            'វគ្គ',
-                            _dataStDetail[index].term_name.isEmpty
-                                ? 'N/A'
-                                : _dataStDetail[index].term_name,
-                          ),
-                          buildVerticalDividerH_45(),
-                          buildBodyDetail(
-                            'ឆ្នាំសិក្សា',
-                            _dataStDetail[index].academic_year.isEmpty
-                                ? 'N/A'
-                                : _dataStDetail[index].academic_year,
-                          ),
-                        ],
-                      ),
-                      buildDividerStDetail(),
-                      Container(
-                        margin: EdgeInsets.symmetric(
-                          vertical: UPdMg10,
-                          horizontal: UPdMg20,
                         ),
                         child: Column(
                           children: [
-                            buildTailDetail(
-                              imageAsset + 'Stu_Faculty.png',
-                              'មហាវិទ្យាល័យ'.tr,
-                              _dataStDetail[index].faculty_name,
+                            Container(
+                              padding: const EdgeInsets.fromLTRB(
+                                UPdMg10,
+                                UPdMg10,
+                                UPdMg10,
+                                UZeroPixel,
+                              ),
+                              child: Row(
+                                children: [
+                                  InkWell(
+                                    highlightColor: UTransParentColor,
+                                    splashColor: UTransParentColor,
+                                    onTap: () {
+                                      Get.to(
+                                        () => St_ProfilePic(
+                                          imageUrls:
+                                              _dataStDetail[index].profile_pic,
+                                        ),
+                                      );
+                                    },
+                                    child: ClipOval(
+                                      child: Container(
+                                        width: 100,
+                                        height: 100,
+                                        child: Image.network(
+                                          _dataStDetail[index].profile_pic,
+                                          fit: BoxFit.fitWidth,
+                                          alignment: Alignment.topCenter,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  buildWidth10(),
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        buildHeaderDetail(
+                                          _dataStDetail[index].name_kh.isEmpty
+                                              ? 'N/A'
+                                              : _dataStDetail[index].name_kh,
+                                          UKFontFamily,
+                                          UTitleSize16,
+                                          UTitleWeight,
+                                        ),
+                                        buildHeaderDetail(
+                                          _dataStDetail[index].name_en.isEmpty
+                                              ? 'N/A'
+                                              : _dataStDetail[index].name_en,
+                                          UEFontFamily,
+                                          UTitleSize16,
+                                          UTitleWeight,
+                                        ),
+                                        buildHeaderDetail(
+                                          _dataStDetail[index]
+                                                  .student_id
+                                                  .isEmpty
+                                              ? 'N/A'
+                                              : _dataStDetail[index].student_id,
+                                          UEFontFamily,
+                                          UTitleSize,
+                                          UTitleWeight,
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                             buildDividerStDetail(),
-                            buildTailDetail(
-                              imageAsset + 'Stu_Degree.png',
-                              'កម្រិតសិក្សា'.tr,
-                              _dataStDetail[index].degree_name,
-                            ),
-                            buildDividerStDetail(),
-                            buildTailDetail(
-                              imageAsset + 'Stu_Major.png',
-                              'មុខជំនាញ'.tr,
-                              _dataStDetail[index].major_name,
-                            ),
-                            buildDividerStDetail(),
-                            buildTailDetail(
-                              imageAsset + 'Stu_Room.png',
-                              'បន្ទប់សិក្សា'.tr,
-                              _dataStDetail[index].room_name,
-                            ),
-                            buildDividerStDetail(),
-                            buildTailDetail(
-                              imageAsset + 'Stu_Shift.png',
-                              'វេនសិក្សា'.tr,
-                              _dataStDetail[index].shift_name,
-                            ),
-                            buildDividerStDetail(),
-                            buildTailDetail(
-                              imageAsset + 'Stu_Status.png',
-                              'ស្ថានភាពសិក្សា'.tr,
-                              _dataStDetail[index].status_name,
-                            ),
-                            buildDividerStDetail(),
-                            buildTailDetail(
-                              imageAsset + 'Stu_DOB.png',
-                              'ថ្ងៃកំណើត'.tr,
-                              _dataStDetail[index].date_of_birth,
-                            ),
-                            buildDividerStDetail(),
-                            buildTailDetail(
-                              imageAsset + 'Stu_Tel.png',
-                              'លេខទូរស័ព្ទ'.tr,
-                              _dataStDetail[index].phone_number,
-                            ),
-                            buildDividerStDetail(),
-                            buildTailDetail(
-                              imageAsset + 'Stu_Job.png',
-                              'មុខតំណែង'.tr,
-                              _dataStDetail[index].job,
-                            ),
-                            buildDividerStDetail(),
-                            buildTailDetail(
-                              imageAsset + 'Stu_Workplace.png',
-                              'ស្ថាប័ន'.tr,
-                              _dataStDetail[index].work_place,
+                            Container(
+                              padding: const EdgeInsets.only(
+                                bottom: UPdMg10,
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  buildBodyDetail(
+                                    'ឆ្នាំ',
+                                    _dataStDetail[index].year_name.isEmpty
+                                        ? 'N/A'
+                                        : _dataStDetail[index].year_name,
+                                  ),
+                                  buildBodyDetail(
+                                    'ឆមាស',
+                                    _dataStDetail[index].semester_name.isEmpty
+                                        ? 'N/A'
+                                        : _dataStDetail[index].semester_name,
+                                  ),
+                                  buildBodyDetail(
+                                    'ជំនាន់',
+                                    _dataStDetail[index].stage_name.isEmpty
+                                        ? 'N/A'
+                                        : _dataStDetail[index].stage_name,
+                                  ),
+                                  buildBodyDetail(
+                                    'វគ្គ',
+                                    _dataStDetail[index].term_name.isEmpty
+                                        ? 'N/A'
+                                        : _dataStDetail[index].term_name,
+                                  ),
+                                  buildBodyDetail(
+                                    'ឆ្នាំសិក្សា',
+                                    _dataStDetail[index].academic_year.isEmpty
+                                        ? 'N/A'
+                                        : _dataStDetail[index].academic_year,
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
+                        ),
+                      ),
+                      Card(
+                        margin: const EdgeInsets.only(
+                          left: UPdMg12,
+                          right: UPdMg12,
+                          top: UPdMg7,
+                          bottom: UPdMg15,
+                        ),
+                        elevation: 1,
+                        color: UBackgroundColor,
+                        shadowColor: ULightGreyColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            UPdMg10,
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: UPdMg15,
+                          ),
+                          child: Column(
+                            children: [
+                              buildTailDetail(
+                                imageAsset + 'Stu_Faculty.png',
+                                'មហាវិទ្យាល័យ'.tr,
+                                _dataStDetail[index].faculty_name,
+                              ),
+                              buildDividerStDetail(),
+                              buildTailDetail(
+                                imageAsset + 'Stu_Degree.png',
+                                'កម្រិតសិក្សា'.tr,
+                                _dataStDetail[index].degree_name,
+                              ),
+                              buildDividerStDetail(),
+                              buildTailDetail(
+                                imageAsset + 'Stu_Major.png',
+                                'មុខជំនាញ'.tr,
+                                _dataStDetail[index].major_name,
+                              ),
+                              buildDividerStDetail(),
+                              buildTailDetail(
+                                imageAsset + 'Stu_Room.png',
+                                'បន្ទប់សិក្សា'.tr,
+                                _dataStDetail[index].room_name,
+                              ),
+                              buildDividerStDetail(),
+                              buildTailDetail(
+                                imageAsset + 'Stu_Shift.png',
+                                'វេនសិក្សា'.tr,
+                                _dataStDetail[index].shift_name,
+                              ),
+                              buildDividerStDetail(),
+                              buildTailDetail(
+                                imageAsset + 'Stu_Status.png',
+                                'ស្ថានភាពសិក្សា'.tr,
+                                _dataStDetail[index].status_name,
+                              ),
+                              buildDividerStDetail(),
+                              buildTailDetail(
+                                imageAsset + 'Stu_DOB.png',
+                                'ថ្ងៃកំណើត'.tr,
+                                _dataStDetail[index].date_of_birth,
+                              ),
+                              buildDividerStDetail(),
+                              buildTailDetail(
+                                imageAsset + 'Stu_Tel.png',
+                                'លេខទូរស័ព្ទ'.tr,
+                                _dataStDetail[index].phone_number,
+                              ),
+                              buildDividerStDetail(),
+                              buildTailDetail(
+                                imageAsset + 'Stu_Job.png',
+                                'មុខតំណែង'.tr,
+                                _dataStDetail[index].job,
+                              ),
+                              buildDividerStDetail(),
+                              buildTailDetail(
+                                imageAsset + 'Stu_Workplace.png',
+                                'ស្ថាប័ន'.tr,
+                                _dataStDetail[index].work_place,
+                              ),
+                            ],
+                          ),
                         ),
                       )
                     ],

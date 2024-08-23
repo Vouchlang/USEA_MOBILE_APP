@@ -31,7 +31,7 @@ class _Video_DisplayState extends State<Video_Display> {
     super.initState();
     _youtubeController = YoutubePlayerController(
       initialVideoId: YoutubePlayer.convertUrlToId(widget.data.link)!,
-      flags: YoutubePlayerFlags(
+      flags: const YoutubePlayerFlags(
         forceHD: true,
         loop: true,
       ),
@@ -53,10 +53,10 @@ class _Video_DisplayState extends State<Video_Display> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                  height: 0,
+                  height: UZeroPixel,
                   child: ProgressBar(
                     isExpanded: false,
-                    colors: ProgressBarColors(
+                    colors: const ProgressBarColors(
                       playedColor: URedColor,
                       bufferedColor: USecondaryColor,
                       handleColor: URedColor,
@@ -75,8 +75,12 @@ class _Video_DisplayState extends State<Video_Display> {
                           iconSize: 20,
                           color: USecondaryColor,
                           icon: _isMuted
-                              ? Icon(Icons.volume_off)
-                              : Icon(Icons.volume_up),
+                              ? const Icon(
+                                  Icons.volume_off,
+                                )
+                              : const Icon(
+                                  Icons.volume_up,
+                                ),
                           onPressed: () {
                             setState(
                               () {
@@ -99,8 +103,12 @@ class _Video_DisplayState extends State<Video_Display> {
                           iconSize: 20,
                           color: USecondaryColor,
                           icon: _isFullScreenNotifier.value
-                              ? Icon(Icons.fullscreen_exit)
-                              : Icon(Icons.fullscreen),
+                              ? const Icon(
+                                  Icons.fullscreen_exit,
+                                )
+                              : const Icon(
+                                  Icons.fullscreen,
+                                ),
                           onPressed: () {
                             _youtubeController.toggleFullScreenMode();
                           },
@@ -124,7 +132,7 @@ class _Video_DisplayState extends State<Video_Display> {
             children: [
               player,
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: UBackgroundColor,
                   borderRadius: BorderRadius.vertical(
                     bottom: Radius.circular(
@@ -139,9 +147,8 @@ class _Video_DisplayState extends State<Video_Display> {
                     ),
                   ],
                 ),
-                padding: EdgeInsets.symmetric(
-                  vertical: UPdMg5,
-                  horizontal: UPdMg10,
+                padding: const EdgeInsets.all(
+                  UPdMg10,
                 ),
                 width: double.infinity,
                 alignment: Alignment.center,
@@ -149,13 +156,14 @@ class _Video_DisplayState extends State<Video_Display> {
                   widget.vdo[_currentVideoIndex].title,
                   UTitleSize,
                   UTitleWeight,
+                  Get.locale?.languageCode == 'km'
+                      ? TextAlign.center
+                      : TextAlign.justify,
                 ),
               ),
-              SizedBox(
-                height: UHeight5,
-              ),
+              buildHeight5(),
               Container(
-                padding: EdgeInsets.all(
+                padding: const EdgeInsets.all(
                   UPdMg10,
                 ),
                 width: double.infinity,
@@ -163,6 +171,9 @@ class _Video_DisplayState extends State<Video_Display> {
                   widget.vdo[_currentVideoIndex].caption,
                   UTitleSize,
                   UBodyWeight,
+                  Get.locale?.languageCode == 'km'
+                      ? TextAlign.left
+                      : TextAlign.justify,
                 ),
               ),
             ],

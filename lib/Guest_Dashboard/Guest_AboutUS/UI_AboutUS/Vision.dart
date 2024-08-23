@@ -33,7 +33,7 @@ class Vision extends StatelessWidget {
             'Knowledge, Skills, Excellence, Society',
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(
+            margin: const EdgeInsets.fromLTRB(
               UPdMg10,
               UPdMg10,
               UPdMg10,
@@ -47,7 +47,7 @@ class Vision extends StatelessWidget {
                   '4.1. Knowledge',
                 ),
                 Container(
-                  margin: EdgeInsets.only(
+                  margin: const EdgeInsets.only(
                     left: UPdMg12,
                   ),
                   child: Column(
@@ -71,7 +71,7 @@ class Vision extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(
+            margin: const EdgeInsets.fromLTRB(
               UPdMg10,
               UPdMg10,
               UPdMg10,
@@ -85,7 +85,7 @@ class Vision extends StatelessWidget {
                   '4.2. Skills',
                 ),
                 Container(
-                  margin: EdgeInsets.only(
+                  margin: const EdgeInsets.only(
                     left: UPdMg12,
                   ),
                   child: Column(
@@ -109,7 +109,7 @@ class Vision extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(
+            margin: const EdgeInsets.fromLTRB(
               UPdMg10,
               UPdMg10,
               UPdMg10,
@@ -121,7 +121,7 @@ class Vision extends StatelessWidget {
               children: [
                 buildTopBodyVision('4.4. Social'),
                 Container(
-                  margin: EdgeInsets.only(
+                  margin: const EdgeInsets.only(
                     left: UPdMg12,
                   ),
                   child: Column(
@@ -145,7 +145,7 @@ class Vision extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.all(
+            margin: const EdgeInsets.all(
               UPdMg10,
             ),
             child: Column(
@@ -156,7 +156,7 @@ class Vision extends StatelessWidget {
                   '5. Goal & Objective',
                 ),
                 Container(
-                  margin: EdgeInsets.only(
+                  margin: const EdgeInsets.only(
                     left: UPdMg12,
                   ),
                   child: Column(

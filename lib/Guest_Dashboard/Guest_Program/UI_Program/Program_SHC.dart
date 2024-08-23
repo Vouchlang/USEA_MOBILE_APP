@@ -33,7 +33,7 @@ class _Program_SHCState extends State<Program_SHC> {
         children: [
           Expanded(
             child: SingleChildScrollView(
-              padding: EdgeInsets.all(
+              padding: const EdgeInsets.all(
                 UPdMg8,
               ),
               child: Column(
@@ -58,7 +58,7 @@ class _Program_SHCState extends State<Program_SHC> {
       final index = i++;
 
       return Container(
-        padding: EdgeInsets.fromLTRB(
+        padding: const EdgeInsets.fromLTRB(
           UPdMg5,
           UPdMg10,
           UPdMg5,
@@ -76,30 +76,28 @@ class _Program_SHCState extends State<Program_SHC> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           vertical: UPdMg5,
                         ),
-                        margin: EdgeInsets.only(
-                          right: UPdMg5,
-                        ),
                         child: NoWeightTitleTheme(
-                          index.toString() + '.',
+                          index.toString() + '. ',
                         ),
                       ),
                       Expanded(
                         child: Container(
-                          margin: EdgeInsets.only(
+                          margin: const EdgeInsets.only(
                             right: UPdMg15,
                           ),
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             vertical: UPdMg5,
                           ),
                           child: Text(
                             subject,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: UTitleSize,
                               fontWeight: UBodyWeight,
                               color: UTextColor,
+                              height: UTextHeight,
                             ),
                           ),
                         ),
@@ -107,15 +105,13 @@ class _Program_SHCState extends State<Program_SHC> {
                     ],
                   ),
                 ),
-                SizedBox(
-                  width: UWidth15,
-                ),
+                buildWidth15(),
                 Container(
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     vertical: UPdMg5,
                   ),
                   alignment: Alignment.centerRight,
-                  margin: EdgeInsets.only(
+                  margin: const EdgeInsets.only(
                     right: UPdMg15,
                   ),
                   child: NoWeightTitleTheme(
@@ -133,7 +129,7 @@ class _Program_SHCState extends State<Program_SHC> {
 
     return [
       Card(
-        elevation: 2,
+        elevation: 1,
         shadowColor: ULightGreyColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
@@ -145,12 +141,12 @@ class _Program_SHCState extends State<Program_SHC> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 vertical: UPdMg15,
                 horizontal: UPdMg5,
               ),
               width: double.infinity,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(
                     UPdMg10,
@@ -176,7 +172,7 @@ class _Program_SHCState extends State<Program_SHC> {
             ),
             ...subjectWidgets,
             Container(
-              padding: EdgeInsets.fromLTRB(
+              padding: const EdgeInsets.fromLTRB(
                 UPdMg5,
                 UPdMg15,
                 UPdMg5,
@@ -191,7 +187,7 @@ class _Program_SHCState extends State<Program_SHC> {
                   ),
                   Container(
                     alignment: Alignment.centerRight,
-                    margin: EdgeInsets.only(
+                    margin: const EdgeInsets.only(
                       right: UPdMg15,
                     ),
                     child: TitleTheme(

@@ -17,7 +17,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.6.1+22
+version: 1.6.2+23
 
 environment:
   sdk: '>=2.18.4 <3.0.0'
@@ -36,36 +36,35 @@ dependencies:
 
 # The following adds the Cupertino Icons font to your application.
 # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-  flutter_image_slideshow: ^0.1.4
   carousel_slider: ^4.2.1
   smooth_page_indicator: ^1.0.1
   flutter_spinkit: ^5.1.0
   url_launcher: ^6.1.11
-  readmore: ^2.2.0
-  youtube_player_flutter: ^8.1.2
+  readmore: ^3.0.0
+  youtube_player_flutter: ^9.0.1
   get: ^4.6.5
   curved_navigation_bar: ^1.0.3
   configurable_expansion_tile_null_safety: ^3.1.1
-  http: ^0.13.6 
+  http: ^1.0.0 
   json_annotation: ^4.8.0
-  lottie: ^2.3.2
+  lottie: ^3.1.2
   d_chart: ^2.2.11
   shared_preferences: ^2.1.0
   provider: ^6.0.5
-  flutter_secure_storage: ^8.0.0
   get_storage: ^2.1.1
   dio: ^5.1.2
   styled_divider: ^1.0.5
   google_nav_bar: ^5.0.6
   percent_indicator: ^4.2.3
   change_app_package_name: ^1.1.0
-  photo_view: ^0.14.0
+  photo_view: ^0.15.0
   image: ^4.0.15
-  insta_image_viewer: ^1.0.2
-  chewie: ^1.0.0
   video_player: ^2.2.14
   wakelock: ^0.6.2
+  animated_text_kit: ^4.2.2
+  confetti: ^0.7.0
+  draggable_bottom_sheet: ^1.0.2
+  google_maps_flutter: ^2.5.0
 
 
 dev_dependencies:
@@ -116,11 +115,19 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: KhmerOSbattambang
+    - family: KhmerOSBattambang
       fonts:
         - asset: fonts/KhmerOSBattambang.ttf
-        - asset: fonts/KhmerOSbattambang-Bold.ttf
+        - asset: fonts/KhmerOSBattambang-Bold.ttf
           weight: 700
+    - family: Battambang
+      fonts:
+        - asset: fonts/Battambang.ttf
+        - asset: fonts/Battambang-Bold.ttf
+          weight: 700
+    - family: KhmerOSSiemreap
+      fonts:
+        - asset: fonts/KhmerOSSiemreap.ttf
     - family: KhmerOSmuol
       fonts:
         - asset: fonts/KhmerOSmuollight.ttf

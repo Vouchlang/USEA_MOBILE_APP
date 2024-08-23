@@ -1,16 +1,18 @@
 // ignore_for_file: deprecated_member_use
 
 import 'dart:convert';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
+// import '../../../Student_Dashboard/Student_Notification/UI_Notification/Student_Notification.dart';
 import '../../../Guest_Dashboard/Guest_Home/Class_Home/Class_Home_Screen.dart';
 import '../../Student_Attendance/UI_Attendance/Attendance.dart';
 import '../../Student_Detail/UI_Detail/St_Detail.dart';
 import '../../Student_JobHistory/UI_JobHistory/St_JobHistory.dart';
-import 'package:usea_app/theme_builder.dart';
+import '../../../theme_builder.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '../../Student_Achievements/UI_Achievements/Achievements.dart';
 import '../../Student_Detail/Class_Detail/Class_St_Detail.dart';
@@ -50,8 +52,12 @@ class _Student_HomeState extends State<Student_Home> {
   void initState() {
     super.initState();
     _dataStudentUser = widget.data_studentUser;
-
     _refreshData();
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: UBackgroundColor,
+      ),
+    );
   }
 
   Future<void> _refreshData() async {
@@ -219,107 +225,179 @@ class _Student_HomeState extends State<Student_Home> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
-              child: Row(
-                children: [
-                  Image.asset(
-                    imageAsset + 'usea_logo.png',
-                    scale: 30,
-                  ),
-                  SizedBox(
-                    width: UWidth5,
-                  ),
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
-                          style: TextStyle(
-                            color: UPrimaryColor,
-                            fontSize: UBodySize10,
-                            fontFamily: 'KhmerOSmuol',
-                          ),
-                        ),
-                        Text(
-                          'UNIVERSITY OF SOUTH-EAST ASIA',
-                          style: TextStyle(
-                            color: UPrimaryColor,
-                            fontSize: 11.75,
-                            fontFamily: UEFontFamily,
-                            fontWeight: UBodyWeight,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+            buildUniversityName(
+              UBackgroundColor,
             ),
-            SizedBox(
-              width: UWidth15,
-            ),
-            InkWell(
-              highlightColor: UTransParentColor,
-              splashColor: UTransParentColor,
-              onTap: () {
-                Get.to(
-                  () => Student_Detail(
-                    data_studentUser: _dataStudentUser,
-                    sourceScreen: widget.sourceScreen,
-                  ),
-                  transition: Transition.rightToLeftWithFade,
-                  duration: Duration(
-                    milliseconds: 100,
-                  ),
-                );
-              },
-              child: _dataStDetail.isNotEmpty
-                  ? CircleAvatar(
-                      backgroundImage: NetworkImage(
-                        _dataStDetail[0].profile_pic,
+            Row(
+              children: [
+                InkWell(
+                  highlightColor: UTransParentColor,
+                  splashColor: UTransParentColor,
+                  onTap: () {
+                    Get.to(
+                      () => Student_Detail(
+                        data_studentUser: _dataStudentUser,
+                        sourceScreen: widget.sourceScreen,
                       ),
-                      radius: 22.5,
-                    )
-                  : Icon(
-                      Icons.account_circle,
-                      size: 40,
+                      transition: Transition.rightToLeftWithFade,
+                      duration: const Duration(
+                        milliseconds: 100,
+                      ),
+                    );
+                  },
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(
+                        color: UBackgroundColor,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(
+                        50,
+                      ),
                     ),
+                    child: _dataStDetail.isNotEmpty
+                        ? ClipOval(
+                            child: Container(
+                              width: UWidth40,
+                              height: UHeight40,
+                              child: Image.network(
+                                _dataStDetail[0].profile_pic,
+                                fit: BoxFit.fitWidth,
+                                alignment: Alignment.topCenter,
+                              ),
+                            ),
+                          )
+                        : const CircleAvatar(
+                            radius: 20,
+                            backgroundImage: AssetImage(
+                              'assets/image/no_images.png',
+                            ),
+                          ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 3,
+                ),
+              ],
             ),
           ],
         ),
+        titleSpacing: 5,
         toolbarHeight: 75,
         centerTitle: true,
-        backgroundColor: UBackgroundColor,
-        elevation: 1,
+        backgroundColor: UPrimaryColor,
+        elevation: 0,
       ),
       body: _dataStDetail.isEmpty
           ? buildFutureBuild()
           : RefreshIndicator(
               onRefresh: _refreshData,
               color: UPrimaryColor,
+              backgroundColor: UBackgroundColor,
               child: ListView(
                 shrinkWrap: true,
                 children: [
+                  Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        child: Container(
+                          color: UPrimaryColor,
+                          height: 70,
+                          width: MediaQuery.of(context).size.width * 1,
+                        ),
+                      ),
+                      Card(
+                        elevation: 1.5,
+                        color: UBackgroundColor,
+                        shadowColor: ULightGreyColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            UPdMg10,
+                          ),
+                        ),
+                        margin: const EdgeInsets.only(
+                          left: UPdMg12,
+                          right: UPdMg12,
+                          top: UPdMg15,
+                          bottom: UPdMg5,
+                        ),
+                        child: Container(
+                          padding: const EdgeInsets.all(
+                            UPdMg15,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              CircularPercentIndicator(
+                                arcType: ArcType.FULL,
+                                arcBackgroundColor: UBGChartColor,
+                                radius: 70.0,
+                                lineWidth: UWidth20,
+                                percent: percentIndicator,
+                                progressColor: _dataCredit[0].yourCredit ==
+                                        _dataCredit[0].totalCredit
+                                    ? UScoreColor
+                                    : UPrimaryColor,
+                                animateFromLastPercent: true,
+                                animation: true,
+                                curve: Curves.decelerate,
+                                circularStrokeCap: CircularStrokeCap.round,
+                                animationDuration: 1000,
+                                center: Text(
+                                  _dataCredit.isNotEmpty
+                                      ? '${_dataCredit[0].yourCredit} / ${_dataCredit[0].totalCredit}'
+                                      : 'N/A',
+                                  style: const TextStyle(
+                                    fontSize: UTitleSize16,
+                                    fontWeight: UTitleWeight,
+                                    fontFamily: UEFontFamily,
+                                    color: UPrimaryColor,
+                                  ),
+                                ),
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  buildTotalCredit(
+                                    '\tចំនួនក្រឌីតសរុប',
+                                    UBGChartColor,
+                                  ),
+                                  buildHeight10(),
+                                  buildTotalCredit(
+                                    '\tចំនួនក្រឌីតបានបំពេញ',
+                                    UPrimaryColor,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                   SizedBox(
-                    height: UHeight10,
+                    height: _dataSurvey.isNotEmpty ? UHeight7 : UZeroPixel,
                   ),
                   (() {
                     if (_dataSurvey.isNotEmpty && _dataSurvey.length > 1) {
                       return Card(
-                        margin: EdgeInsets.symmetric(
+                        margin: const EdgeInsets.symmetric(
                           horizontal: UPdMg10,
                         ),
-                        elevation: 1,
+                        elevation: 1.5,
                         shadowColor: ULightGreyColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(
-                            URoundedMedium,
+                            URoundedLarge,
                           ),
                         ),
+                        color: UBackgroundColor,
                         child: InkWell(
                           highlightColor: UTransParentColor,
                           splashColor: UTransParentColor,
@@ -334,46 +412,42 @@ class _Student_HomeState extends State<Student_Home> {
                                       URoundedLarge,
                                     ),
                                   ),
+                                  backgroundColor: UBackgroundColor,
                                   child: Container(
-                                    margin: EdgeInsets.all(
+                                    margin: const EdgeInsets.all(
                                       UPdMg7,
                                     ),
-                                    padding: EdgeInsets.all(
+                                    padding: const EdgeInsets.all(
                                       UPdMg10,
                                     ),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(
-                                        20,
+                                        URoundedLarge,
                                       ),
-                                      color: UBackgroundColor,
                                     ),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Text(
                                           'ការវាយតម្លៃ'.tr,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: UTitleSize,
                                             fontWeight: UTitleWeight,
                                           ),
                                         ),
-                                        SizedBox(
-                                          height: UHeight5,
-                                        ),
+                                        buildHeight5(),
                                         Text(
                                           'សូមជ្រើសរើសប្រភេទនៃការវាយតម្លៃ!!!'
                                               .tr,
                                           textAlign: TextAlign.center,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: UBodySize,
                                           ),
                                         ),
-                                        SizedBox(
-                                          height: UHeight5,
-                                        ),
+                                        buildHeight5(),
                                         Container(
                                           height: 70,
-                                          padding: EdgeInsets.all(
+                                          padding: const EdgeInsets.all(
                                             UPdMg5,
                                           ),
                                           alignment: Alignment.center,
@@ -385,12 +459,18 @@ class _Student_HomeState extends State<Student_Home> {
                                               return Row(
                                                 children: [
                                                   ElevatedButton(
-                                                    style: ButtonStyle(
-                                                      backgroundColor:
-                                                          MaterialStateProperty
-                                                              .all<Color>(
-                                                        UBGLightBlue,
+                                                    style: ElevatedButton
+                                                        .styleFrom(
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                          URoundedMedium,
+                                                        ),
                                                       ),
+                                                      backgroundColor:
+                                                          UBGLightBlue,
                                                     ),
                                                     child: Container(
                                                       width: 80,
@@ -399,7 +479,7 @@ class _Student_HomeState extends State<Student_Home> {
                                                             .tr,
                                                         textAlign:
                                                             TextAlign.center,
-                                                        style: TextStyle(
+                                                        style: const TextStyle(
                                                           color: UPrimaryColor,
                                                           fontSize: UBodySize,
                                                         ),
@@ -424,10 +504,10 @@ class _Student_HomeState extends State<Student_Home> {
                                                   ),
                                                   if (index !=
                                                       _dataSurvey.length - 1)
-                                                    VerticalDivider(
+                                                    const VerticalDivider(
                                                       width: UWidth10,
                                                       color: UTransParentColor,
-                                                      thickness: 0,
+                                                      thickness: UZeroPixel,
                                                     ),
                                                 ],
                                               );
@@ -442,13 +522,13 @@ class _Student_HomeState extends State<Student_Home> {
                             );
                           },
                           child: Container(
-                            margin: EdgeInsets.all(
-                              UPdMg5,
+                            margin: const EdgeInsets.all(
+                              UPdMg10,
                             ),
                             child: Text(
                               'សូមជួយធ្វើការវាយតម្លៃ'.tr,
                               textAlign: TextAlign.center,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: UBodySize,
                                 color: URedColor,
                               ),
@@ -459,14 +539,15 @@ class _Student_HomeState extends State<Student_Home> {
                     } else if (_dataSurvey.isNotEmpty &&
                         _dataSurvey.length == 1) {
                       return Card(
-                        margin: EdgeInsets.symmetric(
+                        margin: const EdgeInsets.symmetric(
                           horizontal: UPdMg10,
                         ),
-                        elevation: 1,
+                        elevation: 1.5,
+                        color: UBackgroundColor,
                         shadowColor: ULightGreyColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(
-                            URoundedMedium,
+                            URoundedLarge,
                           ),
                         ),
                         child: InkWell(
@@ -484,13 +565,13 @@ class _Student_HomeState extends State<Student_Home> {
                             _launchSurvey();
                           },
                           child: Container(
-                            margin: EdgeInsets.all(
-                              UPdMg5,
+                            margin: const EdgeInsets.all(
+                              UPdMg10,
                             ),
                             child: Text(
                               'សូមជួយធ្វើការវាយតម្លៃ'.tr,
                               textAlign: TextAlign.center,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: UBodySize,
                                 color: URedColor,
                               ),
@@ -499,110 +580,27 @@ class _Student_HomeState extends State<Student_Home> {
                         ),
                       );
                     } else {
-                      return SizedBox.shrink();
+                      return const SizedBox.shrink();
                     }
                   })(),
                   SizedBox(
-                    height: UHeight10,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    height: 180,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: UPdMg5,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        CircularPercentIndicator(
-                          radius: 90.0,
-                          lineWidth: UWidth15,
-                          percent: percentIndicator,
-                          progressColor: UPrimaryColor,
-                          animateFromLastPercent: true,
-                          animation: true,
-                          curve: Curves.decelerate,
-                          animationDuration: 1000,
-                          backgroundColor: UBGChartColor,
-                          center: Text(
-                            _dataCredit.isNotEmpty
-                                ? '${_dataCredit[0].yourCredit} / ${_dataCredit[0].totalCredit}'
-                                : 'N/A',
-                            style: TextStyle(
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: UWidth15,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Flexible(
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Icon(
-                                    Icons.circle,
-                                    size: 20,
-                                    color: UBGChartColor,
-                                  ),
-                                  Text(
-                                    '\tចំនួនក្រឌីតសរុប'.tr,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: UHeight10,
-                            ),
-                            Flexible(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Icon(
-                                    Icons.circle,
-                                    size: 20,
-                                    color: UPrimaryColor,
-                                  ),
-                                  Text(
-                                    '\tចំនួនក្រឌីតបានបំពេញ'.tr,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: UHeight10,
+                    height: _dataSurvey.isNotEmpty ? UHeight7 : UHeight5,
                   ),
                   GridView.count(
                     shrinkWrap: true,
-                    physics: ScrollPhysics(),
+                    physics: const ScrollPhysics(),
                     crossAxisCount: 2,
                     mainAxisSpacing: 3.5,
                     crossAxisSpacing: 3,
                     childAspectRatio: 1.90,
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: UPdMg7,
                     ),
                     children: List.generate(
                       st_home_screen.length,
                       (index) => Card(
-                        elevation: 2,
+                        elevation: 1.5,
+                        color: UBackgroundColor,
                         shadowColor: ULightGreyColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(
@@ -629,10 +627,10 @@ class _Student_HomeState extends State<Student_Home> {
                                               ),
                                             ),
                                             child: Container(
-                                              margin: EdgeInsets.all(
+                                              margin: const EdgeInsets.all(
                                                 UPdMg7,
                                               ),
-                                              padding: EdgeInsets.all(
+                                              padding: const EdgeInsets.all(
                                                 UPdMg10,
                                               ),
                                               decoration: BoxDecoration(
@@ -647,35 +645,32 @@ class _Student_HomeState extends State<Student_Home> {
                                                 children: [
                                                   Text(
                                                     'សូមអធ្យាស្រ័យ'.tr,
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontSize: UTitleSize,
                                                       fontWeight: UTitleWeight,
                                                     ),
                                                   ),
-                                                  SizedBox(
-                                                    height: UHeight5,
-                                                  ),
+                                                  buildHeight5(),
                                                   Text(
                                                     'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!'
                                                         .tr,
                                                     textAlign: TextAlign.center,
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontSize: UBodySize,
                                                     ),
                                                   ),
-                                                  SizedBox(
-                                                    height: UHeight5,
-                                                  ),
+                                                  buildHeight5(),
                                                   Container(
                                                     height: UHeight50,
-                                                    padding: EdgeInsets.all(
+                                                    padding:
+                                                        const EdgeInsets.all(
                                                       UPdMg5,
                                                     ),
                                                     alignment: Alignment.center,
                                                     child: TextButton(
                                                       child: Text(
                                                         'បោះបង់'.tr,
-                                                        style: TextStyle(
+                                                        style: const TextStyle(
                                                           color: UPrimaryColor,
                                                           fontSize: UBodySize,
                                                         ),
@@ -703,7 +698,7 @@ class _Student_HomeState extends State<Student_Home> {
                                   sourceScreen: widget.sourceScreen,
                                 ),
                                 transition: Transition.rightToLeftWithFade,
-                                duration: Duration(
+                                duration: const Duration(
                                   milliseconds: 100,
                                 ),
                               );
@@ -714,7 +709,7 @@ class _Student_HomeState extends State<Student_Home> {
                                   sourceScreen: widget.sourceScreen,
                                 ),
                                 transition: Transition.rightToLeftWithFade,
-                                duration: Duration(
+                                duration: const Duration(
                                   milliseconds: 100,
                                 ),
                               );
@@ -725,7 +720,7 @@ class _Student_HomeState extends State<Student_Home> {
                                   sourceScreen: widget.sourceScreen,
                                 ),
                                 transition: Transition.rightToLeftWithFade,
-                                duration: Duration(
+                                duration: const Duration(
                                   milliseconds: 100,
                                 ),
                               );
@@ -736,7 +731,7 @@ class _Student_HomeState extends State<Student_Home> {
                                   sourceScreen: widget.sourceScreen,
                                 ),
                                 transition: Transition.rightToLeftWithFade,
-                                duration: Duration(
+                                duration: const Duration(
                                   milliseconds: 100,
                                 ),
                               );
@@ -747,7 +742,7 @@ class _Student_HomeState extends State<Student_Home> {
                                   sourceScreen: widget.sourceScreen,
                                 ),
                                 transition: Transition.rightToLeftWithFade,
-                                duration: Duration(
+                                duration: const Duration(
                                   milliseconds: 100,
                                 ),
                               );
@@ -758,7 +753,7 @@ class _Student_HomeState extends State<Student_Home> {
                                   sourceScreen: widget.sourceScreen,
                                 ),
                                 transition: Transition.rightToLeftWithFade,
-                                duration: Duration(
+                                duration: const Duration(
                                   milliseconds: 100,
                                 ),
                               );
@@ -769,7 +764,7 @@ class _Student_HomeState extends State<Student_Home> {
                                   sourceScreen: widget.sourceScreen,
                                 ),
                                 transition: Transition.rightToLeftWithFade,
-                                duration: Duration(
+                                duration: const Duration(
                                   milliseconds: 100,
                                 ),
                               );
@@ -777,7 +772,7 @@ class _Student_HomeState extends State<Student_Home> {
                               Get.to(
                                 () => st_home_screen[index].screen,
                                 transition: Transition.rightToLeftWithFade,
-                                duration: Duration(
+                                duration: const Duration(
                                   milliseconds: 100,
                                 ),
                               );
@@ -786,7 +781,7 @@ class _Student_HomeState extends State<Student_Home> {
                           child: index.isEqual(6) &&
                                   widget.sourceScreen == guardian_sourceScreen
                               ? Container(
-                                  padding: EdgeInsets.only(
+                                  padding: const EdgeInsets.only(
                                     left: UPdMg15,
                                   ),
                                   child: Column(
@@ -798,12 +793,10 @@ class _Student_HomeState extends State<Student_Home> {
                                         imageAsset + 'Acc_Guardian.png',
                                         scale: UScale6,
                                       ),
-                                      SizedBox(
-                                        height: UHeight7,
-                                      ),
+                                      buildHeight7(),
                                       Text(
                                         'គណនីអាណាព្យាបាល'.tr,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: UTitleSize,
                                         ),
                                       )
@@ -811,7 +804,7 @@ class _Student_HomeState extends State<Student_Home> {
                                   ),
                                 )
                               : Container(
-                                  padding: EdgeInsets.only(
+                                  padding: const EdgeInsets.only(
                                     left: UPdMg15,
                                   ),
                                   child: Column(
@@ -823,12 +816,10 @@ class _Student_HomeState extends State<Student_Home> {
                                         st_home_screen[index].img,
                                         scale: UScale6,
                                       ),
-                                      SizedBox(
-                                        height: UHeight7,
-                                      ),
+                                      buildHeight7(),
                                       Text(
                                         st_home_screen[index].name.tr,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: UTitleSize,
                                         ),
                                       )
@@ -839,12 +830,45 @@ class _Student_HomeState extends State<Student_Home> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: UHeight20,
-                  ),
+                  buildHeight15(),
                 ],
               ),
             ),
+      // floatingActionButton: Container(
+      //   width: UWidth40,
+      //   height: UHeight40,
+      //   alignment: Alignment.center,
+      //   decoration: BoxDecoration(
+      //     borderRadius: BorderRadius.circular(
+      //       50,
+      //     ),
+      //     color: UPrimaryColor,
+      //   ),
+      //   child: Center(
+      //     child: IconButton(
+      //       highlightColor: UTransParentColor,
+      //       splashColor: UTransParentColor,
+      //       onPressed: () {
+      //         setState(
+      //           () {
+      //             Get.to(
+      //               () => Students_Notifications(),
+      //               transition: Transition.rightToLeftWithFade,
+      //               duration: const Duration(
+      //                 milliseconds: 100,
+      //               ),
+      //             );
+      //           },
+      //         );
+      //       },
+      //       icon: const Icon(
+      //         Icons.qr_code_scanner,
+      //         color: UBackgroundColor,
+      //         size: 25,
+      //       ),
+      //     ),
+      //   ),
+      // ),
     );
   }
 }

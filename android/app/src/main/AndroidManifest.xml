@@ -30,7 +30,11 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+         <meta-data android:name="com.google.android.geo.API_KEY" 
+            android:value="AIzaSyDIhT-WxaBN9HK5xR1H_HeEsr8Uxmvlpyo"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
 </manifest>

@@ -8,7 +8,6 @@ import 'Student_Dashboard.dart';
 class St_Home extends StatefulWidget {
   final List<StudentUser> data_studentUser;
   final String sourceScreen;
-  
 
   const St_Home({
     Key? key,
@@ -40,11 +39,12 @@ class _St_HomeState extends State<St_Home> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     List pages = [
-      Guest_Home(),
+      const Guest_Home(),
       Student_Home(
         data_studentUser: widget.data_studentUser,
         sourceScreen: widget.sourceScreen,
       ),
+      // Students_Notifications(),
     ];
     return Scaffold(
       body: pages[currentIndex],
@@ -52,41 +52,45 @@ class _St_HomeState extends State<St_Home> with SingleTickerProviderStateMixin {
         data: Theme.of(context).copyWith(
           splashColor: UTransParentColor,
           highlightColor: UTransParentColor,
-          bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
             selectedItemColor: UTransParentColor,
           ),
         ),
-        child: Container(
-          color: UTransParentColor,
-          child: BottomNavigationBar(
-            backgroundColor: USecondaryColor,
-            elevation: UZeroPixel,
-            onTap: onTap,
-            currentIndex: currentIndex,
-            selectedItemColor: UPrimaryColor,
-            unselectedItemColor: UGreyColor,
-            unselectedFontSize: 11,
-            selectedLabelStyle: TextStyle(
-              fontWeight: UTitleWeight,
-              fontSize: UBodySize,
-            ),
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
-                  size: 25,
-                ),
-                label: 'ទំព័រដើម'.tr,
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.account_box,
-                  size: 25,
-                ),
-                label: 'ចូលគណនី'.tr,
-              ),
-            ],
+        child: BottomNavigationBar(
+          backgroundColor: UBackgroundColor,
+          onTap: onTap,
+          elevation: 15,
+          currentIndex: currentIndex,
+          selectedItemColor: UPrimaryColor,
+          unselectedItemColor: UGreyColor,
+          unselectedFontSize: 11,
+          selectedLabelStyle: const TextStyle(
+            fontWeight: UTitleWeight,
+            fontSize: UBodySize,
           ),
+          items: [
+            BottomNavigationBarItem(
+              icon: const Icon(
+                Icons.home,
+                size: 25,
+              ),
+              label: 'ទំព័រដើម'.tr,
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(
+                Icons.account_box,
+                size: 25,
+              ),
+              label: 'ចូលគណនី'.tr,
+            ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(
+            //     Icons.notifications_sharp,
+            //     size: 25,
+            //   ),
+            //   label: 'ការជូនដំណឹង'.tr,
+            // ),
+          ],
         ),
       ),
     );

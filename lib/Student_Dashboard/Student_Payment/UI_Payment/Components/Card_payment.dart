@@ -14,12 +14,12 @@ class PaymentCards2 extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.all(
+          padding: const EdgeInsets.all(
             UPdMg5,
           ),
           child: Card(
             shape: RoundedRectangleBorder(
-              side: BorderSide(
+              side: const BorderSide(
                 color: ULightGreyColor,
                 width: 0.5,
               ),
@@ -33,7 +33,7 @@ class PaymentCards2 extends StatelessWidget {
               children: [
                 IntrinsicHeight(
                   child: Padding(
-                    padding: EdgeInsets.all(
+                    padding: const EdgeInsets.all(
                       UPdMg5,
                     ),
                     child: Row(
@@ -72,7 +72,7 @@ class PaymentCards2 extends StatelessWidget {
                 // * Body Content​2
                 ListView.builder(
                   shrinkWrap: true,
-                  physics: ScrollPhysics(),
+                  physics: const ScrollPhysics(),
                   itemCount: paymentData2.length,
                   itemBuilder: (context, index) {
                     final isLastIndex = index == paymentData2.length - 1;
@@ -89,7 +89,7 @@ class PaymentCards2 extends StatelessWidget {
                             IntrinsicHeight(
                               child: Container(
                                 alignment: Alignment.center,
-                                padding: EdgeInsets.all(
+                                padding: const EdgeInsets.all(
                                   UPdMg5,
                                 ),
                                 child: Row(
@@ -155,12 +155,12 @@ class PaymentCards3 extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.all(
+          padding: const EdgeInsets.all(
             UPdMg5,
           ),
           child: Card(
             shape: RoundedRectangleBorder(
-              side: BorderSide(
+              side: const BorderSide(
                 color: ULightGreyColor,
                 width: 0.5,
               ),
@@ -174,7 +174,7 @@ class PaymentCards3 extends StatelessWidget {
               children: [
                 IntrinsicHeight(
                   child: Padding(
-                    padding: EdgeInsets.all(
+                    padding: const EdgeInsets.all(
                       UPdMg5,
                     ),
                     child: Row(
@@ -213,7 +213,7 @@ class PaymentCards3 extends StatelessWidget {
                 // * Body Content​3
                 ListView.builder(
                   shrinkWrap: true,
-                  physics: ScrollPhysics(),
+                  physics: const ScrollPhysics(),
                   itemCount: paymentData3.length,
                   itemBuilder: (context, index) {
                     final isLastIndex = index == paymentData3.length - 1;
@@ -230,7 +230,7 @@ class PaymentCards3 extends StatelessWidget {
                             IntrinsicHeight(
                               child: Container(
                                 alignment: Alignment.center,
-                                padding: EdgeInsets.all(
+                                padding: const EdgeInsets.all(
                                   UPdMg5,
                                 ),
                                 child: Row(

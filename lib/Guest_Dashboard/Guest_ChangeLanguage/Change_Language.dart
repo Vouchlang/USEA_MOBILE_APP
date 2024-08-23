@@ -76,13 +76,13 @@ class ChangeLanguage extends StatelessWidget {
       ),
       elevation: 3,
       child: Container(
-        margin: EdgeInsets.all(
+        margin: const EdgeInsets.all(
           UPdMg7,
         ),
-        padding: EdgeInsets.all(
+        padding: const EdgeInsets.all(
           UPdMg10,
         ),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: UBackgroundColor,
         ),
         child: Column(
@@ -90,26 +90,24 @@ class ChangeLanguage extends StatelessWidget {
           children: [
             Text(
               'ភាសា'.tr,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: UTitleSize,
                 fontWeight: UTitleWeight,
               ),
             ),
-            SizedBox(
-              height: UHeight5,
-            ),
+            buildHeight5(),
             Text(
               'សូមជ្រើសរើសភាសា'.tr,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: UBodySize,
               ),
             ),
-            SizedBox(
-              height: UHeight5,
-            ),
+            buildHeight5(),
             Container(
               height: 70,
-              padding: EdgeInsets.all(UPdMg5),
+              padding: const EdgeInsets.all(
+                UPdMg5,
+              ),
               alignment: Alignment.center,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
@@ -131,9 +129,7 @@ class ChangeLanguage extends StatelessWidget {
                             locale[index]['logo'],
                             scale: 4.5,
                           ),
-                          SizedBox(
-                            height: UHeight5,
-                          ),
+                          buildHeight5(),
                           Text(
                             locale[index]['name'].toString().tr,
                             style: TextStyle(
@@ -152,7 +148,7 @@ class ChangeLanguage extends StatelessWidget {
                   );
                 },
                 separatorBuilder: (context, index) {
-                  return VerticalDivider(
+                  return const VerticalDivider(
                     width: UWidth40,
                     thickness: 0.5,
                     color: UGreyColor,

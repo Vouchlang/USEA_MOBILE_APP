@@ -1,5 +1,4 @@
 // ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -96,72 +95,74 @@ class _ScholarshipState extends State<Scholarship> {
         alignment: Alignment.topCenter,
         child: scholarships.isEmpty
             ? buildFutureBuild()
+            // ? buildNavBtn(
+            //     () {},
+            //     'អានបន្ថែម',
+            //   )
             : SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    SizedBox(
-                      height: UHeight5,
-                    ),
+                    buildHeight5(),
                     Container(
                       height: 70,
                       alignment: Alignment.center,
                       width: UFullWidth,
                       child: ListView.builder(
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          itemCount: scholarships.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            final isLastIndex =
-                                index == scholarships.length - 1;
-
-                            return GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  selectedScholarship = index;
-                                });
-                              },
-                              child: AnimatedContainer(
-                                alignment: Alignment.center,
-                                duration: Duration(
-                                  milliseconds: 300,
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: scholarships.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          final isLastIndex = index == scholarships.length - 1;
+                          return GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedScholarship = index;
+                              });
+                            },
+                            child: AnimatedContainer(
+                              alignment: Alignment.center,
+                              duration: const Duration(
+                                milliseconds: 300,
+                              ),
+                              margin: EdgeInsets.fromLTRB(
+                                UPdMg10,
+                                UPdMg10,
+                                isLastIndex ? UPdMg10 : UZeroPixel,
+                                UPdMg10,
+                              ),
+                              width: 165,
+                              decoration: BoxDecoration(
+                                color: selectedScholarship == index
+                                    ? UPrimaryColor
+                                    : UBackgroundColor,
+                                borderRadius: BorderRadius.circular(
+                                  URoundedMedium,
                                 ),
-                                margin: EdgeInsets.fromLTRB(
-                                  UPdMg10,
-                                  UPdMg10,
-                                  isLastIndex ? UPdMg10 : UZeroPixel,
-                                  UPdMg10,
-                                ),
-                                width: 165,
-                                decoration: BoxDecoration(
+                                boxShadow: [
+                                  const BoxShadow(
+                                    blurRadius: 1,
+                                    color: ULightGreyColor,
+                                    offset: Offset(0, 1),
+                                  ),
+                                ],
+                              ),
+                              child: Text(
+                                scholarships[index].scholarship_name.tr,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: UTitleSize,
+                                  fontWeight: UTitleWeight,
                                   color: selectedScholarship == index
-                                      ? UPrimaryColor
-                                      : UBackgroundColor,
-                                  borderRadius: BorderRadius.circular(
-                                    URoundedMedium,
-                                  ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      blurRadius: 1,
-                                      color: ULightGreyColor,
-                                      offset: Offset(0, 1),
-                                    ),
-                                  ],
-                                ),
-                                child: Text(
-                                  scholarships[index].scholarship_name.tr,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: UTitleSize,
-                                    color: selectedScholarship == index
-                                        ? UBackgroundColor
-                                        : UTextColor,
-                                  ),
+                                      ? UBackgroundColor
+                                      : UTextColor,
                                 ),
                               ),
-                            );
-                          }),
+                            ),
+                          );
+                        },
+                      ),
                     ),
                     scholarships[selectedScholarship]
                             .scholarship_data
@@ -170,124 +171,110 @@ class _ScholarshipState extends State<Scholarship> {
                             children: scholarships[selectedScholarship]
                                 .scholarship_data
                                 .map(
-                            (scholarship) {
-                              return Container(
-                                padding: EdgeInsets.fromLTRB(
-                                  UPdMg10,
-                                  UZeroPixel,
-                                  UPdMg10,
-                                  UZeroPixel,
-                                ),
-                                child: Card(
-                                  elevation: 2,
-                                  shadowColor: ULightGreyColor,
-                                  margin: EdgeInsets.only(
-                                    bottom: UPdMg10,
+                              (scholarship) {
+                                return Container(
+                                  padding: const EdgeInsets.fromLTRB(
+                                    UPdMg10,
+                                    UZeroPixel,
+                                    UPdMg10,
+                                    UZeroPixel,
                                   ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                      URoundedLarge,
+                                  child: Card(
+                                    elevation: 1,
+                                    color: UBackgroundColor,
+                                    shadowColor: ULightGreyColor,
+                                    margin: const EdgeInsets.only(
+                                      bottom: UPdMg10,
                                     ),
-                                  ),
-                                  child: Container(
-                                    padding: EdgeInsets.all(
-                                      UPdMg10,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        URoundedLarge,
+                                      ),
                                     ),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
                                       children: [
                                         Container(
                                           width: UFullWidth,
-                                          child: ScholarshipTitleTheme(
-                                            scholarship.school_name,
-                                          ),
-                                        ),
-                                        Container(
-                                          width: UFullWidth,
-                                          child: ScholarshipTitleTheme(
-                                            scholarship.education_level,
-                                          ),
-                                        ),
-                                        Container(
-                                          width: UFullWidth,
-                                          child: ScholarshipTitleTheme(
-                                            scholarship.major_name,
-                                          ),
-                                        ),
-                                        Container(
-                                          width: UFullWidth,
-                                          child: ScholarshipTitleTheme(
-                                            'ថ្ងៃផុតកំណត់៖ '.tr,
-                                          ),
-                                        ),
-                                        Container(
-                                          width: UFullWidth,
-                                          child: ScholarshipBodyTheme(
-                                            scholarship.expire_date,
-                                          ),
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            InkWell(
-                                              highlightColor: UTransParentColor,
-                                              splashColor: UTransParentColor,
-                                              onTap: () {
-                                                void _launchOutUniUrl() async {
-                                                  if (await canLaunch(
-                                                      scholarship.link)) {
-                                                    await launch(
-                                                      scholarship.link,
-                                                    );
-                                                  } else {
-                                                    throw 'Could not launch ${scholarship.link}';
-                                                  }
-                                                }
-
-                                                _launchOutUniUrl();
-                                              },
-                                              child: Container(
-                                                margin: EdgeInsets.only(
-                                                  top: UPdMg10,
-                                                ),
-                                                alignment: Alignment.center,
-                                                padding: EdgeInsets.symmetric(
-                                                  vertical: UPdMg5,
-                                                  horizontal: UPdMg10,
-                                                ),
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                    URoundedMedium,
-                                                  ),
-                                                  color: UBtnColor,
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                      color: UBtnColor,
-                                                    ),
-                                                  ],
-                                                ),
-                                                child: ScholarshipButtonTheme(
-                                                  'អានបន្ថែម'.tr,
-                                                  UBodySize,
-                                                  UPrimaryColor,
-                                                  UTitleWeight,
-                                                ),
+                                          alignment: Alignment.center,
+                                          decoration: const BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(
+                                                URoundedLarge,
+                                              ),
+                                              topRight: Radius.circular(
+                                                URoundedLarge,
                                               ),
                                             ),
-                                          ],
+                                            color: UBGLightBlue,
+                                          ),
+                                          height: UHeight50,
+                                          child: Text(
+                                            scholarship.school_name,
+                                            textAlign: TextAlign.center,
+                                            style: const TextStyle(
+                                              fontSize: UTitleSize,
+                                              fontWeight: UTitleWeight,
+                                              color: UPrimaryColor,
+                                              height: UTextHeight,
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.all(
+                                            UPdMg10,
+                                          ),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              ScholarshipTitleTheme(
+                                                scholarship.education_level,
+                                              ),
+                                              ScholarshipTitleTheme(
+                                                scholarship.major_name,
+                                              ),
+                                              ScholarshipTitleTheme(
+                                                'ថ្ងៃផុតកំណត់៖ '.tr,
+                                              ),
+                                              ScholarshipBodyTheme(
+                                                scholarship.expire_date,
+                                              ),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.end,
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  buildNavBtn(
+                                                    () {
+                                                      void
+                                                          _launchOutUniUrl() async {
+                                                        if (await canLaunch(
+                                                            scholarship.link)) {
+                                                          await launch(
+                                                            scholarship.link,
+                                                          );
+                                                        } else {
+                                                          throw 'Could not launch ${scholarship.link}';
+                                                        }
+                                                      }
+
+                                                      _launchOutUniUrl();
+                                                    },
+                                                    'អានបន្ថែម',
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                ),
-                              );
-                            },
-                          ).toList())
+                                );
+                              },
+                            ).toList(),
+                          )
                         : buildFutureBuild()
                   ],
                 ),

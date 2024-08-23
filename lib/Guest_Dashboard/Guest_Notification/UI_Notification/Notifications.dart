@@ -4,12 +4,7 @@ import '../../../Custom_AppBar.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
 
-class Notifications extends StatefulWidget {
-  @override
-  _NotificationsState createState() => _NotificationsState();
-}
-
-class _NotificationsState extends State<Notifications> {
+class Notifications extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

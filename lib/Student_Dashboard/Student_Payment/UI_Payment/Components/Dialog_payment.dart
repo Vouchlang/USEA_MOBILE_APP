@@ -19,10 +19,10 @@ class _PaymentDialogState extends State<PaymentDialog> {
     return Dialog(
       elevation: 5,
       backgroundColor: UBackgroundColor,
-      insetPadding: EdgeInsets.all(
+      insetPadding: const EdgeInsets.all(
         UPdMg10,
       ),
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(
             URoundedLarge,
@@ -36,7 +36,7 @@ class _PaymentDialogState extends State<PaymentDialog> {
             right: UZeroPixel,
             top: UZeroPixel,
             height: UHeight50,
-            width: UWidth50,
+            width: UWidth40,
             child: InkWell(
               highlightColor: UTransParentColor,
               splashColor: UTransParentColor,
@@ -61,12 +61,12 @@ class _PaymentDialogState extends State<PaymentDialog> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               vertical: UPdMg10,
               horizontal: UPdMg10,
             ),
             width: UFullWidth,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(
                   URoundedLarge,
@@ -83,7 +83,7 @@ class _PaymentDialogState extends State<PaymentDialog> {
               children: [
                 Text(
                   "ឆ្នាំទី​ ១".tr,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: UPrimaryColor,
                     fontSize: UTitleSize,
                     fontFamily: UKFontFamily,
@@ -93,7 +93,7 @@ class _PaymentDialogState extends State<PaymentDialog> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 4,
           ),
           Column(
@@ -102,7 +102,7 @@ class _PaymentDialogState extends State<PaymentDialog> {
             children: [
               IntrinsicHeight(
                 child: Padding(
-                  padding: EdgeInsets.all(
+                  padding: const EdgeInsets.all(
                     UPdMg5,
                   ),
                   child: Row(
@@ -112,33 +112,29 @@ class _PaymentDialogState extends State<PaymentDialog> {
                         75,
                         'កាលបរិច្ឆេទ',
                       ),
-                      VerticalDivider(
-                        width: UWidth5,
-                        color: UGreyColor,
+                      buildVerticalDivider(
+                        5,
                       ),
                       buildHeaderTitle(
                         75,
                         'លេខវិក័យបត្រ',
                       ),
-                      VerticalDivider(
-                        width: UWidth5,
-                        color: UGreyColor,
+                      buildVerticalDivider(
+                        5,
                       ),
                       buildHeaderTitle(
                         UWidth45,
                         'ទឹកប្រាក់ត្រូវបង់',
                       ),
-                      VerticalDivider(
-                        width: UWidth5,
-                        color: UGreyColor,
+                      buildVerticalDivider(
+                        5,
                       ),
                       buildHeaderTitle(
                         UWidth45,
                         'ទឹកប្រាក់បានបង់',
                       ),
-                      VerticalDivider(
-                        width: UWidth5,
-                        color: UGreyColor,
+                      buildVerticalDivider(
+                        5,
                       ),
                       buildHeaderTitle(
                         UWidth50,
@@ -153,7 +149,7 @@ class _PaymentDialogState extends State<PaymentDialog> {
               /// ! Body Content​2
               ListView.builder(
                 shrinkWrap: true,
-                physics: ScrollPhysics(),
+                physics: const ScrollPhysics(),
                 itemCount: paymentData2.length,
                 itemBuilder: (context, index) {
                   final isLastIndex = index == paymentData2.length - 1;
@@ -168,7 +164,7 @@ class _PaymentDialogState extends State<PaymentDialog> {
                         children: [
                           IntrinsicHeight(
                             child: Container(
-                              padding: EdgeInsets.all(
+                              padding: const EdgeInsets.all(
                                 UPdMg8,
                               ),
                               child: Row(
@@ -181,18 +177,16 @@ class _PaymentDialogState extends State<PaymentDialog> {
                                     paymentData2[index].datePayment2,
                                     UTextColor,
                                   ),
-                                  VerticalDivider(
-                                    width: UWidth5,
-                                    color: UGreyColor,
+                                  buildVerticalDivider(
+                                    5,
                                   ),
                                   buildBody(
                                     75,
                                     paymentData2[index].invoiceNum2,
                                     UTextColor,
                                   ),
-                                  VerticalDivider(
-                                    width: UWidth5,
-                                    color: UGreyColor,
+                                  buildVerticalDivider(
+                                    5,
                                   ),
                                   buildBody(
                                     UWidth45,
@@ -200,18 +194,16 @@ class _PaymentDialogState extends State<PaymentDialog> {
                                     UTextColor,
                                   ),
 
-                                  VerticalDivider(
-                                    width: UWidth5,
-                                    color: UGreyColor,
+                                  buildVerticalDivider(
+                                    5,
                                   ),
                                   buildBody(
                                     UWidth45,
                                     paymentData2[index].amountPaid2,
                                     UTextColor,
                                   ),
-                                  VerticalDivider(
-                                    width: UWidth5,
-                                    color: UGreyColor,
+                                  buildVerticalDivider(
+                                    5,
                                   ),
                                   buildBody(
                                     UWidth50,

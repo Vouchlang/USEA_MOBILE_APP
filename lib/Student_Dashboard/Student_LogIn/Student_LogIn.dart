@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:usea_app/Custom_Widget/CustomText.dart';
-import 'package:usea_app/theme_builder.dart';
+import '../../../Custom_Widget/CustomText.dart';
+import '../../../theme_builder.dart';
 import '../Student_Other_Class/Class_Student_User.dart';
 import '/Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -70,7 +70,7 @@ class _Student_LogInState extends State<Student_LogIn> {
               sourceScreen: st_sourceScreen,
             ),
             transition: Transition.rightToLeftWithFade,
-            duration: Duration(
+            duration: const Duration(
               milliseconds: 100,
             ),
           );
@@ -86,10 +86,10 @@ class _Student_LogInState extends State<Student_LogIn> {
               elevation: 2,
               child: Container(
                 height: 175,
-                margin: EdgeInsets.all(
+                margin: const EdgeInsets.all(
                   UPdMg7,
                 ),
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   horizontal: UPdMg10,
                 ),
                 decoration: BoxDecoration(
@@ -104,26 +104,22 @@ class _Student_LogInState extends State<Student_LogIn> {
                   children: [
                     Text(
                       'គណនីនិស្សិត'.tr,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: UTitleSize16,
                         fontWeight: UTitleWeight,
                       ),
                     ),
-                    SizedBox(
-                      height: UHeight10,
-                    ),
+                    buildHeight10(),
                     Text(
                       'អត្តលេខនិស្សិត ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវ។ សូមបញ្ចូលម្ដងទៀត!!!'
                           .tr,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 13.5,
                       ),
                     ),
-                    SizedBox(
-                      height: UHeight20,
-                    ),
-                    Divider(),
+                    buildHeight20(),
+                    const Divider(),
                     InkWell(
                       highlightColor: UTransParentColor,
                       splashColor: UTransParentColor,
@@ -131,7 +127,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                       child: Container(
                         alignment: Alignment.center,
                         width: UFullWidth,
-                        child: Text(
+                        child: const Text(
                           'OK',
                           style: TextStyle(
                             color: UPrimaryColor,
@@ -160,10 +156,10 @@ class _Student_LogInState extends State<Student_LogIn> {
               elevation: 2,
               child: Container(
                 height: 175,
-                margin: EdgeInsets.all(
-                  7,
+                margin: const EdgeInsets.all(
+                  UPdMg7,
                 ),
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   horizontal: UPdMg10,
                 ),
                 decoration: BoxDecoration(
@@ -178,26 +174,22 @@ class _Student_LogInState extends State<Student_LogIn> {
                   children: [
                     Text(
                       'គណនីនិស្សិត'.tr,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: UTitleSize16,
                         fontWeight: UTitleWeight,
                       ),
                     ),
-                    SizedBox(
-                      height: UHeight10,
-                    ),
+                    buildHeight10(),
                     Text(
                       'Server Error!!!'.tr,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 13.5,
                         fontFamily: UEFontFamily,
                       ),
                     ),
-                    SizedBox(
-                      height: UHeight20,
-                    ),
-                    Divider(),
+                    buildHeight20(),
+                    const Divider(),
                     InkWell(
                       highlightColor: UTransParentColor,
                       splashColor: UTransParentColor,
@@ -205,7 +197,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                       child: Container(
                         alignment: Alignment.center,
                         width: UFullWidth,
-                        child: Text(
+                        child: const Text(
                           'OK',
                           style: TextStyle(
                             color: UPrimaryColor,
@@ -245,7 +237,7 @@ class _Student_LogInState extends State<Student_LogIn> {
         title: 'គណនីនិសិ្សត'.tr,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
           top: UPdMg20,
         ),
         child: Column(
@@ -257,10 +249,8 @@ class _Student_LogInState extends State<Student_LogIn> {
               imageAsset + 'logo3.png',
               scale: UScale15,
             ),
-            SizedBox(
-              height: UHeight15,
-            ),
-            Text(
+            buildHeight15(),
+            const Text(
               'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
               style: TextStyle(
                 fontFamily: 'KhmerOSmuol',
@@ -268,7 +258,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                 fontSize: UTitleSize16,
               ),
             ),
-            Text(
+            const Text(
               'UNIVERSITY OF SOUTH-EAST ASIA',
               style: TextStyle(
                 letterSpacing: 1.5,
@@ -278,29 +268,28 @@ class _Student_LogInState extends State<Student_LogIn> {
                 fontWeight: UBodyWeight,
               ),
             ),
-            SizedBox(
-              height: UHeight15,
-            ),
+            buildHeight15(),
             Form(
               key: _formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Container(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       left: 30,
                     ),
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'អត្តលេខនិស្សិត'.tr,
                       textAlign: TextAlign.left,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: UBodySize,
+                        fontWeight: UTitleWeight,
                       ),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       vertical: UPdMg10,
                       horizontal: 30,
                     ),
@@ -309,33 +298,39 @@ class _Student_LogInState extends State<Student_LogIn> {
                       controller: _textControllerUsername,
                       cursorColor: UGreyColor,
                       cursorWidth: 1,
+                      style: const TextStyle(
+                        fontFamily: UEFontFamily,
+                      ),
                       cursorHeight: UHeight30,
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(
+                        contentPadding: const EdgeInsets.all(
                           UPdMg10,
                         ),
-                        hintText: '\t\tបញ្ចូលអត្តលេខ'.tr,
+                        hintText: '\t\tបញ្ចូលអត្តលេខ\t'.tr,
                         hintStyle: TextStyle(
                           fontSize: UBodySize10,
                           color: UGreyColor,
+                          fontFamily: Get.locale?.languageCode == 'km'
+                              ? UKFontFamily
+                              : UEFontFamily,
                         ),
-                        border: OutlineInputBorder(),
+                        border: const OutlineInputBorder(),
                         suffixIcon: IconButton(
                           onPressed: () {
                             _textControllerUsername.clear();
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.clear,
                             size: 15,
                           ),
                         ),
-                        focusedBorder: OutlineInputBorder(
+                        focusedBorder: const OutlineInputBorder(
                           borderSide: BorderSide(
                             color: UGreyColor,
                           ),
                         ),
                         suffixIconColor: UGreyColor,
-                        errorStyle: TextStyle(
+                        errorStyle: const TextStyle(
                           fontSize: UBodySize10,
                           fontFamily: UKFontFamily,
                         ),
@@ -343,19 +338,20 @@ class _Student_LogInState extends State<Student_LogIn> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       left: 30,
                     ),
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'ពាក្យសម្ងាត់'.tr,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: UBodySize,
+                        fontWeight: UTitleWeight,
                       ),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       vertical: UPdMg10,
                       horizontal: 30,
                     ),
@@ -365,15 +361,21 @@ class _Student_LogInState extends State<Student_LogIn> {
                       controller: _textControllerPsw,
                       cursorColor: UGreyColor,
                       cursorWidth: 1,
+                      style: const TextStyle(
+                        fontFamily: UEFontFamily,
+                      ),
                       cursorHeight: UHeight30,
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(
+                        contentPadding: const EdgeInsets.all(
                           UPdMg10,
                         ),
                         hintText: '\t\tបញ្ចូលពាក្យសម្ងាត់'.tr,
                         hintStyle: TextStyle(
                           fontSize: UBodySize10,
                           color: UGreyColor,
+                          fontFamily: Get.locale?.languageCode == 'km'
+                              ? UKFontFamily
+                              : UEFontFamily,
                         ),
                         border: OutlineInputBorder(),
                         suffixIcon: IconButton(
@@ -391,22 +393,20 @@ class _Student_LogInState extends State<Student_LogIn> {
                             size: 15,
                           ),
                         ),
-                        focusedBorder: OutlineInputBorder(
+                        focusedBorder: const OutlineInputBorder(
                           borderSide: BorderSide(
                             color: UGreyColor,
                           ),
                         ),
                         suffixIconColor: UGreyColor,
-                        errorStyle: TextStyle(
+                        errorStyle: const TextStyle(
                           fontSize: UBodySize10,
                           fontFamily: UKFontFamily,
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: UHeight10,
-                  ),
+                  buildHeight10(),
                 ],
               ),
             ),
@@ -426,7 +426,7 @@ class _Student_LogInState extends State<Student_LogIn> {
                 ),
                 child: Text(
                   'ចូល'.tr,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: UBackgroundColor,
                     fontSize: UTitleSize,
                   ),

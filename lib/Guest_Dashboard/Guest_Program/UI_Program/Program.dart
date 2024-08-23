@@ -213,28 +213,28 @@ class _ProgramState extends State<Program> {
         centerTitle: false,
         title: Text(
           'កម្មវិធីសិក្សា'.tr,
-          style: TextStyle(
+          style: const TextStyle(
             color: UPrimaryColor,
             fontSize: UFontSize18,
             fontWeight: UTitleWeight,
           ),
         ),
+        surfaceTintColor: UBackgroundColor,
         backgroundColor: UBackgroundColor,
+        shadowColor: ULightGreyColor,
         elevation: 1,
-        iconTheme: IconThemeData.fallback(),
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: UPrimaryColor,
-            size: 18,
-          ),
-          onPressed: () => Navigator.of(context).pop(
+        scrolledUnderElevation: 1,
+        iconTheme: const IconThemeData.fallback(),
+        leading: buildBackBtn(
+          () => Navigator.of(context).pop(
             Transition.leftToRightWithFade,
           ),
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.search),
+            icon: const Icon(
+              Icons.search,
+            ),
             color: UPrimaryColor,
             onPressed: () {
               showSearch(
@@ -258,12 +258,14 @@ class _ProgramState extends State<Program> {
               child: Column(
                 children: [
                   programData.isEmpty
-                      ? SizedBox.shrink()
+                      ? const SizedBox.shrink()
                       : ListView.builder(
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: programData.length,
-                          padding: EdgeInsets.only(bottom: UZeroPixel),
+                          padding: const EdgeInsets.only(
+                            bottom: UZeroPixel,
+                          ),
                           itemBuilder: (context, index) {
                             final faculty = programData[index];
                             final facultyName = faculty['faculty_name'];
@@ -272,7 +274,7 @@ class _ProgramState extends State<Program> {
                             final facultyIcon =
                                 faculty['faculty_data']['fac_icon'];
                             if (facultyIcon == null) {
-                              Icon(
+                              const Icon(
                                 Icons.error,
                                 size: 2,
                                 color: UPrimaryColor,
@@ -280,13 +282,13 @@ class _ProgramState extends State<Program> {
                             }
                             return Card(
                               color: UBackgroundColor,
-                              margin: EdgeInsets.fromLTRB(
+                              margin: const EdgeInsets.fromLTRB(
                                 UPdMg10,
                                 UPdMg10,
                                 UPdMg10,
                                 UZeroPixel,
                               ),
-                              elevation: 2,
+                              elevation: 1,
                               shadowColor: UGreyColor,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
@@ -294,7 +296,7 @@ class _ProgramState extends State<Program> {
                                 ),
                               ),
                               child: Container(
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                   vertical: UPdMg5,
                                 ),
                                 child: Theme(
@@ -315,17 +317,21 @@ class _ProgramState extends State<Program> {
                                           scale: 6,
                                           errorBuilder:
                                               (context, error, stackTrace) {
-                                            return Icon(
+                                            return const Icon(
                                               Icons.error,
                                             );
                                           },
                                         ),
-                                        SizedBox(
-                                          width: UWidth10,
-                                        ),
+                                        buildWidth10(),
                                         Expanded(
                                           child: Text(
                                             facultyName.toString().tr,
+                                            style: const TextStyle(
+                                              height: UTextHeight,
+                                              fontWeight: UTitleWeight,
+                                              fontSize: UTitleSize,
+                                              color: UPrimaryColor,
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -336,7 +342,7 @@ class _ProgramState extends State<Program> {
                                       final degreeDetails = major['major_data'];
 
                                       return Container(
-                                        padding: EdgeInsets.fromLTRB(
+                                        padding: const EdgeInsets.fromLTRB(
                                           UPdMg15,
                                           UZeroPixel,
                                           UPdMg15,
@@ -358,7 +364,7 @@ class _ProgramState extends State<Program> {
                                               ),
                                               transition: Transition
                                                   .rightToLeftWithFade,
-                                              duration: Duration(
+                                              duration: const Duration(
                                                 milliseconds: 100,
                                               ),
                                             );
@@ -373,7 +379,7 @@ class _ProgramState extends State<Program> {
                                                 color: UBGLightBlue,
                                               ),
                                             ),
-                                            padding: EdgeInsets.symmetric(
+                                            padding: const EdgeInsets.symmetric(
                                               vertical: UPdMg8,
                                               horizontal: UPdMg5,
                                             ),
@@ -386,15 +392,14 @@ class _ProgramState extends State<Program> {
                                                   child: Text(
                                                     majorName.toString().tr,
                                                     textAlign: TextAlign.left,
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontSize: UTitleSize,
                                                       color: UTextColor,
+                                                      height: UTextHeight,
                                                     ),
                                                   ),
                                                 ),
-                                                SizedBox(
-                                                  width: UWidth15,
-                                                ),
+                                                buildWidth15(),
                                                 Icon(
                                                   Icons.arrow_forward_ios,
                                                   size: 14,
@@ -414,12 +419,12 @@ class _ProgramState extends State<Program> {
                           },
                         ),
                   programACCA.isEmpty
-                      ? SizedBox.shrink()
+                      ? const SizedBox.shrink()
                       : ListView.builder(
                           physics: NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: programACCA.length,
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                             bottom: UPdMg10,
                           ),
                           itemBuilder: (BuildContext context, index) {
@@ -427,13 +432,13 @@ class _ProgramState extends State<Program> {
                             final fac_icon = program.fac_data[0].fac_icon;
                             return Card(
                               color: UBackgroundColor,
-                              margin: EdgeInsets.fromLTRB(
+                              margin: const EdgeInsets.fromLTRB(
                                 UPdMg10,
                                 UPdMg10,
                                 UPdMg10,
                                 UZeroPixel,
                               ),
-                              elevation: 2,
+                              elevation: 1,
                               shadowColor: UGreyColor,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
@@ -441,7 +446,7 @@ class _ProgramState extends State<Program> {
                                 ),
                               ),
                               child: Container(
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                   vertical: UPdMg5,
                                 ),
                                 child: Theme(
@@ -462,23 +467,27 @@ class _ProgramState extends State<Program> {
                                           scale: UScale6,
                                           errorBuilder:
                                               (context, error, stackTrace) {
-                                            return Icon(
+                                            return const Icon(
                                               Icons.error,
                                             );
                                           },
                                         ),
-                                        SizedBox(
-                                          width: UWidth10,
-                                        ),
+                                        buildWidth10(),
                                         Text(
                                           program.fac_name,
+                                          style: const TextStyle(
+                                            color: UPrimaryColor,
+                                            fontSize: UTitleSize,
+                                            fontWeight: UTitleWeight,
+                                            height: UTextHeight,
+                                          ),
                                         ),
                                       ],
                                     ),
                                     children: program.fac_data.map((major) {
                                       final majorData = major.major_data[index];
                                       return Container(
-                                        padding: EdgeInsets.fromLTRB(
+                                        padding: const EdgeInsets.fromLTRB(
                                           UPdMg15,
                                           UZeroPixel,
                                           UPdMg15,
@@ -498,7 +507,7 @@ class _ProgramState extends State<Program> {
                                               ),
                                               transition: Transition
                                                   .rightToLeftWithFade,
-                                              duration: Duration(
+                                              duration: const Duration(
                                                 milliseconds: 100,
                                               ),
                                             );
@@ -513,7 +522,7 @@ class _ProgramState extends State<Program> {
                                                 color: UBGLightBlue,
                                               ),
                                             ),
-                                            padding: EdgeInsets.symmetric(
+                                            padding: const EdgeInsets.symmetric(
                                               vertical: UPdMg8,
                                               horizontal: UPdMg5,
                                             ),
@@ -528,15 +537,13 @@ class _ProgramState extends State<Program> {
                                                         .toString()
                                                         .tr,
                                                     textAlign: TextAlign.left,
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontSize: UTitleSize,
                                                       color: UTextColor,
                                                     ),
                                                   ),
                                                 ),
-                                                SizedBox(
-                                                  width: UWidth15,
-                                                ),
+                                                buildWidth15(),
                                                 Icon(
                                                   Icons.arrow_forward_ios,
                                                   size: 14,
@@ -583,7 +590,7 @@ class MajorSearchDelegate extends SearchDelegate<String> {
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
-        icon: Icon(
+        icon: const Icon(
           Icons.clear,
           color: UPrimaryColor,
           size: 18,
@@ -606,7 +613,7 @@ class MajorSearchDelegate extends SearchDelegate<String> {
         context,
         majorName,
       );
-      return Container();
+      return const SizedBox.shrink();
     }
 
     final regularProgramResults = filteredMajorNames
@@ -652,12 +659,12 @@ class MajorSearchDelegate extends SearchDelegate<String> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.all(
+          padding: const EdgeInsets.all(
             UPdMg8,
           ),
           child: Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: UFontSize18,
               color: UPrimaryColor,
@@ -709,7 +716,7 @@ class MajorSearchDelegate extends SearchDelegate<String> {
           educationNames: majorData.subject_data,
         ),
         transition: Transition.rightToLeftWithFade,
-        duration: Duration(
+        duration: const Duration(
           milliseconds: 100,
         ),
       );
@@ -726,7 +733,7 @@ class MajorSearchDelegate extends SearchDelegate<String> {
             educationNames: educationNames,
           ),
           transition: Transition.rightToLeftWithFade,
-          duration: Duration(
+          duration: const Duration(
             milliseconds: 100,
           ),
         );
@@ -750,40 +757,50 @@ class MajorSearchDelegate extends SearchDelegate<String> {
         )
         .toList();
 
-    return ListView.builder(
-      itemCount: suggestionList.length,
-      itemBuilder: (context, index) {
-        final majorName = suggestionList[index];
-
-        return ListTile(
-          title: Text(
-            majorName,
-          ),
-          onTap: () {
-            navigateToMajorDetails(
-              context,
+    return Container(
+      color: USecondaryColor,
+      child: ListView.builder(
+        itemCount: suggestionList.length,
+        itemBuilder: (context, index) {
+          final majorName = suggestionList[index];
+          return ListTile(
+            minTileHeight: UHeight40,
+            title: Text(
               majorName,
-            );
-          },
-        );
-      },
+              style: const TextStyle(
+                fontSize: UTitleSize,
+              ),
+            ),
+            onTap: () {
+              navigateToMajorDetails(
+                context,
+                majorName,
+              );
+            },
+          );
+        },
+      ),
     );
   }
 
+// Searching
   @override
   ThemeData appBarTheme(BuildContext context) {
     final theme = Theme.of(context);
     return theme.copyWith(
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
+        surfaceTintColor: UBackgroundColor,
         backgroundColor: UBackgroundColor,
+        shadowColor: ULightGreyColor,
         elevation: 1,
+        scrolledUnderElevation: 1,
         iconTheme: IconThemeData.fallback(),
         centerTitle: false,
         titleSpacing: -10,
       ),
-      inputDecorationTheme: InputDecorationTheme(
+      inputDecorationTheme: const InputDecorationTheme(
         border: InputBorder.none,
-        fillColor: UBackgroundColor,
+        fillColor: UTransParentColor,
         activeIndicatorBorder: BorderSide(
           color: UPrimaryColor,
         ),
@@ -804,7 +821,7 @@ class MajorSearchDelegate extends SearchDelegate<String> {
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-      icon: Icon(
+      icon: const Icon(
         Icons.arrow_back_ios,
         color: UPrimaryColor,
         size: 18,

@@ -146,8 +146,9 @@ class _AttendanceListState extends State<AttendanceList> {
           : RefreshIndicator(
               onRefresh: _refreshData,
               color: UPrimaryColor,
+              backgroundColor: UBackgroundColor,
               child: Padding(
-                padding: EdgeInsets.all(
+                padding: const EdgeInsets.all(
                   UPdMg5,
                 ),
                 child: ListView(
@@ -158,74 +159,74 @@ class _AttendanceListState extends State<AttendanceList> {
                       height: 70,
                       width: UFullWidth,
                       child: ListView.builder(
-                          shrinkWrap: true,
-                          physics: BouncingScrollPhysics(),
-                          itemCount: attendances.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            final isLastIndex = index == attendances.length - 1;
-                            return GestureDetector(
-                              onTap: () {
-                                setState(
-                                  () {
-                                    selectedYearIndex = index;
-                                  },
-                                );
-                              },
-                              child: AnimatedContainer(
-                                alignment: Alignment.center,
-                                duration: Duration(
-                                  milliseconds: 300,
+                        shrinkWrap: true,
+                        physics: BouncingScrollPhysics(),
+                        itemCount: attendances.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          final isLastIndex = index == attendances.length - 1;
+                          return GestureDetector(
+                            onTap: () {
+                              setState(
+                                () {
+                                  selectedYearIndex = index;
+                                },
+                              );
+                            },
+                            child: AnimatedContainer(
+                              alignment: Alignment.center,
+                              duration: const Duration(
+                                milliseconds: 300,
+                              ),
+                              margin: EdgeInsets.fromLTRB(
+                                UPdMg10,
+                                UPdMg10,
+                                isLastIndex ? UPdMg10 : UZeroPixel,
+                                UPdMg10,
+                              ),
+                              padding: const EdgeInsets.all(
+                                UPdMg10,
+                              ),
+                              width: 120,
+                              decoration: BoxDecoration(
+                                color: selectedYearIndex == index
+                                    ? UPrimaryColor
+                                    : UBackgroundColor,
+                                borderRadius: BorderRadius.circular(
+                                  URoundedMedium,
                                 ),
-                                margin: EdgeInsets.fromLTRB(
-                                  UPdMg10,
-                                  UPdMg10,
-                                  isLastIndex ? UPdMg10 : UZeroPixel,
-                                  UPdMg10,
-                                ),
-                                padding: EdgeInsets.all(
-                                  UPdMg10,
-                                ),
-                                width: 120,
-                                decoration: BoxDecoration(
+                                boxShadow: [
+                                  const BoxShadow(
+                                    blurRadius: 1,
+                                    color: ULightGreyColor,
+                                    offset: Offset(0, 1),
+                                  ),
+                                ],
+                              ),
+                              child: Text(
+                                'ឆ្នាំទី​ ${attendances[index].year_no}'.tr,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: UTitleSize,
+                                  fontWeight: UTitleWeight,
                                   color: selectedYearIndex == index
-                                      ? UPrimaryColor
-                                      : UBackgroundColor,
-                                  borderRadius: BorderRadius.circular(
-                                    URoundedMedium,
-                                  ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      blurRadius: 1,
-                                      color: ULightGreyColor,
-                                      offset: Offset(0, 1),
-                                    ),
-                                  ],
-                                ),
-                                child: Text(
-                                  'ឆ្នាំទី​ ${attendances[index].year_no}'.tr,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: UTitleSize,
-                                    color: selectedYearIndex == index
-                                        ? UBackgroundColor
-                                        : UTextColor,
-                                  ),
+                                      ? UBackgroundColor
+                                      : UTextColor,
                                 ),
                               ),
-                            );
-                          }),
+                            ),
+                          );
+                        },
+                      ),
                     ),
-                    SizedBox(
-                      height: UHeight5,
-                    ),
+                    buildHeight5(),
                     Padding(
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         horizontal: UPdMg10,
                         vertical: UPdMg5,
                       ),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           buildAttList(
                             'យឺត',
@@ -252,11 +253,9 @@ class _AttendanceListState extends State<AttendanceList> {
                           .map(
                             (year) => Column(
                               children: [
-                                SizedBox(
-                                  height: UHeight10,
-                                ),
+                                buildHeight10(),
                                 Padding(
-                                  padding: EdgeInsets.all(
+                                  padding: const EdgeInsets.all(
                                     UPdMg5,
                                   ),
                                   child: Center(
@@ -265,18 +264,23 @@ class _AttendanceListState extends State<AttendanceList> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(
-                                  height: UHeight5,
-                                ),
+                                buildHeight5(),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: year.subjects
                                       .map(
                                         (subject) => Card(
+                                          color: UBackgroundColor,
                                           shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadius.circular(
                                               URoundedLarge,
                                             ),
+                                          ),
+                                          margin: const EdgeInsets.fromLTRB(
+                                            UPdMg5,
+                                            UZeroPixel,
+                                            UPdMg5,
+                                            UPdMg10,
                                           ),
                                           elevation: 1,
                                           child: InkWell(
@@ -294,7 +298,7 @@ class _AttendanceListState extends State<AttendanceList> {
                                                 ),
                                                 transition: Transition
                                                     .rightToLeftWithFade,
-                                                duration: Duration(
+                                                duration: const Duration(
                                                   milliseconds: 100,
                                                 ),
                                               );
@@ -324,7 +328,8 @@ class _AttendanceListState extends State<AttendanceList> {
                                                                   'km'
                                                               ? subject.name_kh
                                                               : subject.name_en,
-                                                          style: TextStyle(
+                                                          style:
+                                                              const TextStyle(
                                                             height: 1.5,
                                                             fontSize:
                                                                 UTitleSize,
@@ -334,9 +339,7 @@ class _AttendanceListState extends State<AttendanceList> {
                                                           ),
                                                         ),
                                                       ),
-                                                      SizedBox(
-                                                        height: UHeight5,
-                                                      ),
+                                                      buildHeight5(),
                                                       Row(
                                                         children: [
                                                           buildCHText(
@@ -355,9 +358,7 @@ class _AttendanceListState extends State<AttendanceList> {
                                                       )
                                                     ],
                                                   ),
-                                                  SizedBox(
-                                                    width: UWidth5,
-                                                  ),
+                                                  buildWidth5(),
                                                   buildNumAtt(
                                                     subject.attendance_al,
                                                     UYellowColor,

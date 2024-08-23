@@ -2,14 +2,33 @@
 
 import 'package:flutter/material.dart';
 
+// ThemeData lightmode = ThemeData(
+//   brightness: Brightness.light,
+//   colorScheme: ColorScheme.light(
+//     background: USecondaryColor,
+//     primary: UTextColor,
+//     secondary: USecondaryColor,
+//   ),
+// );
+// ThemeData darkmode = ThemeData(
+//   brightness: Brightness.dark,
+//   colorScheme: ColorScheme.dark(
+//     background: UTextColor,
+//     primary: USecondaryColor,
+//     secondary: UTextColor,
+//   ),
+// );
+// -------------------------------------------------
+
 // * @ Colors Theme
-const UPrimaryColor = Color(0xff002060);
+const UPrimaryColor = Color(0xFF002060);
 const USecondaryColor = Color(0xFFF5F7FE);
 const UYellowColor = Colors.amber;
 const UOrangeColor = Color(0xffDF713F);
 const URedColor = Color(0xffD71818);
-const UScoreColor = Color(0xff38920D);
-const UTextColor = Color(0xff000000);
+const UScoreColor = Color.fromRGBO(56, 146, 13, 1);
+const UActiveColor = Color(0xFF27D800);
+const UTextColor = Color.fromARGB(255, 0, 0, 0);
 const UGreyColor = Colors.grey;
 const ULightGreyColor = Color.fromARGB(255, 200, 200, 200);
 const UBtnColor = Color(0x142D74F5);
@@ -25,6 +44,9 @@ const UBackgroundColor = Color(0xffFFFFFF);
 // zero value
 const UZeroPixel = 0.0;
 
+// * @ Text Height
+const UTextHeight = 1.7;
+
 //  * @ FontSize & Weight Theme
 const UFontSize18 = 18.0;
 const UTitleSize16 = 16.0;
@@ -36,7 +58,8 @@ const FontWeight UTitleWeight = FontWeight.w600;
 const FontWeight UBodyWeight = FontWeight.w500;
 
 // * @ FontFamily
-const UKFontFamily = "KhmerOSbattambang";
+// const UKFontFamily = "KhmerOSBattambang";
+const UKFontFamily = "Battambang";
 const UEFontFamily = "Poppins";
 
 //  * @ Scale Theme
