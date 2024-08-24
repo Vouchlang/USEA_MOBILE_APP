@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -239,8 +240,9 @@ class _News_EventState extends State<News_Event> {
                                                 width: double.maxFinite,
                                                 fit: BoxFit.cover,
                                               )
-                                            : Image.network(
-                                                news_event[selectedNewsEvent]
+                                            : CachedNetworkImage(
+                                                imageUrl: news_event[
+                                                        selectedNewsEvent]
                                                     .events[(currentPage *
                                                             resultsPerPage) +
                                                         i]

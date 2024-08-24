@@ -1,5 +1,6 @@
 // ignore_for_file: override_on_non_overriding_member, unnecessary_null_comparison
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -312,15 +313,14 @@ class _ProgramState extends State<Program> {
                                     ),
                                     title: Row(
                                       children: [
-                                        Image.network(
-                                          facultyIcon,
-                                          scale: 6,
-                                          errorBuilder:
-                                              (context, error, stackTrace) {
-                                            return const Icon(
-                                              Icons.error,
-                                            );
-                                          },
+                                        CachedNetworkImage(
+                                          imageUrl: facultyIcon,
+                                          scale: UScale6,
+                                          errorWidget: (context, url, error) =>
+                                              const Icon(
+                                            Icons.error,
+                                            color: Colors.red,
+                                          ),
                                         ),
                                         buildWidth10(),
                                         Expanded(
@@ -462,15 +462,12 @@ class _ProgramState extends State<Program> {
                                     ),
                                     title: Row(
                                       children: [
-                                        Image.network(
-                                          fac_icon,
+                                        CachedNetworkImage(
+                                          imageUrl: fac_icon,
                                           scale: UScale6,
-                                          errorBuilder:
-                                              (context, error, stackTrace) {
-                                            return const Icon(
-                                              Icons.error,
-                                            );
-                                          },
+                                          errorWidget: (context, url, error) =>
+                                              const Icon(Icons.error,
+                                                  color: UPrimaryColor),
                                         ),
                                         buildWidth10(),
                                         Text(

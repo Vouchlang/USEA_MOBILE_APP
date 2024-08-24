@@ -19,8 +19,8 @@ class _ContactState extends State<Contact> {
 
   @override
   void initState() {
-    addCustomIcon();
     super.initState();
+    addCustomIcon();
   }
 
   void _onMapCreated(GoogleMapController controller) {
@@ -50,7 +50,8 @@ class _ContactState extends State<Contact> {
   void addCustomIcon() {
     BitmapDescriptor.asset(
       const ImageConfiguration(),
-      imageAsset + 'usea_logo.png',
+      // imageAsset +
+      'assets/image/new_usea_logo.png',
       height: UHeight35,
     ).then((icon) {
       setState(() {

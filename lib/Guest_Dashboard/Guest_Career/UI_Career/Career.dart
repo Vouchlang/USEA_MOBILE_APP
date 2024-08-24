@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -131,8 +132,8 @@ class _CareerState extends State<Career> {
                                           ? Image.asset(
                                               imageAsset + 'Error_Image.jpg',
                                             )
-                                          : Image.network(
-                                              career[(currentPage *
+                                          : CachedNetworkImage(
+                                              imageUrl: career[(currentPage *
                                                           resultsPerPage) +
                                                       i]
                                                   .logo,

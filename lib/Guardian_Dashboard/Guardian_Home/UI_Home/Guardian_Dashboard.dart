@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -335,7 +336,8 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
                                   child: Row(
                                     children: [
                                       CircleAvatar(
-                                        backgroundImage: NetworkImage(
+                                        backgroundImage:
+                                            CachedNetworkImageProvider(
                                           _dataGdDetail[index].profile_pic,
                                         ),
                                         radius: 50,

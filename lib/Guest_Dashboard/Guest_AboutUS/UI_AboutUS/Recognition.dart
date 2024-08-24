@@ -92,15 +92,17 @@ class _RecognitionState extends State<Recognition> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          height: 175,
-                          width: 125,
-                          child: Image.network(
-                            recognition[index].image.isEmpty
-                                ? imageAsset + 'Error_Image.jpg'
-                                : recognition[index].image,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
+                            height: 175,
+                            width: 125,
+                            child: recognition[index].image.isEmpty
+                                ? Image.asset(
+                                    imageAsset + 'Error_Image.jpg',
+                                    fit: BoxFit.cover,
+                                  )
+                                : Image.network(
+                                    recognition[index].image,
+                                    fit: BoxFit.cover,
+                                  )),
                         buildWidth10(),
                         Expanded(
                           child: Column(

@@ -13,7 +13,9 @@ void main() async {
   String font = prefs.getString('font') ?? UKFontFamily;
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
-      statusBarColor: UBackgroundColor,
+      statusBarColor: URedColor,
+      statusBarBrightness: Brightness.dark,
+      statusBarIconBrightness: Brightness.light,
     ),
   );
   SystemChrome.setPreferredOrientations([

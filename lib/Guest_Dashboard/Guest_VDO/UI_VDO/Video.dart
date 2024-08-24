@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -191,7 +192,7 @@ class _VideoState extends State<Video_UI> {
                                     child: Container(
                                       decoration: BoxDecoration(
                                         image: DecorationImage(
-                                          image: NetworkImage(
+                                          image: CachedNetworkImageProvider(
                                             vdo[(currentPage * resultsPerPage) +
                                                     i]
                                                 .youtube_thumbnail,

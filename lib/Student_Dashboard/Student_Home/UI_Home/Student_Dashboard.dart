@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'dart:convert';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -262,8 +263,8 @@ class _Student_HomeState extends State<Student_Home> {
                             child: Container(
                               width: UWidth40,
                               height: UHeight40,
-                              child: Image.network(
-                                _dataStDetail[0].profile_pic,
+                              child: CachedNetworkImage(
+                                imageUrl: _dataStDetail[0].profile_pic,
                                 fit: BoxFit.fitWidth,
                                 alignment: Alignment.topCenter,
                               ),

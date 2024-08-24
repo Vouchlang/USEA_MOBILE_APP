@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -294,8 +295,9 @@ class _Student_DetailState extends State<Student_Detail> {
                                       child: Container(
                                         width: 100,
                                         height: 100,
-                                        child: Image.network(
-                                          _dataStDetail[index].profile_pic,
+                                        child: CachedNetworkImage(
+                                          imageUrl:
+                                              _dataStDetail[index].profile_pic,
                                           fit: BoxFit.fitWidth,
                                           alignment: Alignment.topCenter,
                                         ),

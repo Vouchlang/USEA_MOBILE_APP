@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -322,8 +323,8 @@ class _Guest_HomeState extends State<Guest_Home> {
                                 borderRadius: BorderRadius.circular(
                                   URoundedLarge,
                                 ),
-                                child: Image.network(
-                                  image_slide,
+                                child: CachedNetworkImage(
+                                  imageUrl: image_slide,
                                   fit: BoxFit.fill,
                                 ),
                               ),
