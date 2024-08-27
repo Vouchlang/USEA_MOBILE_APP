@@ -30,9 +30,7 @@ class Custom_AppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       iconTheme: const IconThemeData.fallback(),
       leading: buildBackBtn(
-        () => Navigator.of(context).pop(
-          Transition.leftToRightWithFade,
-        ),
+        () => Get.back(),
       ),
     );
   }

@@ -29,18 +29,15 @@ class _Program_SHCState extends State<Program_SHC> {
       appBar: Custom_AppBar(
         title: widget.majorName.tr,
       ),
-      body: Column(
+      body: ListView(
+        padding: const EdgeInsets.all(
+          UPdMg8,
+        ),
+        physics: BouncingScrollPhysics(),
         children: [
-          Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(
-                UPdMg8,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: _buildSubjectList(),
-              ),
-            ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: _buildSubjectList(),
           ),
         ],
       ),

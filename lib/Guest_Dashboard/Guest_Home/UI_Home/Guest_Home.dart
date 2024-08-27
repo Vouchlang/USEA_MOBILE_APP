@@ -1,11 +1,9 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '../Class_ImageSlide/Class_ImageSlide.dart';
 import '/Guest_Dashboard/Guest_ChangeLanguage/Change_Language.dart';
@@ -24,7 +22,6 @@ class Guest_Home extends StatefulWidget {
 }
 
 class _Guest_HomeState extends State<Guest_Home> {
-  final Uri urlWeb = Uri.parse(APIUrlGuest + "en/Pages/index.php");
   late List<Class_Image> image_slides = [];
   int activeIndex = 0;
 
@@ -70,8 +67,8 @@ class _Guest_HomeState extends State<Guest_Home> {
 
   void _launchFacebookPage() async {
     final String facebookPageUrl = "https://www.facebook.com/usea.edu.kh";
-    if (await canLaunch(facebookPageUrl)) {
-      await launch(facebookPageUrl);
+    if (await canLaunchUrlString(facebookPageUrl)) {
+      await launchUrlString(facebookPageUrl);
     } else {
       throw 'Could not launch $facebookPageUrl';
     }
@@ -81,8 +78,8 @@ class _Guest_HomeState extends State<Guest_Home> {
     final String instagramUrl =
         'https://www.instagram.com/university_of_south_east_asia/';
 
-    if (await canLaunch(instagramUrl)) {
-      await launch(instagramUrl);
+    if (await canLaunchUrlString(instagramUrl)) {
+      await launchUrlString(instagramUrl);
     } else {
       throw 'Could not launch $instagramUrl';
     }
@@ -91,8 +88,8 @@ class _Guest_HomeState extends State<Guest_Home> {
   void _launchYoutube() async {
     final String urlYt = "https://youtube.com/@usea-edu-kh?si=O-C7zB1vDD6KjP0z";
 
-    if (await canLaunch(urlYt)) {
-      await launch(urlYt);
+    if (await canLaunchUrlString(urlYt)) {
+      await launchUrlString(urlYt);
     } else {
       throw 'Could not launch $urlYt';
     }
@@ -101,8 +98,8 @@ class _Guest_HomeState extends State<Guest_Home> {
   void openTelegramGroup() async {
     final String telegramUrl = "https://t.me/university_of_south_east_asia";
 
-    if (await canLaunch(telegramUrl)) {
-      await launch(telegramUrl);
+    if (await canLaunchUrlString(telegramUrl)) {
+      await launchUrlString(telegramUrl);
     } else {
       throw 'Could not launch $telegramUrl';
     }
@@ -111,8 +108,8 @@ class _Guest_HomeState extends State<Guest_Home> {
   void openTiktok() async {
     final String tiktokUrl = "https://www.tiktok.com/@usea_siemreap";
 
-    if (await canLaunch(tiktokUrl)) {
-      await launch(tiktokUrl);
+    if (await canLaunchUrlString(tiktokUrl)) {
+      await launchUrlString(tiktokUrl);
     } else {
       throw 'Could not launch $tiktokUrl';
     }
@@ -143,6 +140,7 @@ class _Guest_HomeState extends State<Guest_Home> {
         automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             buildUniversityName(
               UPrimaryColor,
@@ -229,6 +227,7 @@ class _Guest_HomeState extends State<Guest_Home> {
       ),
       body: Center(
         child: ListView(
+          physics: BouncingScrollPhysics(),
           shrinkWrap: true,
           children: [
             Container(
@@ -355,12 +354,12 @@ class _Guest_HomeState extends State<Guest_Home> {
               children: List.generate(
                 guest_home_screen.length,
                 (index) => Card(
-                  elevation: 1.5,
+                  elevation: 2,
                   color: UBackgroundColor,
                   shadowColor: ULightGreyColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(
-                      UPdMg10,
+                      URoundedLarge,
                     ),
                   ),
                   child: InkWell(
@@ -455,7 +454,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                       imageAsset + 'SM_Telegram.png',
                     ),
                     BuildContainerSM(
-                      () => launchUrl(urlWeb),
+                      () => launchUrlString(APIUrlGuest + "en/Pages/index.php"),
                       imageAsset + 'SM_Website.png',
                     ),
                     BuildContainerSM(

@@ -1382,50 +1382,57 @@ Widget buildTotalCredit(
 Widget buildUniversityName(
   Color uniNameCol,
 ) {
-  return Row(
-    crossAxisAlignment: CrossAxisAlignment.center,
-    children: [
-      Card(
-        shape: RoundedRectangleBorder(
-          side: const BorderSide(
-            color: UBackgroundColor,
-            width: 1,
-          ),
-          borderRadius: BorderRadius.circular(
-            50,
-          ),
-        ),
-        child: Image.asset(
-          imageAsset + 'usea_logo.png',
-          scale: 40,
-        ),
-      ),
-      buildWidth5(),
-      Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
-            style: TextStyle(
-              color: uniNameCol,
-              fontSize: 11,
-              fontFamily: 'KhmerOSmuol',
+  return Expanded(
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Card(
+          shape: RoundedRectangleBorder(
+            side: const BorderSide(
+              color: UBackgroundColor,
+              width: 1,
+            ),
+            borderRadius: BorderRadius.circular(
+              50,
             ),
           ),
-          buildHeight5(),
-          Text(
-            'UNIVERSITY OF SOUTH-EAST ASIA',
-            style: TextStyle(
-              color: uniNameCol,
-              fontSize: 13,
-              fontFamily: UEFontFamily,
-              fontWeight: UBodyWeight,
-            ),
+          child: Image.asset(
+            imageAsset + 'usea_logo.png',
+            scale: 40,
           ),
-        ],
-      ),
-    ],
+        ),
+        buildWidth5(),
+        Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
+                style: TextStyle(
+                  color: uniNameCol,
+                  fontSize: 11,
+                  fontFamily: 'KhmerOSmuol',
+                ),
+              ),
+              // buildHeight5(),
+              SizedBox(
+                height: 2,
+              ),
+              Text(
+                'UNIVERSITY OF SOUTH-EAST ASIA',
+                style: TextStyle(
+                  color: uniNameCol,
+                  fontSize: 13,
+                  fontFamily: UEFontFamily,
+                  fontWeight: UBodyWeight,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
   );
 }
 // *@ End University Name

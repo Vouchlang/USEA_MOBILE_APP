@@ -107,485 +107,474 @@ class _News_EventState extends State<News_Event> {
         alignment: Alignment.topCenter,
         child: news_event.isEmpty
             ? buildFutureBuild()
-            : SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    buildHeight5(),
-                    Container(
-                      height: 70,
-                      alignment: Alignment.center,
-                      width: UFullWidth,
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: news_event.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          final isLastIndex = index == news_event.length - 1;
+            : ListView(
+                physics: BouncingScrollPhysics(),
+                children: [
+                  buildHeight5(),
+                  Container(
+                    height: 70,
+                    alignment: Alignment.center,
+                    width: UFullWidth,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: news_event.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        final isLastIndex = index == news_event.length - 1;
 
-                          return GestureDetector(
-                            onTap: () {
-                              setState(
-                                () {
-                                  selectedNewsEvent = index;
-                                },
-                              );
-                            },
-                            child: AnimatedContainer(
-                              alignment: Alignment.center,
-                              duration: const Duration(
-                                milliseconds: 300,
+                        return GestureDetector(
+                          onTap: () {
+                            setState(
+                              () {
+                                selectedNewsEvent = index;
+                                startPage = 0;
+                                currentPage = 0;
+                              },
+                            );
+                          },
+                          child: AnimatedContainer(
+                            alignment: Alignment.center,
+                            duration: const Duration(
+                              milliseconds: 300,
+                            ),
+                            margin: EdgeInsets.fromLTRB(
+                              UPdMg10,
+                              UPdMg10,
+                              isLastIndex ? UPdMg10 : UZeroPixel,
+                              UPdMg10,
+                            ),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 35,
+                            ),
+                            // width: 170,
+                            decoration: BoxDecoration(
+                              color: selectedNewsEvent == index
+                                  ? UPrimaryColor
+                                  : UBackgroundColor,
+                              borderRadius: BorderRadius.circular(
+                                URoundedMedium,
                               ),
-                              margin: EdgeInsets.fromLTRB(
-                                UPdMg10,
-                                UPdMg10,
-                                isLastIndex ? UPdMg10 : UZeroPixel,
-                                UPdMg10,
-                              ),
-                              width: 165,
-                              decoration: BoxDecoration(
+                              boxShadow: [
+                                const BoxShadow(
+                                  blurRadius: 1,
+                                  color: ULightGreyColor,
+                                  offset: Offset(0, 1),
+                                ),
+                              ],
+                            ),
+                            child: Text(
+                              news_event[index].event_name.tr,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: UTitleSize,
+                                fontWeight: UTitleWeight,
                                 color: selectedNewsEvent == index
-                                    ? UPrimaryColor
-                                    : UBackgroundColor,
-                                borderRadius: BorderRadius.circular(
-                                  URoundedMedium,
-                                ),
-                                boxShadow: [
-                                  const BoxShadow(
-                                    blurRadius: 1,
-                                    color: ULightGreyColor,
-                                    offset: Offset(0, 1),
-                                  ),
-                                ],
-                              ),
-                              child: Text(
-                                news_event[index].event_name.tr,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: UTitleSize,
-                                  fontWeight: UTitleWeight,
-                                  color: selectedNewsEvent == index
-                                      ? UBackgroundColor
-                                      : UTextColor,
-                                ),
+                                    ? UBackgroundColor
+                                    : UTextColor,
                               ),
                             ),
-                          );
-                        },
-                      ),
+                          ),
+                        );
+                      },
                     ),
-                    Column(
-                      children: [
-                        for (int i = 0;
-                            i <
-                                min(
-                                  resultsPerPage,
-                                  (news_event[selectedNewsEvent].events.length -
-                                      (currentPage * resultsPerPage)),
-                                );
-                            i++)
-                          Container(
-                            padding: const EdgeInsets.fromLTRB(
-                              UPdMg10,
-                              UZeroPixel,
-                              UPdMg10,
-                              UZeroPixel,
+                  ),
+                  Column(
+                    children: [
+                      for (int i = 0;
+                          i <
+                              min(
+                                resultsPerPage,
+                                (news_event[selectedNewsEvent].events.length -
+                                    (currentPage * resultsPerPage)),
+                              );
+                          i++)
+                        Container(
+                          padding: const EdgeInsets.fromLTRB(
+                            UPdMg10,
+                            UZeroPixel,
+                            UPdMg10,
+                            UZeroPixel,
+                          ),
+                          child: Card(
+                            color: UBackgroundColor,
+                            margin: const EdgeInsets.only(
+                              bottom: UPdMg10,
                             ),
-                            child: Card(
-                              color: UBackgroundColor,
-                              margin: const EdgeInsets.only(
-                                bottom: UPdMg10,
+                            elevation: 1,
+                            shadowColor: ULightGreyColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                URoundedLarge,
                               ),
-                              elevation: 1,
-                              shadowColor: ULightGreyColor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                  URoundedLarge,
-                                ),
-                              ),
-                              child: InkWell(
-                                highlightColor: UTransParentColor,
-                                splashColor: UTransParentColor,
-                                onTap: () {
-                                  Get.to(
-                                    () => News_Event_Detail(
-                                      data: news_event[selectedNewsEvent]
-                                              .events[
-                                          (currentPage * resultsPerPage) + i],
+                            ),
+                            child: InkWell(
+                              highlightColor: UTransParentColor,
+                              splashColor: UTransParentColor,
+                              onTap: () {
+                                Get.to(
+                                  () => News_Event_Detail(
+                                    data: news_event[selectedNewsEvent].events[
+                                        (currentPage * resultsPerPage) + i],
+                                  ),
+                                  transition: Transition.rightToLeftWithFade,
+                                  duration: const Duration(
+                                    milliseconds: 100,
+                                  ),
+                                );
+                              },
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Container(
+                                    height: 200,
+                                    width: double.maxFinite,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(
+                                        URoundedLarge,
+                                      ),
+                                      child: news_event[selectedNewsEvent]
+                                              .events[(currentPage *
+                                                      resultsPerPage) +
+                                                  i]
+                                              .image
+                                              .isEmpty
+                                          ? Image.asset(
+                                              imageAsset + 'Error_Image.jpg',
+                                              width: double.maxFinite,
+                                              fit: BoxFit.cover,
+                                            )
+                                          : CachedNetworkImage(
+                                              imageUrl:
+                                                  news_event[selectedNewsEvent]
+                                                      .events[(currentPage *
+                                                              resultsPerPage) +
+                                                          i]
+                                                      .image,
+                                              width: double.maxFinite,
+                                              fit: BoxFit.cover,
+                                            ),
                                     ),
-                                    transition: Transition.rightToLeftWithFade,
-                                    duration: const Duration(
-                                      milliseconds: 100,
+                                  ),
+                                  buildHeight5(),
+                                  Container(
+                                    padding: const EdgeInsets.fromLTRB(
+                                      UPdMg10,
+                                      UZeroPixel,
+                                      UPdMg10,
+                                      UPdMg10,
                                     ),
-                                  );
-                                },
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Container(
-                                      height: 200,
-                                      width: double.maxFinite,
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(
-                                          URoundedLarge,
-                                        ),
-                                        child: news_event[selectedNewsEvent]
-                                                .events[(currentPage *
-                                                        resultsPerPage) +
-                                                    i]
-                                                .image
-                                                .isEmpty
-                                            ? Image.asset(
-                                                imageAsset + 'Error_Image.jpg',
-                                                width: double.maxFinite,
-                                                fit: BoxFit.cover,
-                                              )
-                                            : CachedNetworkImage(
-                                                imageUrl: news_event[
-                                                        selectedNewsEvent]
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          width: UFullWidth,
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            news_event[selectedNewsEvent]
                                                     .events[(currentPage *
                                                             resultsPerPage) +
                                                         i]
-                                                    .image,
-                                                width: double.maxFinite,
-                                                fit: BoxFit.cover,
+                                                    .title
+                                                    .isEmpty
+                                                ? 'N/A'
+                                                : news_event[selectedNewsEvent]
+                                                    .events[(currentPage *
+                                                            resultsPerPage) +
+                                                        i]
+                                                    .title,
+                                            textAlign: TextAlign.center,
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: const TextStyle(
+                                              fontSize: UTitleSize,
+                                              fontWeight: UTitleWeight,
+                                              fontFamily: UKFontFamily,
+                                              height: UTextHeight,
+                                            ),
+                                          ),
+                                        ),
+                                        buildHeight5(),
+                                        Container(
+                                          width: double.infinity,
+                                          child: Text(
+                                            news_event[selectedNewsEvent]
+                                                    .events[(currentPage *
+                                                            resultsPerPage) +
+                                                        i]
+                                                    .description
+                                                    .isEmpty
+                                                ? 'N/A'
+                                                : news_event[selectedNewsEvent]
+                                                    .events[(currentPage *
+                                                            resultsPerPage) +
+                                                        i]
+                                                    .description,
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                            textAlign: TextAlign.left,
+                                            style: const TextStyle(
+                                              fontSize: UBodySize,
+                                              fontWeight: UBodyWeight,
+                                              fontFamily: UKFontFamily,
+                                              height: UTextHeight,
+                                            ),
+                                          ),
+                                        ),
+                                        buildHeight5(),
+                                        Row(
+                                          children: [
+                                            Flexible(
+                                              flex: 2,
+                                              child: Row(
+                                                children: [
+                                                  Image.asset(
+                                                    imageAsset +
+                                                        'Event_Date.png',
+                                                    width: UWidth15,
+                                                  ),
+                                                  buildWidth5(),
+                                                  buildEventDate(
+                                                    news_event[selectedNewsEvent]
+                                                            .events[(currentPage *
+                                                                    resultsPerPage) +
+                                                                i]
+                                                            .event_date
+                                                            .isEmpty
+                                                        ? 'N/A'
+                                                        : news_event[
+                                                                selectedNewsEvent]
+                                                            .events[(currentPage *
+                                                                    resultsPerPage) +
+                                                                i]
+                                                            .event_date,
+                                                  ),
+                                                ],
                                               ),
-                                      ),
+                                            ),
+                                            buildWidth10(),
+                                            Flexible(
+                                              flex: 1,
+                                              child: Row(
+                                                children: [
+                                                  Image.asset(
+                                                    imageAsset +
+                                                        'Event_Time.png',
+                                                    width: UWidth15,
+                                                  ),
+                                                  buildWidth5(),
+                                                  buildEventDate(
+                                                    news_event[selectedNewsEvent]
+                                                            .events[(currentPage *
+                                                                    resultsPerPage) +
+                                                                i]
+                                                            .time
+                                                            .isEmpty
+                                                        ? 'N/A'
+                                                        : news_event[
+                                                                selectedNewsEvent]
+                                                            .events[(currentPage *
+                                                                    resultsPerPage) +
+                                                                i]
+                                                            .time,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
-                                    buildHeight5(),
-                                    Container(
-                                      padding: const EdgeInsets.fromLTRB(
-                                        UPdMg10,
-                                        UZeroPixel,
-                                        UPdMg10,
-                                        UPdMg10,
-                                      ),
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            width: UFullWidth,
-                                            alignment: Alignment.center,
-                                            child: Text(
-                                              news_event[selectedNewsEvent]
-                                                      .events[(currentPage *
-                                                              resultsPerPage) +
-                                                          i]
-                                                      .title
-                                                      .isEmpty
-                                                  ? 'N/A'
-                                                  : news_event[
-                                                          selectedNewsEvent]
-                                                      .events[(currentPage *
-                                                              resultsPerPage) +
-                                                          i]
-                                                      .title,
-                                              textAlign: TextAlign.center,
-                                              maxLines: 1,
-                                              overflow: TextOverflow.ellipsis,
-                                              style: const TextStyle(
-                                                fontSize: UTitleSize,
-                                                fontWeight: UTitleWeight,
-                                                fontFamily: UKFontFamily,
-                                                height: UTextHeight,
-                                              ),
-                                            ),
-                                          ),
-                                          buildHeight5(),
-                                          Container(
-                                            width: double.infinity,
-                                            child: Text(
-                                              news_event[selectedNewsEvent]
-                                                      .events[(currentPage *
-                                                              resultsPerPage) +
-                                                          i]
-                                                      .description
-                                                      .isEmpty
-                                                  ? 'N/A'
-                                                  : news_event[
-                                                          selectedNewsEvent]
-                                                      .events[(currentPage *
-                                                              resultsPerPage) +
-                                                          i]
-                                                      .description,
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.left,
-                                              style: const TextStyle(
-                                                fontSize: UBodySize,
-                                                fontWeight: UBodyWeight,
-                                                fontFamily: UKFontFamily,
-                                                height: UTextHeight,
-                                              ),
-                                            ),
-                                          ),
-                                          buildHeight5(),
-                                          Row(
-                                            children: [
-                                              Flexible(
-                                                flex: 2,
-                                                child: Row(
-                                                  children: [
-                                                    Image.asset(
-                                                      imageAsset +
-                                                          'Event_Date.png',
-                                                      width: UWidth15,
-                                                    ),
-                                                    buildWidth5(),
-                                                    buildEventDate(
-                                                      news_event[selectedNewsEvent]
-                                                              .events[(currentPage *
-                                                                      resultsPerPage) +
-                                                                  i]
-                                                              .event_date
-                                                              .isEmpty
-                                                          ? 'N/A'
-                                                          : news_event[
-                                                                  selectedNewsEvent]
-                                                              .events[(currentPage *
-                                                                      resultsPerPage) +
-                                                                  i]
-                                                              .event_date,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              buildWidth10(),
-                                              Flexible(
-                                                flex: 1,
-                                                child: Row(
-                                                  children: [
-                                                    Image.asset(
-                                                      imageAsset +
-                                                          'Event_Time.png',
-                                                      width: UWidth15,
-                                                    ),
-                                                    buildWidth5(),
-                                                    buildEventDate(
-                                                      news_event[selectedNewsEvent]
-                                                              .events[(currentPage *
-                                                                      resultsPerPage) +
-                                                                  i]
-                                                              .time
-                                                              .isEmpty
-                                                          ? 'N/A'
-                                                          : news_event[
-                                                                  selectedNewsEvent]
-                                                              .events[(currentPage *
-                                                                      resultsPerPage) +
-                                                                  i]
-                                                              .time,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                  Container(
+                    height: UHeight50,
+                    padding: const EdgeInsets.fromLTRB(
+                      UPdMg10,
+                      UZeroPixel,
+                      UPdMg10,
+                      UPdMg15,
+                    ),
+                    alignment: Alignment.center,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        //first page button
+                        startPage > 0 &&
+                                ((MediaQuery.of(context).size.width - 210) / 30)
+                                        .floor() <
+                                    (news_event[selectedNewsEvent]
+                                                .events
+                                                .length /
+                                            resultsPerPage)
+                                        .ceil()
+                            ? InkWell(
+                                highlightColor: UTransParentColor,
+                                splashColor: UTransParentColor,
+                                onTap: () {
+                                  setState(() {
+                                    startPage = 0;
+                                    currentPage = 0;
+                                  });
+                                },
+                                child: Icon(
+                                  Icons.first_page,
+                                  color: UPrimaryColor,
+                                ),
+                              )
+                            : const SizedBox.shrink(),
+                        //move backward button
+                        startPage > 0 &&
+                                ((MediaQuery.of(context).size.width - 210) / 30)
+                                        .floor() <
+                                    (news_event[selectedNewsEvent]
+                                                .events
+                                                .length /
+                                            resultsPerPage)
+                                        .ceil()
+                            ? InkWell(
+                                highlightColor: UTransParentColor,
+                                splashColor: UTransParentColor,
+                                onTap: () {
+                                  setState(() {
+                                    currentPage--;
+                                    startPage--;
+                                  });
+                                },
+                                child: Icon(
+                                  Icons.navigate_before,
+                                  color: UPrimaryColor,
+                                ),
+                              )
+                            : const SizedBox.shrink(),
+                        //numbered page buttons
+                        for (int i = startPage;
+                            i <
+                                min(
+                                    (((MediaQuery.of(context).size.width -
+                                                    210) /
+                                                30)
+                                            .floor() +
+                                        startPage),
+                                    (news_event[selectedNewsEvent]
+                                                .events
+                                                .length /
+                                            resultsPerPage)
+                                        .ceil());
+                            i++)
+                          InkWell(
+                            highlightColor: UTransParentColor,
+                            splashColor: UTransParentColor,
+                            onTap: () {
+                              setState(() {
+                                currentPage = i;
+                              });
+                            },
+                            child: Container(
+                              width: 30,
+                              height: 30,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                  50,
+                                ),
+                                color: currentPage == i
+                                    ? UPrimaryColor
+                                    : UTransParentColor,
+                              ),
+                              child: Text(
+                                (i + 1).toString(),
+                                style: TextStyle(
+                                  color: currentPage == i
+                                      ? UBackgroundColor
+                                      : UPrimaryColor,
+                                  fontFamily: UEFontFamily,
+                                  fontSize: UTitleSize,
                                 ),
                               ),
                             ),
                           ),
+                        //move forward button
+                        (news_event[selectedNewsEvent].events.length /
+                                            resultsPerPage)
+                                        .ceil() >
+                                    ((MediaQuery.of(context).size.width - 210) /
+                                            30)
+                                        .floor() &&
+                                ((news_event[selectedNewsEvent].events.length /
+                                                resultsPerPage)
+                                            .ceil() -
+                                        startPage) >
+                                    ((MediaQuery.of(context).size.width - 210) /
+                                            30)
+                                        .floor()
+                            ? InkWell(
+                                highlightColor: UTransParentColor,
+                                splashColor: UTransParentColor,
+                                onTap: () {
+                                  setState(() {
+                                    currentPage++;
+                                    startPage++;
+                                  });
+                                },
+                                child: Icon(
+                                  Icons.navigate_next,
+                                  color: UPrimaryColor,
+                                ),
+                              )
+                            : const SizedBox.shrink(),
+                        //last page button
+                        (news_event[selectedNewsEvent].events.length /
+                                            resultsPerPage)
+                                        .ceil() >
+                                    ((MediaQuery.of(context).size.width - 210) /
+                                            30)
+                                        .floor() &&
+                                ((news_event[selectedNewsEvent].events.length /
+                                                resultsPerPage)
+                                            .ceil() -
+                                        startPage) >
+                                    ((MediaQuery.of(context).size.width - 210) /
+                                            30)
+                                        .floor()
+                            ? InkWell(
+                                highlightColor: UTransParentColor,
+                                splashColor: UTransParentColor,
+                                onTap: () {
+                                  setState(() {
+                                    startPage = (news_event[selectedNewsEvent]
+                                                    .events
+                                                    .length /
+                                                resultsPerPage)
+                                            .ceil() -
+                                        ((MediaQuery.of(context).size.width -
+                                                    210) /
+                                                30)
+                                            .floor();
+                                    currentPage = (news_event[selectedNewsEvent]
+                                                    .events
+                                                    .length /
+                                                resultsPerPage)
+                                            .ceil() -
+                                        1;
+                                  });
+                                },
+                                child: Icon(
+                                  Icons.last_page,
+                                  color: UPrimaryColor,
+                                ),
+                              )
+                            : const SizedBox.shrink(),
                       ],
                     ),
-                    Container(
-                      height: 50,
-                      padding: const EdgeInsets.fromLTRB(
-                        UPdMg10,
-                        UZeroPixel,
-                        UPdMg10,
-                        UPdMg15,
-                      ),
-                      alignment: Alignment.center,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          //first page button
-                          startPage > 0 &&
-                                  ((MediaQuery.of(context).size.width - 210) /
-                                              30)
-                                          .floor() <
-                                      (news_event[selectedNewsEvent]
-                                                  .events
-                                                  .length /
-                                              resultsPerPage)
-                                          .ceil()
-                              ? InkWell(
-                                  highlightColor: UTransParentColor,
-                                  splashColor: UTransParentColor,
-                                  onTap: () {
-                                    setState(() {
-                                      startPage = 0;
-                                      currentPage = 0;
-                                    });
-                                  },
-                                  child: Icon(
-                                    Icons.first_page,
-                                    color: UPrimaryColor,
-                                  ),
-                                )
-                              : const SizedBox.shrink(),
-                          //move backward button
-                          startPage > 0 &&
-                                  ((MediaQuery.of(context).size.width - 210) /
-                                              30)
-                                          .floor() <
-                                      (news_event[selectedNewsEvent]
-                                                  .events
-                                                  .length /
-                                              resultsPerPage)
-                                          .ceil()
-                              ? InkWell(
-                                  highlightColor: UTransParentColor,
-                                  splashColor: UTransParentColor,
-                                  onTap: () {
-                                    setState(() {
-                                      currentPage--;
-                                      startPage--;
-                                    });
-                                  },
-                                  child: Icon(
-                                    Icons.navigate_before,
-                                    color: UPrimaryColor,
-                                  ),
-                                )
-                              : const SizedBox.shrink(),
-                          //numbered page buttons
-                          for (int i = startPage;
-                              i <
-                                  min(
-                                      (((MediaQuery.of(context).size.width -
-                                                      210) /
-                                                  30)
-                                              .floor() +
-                                          startPage),
-                                      (news_event[selectedNewsEvent]
-                                                  .events
-                                                  .length /
-                                              resultsPerPage)
-                                          .ceil());
-                              i++)
-                            InkWell(
-                              highlightColor: UTransParentColor,
-                              splashColor: UTransParentColor,
-                              onTap: () {
-                                setState(() {
-                                  currentPage = i;
-                                });
-                              },
-                              child: Container(
-                                width: 30,
-                                height: 30,
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                    50,
-                                  ),
-                                  color: currentPage == i
-                                      ? UPrimaryColor
-                                      : UTransParentColor,
-                                ),
-                                child: Text(
-                                  (i + 1).toString(),
-                                  style: TextStyle(
-                                    color: currentPage == i
-                                        ? UBackgroundColor
-                                        : UPrimaryColor,
-                                    fontFamily: UEFontFamily,
-                                    fontSize: UTitleSize,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          //move forward button
-                          (news_event[selectedNewsEvent].events.length /
-                                              resultsPerPage)
-                                          .ceil() >
-                                      ((MediaQuery.of(context).size.width -
-                                                  210) /
-                                              30)
-                                          .floor() &&
-                                  ((news_event[selectedNewsEvent]
-                                                      .events
-                                                      .length /
-                                                  resultsPerPage)
-                                              .ceil() -
-                                          startPage) >
-                                      ((MediaQuery.of(context).size.width -
-                                                  210) /
-                                              30)
-                                          .floor()
-                              ? InkWell(
-                                  highlightColor: UTransParentColor,
-                                  splashColor: UTransParentColor,
-                                  onTap: () {
-                                    setState(() {
-                                      currentPage++;
-                                      startPage++;
-                                    });
-                                  },
-                                  child: Icon(
-                                    Icons.navigate_next,
-                                    color: UPrimaryColor,
-                                  ),
-                                )
-                              : const SizedBox.shrink(),
-                          //last page button
-                          (news_event[selectedNewsEvent].events.length /
-                                              resultsPerPage)
-                                          .ceil() >
-                                      ((MediaQuery.of(context).size.width -
-                                                  210) /
-                                              30)
-                                          .floor() &&
-                                  ((news_event[selectedNewsEvent]
-                                                      .events
-                                                      .length /
-                                                  resultsPerPage)
-                                              .ceil() -
-                                          startPage) >
-                                      ((MediaQuery.of(context).size.width -
-                                                  210) /
-                                              30)
-                                          .floor()
-                              ? InkWell(
-                                  highlightColor: UTransParentColor,
-                                  splashColor: UTransParentColor,
-                                  onTap: () {
-                                    setState(() {
-                                      startPage = (news_event[selectedNewsEvent]
-                                                      .events
-                                                      .length /
-                                                  resultsPerPage)
-                                              .ceil() -
-                                          ((MediaQuery.of(context).size.width -
-                                                      210) /
-                                                  30)
-                                              .floor();
-                                      currentPage =
-                                          (news_event[selectedNewsEvent]
-                                                          .events
-                                                          .length /
-                                                      resultsPerPage)
-                                                  .ceil() -
-                                              1;
-                                    });
-                                  },
-                                  child: Icon(
-                                    Icons.last_page,
-                                    color: UPrimaryColor,
-                                  ),
-                                )
-                              : const SizedBox.shrink(),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
       ),
     );

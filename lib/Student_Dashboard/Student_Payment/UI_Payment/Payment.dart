@@ -160,6 +160,7 @@ class _Payment_UIState extends State<Payment_UI> {
               color: UPrimaryColor,
               backgroundColor: UBackgroundColor,
               child: ListView(
+                physics: BouncingScrollPhysics(),
                 padding: EdgeInsets.only(
                   top: UPdMg10,
                 ),

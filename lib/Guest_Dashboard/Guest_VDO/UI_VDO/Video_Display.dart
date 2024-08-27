@@ -36,9 +36,21 @@ class _Video_DisplayState extends State<Video_Display> {
         loop: true,
       ),
     );
-    ;
+
     _hiddenVideoIndex = widget.vdo.indexOf(widget.data);
     _currentVideoIndex = _hiddenVideoIndex;
+
+    _youtubeController.addListener(_handleFullScreen);
+  }
+
+  void _handleFullScreen() {
+    if (_youtubeController.value.isFullScreen) {
+      SystemChrome.setEnabledSystemUIMode(
+        SystemUiMode.leanBack,
+      );
+    } else {
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    }
   }
 
   @override
@@ -185,11 +197,13 @@ class _Video_DisplayState extends State<Video_Display> {
 
   @override
   void dispose() {
+    _youtubeController.removeListener(_handleFullScreen);
     _youtubeController.dispose();
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
     super.dispose();
   }
 }

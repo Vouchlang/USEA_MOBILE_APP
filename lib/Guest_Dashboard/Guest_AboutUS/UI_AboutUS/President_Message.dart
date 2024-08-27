@@ -18,6 +18,7 @@ class President extends StatelessWidget {
       body: Container(
         height: UFullWidth,
         child: ListView(
+          physics: BouncingScrollPhysics(),
           children: [
             InkWell(
               highlightColor: UTransParentColor,

@@ -1,9 +1,7 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import '/theme_builder.dart';
 import '/Custom_AppBar.dart';
 import '/Custom_Widget/CustomText.dart';
@@ -72,7 +70,7 @@ class _CareerState extends State<Career> {
           ? buildFutureBuild()
           : ListView(
               shrinkWrap: true,
-              physics: AlwaysScrollableScrollPhysics(),
+              physics: BouncingScrollPhysics(),
               children: [
                 ListView(
                   shrinkWrap: true,
@@ -102,10 +100,10 @@ class _CareerState extends State<Career> {
                             splashColor: UTransParentColor,
                             onTap: () {
                               void _launchCareerUrl() async {
-                                if (await canLaunch(
+                                if (await canLaunchUrlString(
                                     career[(currentPage * resultsPerPage) + i]
                                         .link)) {
-                                  await launch(
+                                  await launchUrlString(
                                       career[(currentPage * resultsPerPage) + i]
                                           .link);
                                 } else {

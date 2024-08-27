@@ -94,6 +94,7 @@ class _RegistrationState extends State<Registration> {
               padding: const EdgeInsets.all(
                 UPdMg10,
               ),
+              physics: BouncingScrollPhysics(),
               itemCount: educationDataList.length,
               itemBuilder: (context, index) {
                 final educationData = educationDataList[index];

@@ -13,9 +13,7 @@ void main() async {
   String font = prefs.getString('font') ?? UKFontFamily;
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
-      statusBarColor: URedColor,
-      statusBarBrightness: Brightness.dark,
-      statusBarIconBrightness: Brightness.light,
+      statusBarColor: UBackgroundColor,
     ),
   );
   SystemChrome.setPreferredOrientations([
@@ -32,10 +30,6 @@ void main() async {
         primaryColor: UPrimaryColor,
         secondaryHeaderColor: USecondaryColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        //
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: UPrimaryColor,
-        ),
       ),
       home: new Splash_Screen(),
       translations: LocaleString(),

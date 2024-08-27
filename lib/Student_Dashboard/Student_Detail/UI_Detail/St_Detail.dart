@@ -217,9 +217,7 @@ class _Student_DetailState extends State<Student_Detail> {
         shadowColor: ULightGreyColor,
         iconTheme: const IconThemeData.fallback(),
         leading: buildBackBtn(
-          () => Navigator.of(context).pop(
-            Transition.leftToRightWithFade,
-          ),
+          () => Get.back(),
         ),
         actions: [
           (() {
@@ -251,6 +249,7 @@ class _Student_DetailState extends State<Student_Detail> {
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: _dataStDetail.length,
+                physics: BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
                   return Column(
                     children: [

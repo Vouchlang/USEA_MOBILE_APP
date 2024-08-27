@@ -142,313 +142,311 @@ class _Study_InfoState extends State<Study_Info> {
               onRefresh: _refreshData,
               color: UPrimaryColor,
               backgroundColor: UBackgroundColor,
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _dataStudyInfo.isEmpty
-                        ? const SizedBox.shrink()
-                        : Padding(
-                            padding: const EdgeInsets.fromLTRB(
-                              UPdMg10,
-                              UPdMg15,
-                              UPdMg10,
-                              UZeroPixel,
-                            ),
-                            child: Text(
-                              'ព័ត៌មានការប្រឡង'.tr,
-                              style: const TextStyle(
-                                color: UPrimaryColor,
-                                fontSize: UTitleSize,
-                                fontWeight: UTitleWeight,
-                                height: UTextHeight,
-                              ),
+              child: ListView(
+                physics: BouncingScrollPhysics(),
+                children: [
+                  _dataStudyInfo.isEmpty
+                      ? const SizedBox.shrink()
+                      : Padding(
+                          padding: const EdgeInsets.fromLTRB(
+                            UPdMg10,
+                            UPdMg15,
+                            UPdMg10,
+                            UZeroPixel,
+                          ),
+                          child: Text(
+                            'ព័ត៌មានការប្រឡង'.tr,
+                            style: const TextStyle(
+                              color: UPrimaryColor,
+                              fontSize: UTitleSize,
+                              fontWeight: UTitleWeight,
+                              height: UTextHeight,
                             ),
                           ),
-                    ListView.builder(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      padding: EdgeInsets.all(
-                        UPdMg5,
-                      ),
-                      itemCount: _dataStudyInfo.length,
-                      itemBuilder: (BuildContext context, index) {
-                        final isLastIndex = index == _dataStudyInfo.length - 1;
-                        return Card(
-                          elevation: 1,
-                          shadowColor: ULightGreyColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                              URoundedLarge,
-                            ),
-                          ),
-                          color: UBackgroundColor,
-                          margin: isLastIndex
-                              ? const EdgeInsets.fromLTRB(
-                                  UPdMg5,
-                                  UPdMg5,
-                                  UPdMg5,
-                                  UPdMg10,
-                                )
-                              : const EdgeInsets.fromLTRB(
-                                  UPdMg5,
-                                  UZeroPixel,
-                                  UPdMg5,
-                                  UPdMg10,
-                                ),
-                          child: IntrinsicHeight(
-                            child: Column(
-                              children: [
-                                Container(
-                                  alignment: Alignment.center,
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: UPdMg15,
-                                    horizontal: UPdMg10,
-                                  ),
-                                  width: UFullWidth,
-                                  decoration: const BoxDecoration(
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(
-                                        URoundedLarge,
-                                      ),
-                                      topRight: Radius.circular(
-                                        URoundedLarge,
-                                      ),
-                                    ),
-                                    color: UBGLightBlue,
-                                  ),
-                                  child: Text(
-                                    _dataStudyInfo[index].title,
-                                    style: const TextStyle(
-                                      fontSize: UTitleSize16,
-                                      fontWeight: UTitleWeight,
-                                      color: UPrimaryColor,
-                                      height: UTextHeight,
-                                    ),
-                                  ),
-                                ),
-                                IntrinsicHeight(
-                                  child: Container(
-                                    padding: const EdgeInsets.all(
-                                      UPdMg10,
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        IntrinsicHeight(
-                                          child: Container(
-                                            width: 55,
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                NormalDateStudyInfo(
-                                                  _dataStudyInfo[index].month,
-                                                ),
-                                                buildDividerAtt(),
-                                                NormalDateStudyInfo(
-                                                  _dataStudyInfo[index].date,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        buildVerticalDividerAtt(),
-                                        Container(
-                                          padding: const EdgeInsets.only(
-                                            left: UPdMg8,
-                                          ),
-                                          child: IntrinsicWidth(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                RowDataStudyInfo(
-                                                  'មុខវិជ្ជា\t',
-                                                  _dataStudyInfo[index].subject,
-                                                ),
-                                                RowDataStudyInfo(
-                                                  'បន្ទប់\t',
-                                                  _dataStudyInfo[index].room,
-                                                ),
-                                                RowDataStudyInfo(
-                                                  'ម៉ោង\t',
-                                                  _dataStudyInfo[index].time,
-                                                ),
-                                                RowDataStudyInfo(
-                                                  'លេខតុ\t',
-                                                  _dataStudyInfo[index].seat,
-                                                ),
-                                                _dataStudyInfo[index].takeout ==
-                                                        '1'
-                                                    ? Text(
-                                                        'ដកបេក្ខភាព'.tr,
-                                                        style: TextStyle(
-                                                          fontSize: UBodySize,
-                                                          fontWeight:
-                                                              UTitleWeight,
-                                                          color: URedColor,
-                                                          fontFamily: Get.locale
-                                                                      ?.languageCode ==
-                                                                  'km'
-                                                              ? UKFontFamily
-                                                              : UEFontFamily,
-                                                          height: UTextHeight,
-                                                        ),
-                                                      )
-                                                    : const SizedBox.shrink(),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
+                        ),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    padding: EdgeInsets.all(
+                      UPdMg5,
                     ),
-                    // _dataStudyInfoAssignment.isEmpty
-                    //     ? SizedBox.shrink()
-                    //     : Padding(
-                    //         padding: EdgeInsets.fromLTRB(
-                    //           UPdMg10,
-                    //           UPdMg10,
-                    //           UPdMg10,
-                    //           UZeroPixel,
-                    //         ),
-                    //         child: Text(
-                    //           'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t (Not Available)'.tr,
-                    //           style: TextStyle(
-                    //             color: UPrimaryColor,
-                    //             fontSize: UTitleSize,
-                    //             fontWeight: UTitleWeight,
-                    //           ),
-                    //         ),
-                    //       ),
-                    // ListView.builder(
-                    //   shrinkWrap: true,
-                    //   physics: NeverScrollableScrollPhysics(),
-                    //   padding: EdgeInsets.all(
-                    //     UPdMg5,
-                    //   ),
-                    //   itemCount: _dataStudyInfoAssignment.length,
-                    //   itemBuilder: (BuildContext context, index) {
-                    //     final isLastIndex =
-                    //         index == _dataStudyInfoAssignment.length - 1;
-                    //     return Card(
-                    //       elevation: 2,
-                    //       shadowColor: ULightGreyColor,
-                    //       shape: RoundedRectangleBorder(
-                    //         borderRadius: BorderRadius.circular(
-                    //           URoundedLarge,
-                    //         ),
-                    //       ),
-                    //       margin: isLastIndex
-                    //           ? EdgeInsets.fromLTRB(
-                    //               UPdMg5,
-                    //               UPdMg5,
-                    //               UPdMg5,
-                    //               UPdMg10,
-                    //             )
-                    //           : EdgeInsets.all(
-                    //               UPdMg5,
-                    //             ),
-                    //       child: Padding(
-                    //         padding: EdgeInsets.all(
-                    //           UPdMg10,
-                    //         ),
-                    //         child: Column(
-                    //           children: [
-                    //             Row(
-                    //               children: [
-                    //                 Flexible(
-                    //                   flex: 2,
-                    //                   child: Text(
-                    //                     _dataStudyInfoAssignment[index]
-                    //                             .expire_date
-                    //                             .isEmpty
-                    //                         ? 'ថ្ងៃផុតកំណត់៖ '.tr + 'N/A'
-                    //                         : 'ថ្ងៃផុតកំណត់៖ '.tr +
-                    //                             _dataStudyInfoAssignment[index]
-                    //                                 .expire_date,
-                    //                     style: TextStyle(
-                    //                       fontSize: UTitleSize,
-                    //                       fontWeight: UTitleWeight,
-                    //                     ),
-                    //                   ),
-                    //                 ),
-                    //                 SizedBox(
-                    //                   width: UWidth15,
-                    //                 ),
-                    //                 Flexible(
-                    //                   flex: 1,
-                    //                   child: Text(
-                    //                     _dataStudyInfoAssignment[index]
-                    //                             .expire_time
-                    //                             .isEmpty
-                    //                         ? 'ម៉ោង '.tr + 'N/A'
-                    //                         : 'ម៉ោង '.tr +
-                    //                             _dataStudyInfoAssignment[index]
-                    //                                 .expire_time,
-                    //                     style: TextStyle(
-                    //                       fontSize: UTitleSize,
-                    //                       fontWeight: UTitleWeight,
-                    //                     ),
-                    //                   ),
-                    //                 ),
-                    //               ],
-                    //             ),
-                    //             Divider(),
-                    //             buildStudyDataAssign(
-                    //               'ឈ្មោះ',
-                    //               _dataStudyInfoAssignment[index]
-                    //                       .assignment_name
-                    //                       .isEmpty
-                    //                   ? 'N/A'
-                    //                   : _dataStudyInfoAssignment[index]
-                    //                       .assignment_name,
-                    //             ),
-                    //             Divider(),
-                    //             buildStudyDataAssign(
-                    //               'មុខវិជ្ជា',
-                    //               _dataStudyInfoAssignment[index]
-                    //                       .subject_name
-                    //                       .isEmpty
-                    //                   ? 'N/A'
-                    //                   : _dataStudyInfoAssignment[index]
-                    //                       .subject_name,
-                    //             ),
-                    //             Divider(),
-                    //             buildStudyDataAssign(
-                    //               'បន្ទប់',
-                    //               _dataStudyInfoAssignment[index]
-                    //                       .room_name
-                    //                       .isEmpty
-                    //                   ? 'N/A'
-                    //                   : _dataStudyInfoAssignment[index]
-                    //                       .room_name,
-                    //             ),
-                    //             Divider(),
-                    //             buildStudyDataAssign(
-                    //               'សាស្ត្រចារ្យ',
-                    //               _dataStudyInfoAssignment[index]
-                    //                       .lecturer_name
-                    //                       .isEmpty
-                    //                   ? 'N/A'
-                    //                   : _dataStudyInfoAssignment[index]
-                    //                       .lecturer_name,
-                    //             ),
-                    //           ],
-                    //         ),
-                    //       ),
-                    //     );
-                    //   },
-                    // ),
-                  ],
-                ),
+                    itemCount: _dataStudyInfo.length,
+                    itemBuilder: (BuildContext context, index) {
+                      final isLastIndex = index == _dataStudyInfo.length - 1;
+                      return Card(
+                        elevation: 1,
+                        shadowColor: ULightGreyColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            URoundedLarge,
+                          ),
+                        ),
+                        color: UBackgroundColor,
+                        margin: isLastIndex
+                            ? const EdgeInsets.fromLTRB(
+                                UPdMg5,
+                                UPdMg5,
+                                UPdMg5,
+                                UPdMg10,
+                              )
+                            : const EdgeInsets.fromLTRB(
+                                UPdMg5,
+                                UZeroPixel,
+                                UPdMg5,
+                                UPdMg10,
+                              ),
+                        child: IntrinsicHeight(
+                          child: Column(
+                            children: [
+                              Container(
+                                alignment: Alignment.center,
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: UPdMg15,
+                                  horizontal: UPdMg10,
+                                ),
+                                width: UFullWidth,
+                                decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(
+                                      URoundedLarge,
+                                    ),
+                                    topRight: Radius.circular(
+                                      URoundedLarge,
+                                    ),
+                                  ),
+                                  color: UBGLightBlue,
+                                ),
+                                child: Text(
+                                  _dataStudyInfo[index].title,
+                                  style: const TextStyle(
+                                    fontSize: UTitleSize16,
+                                    fontWeight: UTitleWeight,
+                                    color: UPrimaryColor,
+                                    height: UTextHeight,
+                                  ),
+                                ),
+                              ),
+                              IntrinsicHeight(
+                                child: Container(
+                                  padding: const EdgeInsets.all(
+                                    UPdMg10,
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      IntrinsicHeight(
+                                        child: Container(
+                                          width: 55,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              NormalDateStudyInfo(
+                                                _dataStudyInfo[index].month,
+                                              ),
+                                              buildDividerAtt(),
+                                              NormalDateStudyInfo(
+                                                _dataStudyInfo[index].date,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      buildVerticalDividerAtt(),
+                                      Container(
+                                        padding: const EdgeInsets.only(
+                                          left: UPdMg8,
+                                        ),
+                                        child: IntrinsicWidth(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              RowDataStudyInfo(
+                                                'មុខវិជ្ជា\t',
+                                                _dataStudyInfo[index].subject,
+                                              ),
+                                              RowDataStudyInfo(
+                                                'បន្ទប់\t',
+                                                _dataStudyInfo[index].room,
+                                              ),
+                                              RowDataStudyInfo(
+                                                'ម៉ោង\t',
+                                                _dataStudyInfo[index].time,
+                                              ),
+                                              RowDataStudyInfo(
+                                                'លេខតុ\t',
+                                                _dataStudyInfo[index].seat,
+                                              ),
+                                              _dataStudyInfo[index].takeout ==
+                                                      '1'
+                                                  ? Text(
+                                                      'ដកបេក្ខភាព'.tr,
+                                                      style: TextStyle(
+                                                        fontSize: UBodySize,
+                                                        fontWeight:
+                                                            UTitleWeight,
+                                                        color: URedColor,
+                                                        fontFamily: Get.locale
+                                                                    ?.languageCode ==
+                                                                'km'
+                                                            ? UKFontFamily
+                                                            : UEFontFamily,
+                                                        height: UTextHeight,
+                                                      ),
+                                                    )
+                                                  : const SizedBox.shrink(),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  // _dataStudyInfoAssignment.isEmpty
+                  //     ? SizedBox.shrink()
+                  //     : Padding(
+                  //         padding: EdgeInsets.fromLTRB(
+                  //           UPdMg10,
+                  //           UPdMg10,
+                  //           UPdMg10,
+                  //           UZeroPixel,
+                  //         ),
+                  //         child: Text(
+                  //           'កិច្ចការផ្ទះ និងស្រាវជ្រាវ\t (Not Available)'.tr,
+                  //           style: TextStyle(
+                  //             color: UPrimaryColor,
+                  //             fontSize: UTitleSize,
+                  //             fontWeight: UTitleWeight,
+                  //           ),
+                  //         ),
+                  //       ),
+                  // ListView.builder(
+                  //   shrinkWrap: true,
+                  //   physics: NeverScrollableScrollPhysics(),
+                  //   padding: EdgeInsets.all(
+                  //     UPdMg5,
+                  //   ),
+                  //   itemCount: _dataStudyInfoAssignment.length,
+                  //   itemBuilder: (BuildContext context, index) {
+                  //     final isLastIndex =
+                  //         index == _dataStudyInfoAssignment.length - 1;
+                  //     return Card(
+                  //       elevation: 2,
+                  //       shadowColor: ULightGreyColor,
+                  //       shape: RoundedRectangleBorder(
+                  //         borderRadius: BorderRadius.circular(
+                  //           URoundedLarge,
+                  //         ),
+                  //       ),
+                  //       margin: isLastIndex
+                  //           ? EdgeInsets.fromLTRB(
+                  //               UPdMg5,
+                  //               UPdMg5,
+                  //               UPdMg5,
+                  //               UPdMg10,
+                  //             )
+                  //           : EdgeInsets.all(
+                  //               UPdMg5,
+                  //             ),
+                  //       child: Padding(
+                  //         padding: EdgeInsets.all(
+                  //           UPdMg10,
+                  //         ),
+                  //         child: Column(
+                  //           children: [
+                  //             Row(
+                  //               children: [
+                  //                 Flexible(
+                  //                   flex: 2,
+                  //                   child: Text(
+                  //                     _dataStudyInfoAssignment[index]
+                  //                             .expire_date
+                  //                             .isEmpty
+                  //                         ? 'ថ្ងៃផុតកំណត់៖ '.tr + 'N/A'
+                  //                         : 'ថ្ងៃផុតកំណត់៖ '.tr +
+                  //                             _dataStudyInfoAssignment[index]
+                  //                                 .expire_date,
+                  //                     style: TextStyle(
+                  //                       fontSize: UTitleSize,
+                  //                       fontWeight: UTitleWeight,
+                  //                     ),
+                  //                   ),
+                  //                 ),
+                  //                 SizedBox(
+                  //                   width: UWidth15,
+                  //                 ),
+                  //                 Flexible(
+                  //                   flex: 1,
+                  //                   child: Text(
+                  //                     _dataStudyInfoAssignment[index]
+                  //                             .expire_time
+                  //                             .isEmpty
+                  //                         ? 'ម៉ោង '.tr + 'N/A'
+                  //                         : 'ម៉ោង '.tr +
+                  //                             _dataStudyInfoAssignment[index]
+                  //                                 .expire_time,
+                  //                     style: TextStyle(
+                  //                       fontSize: UTitleSize,
+                  //                       fontWeight: UTitleWeight,
+                  //                     ),
+                  //                   ),
+                  //                 ),
+                  //               ],
+                  //             ),
+                  //             Divider(),
+                  //             buildStudyDataAssign(
+                  //               'ឈ្មោះ',
+                  //               _dataStudyInfoAssignment[index]
+                  //                       .assignment_name
+                  //                       .isEmpty
+                  //                   ? 'N/A'
+                  //                   : _dataStudyInfoAssignment[index]
+                  //                       .assignment_name,
+                  //             ),
+                  //             Divider(),
+                  //             buildStudyDataAssign(
+                  //               'មុខវិជ្ជា',
+                  //               _dataStudyInfoAssignment[index]
+                  //                       .subject_name
+                  //                       .isEmpty
+                  //                   ? 'N/A'
+                  //                   : _dataStudyInfoAssignment[index]
+                  //                       .subject_name,
+                  //             ),
+                  //             Divider(),
+                  //             buildStudyDataAssign(
+                  //               'បន្ទប់',
+                  //               _dataStudyInfoAssignment[index]
+                  //                       .room_name
+                  //                       .isEmpty
+                  //                   ? 'N/A'
+                  //                   : _dataStudyInfoAssignment[index]
+                  //                       .room_name,
+                  //             ),
+                  //             Divider(),
+                  //             buildStudyDataAssign(
+                  //               'សាស្ត្រចារ្យ',
+                  //               _dataStudyInfoAssignment[index]
+                  //                       .lecturer_name
+                  //                       .isEmpty
+                  //                   ? 'N/A'
+                  //                   : _dataStudyInfoAssignment[index]
+                  //                       .lecturer_name,
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       ),
+                  //     );
+                  //   },
+                  // ),
+                ],
               ),
             ),
     );

@@ -191,13 +191,14 @@ class _Job_HistoryState extends State<Job_History> {
               color: UPrimaryColor,
               backgroundColor: UBackgroundColor,
               child: ListView.builder(
+                physics: BouncingScrollPhysics(),
                 itemCount: _dataJobHistory.length,
                 itemBuilder: (context, index) {
                   return Card(
                     elevation: 1,
                     shadowColor: ULightGreyColor,
                     shape: RoundedRectangleBorder(
-                      side:const BorderSide(
+                      side: const BorderSide(
                         color: UBackgroundColor,
                         width: 0.5,
                       ),
@@ -205,7 +206,7 @@ class _Job_HistoryState extends State<Job_History> {
                         URoundedLarge,
                       ),
                     ),
-                    margin:const EdgeInsets.all(
+                    margin: const EdgeInsets.all(
                       UPdMg10,
                     ),
                     color: UBackgroundColor,
@@ -213,12 +214,12 @@ class _Job_HistoryState extends State<Job_History> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Container(
-                          padding:const EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             vertical: UPdMg15,
                             horizontal: UPdMg10,
                           ),
                           width: UFullWidth,
-                          decoration:const BoxDecoration(
+                          decoration: const BoxDecoration(
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(
                                 URoundedLarge,
@@ -240,7 +241,7 @@ class _Job_HistoryState extends State<Job_History> {
                                     : 'កាលបរិច្ឆេទចូលបម្រើការងារ​\t\t\t\t\t'
                                             .tr +
                                         _dataJobHistory[index].date_start_work,
-                                style:const TextStyle(
+                                style: const TextStyle(
                                   fontSize: UTitleSize,
                                   fontWeight: UTitleWeight,
                                   color: UPrimaryColor,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'Custom_Widget/CustomText.dart';
 import 'Home.dart';
 import 'theme_builder.dart';
@@ -19,7 +19,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
 
     Future.delayed(
       const Duration(
-        seconds: 3,
+        milliseconds: 4000,
       ),
     ).then(
       (value) {
@@ -37,36 +37,36 @@ class _Splash_ScreenState extends State<Splash_Screen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(
-              imageAsset + 'logo3.png',
+            Lottie.asset(
+              imageAsset + 'logo.json',
               fit: BoxFit.cover,
-              height: 200,
-              width: 200,
+              // height: 200,
+              // width: 200,
             ),
-            buildHeight10(),
-            const Text(
-              'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
-              style: TextStyle(
-                fontSize: 15,
-                fontFamily: 'KhmerOSmuol',
-                color: UPrimaryColor,
-              ),
-            ),
-            const Text(
-              'UNIVERSITY OF SOUTH-EAST ASIA',
-              textAlign: TextAlign.justify,
-              style: TextStyle(
-                fontSize: 17.5,
-                color: UPrimaryColor,
-                fontWeight: UBodyWeight,
-                fontFamily: UEFontFamily,
-              ),
-            ),
-            buildHeight5(),
-            const SpinKitThreeBounce(
-              color: UPrimaryColor,
-              size: 15,
-            ),
+            // buildHeight10(),
+            // const Text(
+            //   'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
+            //   style: TextStyle(
+            //     fontSize: 15,
+            //     fontFamily: 'KhmerOSmuol',
+            //     color: UPrimaryColor,
+            //   ),
+            // ),
+            // const Text(
+            //   'UNIVERSITY OF SOUTH-EAST ASIA',
+            //   textAlign: TextAlign.justify,
+            //   style: TextStyle(
+            //     fontSize: 17.5,
+            //     color: UPrimaryColor,
+            //     fontWeight: UBodyWeight,
+            //     fontFamily: UEFontFamily,
+            //   ),
+            // ),
+            // buildHeight5(),
+            // const SpinKitThreeBounce(
+            //   color: UPrimaryColor,
+            //   size: 15,
+            // ),
           ],
         ),
       ),

@@ -1,5 +1,3 @@
-// ignore_for_file: override_on_non_overriding_member, unnecessary_null_comparison
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -139,7 +137,6 @@ class _ProgramState extends State<Program> {
     fetchData();
   }
 
-  @override
   void updateSearchQuery(String query) {
     Future.delayed(Duration.zero, () {
       if (mounted) {
@@ -161,7 +158,7 @@ class _ProgramState extends State<Program> {
   Future<Map<String, dynamic>> fetchMajorInfoData(String majorName) async {
     try {
       // Replace this with your actual data fetching logic
-      if (programData != null) {
+      if (programData.isNotEmpty) {
         for (final faculty in programData) {
           final majorNamesData = faculty['faculty_data']['major_name'] as List;
           for (final major in majorNamesData) {
@@ -182,7 +179,7 @@ class _ProgramState extends State<Program> {
 
   Future<List<String>> fetchEducationNames(String majorName) async {
     try {
-      if (programData != null) {
+      if (programData.isNotEmpty) {
         for (final faculty in programData) {
           final majorNamesData = faculty['faculty_data']['major_name'] as List;
           for (final major in majorNamesData) {
@@ -227,9 +224,7 @@ class _ProgramState extends State<Program> {
         scrolledUnderElevation: 1,
         iconTheme: const IconThemeData.fallback(),
         leading: buildBackBtn(
-          () => Navigator.of(context).pop(
-            Transition.leftToRightWithFade,
-          ),
+          () => Get.back(),
         ),
         actions: [
           IconButton(
@@ -253,314 +248,308 @@ class _ProgramState extends State<Program> {
           ),
         ],
       ),
-      body: (programData == null || programData.isEmpty) && programACCA.isEmpty
+      body: (programData.isEmpty) && programACCA.isEmpty
           ? buildFutureBuild()
-          : SingleChildScrollView(
-              child: Column(
-                children: [
-                  programData.isEmpty
-                      ? const SizedBox.shrink()
-                      : ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: programData.length,
-                          padding: const EdgeInsets.only(
-                            bottom: UZeroPixel,
-                          ),
-                          itemBuilder: (context, index) {
-                            final faculty = programData[index];
-                            final facultyName = faculty['faculty_name'];
-                            final majorNamesData =
-                                faculty['faculty_data']['major_name'];
-                            final facultyIcon =
-                                faculty['faculty_data']['fac_icon'];
-                            if (facultyIcon == null) {
-                              const Icon(
-                                Icons.error,
-                                size: 2,
-                                color: UPrimaryColor,
-                              );
-                            }
-                            return Card(
-                              color: UBackgroundColor,
-                              margin: const EdgeInsets.fromLTRB(
-                                UPdMg10,
-                                UPdMg10,
-                                UPdMg10,
-                                UZeroPixel,
-                              ),
-                              elevation: 1,
-                              shadowColor: UGreyColor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                  URoundedLarge,
-                                ),
-                              ),
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: UPdMg5,
-                                ),
-                                child: Theme(
-                                  data: Theme.of(context).copyWith(
-                                    dividerColor: UTransParentColor,
-                                  ),
-                                  child: ExpansionTile(
-                                    collapsedIconColor: UPrimaryColor,
-                                    iconColor: UPrimaryColor,
-                                    textColor: UTextColor,
-                                    key: PageStorageKey(
-                                      facultyName.toString().tr,
-                                    ),
-                                    title: Row(
-                                      children: [
-                                        CachedNetworkImage(
-                                          imageUrl: facultyIcon,
-                                          scale: UScale6,
-                                          errorWidget: (context, url, error) =>
-                                              const Icon(
-                                            Icons.error,
-                                            color: Colors.red,
-                                          ),
-                                        ),
-                                        buildWidth10(),
-                                        Expanded(
-                                          child: Text(
-                                            facultyName.toString().tr,
-                                            style: const TextStyle(
-                                              height: UTextHeight,
-                                              fontWeight: UTitleWeight,
-                                              fontSize: UTitleSize,
-                                              color: UPrimaryColor,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    children:
-                                        majorNamesData.map<Widget>((major) {
-                                      final majorName = major['major_name'];
-                                      final degreeDetails = major['major_data'];
-
-                                      return Container(
-                                        padding: const EdgeInsets.fromLTRB(
-                                          UPdMg15,
-                                          UZeroPixel,
-                                          UPdMg15,
-                                          UPdMg10,
-                                        ),
-                                        child: InkWell(
-                                          highlightColor: UTransParentColor,
-                                          splashColor: UTransParentColor,
-                                          onTap: () {
-                                            Get.to(
-                                              () => MajorDetailsScreen(
-                                                majorName: majorName,
-                                                majorInfoData: major,
-                                                educationNames: degreeDetails
-                                                    .map<String>((degree) =>
-                                                        degree['degree_name']
-                                                            as String)
-                                                    .toList(),
-                                              ),
-                                              transition: Transition
-                                                  .rightToLeftWithFade,
-                                              duration: const Duration(
-                                                milliseconds: 100,
-                                              ),
-                                            );
-                                          },
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                URoundedMedium,
-                                              ),
-                                              border: Border.all(
-                                                color: UBGLightBlue,
-                                              ),
-                                            ),
-                                            padding: const EdgeInsets.symmetric(
-                                              vertical: UPdMg8,
-                                              horizontal: UPdMg5,
-                                            ),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Expanded(
-                                                  child: Text(
-                                                    majorName.toString().tr,
-                                                    textAlign: TextAlign.left,
-                                                    style: const TextStyle(
-                                                      fontSize: UTitleSize,
-                                                      color: UTextColor,
-                                                      height: UTextHeight,
-                                                    ),
-                                                  ),
-                                                ),
-                                                buildWidth15(),
-                                                Icon(
-                                                  Icons.arrow_forward_ios,
-                                                  size: 14,
-                                                  color: Theme.of(context)
-                                                      .primaryColor,
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    }).toList(),
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
+          : ListView(
+              physics: const BouncingScrollPhysics(),
+              children: [
+                programData.isEmpty
+                    ? const SizedBox.shrink()
+                    : ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: programData.length,
+                        padding: const EdgeInsets.only(
+                          bottom: UZeroPixel,
                         ),
-                  programACCA.isEmpty
-                      ? const SizedBox.shrink()
-                      : ListView.builder(
-                          physics: NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: programACCA.length,
-                          padding: const EdgeInsets.only(
-                            bottom: UPdMg10,
-                          ),
-                          itemBuilder: (BuildContext context, index) {
-                            final program = programACCA[index];
-                            final fac_icon = program.fac_data[0].fac_icon;
-                            return Card(
-                              color: UBackgroundColor,
-                              margin: const EdgeInsets.fromLTRB(
-                                UPdMg10,
-                                UPdMg10,
-                                UPdMg10,
-                                UZeroPixel,
+                        itemBuilder: (context, index) {
+                          final faculty = programData[index];
+                          final facultyName = faculty['faculty_name'];
+                          final majorNamesData =
+                              faculty['faculty_data']['major_name'];
+                          final facultyIcon =
+                              faculty['faculty_data']['fac_icon'];
+                          if (facultyIcon == null) {
+                            const Icon(
+                              Icons.error,
+                              size: 2,
+                              color: UPrimaryColor,
+                            );
+                          }
+                          return Card(
+                            color: UBackgroundColor,
+                            margin: const EdgeInsets.fromLTRB(
+                              UPdMg10,
+                              UPdMg10,
+                              UPdMg10,
+                              UZeroPixel,
+                            ),
+                            elevation: 1,
+                            shadowColor: UGreyColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                URoundedLarge,
                               ),
-                              elevation: 1,
-                              shadowColor: UGreyColor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                  URoundedLarge,
-                                ),
+                            ),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: UPdMg5,
                               ),
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: UPdMg5,
+                              child: Theme(
+                                data: Theme.of(context).copyWith(
+                                  dividerColor: UTransParentColor,
                                 ),
-                                child: Theme(
-                                  data: Theme.of(context).copyWith(
-                                    dividerColor: UTransParentColor,
+                                child: ExpansionTile(
+                                  collapsedIconColor: UPrimaryColor,
+                                  iconColor: UPrimaryColor,
+                                  textColor: UTextColor,
+                                  key: PageStorageKey(
+                                    facultyName.toString().tr,
                                   ),
-                                  child: ExpansionTile(
-                                    collapsedIconColor: UPrimaryColor,
-                                    iconColor: UPrimaryColor,
-                                    textColor: UTextColor,
-                                    key: PageStorageKey(
-                                      program.fac_name.toString().tr,
-                                    ),
-                                    title: Row(
-                                      children: [
-                                        CachedNetworkImage(
-                                          imageUrl: fac_icon,
-                                          scale: UScale6,
-                                          errorWidget: (context, url, error) =>
-                                              const Icon(Icons.error,
-                                                  color: UPrimaryColor),
+                                  title: Row(
+                                    children: [
+                                      CachedNetworkImage(
+                                        imageUrl: facultyIcon,
+                                        scale: UScale6,
+                                        errorWidget: (context, url, error) =>
+                                            const Icon(
+                                          Icons.error,
+                                          color: Colors.red,
                                         ),
-                                        buildWidth10(),
-                                        Text(
-                                          program.fac_name,
+                                      ),
+                                      buildWidth10(),
+                                      Expanded(
+                                        child: Text(
+                                          facultyName.toString().tr,
                                           style: const TextStyle(
-                                            color: UPrimaryColor,
-                                            fontSize: UTitleSize,
-                                            fontWeight: UTitleWeight,
                                             height: UTextHeight,
+                                            fontWeight: UTitleWeight,
+                                            fontSize: UTitleSize,
+                                            color: UPrimaryColor,
                                           ),
                                         ),
-                                      ],
-                                    ),
-                                    children: program.fac_data.map((major) {
-                                      final majorData = major.major_data[index];
-                                      return Container(
-                                        padding: const EdgeInsets.fromLTRB(
-                                          UPdMg15,
-                                          UZeroPixel,
-                                          UPdMg15,
-                                          UPdMg10,
-                                        ),
-                                        child: InkWell(
-                                          highlightColor: UTransParentColor,
-                                          splashColor: UTransParentColor,
-                                          onTap: () {
-                                            Get.to(
-                                              () => Program_ACCA(
-                                                majorName: majorData.major_name,
-                                                course_hour:
-                                                    majorData.course_hour,
-                                                educationNames:
-                                                    majorData.subject_data,
-                                              ),
-                                              transition: Transition
-                                                  .rightToLeftWithFade,
-                                              duration: const Duration(
-                                                milliseconds: 100,
-                                              ),
-                                            );
-                                          },
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                URoundedMedium,
-                                              ),
-                                              border: Border.all(
-                                                color: UBGLightBlue,
-                                              ),
+                                      ),
+                                    ],
+                                  ),
+                                  children: majorNamesData.map<Widget>((major) {
+                                    final majorName = major['major_name'];
+                                    final degreeDetails = major['major_data'];
+
+                                    return Container(
+                                      padding: const EdgeInsets.fromLTRB(
+                                        UPdMg15,
+                                        UZeroPixel,
+                                        UPdMg15,
+                                        UPdMg10,
+                                      ),
+                                      child: InkWell(
+                                        highlightColor: UTransParentColor,
+                                        splashColor: UTransParentColor,
+                                        onTap: () {
+                                          Get.to(
+                                            () => MajorDetailsScreen(
+                                              majorName: majorName,
+                                              majorInfoData: major,
+                                              educationNames: degreeDetails
+                                                  .map<String>((degree) =>
+                                                      degree['degree_name']
+                                                          as String)
+                                                  .toList(),
                                             ),
-                                            padding: const EdgeInsets.symmetric(
-                                              vertical: UPdMg8,
-                                              horizontal: UPdMg5,
+                                            transition:
+                                                Transition.rightToLeftWithFade,
+                                            duration: const Duration(
+                                              milliseconds: 100,
                                             ),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Expanded(
-                                                  child: Text(
-                                                    majorData.major_name
-                                                        .toString()
-                                                        .tr,
-                                                    textAlign: TextAlign.left,
-                                                    style: const TextStyle(
-                                                      fontSize: UTitleSize,
-                                                      color: UTextColor,
-                                                    ),
+                                          );
+                                        },
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                              URoundedMedium,
+                                            ),
+                                            border: Border.all(
+                                              color: UBGLightBlue,
+                                            ),
+                                          ),
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: UPdMg8,
+                                            horizontal: UPdMg5,
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Expanded(
+                                                child: Text(
+                                                  majorName.toString().tr,
+                                                  textAlign: TextAlign.left,
+                                                  style: const TextStyle(
+                                                    fontSize: UTitleSize,
+                                                    color: UTextColor,
+                                                    height: UTextHeight,
                                                   ),
                                                 ),
-                                                buildWidth15(),
-                                                Icon(
-                                                  Icons.arrow_forward_ios,
-                                                  size: 14,
-                                                  color: Theme.of(context)
-                                                      .primaryColor,
-                                                )
-                                              ],
-                                            ),
+                                              ),
+                                              buildWidth15(),
+                                              Icon(
+                                                Icons.arrow_forward_ios,
+                                                size: 14,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              )
+                                            ],
                                           ),
                                         ),
-                                      );
-                                    }).toList(),
-                                  ),
+                                      ),
+                                    );
+                                  }).toList(),
                                 ),
                               ),
-                            );
-                          },
+                            ),
+                          );
+                        },
+                      ),
+                programACCA.isEmpty
+                    ? const SizedBox.shrink()
+                    : ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: programACCA.length,
+                        padding: const EdgeInsets.only(
+                          bottom: UPdMg10,
                         ),
-                ],
-              ),
+                        itemBuilder: (BuildContext context, index) {
+                          final program = programACCA[index];
+                          final fac_icon = program.fac_data[0].fac_icon;
+                          return Card(
+                            color: UBackgroundColor,
+                            margin: const EdgeInsets.fromLTRB(
+                              UPdMg10,
+                              UPdMg10,
+                              UPdMg10,
+                              UZeroPixel,
+                            ),
+                            elevation: 1,
+                            shadowColor: UGreyColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                URoundedLarge,
+                              ),
+                            ),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: UPdMg5,
+                              ),
+                              child: Theme(
+                                data: Theme.of(context).copyWith(
+                                  dividerColor: UTransParentColor,
+                                ),
+                                child: ExpansionTile(
+                                  collapsedIconColor: UPrimaryColor,
+                                  iconColor: UPrimaryColor,
+                                  textColor: UTextColor,
+                                  key: PageStorageKey(
+                                    program.fac_name.toString().tr,
+                                  ),
+                                  title: Row(
+                                    children: [
+                                      CachedNetworkImage(
+                                        imageUrl: fac_icon,
+                                        scale: UScale6,
+                                        errorWidget: (context, url, error) =>
+                                            const Icon(Icons.error,
+                                                color: UPrimaryColor),
+                                      ),
+                                      buildWidth10(),
+                                      Text(
+                                        program.fac_name,
+                                        style: const TextStyle(
+                                          color: UPrimaryColor,
+                                          fontSize: UTitleSize,
+                                          fontWeight: UTitleWeight,
+                                          height: UTextHeight,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  children: program.fac_data.map((major) {
+                                    final majorData = major.major_data[index];
+                                    return Container(
+                                      padding: const EdgeInsets.fromLTRB(
+                                        UPdMg15,
+                                        UZeroPixel,
+                                        UPdMg15,
+                                        UPdMg10,
+                                      ),
+                                      child: InkWell(
+                                        highlightColor: UTransParentColor,
+                                        splashColor: UTransParentColor,
+                                        onTap: () {
+                                          Get.to(
+                                            () => Program_ACCA(
+                                              majorName: majorData.major_name,
+                                              course_hour:
+                                                  majorData.course_hour,
+                                              educationNames:
+                                                  majorData.subject_data,
+                                            ),
+                                            transition:
+                                                Transition.rightToLeftWithFade,
+                                            duration: const Duration(
+                                              milliseconds: 100,
+                                            ),
+                                          );
+                                        },
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                              URoundedMedium,
+                                            ),
+                                            border: Border.all(
+                                              color: UBGLightBlue,
+                                            ),
+                                          ),
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: UPdMg8,
+                                            horizontal: UPdMg5,
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Expanded(
+                                                child: Text(
+                                                  majorData.major_name
+                                                      .toString()
+                                                      .tr,
+                                                  textAlign: TextAlign.left,
+                                                  style: const TextStyle(
+                                                    fontSize: UTitleSize,
+                                                    color: UTextColor,
+                                                  ),
+                                                ),
+                                              ),
+                                              buildWidth15(),
+                                              Icon(
+                                                Icons.arrow_forward_ios,
+                                                size: 14,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  }).toList(),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+              ],
             ),
     );
   }
@@ -798,13 +787,14 @@ class MajorSearchDelegate extends SearchDelegate<String> {
       inputDecorationTheme: const InputDecorationTheme(
         border: InputBorder.none,
         fillColor: UTransParentColor,
-        activeIndicatorBorder: BorderSide(
-          color: UPrimaryColor,
-        ),
         filled: true,
         hintStyle: TextStyle(
-          fontSize: UFontSize18,
+          fontSize: UTitleSize,
         ),
+      ),
+      textSelectionTheme: TextSelectionThemeData(
+        selectionHandleColor: UPrimaryColor,
+        cursorColor: UPrimaryColor,
       ),
     );
   }
@@ -813,19 +803,15 @@ class MajorSearchDelegate extends SearchDelegate<String> {
   String get searchFieldLabel => '\tស្វែងរកមុខជំនាញ'.tr;
 
   @override
-  Color get searchIndicatorLabel => UPrimaryColor;
+  TextStyle? get searchFieldStyle => const TextStyle(
+        fontSize: UTitleSize16,
+        color: UPrimaryColor,
+      );
 
   @override
   Widget buildLeading(BuildContext context) {
-    return IconButton(
-      icon: const Icon(
-        Icons.arrow_back_ios,
-        color: UPrimaryColor,
-        size: 18,
-      ),
-      onPressed: () {
-        close(context, '');
-      },
+    return buildBackBtn(
+      () => Get.back(),
     );
   }
 }

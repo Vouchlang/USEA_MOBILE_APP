@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../Custom_Widget/CustomText.dart';
@@ -26,6 +27,11 @@ class Guest_AccState extends State<Guest_Acc> {
   void initState() {
     super.initState();
     whereToGo();
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: UPrimaryColor,
+      ),
+    );
   }
 
   // Navigate to Screen
@@ -115,77 +121,113 @@ class Guest_AccState extends State<Guest_Acc> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      body: ListView(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        children: [
-          Container(
-            height: 350,
-            decoration: BoxDecoration(
-              color: USecondaryColor,
-              image: DecorationImage(
-                image: AssetImage(
-                  imageAsset + 'guess_acc.png',
-                ),
-                fit: BoxFit.fitWidth,
-                alignment: Alignment.topCenter,
-              ),
-            ),
-          ),
-          GridView.count(
-            shrinkWrap: true,
-            physics: ScrollPhysics(),
-            crossAxisCount: 2,
-            mainAxisSpacing: 3.5,
-            crossAxisSpacing: 3,
-            childAspectRatio: 1.90,
-            padding: EdgeInsets.symmetric(
-              horizontal: UPdMg7,
-            ),
-            children: List.generate(
-              account_screen.length,
-              (index) => Card(
-                elevation: 2,
-                color: UBackgroundColor,
-                shadowColor: ULightGreyColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                    URoundedLarge,
-                  ),
-                ),
-                child: InkWell(
-                  highlightColor: UTransParentColor,
-                  splashColor: UTransParentColor,
-                  onTap: () {
-                    Get.to(
-                      () => account_screen[index].screen,
-                      transition: Transition.rightToLeftWithFade,
-                      duration: const Duration(
-                        milliseconds: 100,
-                      ),
-                    );
-                  },
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        account_screen[index].img,
-                        scale: UScale6,
-                      ),
-                      buildHeight7(),
-                      Text(
-                        account_screen[index].name.tr,
-                        style: const TextStyle(
-                          fontSize: UTitleSize,
-                        ),
-                      )
-                    ],
-                  ),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        color: USecondaryColor,
+        child: Stack(
+          children: [
+            Container(
+              height: 375,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                color: UPrimaryColor,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(50),
+                  bottomRight: Radius.circular(50),
                 ),
               ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    imageAsset + 'new_usea_logo.png',
+                    fit: BoxFit.cover,
+                    height: 150,
+                    width: 150,
+                  ),
+                  buildHeight15(),
+                  const Text(
+                    'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
+                    style: TextStyle(
+                      fontSize: UTitleSize,
+                      fontFamily: 'KhmerOSmuol',
+                      color: UBackgroundColor,
+                    ),
+                  ),
+                  const Text(
+                    'UNIVERSITY OF SOUTH-EAST ASIA',
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: UBackgroundColor,
+                      fontWeight: UBodyWeight,
+                      fontFamily: UEFontFamily,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+            Positioned(
+              top: 320,
+              left: 0,
+              right: 0,
+              child: GridView.count(
+                shrinkWrap: true,
+                physics: ScrollPhysics(),
+                crossAxisCount: 2,
+                mainAxisSpacing: 3.5,
+                crossAxisSpacing: 3,
+                childAspectRatio: 1.90,
+                padding: EdgeInsets.symmetric(
+                  horizontal: UPdMg7,
+                ),
+                children: List.generate(
+                  account_screen.length,
+                  (index) => Card(
+                    elevation: 2,
+                    color: UBackgroundColor,
+                    shadowColor: ULightGreyColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                        URoundedLarge,
+                      ),
+                    ),
+                    child: InkWell(
+                      highlightColor: UTransParentColor,
+                      splashColor: UTransParentColor,
+                      onTap: () {
+                        Get.to(
+                          () => account_screen[index].screen,
+                          transition: Transition.rightToLeftWithFade,
+                          duration: const Duration(
+                            milliseconds: 100,
+                          ),
+                        );
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            account_screen[index].img,
+                            scale: UScale6,
+                          ),
+                          buildHeight7(),
+                          Text(
+                            account_screen[index].name.tr,
+                            style: const TextStyle(
+                              fontSize: UTitleSize,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

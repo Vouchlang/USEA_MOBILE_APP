@@ -1,5 +1,3 @@
-// ignore_for_file: deprecated_member_use
-
 import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/services.dart';
@@ -7,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 // import '../../../Student_Dashboard/Student_Notification/UI_Notification/Student_Notification.dart';
 import '../../../Guest_Dashboard/Guest_Home/Class_Home/Class_Home_Screen.dart';
 import '../../Student_Attendance/UI_Attendance/Attendance.dart';
@@ -210,8 +208,8 @@ class _Student_HomeState extends State<Student_Home> {
   }
 
   void _launchFeedback() async {
-    if (await canLaunch(_dataFeedback[0].feedback)) {
-      await launch(_dataFeedback[0].feedback);
+    if (await canLaunchUrlString(_dataFeedback[0].feedback)) {
+      await launchUrlString(_dataFeedback[0].feedback);
     } else {
       throw 'Could not launch ${_dataFeedback[0].feedback}';
     }
@@ -252,7 +250,7 @@ class _Student_HomeState extends State<Student_Home> {
                     shape: RoundedRectangleBorder(
                       side: const BorderSide(
                         color: UBackgroundColor,
-                        width: 1,
+                        width: 1.5,
                       ),
                       borderRadius: BorderRadius.circular(
                         50,
@@ -298,6 +296,7 @@ class _Student_HomeState extends State<Student_Home> {
               color: UPrimaryColor,
               backgroundColor: UBackgroundColor,
               child: ListView(
+                physics: AlwaysScrollableScrollPhysics(),
                 shrinkWrap: true,
                 children: [
                   Stack(
@@ -489,10 +488,10 @@ class _Student_HomeState extends State<Student_Home> {
                                                     onPressed: () {
                                                       void
                                                           _launchSurvey() async {
-                                                        if (await canLaunch(
+                                                        if (await canLaunchUrlString(
                                                             _dataSurvey[index]
                                                                 .link)) {
-                                                          await launch(
+                                                          await launchUrlString(
                                                               _dataSurvey[index]
                                                                   .link);
                                                         } else {
@@ -556,8 +555,9 @@ class _Student_HomeState extends State<Student_Home> {
                           splashColor: UTransParentColor,
                           onTap: () {
                             void _launchSurvey() async {
-                              if (await canLaunch(_dataSurvey[0].link)) {
-                                await launch(_dataSurvey[0].link);
+                              if (await canLaunchUrlString(
+                                  _dataSurvey[0].link)) {
+                                await launchUrlString(_dataSurvey[0].link);
                               } else {
                                 throw 'Could not launch ${_dataSurvey[0].link}';
                               }

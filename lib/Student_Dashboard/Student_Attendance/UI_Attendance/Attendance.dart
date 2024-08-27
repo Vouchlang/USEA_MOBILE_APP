@@ -169,74 +169,72 @@ class _AttendanceState extends State<Attendance> {
               onRefresh: _refreshData,
               color: UPrimaryColor,
               backgroundColor: UBackgroundColor,
-              child: Container(
+              child: ListView(
+                shrinkWrap: true,
+                physics: const BouncingScrollPhysics(),
                 padding: const EdgeInsets.symmetric(
                   horizontal: UPdMg5,
                 ),
-                child: ListView(
-                  shrinkWrap: true,
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(
-                        top: UPdMg15,
-                      ),
-                      padding: const EdgeInsets.fromLTRB(
-                        UPdMg5,
-                        UZeroPixel,
-                        UPdMg5,
-                        UPdMg10,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          buildAttList(
-                            'យឺត',
-                            UYellowColor,
-                          ),
-                          buildAttList(
-                            'សុំច្បាប់',
-                            UOrangeColor,
-                          ),
-                          buildAttList(
-                            'អវត្តមាន',
-                            URedColor,
-                          ),
-                          buildAttList(
-                            'វត្តមាន\t',
-                            UScoreColor,
-                          ),
-                        ],
-                      ),
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(
+                      top: UPdMg15,
                     ),
-                    _buildLastSemesterSubjects(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                    padding: const EdgeInsets.fromLTRB(
+                      UPdMg5,
+                      UZeroPixel,
+                      UPdMg5,
+                      UPdMg10,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          margin: EdgeInsets.only(
-                            bottom: UPdMg10,
-                          ),
-                          child: buildNavBtn(
-                            () {
-                              Get.to(
-                                () => AttendanceList(
-                                  data_studentUser: widget.data_studentUser,
-                                  sourceScreen: widget.sourceScreen,
-                                ),
-                                transition: Transition.rightToLeftWithFade,
-                                duration: const Duration(
-                                  milliseconds: 100,
-                                ),
-                              );
-                            },
-                            'មើលទាំងអស់',
-                          ),
-                        )
+                        buildAttList(
+                          'យឺត',
+                          UYellowColor,
+                        ),
+                        buildAttList(
+                          'សុំច្បាប់',
+                          UOrangeColor,
+                        ),
+                        buildAttList(
+                          'អវត្តមាន',
+                          URedColor,
+                        ),
+                        buildAttList(
+                          'វត្តមាន\t',
+                          UScoreColor,
+                        ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                  _buildLastSemesterSubjects(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(
+                          bottom: UPdMg10,
+                        ),
+                        child: buildNavBtn(
+                          () {
+                            Get.to(
+                              () => AttendanceList(
+                                data_studentUser: widget.data_studentUser,
+                                sourceScreen: widget.sourceScreen,
+                              ),
+                              transition: Transition.rightToLeftWithFade,
+                              duration: const Duration(
+                                milliseconds: 100,
+                              ),
+                            );
+                          },
+                          'មើលទាំងអស់',
+                        ),
+                      )
+                    ],
+                  ),
+                ],
               ),
             ),
     );

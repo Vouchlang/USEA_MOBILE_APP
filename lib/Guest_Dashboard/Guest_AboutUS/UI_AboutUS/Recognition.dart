@@ -1,8 +1,6 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import '../Class_AboutUS/Class_Recognition.dart';
 import '/theme_builder.dart';
 import '/Custom_AppBar.dart';
@@ -66,6 +64,7 @@ class _RecognitionState extends State<Recognition> {
       body: recognition.isEmpty
           ? buildFutureBuild()
           : ListView.builder(
+              physics: BouncingScrollPhysics(),
               shrinkWrap: true,
               itemCount: recognition.length,
               padding: const EdgeInsets.only(
@@ -125,10 +124,10 @@ class _RecognitionState extends State<Recognition> {
                                 child: buildNavBtn(
                                   () {
                                     void _launchRecognitionUrl() async {
-                                      if (await canLaunch(
+                                      if (await canLaunchUrlString(
                                         recognition[index].link,
                                       )) {
-                                        await launch(
+                                        await launchUrlString(
                                           recognition[index].link,
                                         );
                                       } else {

@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_unnecessary_containers
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '/theme_builder.dart';
@@ -54,7 +52,6 @@ class _PaymentDialogState extends State<PaymentDialog> {
     );
   }
 
-  // ignore: non_constant_identifier_names
   Container CardDailog() {
     return Container(
       child: Column(

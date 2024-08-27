@@ -1,5 +1,3 @@
-// ignore_for_file: constant_identifier_names, use_key_in_widget_constructors, unnecessary_null_comparison, non_constant_identifier_names
-
 import 'package:flutter/material.dart';
 
 // ThemeData lightmode = ThemeData(
@@ -22,7 +20,9 @@ import 'package:flutter/material.dart';
 
 // * @ Colors Theme
 const UPrimaryColor = Color(0xFF002060);
-const USecondaryColor = Color(0xFFF5F7FE);
+// const USecondaryColor = Color(0xFFF5F7FE);
+const USecondaryColor = Color(0xFFF0F5FF);
+
 const UYellowColor = Colors.amber;
 const UOrangeColor = Color(0xffDF713F);
 const URedColor = Color(0xffD71818);

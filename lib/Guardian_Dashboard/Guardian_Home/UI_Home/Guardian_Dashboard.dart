@@ -1,10 +1,8 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import '../../../Guardian_Dashboard/Guardian_Home/Class_Home/Class_Home.dart';
 import '../../../Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
 import '../../../Custom_Widget/CustomText.dart';
@@ -125,8 +123,8 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
   }
 
   void _launchFeedback() async {
-    if (await canLaunch(_dataFeedback[0].feedback)) {
-      await launch(_dataFeedback[0].feedback);
+    if (await canLaunchUrlString(_dataFeedback[0].feedback)) {
+      await launchUrlString(_dataFeedback[0].feedback);
     } else {
       throw 'Could not launch ${_dataFeedback[0].feedback}';
     }
@@ -243,6 +241,7 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
         automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             buildUniversityName(
               UPrimaryColor,
@@ -277,294 +276,287 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
       ),
       body: _dataGdDetail.isEmpty || _dataGuardianUser.isEmpty
           ? buildFutureBuild()
-          : SingleChildScrollView(
+          : ListView(
+              physics: BouncingScrollPhysics(),
               padding: EdgeInsets.only(bottom: UHeight15),
-              child: Column(
-                children: [
-                  ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: _dataGdDetail.length,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return InkWell(
-                        highlightColor: UTransParentColor,
-                        splashColor: UTransParentColor,
-                        onTap: () {
-                          Get.to(
-                            () => St_Home(
-                              data_studentUser: [
-                                StudentUser(
-                                  name_kh: _dataGdDetail[index].name_kh,
-                                  student_id: _dataGdDetail[index].student_id,
-                                  pwd: _dataGdDetail[index].password,
-                                  guardian_id: _dataGuardianUser[0].guardian_id,
-                                )
-                              ],
-                              sourceScreen: guardian_sourceScreen,
-                            ),
-                            transition: Transition.rightToLeftWithFade,
-                            duration: Duration(
-                              milliseconds: 100,
-                            ),
-                          );
-                        },
-                        child: Card(
-                          elevation: 1.5,
-                          color: UBackgroundColor,
-                          shadowColor: ULightGreyColor,
-                          margin: EdgeInsets.only(
-                            top: index == 0 ? UHeight15 : UHeight10,
-                            left: UPdMg10,
-                            right: UPdMg10,
+              children: [
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: _dataGdDetail.length,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      highlightColor: UTransParentColor,
+                      splashColor: UTransParentColor,
+                      onTap: () {
+                        Get.to(
+                          () => St_Home(
+                            data_studentUser: [
+                              StudentUser(
+                                name_kh: _dataGdDetail[index].name_kh,
+                                student_id: _dataGdDetail[index].student_id,
+                                pwd: _dataGdDetail[index].password,
+                                guardian_id: _dataGuardianUser[0].guardian_id,
+                              )
+                            ],
+                            sourceScreen: guardian_sourceScreen,
                           ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                              URoundedLarge,
-                            ),
+                          transition: Transition.rightToLeftWithFade,
+                          duration: Duration(
+                            milliseconds: 100,
                           ),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              bottom: UPdMg10,
-                            ),
-                            child: Column(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: UPdMg10,
-                                    horizontal: UPdMg20,
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      CircleAvatar(
-                                        backgroundImage:
-                                            CachedNetworkImageProvider(
-                                          _dataGdDetail[index].profile_pic,
-                                        ),
-                                        radius: 50,
-                                      ),
-                                      buildWidth20(),
-                                      Expanded(
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            buildHeaderDetail(
-                                              _dataGdDetail[index]
-                                                      .name_kh
-                                                      .isEmpty
-                                                  ? 'N/A'
-                                                  : _dataGdDetail[index]
-                                                      .name_kh,
-                                              UKFontFamily,
-                                              UTitleSize16,
-                                              UTitleWeight,
-                                            ),
-                                            buildHeaderDetail(
-                                              _dataGdDetail[index]
-                                                      .name_en
-                                                      .isEmpty
-                                                  ? 'N/A'
-                                                  : _dataGdDetail[index]
-                                                      .name_en,
-                                              UEFontFamily,
-                                              UTitleSize16,
-                                              UBodyWeight,
-                                            ),
-                                            buildHeaderDetail(
-                                              _dataGdDetail[index]
-                                                      .student_id
-                                                      .isEmpty
-                                                  ? 'N/A'
-                                                  : _dataGdDetail[index]
-                                                      .student_id,
-                                              UEFontFamily,
-                                              UBodySize,
-                                              UBodyWeight,
-                                            ),
-                                          ],
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                buildDividerStDetail(),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    buildBodyDetail(
-                                      'ឆ្នាំ',
-                                      _dataGdDetail[index].year_name.isEmpty
-                                          ? 'N/A'
-                                          : _dataGdDetail[index].year_name,
-                                    ),
-                                    buildVerticalDividerH_45(),
-                                    buildBodyDetail(
-                                      'ឆមាស',
-                                      _dataGdDetail[index].semester_name.isEmpty
-                                          ? 'N/A'
-                                          : _dataGdDetail[index].semester_name,
-                                    ),
-                                    buildVerticalDividerH_45(),
-                                    buildBodyDetail(
-                                      'ជំនាន់',
-                                      _dataGdDetail[index].stage_name.isEmpty
-                                          ? 'N/A'
-                                          : _dataGdDetail[index].stage_name,
-                                    ),
-                                    buildVerticalDividerH_45(),
-                                    buildBodyDetail(
-                                      'វគ្គ',
-                                      _dataGdDetail[index].term_name.isEmpty
-                                          ? 'N/A'
-                                          : _dataGdDetail[index].term_name,
-                                    ),
-                                    buildVerticalDividerH_45(),
-                                    buildBodyDetail(
-                                      'ឆ្នាំសិក្សា',
-                                      _dataGdDetail[index].academic_year.isEmpty
-                                          ? 'N/A'
-                                          : _dataGdDetail[index].academic_year,
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                  buildHeight10(),
-                  GridView.count(
-                    shrinkWrap: true,
-                    physics: ScrollPhysics(),
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 3.5,
-                    crossAxisSpacing: 3,
-                    childAspectRatio: 1.90,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: UPdMg7,
-                    ),
-                    children: List.generate(
-                      guardian_Grid_Home_Screen.length,
-                      (index) => Card(
+                        );
+                      },
+                      child: Card(
                         elevation: 1.5,
                         color: UBackgroundColor,
                         shadowColor: ULightGreyColor,
+                        margin: EdgeInsets.only(
+                          top: index == 0 ? UHeight15 : UHeight10,
+                          left: UPdMg10,
+                          right: UPdMg10,
+                        ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(
-                            UPdMg10,
+                            URoundedLarge,
                           ),
                         ),
-                        child: InkWell(
-                          highlightColor: UTransParentColor,
-                          splashColor: UTransParentColor,
-                          onTap: () {
-                            _dataFeedback[0].feedback.isNotEmpty
-                                ? _launchFeedback()
-                                : showDialog(
-                                    context: context,
-                                    barrierDismissible: false,
-                                    builder: (BuildContext context) {
-                                      return Dialog(
-                                        backgroundColor: URedColor,
-                                        elevation: 3,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            URoundedLarge,
-                                          ),
-                                        ),
-                                        child: Container(
-                                          margin: EdgeInsets.all(
-                                            UPdMg7,
-                                          ),
-                                          padding: EdgeInsets.all(
-                                            UPdMg10,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(
-                                              20,
-                                            ),
-                                            color: URedColor,
-                                          ),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              Text(
-                                                'សូមអធ្យាស្រ័យ'.tr,
-                                                style: TextStyle(
-                                                  fontSize: UTitleSize,
-                                                  fontWeight: UTitleWeight,
-                                                ),
-                                              ),
-                                              buildHeight5(),
-                                              Text(
-                                                'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!'
-                                                    .tr,
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  fontSize: UBodySize,
-                                                ),
-                                              ),
-                                              buildHeight5(),
-                                              Container(
-                                                height: UHeight50,
-                                                padding: EdgeInsets.all(
-                                                  UPdMg5,
-                                                ),
-                                                alignment: Alignment.center,
-                                                child: TextButton(
-                                                  child: Text(
-                                                    'បោះបង់'.tr,
-                                                    style: TextStyle(
-                                                      color: UPrimaryColor,
-                                                      fontSize: UBodySize,
-                                                    ),
-                                                  ),
-                                                  onPressed: () {
-                                                    Navigator.of(context).pop();
-                                                  },
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  );
-                          },
-                          child: Container(
-                            padding: EdgeInsets.only(
-                              left: UPdMg15,
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Image.asset(
-                                  guardian_Grid_Home_Screen[index].img,
-                                  scale: UScale6,
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            bottom: UPdMg10,
+                          ),
+                          child: Column(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: UPdMg10,
+                                  horizontal: UPdMg20,
                                 ),
-                                buildHeight7(),
-                                Text(
-                                  guardian_Grid_Home_Screen[index].name.tr,
-                                  style: TextStyle(
-                                    fontSize: UTitleSize,
+                                child: Row(
+                                  children: [
+                                    CircleAvatar(
+                                      backgroundImage:
+                                          CachedNetworkImageProvider(
+                                        _dataGdDetail[index].profile_pic,
+                                      ),
+                                      radius: 50,
+                                    ),
+                                    buildWidth20(),
+                                    Expanded(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          buildHeaderDetail(
+                                            _dataGdDetail[index].name_kh.isEmpty
+                                                ? 'N/A'
+                                                : _dataGdDetail[index].name_kh,
+                                            UKFontFamily,
+                                            UTitleSize16,
+                                            UTitleWeight,
+                                          ),
+                                          buildHeaderDetail(
+                                            _dataGdDetail[index].name_en.isEmpty
+                                                ? 'N/A'
+                                                : _dataGdDetail[index].name_en,
+                                            UEFontFamily,
+                                            UTitleSize16,
+                                            UBodyWeight,
+                                          ),
+                                          buildHeaderDetail(
+                                            _dataGdDetail[index]
+                                                    .student_id
+                                                    .isEmpty
+                                                ? 'N/A'
+                                                : _dataGdDetail[index]
+                                                    .student_id,
+                                            UEFontFamily,
+                                            UBodySize,
+                                            UBodyWeight,
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              buildDividerStDetail(),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  buildBodyDetail(
+                                    'ឆ្នាំ',
+                                    _dataGdDetail[index].year_name.isEmpty
+                                        ? 'N/A'
+                                        : _dataGdDetail[index].year_name,
                                   ),
+                                  buildVerticalDividerH_45(),
+                                  buildBodyDetail(
+                                    'ឆមាស',
+                                    _dataGdDetail[index].semester_name.isEmpty
+                                        ? 'N/A'
+                                        : _dataGdDetail[index].semester_name,
+                                  ),
+                                  buildVerticalDividerH_45(),
+                                  buildBodyDetail(
+                                    'ជំនាន់',
+                                    _dataGdDetail[index].stage_name.isEmpty
+                                        ? 'N/A'
+                                        : _dataGdDetail[index].stage_name,
+                                  ),
+                                  buildVerticalDividerH_45(),
+                                  buildBodyDetail(
+                                    'វគ្គ',
+                                    _dataGdDetail[index].term_name.isEmpty
+                                        ? 'N/A'
+                                        : _dataGdDetail[index].term_name,
+                                  ),
+                                  buildVerticalDividerH_45(),
+                                  buildBodyDetail(
+                                    'ឆ្នាំសិក្សា',
+                                    _dataGdDetail[index].academic_year.isEmpty
+                                        ? 'N/A'
+                                        : _dataGdDetail[index].academic_year,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+                buildHeight10(),
+                GridView.count(
+                  shrinkWrap: true,
+                  physics: ScrollPhysics(),
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 3.5,
+                  crossAxisSpacing: 3,
+                  childAspectRatio: 1.90,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: UPdMg7,
+                  ),
+                  children: List.generate(
+                    guardian_Grid_Home_Screen.length,
+                    (index) => Card(
+                      elevation: 1.5,
+                      color: UBackgroundColor,
+                      shadowColor: ULightGreyColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                          UPdMg10,
+                        ),
+                      ),
+                      child: InkWell(
+                        highlightColor: UTransParentColor,
+                        splashColor: UTransParentColor,
+                        onTap: () {
+                          _dataFeedback[0].feedback.isNotEmpty
+                              ? _launchFeedback()
+                              : showDialog(
+                                  context: context,
+                                  barrierDismissible: false,
+                                  builder: (BuildContext context) {
+                                    return Dialog(
+                                      backgroundColor: URedColor,
+                                      elevation: 3,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                          URoundedLarge,
+                                        ),
+                                      ),
+                                      child: Container(
+                                        margin: EdgeInsets.all(
+                                          UPdMg7,
+                                        ),
+                                        padding: EdgeInsets.all(
+                                          UPdMg10,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(
+                                            20,
+                                          ),
+                                          color: URedColor,
+                                        ),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Text(
+                                              'សូមអធ្យាស្រ័យ'.tr,
+                                              style: TextStyle(
+                                                fontSize: UTitleSize,
+                                                fontWeight: UTitleWeight,
+                                              ),
+                                            ),
+                                            buildHeight5(),
+                                            Text(
+                                              'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!'
+                                                  .tr,
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                fontSize: UBodySize,
+                                              ),
+                                            ),
+                                            buildHeight5(),
+                                            Container(
+                                              height: UHeight50,
+                                              padding: EdgeInsets.all(
+                                                UPdMg5,
+                                              ),
+                                              alignment: Alignment.center,
+                                              child: TextButton(
+                                                child: Text(
+                                                  'បោះបង់'.tr,
+                                                  style: TextStyle(
+                                                    color: UPrimaryColor,
+                                                    fontSize: UBodySize,
+                                                  ),
+                                                ),
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+                        },
+                        child: Container(
+                          padding: EdgeInsets.only(
+                            left: UPdMg15,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                guardian_Grid_Home_Screen[index].img,
+                                scale: UScale6,
+                              ),
+                              buildHeight7(),
+                              Text(
+                                guardian_Grid_Home_Screen[index].name.tr,
+                                style: TextStyle(
+                                  fontSize: UTitleSize,
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
     );
   }
