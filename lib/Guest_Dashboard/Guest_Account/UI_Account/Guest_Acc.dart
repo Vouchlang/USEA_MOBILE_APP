@@ -127,13 +127,13 @@ class Guest_AccState extends State<Guest_Acc> {
         child: Stack(
           children: [
             Container(
-              height: 375,
+              height: MediaQuery.of(context).size.height / 1.75,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 color: UPrimaryColor,
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(50),
-                  bottomRight: Radius.circular(50),
+                  bottomLeft: Radius.circular(25),
+                  bottomRight: Radius.circular(25),
                 ),
               ),
               child: Column(
@@ -169,7 +169,7 @@ class Guest_AccState extends State<Guest_Acc> {
               ),
             ),
             Positioned(
-              top: 320,
+              top: MediaQuery.of(context).size.height / 2,
               left: 0,
               right: 0,
               child: GridView.count(
