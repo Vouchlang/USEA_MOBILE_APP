@@ -16,7 +16,7 @@ class Structure extends StatelessWidget {
         title: 'រចនាសម្ព័ន្ធរបស់សាកលវិទ្យាល័យ'.tr,
       ),
       body: ListView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         children: [
           InkWell(
             highlightColor: UTransParentColor,

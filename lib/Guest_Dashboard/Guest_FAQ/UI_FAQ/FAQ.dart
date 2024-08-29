@@ -68,6 +68,7 @@ class _FAQState extends State<FAQ> {
             : Container(
                 margin: const EdgeInsets.symmetric(
                   horizontal: UPdMg10,
+                  vertical: UPdMg5,
                 ),
                 width: double.infinity,
                 child: ListView.builder(
@@ -82,7 +83,7 @@ class _FAQState extends State<FAQ> {
                           : const EdgeInsets.only(
                               top: UPdMg10,
                             ),
-                      elevation: 1,
+                      elevation: 1.5,
                       color: UBackgroundColor,
                       shadowColor: ULightGreyColor,
                       shape: RoundedRectangleBorder(

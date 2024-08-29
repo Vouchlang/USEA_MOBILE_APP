@@ -23,7 +23,7 @@ class Attendance_Detail extends StatelessWidget {
         title: 'វត្តមាន'.tr,
       ),
       body: ListView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         children: [
           Card(
             elevation: 0.5,

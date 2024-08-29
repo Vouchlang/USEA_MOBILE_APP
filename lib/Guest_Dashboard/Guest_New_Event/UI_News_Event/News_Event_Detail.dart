@@ -67,7 +67,7 @@ class News_Event_Detail extends StatelessWidget {
                     BoxShadow(
                       offset: Offset(
                         0,
-                        1,
+                        1.5,
                       ),
                       color: ULightGreyColor,
                       blurRadius: 1,

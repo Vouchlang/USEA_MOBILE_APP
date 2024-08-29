@@ -50,8 +50,7 @@ class _ContactState extends State<Contact> {
   void addCustomIcon() {
     BitmapDescriptor.asset(
       const ImageConfiguration(),
-      // imageAsset +
-      'assets/image/new_usea_logo.png',
+      imageAsset + 'new_usea_logo.png',
       height: UHeight35,
     ).then((icon) {
       setState(() {

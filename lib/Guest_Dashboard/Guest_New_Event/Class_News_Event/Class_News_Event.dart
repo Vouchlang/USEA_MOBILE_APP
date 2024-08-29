@@ -1,6 +1,6 @@
 class Class_News_Events {
-  late String event_name;
-  List<Event_Data> events;
+  late final String event_name;
+  late final List<Event_Data> events;
   Class_News_Events({
     required this.event_name,
     required this.events,

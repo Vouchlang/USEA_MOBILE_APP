@@ -1,5 +1,5 @@
 class StudentUser {
-  final String name_kh, student_id, pwd, guardian_id;
+  late final String name_kh, student_id, pwd, guardian_id;
 
   StudentUser({
     required this.name_kh,

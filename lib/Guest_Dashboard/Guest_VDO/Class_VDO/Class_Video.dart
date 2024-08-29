@@ -3,7 +3,7 @@ part 'Class_Video.g.dart';
 
 @JsonSerializable()
 class VDO_Class {
-  final String youtube_thumbnail, title, caption, link;
+  late final String youtube_thumbnail, title, caption, link;
 
   VDO_Class({
     required this.youtube_thumbnail,

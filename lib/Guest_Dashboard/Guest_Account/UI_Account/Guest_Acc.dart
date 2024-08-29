@@ -129,11 +129,15 @@ class Guest_AccState extends State<Guest_Acc> {
             Container(
               height: MediaQuery.of(context).size.height / 1.75,
               width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: UPrimaryColor,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(25),
-                  bottomRight: Radius.circular(25),
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(
+                    25,
+                  ),
+                  bottomRight: Radius.circular(
+                    25,
+                  ),
                 ),
               ),
               child: Column(
@@ -144,9 +148,6 @@ class Guest_AccState extends State<Guest_Acc> {
                     imageAsset + 'new_usea_logo.png',
                     fit: BoxFit.cover,
                     height: MediaQuery.of(context).size.height / 4,
-
-                    // height: 150,
-                    // width: 150,
                   ),
                   buildHeight15(),
                   const Text(
@@ -161,7 +162,7 @@ class Guest_AccState extends State<Guest_Acc> {
                     'UNIVERSITY OF SOUTH-EAST ASIA',
                     textAlign: TextAlign.justify,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16.3,
                       color: UBackgroundColor,
                       fontWeight: UBodyWeight,
                       fontFamily: UEFontFamily,
@@ -176,18 +177,18 @@ class Guest_AccState extends State<Guest_Acc> {
               right: 0,
               child: GridView.count(
                 shrinkWrap: true,
-                physics: ScrollPhysics(),
+                physics: const ScrollPhysics(),
                 crossAxisCount: 2,
                 mainAxisSpacing: 3.5,
                 crossAxisSpacing: 3,
                 childAspectRatio: 1.90,
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   horizontal: UPdMg7,
                 ),
                 children: List.generate(
                   account_screen.length,
                   (index) => Card(
-                    elevation: 2,
+                    elevation: 1.5,
                     color: UBackgroundColor,
                     shadowColor: ULightGreyColor,
                     shape: RoundedRectangleBorder(

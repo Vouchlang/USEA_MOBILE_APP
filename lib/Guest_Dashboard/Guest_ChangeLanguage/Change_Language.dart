@@ -132,7 +132,7 @@ class ChangeLanguage extends StatelessWidget {
                           buildHeight5(),
                           Text(
                             locale[index]['name'].toString().tr,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: UBodySize,
                             ),
                           ),

@@ -15,7 +15,7 @@ class Vision extends StatelessWidget {
         title: 'ចក្ខុវិស័យ បេសកកម្ម និងគុណតម្លៃ'.tr,
       ),
       body: ListView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         children: [
           buildTitleVision(
             '1. Vision',

@@ -1,5 +1,5 @@
 class ProgramDataModel {
-  final Map<String, Map<String, dynamic>> programData;
+ late final Map<String, Map<String, dynamic>> programData;
 
   ProgramDataModel({
     required this.programData,

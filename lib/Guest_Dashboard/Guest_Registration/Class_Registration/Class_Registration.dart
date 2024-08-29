@@ -1,6 +1,6 @@
 class EducationData {
-  String title;
-  List<EducationDetail> details;
+  late final String title;
+  late final List<EducationDetail> details;
 
   EducationData({
     required this.title,
@@ -17,8 +17,8 @@ class EducationData {
 }
 
 class EducationDetail {
-  String dateTitle, timeTitle, timeDetail;
-  List<EducationItem> educationList;
+  late final String dateTitle, timeTitle, timeDetail;
+  late final List<EducationItem> educationList;
 
   EducationDetail({
     required this.dateTitle,
@@ -39,8 +39,8 @@ class EducationDetail {
 }
 
 class EducationItem {
-  String educationName;
-  List<InfoList> infoList;
+  late final String educationName;
+  late final List<InfoList> infoList;
 
   EducationItem({
     required this.educationName,
@@ -56,7 +56,7 @@ class EducationItem {
 }
 
 class InfoList {
-  String info_text;
+  late final String info_text;
 
   InfoList({
     required this.info_text,

@@ -390,7 +390,7 @@ class _Student_HomeState extends State<Student_Home> {
                         margin: const EdgeInsets.symmetric(
                           horizontal: UPdMg10,
                         ),
-                        elevation: 1.5,
+                        elevation: 1,
                         shadowColor: ULightGreyColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(
@@ -542,7 +542,7 @@ class _Student_HomeState extends State<Student_Home> {
                         margin: const EdgeInsets.symmetric(
                           horizontal: UPdMg10,
                         ),
-                        elevation: 1.5,
+                        elevation: 1,
                         color: UBackgroundColor,
                         shadowColor: ULightGreyColor,
                         shape: RoundedRectangleBorder(

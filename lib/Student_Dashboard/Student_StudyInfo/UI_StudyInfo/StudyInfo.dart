@@ -143,7 +143,7 @@ class _Study_InfoState extends State<Study_Info> {
               color: UPrimaryColor,
               backgroundColor: UBackgroundColor,
               child: ListView(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 children: [
                   _dataStudyInfo.isEmpty
                       ? const SizedBox.shrink()
@@ -166,8 +166,8 @@ class _Study_InfoState extends State<Study_Info> {
                         ),
                   ListView.builder(
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    padding: EdgeInsets.all(
+                    physics: const NeverScrollableScrollPhysics(),
+                    padding: const EdgeInsets.all(
                       UPdMg5,
                     ),
                     itemCount: _dataStudyInfo.length,
@@ -186,19 +186,12 @@ class _Study_InfoState extends State<Study_Info> {
                           ),
                         ),
                         color: UBackgroundColor,
-                        margin: isLastIndex
-                            ? const EdgeInsets.fromLTRB(
-                                UPdMg5,
-                                UPdMg5,
-                                UPdMg5,
-                                UPdMg10,
-                              )
-                            : const EdgeInsets.fromLTRB(
-                                UPdMg5,
-                                UZeroPixel,
-                                UPdMg5,
-                                UPdMg10,
-                              ),
+                        margin: EdgeInsets.fromLTRB(
+                          UPdMg5,
+                          isLastIndex ? UPdMg5 : UZeroPixel,
+                          UPdMg5,
+                          UPdMg10,
+                        ),
                         child: IntrinsicHeight(
                           child: Column(
                             children: [

@@ -1,5 +1,5 @@
 class AchievementData {
-  List<AchievementTypeData> achievementData;
+  late final List<AchievementTypeData> achievementData;
 
   AchievementData({
     required this.achievementData,
@@ -21,8 +21,8 @@ class AchievementData {
 }
 
 class AchievementTypeData {
-  String achievementType;
-  List<AchievementImageData> data;
+  late final String achievementType;
+  late final List<AchievementImageData> data;
 
   AchievementTypeData({
     required this.achievementType,
@@ -47,8 +47,8 @@ class AchievementTypeData {
 }
 
 class AchievementImageData {
-  String image, image_title;
-  int image_status;
+  late final String image, image_title;
+  late final int image_status;
 
   AchievementImageData({
     required this.image,

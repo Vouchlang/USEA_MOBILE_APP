@@ -94,12 +94,12 @@ class _RegistrationState extends State<Registration> {
               padding: const EdgeInsets.all(
                 UPdMg10,
               ),
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               itemCount: educationDataList.length,
               itemBuilder: (context, index) {
                 final educationData = educationDataList[index];
                 return Card(
-                  elevation: 1,
+                  elevation: 0.5,
                   color: UBackgroundColor,
                   margin: const EdgeInsets.only(
                     bottom: UPdMg10,
@@ -135,7 +135,7 @@ class _RegistrationState extends State<Registration> {
                         buildHeight5(),
                         ListView.builder(
                           shrinkWrap: true,
-                          physics: ClampingScrollPhysics(),
+                          physics: const ClampingScrollPhysics(),
                           itemCount: educationData.details.length,
                           itemBuilder: (context, detailIndex) {
                             final details = educationData.details[detailIndex];

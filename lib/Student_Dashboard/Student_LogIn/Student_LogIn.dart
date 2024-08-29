@@ -249,8 +249,6 @@ class _Student_LogInState extends State<Student_LogIn> {
               imageAsset + 'usea_logo.png',
               fit: BoxFit.cover,
               height: MediaQuery.of(context).size.height / 4,
-              // height: 150,
-              // width: 150,
             ),
             buildHeight15(),
             const Text(
@@ -265,7 +263,7 @@ class _Student_LogInState extends State<Student_LogIn> {
               'UNIVERSITY OF SOUTH-EAST ASIA',
               textAlign: TextAlign.justify,
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 16.3,
                 color: UPrimaryColor,
                 fontWeight: UBodyWeight,
                 fontFamily: UEFontFamily,

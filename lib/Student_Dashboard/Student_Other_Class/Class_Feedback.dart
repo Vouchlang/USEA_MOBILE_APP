@@ -1,5 +1,5 @@
 class FeedbackClass {
-  final String feedback;
+  late final String feedback;
 
   FeedbackClass({
     required this.feedback,

@@ -31,7 +31,7 @@ class _Program_SHCState extends State<Program_SHC> {
         padding: const EdgeInsets.all(
           UPdMg8,
         ),
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

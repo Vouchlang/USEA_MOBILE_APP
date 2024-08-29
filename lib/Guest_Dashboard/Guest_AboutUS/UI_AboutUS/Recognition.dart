@@ -59,106 +59,107 @@ class _RecognitionState extends State<Recognition> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: USecondaryColor,
-        appBar: Custom_AppBar(
-          title: 'ការទទួលស្គាល់'.tr,
-        ),
-        body: recognition.isEmpty
-            ? buildFutureBuild()
-            : ListView(
-                physics: BouncingScrollPhysics(),
-                padding: EdgeInsets.symmetric(
-                  vertical: UPdMg15,
-                  horizontal: UPdMg10,
-                ),
-                children: [
-                  StaggeredGrid.count(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: UPdMg5,
-                    mainAxisSpacing: UPdMg5,
-                    children: List.generate(
-                      recognition.length,
-                      growable: true,
-                      (index) {
-                        return Card(
-                          elevation: 0.5,
-                          color: UBackgroundColor,
-                          shadowColor: ULightGreyColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                              URoundedLarge,
+      backgroundColor: USecondaryColor,
+      appBar: Custom_AppBar(
+        title: 'ការទទួលស្គាល់'.tr,
+      ),
+      body: recognition.isEmpty
+          ? buildFutureBuild()
+          : ListView(
+              physics: const BouncingScrollPhysics(),
+              padding: const EdgeInsets.symmetric(
+                vertical: UPdMg15,
+                horizontal: UPdMg10,
+              ),
+              children: [
+                StaggeredGrid.count(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: UPdMg5,
+                  mainAxisSpacing: UPdMg5,
+                  children: List.generate(
+                    recognition.length,
+                    growable: true,
+                    (index) {
+                      return Card(
+                        elevation: 0.5,
+                        color: UBackgroundColor,
+                        shadowColor: ULightGreyColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            URoundedLarge,
+                          ),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ClipRRect(
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(
+                                  URoundedLarge,
+                                ),
+                                topRight: Radius.circular(
+                                  URoundedLarge,
+                                ),
+                              ),
+                              child: recognition[index].image.isEmpty
+                                  ? Image.asset(
+                                      imageAsset + 'Error_Image.jpg',
+                                    )
+                                  : CachedNetworkImage(
+                                      imageUrl: recognition[index].image,
+                                    ),
                             ),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(
-                                    URoundedLarge,
-                                  ),
-                                  topRight: Radius.circular(
-                                    URoundedLarge,
-                                  ),
-                                ),
-                                child: recognition[index].image.isEmpty
-                                    ? Image.asset(
-                                        imageAsset + 'Error_Image.jpg',
-                                      )
-                                    : CachedNetworkImage(
-                                        imageUrl: recognition[index].image,
-                                      ),
+                            buildWidth10(),
+                            Padding(
+                              padding: const EdgeInsets.all(
+                                UPdMg10,
                               ),
-                              buildWidth10(),
-                              Padding(
-                                padding: const EdgeInsets.all(
-                                  UPdMg10,
-                                ),
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      recognition[index].title.isEmpty
-                                          ? 'N/A'
-                                          : recognition[index].title,
-                                      textAlign: TextAlign.center,
-                                      style: const TextStyle(
-                                        fontSize: UTitleSize,
-                                        fontWeight: UTitleWeight,
-                                      ),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    recognition[index].title.isEmpty
+                                        ? 'N/A'
+                                        : recognition[index].title,
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                      fontSize: UTitleSize,
+                                      fontWeight: UTitleWeight,
                                     ),
-                                    buildHeight10(),
-                                    Container(
-                                      alignment: Alignment.center,
-                                      child: buildNavBtn(
-                                        () {
-                                          void _launchRecognitionUrl() async {
-                                            if (await canLaunchUrlString(
+                                  ),
+                                  buildHeight10(),
+                                  Container(
+                                    alignment: Alignment.center,
+                                    child: buildNavBtn(
+                                      () {
+                                        void _launchRecognitionUrl() async {
+                                          if (await canLaunchUrlString(
+                                            recognition[index].link,
+                                          )) {
+                                            await launchUrlString(
                                               recognition[index].link,
-                                            )) {
-                                              await launchUrlString(
-                                                recognition[index].link,
-                                              );
-                                            } else {
-                                              throw 'Could not launch ${recognition[index].link}';
-                                            }
+                                            );
+                                          } else {
+                                            throw 'Could not launch ${recognition[index].link}';
                                           }
+                                        }
 
-                                          _launchRecognitionUrl();
-                                        },
-                                        'អានបន្ថែម',
-                                      ),
+                                        _launchRecognitionUrl();
+                                      },
+                                      'អានបន្ថែម',
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
-                        );
-                      },
-                    ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                   ),
-                ],
-              ));
+                ),
+              ],
+            ),
+    );
   }
 }

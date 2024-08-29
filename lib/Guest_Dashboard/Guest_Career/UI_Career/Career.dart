@@ -70,14 +70,14 @@ class _CareerState extends State<Career> {
           ? buildFutureBuild()
           : ListView(
               shrinkWrap: true,
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               children: [
                 ListView(
-                  shrinkWrap: true,
                   padding: const EdgeInsets.symmetric(
                     vertical: UPdMg10,
                     horizontal: UPdMg7,
                   ),
+                  shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   children: [
                     for (int i = 0;
@@ -87,123 +87,130 @@ class _CareerState extends State<Career> {
                               (career.length - (currentPage * resultsPerPage)),
                             );
                         i++)
-                      Card(
-                        elevation: 1.5,
-                        color: UBackgroundColor,
-                        shadowColor: ULightGreyColor,
-                        child: Padding(
-                          padding: const EdgeInsets.all(
-                            UPdMg10,
-                          ),
-                          child: InkWell(
-                            highlightColor: UTransParentColor,
-                            splashColor: UTransParentColor,
-                            onTap: () {
-                              void _launchCareerUrl() async {
-                                if (await canLaunchUrlString(
-                                    career[(currentPage * resultsPerPage) + i]
-                                        .link)) {
-                                  await launchUrlString(
+                      Container(
+                        margin: const EdgeInsets.only(
+                          bottom: UPdMg5,
+                        ),
+                        child: Card(
+                          elevation: 1.5,
+                          color: UBackgroundColor,
+                          shadowColor: ULightGreyColor,
+                          child: Container(
+                            padding: const EdgeInsets.all(
+                              UPdMg10,
+                            ),
+                            child: InkWell(
+                              highlightColor: UTransParentColor,
+                              splashColor: UTransParentColor,
+                              onTap: () {
+                                void _launchCareerUrl() async {
+                                  if (await canLaunchUrlString(
                                       career[(currentPage * resultsPerPage) + i]
-                                          .link);
-                                } else {
-                                  throw 'Could not launch ${career[(currentPage * resultsPerPage) + i].link}';
+                                          .link)) {
+                                    await launchUrlString(career[
+                                            (currentPage * resultsPerPage) + i]
+                                        .link);
+                                  } else {
+                                    throw 'Could not launch ${career[(currentPage * resultsPerPage) + i].link}';
+                                  }
                                 }
-                              }
 
-                              _launchCareerUrl();
-                            },
-                            child: Column(
-                              children: [
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.25,
-                                      child: career[(currentPage *
-                                                      resultsPerPage) +
-                                                  i]
-                                              .logo
-                                              .isEmpty
-                                          ? Image.asset(
-                                              imageAsset + 'Error_Image.jpg',
-                                            )
-                                          : CachedNetworkImage(
-                                              imageUrl: career[(currentPage *
-                                                          resultsPerPage) +
-                                                      i]
-                                                  .logo,
-                                            ),
-                                    ),
-                                    buildWidth15(),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          CustomTextTheme(
-                                            career[(currentPage *
+                                _launchCareerUrl();
+                              },
+                              child: Column(
+                                children: [
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.25,
+                                        child: career[(currentPage *
+                                                        resultsPerPage) +
+                                                    i]
+                                                .logo
+                                                .isEmpty
+                                            ? Image.asset(
+                                                imageAsset + 'Error_Image.jpg',
+                                              )
+                                            : CachedNetworkImage(
+                                                imageUrl: career[(currentPage *
                                                             resultsPerPage) +
                                                         i]
-                                                    .position
-                                                    .isEmpty
-                                                ? 'N/A'
-                                                : career[(currentPage *
-                                                            resultsPerPage) +
-                                                        i]
-                                                    .position,
-                                            UTitleSize,
-                                            UPrimaryColor,
-                                            UTitleWeight,
-                                          ),
-                                          buildHeight5(),
-                                          CareerBody(
-                                            career[(currentPage *
-                                                            resultsPerPage) +
-                                                        i]
-                                                    .organization
-                                                    .isEmpty
-                                                ? 'N/A'
-                                                : career[(currentPage *
-                                                            resultsPerPage) +
-                                                        i]
-                                                    .organization,
-                                          ),
-                                          buildHeight5(),
-                                          Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              Image.asset(
-                                                imageAsset + 'Event_Date.png',
-                                                scale: 12,
+                                                    .logo,
                                               ),
-                                              buildWidth5(),
-                                              Expanded(
-                                                child: CareerBody(
-                                                  career[(currentPage *
-                                                                  resultsPerPage) +
-                                                              i]
-                                                          .expired_date
-                                                          .isEmpty
-                                                      ? 'N/A'
-                                                      : career[(currentPage *
-                                                                  resultsPerPage) +
-                                                              i]
-                                                          .expired_date,
-                                                ),
-                                              ),
-                                            ],
-                                          )
-                                        ],
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                buildHeight5(),
-                              ],
+                                      buildWidth15(),
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            CustomTextTheme(
+                                              career[(currentPage *
+                                                              resultsPerPage) +
+                                                          i]
+                                                      .position
+                                                      .isEmpty
+                                                  ? 'N/A'
+                                                  : career[(currentPage *
+                                                              resultsPerPage) +
+                                                          i]
+                                                      .position,
+                                              UTitleSize,
+                                              UPrimaryColor,
+                                              UTitleWeight,
+                                            ),
+                                            buildHeight5(),
+                                            CareerBody(
+                                              career[(currentPage *
+                                                              resultsPerPage) +
+                                                          i]
+                                                      .organization
+                                                      .isEmpty
+                                                  ? 'N/A'
+                                                  : career[(currentPage *
+                                                              resultsPerPage) +
+                                                          i]
+                                                      .organization,
+                                            ),
+                                            buildHeight5(),
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Image.asset(
+                                                  imageAsset + 'Event_Date.png',
+                                                  scale: 12,
+                                                ),
+                                                buildWidth5(),
+                                                Expanded(
+                                                  child: CareerBody(
+                                                    career[(currentPage *
+                                                                    resultsPerPage) +
+                                                                i]
+                                                            .expired_date
+                                                            .isEmpty
+                                                        ? 'N/A'
+                                                        : career[(currentPage *
+                                                                    resultsPerPage) +
+                                                                i]
+                                                            .expired_date,
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  buildHeight5(),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -237,7 +244,7 @@ class _CareerState extends State<Career> {
                                   currentPage = 0;
                                 });
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.first_page,
                                 color: UPrimaryColor,
                               ),
@@ -257,7 +264,7 @@ class _CareerState extends State<Career> {
                                   startPage--;
                                 });
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.navigate_before,
                                 color: UPrimaryColor,
                               ),
@@ -282,8 +289,8 @@ class _CareerState extends State<Career> {
                             });
                           },
                           child: Container(
-                            width: 30,
-                            height: 30,
+                            width: UWidth30,
+                            height: UHeight30,
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(
@@ -324,7 +331,7 @@ class _CareerState extends State<Career> {
                                   startPage++;
                                 });
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.navigate_next,
                                 color: UPrimaryColor,
                               ),
@@ -356,7 +363,7 @@ class _CareerState extends State<Career> {
                                           1;
                                 });
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.last_page,
                                 color: UPrimaryColor,
                               ),

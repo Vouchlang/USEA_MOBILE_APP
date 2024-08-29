@@ -41,7 +41,7 @@ class _CardCalendarState extends State<CardCalendar> {
                 color: UBackgroundColor,
                 boxShadow: [
                   const BoxShadow(
-                    blurRadius: 2,
+                    blurRadius: 0.5,
                     color: ULightGreyColor,
                     offset: Offset(
                       UZeroPixel,

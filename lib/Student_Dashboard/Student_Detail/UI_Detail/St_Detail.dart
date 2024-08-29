@@ -249,7 +249,7 @@ class _Student_DetailState extends State<Student_Detail> {
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: _dataStDetail.length,
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
@@ -260,7 +260,7 @@ class _Student_DetailState extends State<Student_Detail> {
                           top: UPdMg15,
                           bottom: UPdMg5,
                         ),
-                        elevation: 1,
+                        elevation: 0.5,
                         color: UBackgroundColor,
                         shadowColor: ULightGreyColor,
                         shape: RoundedRectangleBorder(
@@ -396,7 +396,7 @@ class _Student_DetailState extends State<Student_Detail> {
                           top: UPdMg7,
                           bottom: UPdMg15,
                         ),
-                        elevation: 1,
+                        elevation: 0.5,
                         color: UBackgroundColor,
                         shadowColor: ULightGreyColor,
                         shape: RoundedRectangleBorder(

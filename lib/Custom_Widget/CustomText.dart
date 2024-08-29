@@ -1489,7 +1489,7 @@ Widget buildNavBtn(
     splashColor: UTransParentColor,
     onTap: setState,
     child: Card(
-      elevation: 1,
+      elevation: 0.5,
       color: UBackgroundColor,
       shadowColor: ULightGreyColor,
       shape: RoundedRectangleBorder(

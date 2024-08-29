@@ -1,6 +1,6 @@
 class Class_Scholarship {
-  late String scholarship_name;
-  late List<Scholarship_Data> scholarship_data;
+  late final String scholarship_name;
+  late final List<Scholarship_Data> scholarship_data;
 
   Class_Scholarship({
     required this.scholarship_name,
@@ -9,7 +9,7 @@ class Class_Scholarship {
 }
 
 class Scholarship_Data {
-  late String school_name, education_level, major_name, expire_date, link;
+  late final String school_name, education_level, major_name, expire_date, link;
 
   Scholarship_Data({
     required this.school_name,

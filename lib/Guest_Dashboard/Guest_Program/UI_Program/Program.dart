@@ -285,7 +285,7 @@ class _ProgramState extends State<Program> {
                               UZeroPixel,
                             ),
                             elevation: 1,
-                            shadowColor: UGreyColor,
+                            shadowColor: ULightGreyColor,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
                                 URoundedLarge,
@@ -431,7 +431,7 @@ class _ProgramState extends State<Program> {
                               UZeroPixel,
                             ),
                             elevation: 1,
-                            shadowColor: UGreyColor,
+                            shadowColor: ULightGreyColor,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
                                 URoundedLarge,
@@ -792,7 +792,7 @@ class MajorSearchDelegate extends SearchDelegate<String> {
           fontSize: UTitleSize,
         ),
       ),
-      textSelectionTheme: TextSelectionThemeData(
+      textSelectionTheme: const TextSelectionThemeData(
         selectionHandleColor: UPrimaryColor,
         cursorColor: UPrimaryColor,
       ),

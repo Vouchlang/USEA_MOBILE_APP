@@ -1,5 +1,5 @@
 class SurveyStatus {
-  final String survey_status, times, link;
+  late final String survey_status, times, link;
 
   SurveyStatus({
     required this.survey_status,

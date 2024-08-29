@@ -19,7 +19,7 @@ class History extends StatelessWidget {
         width: UFullWidth,
         height: UFullWidth,
         child: ListView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           children: [
             InkWell(
               highlightColor: UTransParentColor,

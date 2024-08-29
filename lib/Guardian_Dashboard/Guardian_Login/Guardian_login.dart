@@ -85,10 +85,10 @@ class _Guardian_LoginState extends State<Guardian_Login> {
               elevation: 2,
               child: Container(
                 height: 175,
-                margin: EdgeInsets.all(
+                margin: const EdgeInsets.all(
                   UPdMg7,
                 ),
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   horizontal: UPdMg10,
                 ),
                 decoration: BoxDecoration(
@@ -118,7 +118,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                       ),
                     ),
                     buildHeight20(),
-                    Divider(),
+                    const Divider(),
                     InkWell(
                       highlightColor: UTransParentColor,
                       splashColor: UTransParentColor,
@@ -126,7 +126,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                       child: Container(
                         alignment: Alignment.center,
                         width: UFullWidth,
-                        child: Text(
+                        child: const Text(
                           'OK',
                           style: TextStyle(
                             color: UPrimaryColor,
@@ -155,10 +155,10 @@ class _Guardian_LoginState extends State<Guardian_Login> {
               elevation: 2,
               child: Container(
                 height: 175,
-                margin: EdgeInsets.all(
-                  7,
+                margin: const EdgeInsets.all(
+                  UPdMg7,
                 ),
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   horizontal: UPdMg10,
                 ),
                 decoration: BoxDecoration(
@@ -188,7 +188,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                       ),
                     ),
                     buildHeight20(),
-                    Divider(),
+                    const Divider(),
                     InkWell(
                       highlightColor: UTransParentColor,
                       splashColor: UTransParentColor,
@@ -196,7 +196,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                       child: Container(
                         alignment: Alignment.center,
                         width: UFullWidth,
-                        child: Text(
+                        child: const Text(
                           'OK',
                           style: TextStyle(
                             color: UPrimaryColor,
@@ -236,7 +236,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
         title: 'គណនីអាណាព្យាបាល'.tr,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
           top: UPdMg20,
         ),
         child: Column(
@@ -248,9 +248,6 @@ class _Guardian_LoginState extends State<Guardian_Login> {
               imageAsset + 'usea_logo.png',
               fit: BoxFit.cover,
               height: MediaQuery.of(context).size.height / 4,
-
-              // height: 150,
-              // width: 150,
             ),
             buildHeight15(),
             const Text(
@@ -265,7 +262,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
               'UNIVERSITY OF SOUTH-EAST ASIA',
               textAlign: TextAlign.justify,
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 16.3,
                 color: UPrimaryColor,
                 fontWeight: UBodyWeight,
                 fontFamily: UEFontFamily,
@@ -278,21 +275,21 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Container(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       left: 30,
                     ),
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'អត្តលេខអាណាព្យាបាល'.tr,
                       textAlign: TextAlign.left,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: UBodySize,
                         fontWeight: UTitleWeight,
                       ),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       vertical: UPdMg10,
                       horizontal: 30,
                     ),
@@ -301,12 +298,12 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                       controller: _textControllerUsername,
                       cursorColor: UGreyColor,
                       cursorWidth: 1,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: UEFontFamily,
                       ),
                       cursorHeight: UHeight30,
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(
+                        contentPadding: const EdgeInsets.all(
                           UPdMg10,
                         ),
                         hintText: '\t\tបញ្ចូលអត្តលេខ'.tr,
@@ -317,23 +314,23 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                               ? UKFontFamily
                               : UEFontFamily,
                         ),
-                        border: OutlineInputBorder(),
+                        border: const OutlineInputBorder(),
                         suffixIcon: IconButton(
                           onPressed: () {
                             _textControllerUsername.clear();
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.clear,
                             size: 15,
                           ),
                         ),
-                        focusedBorder: OutlineInputBorder(
+                        focusedBorder: const OutlineInputBorder(
                           borderSide: BorderSide(
                             color: UGreyColor,
                           ),
                         ),
                         suffixIconColor: UGreyColor,
-                        errorStyle: TextStyle(
+                        errorStyle: const TextStyle(
                           fontSize: UBodySize10,
                           fontFamily: UKFontFamily,
                         ),
@@ -341,20 +338,20 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       left: 30,
                     ),
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'ពាក្យសម្ងាត់'.tr,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: UBodySize,
                         fontWeight: UTitleWeight,
                       ),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       vertical: UPdMg10,
                       horizontal: 30,
                     ),
@@ -364,12 +361,12 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                       controller: _textControllerPsw,
                       cursorColor: UGreyColor,
                       cursorWidth: 1,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: UEFontFamily,
                       ),
                       cursorHeight: UHeight30,
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(
+                        contentPadding: const EdgeInsets.all(
                           UPdMg10,
                         ),
                         hintText: '\t\tបញ្ចូលពាក្យសម្ងាត់'.tr,
@@ -380,7 +377,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                               ? UKFontFamily
                               : UEFontFamily,
                         ),
-                        border: OutlineInputBorder(),
+                        border: const OutlineInputBorder(),
                         suffixIcon: IconButton(
                           onPressed: () {
                             setState(
@@ -396,13 +393,13 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                             size: 15,
                           ),
                         ),
-                        focusedBorder: OutlineInputBorder(
+                        focusedBorder: const OutlineInputBorder(
                           borderSide: BorderSide(
                             color: UGreyColor,
                           ),
                         ),
                         suffixIconColor: UGreyColor,
-                        errorStyle: TextStyle(
+                        errorStyle: const TextStyle(
                           fontSize: UBodySize10,
                           fontFamily: UKFontFamily,
                         ),
@@ -429,7 +426,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
                 ),
                 child: Text(
                   'ចូល'.tr,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: UBackgroundColor,
                     fontSize: UTitleSize,
                   ),

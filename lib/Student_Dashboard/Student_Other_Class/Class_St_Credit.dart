@@ -1,5 +1,5 @@
 class Credit_Class {
-  final String totalCredit, yourCredit;
+  late final String totalCredit, yourCredit;
 
   Credit_Class({
     required this.totalCredit,

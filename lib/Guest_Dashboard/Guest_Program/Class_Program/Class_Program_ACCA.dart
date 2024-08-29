@@ -1,6 +1,6 @@
 class ProgramACCA {
-  late String fac_name;
-  late List<Faculty_Data> fac_data;
+  late final String fac_name;
+  late final List<Faculty_Data> fac_data;
 
   ProgramACCA({
     required this.fac_name,
@@ -9,8 +9,8 @@ class ProgramACCA {
 }
 
 class Faculty_Data {
-  late String fac_icon;
-  late List<Major_Data> major_data;
+  late final String fac_icon;
+  late final List<Major_Data> major_data;
 
   Faculty_Data({
     required this.fac_icon,
@@ -19,9 +19,8 @@ class Faculty_Data {
 }
 
 class Major_Data {
-  late String major_name, course_hour;
-
-  late List<Subject_Data> subject_data;
+  late final String major_name, course_hour;
+  late final List<Subject_Data> subject_data;
 
   Major_Data({
     required this.major_name,
@@ -31,7 +30,7 @@ class Major_Data {
 }
 
 class Subject_Data {
-  late String no, subject, hour_per_week, weeks, total_hour;
+  late final String no, subject, hour_per_week, weeks, total_hour;
 
   Subject_Data({
     required this.no,

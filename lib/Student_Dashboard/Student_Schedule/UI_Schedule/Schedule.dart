@@ -125,7 +125,7 @@ class _ScheduleState extends State<Schedule> {
         },
         color: UPrimaryColor,
         child: ListView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.symmetric(
             vertical: UPdMg10,
           ),

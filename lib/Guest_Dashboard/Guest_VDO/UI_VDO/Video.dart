@@ -87,7 +87,7 @@ class _VideoState extends State<Video_UI> {
                 UPdMg10,
                 UPdMg20,
               ),
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -153,7 +153,7 @@ class _VideoState extends State<Video_UI> {
                             );
                         i++)
                       Card(
-                        elevation: 1,
+                        elevation: 1.5,
                         color: UBackgroundColor,
                         shadowColor: ULightGreyColor,
                         margin: const EdgeInsets.only(
@@ -183,7 +183,7 @@ class _VideoState extends State<Video_UI> {
                                 height:
                                     MediaQuery.of(context).size.height * 0.165,
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(
                                       URoundedLarge,
                                     ),
@@ -209,7 +209,7 @@ class _VideoState extends State<Video_UI> {
                               buildWidth10(),
                               Expanded(
                                 child: Container(
-                                  padding: EdgeInsets.only(
+                                  padding: const EdgeInsets.only(
                                     top: UPdMg5,
                                     right: UPdMg7,
                                   ),
@@ -251,7 +251,7 @@ class _VideoState extends State<Video_UI> {
                     UPdMg10,
                     UPdMg10,
                   ),
-                  margin: EdgeInsets.only(
+                  margin: const EdgeInsets.only(
                     top: UPdMg15,
                   ),
                   alignment: Alignment.center,
@@ -274,7 +274,7 @@ class _VideoState extends State<Video_UI> {
                                   currentPage = 0;
                                 });
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.first_page,
                                 color: UPrimaryColor,
                               ),
@@ -294,7 +294,7 @@ class _VideoState extends State<Video_UI> {
                                   startPage--;
                                 });
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.navigate_before,
                                 color: UPrimaryColor,
                               ),
@@ -319,8 +319,8 @@ class _VideoState extends State<Video_UI> {
                             });
                           },
                           child: Container(
-                            width: 30,
-                            height: 30,
+                            width: UWidth30,
+                            height: UHeight30,
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(
@@ -361,7 +361,7 @@ class _VideoState extends State<Video_UI> {
                                   startPage++;
                                 });
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.navigate_next,
                                 color: UPrimaryColor,
                               ),
@@ -392,7 +392,7 @@ class _VideoState extends State<Video_UI> {
                                       (vdo.length / resultsPerPage).ceil() - 1;
                                 });
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.last_page,
                                 color: UPrimaryColor,
                               ),

@@ -73,10 +73,6 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                       UPdMg10,
                     ),
                     width: MediaQuery.of(context).size.width / 2.2,
-                    // padding: const EdgeInsets.all(
-                    //   UPdMg5,
-                    // ),
-                    // width: 165,
                     decoration: BoxDecoration(
                       color: educationName == selectedEducationName
                           ? UPrimaryColor
@@ -176,7 +172,7 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                         String yearName = yearData['year_name'];
 
                         return Card(
-                          elevation: 1,
+                          elevation: 1.5,
                           color: UBackgroundColor,
                           shadowColor: ULightGreyColor,
                           shape: RoundedRectangleBorder(

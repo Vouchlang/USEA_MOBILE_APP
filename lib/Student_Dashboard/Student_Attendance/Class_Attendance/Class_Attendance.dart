@@ -1,6 +1,6 @@
 class Attendances {
-  final String year_no;
-  final List<Semester> semesters;
+  late final String year_no;
+  late final List<Semester> semesters;
 
   Attendances({
     required this.year_no,
@@ -9,8 +9,8 @@ class Attendances {
 }
 
 class Semester {
-  final String semester_no;
-  final List<Subject> subjects;
+  late final String semester_no;
+  late final List<Subject> subjects;
 
   Semester({
     required this.semester_no,
@@ -19,7 +19,7 @@ class Semester {
 }
 
 class Subject {
-  final String id,
+  late final String id,
       code,
       name_kh,
       name_en,
@@ -30,7 +30,7 @@ class Subject {
       attendance_al,
       attendance_all,
       attendance_ps;
-  final List<Dates> dates;
+  late final List<Dates> dates;
 
   Subject({
     required this.id,
@@ -49,8 +49,8 @@ class Subject {
 }
 
 class Dates {
-  final String date_name;
-  final List<Sessions> sessions;
+  late final String date_name;
+  late final List<Sessions> sessions;
 
   Dates({
     required this.date_name,
@@ -59,7 +59,7 @@ class Dates {
 }
 
 class Sessions {
-  final String date, session, session_all, absent_status;
+  late final String date, session, session_all, absent_status;
 
   Sessions({
     required this.date,

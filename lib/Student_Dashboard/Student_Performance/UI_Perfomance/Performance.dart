@@ -160,7 +160,7 @@ class _PerformanceState extends State<Performance> {
                   onRefresh: _refreshData,
                   color: UPrimaryColor,
                   child: ListView(
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     children: [
                       buildHeight5(),
                       Container(

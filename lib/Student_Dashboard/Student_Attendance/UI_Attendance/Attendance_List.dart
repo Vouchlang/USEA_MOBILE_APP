@@ -148,7 +148,7 @@ class _AttendanceListState extends State<AttendanceList> {
               color: UPrimaryColor,
               backgroundColor: UBackgroundColor,
               child: ListView(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 padding: const EdgeInsets.all(
                   UPdMg5,
                 ),
@@ -160,7 +160,7 @@ class _AttendanceListState extends State<AttendanceList> {
                     width: UFullWidth,
                     child: ListView.builder(
                       shrinkWrap: true,
-                      physics: BouncingScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       itemCount: attendances.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
@@ -184,10 +184,6 @@ class _AttendanceListState extends State<AttendanceList> {
                               isLastIndex ? UPdMg5 : UPdMg5,
                               UPdMg10,
                             ),
-                            // padding: const EdgeInsets.symmetric(
-                            //   horizontal: 35,
-                            // ),
-                            // width: 120,
                             width: MediaQuery.of(context).size.width / 3,
                             decoration: BoxDecoration(
                               color: selectedYearIndex == index

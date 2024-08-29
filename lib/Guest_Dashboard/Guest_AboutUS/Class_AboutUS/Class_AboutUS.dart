@@ -8,7 +8,7 @@ import '../../../Custom_Widget/CustomText.dart';
 
 class Class_AboutUS {
   late final String img, text;
-  final Widget screen;
+  late final Widget screen;
 
   Class_AboutUS({
     required this.img,

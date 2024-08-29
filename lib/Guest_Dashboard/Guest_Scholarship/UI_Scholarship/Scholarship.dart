@@ -95,7 +95,7 @@ class _ScholarshipState extends State<Scholarship> {
         child: scholarships.isEmpty
             ? buildFutureBuild()
             : ListView(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 children: [
                   buildHeight5(),
                   Container(
@@ -104,7 +104,7 @@ class _ScholarshipState extends State<Scholarship> {
                     width: UFullWidth,
                     child: ListView.builder(
                       shrinkWrap: true,
-                      physics: BouncingScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       itemCount: scholarships.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
@@ -165,11 +165,9 @@ class _ScholarshipState extends State<Scholarship> {
                               .map(
                             (scholarship) {
                               return Container(
-                                padding: const EdgeInsets.fromLTRB(
-                                  UPdMg10,
-                                  UZeroPixel,
-                                  UPdMg10,
-                                  UZeroPixel,
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: UZeroPixel,
+                                  horizontal: UPdMg10,
                                 ),
                                 child: Card(
                                   elevation: 0.5,

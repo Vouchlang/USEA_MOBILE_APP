@@ -1,6 +1,6 @@
 class Performance_Class {
-  final String yearNo;
-  final List<Semester> semesters;
+  late final String yearNo;
+  late final List<Semester> semesters;
 
   Performance_Class({
     required this.yearNo,
@@ -9,8 +9,8 @@ class Performance_Class {
 }
 
 class Semester {
-  final String semesterNo, average, gpa, grade, meaning;
-  final List<Subject> subjects;
+  late final String semesterNo, average, gpa, grade, meaning;
+  late final List<Subject> subjects;
 
   Semester({
     required this.semesterNo,
@@ -23,9 +23,9 @@ class Semester {
 }
 
 class Subject {
-  final String id, name_kh, name_en, pscore_total, attendance_ps;
-  final List<Attendances> attendances;
-  final List<Scores> scores;
+  late final String id, name_kh, name_en, pscore_total, attendance_ps;
+  late final List<Attendances> attendances;
+  late final List<Scores> scores;
 
   Subject({
     required this.id,
@@ -39,7 +39,7 @@ class Subject {
 }
 
 class Attendances {
-  final String title,
+  late final String title,
       attendance_a,
       attendance_pm,
       attendance_al,
@@ -57,7 +57,7 @@ class Attendances {
 }
 
 class Scores {
-  final String title,
+  late final String title,
       score_attendance,
       score_assignment,
       score_mid_term,

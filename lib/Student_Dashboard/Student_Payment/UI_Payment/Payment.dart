@@ -160,8 +160,8 @@ class _Payment_UIState extends State<Payment_UI> {
               color: UPrimaryColor,
               backgroundColor: UBackgroundColor,
               child: ListView(
-                physics: BouncingScrollPhysics(),
-                padding: EdgeInsets.only(
+                physics: const BouncingScrollPhysics(),
+                padding: const EdgeInsets.only(
                   top: UPdMg10,
                 ),
                 children: [
@@ -193,7 +193,7 @@ class _Payment_UIState extends State<Payment_UI> {
         UPdMg5,
       ),
       child: Card(
-        elevation: 1,
+        elevation: 0.5,
         color: UBackgroundColor,
         shadowColor: ULightGreyColor,
         shape: RoundedRectangleBorder(
@@ -244,7 +244,7 @@ class _Payment_UIState extends State<Payment_UI> {
             _dataPayStudy.isEmpty
                 ? buildEmptyData()
                 : ListView.builder(
-                    physics: ScrollPhysics(),
+                    physics: const ScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: _dataPayStudy.length,
                     itemBuilder: (context, index) {
@@ -532,7 +532,7 @@ class _Payment_UIState extends State<Payment_UI> {
                         )
                       : ListView.builder(
                           shrinkWrap: true,
-                          physics: ScrollPhysics(),
+                          physics: const ScrollPhysics(),
                           itemCount: payStudy.payments.length,
                           itemBuilder: (context, index) {
                             final isLastIndex =
@@ -609,7 +609,7 @@ class _Payment_UIState extends State<Payment_UI> {
                                       children: [
                                         IntrinsicHeight(
                                           child: Container(
-                                            padding: EdgeInsets.all(
+                                            padding: const EdgeInsets.all(
                                               UPdMg5,
                                             ),
                                             child: Row(
@@ -698,11 +698,11 @@ class _Payment_UIState extends State<Payment_UI> {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.all(
+          padding: const EdgeInsets.all(
             UPdMg5,
           ),
           child: Card(
-            elevation: 1,
+            elevation: 0.5,
             color: UBackgroundColor,
             shadowColor: ULightGreyColor,
             shape: RoundedRectangleBorder(
@@ -801,7 +801,7 @@ class _Payment_UIState extends State<Payment_UI> {
                         )
                       : ListView.builder(
                           shrinkWrap: true,
-                          physics: ScrollPhysics(),
+                          physics: const ScrollPhysics(),
                           itemCount: _dataOther.length,
                           itemBuilder: (context, index) {
                             final isLastIndex = index == _dataOther.length - 1;

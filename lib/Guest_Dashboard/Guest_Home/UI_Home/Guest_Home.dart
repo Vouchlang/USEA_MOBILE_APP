@@ -158,9 +158,8 @@ class _Guest_HomeState extends State<Guest_Home> {
                     ),
                   ),
                   child: Container(
-                    width: MediaQuery.of(context).size.width * 0.115,
-                    // width: 36,
-                    // height: 36,
+                    width: 36,
+                    height: 36,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(
@@ -189,20 +188,20 @@ class _Guest_HomeState extends State<Guest_Home> {
                             ),
                           ),
                         ),
-                        Positioned(
-                          top: UPdMg12,
-                          right: UPdMg10,
-                          child: Container(
-                            height: UHeight5,
-                            width: UHeight5,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                50,
-                              ),
-                              color: UTransParentColor,
-                            ),
-                          ),
-                        ),
+                        // Positioned(
+                        //   top: UPdMg12,
+                        //   right: UPdMg10,
+                        //   child: Container(
+                        //     height: UHeight5,
+                        //     width: UHeight5,
+                        //     decoration: BoxDecoration(
+                        //       borderRadius: BorderRadius.circular(
+                        //         50,
+                        //       ),
+                        //       color: URedColor,
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),
@@ -221,248 +220,245 @@ class _Guest_HomeState extends State<Guest_Home> {
         elevation: 1,
         scrolledUnderElevation: 1,
       ),
-      body: Center(
-        child: ListView(
-          physics: BouncingScrollPhysics(),
-          shrinkWrap: true,
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height / 3.95,
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(
-                horizontal: UPdMg5,
-              ),
-              margin: const EdgeInsets.only(
-                top: UPdMg10,
-              ),
-              child: isLoading
-                  ? FutureBuilder(
-                      future: Future.delayed(
-                        const Duration(
-                          seconds: 5,
-                        ),
-                      ),
-                      builder: (BuildContext context,
-                          AsyncSnapshot<dynamic> snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return Center(
-                            child: const CircularProgressIndicator(
-                              color: UPrimaryColor,
-                            ),
-                          );
-                        } else {
-                          return Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.asset(
-                                  imageAsset + 'no_data.png',
-                                  scale: 4,
-                                ),
-                                buildHeight10(),
-                                Text(
-                                  'គ្មានទិន្ន័យ'.tr,
-                                  style: const TextStyle(
-                                    color: UPrimaryColor,
-                                    fontSize: UTitleSize,
-                                    fontWeight: UTitleWeight,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        }
-                      },
-                    )
-                  : CarouselSlider.builder(
-                      options: CarouselOptions(
-                        autoPlayInterval: const Duration(
-                          seconds: 10,
-                        ),
-                        autoPlay: true,
-                        viewportFraction: 1,
-                        enlargeCenterPage: true,
-                        enlargeStrategy: CenterPageEnlargeStrategy.zoom,
-                        onPageChanged: ((index, reason) =>
-                            setState(() => activeIndex = index)),
-                      ),
-                      itemCount: image_slides.length,
-                      itemBuilder: (context, index, realIndex) {
-                        if (index >= 0 && index < image_slides.length) {
-                          final image_slide = image_slides[index].image_url;
-                          return InkWell(
-                            highlightColor: UTransParentColor,
-                            splashColor: UTransParentColor,
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => FullScreenImage1(
-                                    imageUrls: image_slides
-                                        .map((image) => image.image_url)
-                                        .toList(),
-                                    currentIndex: index,
-                                  ),
-                                ),
-                              );
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.symmetric(
-                                horizontal: UPdMg5,
-                              ),
-                              width: UFullWidth,
-                              height: UFullWidth,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(
-                                  URoundedLarge,
-                                ),
-                                child: CachedNetworkImage(
-                                  imageUrl: image_slide,
-                                  fit: BoxFit.fill,
-                                ),
-                              ),
-                            ),
-                          );
-                        } else {
-                          return Image.asset(
-                            imageAsset + "Error_Image.jpg",
-                            fit: BoxFit.cover,
-                          );
-                        }
-                      },
-                    ),
+      body: ListView(
+        physics: const BouncingScrollPhysics(),
+        shrinkWrap: true,
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height / 3.95,
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(
+              horizontal: UPdMg5,
             ),
-            buildHeight7(),
-            buildIndicator(),
-            buildHeight7(),
-            GridView.count(
-              shrinkWrap: true,
-              physics: const ScrollPhysics(),
-              crossAxisCount: 2,
-              mainAxisSpacing: 3.5,
-              crossAxisSpacing: 3,
-              childAspectRatio: 1.90,
-              padding: const EdgeInsets.symmetric(
-                horizontal: UPdMg7,
-              ),
-              children: List.generate(
-                guest_home_screen.length,
-                (index) => Card(
-                  elevation: 2,
-                  color: UBackgroundColor,
-                  shadowColor: ULightGreyColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                      URoundedLarge,
+            margin: const EdgeInsets.only(
+              top: UPdMg10,
+            ),
+            child: isLoading
+                ? FutureBuilder(
+                    future: Future.delayed(
+                      const Duration(
+                        seconds: 5,
+                      ),
                     ),
-                  ),
-                  child: InkWell(
-                    highlightColor: UTransParentColor,
-                    splashColor: UTransParentColor,
-                    onTap: () {
-                      if (index.isEqual(8)) {
-                        showDialog(
-                          context: context,
-                          barrierDismissible: false,
-                          builder: (BuildContext context) {
-                            return Change_Language();
-                          },
+                    builder: (BuildContext context,
+                        AsyncSnapshot<dynamic> snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(
+                          child: const CircularProgressIndicator(
+                            color: UPrimaryColor,
+                          ),
                         );
                       } else {
-                        Get.to(
-                          () => guest_home_screen[index].screen,
-                          transition: Transition.rightToLeftWithFade,
-                          duration: const Duration(
-                            milliseconds: 100,
+                        return Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                imageAsset + 'no_data.png',
+                                scale: 4,
+                              ),
+                              buildHeight10(),
+                              Text(
+                                'គ្មានទិន្ន័យ'.tr,
+                                style: const TextStyle(
+                                  color: UPrimaryColor,
+                                  fontSize: UTitleSize,
+                                  fontWeight: UTitleWeight,
+                                ),
+                              ),
+                            ],
                           ),
                         );
                       }
                     },
-                    child: Container(
-                      padding: const EdgeInsets.only(
-                        left: UPdMg15,
+                  )
+                : CarouselSlider.builder(
+                    options: CarouselOptions(
+                      autoPlayInterval: const Duration(
+                        seconds: 10,
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset(
-                            guest_home_screen[index].img,
-                            scale: UScale6,
-                          ),
-                          const SizedBox(
-                            height: UHeight7,
-                          ),
-                          Text(
-                            guest_home_screen[index].name.tr,
-                            style: TextStyle(
-                              fontSize: UTitleSize,
+                      autoPlay: true,
+                      viewportFraction: 1,
+                      enlargeCenterPage: true,
+                      enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+                      onPageChanged: ((index, reason) =>
+                          setState(() => activeIndex = index)),
+                    ),
+                    itemCount: image_slides.length,
+                    itemBuilder: (context, index, realIndex) {
+                      if (index >= 0 && index < image_slides.length) {
+                        final image_slide = image_slides[index].image_url;
+                        return InkWell(
+                          highlightColor: UTransParentColor,
+                          splashColor: UTransParentColor,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FullScreenImage1(
+                                  imageUrls: image_slides
+                                      .map((image) => image.image_url)
+                                      .toList(),
+                                  currentIndex: index,
+                                ),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(
+                              horizontal: UPdMg5,
+                            ),
+                            width: UFullWidth,
+                            height: UFullWidth,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(
+                                URoundedLarge,
+                              ),
+                              child: CachedNetworkImage(
+                                imageUrl: image_slide,
+                                fit: BoxFit.fill,
+                              ),
                             ),
                           ),
-                        ],
-                      ),
+                        );
+                      } else {
+                        return Image.asset(
+                          imageAsset + "Error_Image.jpg",
+                          fit: BoxFit.cover,
+                        );
+                      }
+                    },
+                  ),
+          ),
+          buildHeight7(),
+          buildIndicator(),
+          buildHeight7(),
+          GridView.count(
+            shrinkWrap: true,
+            physics: const ScrollPhysics(),
+            crossAxisCount: 2,
+            mainAxisSpacing: 3.5,
+            crossAxisSpacing: 3,
+            childAspectRatio: 1.90,
+            padding: const EdgeInsets.symmetric(
+              horizontal: UPdMg7,
+            ),
+            children: List.generate(
+              guest_home_screen.length,
+              (index) => Card(
+                elevation: 1.5,
+                color: UBackgroundColor,
+                shadowColor: ULightGreyColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(
+                    URoundedLarge,
+                  ),
+                ),
+                child: InkWell(
+                  highlightColor: UTransParentColor,
+                  splashColor: UTransParentColor,
+                  onTap: () {
+                    if (index.isEqual(8)) {
+                      showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (BuildContext context) {
+                          return Change_Language();
+                        },
+                      );
+                    } else {
+                      Get.to(
+                        () => guest_home_screen[index].screen,
+                        transition: Transition.rightToLeftWithFade,
+                        duration: const Duration(
+                          milliseconds: 100,
+                        ),
+                      );
+                    }
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.only(
+                      left: UPdMg15,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.asset(
+                          guest_home_screen[index].img,
+                          scale: UScale6,
+                        ),
+                        const SizedBox(
+                          height: UHeight7,
+                        ),
+                        Text(
+                          guest_home_screen[index].name.tr,
+                          style: TextStyle(
+                            fontSize: UTitleSize,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
               ),
             ),
-            buildHeight7(),
-            Card(
-              elevation: 1.5,
-              color: UBackgroundColor,
-              shadowColor: ULightGreyColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(
-                  URoundedLarge,
-                ),
-              ),
-              margin: const EdgeInsets.fromLTRB(
-                UPdMg10,
-                UZeroPixel,
-                UPdMg10,
-                UPdMg5,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(
-                  UPdMg10,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    BuildContainerSM(
-                      () => _launchFacebookPage(),
-                      imageAsset + 'SM_Facebook.png',
-                    ),
-                    BuildContainerSM(
-                      () => _launchInstagram(),
-                      imageAsset + 'SM_IG.png',
-                    ),
-                    BuildContainerSM(
-                      () => _launchYoutube(),
-                      imageAsset + 'SM_Yt.png',
-                    ),
-                    BuildContainerSM(
-                      () => openTelegramGroup(),
-                      imageAsset + 'SM_Telegram.png',
-                    ),
-                    BuildContainerSM(
-                      () => launchUrlString(APIUrlGuest + "en/Pages/index.php"),
-                      imageAsset + 'SM_Website.png',
-                    ),
-                    BuildContainerSM(
-                      () => openTiktok(),
-                      imageAsset + 'SM_TK.png',
-                    )
-                  ],
-                ),
+          ),
+          buildHeight7(),
+          Card(
+            elevation: 1.5,
+            color: UBackgroundColor,
+            shadowColor: ULightGreyColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(
+                URoundedLarge,
               ),
             ),
-            buildHeight15(),
-          ],
-        ),
+            margin: const EdgeInsets.fromLTRB(
+              UPdMg10,
+              UZeroPixel,
+              UPdMg10,
+              UPdMg5,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(
+                UPdMg10,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  BuildContainerSM(
+                    () => _launchFacebookPage(),
+                    imageAsset + 'SM_Facebook.png',
+                  ),
+                  BuildContainerSM(
+                    () => _launchInstagram(),
+                    imageAsset + 'SM_IG.png',
+                  ),
+                  BuildContainerSM(
+                    () => _launchYoutube(),
+                    imageAsset + 'SM_Yt.png',
+                  ),
+                  BuildContainerSM(
+                    () => openTelegramGroup(),
+                    imageAsset + 'SM_Telegram.png',
+                  ),
+                  BuildContainerSM(
+                    () => launchUrlString(APIUrlGuest + "en/Pages/index.php"),
+                    imageAsset + 'SM_Website.png',
+                  ),
+                  BuildContainerSM(
+                    () => openTiktok(),
+                    imageAsset + 'SM_TK.png',
+                  )
+                ],
+              ),
+            ),
+          ),
+          buildHeight15(),
+        ],
       ),
     );
   }

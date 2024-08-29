@@ -108,7 +108,7 @@ class _News_EventState extends State<News_Event> {
         child: news_event.isEmpty
             ? buildFutureBuild()
             : ListView(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 children: [
                   buildHeight5(),
                   Container(
@@ -143,7 +143,6 @@ class _News_EventState extends State<News_Event> {
                               UPdMg10,
                             ),
                             width: MediaQuery.of(context).size.width / 2.2,
-                            // width: 170,
                             decoration: BoxDecoration(
                               color: selectedNewsEvent == index
                                   ? UPrimaryColor
@@ -197,7 +196,7 @@ class _News_EventState extends State<News_Event> {
                             margin: const EdgeInsets.only(
                               bottom: UPdMg10,
                             ),
-                            elevation: 1,
+                            elevation: 1.5,
                             shadowColor: ULightGreyColor,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
@@ -226,8 +225,13 @@ class _News_EventState extends State<News_Event> {
                                     height: 200,
                                     width: double.maxFinite,
                                     child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(
-                                        URoundedLarge,
+                                      borderRadius: const BorderRadius.only(
+                                        topLeft: Radius.circular(
+                                          URoundedLarge,
+                                        ),
+                                        topRight: Radius.circular(
+                                          URoundedLarge,
+                                        ),
                                       ),
                                       child: news_event[selectedNewsEvent]
                                               .events[(currentPage *
@@ -420,7 +424,7 @@ class _News_EventState extends State<News_Event> {
                                     currentPage = 0;
                                   });
                                 },
-                                child: Icon(
+                                child: const Icon(
                                   Icons.first_page,
                                   color: UPrimaryColor,
                                 ),
@@ -444,7 +448,7 @@ class _News_EventState extends State<News_Event> {
                                     startPage--;
                                   });
                                 },
-                                child: Icon(
+                                child: const Icon(
                                   Icons.navigate_before,
                                   color: UPrimaryColor,
                                 ),
@@ -520,7 +524,7 @@ class _News_EventState extends State<News_Event> {
                                     startPage++;
                                   });
                                 },
-                                child: Icon(
+                                child: const Icon(
                                   Icons.navigate_next,
                                   color: UPrimaryColor,
                                 ),
@@ -562,7 +566,7 @@ class _News_EventState extends State<News_Event> {
                                         1;
                                   });
                                 },
-                                child: Icon(
+                                child: const Icon(
                                   Icons.last_page,
                                   color: UPrimaryColor,
                                 ),

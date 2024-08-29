@@ -114,7 +114,7 @@ class _Job_HistoryState extends State<Job_History> {
                       UPdMg5,
                     ),
                     child: Card(
-                      elevation: 2,
+                      elevation: 0.5,
                       shadowColor: ULightGreyColor,
                       shape: RoundedRectangleBorder(
                         side: const BorderSide(
@@ -138,8 +138,8 @@ class _Job_HistoryState extends State<Job_History> {
                               horizontal: UPdMg10,
                             ),
                             width: UFullWidth,
-                            decoration: BoxDecoration(
-                              borderRadius: const BorderRadius.only(
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(
                                   URoundedLarge,
                                 ),
@@ -191,7 +191,7 @@ class _Job_HistoryState extends State<Job_History> {
               color: UPrimaryColor,
               backgroundColor: UBackgroundColor,
               child: ListView.builder(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 itemCount: _dataJobHistory.length,
                 itemBuilder: (context, index) {
                   final isLastIndex = index == _dataJobHistory.length - 1;
