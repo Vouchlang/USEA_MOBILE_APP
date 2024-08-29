@@ -24,15 +24,22 @@ class Program_ACCA extends StatelessWidget {
         title: majorName.tr,
       ),
       body: ListView(
-        padding: const EdgeInsets.all(
-          UPdMg8,
+        padding: const EdgeInsets.fromLTRB(
+          UPdMg5,
+          UPdMg15,
+          UPdMg5,
+          UPdMg15,
         ),
         physics: BouncingScrollPhysics(),
         children: [
           Card(
-            elevation: 2,
+            elevation: 0.5,
             shadowColor: ULightGreyColor,
             shape: RoundedRectangleBorder(
+              side: const BorderSide(
+                color: UBackgroundColor,
+                width: 1.5,
+              ),
               borderRadius: BorderRadius.circular(
                 URoundedLarge,
               ),
@@ -44,7 +51,7 @@ class Program_ACCA extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(
                     vertical: UPdMg15,
-                    horizontal: UPdMg5,
+                    horizontal: UPdMg10,
                   ),
                   width: double.infinity,
                   decoration: const BoxDecoration(

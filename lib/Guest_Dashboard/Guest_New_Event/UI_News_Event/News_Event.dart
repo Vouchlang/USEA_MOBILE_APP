@@ -121,7 +121,6 @@ class _News_EventState extends State<News_Event> {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         final isLastIndex = index == news_event.length - 1;
-
                         return GestureDetector(
                           onTap: () {
                             setState(
@@ -143,9 +142,7 @@ class _News_EventState extends State<News_Event> {
                               isLastIndex ? UPdMg10 : UZeroPixel,
                               UPdMg10,
                             ),
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 35,
-                            ),
+                            width: MediaQuery.of(context).size.width / 2.2,
                             // width: 170,
                             decoration: BoxDecoration(
                               color: selectedNewsEvent == index

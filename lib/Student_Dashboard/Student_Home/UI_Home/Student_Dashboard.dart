@@ -336,7 +336,7 @@ class _Student_HomeState extends State<Student_Home> {
                                 arcType: ArcType.FULL,
                                 arcBackgroundColor: UBGChartColor,
                                 radius: 70.0,
-                                lineWidth: UWidth20,
+                                lineWidth: UWidth15,
                                 percent: percentIndicator,
                                 progressColor: _dataCredit[0].yourCredit ==
                                         _dataCredit[0].totalCredit

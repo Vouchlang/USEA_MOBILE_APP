@@ -72,10 +72,11 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                       isLastIndex ? UPdMg10 : UZeroPixel,
                       UPdMg10,
                     ),
-                    padding: const EdgeInsets.all(
-                      UPdMg5,
-                    ),
-                    width: 165,
+                    width: MediaQuery.of(context).size.width / 2.2,
+                    // padding: const EdgeInsets.all(
+                    //   UPdMg5,
+                    // ),
+                    // width: 165,
                     decoration: BoxDecoration(
                       color: educationName == selectedEducationName
                           ? UPrimaryColor

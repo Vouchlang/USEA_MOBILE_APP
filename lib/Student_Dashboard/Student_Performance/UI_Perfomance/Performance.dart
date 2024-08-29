@@ -191,15 +191,12 @@ class _PerformanceState extends State<Performance> {
                                   milliseconds: 300,
                                 ),
                                 margin: EdgeInsets.fromLTRB(
+                                  UPdMg5,
                                   UPdMg10,
-                                  UPdMg10,
-                                  isLastIndex ? UPdMg10 : UZeroPixel,
+                                  isLastIndex ? UPdMg5 : UPdMg5,
                                   UPdMg10,
                                 ),
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 35,
-                                ),
-                                // width: 120,
+                                width: MediaQuery.of(context).size.width / 3,
                                 decoration: BoxDecoration(
                                   color: selectedYearIndex == index
                                       ? UPrimaryColor
@@ -241,12 +238,12 @@ class _PerformanceState extends State<Performance> {
                                     bottom: UPdMg5,
                                   ),
                                   child: Card(
-                                    elevation: 1,
+                                    elevation: 0.5,
                                     shadowColor: ULightGreyColor,
                                     shape: RoundedRectangleBorder(
                                       side: const BorderSide(
                                         color: UBackgroundColor,
-                                        width: 0.5,
+                                        width: 1.5,
                                       ),
                                       borderRadius: BorderRadius.circular(
                                         URoundedLarge,

@@ -143,8 +143,10 @@ class Guest_AccState extends State<Guest_Acc> {
                   Image.asset(
                     imageAsset + 'new_usea_logo.png',
                     fit: BoxFit.cover,
-                    height: 150,
-                    width: 150,
+                    height: MediaQuery.of(context).size.height / 4,
+
+                    // height: 150,
+                    // width: 150,
                   ),
                   buildHeight15(),
                   const Text(

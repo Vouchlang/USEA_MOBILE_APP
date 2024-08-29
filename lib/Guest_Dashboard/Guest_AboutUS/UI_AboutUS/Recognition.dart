@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import '../Class_AboutUS/Class_Recognition.dart';
@@ -57,98 +59,106 @@ class _RecognitionState extends State<Recognition> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(
-        title: 'ការទទួលស្គាល់'.tr,
-      ),
-      body: recognition.isEmpty
-          ? buildFutureBuild()
-          : ListView.builder(
-              physics: BouncingScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: recognition.length,
-              padding: const EdgeInsets.only(
-                top: UPdMg5,
-              ),
-              itemBuilder: (context, index) {
-                final isFinalIndex = index == recognition.length - 1;
-                return Card(
-                  elevation: 1,
-                  color: UBackgroundColor,
-                  shadowColor: ULightGreyColor,
-                  margin: EdgeInsets.fromLTRB(
-                    UPdMg10,
-                    UPdMg10,
-                    UPdMg10,
-                    isFinalIndex ? UPdMg15 : UZeroPixel,
-                  ),
-                  child: Container(
-                    padding: const EdgeInsets.all(
-                      UPdMg10,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                            height: 175,
-                            width: 125,
-                            child: recognition[index].image.isEmpty
-                                ? Image.asset(
-                                    imageAsset + 'Error_Image.jpg',
-                                    fit: BoxFit.cover,
-                                  )
-                                : Image.network(
-                                    recognition[index].image,
-                                    fit: BoxFit.cover,
-                                  )),
-                        buildWidth10(),
-                        Expanded(
+        backgroundColor: USecondaryColor,
+        appBar: Custom_AppBar(
+          title: 'ការទទួលស្គាល់'.tr,
+        ),
+        body: recognition.isEmpty
+            ? buildFutureBuild()
+            : ListView(
+                physics: BouncingScrollPhysics(),
+                padding: EdgeInsets.symmetric(
+                  vertical: UPdMg15,
+                  horizontal: UPdMg10,
+                ),
+                children: [
+                  StaggeredGrid.count(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: UPdMg5,
+                    mainAxisSpacing: UPdMg5,
+                    children: List.generate(
+                      recognition.length,
+                      growable: true,
+                      (index) {
+                        return Card(
+                          elevation: 0.5,
+                          color: UBackgroundColor,
+                          shadowColor: ULightGreyColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                              URoundedLarge,
+                            ),
+                          ),
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                recognition[index].title.isEmpty
-                                    ? 'N/A'
-                                    : recognition[index].title,
-                                textAlign: TextAlign.justify,
-                                style: const TextStyle(
-                                  fontSize: UTitleSize,
-                                  fontWeight: UTitleWeight,
+                              ClipRRect(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(
+                                    URoundedLarge,
+                                  ),
+                                  topRight: Radius.circular(
+                                    URoundedLarge,
+                                  ),
                                 ),
+                                child: recognition[index].image.isEmpty
+                                    ? Image.asset(
+                                        imageAsset + 'Error_Image.jpg',
+                                      )
+                                    : CachedNetworkImage(
+                                        imageUrl: recognition[index].image,
+                                      ),
                               ),
-                              buildHeight10(),
-                              Container(
-                                alignment: Alignment.centerRight,
-                                child: buildNavBtn(
-                                  () {
-                                    void _launchRecognitionUrl() async {
-                                      if (await canLaunchUrlString(
-                                        recognition[index].link,
-                                      )) {
-                                        await launchUrlString(
-                                          recognition[index].link,
-                                        );
-                                      } else {
-                                        throw 'Could not launch ${recognition[index].link}';
-                                      }
-                                    }
+                              buildWidth10(),
+                              Padding(
+                                padding: const EdgeInsets.all(
+                                  UPdMg10,
+                                ),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      recognition[index].title.isEmpty
+                                          ? 'N/A'
+                                          : recognition[index].title,
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                        fontSize: UTitleSize,
+                                        fontWeight: UTitleWeight,
+                                      ),
+                                    ),
+                                    buildHeight10(),
+                                    Container(
+                                      alignment: Alignment.center,
+                                      child: buildNavBtn(
+                                        () {
+                                          void _launchRecognitionUrl() async {
+                                            if (await canLaunchUrlString(
+                                              recognition[index].link,
+                                            )) {
+                                              await launchUrlString(
+                                                recognition[index].link,
+                                              );
+                                            } else {
+                                              throw 'Could not launch ${recognition[index].link}';
+                                            }
+                                          }
 
-                                    _launchRecognitionUrl();
-                                  },
-                                  'អានបន្ថែម',
+                                          _launchRecognitionUrl();
+                                        },
+                                        'អានបន្ថែម',
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],
                           ),
-                        ),
-                      ],
+                        );
+                      },
                     ),
                   ),
-                );
-              },
-            ),
-    );
+                ],
+              ));
   }
 }

@@ -179,15 +179,16 @@ class _AttendanceListState extends State<AttendanceList> {
                               milliseconds: 300,
                             ),
                             margin: EdgeInsets.fromLTRB(
+                              UPdMg5,
                               UPdMg10,
-                              UPdMg10,
-                              isLastIndex ? UPdMg10 : UZeroPixel,
+                              isLastIndex ? UPdMg5 : UPdMg5,
                               UPdMg10,
                             ),
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 35,
-                            ),
+                            // padding: const EdgeInsets.symmetric(
+                            //   horizontal: 35,
+                            // ),
                             // width: 120,
+                            width: MediaQuery.of(context).size.width / 3,
                             decoration: BoxDecoration(
                               color: selectedYearIndex == index
                                   ? UPrimaryColor

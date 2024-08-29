@@ -19,7 +19,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
 
     Future.delayed(
       const Duration(
-        milliseconds: 4000,
+        milliseconds: 3800,
       ),
     ).then(
       (value) {
@@ -33,41 +33,9 @@ class _Splash_ScreenState extends State<Splash_Screen> {
     return Scaffold(
       backgroundColor: USecondaryColor,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Lottie.asset(
-              imageAsset + 'logo.json',
-              fit: BoxFit.cover,
-              // height: 200,
-              // width: 200,
-            ),
-            // buildHeight10(),
-            // const Text(
-            //   'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
-            //   style: TextStyle(
-            //     fontSize: 15,
-            //     fontFamily: 'KhmerOSmuol',
-            //     color: UPrimaryColor,
-            //   ),
-            // ),
-            // const Text(
-            //   'UNIVERSITY OF SOUTH-EAST ASIA',
-            //   textAlign: TextAlign.justify,
-            //   style: TextStyle(
-            //     fontSize: 17.5,
-            //     color: UPrimaryColor,
-            //     fontWeight: UBodyWeight,
-            //     fontFamily: UEFontFamily,
-            //   ),
-            // ),
-            // buildHeight5(),
-            // const SpinKitThreeBounce(
-            //   color: UPrimaryColor,
-            //   size: 15,
-            // ),
-          ],
+        child: Lottie.asset(
+          imageAsset + 'logo.json',
+          fit: BoxFit.cover,
         ),
       ),
     );

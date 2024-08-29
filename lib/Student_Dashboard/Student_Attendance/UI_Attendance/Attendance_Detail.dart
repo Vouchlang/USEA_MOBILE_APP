@@ -26,9 +26,13 @@ class Attendance_Detail extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         children: [
           Card(
-            elevation: 2,
+            elevation: 0.5,
             shadowColor: ULightGreyColor,
             shape: RoundedRectangleBorder(
+              side: const BorderSide(
+                color: UBackgroundColor,
+                width: 1.5,
+              ),
               borderRadius: BorderRadius.circular(
                 URoundedLarge,
               ),

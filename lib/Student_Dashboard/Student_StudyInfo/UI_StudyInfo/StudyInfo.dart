@@ -174,9 +174,13 @@ class _Study_InfoState extends State<Study_Info> {
                     itemBuilder: (BuildContext context, index) {
                       final isLastIndex = index == _dataStudyInfo.length - 1;
                       return Card(
-                        elevation: 1,
+                        elevation: 0.5,
                         shadowColor: ULightGreyColor,
                         shape: RoundedRectangleBorder(
+                          side: const BorderSide(
+                            color: UBackgroundColor,
+                            width: 1.5,
+                          ),
                           borderRadius: BorderRadius.circular(
                             URoundedLarge,
                           ),

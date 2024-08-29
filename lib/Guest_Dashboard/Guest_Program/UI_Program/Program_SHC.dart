@@ -1,5 +1,3 @@
-// ignore_for_file: unnecessary_null_comparison
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../Custom_AppBar.dart';
@@ -126,9 +124,13 @@ class _Program_SHCState extends State<Program_SHC> {
 
     return [
       Card(
-        elevation: 1,
+        elevation: 0.5,
         shadowColor: ULightGreyColor,
         shape: RoundedRectangleBorder(
+          side: const BorderSide(
+            color: UBackgroundColor,
+            width: 1.5,
+          ),
           borderRadius: BorderRadius.circular(
             URoundedLarge,
           ),
@@ -140,7 +142,7 @@ class _Program_SHCState extends State<Program_SHC> {
             Container(
               padding: const EdgeInsets.symmetric(
                 vertical: UPdMg15,
-                horizontal: UPdMg5,
+                horizontal: UPdMg10,
               ),
               width: double.infinity,
               decoration: const BoxDecoration(
@@ -188,7 +190,7 @@ class _Program_SHCState extends State<Program_SHC> {
                       right: UPdMg15,
                     ),
                     child: TitleTheme(
-                      total_credit.toString().isEmpty || total_credit == null
+                      total_credit.toString().isEmpty
                           ? 'N/A'
                           : total_credit.toString(),
                     ),

@@ -246,26 +246,29 @@ class _Student_LogInState extends State<Student_LogIn> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
-              imageAsset + 'logo3.png',
-              scale: UScale15,
+              imageAsset + 'usea_logo.png',
+              fit: BoxFit.cover,
+              height: MediaQuery.of(context).size.height / 4,
+              // height: 150,
+              // width: 150,
             ),
             buildHeight15(),
             const Text(
               'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
               style: TextStyle(
+                fontSize: UTitleSize,
                 fontFamily: 'KhmerOSmuol',
                 color: UPrimaryColor,
-                fontSize: UTitleSize16,
               ),
             ),
             const Text(
               'UNIVERSITY OF SOUTH-EAST ASIA',
+              textAlign: TextAlign.justify,
               style: TextStyle(
-                letterSpacing: 1.5,
-                fontFamily: UEFontFamily,
+                fontSize: 16,
                 color: UPrimaryColor,
-                fontSize: UTitleSize16,
                 fontWeight: UBodyWeight,
+                fontFamily: UEFontFamily,
               ),
             ),
             buildHeight15(),

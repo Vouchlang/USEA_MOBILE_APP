@@ -158,8 +158,9 @@ class _Guest_HomeState extends State<Guest_Home> {
                     ),
                   ),
                   child: Container(
-                    width: 36,
-                    height: 36,
+                    width: MediaQuery.of(context).size.width * 0.115,
+                    // width: 36,
+                    // height: 36,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(
@@ -169,24 +170,19 @@ class _Guest_HomeState extends State<Guest_Home> {
                     ),
                     child: Stack(
                       children: [
-                        Center(
-                          child: IconButton(
-                            highlightColor: UTransParentColor,
-                            splashColor: UTransParentColor,
-                            onPressed: () {
-                              setState(
-                                () {
-                                  Get.to(
-                                    () => Notifications(),
-                                    transition: Transition.rightToLeftWithFade,
-                                    duration: const Duration(
-                                      milliseconds: 100,
-                                    ),
-                                  );
-                                },
+                        CircleAvatar(
+                          backgroundColor: UTransParentColor,
+                          child: InkWell(
+                            onTap: () {
+                              Get.to(
+                                () => Notifications(),
+                                transition: Transition.rightToLeftWithFade,
+                                duration: const Duration(
+                                  milliseconds: 100,
+                                ),
                               );
                             },
-                            icon: Icon(
+                            child: Icon(
                               Icons.notifications,
                               color: Theme.of(context).primaryColor,
                               size: 20,
@@ -231,7 +227,7 @@ class _Guest_HomeState extends State<Guest_Home> {
           shrinkWrap: true,
           children: [
             Container(
-              height: 175,
+              height: MediaQuery.of(context).size.height / 3.95,
               width: double.infinity,
               padding: const EdgeInsets.symmetric(
                 horizontal: UPdMg5,
@@ -281,7 +277,6 @@ class _Guest_HomeState extends State<Guest_Home> {
                     )
                   : CarouselSlider.builder(
                       options: CarouselOptions(
-                        height: 175,
                         autoPlayInterval: const Duration(
                           seconds: 10,
                         ),

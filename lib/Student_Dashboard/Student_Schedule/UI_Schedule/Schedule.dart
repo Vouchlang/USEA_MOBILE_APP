@@ -157,10 +157,14 @@ class _ScheduleState extends State<Schedule> {
                       return Column(
                         children: [
                           Card(
-                            elevation: 1,
-                            color: UBackgroundColor,
+                            elevation: 0.5,
                             shadowColor: ULightGreyColor,
+                            color: UBackgroundColor,
                             shape: RoundedRectangleBorder(
+                              side: const BorderSide(
+                                color: UBackgroundColor,
+                                width: 1.5,
+                              ),
                               borderRadius: BorderRadius.circular(
                                 UPdMg10,
                               ),

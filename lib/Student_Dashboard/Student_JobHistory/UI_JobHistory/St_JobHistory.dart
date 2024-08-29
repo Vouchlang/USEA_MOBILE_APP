@@ -114,7 +114,7 @@ class _Job_HistoryState extends State<Job_History> {
                       UPdMg5,
                     ),
                     child: Card(
-                      elevation: 1,
+                      elevation: 2,
                       shadowColor: ULightGreyColor,
                       shape: RoundedRectangleBorder(
                         side: const BorderSide(
@@ -194,20 +194,24 @@ class _Job_HistoryState extends State<Job_History> {
                 physics: BouncingScrollPhysics(),
                 itemCount: _dataJobHistory.length,
                 itemBuilder: (context, index) {
+                  final isLastIndex = index == _dataJobHistory.length - 1;
                   return Card(
-                    elevation: 1,
+                    elevation: 0.5,
                     shadowColor: ULightGreyColor,
                     shape: RoundedRectangleBorder(
                       side: const BorderSide(
                         color: UBackgroundColor,
-                        width: 0.5,
+                        width: 1.5,
                       ),
                       borderRadius: BorderRadius.circular(
                         URoundedLarge,
                       ),
                     ),
-                    margin: const EdgeInsets.all(
+                    margin: EdgeInsets.fromLTRB(
                       UPdMg10,
+                      UPdMg15,
+                      UPdMg10,
+                      isLastIndex == true ? UPdMg15 : UZeroPixel,
                     ),
                     color: UBackgroundColor,
                     child: Column(

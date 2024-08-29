@@ -120,8 +120,8 @@ class _CareerState extends State<Career> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Container(
-                                      width: 75,
-                                      height: 75,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.25,
                                       child: career[(currentPage *
                                                       resultsPerPage) +
                                                   i]

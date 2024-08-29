@@ -104,7 +104,7 @@ class _ScholarshipState extends State<Scholarship> {
                     width: UFullWidth,
                     child: ListView.builder(
                       shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: BouncingScrollPhysics(),
                       itemCount: scholarships.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
@@ -126,7 +126,7 @@ class _ScholarshipState extends State<Scholarship> {
                               isLastIndex ? UPdMg10 : UZeroPixel,
                               UPdMg10,
                             ),
-                            width: 170,
+                            width: MediaQuery.of(context).size.width / 2.2,
                             decoration: BoxDecoration(
                               color: selectedScholarship == index
                                   ? UPrimaryColor
@@ -172,13 +172,17 @@ class _ScholarshipState extends State<Scholarship> {
                                   UZeroPixel,
                                 ),
                                 child: Card(
-                                  elevation: 1,
-                                  color: UBackgroundColor,
+                                  elevation: 0.5,
                                   shadowColor: ULightGreyColor,
+                                  color: UBackgroundColor,
                                   margin: const EdgeInsets.only(
                                     bottom: UPdMg10,
                                   ),
                                   shape: RoundedRectangleBorder(
+                                    side: const BorderSide(
+                                      color: UBackgroundColor,
+                                      width: 1.5,
+                                    ),
                                     borderRadius: BorderRadius.circular(
                                       URoundedLarge,
                                     ),

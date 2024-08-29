@@ -1386,20 +1386,25 @@ Widget buildUniversityName(
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Card(
-          shape: RoundedRectangleBorder(
-            side: const BorderSide(
-              color: UBackgroundColor,
-              width: 1,
-            ),
-            borderRadius: BorderRadius.circular(
-              50,
-            ),
-          ),
-          child: Image.asset(
-            imageAsset + 'usea_logo.png',
-            scale: 40,
-          ),
+        // Card(
+        //   shape: RoundedRectangleBorder(
+        //     side: const BorderSide(
+        //       color: UBackgroundColor,
+        //       width: 1,
+        //     ),
+        //     borderRadius: BorderRadius.circular(
+        //       50,
+        //     ),
+        //   ),
+        //   child: Image.asset(
+        //     imageAsset + 'usea_logo.png',
+        //     scale: 40,
+        //   ),
+        // ),
+        buildWidth5(),
+        Image.asset(
+          imageAsset + 'new_usea_logo.png',
+          scale: 8,
         ),
         buildWidth5(),
         Expanded(

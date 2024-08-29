@@ -179,8 +179,9 @@ class _VideoState extends State<Video_UI> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                width: 170,
-                                height: 110,
+                                width: MediaQuery.of(context).size.width * 0.45,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.165,
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(
