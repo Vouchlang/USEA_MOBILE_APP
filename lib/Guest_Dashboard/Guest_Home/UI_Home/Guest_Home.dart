@@ -157,52 +157,52 @@ class _Guest_HomeState extends State<Guest_Home> {
                       50,
                     ),
                   ),
-                  child: Container(
-                    width: 36,
-                    height: 36,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
-                        50,
+                  child: InkWell(
+                    onTap: () {
+                      Get.to(
+                        () => Notifications(),
+                        transition: Transition.rightToLeftWithFade,
+                        duration: const Duration(
+                          milliseconds: 100,
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: 36,
+                      height: 36,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                          50,
+                        ),
+                        color: UBtnColor,
                       ),
-                      color: UBtnColor,
-                    ),
-                    child: Stack(
-                      children: [
-                        CircleAvatar(
-                          backgroundColor: UTransParentColor,
-                          child: InkWell(
-                            onTap: () {
-                              Get.to(
-                                () => Notifications(),
-                                transition: Transition.rightToLeftWithFade,
-                                duration: const Duration(
-                                  milliseconds: 100,
-                                ),
-                              );
-                            },
+                      child: Stack(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: UTransParentColor,
                             child: Icon(
                               Icons.notifications,
                               color: Theme.of(context).primaryColor,
                               size: 20,
                             ),
                           ),
-                        ),
-                        // Positioned(
-                        //   top: UPdMg12,
-                        //   right: UPdMg10,
-                        //   child: Container(
-                        //     height: UHeight5,
-                        //     width: UHeight5,
-                        //     decoration: BoxDecoration(
-                        //       borderRadius: BorderRadius.circular(
-                        //         50,
-                        //       ),
-                        //       color: URedColor,
-                        //     ),
-                        //   ),
-                        // ),
-                      ],
+                          // Positioned(
+                          //   top: UPdMg12,
+                          //   right: UPdMg10,
+                          //   child: Container(
+                          //     height: UHeight5,
+                          //     width: UHeight5,
+                          //     decoration: BoxDecoration(
+                          //       borderRadius: BorderRadius.circular(
+                          //         50,
+                          //       ),
+                          //       color: URedColor,
+                          //     ),
+                          //   ),
+                          // ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

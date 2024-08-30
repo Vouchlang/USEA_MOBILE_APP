@@ -59,10 +59,11 @@ class _Guardian_HomeState extends State<Guardian_Home> {
             currentIndex: currentIndex,
             selectedItemColor: UPrimaryColor,
             unselectedItemColor: UGreyColor,
-            unselectedFontSize: 11,
+            unselectedFontSize:
+                Get.locale?.languageCode == 'km' ? UBodySize10 : UBodySize11,
             selectedLabelStyle: TextStyle(
               fontWeight: UTitleWeight,
-              fontSize: UBodySize,
+              fontSize: Get.locale?.languageCode == 'km' ? UBodySize11 : UBodySize,
             ),
             items: [
               BottomNavigationBarItem(

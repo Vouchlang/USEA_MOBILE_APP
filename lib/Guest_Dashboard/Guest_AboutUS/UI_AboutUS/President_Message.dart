@@ -16,7 +16,7 @@ class President extends StatelessWidget {
         title: 'សាររបស់សាកលវិទ្យាធិការ'.tr,
       ),
       body: ListView(
-        physics: const BouncingScrollPhysics(),
+        physics: const ClampingScrollPhysics(),
         children: [
           InkWell(
             highlightColor: UTransParentColor,

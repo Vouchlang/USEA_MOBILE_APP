@@ -187,7 +187,9 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        TextButton(
+                        InkWell(
+                          highlightColor: UTransParentColor,
+                          splashColor: UTransParentColor,
                           child: Text(
                             'បោះបង់'.tr,
                             style: TextStyle(
@@ -195,12 +197,14 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
                               fontSize: UBodySize,
                             ),
                           ),
-                          onPressed: () {
+                          onTap: () {
                             Navigator.of(context).pop();
                           },
                         ),
                         buildVerticalDividerAtt(),
-                        TextButton(
+                        InkWell(
+                          highlightColor: UTransParentColor,
+                          splashColor: UTransParentColor,
                           child: Text(
                             'ចាកចេញ'.tr,
                             style: TextStyle(
@@ -208,7 +212,7 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
                               fontSize: UBodySize,
                             ),
                           ),
-                          onPressed: () async {
+                          onTap: () async {
                             SharedPreferences prefs =
                                 await SharedPreferences.getInstance();
                             await prefs.remove('guardian_user');

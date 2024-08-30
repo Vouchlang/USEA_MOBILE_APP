@@ -293,8 +293,7 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                           ),
                         );
                       } else {
-                        return const SizedBox
-                            .shrink(); // Return an empty widget if degreeData is null
+                        return const SizedBox.shrink();
                       }
                     },
                   ),

@@ -262,10 +262,12 @@ class _Guardian_LoginState extends State<Guardian_Login> {
               'UNIVERSITY OF SOUTH-EAST ASIA',
               textAlign: TextAlign.justify,
               style: TextStyle(
-                fontSize: 16.3,
+                fontSize: 15,
                 color: UPrimaryColor,
                 fontWeight: UBodyWeight,
                 fontFamily: UEFontFamily,
+                wordSpacing: 2.2,
+                letterSpacing: 0.8,
               ),
             ),
             buildHeight15(),

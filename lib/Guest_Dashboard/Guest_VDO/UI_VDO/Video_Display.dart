@@ -141,6 +141,7 @@ class _Video_DisplayState extends State<Video_Display> {
             title: 'វីដេអូ'.tr,
           ),
           body: ListView(
+            physics: const ClampingScrollPhysics(),
             children: [
               player,
               Container(

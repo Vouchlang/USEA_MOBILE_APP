@@ -1386,21 +1386,6 @@ Widget buildUniversityName(
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        // Card(
-        //   shape: RoundedRectangleBorder(
-        //     side: const BorderSide(
-        //       color: UBackgroundColor,
-        //       width: 1,
-        //     ),
-        //     borderRadius: BorderRadius.circular(
-        //       50,
-        //     ),
-        //   ),
-        //   child: Image.asset(
-        //     imageAsset + 'usea_logo.png',
-        //     scale: 40,
-        //   ),
-        // ),
         buildWidth5(),
         Image.asset(
           imageAsset + 'new_usea_logo.png',
@@ -1420,7 +1405,6 @@ Widget buildUniversityName(
                   fontFamily: 'KhmerOSmuol',
                 ),
               ),
-              // buildHeight5(),
               SizedBox(
                 height: 2,
               ),
@@ -1428,9 +1412,11 @@ Widget buildUniversityName(
                 'UNIVERSITY OF SOUTH-EAST ASIA',
                 style: TextStyle(
                   color: uniNameCol,
-                  fontSize: 13,
+                  fontSize: 12,
                   fontFamily: UEFontFamily,
                   fontWeight: UBodyWeight,
+                  wordSpacing: 2.2,
+                  letterSpacing: 0.3,
                 ),
               ),
             ],

@@ -162,10 +162,12 @@ class Guest_AccState extends State<Guest_Acc> {
                     'UNIVERSITY OF SOUTH-EAST ASIA',
                     textAlign: TextAlign.justify,
                     style: TextStyle(
-                      fontSize: 16.3,
+                      fontSize: 15,
                       color: UBackgroundColor,
                       fontWeight: UBodyWeight,
                       fontFamily: UEFontFamily,
+                      wordSpacing: 2.2,
+                      letterSpacing: 0.8,
                     ),
                   ),
                 ],

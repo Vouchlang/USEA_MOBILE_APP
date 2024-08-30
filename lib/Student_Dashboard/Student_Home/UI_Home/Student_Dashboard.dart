@@ -221,6 +221,7 @@ class _Student_HomeState extends State<Student_Home> {
 
     return Scaffold(
       backgroundColor: USecondaryColor,
+
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Row(
@@ -296,7 +297,7 @@ class _Student_HomeState extends State<Student_Home> {
               color: UPrimaryColor,
               backgroundColor: UBackgroundColor,
               child: ListView(
-                physics: AlwaysScrollableScrollPhysics(),
+                physics: const ClampingScrollPhysics(),
                 shrinkWrap: true,
                 children: [
                   Stack(
@@ -415,10 +416,7 @@ class _Student_HomeState extends State<Student_Home> {
                                   backgroundColor: UBackgroundColor,
                                   child: Container(
                                     margin: const EdgeInsets.all(
-                                      UPdMg7,
-                                    ),
-                                    padding: const EdgeInsets.all(
-                                      UPdMg10,
+                                      UPdMg12,
                                     ),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(
@@ -452,8 +450,13 @@ class _Student_HomeState extends State<Student_Home> {
                                           ),
                                           alignment: Alignment.center,
                                           child: ListView.builder(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: UPdMg5,
+                                            ),
                                             shrinkWrap: true,
                                             scrollDirection: Axis.horizontal,
+                                            physics:
+                                                const BouncingScrollPhysics(),
                                             itemCount: _dataSurvey.length,
                                             itemBuilder: (context, index) {
                                               return Row(

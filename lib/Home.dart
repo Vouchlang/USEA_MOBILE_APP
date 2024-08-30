@@ -46,10 +46,12 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           currentIndex: currentIndex,
           selectedItemColor: UPrimaryColor,
           unselectedItemColor: UGreyColor,
-          unselectedFontSize: 11,
-          selectedLabelStyle: const TextStyle(
+          unselectedFontSize:
+              Get.locale?.languageCode == 'km' ? UBodySize10 : UBodySize11,
+          selectedLabelStyle: TextStyle(
             fontWeight: UTitleWeight,
-            fontSize: UBodySize,
+            fontSize:
+                Get.locale?.languageCode == 'km' ? UBodySize11 : UBodySize,
           ),
           items: [
             BottomNavigationBarItem(

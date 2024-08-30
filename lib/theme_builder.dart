@@ -34,7 +34,7 @@ const UTransParentColor = Colors.transparent;
 const UBGLightBlue = Color(0xffE9F2FF);
 
 //  * @ Background Color
-const USecondaryColor = Color(0xFFF0F4F8);
+const USecondaryColor = Color(0xFFF3F6F8);
 const UBackgroundColor = Color(0xffFFFFFF);
 
 // zero value
@@ -48,6 +48,7 @@ const UFontSize18 = 18.0;
 const UTitleSize16 = 16.0;
 const UTitleSize = 14.0;
 const UBodySize = 12.0;
+const UBodySize11 = 11.0;
 const UBodySize10 = 10.0;
 
 const FontWeight UTitleWeight = FontWeight.w600;

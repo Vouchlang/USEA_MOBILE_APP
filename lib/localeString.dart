@@ -313,7 +313,7 @@ class LocaleString extends Translations {
           'ចូលឆានែលតេឡេក្រាមរបស់សកលវិទ្យាល័យ':
               'Access the University Telegram Channel',
           'ភូមិវត្តបូព៌ សង្កាត់សាលាកំរើក ស្រុកសៀមរាប ខេត្តសៀមរាប​ ព្រះរាជាណាចក្រកម្ពុជា (ទល់មុខវិទ្យាល័យអង្គរ)។':
-              'Wat Bo Village, Sangkat Salakamroek, Siem Reap District, Siem Reap Province, Kingdom of Cambodia (Opposite Angkor High School).',
+              'WatBo Village, Sangkat Salakamroek, Siem Reap District, Siem Reap Province, Kingdom of Cambodia (Opposite Angkor High School).',
 
           // About US
           'ប្រវត្តិ និងអត្ថន័យរបស់និមិត្តសញ្ញា': 'History and Logo meaning',
