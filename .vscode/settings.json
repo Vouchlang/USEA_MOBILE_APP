@@ -2,5 +2,14 @@
     "java.configuration.updateBuildConfiguration": "interactive",
     "cSpell.words": [
         "បន្ទប់"
-    ]
+    ],
+    "chat.editor.wordWrap": "on",
+    "notebook.output.wordWrap": true,
+    "cmake.ignoreCMakeListsMissing": true,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 200,
+    "prettier.printWidth": 200,
+    "editor.formatOnSave": true,
+    "dart.lineLength": 300,
+    "html.format.wrapLineLength": 200
 }

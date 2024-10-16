@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import '../../../theme_builder.dart';
 
 class News_Event_FullImage extends StatefulWidget {
@@ -45,16 +46,14 @@ class _News_Event_FullImageState extends State<News_Event_FullImage> {
                 color: USecondaryColor,
                 size: 25,
               ),
-              onPressed: () {
-                setState(
-                  () {
-                    isFullScreen = !isFullScreen;
-                    if (!isFullScreen) {
-                      Navigator.pop(context);
-                    }
-                  },
-                );
-              },
+              onPressed: () => setState(
+                () {
+                  isFullScreen = !isFullScreen;
+                  if (!isFullScreen) {
+                    Get.back();
+                  }
+                },
+              ),
             ),
           ),
         ],

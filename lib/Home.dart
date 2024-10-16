@@ -35,40 +35,41 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           splashColor: UTransParentColor,
           highlightColor: UTransParentColor,
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-            selectedItemColor: UTransParentColor,
-          ),
+              selectedItemColor: UTransParentColor),
         ),
-        child: BottomNavigationBar(
-          backgroundColor: UBackgroundColor,
-          elevation: 15,
-          onTap: onTap,
-          useLegacyColorScheme: true,
-          currentIndex: currentIndex,
-          selectedItemColor: UPrimaryColor,
-          unselectedItemColor: UGreyColor,
-          unselectedFontSize:
-              Get.locale?.languageCode == 'km' ? UBodySize10 : UBodySize11,
-          selectedLabelStyle: TextStyle(
-            fontWeight: UTitleWeight,
-            fontSize:
-                Get.locale?.languageCode == 'km' ? UBodySize11 : UBodySize,
+        child: Container(
+          height: 65,
+          child: BottomNavigationBar(
+            backgroundColor: UBackgroundColor,
+            onTap: onTap,
+            elevation: 15,
+            currentIndex: currentIndex,
+            selectedItemColor: UPrimaryColor,
+            unselectedItemColor: UGreyColor,
+            unselectedFontSize:
+                Get.locale?.languageCode == 'km' ? UBodySize10 : UBodySize11,
+            selectedLabelStyle: TextStyle(
+              fontWeight: UTitleWeight,
+              fontSize:
+                  Get.locale?.languageCode == 'km' ? UBodySize11 : UBodySize,
+            ),
+            items: [
+              BottomNavigationBarItem(
+                icon: const Icon(
+                  Icons.home,
+                  size: 25,
+                ),
+                label: 'ទំព័រដើម'.tr,
+              ),
+              BottomNavigationBarItem(
+                icon: const Icon(
+                  Icons.account_box,
+                  size: 25,
+                ),
+                label: 'ចូលគណនី'.tr,
+              ),
+            ],
           ),
-          items: [
-            BottomNavigationBarItem(
-              icon: const Icon(
-                Icons.home,
-                size: 25,
-              ),
-              label: 'ទំព័រដើម'.tr,
-            ),
-            BottomNavigationBarItem(
-              icon: const Icon(
-                Icons.account_box,
-                size: 25,
-              ),
-              label: 'ចូលគណនី'.tr,
-            ),
-          ],
         ),
       ),
     );

@@ -6,6 +6,8 @@ class LocaleString extends Translations {
   Map<String, Map<String, String>> get keys => {
         'km_KH': {
           // Guest Dashboard
+          'គ្មានការតភ្ជាប់អ៊ីនធឺណិត...': 'គ្មានការតភ្ជាប់អ៊ីនធឺណិត...',
+          'អ៊ីនធឺណិតបានត្រឡប់មកវិញ...': 'អ៊ីនធឺណិតបានត្រឡប់មកវិញ...',
           'ព្រឹត្តិការណ៍': 'ព្រឹត្តិការណ៍',
           'ការចុះឈ្មោះ': 'ការចុះឈ្មោះ',
           'កម្មវិធីសិក្សា': 'កម្មវិធីសិក្សា',
@@ -84,6 +86,8 @@ class LocaleString extends Translations {
           'គណនីសាស្ត្រាចារ្យ': 'គណនីសាស្ត្រាចារ្យ',
 
           // Student Dashboard
+          '\tចំនួនក្រេឌីតសរុប': '\tចំនួនក្រេឌីតសរុប',
+          '\tចំនួនក្រេឌីតបានបំពេញ': '\tចំនួនក្រេឌីតបានបំពេញ',
           'ព័ត៌មានលម្អិតរបស់និស្សិត': 'ព័ត៌មានលម្អិតរបស់និស្សិត',
           'កាលវិភាគ': 'កាលវិភាគ',
           'ដំណើរការសិក្សា': 'ដំណើរការសិក្សា',
@@ -97,8 +101,14 @@ class LocaleString extends Translations {
 
           // Student Login
           'គណនីនិសិ្សត': 'គណនីនិសិ្សត',
+          'ជម្រើសក្នុងការចូលគណនី': 'ជម្រើសក្នុងការចូលគណនី',
+          'សូមជ្រើសរើសវិធីសាស្ត្រណាមួយដើម្បីចូលគណនី':
+              'សូមជ្រើសរើសវិធីសាស្ត្រណាមួយដើម្បីចូលគណនី',
+          'បញ្ចូលអត្តលេខ \nនិងលេខសម្ងាត់': 'បញ្ចូលអត្តលេខ \nនិងលេខសម្ងាត់',
+          'ស្កេន \nQR Code': 'ស្កេន \nQR Code',
+          'ស្កេន QR Code': 'ស្កេន QR Code',
           'អត្តលេខនិស្សិត': 'អត្តលេខនិស្សិត',
-          '\t\tបញ្ចូលអត្តលេខ\t': '\t\tបញ្ចូលអត្តលេខ\t',
+          '\t\tបញ្ចូលអត្តលេខនិស្សិត': '\t\tបញ្ចូលអត្តលេខនិស្សិត',
           'សូមបញ្ចូលអត្តលេខ': 'សូមបញ្ចូលអត្តលេខ',
           'ពាក្យសម្ងាត់': 'ពាក្យសម្ងាត់',
           '\t\tបញ្ចូលពាក្យសម្ងាត់': '\t\tបញ្ចូលពាក្យសម្ងាត់',
@@ -249,12 +259,7 @@ class LocaleString extends Translations {
 
           // Guardian Login
           'អត្តលេខអាណាព្យាបាល': 'អត្តលេខអាណាព្យាបាល',
-          '\t\tបញ្ចូលអត្តលេខ': '\t\tបញ្ចូលអត្តលេខ',
-          // 'សូមបញ្ចូលអត្តលេខ': 'សូមបញ្ចូលអត្តលេខ',
-          // 'ពាក្យសម្ងាត់': 'ពាក្យសម្ងាត់',
-          // '\t\tបញ្ចូលពាក្យសម្ងាត់': '\t\tបញ្ចូលពាក្យសម្ងាត់',
-          // 'សូមបញ្ចូលពាក្យសម្ងាត់': 'សូមបញ្ចូលពាក្យសម្ងាត់',
-          // 'ចូល': 'ចូល',
+          '\t\tបញ្ចូលអត្តលេខអាណាព្យាបាល': '\t\tបញ្ចូលអត្តលេខអាណាព្យាបាល',
           'អត្តលេខអាណាព្យាបាល ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវ។ សូមបញ្ចូលម្ដងទៀត!!!':
               'អត្តលេខអាណាព្យាបាល ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវ។ សូមបញ្ចូលម្ដងទៀត!!!',
 
@@ -264,6 +269,8 @@ class LocaleString extends Translations {
         },
         'en_US': {
           // Guest Dashboard
+          'គ្មានការតភ្ជាប់អ៊ីនធឺណិត...': 'No Internet Connection...',
+          'អ៊ីនធឺណិតបានត្រឡប់មកវិញ...': 'The internet is back...',
           'ព្រឹត្តិការណ៍': 'Events',
           'ការចុះឈ្មោះ': 'Registration',
           'កម្មវិធីសិក្សា': 'Program',
@@ -313,7 +320,7 @@ class LocaleString extends Translations {
           'ចូលឆានែលតេឡេក្រាមរបស់សកលវិទ្យាល័យ':
               'Access the University Telegram Channel',
           'ភូមិវត្តបូព៌ សង្កាត់សាលាកំរើក ស្រុកសៀមរាប ខេត្តសៀមរាប​ ព្រះរាជាណាចក្រកម្ពុជា (ទល់មុខវិទ្យាល័យអង្គរ)។':
-              'WatBo Village, Sangkat Salakamroek, Siem Reap District, Siem Reap Province, Kingdom of Cambodia (Opposite Angkor High School).',
+              'WatBo Village, Salakamroek Commune, Siem Reap District, Siem Reap Province, Kingdom of Cambodia (Infront of Angkor High School).',
 
           // About US
           'ប្រវត្តិ និងអត្ថន័យរបស់និមិត្តសញ្ញា': 'History and Logo meaning',
@@ -339,6 +346,8 @@ class LocaleString extends Translations {
           'គណនីសាស្ត្រាចារ្យ': 'Lecturer Account',
 
           // Student Dashboard
+          '\tចំនួនក្រេឌីតសរុប': '\tTotal Credits',
+          '\tចំនួនក្រេឌីតបានបំពេញ': '\tRemaining Credits',
           'ព័ត៌មានលម្អិតរបស់និស្សិត': 'Student Detail',
           'កាលវិភាគ': 'Schedule',
           'ដំណើរការសិក្សា': 'Performance',
@@ -352,8 +361,14 @@ class LocaleString extends Translations {
 
           // Student Login
           'គណនីនិសិ្សត': 'Student Account',
+          'ជម្រើសក្នុងការចូលគណនី': 'Login Options',
+          'សូមជ្រើសរើសវិធីសាស្ត្រណាមួយដើម្បីចូលគណនី':
+              'Please select one of the following method to login.',
+          'បញ្ចូលអត្តលេខ \nនិងលេខសម្ងាត់': 'Input Student ID and Password',
+          'ស្កេន \nQR Code': 'Scan \nQR Code',
+          'ស្កេន QR Code': 'Scan QR Code',
           'អត្តលេខនិស្សិត': 'Student ID',
-          '\t\tបញ្ចូលអត្តលេខ\t': '\t\tInput Student ID\t',
+          '\t\tបញ្ចូលអត្តលេខនិស្សិត': '\t\tInput Student ID\t',
           'សូមបញ្ចូលអត្តលេខ': 'Please Input Student ID',
           'ពាក្យសម្ងាត់': 'Password',
           '\t\tបញ្ចូលពាក្យសម្ងាត់': '\t\tInput Password',
@@ -386,8 +401,6 @@ class LocaleString extends Translations {
           'បោះបង់': 'Cancel',
 
           // Student Survey
-          '\tចំនួនក្រឌីតសរុប': '\tTotal Credits',
-          '\tចំនួនក្រឌីតបានបំពេញ': '\tRemaining Credits',
           'សូមជួយវាយដម្លៃការបង្រៀនរបស់សាស្ត្រាចារ្យ':
               'Please evaluate the lecture of the professor',
           'សូមជួយធ្វើការវាយតម្លៃ': 'Could you please help evaluate this?',
@@ -468,9 +481,9 @@ class LocaleString extends Translations {
               'Tuition fee to complete the credit',
           'ការបង់ថ្លៃឈ្នួលដកលិខិតបញ្ជាក់ការសិក្សាផ្សេងៗ':
               'Fees, withdrawals, certificates of study',
-          'ទឹកប្រាក់ត្រូវបង់': 'Money To pay',
-          'ទឹកប្រាក់បានបង់': 'Money Paid',
-          'ទឹកប្រាក់នៅសល់': 'Money Remain',
+          'ទឹកប្រាក់ត្រូវបង់': 'Amount to be Paid',
+          'ទឹកប្រាក់បានបង់': 'Amount Paid',
+          'ទឹកប្រាក់នៅសល់': 'Remaining Amount',
           'លេខវិក័យបត្រ': 'Invoice Number',
 
           // Student Job History
@@ -505,7 +518,7 @@ class LocaleString extends Translations {
 
           // Guardian Login
           'អត្តលេខអាណាព្យាបាល': 'Guardian ID',
-          '\t\tបញ្ចូលអត្តលេខ': '\t\tInput Guardian ID',
+          '\t\tបញ្ចូលអត្តលេខអាណាព្យាបាល': '\t\tInput Guardian ID',
           'សូមបញ្ចូលអត្តលេខ': 'Please Input Guardian ID',
           'ពាក្យសម្ងាត់': 'Password',
           '\t\tបញ្ចូលពាក្យសម្ងាត់': '\t\tInput Password',

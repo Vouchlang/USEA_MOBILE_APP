@@ -11,9 +11,7 @@ class Lecturer_Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(
-        title: 'គណនីសាស្ត្រាចារ្យ'.tr,
-      ),
+      appBar: Custom_AppBar(title: 'គណនីសាស្ត្រាចារ្យ'.tr),
       body: buildComingSoon(),
     );
   }

@@ -3,7 +3,7 @@ import '../../../Guardian_Dashboard/Guardian_Login/Guardian_login.dart';
 import '../../../Lecturer_Dashboard/Lecturer_Login.dart';
 import '../../../Staff_Dashboard/Staff_Login.dart';
 import '../../../Custom_Widget/CustomText.dart';
-import '/Student_Dashboard/Student_LogIn/Student_LogIn.dart';
+import '../../../Student_Dashboard/Student_LogIn/Login/Student_LogIn.dart';
 
 class Account_Screen {
   late final String name, img;

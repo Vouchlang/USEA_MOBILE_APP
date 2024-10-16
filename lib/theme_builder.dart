@@ -28,11 +28,11 @@ const UActiveColor = Color(0xFF27D800);
 const UTextColor = Color.fromARGB(255, 0, 0, 0);
 const UGreyColor = Colors.grey;
 const ULightGreyColor = Color.fromARGB(255, 200, 200, 200);
-const UBtnColor = Color(0x142D74F5);
+const UBtnColor = Color(0xFFE8F0FE);
 const UBGChartColor = Color.fromARGB(25, 0, 32, 96);
 const UTransParentColor = Colors.transparent;
 const UBGLightBlue = Color(0xffE9F2FF);
-
+// 0xFFE8F0FE
 //  * @ Background Color
 const USecondaryColor = Color(0xFFF3F6F8);
 const UBackgroundColor = Color(0xffFFFFFF);

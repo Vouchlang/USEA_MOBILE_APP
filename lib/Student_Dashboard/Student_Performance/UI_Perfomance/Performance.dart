@@ -5,12 +5,15 @@ import 'dart:convert';
 import '../../../Custom_AppBar.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
+import '../../Users_API.dart';
 import '../../Student_Other_Class/Class_Student_User.dart';
 import '../Class_Performance/Class_Performance.dart';
+import 'Custom_Build_Dialog_Performance.dart';
+import 'Custom_Build_Performance.dart';
 
 class Performance extends StatefulWidget {
-  final List<StudentUser> data_studentUser;
-  final String sourceScreen;
+  late final List<StudentUser> data_studentUser;
+  late final String sourceScreen;
 
   Performance({
     required this.data_studentUser,
@@ -23,7 +26,7 @@ class Performance extends StatefulWidget {
 
 class _PerformanceState extends State<Performance> {
   late List<Performance_Class> performances = [];
-  int selectedYearIndex = 0;
+  late int selectedYearIndex = 0;
 
   @override
   void initState() {
@@ -31,20 +34,357 @@ class _PerformanceState extends State<Performance> {
     _refreshData();
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: USecondaryColor,
+      appBar: Custom_AppBar(
+        title: 'ដំណើរការសិក្សា'.tr,
+      ),
+      body: RefreshIndicator(
+        onRefresh: _refreshData,
+        color: UPrimaryColor,
+        backgroundColor: UBackgroundColor,
+        child: Container(
+          alignment: Alignment.topCenter,
+          child: performances.isEmpty
+              ? buildFutureBuilder()
+              : RefreshIndicator(
+                  onRefresh: _refreshData,
+                  color: UPrimaryColor,
+                  backgroundColor: UBackgroundColor,
+                  child: buildPerformanceBody(),
+                ),
+        ),
+      ),
+    );
+  }
+
+  Widget buildPerformanceBody() {
+    return ListView(
+      physics: const BouncingScrollPhysics(),
+      children: [
+        buildHeight5(),
+        Container(
+          height: 70,
+          alignment: Alignment.center,
+          width: UFullWidth,
+          padding: const EdgeInsets.symmetric(horizontal: UPdMg5),
+          child: ListView.builder(
+            shrinkWrap: true,
+            physics: const BouncingScrollPhysics(),
+            itemCount: performances.length,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              return buildYearButton(
+                onTap: () => setState(
+                  () => selectedYearIndex = index,
+                ),
+                width: MediaQuery.of(context).size.width / 3,
+                boxColor: selectedYearIndex == index ? UPrimaryColor : UBackgroundColor,
+                yearName: 'ឆ្នាំទី​ ${performances[index].yearNo}'.tr,
+                selectedColor: selectedYearIndex == index ? UBackgroundColor : UTextColor,
+              );
+            },
+          ),
+        ),
+        performances[selectedYearIndex].semesters.isNotEmpty
+            ? Column(
+                children: performances[selectedYearIndex].semesters.map((semester) {
+                  return Container(
+                    margin: const EdgeInsets.only(bottom: UPdMg5),
+                    child: Card(
+                      elevation: 0.5,
+                      shadowColor: ULightGreyColor,
+                      shape: RoundedRectangleBorder(
+                        side: const BorderSide(
+                          color: UBackgroundColor,
+                          width: 1.5,
+                        ),
+                        borderRadius: BorderRadius.circular(URoundedLarge),
+                      ),
+                      margin: const EdgeInsets.fromLTRB(
+                        UPdMg10,
+                        UZeroPixel,
+                        UPdMg10,
+                        UPdMg7,
+                      ),
+                      color: UBackgroundColor,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          buildRowTitleCard(
+                            semester: 'ឆមាសទី ${semester.semesterNo}'.tr,
+                            attWidget: buildRowTitleContainer(
+                              width: 110,
+                              text: 'វត្តមាន'.tr,
+                              align: Alignment.centerRight,
+                            ),
+                            scoreWidget: buildRowTitleContainer(
+                              width: 65,
+                              text: 'ពិន្ទុ'.tr,
+                              align: Alignment.centerLeft,
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(UPdMg10),
+                            margin: const EdgeInsets.only(bottom: UPdMg10),
+                            width: UFullWidth,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                ...semester.subjects.map(
+                                  (subject) {
+                                    final pscore_total = subject.pscore_total.toString() == 'N/A' ? 'N/A' : double.parse(subject.pscore_total.toString());
+                                    return IntrinsicHeight(
+                                      child: Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          buildSubjectData(
+                                            Get.locale?.languageCode == 'km' ? subject.name_kh : subject.name_en,
+                                          ),
+                                          Row(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              buildAttData(
+                                                onTap: () {
+                                                  showDialog(
+                                                    context: context,
+                                                    barrierDismissible: false,
+                                                    builder: (context) => Dialog(
+                                                      elevation: 5,
+                                                      backgroundColor: UBackgroundColor,
+                                                      insetPadding: const EdgeInsets.all(UPdMg10),
+                                                      shape: const RoundedRectangleBorder(
+                                                        borderRadius: BorderRadius.all(
+                                                          Radius.circular(URoundedLarge),
+                                                        ),
+                                                      ),
+                                                      child: SingleChildScrollView(
+                                                        child: Stack(
+                                                          children: [
+                                                            Column(
+                                                              mainAxisSize: MainAxisSize.min,
+                                                              children: [
+                                                                buildDialogSubjectName(
+                                                                  Get.locale?.languageCode == 'km' ? subject.name_kh : subject.name_en,
+                                                                ),
+                                                                buildHeight5(),
+                                                                Container(
+                                                                  padding: const EdgeInsets.all(UPdMg10),
+                                                                  width: UFullWidth,
+                                                                  child: Column(
+                                                                    mainAxisSize: MainAxisSize.min,
+                                                                    children: subject.attendances.asMap().entries.map((att) {
+                                                                      final attendance = att.value;
+                                                                      return buildAttDialogData(
+                                                                        attTitle: attendance.title,
+                                                                        attAl: CustomPerformanceDiaglogTextThemeBold(
+                                                                          text: attendance.attendance_al,
+                                                                          size: UTitleSize,
+                                                                          color: UYellowColor,
+                                                                        ),
+                                                                        attPm: CustomPerformanceDiaglogTextThemeBold(
+                                                                          text: attendance.attendance_pm,
+                                                                          size: UTitleSize,
+                                                                          color: UOrangeColor,
+                                                                        ),
+                                                                        attAb: CustomPerformanceDiaglogTextThemeBold(
+                                                                          text: attendance.attendance_a,
+                                                                          size: UTitleSize,
+                                                                          color: URedColor,
+                                                                        ),
+                                                                        attPs: CustomPerformanceDiaglogTextThemeBold(
+                                                                          text: attendance.attendance_ps,
+                                                                          size: UTitleSize,
+                                                                          color: UScoreColor,
+                                                                        ),
+                                                                      );
+                                                                    }).toList(),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            buildCloseImgPosition(
+                                                              () => Get.back(),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                                attData: subject.attendance_ps,
+                                              ),
+                                              const VerticalDivider(
+                                                color: UGreyColor,
+                                                thickness: 0.5,
+                                                width: UZeroPixel,
+                                              ),
+                                              buildScoreData(
+                                                onTap: () => showDialog(
+                                                  context: context,
+                                                  barrierDismissible: false,
+                                                  builder: (BuildContext context) {
+                                                    return Dialog(
+                                                      elevation: 5,
+                                                      backgroundColor: UBackgroundColor,
+                                                      insetPadding: const EdgeInsets.all(UPdMg10),
+                                                      shape: const RoundedRectangleBorder(
+                                                        borderRadius: BorderRadius.all(
+                                                          Radius.circular(URoundedLarge),
+                                                        ),
+                                                      ),
+                                                      child: SingleChildScrollView(
+                                                        child: Stack(
+                                                          children: [
+                                                            Column(
+                                                              mainAxisSize: MainAxisSize.min,
+                                                              mainAxisAlignment: MainAxisAlignment.start,
+                                                              children: [
+                                                                buildDialogSubjectName(
+                                                                  Get.locale?.languageCode == 'km' ? subject.name_kh : subject.name_en,
+                                                                ),
+                                                                buildHeight5(),
+                                                                Container(
+                                                                  padding: const EdgeInsets.symmetric(
+                                                                    vertical: UPdMg5,
+                                                                    horizontal: UPdMg10,
+                                                                  ),
+                                                                  width: UFullWidth,
+                                                                  child: Container(
+                                                                    padding: const EdgeInsets.symmetric(vertical: UPdMg5),
+                                                                    child: Column(
+                                                                      children: subject.scores.asMap().entries.map((entry) {
+                                                                        final int index = entry.key;
+                                                                        final score = entry.value;
+                                                                        final double marginBottom = (index == subject.scores.length - 1) ? UPdMg5 : UPdMg15;
+                                                                        return IntrinsicHeight(
+                                                                          child: buildScoreDialogData(
+                                                                            scoreTitle: score.title,
+                                                                            marginBottom: marginBottom,
+                                                                            numAtt: CustomPerformanceDiaglogTextTheme(
+                                                                              text: score.number_attendance,
+                                                                              size: UTitleSize,
+                                                                              fontWeight: UBodyWeight,
+                                                                              color: UScoreColor,
+                                                                            ),
+                                                                            numAssign: CustomPerformanceDiaglogTextTheme(
+                                                                              text: score.number_assignment,
+                                                                              size: UTitleSize,
+                                                                              fontWeight: UBodyWeight,
+                                                                              color: UScoreColor,
+                                                                            ),
+                                                                            numMid: CustomPerformanceDiaglogTextTheme(
+                                                                              text: score.number_mid_term,
+                                                                              size: UTitleSize,
+                                                                              fontWeight: UBodyWeight,
+                                                                              color: UScoreColor,
+                                                                            ),
+                                                                            numFinal: CustomPerformanceDiaglogTextTheme(
+                                                                              text: score.number_final,
+                                                                              size: UTitleSize,
+                                                                              fontWeight: UBodyWeight,
+                                                                              color: UScoreColor,
+                                                                            ),
+                                                                            scoreAtt: CustomPerformanceDiaglogTextTheme(
+                                                                              text: score.score_attendance,
+                                                                              size: UTitleSize,
+                                                                              fontWeight: UBodyWeight,
+                                                                              color: UScoreColor,
+                                                                            ),
+                                                                            scoreAssign: CustomPerformanceDiaglogTextTheme(
+                                                                              text: score.score_assignment,
+                                                                              size: UTitleSize,
+                                                                              fontWeight: UBodyWeight,
+                                                                              color: UScoreColor,
+                                                                            ),
+                                                                            scoreMid: CustomPerformanceDiaglogTextTheme(
+                                                                              text: score.score_mid_term,
+                                                                              size: UTitleSize,
+                                                                              fontWeight: UBodyWeight,
+                                                                              color: UScoreColor,
+                                                                            ),
+                                                                            scoreFinal: CustomPerformanceDiaglogTextTheme(
+                                                                              text: score.score_final,
+                                                                              size: UTitleSize,
+                                                                              fontWeight: UBodyWeight,
+                                                                              color: UScoreColor,
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      }).toList(),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            buildCloseImgPosition(
+                                                              () => Get.back(),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ),
+                                                borderColor: pscore_total.toString() == 'N/A'
+                                                    ? UScoreColor
+                                                    : double.parse(pscore_total.toString()) > 49
+                                                        ? UScoreColor
+                                                        : URedColor,
+                                                score: subject.pscore_total.toString(),
+                                                scoreColor: pscore_total.toString() == 'N/A'
+                                                    ? UScoreColor
+                                                    : double.parse(pscore_total.toString()) > 49
+                                                        ? UScoreColor
+                                                        : URedColor,
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                ).toList(),
+                              ],
+                            ),
+                          ),
+                          buildBottomCard(
+                            keyName: 'មធ្យមភាគ'.tr,
+                            value: semester.average,
+                          ),
+                          buildBottomCard(
+                            keyName: 'ពិន្ទុមធ្យមភាគ'.tr,
+                            value: semester.gpa,
+                          ),
+                          buildBottomCard(
+                            keyName: 'និទ្ទេស'.tr,
+                            value: semester.grade,
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }).toList(),
+              )
+            : buildFutureBuilder()
+      ],
+    );
+  }
+
   Future<void> _refreshData() async {
     try {
       final response = await http.post(
         Uri.parse(
-          Get.locale?.languageCode == 'km'
-              ? APIUrlStudent + 'action=study_performance'
-              : APIUrlStudentEn + 'action=study_performance',
+          Get.locale?.languageCode == 'km' ? APIStPerformanceKh : APIStPerformanceEn,
         ),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
-          'guardian_id': widget.sourceScreen == guardian_sourceScreen
-              ? widget.data_studentUser[0].guardian_id
-              : 'N/A',
+          'guardian_id': widget.sourceScreen == guardian_sourceScreen ? widget.data_studentUser[0].guardian_id : 'N/A',
         },
       );
 
@@ -140,956 +480,5 @@ class _PerformanceState extends State<Performance> {
     setState(() {
       selectedYearIndex = index;
     });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(
-        title: 'ដំណើរការសិក្សា'.tr,
-      ),
-      body: RefreshIndicator(
-        onRefresh: _refreshData,
-        color: UPrimaryColor,
-        child: Container(
-          alignment: Alignment.topCenter,
-          child: performances.isEmpty
-              ? buildFutureBuild()
-              : RefreshIndicator(
-                  onRefresh: _refreshData,
-                  color: UPrimaryColor,
-                  child: ListView(
-                    physics: const BouncingScrollPhysics(),
-                    children: [
-                      buildHeight5(),
-                      Container(
-                        height: 70,
-                        alignment: Alignment.center,
-                        width: UFullWidth,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: UPdMg5,
-                        ),
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          physics: const BouncingScrollPhysics(),
-                          itemCount: performances.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            final isLastIndex =
-                                index == performances.length - 1;
-
-                            return GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  selectedYearIndex = index;
-                                });
-                              },
-                              child: AnimatedContainer(
-                                alignment: Alignment.center,
-                                duration: const Duration(
-                                  milliseconds: 300,
-                                ),
-                                margin: EdgeInsets.fromLTRB(
-                                  UPdMg5,
-                                  UPdMg10,
-                                  isLastIndex ? UPdMg5 : UPdMg5,
-                                  UPdMg10,
-                                ),
-                                width: MediaQuery.of(context).size.width / 3,
-                                decoration: BoxDecoration(
-                                  color: selectedYearIndex == index
-                                      ? UPrimaryColor
-                                      : UBackgroundColor,
-                                  borderRadius: BorderRadius.circular(
-                                    URoundedMedium,
-                                  ),
-                                  boxShadow: [
-                                    const BoxShadow(
-                                      blurRadius: 1,
-                                      color: ULightGreyColor,
-                                      offset: Offset(0, 1),
-                                    ),
-                                  ],
-                                ),
-                                child: Text(
-                                  'ឆ្នាំទី​ ${performances[index].yearNo}'.tr,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: UTitleSize,
-                                    fontWeight: UTitleWeight,
-                                    color: selectedYearIndex == index
-                                        ? UBackgroundColor
-                                        : UTextColor,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      performances[selectedYearIndex].semesters.isNotEmpty
-                          ? Column(
-                              children: performances[selectedYearIndex]
-                                  .semesters
-                                  .map((semester) {
-                                return Container(
-                                  margin: const EdgeInsets.only(
-                                    bottom: UPdMg5,
-                                  ),
-                                  child: Card(
-                                    elevation: 0.5,
-                                    shadowColor: ULightGreyColor,
-                                    shape: RoundedRectangleBorder(
-                                      side: const BorderSide(
-                                        color: UBackgroundColor,
-                                        width: 1.5,
-                                      ),
-                                      borderRadius: BorderRadius.circular(
-                                        URoundedLarge,
-                                      ),
-                                    ),
-                                    margin: const EdgeInsets.fromLTRB(
-                                      UPdMg10,
-                                      UZeroPixel,
-                                      UPdMg10,
-                                      UPdMg7,
-                                    ),
-                                    color: UBackgroundColor,
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Container(
-                                          padding: const EdgeInsets.symmetric(
-                                            vertical: UPdMg15,
-                                            horizontal: UPdMg10,
-                                          ),
-                                          width: UFullWidth,
-                                          decoration: const BoxDecoration(
-                                            borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(
-                                                URoundedLarge,
-                                              ),
-                                              topRight: Radius.circular(
-                                                URoundedLarge,
-                                              ),
-                                            ),
-                                            color: UBGLightBlue,
-                                          ),
-                                          child: IntrinsicHeight(
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text(
-                                                  'ឆមាសទី ${semester.semesterNo}'
-                                                      .tr,
-                                                  textAlign: TextAlign.center,
-                                                  style: const TextStyle(
-                                                    color: UPrimaryColor,
-                                                    fontSize: UTitleSize,
-                                                    fontWeight: UTitleWeight,
-                                                  ),
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    buildTitleContainer(
-                                                      110,
-                                                      'វត្តមាន'.tr,
-                                                      Alignment.centerRight,
-                                                    ),
-                                                    const VerticalDivider(
-                                                      color: UGreyColor,
-                                                      thickness: 0.5,
-                                                      width: UZeroPixel,
-                                                    ),
-                                                    buildTitleContainer(
-                                                      65,
-                                                      'ពិន្ទុ'.tr,
-                                                      Alignment.centerLeft,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          padding: const EdgeInsets.all(
-                                            UPdMg10,
-                                          ),
-                                          width: UFullWidth,
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              ...semester.subjects.map(
-                                                (subject) {
-                                                  final pscore_total = subject
-                                                              .pscore_total
-                                                              .toString() ==
-                                                          'N/A'
-                                                      ? 'N/A'
-                                                      : double.parse(subject
-                                                          .pscore_total
-                                                          .toString());
-                                                  return IntrinsicHeight(
-                                                    child: Row(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: [
-                                                        Expanded(
-                                                          child: Container(
-                                                            margin:
-                                                                const EdgeInsets
-                                                                    .only(
-                                                              right: UPdMg15,
-                                                            ),
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .symmetric(
-                                                              vertical: UPdMg10,
-                                                            ),
-                                                            alignment: Alignment
-                                                                .topLeft,
-                                                            child: Text(
-                                                              Get.locale?.languageCode ==
-                                                                      'km'
-                                                                  ? subject
-                                                                      .name_kh
-                                                                  : subject
-                                                                      .name_en,
-                                                              style:
-                                                                  const TextStyle(
-                                                                color:
-                                                                    UTextColor,
-                                                                fontSize:
-                                                                    UTitleSize,
-                                                                height:
-                                                                    UTextHeight,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Row(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
-                                                          children: [
-                                                            Container(
-                                                              width: UWidth50,
-                                                              alignment:
-                                                                  Alignment
-                                                                      .topCenter,
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .symmetric(
-                                                                vertical:
-                                                                    UPdMg10,
-                                                              ),
-                                                              child: InkWell(
-                                                                highlightColor:
-                                                                    Colors
-                                                                        .transparent,
-                                                                splashColor: Colors
-                                                                    .transparent,
-                                                                onTap: () {
-                                                                  showDialog(
-                                                                    context:
-                                                                        context,
-                                                                    barrierDismissible:
-                                                                        false,
-                                                                    builder:
-                                                                        (BuildContext
-                                                                            context) {
-                                                                      return Dialog(
-                                                                        elevation:
-                                                                            5,
-                                                                        backgroundColor:
-                                                                            UBackgroundColor,
-                                                                        insetPadding:
-                                                                            const EdgeInsets.all(
-                                                                          UPdMg10,
-                                                                        ),
-                                                                        shape:
-                                                                            const RoundedRectangleBorder(
-                                                                          borderRadius:
-                                                                              BorderRadius.all(
-                                                                            Radius.circular(
-                                                                              URoundedLarge,
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                        child:
-                                                                            SingleChildScrollView(
-                                                                          child:
-                                                                              Stack(
-                                                                            children: [
-                                                                              Column(
-                                                                                mainAxisSize: MainAxisSize.min,
-                                                                                children: [
-                                                                                  Container(
-                                                                                    padding: EdgeInsets.all(
-                                                                                      UPdMg10,
-                                                                                    ),
-                                                                                    width: UFullWidth,
-                                                                                    decoration: const BoxDecoration(
-                                                                                      borderRadius: BorderRadius.only(
-                                                                                        topLeft: Radius.circular(
-                                                                                          URoundedLarge,
-                                                                                        ),
-                                                                                        topRight: Radius.circular(
-                                                                                          URoundedLarge,
-                                                                                        ),
-                                                                                      ),
-                                                                                      color: UBGLightBlue,
-                                                                                    ),
-                                                                                    child: Container(
-                                                                                      margin: const EdgeInsets.only(
-                                                                                        right: 50,
-                                                                                      ),
-                                                                                      child: Text(
-                                                                                        subject.name_en.tr,
-                                                                                        style: const TextStyle(
-                                                                                          fontSize: UTitleSize,
-                                                                                          fontWeight: UTitleWeight,
-                                                                                          color: UPrimaryColor,
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  buildHeight5(),
-                                                                                  Container(
-                                                                                    padding: const EdgeInsets.all(
-                                                                                      UPdMg10,
-                                                                                    ),
-                                                                                    width: UFullWidth,
-                                                                                    child: Column(
-                                                                                      mainAxisSize: MainAxisSize.min,
-                                                                                      children: subject.attendances.asMap().entries.map((att) {
-                                                                                        final attendance = att.value;
-                                                                                        return Column(
-                                                                                          children: [
-                                                                                            Container(
-                                                                                              alignment: Alignment.centerLeft,
-                                                                                              child: CustomPerformanceDiaglogTextThemeTitle(
-                                                                                                attendance.title,
-                                                                                                UTitleSize,
-                                                                                                UPrimaryColor,
-                                                                                              ),
-                                                                                            ),
-                                                                                            IntrinsicHeight(
-                                                                                              child: Column(
-                                                                                                children: [
-                                                                                                  Row(
-                                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                    children: [
-                                                                                                      CustomPerformanceDiaglogTextTheme(
-                                                                                                        'យឺត'.tr,
-                                                                                                        UTitleSize,
-                                                                                                        UTextColor,
-                                                                                                      ),
-                                                                                                      CustomPerformanceDiaglogTextThemeBold(
-                                                                                                        attendance.attendance_al,
-                                                                                                        UTitleSize,
-                                                                                                        UYellowColor,
-                                                                                                      ),
-                                                                                                    ],
-                                                                                                  ),
-                                                                                                  Row(
-                                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                    children: [
-                                                                                                      CustomPerformanceDiaglogTextTheme(
-                                                                                                        'សុំច្បាប់'.tr,
-                                                                                                        UTitleSize,
-                                                                                                        UTextColor,
-                                                                                                      ),
-                                                                                                      CustomPerformanceDiaglogTextThemeBold(
-                                                                                                        attendance.attendance_pm,
-                                                                                                        UTitleSize,
-                                                                                                        UOrangeColor,
-                                                                                                      ),
-                                                                                                    ],
-                                                                                                  ),
-                                                                                                  Row(
-                                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                    children: [
-                                                                                                      CustomPerformanceDiaglogTextTheme(
-                                                                                                        'អវត្តមាន'.tr,
-                                                                                                        UTitleSize,
-                                                                                                        UTextColor,
-                                                                                                      ),
-                                                                                                      CustomPerformanceDiaglogTextThemeBold(
-                                                                                                        attendance.attendance_a,
-                                                                                                        UTitleSize,
-                                                                                                        URedColor,
-                                                                                                      ),
-                                                                                                    ],
-                                                                                                  ),
-                                                                                                  Row(
-                                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                    children: [
-                                                                                                      CustomPerformanceDiaglogTextTheme(
-                                                                                                        'វត្តមាន'.tr,
-                                                                                                        UTitleSize,
-                                                                                                        UTextColor,
-                                                                                                      ),
-                                                                                                      CustomPerformanceDiaglogTextThemeBold(
-                                                                                                        attendance.attendance_ps,
-                                                                                                        UTitleSize,
-                                                                                                        UScoreColor,
-                                                                                                      ),
-                                                                                                    ],
-                                                                                                  ),
-                                                                                                  Container(
-                                                                                                    margin: const EdgeInsets.only(
-                                                                                                      bottom: 5,
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ],
-                                                                                              ),
-                                                                                            ),
-                                                                                          ],
-                                                                                        );
-                                                                                      }).toList(),
-                                                                                    ),
-                                                                                  ),
-                                                                                ],
-                                                                              ),
-                                                                              Positioned(
-                                                                                right: UZeroPixel,
-                                                                                top: UZeroPixel,
-                                                                                height: UHeight40,
-                                                                                width: UWidth50,
-                                                                                child: InkWell(
-                                                                                  highlightColor: UTransParentColor,
-                                                                                  splashColor: UTransParentColor,
-                                                                                  onTap: () {
-                                                                                    Navigator.of(context).pop();
-                                                                                  },
-                                                                                  child: Image.asset(
-                                                                                    imageAsset + 'close.png',
-                                                                                    scale: UScale10,
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                        ),
-                                                                      );
-                                                                    },
-                                                                  );
-                                                                },
-                                                                child:
-                                                                    Container(
-                                                                  margin: const EdgeInsets
-                                                                      .fromLTRB(
-                                                                    UPdMg5,
-                                                                    UZeroPixel,
-                                                                    UPdMg5,
-                                                                    UZeroPixel,
-                                                                  ),
-                                                                  decoration:
-                                                                      const BoxDecoration(
-                                                                    border:
-                                                                        Border(
-                                                                      bottom:
-                                                                          BorderSide(
-                                                                        color:
-                                                                            UScoreColor,
-                                                                        width:
-                                                                            0.75,
-                                                                        style: BorderStyle
-                                                                            .solid,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  child: Text(
-                                                                    subject
-                                                                        .attendance_ps,
-                                                                    style:
-                                                                        const TextStyle(
-                                                                      color:
-                                                                          UScoreColor,
-                                                                      fontSize:
-                                                                          UTitleSize,
-                                                                      fontWeight:
-                                                                          UBodyWeight,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            const VerticalDivider(
-                                                              color: UGreyColor,
-                                                              thickness: 0.5,
-                                                              width: UZeroPixel,
-                                                            ),
-                                                            Container(
-                                                              width: 65,
-                                                              alignment:
-                                                                  Alignment
-                                                                      .topCenter,
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .symmetric(
-                                                                vertical:
-                                                                    UPdMg10,
-                                                              ),
-                                                              child: InkWell(
-                                                                highlightColor:
-                                                                    Colors
-                                                                        .transparent,
-                                                                splashColor: Colors
-                                                                    .transparent,
-                                                                onTap: () {
-                                                                  showDialog(
-                                                                    context:
-                                                                        context,
-                                                                    barrierDismissible:
-                                                                        false,
-                                                                    builder:
-                                                                        (BuildContext
-                                                                            context) {
-                                                                      return Dialog(
-                                                                        elevation:
-                                                                            5,
-                                                                        backgroundColor:
-                                                                            UBackgroundColor,
-                                                                        insetPadding:
-                                                                            const EdgeInsets.all(
-                                                                          UPdMg10,
-                                                                        ),
-                                                                        shape:
-                                                                            const RoundedRectangleBorder(
-                                                                          borderRadius:
-                                                                              BorderRadius.all(
-                                                                            Radius.circular(
-                                                                              URoundedLarge,
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                        child:
-                                                                            SingleChildScrollView(
-                                                                          child:
-                                                                              Stack(
-                                                                            children: [
-                                                                              Column(
-                                                                                mainAxisSize: MainAxisSize.min,
-                                                                                mainAxisAlignment: MainAxisAlignment.start,
-                                                                                children: [
-                                                                                  Container(
-                                                                                    padding: const EdgeInsets.all(
-                                                                                      UPdMg10,
-                                                                                    ),
-                                                                                    width: UFullWidth,
-                                                                                    decoration: const BoxDecoration(
-                                                                                      borderRadius: BorderRadius.only(
-                                                                                        topLeft: Radius.circular(
-                                                                                          URoundedLarge,
-                                                                                        ),
-                                                                                        topRight: Radius.circular(
-                                                                                          URoundedLarge,
-                                                                                        ),
-                                                                                      ),
-                                                                                      color: UBGLightBlue,
-                                                                                    ),
-                                                                                    child: Container(
-                                                                                      margin: const EdgeInsets.only(
-                                                                                        right: 50,
-                                                                                      ),
-                                                                                      child: Text(
-                                                                                        subject.name_en,
-                                                                                        style: const TextStyle(
-                                                                                          fontSize: UTitleSize,
-                                                                                          fontWeight: UTitleWeight,
-                                                                                          color: UPrimaryColor,
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  buildHeight5(),
-                                                                                  Container(
-                                                                                    padding: const EdgeInsets.symmetric(
-                                                                                      vertical: UPdMg5,
-                                                                                      horizontal: UPdMg10,
-                                                                                    ),
-                                                                                    width: UFullWidth,
-                                                                                    child: Container(
-                                                                                      padding: const EdgeInsets.symmetric(
-                                                                                        vertical: UPdMg5,
-                                                                                      ),
-                                                                                      child: Column(
-                                                                                        children: subject.scores.asMap().entries.map((entry) {
-                                                                                          final int index = entry.key;
-                                                                                          final score = entry.value;
-                                                                                          final double marginBottom = (index == subject.scores.length - 1) ? UPdMg5 : UPdMg15;
-                                                                                          return IntrinsicHeight(
-                                                                                            child: Column(
-                                                                                              children: [
-                                                                                                Container(
-                                                                                                  alignment: Alignment.centerLeft,
-                                                                                                  child: CustomPerformanceDiaglogTextThemeTitle(
-                                                                                                    score.title,
-                                                                                                    UTitleSize,
-                                                                                                    UPrimaryColor,
-                                                                                                  ),
-                                                                                                ),
-                                                                                                SingleChildScrollView(
-                                                                                                  scrollDirection: Axis.horizontal,
-                                                                                                  child: Row(
-                                                                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                                    children: [
-                                                                                                      Column(
-                                                                                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                                        mainAxisAlignment: MainAxisAlignment.start,
-                                                                                                        children: [
-                                                                                                          CustomPerformanceDiaglogTextThemeTitle(
-                                                                                                            'លក្ខណៈវិនិច្ឆ័យ'.tr,
-                                                                                                            UTitleSize,
-                                                                                                            UPrimaryColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            'វត្តមាន'.tr,
-                                                                                                            UTitleSize,
-                                                                                                            UTextColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            'កិច្ចការផ្ទះ និងស្រាវជ្រាវ'.tr,
-                                                                                                            UTitleSize,
-                                                                                                            UTextColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            'ប្រលងពាក់កណ្ដាលឆមាស'.tr,
-                                                                                                            UTitleSize,
-                                                                                                            UTextColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            'ប្រលងបញ្ចប់ឆមាស'.tr,
-                                                                                                            UTitleSize,
-                                                                                                            UTextColor,
-                                                                                                          ),
-                                                                                                          //Average Score Blank
-                                                                                                          // CustomPerformanceDiaglogTextTheme(
-                                                                                                          //   ''.tr,
-                                                                                                          //   UTitleSize,
-                                                                                                          //   UTextColor,
-                                                                                                          // ),
-                                                                                                          Container(
-                                                                                                            margin: EdgeInsets.only(
-                                                                                                              bottom: marginBottom,
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        ],
-                                                                                                      ),
-                                                                                                      buildWidth15(),
-                                                                                                      Column(
-                                                                                                        children: [
-                                                                                                          CustomPerformanceDiaglogTextThemeTitle(
-                                                                                                            'ពិន្ទុជាក់ស្ដែង'.tr,
-                                                                                                            UTitleSize,
-                                                                                                            UPrimaryColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            score.number_attendance,
-                                                                                                            UTitleSize,
-                                                                                                            UScoreColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            score.number_assignment,
-                                                                                                            UTitleSize,
-                                                                                                            UScoreColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            score.number_mid_term,
-                                                                                                            UTitleSize,
-                                                                                                            UScoreColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            score.number_final,
-                                                                                                            UTitleSize,
-                                                                                                            UScoreColor,
-                                                                                                          ),
-                                                                                                          // Average Score Text
-                                                                                                          // CustomPerformanceDiaglogTextThemeTitle(
-                                                                                                          //   'ពិន្ទុសរុប'.tr,
-                                                                                                          //   UTitleSize,
-                                                                                                          //   UPrimaryColor,
-                                                                                                          // ),
-                                                                                                          Container(
-                                                                                                            margin: EdgeInsets.only(
-                                                                                                              bottom: marginBottom,
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        ],
-                                                                                                      ),
-                                                                                                      buildWidth15(),
-                                                                                                      Column(
-                                                                                                        children: [
-                                                                                                          CustomPerformanceDiaglogTextThemeTitle(
-                                                                                                            'ពិន្ទុផ្លូវការ'.tr,
-                                                                                                            UTitleSize,
-                                                                                                            UPrimaryColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            score.score_attendance,
-                                                                                                            UTitleSize,
-                                                                                                            UScoreColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            score.score_assignment,
-                                                                                                            UTitleSize,
-                                                                                                            UScoreColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            score.score_mid_term,
-                                                                                                            UTitleSize,
-                                                                                                            UScoreColor,
-                                                                                                          ),
-                                                                                                          CustomPerformanceDiaglogTextTheme(
-                                                                                                            score.score_final,
-                                                                                                            UTitleSize,
-                                                                                                            UScoreColor,
-                                                                                                          ),
-                                                                                                          // Average Score
-                                                                                                          // CustomPerformanceDiaglogTextThemeTitle(
-                                                                                                          //   subject.pscore_total.toString(),
-                                                                                                          //   UTitleSize,
-                                                                                                          //   UPrimaryColor,
-                                                                                                          // ),
-                                                                                                          Container(
-                                                                                                            margin: EdgeInsets.only(
-                                                                                                              bottom: marginBottom,
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        ],
-                                                                                                      ),
-                                                                                                    ],
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ],
-                                                                                            ),
-                                                                                          );
-                                                                                        }).toList(),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                ],
-                                                                              ),
-                                                                              Positioned(
-                                                                                right: UZeroPixel,
-                                                                                top: UZeroPixel,
-                                                                                height: UHeight40,
-                                                                                width: UWidth50,
-                                                                                child: InkWell(
-                                                                                  highlightColor: UTransParentColor,
-                                                                                  splashColor: UTransParentColor,
-                                                                                  onTap: () {
-                                                                                    Navigator.of(context).pop();
-                                                                                  },
-                                                                                  child: Image.asset(
-                                                                                    imageAsset + 'close.png',
-                                                                                    scale: UScale10,
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                        ),
-                                                                      );
-                                                                    },
-                                                                  );
-                                                                },
-                                                                child:
-                                                                    Container(
-                                                                  margin: EdgeInsets
-                                                                      .fromLTRB(
-                                                                    UPdMg5,
-                                                                    UZeroPixel,
-                                                                    UPdMg5,
-                                                                    UZeroPixel,
-                                                                  ),
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    border:
-                                                                        Border(
-                                                                      bottom:
-                                                                          BorderSide(
-                                                                        color: pscore_total.toString() ==
-                                                                                'N/A'
-                                                                            ? UScoreColor
-                                                                            : double.parse(pscore_total.toString()) > 49
-                                                                                ? UScoreColor
-                                                                                : URedColor,
-                                                                        width:
-                                                                            0.75,
-                                                                        style: BorderStyle
-                                                                            .solid,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  child: Text(
-                                                                    subject
-                                                                        .pscore_total
-                                                                        .toString(),
-                                                                    style:
-                                                                        TextStyle(
-                                                                      color: pscore_total.toString() ==
-                                                                              'N/A'
-                                                                          ? UScoreColor
-                                                                          : double.parse(pscore_total.toString()) > 49
-                                                                              ? UScoreColor
-                                                                              : URedColor,
-                                                                      fontSize:
-                                                                          UTitleSize,
-                                                                      fontWeight:
-                                                                          UBodyWeight,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  );
-                                                },
-                                              ).toList(),
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          padding: const EdgeInsets.fromLTRB(
-                                            UPdMg10,
-                                            UPdMg10,
-                                            UPdMg10,
-                                            UZeroPixel,
-                                          ),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: [
-                                              Text(
-                                                'មធ្យមភាគ'.tr,
-                                                style: const TextStyle(
-                                                  color: UPrimaryColor,
-                                                  fontWeight: UTitleWeight,
-                                                ),
-                                              ),
-                                              Container(
-                                                width: 65,
-                                                padding: const EdgeInsets.only(
-                                                  right: UPdMg15,
-                                                ),
-                                                alignment:
-                                                    Alignment.centerRight,
-                                                child: Text(
-                                                  semester.average,
-                                                  style: const TextStyle(
-                                                    color: UPrimaryColor,
-                                                    fontWeight: UTitleWeight,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          padding: const EdgeInsets.fromLTRB(
-                                            UPdMg10,
-                                            UPdMg10,
-                                            UPdMg10,
-                                            UZeroPixel,
-                                          ),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: [
-                                              Text(
-                                                'ពិន្ទុមធ្យមភាគ'.tr,
-                                                style: const TextStyle(
-                                                  color: UPrimaryColor,
-                                                  fontWeight: UTitleWeight,
-                                                ),
-                                              ),
-                                              Container(
-                                                width: 65,
-                                                padding: const EdgeInsets.only(
-                                                  right: UPdMg15,
-                                                ),
-                                                alignment:
-                                                    Alignment.centerRight,
-                                                child: Text(
-                                                  semester.gpa,
-                                                  style: const TextStyle(
-                                                    color: UPrimaryColor,
-                                                    fontWeight: UTitleWeight,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          padding: const EdgeInsets.fromLTRB(
-                                            UPdMg10,
-                                            UPdMg10,
-                                            UPdMg10,
-                                            UPdMg15,
-                                          ),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: [
-                                              Text(
-                                                'និទ្ទេស'.tr,
-                                                style: const TextStyle(
-                                                  color: UPrimaryColor,
-                                                  fontWeight: UTitleWeight,
-                                                ),
-                                              ),
-                                              Container(
-                                                width: 65,
-                                                padding: const EdgeInsets.only(
-                                                  right: UPdMg15,
-                                                ),
-                                                alignment:
-                                                    Alignment.centerRight,
-                                                child: Text(
-                                                  semester.grade,
-                                                  style: const TextStyle(
-                                                    color: UPrimaryColor,
-                                                    fontWeight: UTitleWeight,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              }).toList(),
-                            )
-                          : buildFutureBuild()
-                    ],
-                  ),
-                ),
-        ),
-      ),
-    );
   }
 }

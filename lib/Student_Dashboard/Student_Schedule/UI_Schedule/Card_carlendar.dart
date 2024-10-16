@@ -22,7 +22,7 @@ class _CardCalendarState extends State<CardCalendar> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       child: Container(
         padding: const EdgeInsets.symmetric(
           vertical: UPdMg5,
@@ -43,15 +43,10 @@ class _CardCalendarState extends State<CardCalendar> {
                   const BoxShadow(
                     blurRadius: 0.5,
                     color: ULightGreyColor,
-                    offset: Offset(
-                      UZeroPixel,
-                      1,
-                    ),
+                    offset: Offset(0, 1),
                   ),
                 ],
-                borderRadius: BorderRadius.circular(
-                  UPdMg10,
-                ),
+                borderRadius: BorderRadius.circular(UPdMg10),
               ),
               child: TableCalendar(
                 daysOfWeekHeight: 25,
@@ -64,9 +59,8 @@ class _CardCalendarState extends State<CardCalendar> {
                     fontWeight: UTitleWeight,
                     color: UPrimaryColor,
                   ),
-                  todayDecoration: const BoxDecoration(
-                    color: UTransParentColor,
-                  ),
+                  todayDecoration:
+                      const BoxDecoration(color: UTransParentColor),
                   selectedTextStyle: const TextStyle(
                     fontWeight: UTitleWeight,
                     color: USecondaryColor,
@@ -74,9 +68,7 @@ class _CardCalendarState extends State<CardCalendar> {
                   selectedDecoration: BoxDecoration(
                     color: UPrimaryColor,
                     shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(
-                      URoundedMedium,
-                    ),
+                    borderRadius: BorderRadius.circular(URoundedMedium),
                   ),
                 ),
                 headerStyle: HeaderStyle(
@@ -109,28 +101,18 @@ class _CardCalendarState extends State<CardCalendar> {
                 availableGestures: AvailableGestures.all,
                 selectedDayPredicate: (day) => isSameDay(day, today),
                 focusedDay: today,
-                firstDay: DateTime(
-                  2018,
-                  1,
-                  1,
-                ),
-                lastDay: DateTime(
-                  2028,
-                  12,
-                  31,
-                ),
+                firstDay: DateTime(2018, 1, 1),
+                lastDay: DateTime(2028, 12, 31),
                 onDaySelected: (day, focusedDay) {
                   widget.onDateSelected(day);
-                  setState(() {
-                    today = day;
-                  });
+                  setState(
+                    () => today = day,
+                  );
                 },
                 calendarBuilders: CalendarBuilders(
                   defaultBuilder: (context, date, _) {
                     return Container(
-                      margin: const EdgeInsets.all(
-                        UPdMg5,
-                      ),
+                      margin: const EdgeInsets.all(UPdMg5),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         color: isSameDay(
@@ -140,9 +122,7 @@ class _CardCalendarState extends State<CardCalendar> {
                             ? UPrimaryColor
                             : UBtnColor,
                         shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.circular(
-                          URoundedMedium,
-                        ),
+                        borderRadius: BorderRadius.circular(URoundedMedium),
                       ),
                       child: Text(
                         '${date.day}',

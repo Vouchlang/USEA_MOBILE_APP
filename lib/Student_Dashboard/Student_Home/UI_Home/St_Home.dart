@@ -30,9 +30,7 @@ class _St_HomeState extends State<St_Home> with SingleTickerProviderStateMixin {
   int currentIndex = 1;
   void onTap(int index) {
     setState(
-      () {
-        currentIndex = index;
-      },
+      () => currentIndex = index,
     );
   }
 
@@ -52,47 +50,46 @@ class _St_HomeState extends State<St_Home> with SingleTickerProviderStateMixin {
         data: Theme.of(context).copyWith(
           splashColor: UTransParentColor,
           highlightColor: UTransParentColor,
-          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-            selectedItemColor: UTransParentColor,
-          ),
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(selectedItemColor: UTransParentColor),
         ),
-        child: BottomNavigationBar(
-          backgroundColor: UBackgroundColor,
-          onTap: onTap,
-          elevation: 15,
-          currentIndex: currentIndex,
-          selectedItemColor: UPrimaryColor,
-          unselectedItemColor: UGreyColor,
-          unselectedFontSize:
-              Get.locale?.languageCode == 'km' ? UBodySize10 : UBodySize11,
-          selectedLabelStyle: TextStyle(
-            fontWeight: UTitleWeight,
-            fontSize:
-                Get.locale?.languageCode == 'km' ? UBodySize11 : UBodySize,
+        child: Container(
+          height: 65,
+          child: BottomNavigationBar(
+            backgroundColor: UBackgroundColor,
+            onTap: onTap,
+            elevation: 15,
+            currentIndex: currentIndex,
+            selectedItemColor: UPrimaryColor,
+            unselectedItemColor: UGreyColor,
+            unselectedFontSize: Get.locale?.languageCode == 'km' ? UBodySize10 : UBodySize11,
+            selectedLabelStyle: TextStyle(
+              fontWeight: UTitleWeight,
+              fontSize: Get.locale?.languageCode == 'km' ? UBodySize11 : UBodySize,
+            ),
+            items: [
+              BottomNavigationBarItem(
+                icon: const Icon(
+                  Icons.home,
+                  size: 25,
+                ),
+                label: 'ទំព័រដើម'.tr,
+              ),
+              BottomNavigationBarItem(
+                icon: const Icon(
+                  Icons.account_box,
+                  size: 25,
+                ),
+                label: 'ចូលគណនី'.tr,
+              ),
+              // BottomNavigationBarItem(
+              //   icon: Icon(
+              //     Icons.notifications_sharp,
+              //     size: 25,
+              //   ),
+              //   label: 'ការជូនដំណឹង'.tr,
+              // ),
+            ],
           ),
-          items: [
-            BottomNavigationBarItem(
-              icon: const Icon(
-                Icons.home,
-                size: 25,
-              ),
-              label: 'ទំព័រដើម'.tr,
-            ),
-            BottomNavigationBarItem(
-              icon: const Icon(
-                Icons.account_box,
-                size: 25,
-              ),
-              label: 'ចូលគណនី'.tr,
-            ),
-            // BottomNavigationBarItem(
-            //   icon: Icon(
-            //     Icons.notifications_sharp,
-            //     size: 25,
-            //   ),
-            //   label: 'ការជូនដំណឹង'.tr,
-            // ),
-          ],
         ),
       ),
     );
