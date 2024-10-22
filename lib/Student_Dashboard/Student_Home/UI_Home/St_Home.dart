@@ -51,7 +51,7 @@ class _St_HomeState extends State<St_Home> with SingleTickerProviderStateMixin {
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(selectedItemColor: UTransParentColor),
         ),
         child: Container(
-          height: 65,
+          height: 90,
           child: BottomNavigationBar(
             backgroundColor: UBackgroundColor,
             onTap: onTap,

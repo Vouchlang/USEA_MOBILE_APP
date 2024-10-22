@@ -47,11 +47,16 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+	<key>io.flutter.embedded_views_preview</key>
+	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>This app needs camera access to scan QR codes</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Your app needs access to save images to your photo library.</string>
+	<string>This app needs access to save images to your photo library.</string>
+
 </dict>
 </plist>

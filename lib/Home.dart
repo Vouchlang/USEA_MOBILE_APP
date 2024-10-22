@@ -19,15 +19,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   int currentIndex = 0;
   void onTap(int index) {
-<<<<<<< HEAD
-    setState(() {
-      currentIndex = index;
-    });
-=======
     setState(
       () => currentIndex = index,
     );
->>>>>>> bfaf458a0454f129cc8b5372d8ea76ddb173c5c6
   }
 
   @override
@@ -41,7 +35,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(selectedItemColor: UTransParentColor),
         ),
         child: Container(
-          height: 65,
+          height: 90,
           child: BottomNavigationBar(
             backgroundColor: UBackgroundColor,
             onTap: onTap,
@@ -71,21 +65,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               ),
             ],
           ),
-<<<<<<< HEAD
-          items: [
-            BottomNavigationBarItem(
-              icon: const Icon(
-                Icons.home,
-                size: 25,
-              ),
-              label: 'ទំព័រដើម'.tr,
-            ),
-            BottomNavigationBarItem(
-                icon: const Icon(Icons.account_box, size: 25),
-                label: 'ចូលគណនី'.tr),
-          ],
-=======
->>>>>>> bfaf458a0454f129cc8b5372d8ea76ddb173c5c6
         ),
       ),
     );

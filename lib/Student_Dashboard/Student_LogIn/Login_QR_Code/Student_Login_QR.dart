@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart' as qrScanner;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -54,6 +55,8 @@ class _QRLoginScreenState extends State<QRLoginScreen> with SingleTickerProvider
             },
           )
         : _submitForm();
+    Permission.camera.request();
+    Permission.photos.request();
   }
 
   @override
@@ -123,6 +126,7 @@ class _QRLoginScreenState extends State<QRLoginScreen> with SingleTickerProvider
         await _scanQRCodeFromImage(pickedFile.path);
       } else {
         _showErrorSnackbar('No image selected.');
+        print('No image selected.');
       }
     } catch (e) {
       _showErrorSnackbar('Error picking image: $e');

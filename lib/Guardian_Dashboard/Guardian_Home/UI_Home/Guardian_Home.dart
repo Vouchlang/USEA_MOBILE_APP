@@ -45,7 +45,7 @@ class _Guardian_HomeState extends State<Guardian_Home> {
         ),
         child: Container(
           color: UTransParentColor,
-          height: 65,
+          height: 90,
           child: BottomNavigationBar(
             backgroundColor: UBackgroundColor,
             onTap: onTap,
