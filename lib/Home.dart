@@ -60,12 +60,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               label: 'ទំព័រដើម'.tr,
             ),
             BottomNavigationBarItem(
-              icon: const Icon(
-                Icons.account_box,
-                size: 25,
-              ),
-              label: 'ចូលគណនី'.tr,
-            ),
+                icon: const Icon(Icons.account_box, size: 25),
+                label: 'ចូលគណនី'.tr),
           ],
         ),
       ),
