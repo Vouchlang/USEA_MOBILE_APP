@@ -39,8 +39,8 @@ class _CardCalendarState extends State<CardCalendar> {
               ),
               decoration: BoxDecoration(
                 color: UBackgroundColor,
-                boxShadow: [
-                  const BoxShadow(
+                boxShadow: const [
+                  BoxShadow(
                     blurRadius: 0.5,
                     color: ULightGreyColor,
                     offset: Offset(0, 1),
@@ -51,16 +51,14 @@ class _CardCalendarState extends State<CardCalendar> {
               child: TableCalendar(
                 daysOfWeekHeight: 25,
                 daysOfWeekStyle: DaysOfWeekStyle(
-                  dowTextFormatter: (date, locale) =>
-                      DateFormat.E(locale).format(date).substring(0, 2),
+                  dowTextFormatter: (date, locale) => DateFormat.E(locale).format(date).substring(0, 2),
                 ),
                 calendarStyle: CalendarStyle(
                   todayTextStyle: const TextStyle(
                     fontWeight: UTitleWeight,
                     color: UPrimaryColor,
                   ),
-                  todayDecoration:
-                      const BoxDecoration(color: UTransParentColor),
+                  todayDecoration: const BoxDecoration(color: UTransParentColor),
                   selectedTextStyle: const TextStyle(
                     fontWeight: UTitleWeight,
                     color: USecondaryColor,

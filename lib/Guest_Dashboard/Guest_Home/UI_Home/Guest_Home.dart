@@ -42,7 +42,9 @@ class _Guest_HomeState extends State<Guest_Home> {
     checkInternetConnection();
     _connectivitySubscription = Connectivity().onConnectivityChanged.listen(
       (ConnectivityResult result) {
-        if (result != ConnectivityResult.none) getImageData();
+        if (result != ConnectivityResult.none) {
+          getImageData();
+        }
       },
     );
   }
@@ -111,9 +113,7 @@ class _Guest_HomeState extends State<Guest_Home> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  width: 2,
-                ),
+                const SizedBox(width: 2),
               ],
             ),
           ],
@@ -324,7 +324,7 @@ class _Guest_HomeState extends State<Guest_Home> {
   }
 
   void checkInternetConnection() async {
-    //? Check initial connection
+    // Check initial connection
     var connectivityResult = await Connectivity().checkConnectivity();
     setState(() {
       hasInternet = connectivityResult != ConnectivityResult.none;
@@ -332,7 +332,7 @@ class _Guest_HomeState extends State<Guest_Home> {
       bannerColor = hasInternet ? UScoreColor : URedColor;
     });
 
-    //? Listen to connection changes
+    // Listen to connection changes
     _connectivitySubscription = Connectivity().onConnectivityChanged.listen(
       (ConnectivityResult result) {
         if (result == ConnectivityResult.none) {
@@ -356,9 +356,9 @@ class _Guest_HomeState extends State<Guest_Home> {
             // Hide the banner after a short delay
             Timer(const Duration(seconds: 3), () {
               if (mounted) {
-                setState(() {
-                  isNoInternetBannerVisible = false;
-                });
+                setState(
+                  () => isNoInternetBannerVisible = false,
+                );
               }
             });
           }

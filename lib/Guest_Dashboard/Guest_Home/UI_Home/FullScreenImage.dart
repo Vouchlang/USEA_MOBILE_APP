@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import '../../../theme_builder.dart';
 
 class FullScreenImage1 extends StatefulWidget {
@@ -49,7 +50,9 @@ class _FullScreenImage1State extends State<FullScreenImage1> {
               onPressed: () => setState(
                 () {
                   isFullScreen = !isFullScreen;
-                  if (!isFullScreen) Navigator.pop(context);
+                  if (!isFullScreen) {
+                    Get.back();
+                  }
                 },
               ),
             ),

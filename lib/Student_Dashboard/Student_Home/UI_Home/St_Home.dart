@@ -28,11 +28,9 @@ class _St_HomeState extends State<St_Home> with SingleTickerProviderStateMixin {
   late TabController controller;
 
   int currentIndex = 1;
-  void onTap(int index) {
-    setState(
-      () => currentIndex = index,
-    );
-  }
+  void onTap(int index) => setState(
+        () => currentIndex = index,
+      );
 
   @override
   Widget build(BuildContext context) {

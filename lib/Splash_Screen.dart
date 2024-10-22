@@ -16,11 +16,8 @@ class _Splash_ScreenState extends State<Splash_Screen> {
   @override
   void initState() {
     super.initState();
-
     Future.delayed(
-      const Duration(
-        milliseconds: 3800,
-      ),
+      const Duration(milliseconds: 3800),
     ).then(
       (value) {
         Get.off(() => const Home());

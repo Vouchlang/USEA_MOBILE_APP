@@ -136,38 +136,6 @@ class _Student_LogInState extends State<Student_LogIn> {
               ),
             ),
             buildSubmitButton(_submitForm),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     buildSubmitButton(_submitForm),
-            //     buildWidth15(),
-            //     InkWell(
-            //       highlightColor: UTransParentColor,
-            //       splashColor: UTransParentColor,
-            //       onTap: _navigateToQRScanner,
-            //       child: Container(
-            //         padding: const EdgeInsets.symmetric(
-            //           horizontal: UPdMg15,
-            //         ),
-            //         height: UHeight40,
-            //         alignment: Alignment.center,
-            //         decoration: BoxDecoration(
-            //           borderRadius: BorderRadius.circular(
-            //             UPdMg5,
-            //           ),
-            //           color: UPrimaryColor,
-            //         ),
-            //         child: const Text(
-            //           'Scan QR Code',
-            //           style: TextStyle(
-            //             color: UBackgroundColor,
-            //             fontSize: UTitleSize,
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
           ],
         ),
       ),

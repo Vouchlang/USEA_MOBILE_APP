@@ -38,9 +38,7 @@ class _PerformanceState extends State<Performance> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(
-        title: 'ដំណើរការសិក្សា'.tr,
-      ),
+      appBar: Custom_AppBar(title: 'ដំណើរការសិក្សា'.tr),
       body: RefreshIndicator(
         onRefresh: _refreshData,
         color: UPrimaryColor,
@@ -149,73 +147,71 @@ class _PerformanceState extends State<Performance> {
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
                                               buildAttData(
-                                                onTap: () {
-                                                  showDialog(
-                                                    context: context,
-                                                    barrierDismissible: false,
-                                                    builder: (context) => Dialog(
-                                                      elevation: 5,
-                                                      backgroundColor: UBackgroundColor,
-                                                      insetPadding: const EdgeInsets.all(UPdMg10),
-                                                      shape: const RoundedRectangleBorder(
-                                                        borderRadius: BorderRadius.all(
-                                                          Radius.circular(URoundedLarge),
-                                                        ),
-                                                      ),
-                                                      child: SingleChildScrollView(
-                                                        child: Stack(
-                                                          children: [
-                                                            Column(
-                                                              mainAxisSize: MainAxisSize.min,
-                                                              children: [
-                                                                buildDialogSubjectName(
-                                                                  Get.locale?.languageCode == 'km' ? subject.name_kh : subject.name_en,
-                                                                ),
-                                                                buildHeight5(),
-                                                                Container(
-                                                                  padding: const EdgeInsets.all(UPdMg10),
-                                                                  width: UFullWidth,
-                                                                  child: Column(
-                                                                    mainAxisSize: MainAxisSize.min,
-                                                                    children: subject.attendances.asMap().entries.map((att) {
-                                                                      final attendance = att.value;
-                                                                      return buildAttDialogData(
-                                                                        attTitle: attendance.title,
-                                                                        attAl: CustomPerformanceDiaglogTextThemeBold(
-                                                                          text: attendance.attendance_al,
-                                                                          size: UTitleSize,
-                                                                          color: UYellowColor,
-                                                                        ),
-                                                                        attPm: CustomPerformanceDiaglogTextThemeBold(
-                                                                          text: attendance.attendance_pm,
-                                                                          size: UTitleSize,
-                                                                          color: UOrangeColor,
-                                                                        ),
-                                                                        attAb: CustomPerformanceDiaglogTextThemeBold(
-                                                                          text: attendance.attendance_a,
-                                                                          size: UTitleSize,
-                                                                          color: URedColor,
-                                                                        ),
-                                                                        attPs: CustomPerformanceDiaglogTextThemeBold(
-                                                                          text: attendance.attendance_ps,
-                                                                          size: UTitleSize,
-                                                                          color: UScoreColor,
-                                                                        ),
-                                                                      );
-                                                                    }).toList(),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            buildCloseImgPosition(
-                                                              () => Get.back(),
-                                                            ),
-                                                          ],
-                                                        ),
+                                                onTap: () => showDialog(
+                                                  context: context,
+                                                  barrierDismissible: false,
+                                                  builder: (context) => Dialog(
+                                                    elevation: 5,
+                                                    backgroundColor: UBackgroundColor,
+                                                    insetPadding: const EdgeInsets.all(UPdMg10),
+                                                    shape: const RoundedRectangleBorder(
+                                                      borderRadius: BorderRadius.all(
+                                                        Radius.circular(URoundedLarge),
                                                       ),
                                                     ),
-                                                  );
-                                                },
+                                                    child: SingleChildScrollView(
+                                                      child: Stack(
+                                                        children: [
+                                                          Column(
+                                                            mainAxisSize: MainAxisSize.min,
+                                                            children: [
+                                                              buildDialogSubjectName(
+                                                                Get.locale?.languageCode == 'km' ? subject.name_kh : subject.name_en,
+                                                              ),
+                                                              buildHeight5(),
+                                                              Container(
+                                                                padding: const EdgeInsets.all(UPdMg10),
+                                                                width: UFullWidth,
+                                                                child: Column(
+                                                                  mainAxisSize: MainAxisSize.min,
+                                                                  children: subject.attendances.asMap().entries.map((att) {
+                                                                    final attendance = att.value;
+                                                                    return buildAttDialogData(
+                                                                      attTitle: attendance.title,
+                                                                      attAl: CustomPerformanceDiaglogTextThemeBold(
+                                                                        text: attendance.attendance_al,
+                                                                        size: UTitleSize,
+                                                                        color: UYellowColor,
+                                                                      ),
+                                                                      attPm: CustomPerformanceDiaglogTextThemeBold(
+                                                                        text: attendance.attendance_pm,
+                                                                        size: UTitleSize,
+                                                                        color: UOrangeColor,
+                                                                      ),
+                                                                      attAb: CustomPerformanceDiaglogTextThemeBold(
+                                                                        text: attendance.attendance_a,
+                                                                        size: UTitleSize,
+                                                                        color: URedColor,
+                                                                      ),
+                                                                      attPs: CustomPerformanceDiaglogTextThemeBold(
+                                                                        text: attendance.attendance_ps,
+                                                                        size: UTitleSize,
+                                                                        color: UScoreColor,
+                                                                      ),
+                                                                    );
+                                                                  }).toList(),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          buildCloseImgPosition(
+                                                            () => Get.back(),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
                                                 attData: subject.attendance_ps,
                                               ),
                                               const VerticalDivider(

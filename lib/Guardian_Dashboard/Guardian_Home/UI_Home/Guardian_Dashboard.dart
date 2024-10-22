@@ -180,12 +180,10 @@ class _Guardian_DashboardState extends State<Guardian_Dashboard> {
                 ? showDialog(
                     context: context,
                     barrierDismissible: false,
-                    builder: (BuildContext context) {
-                      return buildErrorDialog(
-                        txtTitle: 'សូមអធ្យាស្រ័យ'.tr,
-                        txtDescription: 'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!'.tr,
-                      );
-                    },
+                    builder: (BuildContext context) => buildErrorDialog(
+                      txtTitle: 'សូមអធ្យាស្រ័យ'.tr,
+                      txtDescription: 'សូមអធ្យាស្រ័យលោកអ្នកមិនទាន់អាចធ្វើការ Feedback បាននៅឡើយទេ!!!'.tr,
+                    ),
                   )
                 : _launchFeedback(),
             child: Container(

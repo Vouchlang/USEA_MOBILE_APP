@@ -72,9 +72,7 @@ class _StudyinfoExamState extends State<StudyinfoExam> {
                     child: IntrinsicHeight(
                       child: Column(
                         children: [
-                          buildStudyInfoExamTitle(
-                            dataStudyInfo[index].title,
-                          ),
+                          buildStudyInfoExamTitle(dataStudyInfo[index].title),
                           buildStudyInfoExamBody(
                             widgetMonth: NormalDateStudyInfo(dataStudyInfo[index].month),
                             widgetDate: NormalDateStudyInfo(dataStudyInfo[index].date),

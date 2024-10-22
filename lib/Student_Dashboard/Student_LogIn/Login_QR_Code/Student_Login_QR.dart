@@ -25,8 +25,7 @@ class QRLoginScreen extends StatefulWidget {
   _QRLoginScreenState createState() => _QRLoginScreenState();
 }
 
-class _QRLoginScreenState extends State<QRLoginScreen>
-    with SingleTickerProviderStateMixin {
+class _QRLoginScreenState extends State<QRLoginScreen> with SingleTickerProviderStateMixin {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   Barcode? result;
   QRViewController? controller;
@@ -117,9 +116,9 @@ class _QRLoginScreenState extends State<QRLoginScreen>
       final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
       if (pickedFile != null) {
         if (mounted) {
-          setState(() {
-            _image = File(pickedFile.path);
-          });
+          setState(
+            () => _image = File(pickedFile.path),
+          );
         }
         await _scanQRCodeFromImage(pickedFile.path);
       } else {
@@ -134,27 +133,19 @@ class _QRLoginScreenState extends State<QRLoginScreen>
   Future<void> _scanQRCodeFromImage(String filePath) async {
     try {
       final inputImage = mlKit.InputImage.fromFilePath(filePath);
-
-      // Use ML Kit to scan for QR codes
       final barcodeScanner = mlKit.BarcodeScanner(
-        formats: [mlKit.BarcodeFormat.qrCode], // Focus on QR codes only
+        formats: [mlKit.BarcodeFormat.qrCode],
       );
-
-      final List<mlKit.Barcode> barcodes =
-          await barcodeScanner.processImage(inputImage);
-
+      final List<mlKit.Barcode> barcodes = await barcodeScanner.processImage(inputImage);
       if (barcodes.isNotEmpty) {
         final mlKit.Barcode barcode = barcodes.first;
-
-        // Check if displayValue or rawValue is available
         final String? qrCodeData = barcode.displayValue ?? barcode.rawValue;
-
         if (qrCodeData != null && _isValidQRCode(qrCodeData)) {
           if (mounted) {
             setState(
               () => result = Barcode(
                 code: qrCodeData,
-                format: qrCodeData, // Set the format manually
+                format: qrCodeData,
               ),
             );
             await _submitForm();
@@ -272,10 +263,8 @@ class _QRLoginScreenState extends State<QRLoginScreen>
     }
   }
 
-  void saveStudentUser(
-      SharedPreferences sharedPreferences, List<StudentUser> studentUserList) {
-    final jsonData =
-        studentUserList.map((studentUser) => studentUser.toJson()).toList();
+  void saveStudentUser(SharedPreferences sharedPreferences, List<StudentUser> studentUserList) {
+    final jsonData = studentUserList.map((studentUser) => studentUser.toJson()).toList();
     sharedPreferences.setString(
       'student_user',
       json.encode(jsonData),

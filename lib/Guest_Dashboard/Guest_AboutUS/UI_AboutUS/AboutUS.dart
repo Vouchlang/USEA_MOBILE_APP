@@ -25,28 +25,26 @@ class AboutUS extends StatelessWidget {
         return Container(
           margin: const EdgeInsets.only(bottom: UPdMg5),
           child: buildAboutUSCard(
-            onTap: () {
-              Navigator.of(context).push(
-                PageRouteBuilder(
-                  pageBuilder: (context, animation, secondaryAnimation) => about_US[index].screen,
-                  transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                    const begin = Offset(3.0, UZeroPixel);
-                    const end = Offset.zero;
-                    const curve = Curves.easeInOut;
-                    final tween = Tween(begin: begin, end: end).chain(
-                      CurveTween(curve: curve),
-                    );
-                    var forwardAnimation = animation.drive(tween);
+            onTap: () => Navigator.of(context).push(
+              PageRouteBuilder(
+                pageBuilder: (context, animation, secondaryAnimation) => about_US[index].screen,
+                transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                  const begin = Offset(3.0, UZeroPixel);
+                  const end = Offset.zero;
+                  const curve = Curves.easeInOut;
+                  final tween = Tween(begin: begin, end: end).chain(
+                    CurveTween(curve: curve),
+                  );
+                  var forwardAnimation = animation.drive(tween);
 
-                    return SlideTransition(
-                      position: forwardAnimation,
-                      child: child,
-                    );
-                  },
-                  transitionDuration: const Duration(milliseconds: 100),
-                ),
-              );
-            },
+                  return SlideTransition(
+                    position: forwardAnimation,
+                    child: child,
+                  );
+                },
+                transitionDuration: const Duration(milliseconds: 100),
+              ),
+            ),
             img: about_US[index].img,
             text: about_US[index].text.tr,
           ),

@@ -117,12 +117,10 @@ class ChangeLanguage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    onTap: () {
-                      updateLanguage(
-                        locale[index]['locale'],
-                        locale[index]['font'],
-                      );
-                    },
+                    onTap: () => updateLanguage(
+                      locale[index]['locale'],
+                      locale[index]['font'],
+                    ),
                   );
                 },
                 separatorBuilder: (context, index) => const VerticalDivider(

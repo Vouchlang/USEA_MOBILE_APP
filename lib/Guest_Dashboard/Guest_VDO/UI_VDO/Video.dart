@@ -228,7 +228,9 @@ class _VideoState extends State<Video_UI> {
             InkWell(
               highlightColor: UTransParentColor,
               splashColor: UTransParentColor,
-              onTap: () => setState(() => currentPage = i),
+              onTap: () => setState(
+                () => currentPage = i,
+              ),
               child: CircleAvatar(
                 backgroundColor: currentPage == i ? UPrimaryColor : UTransParentColor,
                 child: Text(

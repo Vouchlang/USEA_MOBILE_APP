@@ -20,9 +20,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   int currentIndex = 0;
   void onTap(int index) {
     setState(
-      () {
-        currentIndex = index;
-      },
+      () => currentIndex = index,
     );
   }
 
@@ -34,8 +32,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         data: Theme.of(context).copyWith(
           splashColor: UTransParentColor,
           highlightColor: UTransParentColor,
-          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-              selectedItemColor: UTransParentColor),
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(selectedItemColor: UTransParentColor),
         ),
         child: Container(
           height: 65,
@@ -46,12 +43,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             currentIndex: currentIndex,
             selectedItemColor: UPrimaryColor,
             unselectedItemColor: UGreyColor,
-            unselectedFontSize:
-                Get.locale?.languageCode == 'km' ? UBodySize10 : UBodySize11,
+            unselectedFontSize: Get.locale?.languageCode == 'km' ? UBodySize10 : UBodySize11,
             selectedLabelStyle: TextStyle(
               fontWeight: UTitleWeight,
-              fontSize:
-                  Get.locale?.languageCode == 'km' ? UBodySize11 : UBodySize,
+              fontSize: Get.locale?.languageCode == 'km' ? UBodySize11 : UBodySize,
             ),
             items: [
               BottomNavigationBarItem(

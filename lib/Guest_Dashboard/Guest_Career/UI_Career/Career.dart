@@ -175,14 +175,12 @@ class _CareerState extends State<Career> {
             ? InkWell(
                 highlightColor: UTransParentColor,
                 splashColor: UTransParentColor,
-                onTap: () {
-                  setState(
-                    () {
-                      startPage = 0;
-                      currentPage = 0;
-                    },
-                  );
-                },
+                onTap: () => setState(
+                  () {
+                    startPage = 0;
+                    currentPage = 0;
+                  },
+                ),
                 child: const Icon(
                   Icons.first_page,
                   color: UPrimaryColor,
@@ -194,12 +192,10 @@ class _CareerState extends State<Career> {
             ? InkWell(
                 highlightColor: UTransParentColor,
                 splashColor: UTransParentColor,
-                onTap: () {
-                  setState(() {
-                    currentPage--;
-                    startPage--;
-                  });
-                },
+                onTap: () => setState(() {
+                  currentPage--;
+                  startPage--;
+                }),
                 child: const Icon(
                   Icons.navigate_before,
                   color: UPrimaryColor,
@@ -211,11 +207,9 @@ class _CareerState extends State<Career> {
           InkWell(
             highlightColor: UTransParentColor,
             splashColor: UTransParentColor,
-            onTap: () {
-              setState(() {
-                currentPage = i;
-              });
-            },
+            onTap: () => setState(
+              () => currentPage = i,
+            ),
             child: CircleAvatar(
               backgroundColor: currentPage == i ? UPrimaryColor : UTransParentColor,
               child: Text(
@@ -233,12 +227,10 @@ class _CareerState extends State<Career> {
             ? InkWell(
                 highlightColor: UTransParentColor,
                 splashColor: UTransParentColor,
-                onTap: () {
-                  setState(() {
-                    currentPage++;
-                    startPage++;
-                  });
-                },
+                onTap: () => setState(() {
+                  currentPage++;
+                  startPage++;
+                }),
                 child: const Icon(
                   Icons.navigate_next,
                   color: UPrimaryColor,
@@ -250,12 +242,10 @@ class _CareerState extends State<Career> {
             ? InkWell(
                 highlightColor: UTransParentColor,
                 splashColor: UTransParentColor,
-                onTap: () {
-                  setState(() {
-                    startPage = (career.length / resultsPerPage).ceil() - ((MediaQuery.of(context).size.width - 210) / 30).floor();
-                    currentPage = (career.length / resultsPerPage).ceil() - 1;
-                  });
-                },
+                onTap: () => setState(() {
+                  startPage = (career.length / resultsPerPage).ceil() - ((MediaQuery.of(context).size.width - 210) / 30).floor();
+                  currentPage = (career.length / resultsPerPage).ceil() - 1;
+                }),
                 child: const Icon(
                   Icons.last_page,
                   color: UPrimaryColor,

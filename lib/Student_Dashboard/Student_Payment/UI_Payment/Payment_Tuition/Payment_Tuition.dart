@@ -74,9 +74,7 @@ class _PaymentTuitionState extends State<PaymentTuition> {
                       );
 
                       late final String formattedTotalPaid = totalPaid == 0.00 ? 'N/A' : totalPaid.toStringAsFixed(2);
-
                       late final double totalRem = payStudy.payments.isNotEmpty ? double.tryParse(payStudy.payments.last.moneyRem) ?? 0.00 : 0.00;
-
                       return Padding(
                         padding: EdgeInsets.only(
                           bottom: isLastIndex ? UPdMg5 : UZeroPixel,

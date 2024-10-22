@@ -15,7 +15,7 @@ Widget buildYearButton({
     child: AnimatedContainer(
       alignment: Alignment.center,
       duration: const Duration(milliseconds: 300),
-      margin: EdgeInsets.symmetric(
+      margin: const EdgeInsets.symmetric(
         horizontal: UPdMg5,
         vertical: UPdMg10,
       ),
@@ -23,8 +23,8 @@ Widget buildYearButton({
       decoration: BoxDecoration(
         color: boxColor,
         borderRadius: BorderRadius.circular(URoundedMedium),
-        boxShadow: [
-          const BoxShadow(
+        boxShadow: const [
+          BoxShadow(
             blurRadius: 1,
             color: ULightGreyColor,
             offset: Offset(0, 1),

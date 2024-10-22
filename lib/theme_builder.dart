@@ -103,12 +103,5 @@ const UWidth40 = 40.0;
 const UWidth45 = 45.0;
 const UWidth50 = 50.0;
 
-//  * @ Shadow Theme
-const UBoxShadow = Shadow(
-  blurRadius: 0.5,
-  offset: Offset(0.0, 0.2),
-  color: Color.fromARGB(10, 0, 0, 0),
-);
-
 // *@ Infinity Width and Height
 const UFullWidth = double.infinity;

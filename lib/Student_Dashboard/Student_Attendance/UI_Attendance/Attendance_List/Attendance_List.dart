@@ -64,17 +64,15 @@ class _AttendanceListState extends State<AttendanceList> {
               physics: const BouncingScrollPhysics(),
               itemCount: attendances.length,
               scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return buildYearButton(
-                  onTap: () => setState(
-                    () => selectedYearIndex = index,
-                  ),
-                  width: MediaQuery.of(context).size.width / 3,
-                  boxColor: selectedYearIndex == index ? UPrimaryColor : UBackgroundColor,
-                  yearName: 'ឆ្នាំទី​ ${attendances[index].year_no}'.tr,
-                  selectedColor: selectedYearIndex == index ? UBackgroundColor : UTextColor,
-                );
-              },
+              itemBuilder: (context, index) => buildYearButton(
+                onTap: () => setState(
+                  () => selectedYearIndex = index,
+                ),
+                width: MediaQuery.of(context).size.width / 3,
+                boxColor: selectedYearIndex == index ? UPrimaryColor : UBackgroundColor,
+                yearName: 'ឆ្នាំទី​ ${attendances[index].year_no}'.tr,
+                selectedColor: selectedYearIndex == index ? UBackgroundColor : UTextColor,
+              ),
             ),
           ),
           buildAttListRow(),

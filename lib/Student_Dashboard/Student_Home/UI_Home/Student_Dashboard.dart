@@ -92,9 +92,9 @@ class _Student_HomeState extends State<Student_Home> {
                             ),
                           ),
                         )
-                      : const CircleAvatar(
+                      : CircleAvatar(
                           radius: 20,
-                          backgroundImage: AssetImage('assets/image/no_images.png'),
+                          backgroundImage: AssetImage(imageAsset + 'no_images.png'),
                         ),
                 ),
                 const SizedBox(width: 3),
@@ -465,40 +465,3 @@ class _Student_HomeState extends State<Student_Home> {
     }
   }
 }
-
-  // floatingActionButton: Container(
-      //   width: UWidth40,
-      //   height: UHeight40,
-      //   alignment: Alignment.center,
-      //   decoration: BoxDecoration(
-      //     borderRadius: BorderRadius.circular(
-      //       50,
-      //     ),
-      //     color: UPrimaryColor,
-      //   ),
-      //   child: Center(
-      //     child: IconButton(
-      //       highlightColor: UTransParentColor,
-      //       splashColor: UTransParentColor,
-      //       onPressed: () {
-      //         // setState(
-      //         //   () {
-      //         //     Get.to(
-      //         //       () =>const Students_Notifications(),
-      //         //       transition: Transition.rightToLeftWithFade,
-      //         //       duration: const Duration(
-      //         //         milliseconds: 100,
-      //         //       ),
-      //         //     );
-      //         //   },
-      //         // );
-      //       },
-      //       icon: const Icon(
-      //         Icons.qr_code_scanner,
-      //         color: UBackgroundColor,
-      //         size: 25,
-      //       ),
-      //     ),
-      //   ),
-      // ),
-   

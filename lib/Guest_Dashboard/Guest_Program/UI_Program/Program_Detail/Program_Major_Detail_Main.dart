@@ -173,9 +173,7 @@ class _MajorDetailsScreenState extends State<MajorDetailsScreen> {
                 showDialog(
                   context: context,
                   barrierDismissible: false,
-                  builder: (BuildContext context) {
-                    return buildYearNameDialog();
-                  },
+                  builder: (BuildContext context) => buildYearNameDialog(),
                 );
               }
             },
