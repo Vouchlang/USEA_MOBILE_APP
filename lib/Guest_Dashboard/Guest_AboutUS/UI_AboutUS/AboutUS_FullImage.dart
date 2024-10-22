@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
+import 'Build_Custom_AboutUS.dart';
 
 class AboutUS_FullImage extends StatefulWidget {
   final String imageUrls, screenNav;
@@ -34,33 +36,12 @@ class _AboutUS_FullImageState extends State<AboutUS_FullImage> {
       backgroundColor: USecondaryColor,
       body: Stack(
         children: [
-          Container(
-            height: UFullWidth,
-            width: UFullWidth,
-            color: UTextColor,
-            child: Image.asset(
-              widget.imageUrls,
-              fit: BoxFit.contain,
-            ),
-          ),
-          Positioned(
-            bottom: UPdMg10,
-            right: UPdMg10,
-            child: IconButton(
-              icon: const Icon(
-                Icons.fullscreen_exit,
-                color: USecondaryColor,
-                size: 25,
-              ),
-              onPressed: () {
-                setState(
-                  () {
-                    isFullScreen = !isFullScreen;
-                    if (!isFullScreen) {
-                      Navigator.pop(context);
-                    }
-                  },
-                );
+          buildFullImage(widget.imageUrls),
+          buildExitIcon(
+            () => setState(
+              () {
+                isFullScreen = !isFullScreen;
+                if (!isFullScreen) Get.back();
               },
             ),
           ),

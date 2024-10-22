@@ -5,18 +5,8 @@ import '../../Custom_Widget/CustomText.dart';
 import '/theme_builder.dart';
 
 final List<Map<String, dynamic>> locale = [
-  {
-    'name': 'ភាសាខ្មែរ',
-    'logo': imageAsset + 'CL_Khmer.png',
-    'locale': Locale('km', 'KH'),
-    'font': UKFontFamily
-  },
-  {
-    'name': 'ភាសាអង់គ្លេស',
-    'logo': imageAsset + 'CL_English.png',
-    'locale': Locale('en', 'US'),
-    'font': UEFontFamily
-  },
+  {'name': 'ភាសាខ្មែរ', 'logo': imageAsset + 'CL_Khmer.png', 'locale': Locale('km', 'KH'), 'font': UKFontFamily},
+  {'name': 'ភាសាអង់គ្លេស', 'logo': imageAsset + 'CL_English.png', 'locale': Locale('en', 'US'), 'font': UEFontFamily},
 ];
 
 class Change_Language extends StatelessWidget {
@@ -69,22 +59,14 @@ class ChangeLanguage extends StatelessWidget {
     }
 
     return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(
-          URoundedLarge,
-        ),
-      ),
       elevation: 3,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(URoundedLarge),
+      ),
       child: Container(
-        margin: const EdgeInsets.all(
-          UPdMg7,
-        ),
-        padding: const EdgeInsets.all(
-          UPdMg10,
-        ),
-        decoration: const BoxDecoration(
-          color: UBackgroundColor,
-        ),
+        margin: const EdgeInsets.all(UPdMg7),
+        padding: const EdgeInsets.all(UPdMg10),
+        decoration: const BoxDecoration(color: UBackgroundColor),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -95,19 +77,15 @@ class ChangeLanguage extends StatelessWidget {
                 fontWeight: UTitleWeight,
               ),
             ),
-            buildHeight5(),
+            buildHeight10(),
             Text(
               'សូមជ្រើសរើសភាសា'.tr,
-              style: const TextStyle(
-                fontSize: UBodySize,
-              ),
+              style: const TextStyle(fontSize: UBodySize),
             ),
-            buildHeight5(),
+            buildHeight15(),
             Container(
               height: 70,
-              padding: const EdgeInsets.all(
-                UPdMg5,
-              ),
+              padding: const EdgeInsets.all(UPdMg5),
               alignment: Alignment.center,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
@@ -139,21 +117,17 @@ class ChangeLanguage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    onTap: () {
-                      updateLanguage(
-                        locale[index]['locale'],
-                        locale[index]['font'],
-                      );
-                    },
+                    onTap: () => updateLanguage(
+                      locale[index]['locale'],
+                      locale[index]['font'],
+                    ),
                   );
                 },
-                separatorBuilder: (context, index) {
-                  return const VerticalDivider(
-                    width: UWidth40,
-                    thickness: 0.5,
-                    color: UGreyColor,
-                  );
-                },
+                separatorBuilder: (context, index) => const VerticalDivider(
+                  width: UWidth40,
+                  thickness: 0.5,
+                  color: UGreyColor,
+                ),
                 itemCount: locale.length,
               ),
             ),

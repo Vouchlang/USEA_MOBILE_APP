@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import '../../../theme_builder.dart';
 
 class FullScreenImage1 extends StatefulWidget {
@@ -16,7 +17,7 @@ class FullScreenImage1 extends StatefulWidget {
 }
 
 class _FullScreenImage1State extends State<FullScreenImage1> {
-  bool isFullScreen = true;
+  late bool isFullScreen = true;
 
   @override
   Widget build(BuildContext context) {
@@ -46,16 +47,14 @@ class _FullScreenImage1State extends State<FullScreenImage1> {
                 color: USecondaryColor,
                 size: 25,
               ),
-              onPressed: () {
-                setState(
-                  () {
-                    isFullScreen = !isFullScreen;
-                    if (!isFullScreen) {
-                      Navigator.pop(context);
-                    }
-                  },
-                );
-              },
+              onPressed: () => setState(
+                () {
+                  isFullScreen = !isFullScreen;
+                  if (!isFullScreen) {
+                    Get.back();
+                  }
+                },
+              ),
             ),
           ),
         ],

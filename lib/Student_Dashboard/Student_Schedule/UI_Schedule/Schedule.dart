@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../Custom_Widget/CustomText.dart';
+import '../../Users_API.dart';
 import '../../Student_Other_Class/Class_Student_User.dart';
 import '../Class_Schedule/Class_Schedule.dart';
 import '/Custom_AppBar.dart';
@@ -9,10 +10,11 @@ import 'Card_carlendar.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:intl/intl.dart';
+import 'Custom_Build_Schedule.dart';
 
 class Schedule extends StatefulWidget {
-  final List<StudentUser> data_studentUser;
-  final String sourceScreen;
+  late final List<StudentUser> data_studentUser;
+  late final String sourceScreen;
 
   Schedule({
     required this.data_studentUser,
@@ -24,11 +26,11 @@ class Schedule extends StatefulWidget {
 }
 
 class _ScheduleState extends State<Schedule> {
-  DateTime today = DateTime.now();
-  DateTime selectedDate = DateTime.now();
-  bool isLoading = false;
-  List<ScheduleClass> _dataSchedule = [];
-  List<ScheduleClass> selectedDateSchedule = [];
+  late final DateTime today = DateTime.now();
+  late DateTime selectedDate = DateTime.now();
+  late bool isLoading = false;
+  late List<ScheduleClass> _dataSchedule = [];
+  late List<ScheduleClass> selectedDateSchedule = [];
 
   @override
   void initState() {
@@ -36,18 +38,99 @@ class _ScheduleState extends State<Schedule> {
     _onDateSelected(selectedDate);
   }
 
-  Future<void> _onDateSelected(DateTime day) async {
-    setState(() {
-      selectedDate = day;
-    });
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: USecondaryColor,
+      appBar: Custom_AppBar(title: 'កាលវិភាគ'.tr),
+      body: RefreshIndicator(
+        backgroundColor: UBackgroundColor,
+        onRefresh: () async {
+          await _sendDateToDatabase(
+            selectedDate.year,
+            DateFormat('MMMM').format(selectedDate),
+            selectedDate.day,
+          );
+        },
+        color: UPrimaryColor,
+        child: buildListSchedule(),
+      ),
+    );
+  }
 
-    int selectedYear = selectedDate.year;
-    String selectedMonth = DateFormat('MMMM').format(selectedDate);
-    int selectedDay = selectedDate.day;
+  Widget buildListSchedule() {
+    return ListView(
+      physics: const BouncingScrollPhysics(),
+      padding: const EdgeInsets.symmetric(vertical: UPdMg10),
+      children: [
+        CardCalendar(onDateSelected: _onDateSelected),
+        buildHeight5(),
+        Padding(
+          padding: const EdgeInsets.all(UPdMg8),
+          child: Text(
+            'កាលវិភាគសិក្សា'.tr,
+            style: const TextStyle(
+              fontSize: UTitleSize16,
+              fontWeight: UTitleWeight,
+              color: UPrimaryColor,
+            ),
+          ),
+        ),
+        selectedDateSchedule.isEmpty
+            ? buildFutureBuilder()
+            : ListView.builder(
+                physics: const ScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: selectedDateSchedule.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    elevation: 0.5,
+                    shadowColor: ULightGreyColor,
+                    color: UBackgroundColor,
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(
+                        color: UBackgroundColor,
+                        width: 1.5,
+                      ),
+                      borderRadius: BorderRadius.circular(UPdMg10),
+                    ),
+                    margin: const EdgeInsets.fromLTRB(
+                      UPdMg10,
+                      UPdMg5,
+                      UPdMg10,
+                      UPdMg10,
+                    ),
+                    child: Column(
+                      children: [
+                        buildCardSubjectName(selectedDateSchedule[index].subject),
+                        buildCardInfo(
+                          wday: selectedDateSchedule[index].wday,
+                          weekday: selectedDateSchedule[index].weekday,
+                          session: selectedDateSchedule[index].session,
+                          room: selectedDateSchedule[index].room,
+                          teacher: selectedDateSchedule[index].teacher,
+                          phoneNumber: selectedDateSchedule[index].phonenumber,
+                        )
+                      ],
+                    ),
+                  );
+                },
+              ),
+      ],
+    );
+  }
+
+  Future<void> _onDateSelected(DateTime day) async {
+    setState(
+      () => selectedDate = day,
+    );
+
+    late final int selectedYear = selectedDate.year;
+    late final String selectedMonth = DateFormat('MMMM').format(selectedDate);
+    late final int selectedDay = selectedDate.day;
 
     selectedDateSchedule = _dataSchedule.where((schedule) {
-      return schedule.wday == DateFormat('dd').format(selectedDate) &&
-          schedule.month == selectedMonth;
+      return schedule.wday == DateFormat('dd').format(selectedDate) && schedule.month == selectedMonth;
     }).toList();
 
     await _sendDateToDatabase(selectedYear, selectedMonth, selectedDay);
@@ -57,16 +140,12 @@ class _ScheduleState extends State<Schedule> {
     try {
       var response = await http.post(
         Uri.parse(
-          Get.locale?.languageCode == 'km'
-              ? APIUrlStudent + 'action=study_schedule'
-              : APIUrlStudentEn + 'action=study_schedule',
+          Get.locale?.languageCode == 'km' ? APIStScheduleKh : APIStScheduleEn,
         ),
         body: {
           'student_id': widget.data_studentUser[0].student_id,
           'pwd': widget.data_studentUser[0].pwd,
-          'guardian_id': widget.sourceScreen == guardian_sourceScreen
-              ? widget.data_studentUser[0].guardian_id
-              : 'N/A',
+          'guardian_id': widget.sourceScreen == guardian_sourceScreen ? widget.data_studentUser[0].guardian_id : 'N/A',
           'date': '$day-$month-$year',
         },
       );
@@ -81,11 +160,10 @@ class _ScheduleState extends State<Schedule> {
                 (data) => ScheduleClass.fromJson(data),
               ),
             );
-            String selectedMonth = DateFormat('MMMM').format(selectedDate);
+            late final String selectedMonth = DateFormat('MMMM').format(selectedDate);
 
             selectedDateSchedule = _dataSchedule.where((schedule) {
-              return schedule.wday == DateFormat('dd').format(selectedDate) &&
-                  schedule.month == selectedMonth;
+              return schedule.wday == DateFormat('dd').format(selectedDate) && schedule.month == selectedMonth;
             }).toList();
 
             isLoading = false;
@@ -93,210 +171,18 @@ class _ScheduleState extends State<Schedule> {
         }
       } else {
         if (mounted) {
-          setState(() {
-            isLoading = false;
-          });
+          setState(
+            () => isLoading = false,
+          );
         }
       }
     } catch (error) {
       print('Failed to fetch schedule: $error');
       if (mounted) {
-        setState(() {
-          isLoading = false;
-        });
+        setState(
+          () => isLoading = false,
+        );
       }
     }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(
-        title: 'កាលវិភាគ'.tr,
-      ),
-      body: RefreshIndicator(
-        onRefresh: () async {
-          await _sendDateToDatabase(
-            selectedDate.year,
-            DateFormat('MMMM').format(selectedDate),
-            selectedDate.day,
-          );
-        },
-        color: UPrimaryColor,
-        child: ListView(
-          physics: const BouncingScrollPhysics(),
-          padding: const EdgeInsets.symmetric(
-            vertical: UPdMg10,
-          ),
-          children: [
-            CardCalendar(
-              onDateSelected: _onDateSelected,
-            ),
-            buildHeight5(),
-            Padding(
-              padding: const EdgeInsets.all(
-                UPdMg8,
-              ),
-              child: Text(
-                'កាលវិភាគសិក្សា'.tr,
-                style: const TextStyle(
-                  fontSize: UTitleSize16,
-                  fontWeight: UTitleWeight,
-                  color: UPrimaryColor,
-                ),
-              ),
-            ),
-            selectedDateSchedule.isEmpty
-                ? buildFutureBuild()
-                : ListView.builder(
-                    physics: ScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: selectedDateSchedule.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Column(
-                        children: [
-                          Card(
-                            elevation: 0.5,
-                            shadowColor: ULightGreyColor,
-                            color: UBackgroundColor,
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                color: UBackgroundColor,
-                                width: 1.5,
-                              ),
-                              borderRadius: BorderRadius.circular(
-                                UPdMg10,
-                              ),
-                            ),
-                            margin: EdgeInsets.fromLTRB(
-                              UPdMg10,
-                              UPdMg5,
-                              UPdMg10,
-                              UPdMg10,
-                            ),
-                            child: Column(
-                              children: [
-                                Container(
-                                  alignment: Alignment.center,
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: UPdMg15,
-                                    horizontal: UPdMg10,
-                                  ),
-                                  width: UFullWidth,
-                                  decoration: const BoxDecoration(
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(
-                                        URoundedLarge,
-                                      ),
-                                      topRight: Radius.circular(
-                                        URoundedLarge,
-                                      ),
-                                    ),
-                                    color: UBGLightBlue,
-                                  ),
-                                  child: ScheduleTitle(
-                                    selectedDateSchedule[index].subject,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(
-                                    UPdMg10,
-                                  ),
-                                  child: IntrinsicHeight(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          width: UWidth40,
-                                          child: IntrinsicHeight(
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                ScheduleDate(
-                                                  selectedDateSchedule[index]
-                                                      .wday,
-                                                ),
-                                                const SizedBox(
-                                                  height: 2,
-                                                ),
-                                                ScheduleDate(
-                                                  selectedDateSchedule[index]
-                                                      .weekday,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        const VerticalDivider(
-                                          thickness: 0.5,
-                                          color: UGreyColor,
-                                          width: UWidth30,
-                                        ),
-                                        Expanded(
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              ScheduleBody(
-                                                selectedDateSchedule[index]
-                                                    .session,
-                                              ),
-                                              const SizedBox(
-                                                height: 2,
-                                              ),
-                                              ScheduleBody(
-                                                selectedDateSchedule[index]
-                                                    .room,
-                                              ),
-                                              const SizedBox(
-                                                height: 2,
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                children: [
-                                                  Expanded(
-                                                    child: ScheduleBody(
-                                                      selectedDateSchedule[
-                                                              index]
-                                                          .teacher,
-                                                    ),
-                                                  ),
-                                                  Expanded(
-                                                    child: Container(
-                                                      alignment:
-                                                          Alignment.topRight,
-                                                      child: ScheduleBody(
-                                                        selectedDateSchedule[
-                                                                index]
-                                                            .phonenumber,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      );
-                    },
-                  ),
-          ],
-        ),
-      ),
-    );
   }
 }

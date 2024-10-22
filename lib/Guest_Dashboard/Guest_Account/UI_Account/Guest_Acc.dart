@@ -10,6 +10,7 @@ import '../../../Student_Dashboard/Student_Other_Class/Class_Student_User.dart';
 import '/Student_Dashboard/Student_Home/UI_Home/St_Home.dart';
 import '/theme_builder.dart';
 import '../Class_Account/Class_Account_Screen.dart';
+import 'Custom_Build_Guest_Acc.dart';
 
 class Guest_Acc extends StatefulWidget {
   const Guest_Acc({Key? key}) : super(key: key);
@@ -28,8 +29,76 @@ class Guest_AccState extends State<Guest_Acc> {
     super.initState();
     whereToGo();
     SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: UPrimaryColor,
+      const SystemUiOverlayStyle(statusBarColor: UPrimaryColor),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: USecondaryColor,
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        color: USecondaryColor,
+        child: buildAccList(),
+      ),
+    );
+  }
+
+  Widget buildAccList() {
+    return Stack(
+      children: [
+        buildUseaLogo(
+          conHeight: MediaQuery.of(context).size.height / 1.75,
+          conWidth: MediaQuery.of(context).size.width,
+          imageHeight: MediaQuery.of(context).size.height / 4,
+        ),
+        Positioned(
+          top: MediaQuery.of(context).size.height / 2,
+          left: UZeroPixel,
+          right: UZeroPixel,
+          child: buildGridviewCard(),
+        ),
+      ],
+    );
+  }
+
+  Widget buildGridviewCard() {
+    return GridView.count(
+      shrinkWrap: true,
+      physics: const ScrollPhysics(),
+      crossAxisCount: 2,
+      mainAxisSpacing: 3.5,
+      crossAxisSpacing: 3,
+      childAspectRatio: 1.90,
+      padding: const EdgeInsets.symmetric(horizontal: UPdMg7),
+      children: List.generate(
+        account_screen.length,
+        (index) => Card(
+          elevation: 1.5,
+          color: UBackgroundColor,
+          shadowColor: ULightGreyColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(URoundedLarge),
+          ),
+          child: buildAccGridBtn(
+            onTap: () => index.isEqual(0)
+                ? showDialog(
+                    context: context,
+                    barrierDismissible: true,
+                    builder: (BuildContext context) {
+                      return buildStudentLoginOptionDialog();
+                    },
+                  )
+                : Get.to(
+                    () => account_screen[index].screen,
+                    transition: Transition.rightToLeftWithFade,
+                    duration: const Duration(milliseconds: 100),
+                  ),
+            image: account_screen[index].img,
+            name: account_screen[index].name.tr,
+          ),
+        ),
       ),
     );
   }
@@ -71,18 +140,14 @@ class Guest_AccState extends State<Guest_Acc> {
   }
 
   // Navigate to home screen
-  void navigateToSt_HomeScreen(
-    List<StudentUser> studentUser,
-  ) {
+  void navigateToSt_HomeScreen(List<StudentUser> studentUser) {
     Get.off(
       () => St_Home(
         data_studentUser: studentUser,
         sourceScreen: st_sourceScreen,
       ),
       transition: Transition.rightToLeftWithFade,
-      duration: const Duration(
-        milliseconds: 100,
-      ),
+      duration: const Duration(milliseconds: 100),
     );
   }
 
@@ -103,137 +168,11 @@ class Guest_AccState extends State<Guest_Acc> {
   }
 
   // Navigate to Guardian Screen
-  void navigateToGuardian_HomeScreen(
-    List<GuardianUser> guardianUser,
-  ) {
+  void navigateToGuardian_HomeScreen(List<GuardianUser> guardianUser) {
     Get.off(
-      () => Guardian_Home(
-        data_guardianUser: guardianUser,
-      ),
+      () => Guardian_Home(data_guardianUser: guardianUser),
       transition: Transition.rightToLeftWithFade,
-      duration: const Duration(
-        milliseconds: 100,
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: USecondaryColor,
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        color: USecondaryColor,
-        child: Stack(
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height / 1.75,
-              width: MediaQuery.of(context).size.width,
-              decoration: const BoxDecoration(
-                color: UPrimaryColor,
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(
-                    25,
-                  ),
-                  bottomRight: Radius.circular(
-                    25,
-                  ),
-                ),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    imageAsset + 'new_usea_logo.png',
-                    fit: BoxFit.cover,
-                    height: MediaQuery.of(context).size.height / 4,
-                  ),
-                  buildHeight15(),
-                  const Text(
-                    'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
-                    style: TextStyle(
-                      fontSize: UTitleSize,
-                      fontFamily: 'KhmerOSmuol',
-                      color: UBackgroundColor,
-                    ),
-                  ),
-                  const Text(
-                    'UNIVERSITY OF SOUTH-EAST ASIA',
-                    textAlign: TextAlign.justify,
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: UBackgroundColor,
-                      fontWeight: UBodyWeight,
-                      fontFamily: UEFontFamily,
-                      wordSpacing: 2.2,
-                      letterSpacing: 0.8,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Positioned(
-              top: MediaQuery.of(context).size.height / 2,
-              left: 0,
-              right: 0,
-              child: GridView.count(
-                shrinkWrap: true,
-                physics: const ScrollPhysics(),
-                crossAxisCount: 2,
-                mainAxisSpacing: 3.5,
-                crossAxisSpacing: 3,
-                childAspectRatio: 1.90,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: UPdMg7,
-                ),
-                children: List.generate(
-                  account_screen.length,
-                  (index) => Card(
-                    elevation: 1.5,
-                    color: UBackgroundColor,
-                    shadowColor: ULightGreyColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                        URoundedLarge,
-                      ),
-                    ),
-                    child: InkWell(
-                      highlightColor: UTransParentColor,
-                      splashColor: UTransParentColor,
-                      onTap: () {
-                        Get.to(
-                          () => account_screen[index].screen,
-                          transition: Transition.rightToLeftWithFade,
-                          duration: const Duration(
-                            milliseconds: 100,
-                          ),
-                        );
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            account_screen[index].img,
-                            scale: UScale6,
-                          ),
-                          buildHeight7(),
-                          Text(
-                            account_screen[index].name.tr,
-                            style: const TextStyle(
-                              fontSize: UTitleSize,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+      duration: const Duration(milliseconds: 100),
     );
   }
 }

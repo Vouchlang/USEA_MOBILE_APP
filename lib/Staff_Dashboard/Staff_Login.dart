@@ -12,7 +12,7 @@ class Staff_Login extends StatelessWidget {
     return Scaffold(
       backgroundColor: USecondaryColor,
       appBar: Custom_AppBar(
-        title: 'គណនីបុគ្គលិក'.tr,
+        title: 'គណនីបុគ្គលិក'.tr
       ),
       body: buildComingSoon(),
     );

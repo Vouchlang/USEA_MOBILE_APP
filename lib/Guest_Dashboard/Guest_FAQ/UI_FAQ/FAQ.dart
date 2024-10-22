@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../Guest_API.dart';
 import '/Custom_AppBar.dart';
 import '/Custom_Widget/CustomText.dart';
 import '/theme_builder.dart';
 import '../Class_FAQ/Class_FAQ.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'Custom_Build_FAQ.dart';
 
 class FAQ extends StatefulWidget {
   const FAQ({Key? key}) : super(key: key);
@@ -15,16 +18,29 @@ class FAQ extends StatefulWidget {
 }
 
 class _FAQState extends State<FAQ> {
-  List<Class_FAQ> faq = [];
-  bool isLoading = true;
+  late List<Class_FAQ> faq = [];
+  late bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: USecondaryColor,
+      appBar: const Custom_AppBar(title: 'FAQ'),
+      body: faq.isEmpty ? buildFutureBuilder() : buildFaqCard(),
+    );
+  }
 
   Future<void> getData() async {
     try {
       var res = await http.get(
         Uri.parse(
-          Get.locale?.languageCode == 'km'
-              ? APIUrlGuest + "api/webapi.php?action=faq"
-              : APIUrlGuest + "api/webapi.php?action=faq_en",
+          Get.locale?.languageCode == 'km' ? APIGuestFAQKh : APIGuestFAQEn,
         ),
       );
       var r = json.decode(res.body);
@@ -39,109 +55,73 @@ class _FAQState extends State<FAQ> {
       print('Failed to fetch FAQ: $e');
       // handle the error here
     } finally {
-      if (mounted) {
+      if (mounted)
         setState(
-          () {
-            isLoading = false;
-          },
+          () => isLoading = false,
         );
-      }
     }
   }
 
-  @override
-  void initState() {
-    super.initState();
-    getData();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(
-        title: 'FAQ',
-      ),
-      body: Center(
-        child: faq.isEmpty
-            ? buildFutureBuild()
-            : Container(
-                margin: const EdgeInsets.symmetric(
-                  horizontal: UPdMg10,
-                  vertical: UPdMg5,
-                ),
-                width: double.infinity,
-                child: ListView.builder(
-                  itemCount: faq.length,
-                  itemBuilder: (context, index) {
-                    final isLastIndex = index == faq.length - 1;
-                    return Card(
-                      margin: isLastIndex
-                          ? const EdgeInsets.symmetric(
-                              vertical: UPdMg10,
-                            )
-                          : const EdgeInsets.only(
-                              top: UPdMg10,
+  Widget buildFaqCard() {
+    return Center(
+      child: Container(
+        margin: const EdgeInsets.symmetric(
+          horizontal: UPdMg10,
+          vertical: UPdMg5,
+        ),
+        width: UFullWidth,
+        child: ListView.builder(
+          itemCount: faq.length,
+          itemBuilder: (context, index) {
+            final isLastIndex = index == faq.length - 1;
+            return Card(
+              margin: isLastIndex ? const EdgeInsets.symmetric(vertical: UPdMg10) : const EdgeInsets.only(top: UPdMg10),
+              elevation: 1.5,
+              color: UBackgroundColor,
+              shadowColor: ULightGreyColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(URoundedLarge),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: UPdMg10),
+                child: Column(
+                  children: [
+                    Theme(
+                      data: Theme.of(context).copyWith(dividerColor: UTransParentColor),
+                      child: ExpansionTile(
+                        collapsedIconColor: UPrimaryColor,
+                        iconColor: UPrimaryColor,
+                        title: buildFAQ(
+                          text: faq[index].question,
+                          align: Get.locale?.languageCode == 'km' ? TextAlign.left : TextAlign.justify,
+                        ),
+                        textColor: UTextColor,
+                        children: [
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(URoundedLarge),
                             ),
-                      elevation: 1.5,
-                      color: UBackgroundColor,
-                      shadowColor: ULightGreyColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                          URoundedLarge,
-                        ),
+                            padding: const EdgeInsets.fromLTRB(
+                              UPdMg15,
+                              UPdMg10,
+                              UPdMg15,
+                              UPdMg5,
+                            ),
+                            child: buildFAQ(
+                              text: faq[index].answer,
+                              align: Get.locale?.languageCode == 'km' ? TextAlign.left : TextAlign.justify,
+                            ),
+                          )
+                        ],
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: UPdMg10,
-                        ),
-                        child: Column(
-                          children: [
-                            Theme(
-                              data: Theme.of(context).copyWith(
-                                dividerColor: UTransParentColor,
-                              ),
-                              child: ExpansionTile(
-                                collapsedIconColor: UPrimaryColor,
-                                iconColor: UPrimaryColor,
-                                title: buildFAQ(
-                                  faq[index].question,
-                                  Get.locale?.languageCode == 'km'
-                                      ? TextAlign.left
-                                      : TextAlign.justify,
-                                ),
-                                textColor: UTextColor,
-                                children: [
-                                  Container(
-                                    alignment: Alignment.centerLeft,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(
-                                        URoundedLarge,
-                                      ),
-                                    ),
-                                    padding: const EdgeInsets.fromLTRB(
-                                      UPdMg15,
-                                      UPdMg10,
-                                      UPdMg15,
-                                      UPdMg5,
-                                    ),
-                                    child: buildFAQ(
-                                      faq[index].answer,
-                                      Get.locale?.languageCode == 'km'
-                                          ? TextAlign.left
-                                          : TextAlign.justify,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    );
-                  },
+                    )
+                  ],
                 ),
               ),
+            );
+          },
+        ),
       ),
     );
   }

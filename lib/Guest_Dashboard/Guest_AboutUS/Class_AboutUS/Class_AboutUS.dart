@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../UI_AboutUS/History.dart';
-import '../UI_AboutUS/President_Message.dart';
-import '../UI_AboutUS/Recognition.dart';
-import '../UI_AboutUS/Stucture.dart';
-import '../UI_AboutUS/Vision.dart';
+import '../UI_AboutUS/History_LogoMeaning/History.dart';
+import '../UI_AboutUS/Presiden_Message/President_Message.dart';
+import '../UI_AboutUS/Recognition/Recognition.dart';
+import '../UI_AboutUS/Structure/Stucture.dart';
+import '../UI_AboutUS/Vision/Vision.dart';
 import '../../../Custom_Widget/CustomText.dart';
 
 class Class_AboutUS {

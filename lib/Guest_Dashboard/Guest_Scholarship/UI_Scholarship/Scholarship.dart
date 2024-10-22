@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:url_launcher/url_launcher_string.dart';
 import 'dart:convert';
 import '../../../Custom_AppBar.dart';
 import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
+import '../../Guest_API.dart';
 import '../Class_Scholarship/Class_Scholarship.dart';
+import 'Custom_Build_Scholarship.dart';
 
 class Scholarship extends StatefulWidget {
   const Scholarship({super.key});
@@ -25,13 +26,49 @@ class _ScholarshipState extends State<Scholarship> {
     fetchData();
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: USecondaryColor,
+      appBar: Custom_AppBar(title: 'អាហារូបករណ៍'.tr),
+      body: Container(
+        alignment: Alignment.topCenter,
+        child: scholarships.isEmpty
+            ? buildFutureBuilder()
+            : ListView(
+                physics: const BouncingScrollPhysics(),
+                children: [
+                  buildHeight5(),
+                  buildBtnScholar(),
+                  scholarships[selectedScholarship].scholarship_data.isEmpty
+                      ? buildFutureBuilder()
+                      : Column(
+                          children: scholarships[selectedScholarship].scholarship_data.map(
+                            (scholarship) {
+                              return Container(
+                                padding: const EdgeInsets.symmetric(horizontal: UPdMg10),
+                                child: buildScholarCard(
+                                  buildUniversityCon: buildUniversityCon(scholarship.school_name),
+                                  buildScholarEducationLevel: ScholarshipTitleTheme(scholarship.education_level),
+                                  buildScholarMajorName: ScholarshipTitleTheme(scholarship.major_name),
+                                  buildScholarExpireDate: ScholarshipBodyTheme(scholarship.expire_date),
+                                  scholarUrl: scholarship.link,
+                                ),
+                              );
+                            },
+                          ).toList(),
+                        )
+                ],
+              ),
+      ),
+    );
+  }
+
   Future<void> fetchData() async {
     try {
       final response = await http.get(
         Uri.parse(
-          Get.locale?.languageCode == 'km'
-              ? APIUrlGuest + 'api/webapi.php?action=scholarship_kh'
-              : APIUrlGuest + 'api/webapi.php?action=scholarship_en',
+          Get.locale?.languageCode == 'km' ? APIGuestScholarKh : APIGuestScholarEn,
         ),
       );
       if (response.statusCode == 200) {
@@ -62,9 +99,9 @@ class _ScholarshipState extends State<Scholarship> {
           scholarshipList.add(scholarshipObj);
         });
         if (mounted) {
-          setState(() {
-            scholarships = scholarshipList;
-          });
+          setState(
+            () => scholarships = scholarshipList,
+          );
         }
       } else {
         // Handle error case
@@ -75,203 +112,63 @@ class _ScholarshipState extends State<Scholarship> {
     }
   }
 
-  void selectScholarship(int index) {
+  void selectScholarship(final int index) {
     if (mounted) {
-      setState(() {
-        selectedScholarship = index;
-      });
+      setState(
+        () => selectedScholarship = index,
+      );
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(
-        title: 'អាហារូបករណ៍'.tr,
-      ),
-      body: Container(
-        alignment: Alignment.topCenter,
-        child: scholarships.isEmpty
-            ? buildFutureBuild()
-            : ListView(
-                physics: const BouncingScrollPhysics(),
-                children: [
-                  buildHeight5(),
-                  Container(
-                    height: 70,
-                    alignment: Alignment.center,
-                    width: UFullWidth,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: scholarships.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        final isLastIndex = index == scholarships.length - 1;
-                        return GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              selectedScholarship = index;
-                            });
-                          },
-                          child: AnimatedContainer(
-                            alignment: Alignment.center,
-                            duration: const Duration(
-                              milliseconds: 300,
-                            ),
-                            margin: EdgeInsets.fromLTRB(
-                              UPdMg10,
-                              UPdMg10,
-                              isLastIndex ? UPdMg10 : UZeroPixel,
-                              UPdMg10,
-                            ),
-                            width: MediaQuery.of(context).size.width / 2.2,
-                            decoration: BoxDecoration(
-                              color: selectedScholarship == index
-                                  ? UPrimaryColor
-                                  : UBackgroundColor,
-                              borderRadius: BorderRadius.circular(
-                                URoundedMedium,
-                              ),
-                              boxShadow: [
-                                const BoxShadow(
-                                  blurRadius: 1,
-                                  color: ULightGreyColor,
-                                  offset: Offset(0, 1),
-                                ),
-                              ],
-                            ),
-                            child: Text(
-                              scholarships[index].scholarship_name.tr,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: UTitleSize,
-                                fontWeight: UTitleWeight,
-                                color: selectedScholarship == index
-                                    ? UBackgroundColor
-                                    : UTextColor,
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
+  Widget buildBtnScholar() {
+    return Container(
+      height: 70,
+      alignment: Alignment.center,
+      width: UFullWidth,
+      child: ListView.builder(
+        shrinkWrap: true,
+        physics: const BouncingScrollPhysics(),
+        itemCount: scholarships.length,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          final isLastIndex = index == scholarships.length - 1;
+          return GestureDetector(
+            onTap: () => setState(
+              () => selectedScholarship = index,
+            ),
+            child: AnimatedContainer(
+              alignment: Alignment.center,
+              duration: const Duration(milliseconds: 300),
+              margin: EdgeInsets.fromLTRB(
+                UPdMg10,
+                UPdMg10,
+                isLastIndex ? UPdMg10 : UZeroPixel,
+                UPdMg10,
+              ),
+              width: MediaQuery.of(context).size.width / 2.2,
+              decoration: BoxDecoration(
+                color: selectedScholarship == index ? UPrimaryColor : UBackgroundColor,
+                borderRadius: BorderRadius.circular(URoundedMedium),
+                boxShadow: const [
+                  BoxShadow(
+                    blurRadius: 1,
+                    color: ULightGreyColor,
+                    offset: Offset(0, 1),
                   ),
-                  scholarships[selectedScholarship].scholarship_data.isNotEmpty
-                      ? Column(
-                          children: scholarships[selectedScholarship]
-                              .scholarship_data
-                              .map(
-                            (scholarship) {
-                              return Container(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: UZeroPixel,
-                                  horizontal: UPdMg10,
-                                ),
-                                child: Card(
-                                  elevation: 0.5,
-                                  shadowColor: ULightGreyColor,
-                                  color: UBackgroundColor,
-                                  margin: const EdgeInsets.only(
-                                    bottom: UPdMg10,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                      color: UBackgroundColor,
-                                      width: 1.5,
-                                    ),
-                                    borderRadius: BorderRadius.circular(
-                                      URoundedLarge,
-                                    ),
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Container(
-                                        width: UFullWidth,
-                                        alignment: Alignment.center,
-                                        decoration: const BoxDecoration(
-                                          borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(
-                                              URoundedLarge,
-                                            ),
-                                            topRight: Radius.circular(
-                                              URoundedLarge,
-                                            ),
-                                          ),
-                                          color: UBGLightBlue,
-                                        ),
-                                        height: UHeight50,
-                                        child: Text(
-                                          scholarship.school_name,
-                                          textAlign: TextAlign.center,
-                                          style: const TextStyle(
-                                            fontSize: UTitleSize,
-                                            fontWeight: UTitleWeight,
-                                            color: UPrimaryColor,
-                                            height: UTextHeight,
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.all(
-                                          UPdMg10,
-                                        ),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            ScholarshipTitleTheme(
-                                              scholarship.education_level,
-                                            ),
-                                            ScholarshipTitleTheme(
-                                              scholarship.major_name,
-                                            ),
-                                            ScholarshipTitleTheme(
-                                              'ថ្ងៃផុតកំណត់៖ '.tr,
-                                            ),
-                                            ScholarshipBodyTheme(
-                                              scholarship.expire_date,
-                                            ),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.end,
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                buildNavBtn(
-                                                  () {
-                                                    void
-                                                        _launchOutUniUrl() async {
-                                                      if (await canLaunchUrlString(
-                                                          scholarship.link)) {
-                                                        await launchUrlString(
-                                                          scholarship.link,
-                                                        );
-                                                      } else {
-                                                        throw 'Could not launch ${scholarship.link}';
-                                                      }
-                                                    }
-
-                                                    _launchOutUniUrl();
-                                                  },
-                                                  'អានបន្ថែម',
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              );
-                            },
-                          ).toList(),
-                        )
-                      : buildFutureBuild()
                 ],
               ),
+              child: Text(
+                scholarships[index].scholarship_name.tr,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: UTitleSize,
+                  fontWeight: UTitleWeight,
+                  color: selectedScholarship == index ? UBackgroundColor : UTextColor,
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }

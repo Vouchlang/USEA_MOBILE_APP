@@ -5,12 +5,10 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 class CustomPlaybackSpeedButton extends StatefulWidget {
   final YoutubePlayerController controller;
 
-  const CustomPlaybackSpeedButton({Key? key, required this.controller})
-      : super(key: key);
+  const CustomPlaybackSpeedButton({Key? key, required this.controller}) : super(key: key);
 
   @override
-  _CustomPlaybackSpeedButtonState createState() =>
-      _CustomPlaybackSpeedButtonState();
+  _CustomPlaybackSpeedButtonState createState() => _CustomPlaybackSpeedButtonState();
 }
 
 class _CustomPlaybackSpeedButtonState extends State<CustomPlaybackSpeedButton> {
@@ -21,19 +19,14 @@ class _CustomPlaybackSpeedButtonState extends State<CustomPlaybackSpeedButton> {
     return IconButton(
       iconSize: 20,
       color: USecondaryColor,
-      icon: const Icon(
-        Icons.speed,
-      ),
-      onPressed: () {
-        showPlaybackSpeedMenu(context);
-      },
+      icon: const Icon(Icons.speed),
+      onPressed: () => showPlaybackSpeedMenu(context),
     );
   }
 
   void showPlaybackSpeedMenu(BuildContext context) async {
     final RenderBox button = context.findRenderObject() as RenderBox;
-    final RenderBox overlay =
-        Overlay.of(context).context.findRenderObject() as RenderBox;
+    final RenderBox overlay = Overlay.of(context).context.findRenderObject() as RenderBox;
 
     final position = RelativeRect.fromRect(
       Rect.fromPoints(
@@ -81,9 +74,9 @@ class _CustomPlaybackSpeedButtonState extends State<CustomPlaybackSpeedButton> {
 
     if (selectedSpeed != null) {
       widget.controller.setPlaybackRate(selectedSpeed);
-      setState(() {
-        currentSpeed = selectedSpeed;
-      });
+      setState(
+        () => currentSpeed = selectedSpeed,
+      );
     }
   }
 }

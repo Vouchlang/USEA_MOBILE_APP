@@ -6,6 +6,8 @@ import '../../../Guardian_Dashboard/Guardian_Home/UI_Home/Guardian_Home.dart';
 import '../../../theme_builder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Custom_Widget/CustomText.dart';
+import '../../Student_Dashboard/Student_LogIn/Login/Custom_Build_Student_login.dart';
+import '../../Student_Dashboard/Users_API.dart';
 import '../Guardian_Other_Class/Class_Guardian_User.dart';
 import '/Custom_AppBar.dart';
 
@@ -19,25 +21,22 @@ class _Guardian_LoginState extends State<Guardian_Login> {
   final _textControllerUsername = TextEditingController();
   final _textControllerPsw = TextEditingController();
   bool _obscureText = true;
-  var data;
+  // var data;
 
   @override
   void initState() {
     super.initState();
-    print(Get.locale?.languageCode == 'km');
   }
 
   Future<void> _submitForm() async {
-    final String studentId = _textControllerUsername.text;
+    final String guardianId = _textControllerUsername.text;
     final String password = _textControllerPsw.text;
 
     try {
       var response = await http.post(
-        Uri.parse(
-          APIUrlStudent + 'action=login_parents',
-        ),
+        Uri.parse(APIGuardianLogin),
         body: {
-          'guardian_id': studentId,
+          'guardian_id': guardianId,
           'pwd': password,
         },
       );
@@ -50,9 +49,9 @@ class _Guardian_LoginState extends State<Guardian_Login> {
           List<GuardianUser> dataList_GuardianUser = [];
           for (var item in guardianUserData) {
             GuardianUser dataModel1 = GuardianUser(
-              name_kh: item['name_kh'],
-              guardian_id: item['guardian_id'],
-              pwd: item['pwd'],
+              name_kh: item['name_kh'] ?? 'N/A',
+              guardian_id: item['guardian_id'] ?? 'N/A',
+              pwd: item['pwd'] ?? 'N/A',
             );
             dataList_GuardianUser.add(dataModel1);
           }
@@ -69,9 +68,7 @@ class _Guardian_LoginState extends State<Guardian_Login> {
               data_guardianUser: dataList_GuardianUser,
             ),
             transition: Transition.rightToLeftWithFade,
-            duration: Duration(
-              milliseconds: 100,
-            ),
+            duration: const Duration(milliseconds: 100),
           );
         } else {
           print('Error');
@@ -81,65 +78,9 @@ class _Guardian_LoginState extends State<Guardian_Login> {
           context: context,
           barrierDismissible: false,
           builder: (BuildContext context) {
-            return Dialog(
-              elevation: 2,
-              child: Container(
-                height: 175,
-                margin: const EdgeInsets.all(
-                  UPdMg7,
-                ),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: UPdMg10,
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                    URoundedLarge,
-                  ),
-                  color: UBackgroundColor,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      'គណនីអាណាព្យាបាល'.tr,
-                      style: TextStyle(
-                        fontSize: UTitleSize16,
-                        fontWeight: UTitleWeight,
-                      ),
-                    ),
-                    buildHeight10(),
-                    Text(
-                      'អត្តលេខអាណាព្យាបាល ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវ។ សូមបញ្ចូលម្ដងទៀត!!!'
-                          .tr,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 13.5,
-                      ),
-                    ),
-                    buildHeight20(),
-                    const Divider(),
-                    InkWell(
-                      highlightColor: UTransParentColor,
-                      splashColor: UTransParentColor,
-                      onTap: () => Navigator.pop(context),
-                      child: Container(
-                        alignment: Alignment.center,
-                        width: UFullWidth,
-                        child: const Text(
-                          'OK',
-                          style: TextStyle(
-                            color: UPrimaryColor,
-                            fontSize: UTitleSize,
-                            fontFamily: UEFontFamily,
-                            fontWeight: UBodyWeight,
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
+            return buildErrorDialog(
+              txtTitle: 'គណនីអាណាព្យាបាល'.tr,
+              txtDescription: 'អត្តលេខអាណាព្យាបាល ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវ។ សូមបញ្ចូលម្ដងទៀត!!!'.tr,
             );
           },
         );
@@ -151,77 +92,19 @@ class _Guardian_LoginState extends State<Guardian_Login> {
           context: context,
           barrierDismissible: false,
           builder: (BuildContext context) {
-            return Dialog(
-              elevation: 2,
-              child: Container(
-                height: 175,
-                margin: const EdgeInsets.all(
-                  UPdMg7,
-                ),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: UPdMg10,
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                    URoundedLarge,
-                  ),
-                  color: UBackgroundColor,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      'គណនីអាណាព្យាបាល'.tr,
-                      style: TextStyle(
-                        fontSize: UTitleSize16,
-                        fontWeight: UTitleWeight,
-                      ),
-                    ),
-                    buildHeight10(),
-                    Text(
-                      'Server Error!!!'.tr,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 13.5,
-                        fontFamily: UEFontFamily,
-                      ),
-                    ),
-                    buildHeight20(),
-                    const Divider(),
-                    InkWell(
-                      highlightColor: UTransParentColor,
-                      splashColor: UTransParentColor,
-                      onTap: () => Navigator.pop(context),
-                      child: Container(
-                        alignment: Alignment.center,
-                        width: UFullWidth,
-                        child: const Text(
-                          'OK',
-                          style: TextStyle(
-                            color: UPrimaryColor,
-                            fontSize: UTitleSize,
-                            fontFamily: UEFontFamily,
-                            fontWeight: UBodyWeight,
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
+            return buildErrorDialog(
+              txtTitle: 'គណនីអាណាព្យាបាល'.tr,
+              txtDescription: 'Server Error!!!'.tr,
             );
           },
-        ); // You can add further error handling logic if needed
+        );
       }
     }
   }
 
   // Save guardian user
-  void saveGuardianUser(SharedPreferences sharedPreferences,
-      List<GuardianUser> guardianUserList) {
-    final jsonData =
-        guardianUserList.map((guardianUser) => guardianUser.toJson()).toList();
+  void saveGuardianUser(SharedPreferences sharedPreferences, List<GuardianUser> guardianUserList) {
+    final jsonData = guardianUserList.map((guardianUser) => guardianUser.toJson()).toList();
     sharedPreferences.setString(
       'guardian_user',
       json.encode(jsonData),
@@ -231,210 +114,29 @@ class _Guardian_LoginState extends State<Guardian_Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
-      appBar: Custom_AppBar(
-        title: 'គណនីអាណាព្យាបាល'.tr,
-      ),
+      backgroundColor: USecondaryColor,
+      appBar: Custom_AppBar(title: 'គណនីអាណាព្យាបាល'.tr),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.only(
-          top: UPdMg20,
-        ),
+        padding: const EdgeInsets.only(top: UPdMg20),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(
-              imageAsset + 'usea_logo.png',
-              fit: BoxFit.cover,
-              height: MediaQuery.of(context).size.height / 4,
-            ),
+            buildUniversityColumn(imageHeight: MediaQuery.of(context).size.height / 4),
             buildHeight15(),
-            const Text(
-              'សាកលវិទ្យាល័យ សៅស៍អុីសថ៍អេយសៀ',
-              style: TextStyle(
-                fontSize: UTitleSize,
-                fontFamily: 'KhmerOSmuol',
-                color: UPrimaryColor,
+            buildForm(
+              formKey: _formKey,
+              accName: 'អត្តលេខអាណាព្យាបាល'.tr,
+              textControllerUserName: _textControllerUsername,
+              textControllerUserPsw: _textControllerPsw,
+              inputHint: '\t\tបញ្ចូលអត្តលេខអាណាព្យាបាល'.tr,
+              obscureText: _obscureText,
+              onPressed: () => setState(
+                () => _obscureText = !_obscureText,
               ),
             ),
-            const Text(
-              'UNIVERSITY OF SOUTH-EAST ASIA',
-              textAlign: TextAlign.justify,
-              style: TextStyle(
-                fontSize: 15,
-                color: UPrimaryColor,
-                fontWeight: UBodyWeight,
-                fontFamily: UEFontFamily,
-                wordSpacing: 2.2,
-                letterSpacing: 0.8,
-              ),
-            ),
-            buildHeight15(),
-            Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.only(
-                      left: 30,
-                    ),
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'អត្តលេខអាណាព្យាបាល'.tr,
-                      textAlign: TextAlign.left,
-                      style: const TextStyle(
-                        fontSize: UBodySize,
-                        fontWeight: UTitleWeight,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: UPdMg10,
-                      horizontal: 30,
-                    ),
-                    alignment: Alignment.center,
-                    child: TextFormField(
-                      controller: _textControllerUsername,
-                      cursorColor: UGreyColor,
-                      cursorWidth: 1,
-                      style: const TextStyle(
-                        fontFamily: UEFontFamily,
-                      ),
-                      cursorHeight: UHeight30,
-                      decoration: InputDecoration(
-                        contentPadding: const EdgeInsets.all(
-                          UPdMg10,
-                        ),
-                        hintText: '\t\tបញ្ចូលអត្តលេខ'.tr,
-                        hintStyle: TextStyle(
-                          fontSize: UBodySize10,
-                          color: UGreyColor,
-                          fontFamily: Get.locale?.languageCode == 'km'
-                              ? UKFontFamily
-                              : UEFontFamily,
-                        ),
-                        border: const OutlineInputBorder(),
-                        suffixIcon: IconButton(
-                          onPressed: () {
-                            _textControllerUsername.clear();
-                          },
-                          icon: const Icon(
-                            Icons.clear,
-                            size: 15,
-                          ),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: UGreyColor,
-                          ),
-                        ),
-                        suffixIconColor: UGreyColor,
-                        errorStyle: const TextStyle(
-                          fontSize: UBodySize10,
-                          fontFamily: UKFontFamily,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.only(
-                      left: 30,
-                    ),
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'ពាក្យសម្ងាត់'.tr,
-                      style: const TextStyle(
-                        fontSize: UBodySize,
-                        fontWeight: UTitleWeight,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: UPdMg10,
-                      horizontal: 30,
-                    ),
-                    alignment: Alignment.center,
-                    child: TextFormField(
-                      obscureText: _obscureText,
-                      controller: _textControllerPsw,
-                      cursorColor: UGreyColor,
-                      cursorWidth: 1,
-                      style: const TextStyle(
-                        fontFamily: UEFontFamily,
-                      ),
-                      cursorHeight: UHeight30,
-                      decoration: InputDecoration(
-                        contentPadding: const EdgeInsets.all(
-                          UPdMg10,
-                        ),
-                        hintText: '\t\tបញ្ចូលពាក្យសម្ងាត់'.tr,
-                        hintStyle: TextStyle(
-                          fontSize: UBodySize10,
-                          color: UGreyColor,
-                          fontFamily: Get.locale?.languageCode == 'km'
-                              ? UKFontFamily
-                              : UEFontFamily,
-                        ),
-                        border: const OutlineInputBorder(),
-                        suffixIcon: IconButton(
-                          onPressed: () {
-                            setState(
-                              () {
-                                _obscureText = !_obscureText;
-                              },
-                            );
-                          },
-                          icon: Icon(
-                            _obscureText
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                            size: 15,
-                          ),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: UGreyColor,
-                          ),
-                        ),
-                        suffixIconColor: UGreyColor,
-                        errorStyle: const TextStyle(
-                          fontSize: UBodySize10,
-                          fontFamily: UKFontFamily,
-                        ),
-                      ),
-                    ),
-                  ),
-                  buildHeight10(),
-                ],
-              ),
-            ),
-            InkWell(
-              highlightColor: UTransParentColor,
-              splashColor: UTransParentColor,
-              onTap: _submitForm,
-              child: Container(
-                width: 100,
-                height: UHeight40,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                    UPdMg5,
-                  ),
-                  color: UPrimaryColor,
-                ),
-                child: Text(
-                  'ចូល'.tr,
-                  style: const TextStyle(
-                    color: UBackgroundColor,
-                    fontSize: UTitleSize,
-                  ),
-                ),
-              ),
-            ),
+            buildSubmitButton(_submitForm),
           ],
         ),
       ),

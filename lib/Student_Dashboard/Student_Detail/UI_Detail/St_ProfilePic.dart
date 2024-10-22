@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../theme_builder.dart';
 
 class St_ProfilePic extends StatefulWidget {
@@ -38,16 +39,14 @@ class _St_ProfilePicState extends State<St_ProfilePic> {
                 color: USecondaryColor,
                 size: 25,
               ),
-              onPressed: () {
-                setState(
-                  () {
-                    isFullScreen = !isFullScreen;
-                    if (!isFullScreen) {
-                      Navigator.pop(context);
-                    }
-                  },
-                );
-              },
+              onPressed: () => setState(
+                () {
+                  isFullScreen = !isFullScreen;
+                  if (!isFullScreen) {
+                    Get.back();
+                  }
+                },
+              ),
             ),
           ),
         ],

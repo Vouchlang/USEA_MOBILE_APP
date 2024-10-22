@@ -9,9 +9,7 @@ class Notifications extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(
-        title: 'ព័ត៌មានថ្មីៗ'.tr,
-      ),
+      appBar: Custom_AppBar(title: 'ព័ត៌មានថ្មីៗ'.tr),
       body: buildComingSoon(),
     );
   }

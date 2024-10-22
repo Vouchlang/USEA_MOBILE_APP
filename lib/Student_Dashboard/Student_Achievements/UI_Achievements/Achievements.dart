@@ -285,12 +285,10 @@ class _AchievementsState extends State<Achievements> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: USecondaryColor,
-      appBar: Custom_AppBar(
-        title: 'សមិទ្ធិផល'.tr,
-      ),
+      appBar: Custom_AppBar(title: 'សមិទ្ធិផល'.tr),
       // body: (_achievementData == null ||
       //         _achievementData!.achievementData.isEmpty)
-      //     ? buildFutureBuild()
+      //     ? buildFutureBuilder()
       //     : RefreshIndicator(
       //         onRefresh: _refreshData,
       //         color: UPrimaryColor,

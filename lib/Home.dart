@@ -19,9 +19,15 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   int currentIndex = 0;
   void onTap(int index) {
+<<<<<<< HEAD
     setState(() {
       currentIndex = index;
     });
+=======
+    setState(
+      () => currentIndex = index,
+    );
+>>>>>>> bfaf458a0454f129cc8b5372d8ea76ddb173c5c6
   }
 
   @override
@@ -32,25 +38,40 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         data: Theme.of(context).copyWith(
           splashColor: UTransParentColor,
           highlightColor: UTransParentColor,
-          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-            selectedItemColor: UTransParentColor,
-          ),
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(selectedItemColor: UTransParentColor),
         ),
-        child: BottomNavigationBar(
-          backgroundColor: UBackgroundColor,
-          elevation: 15,
-          onTap: onTap,
-          useLegacyColorScheme: true,
-          currentIndex: currentIndex,
-          selectedItemColor: UPrimaryColor,
-          unselectedItemColor: UGreyColor,
-          unselectedFontSize:
-              Get.locale?.languageCode == 'km' ? UBodySize10 : UBodySize11,
-          selectedLabelStyle: TextStyle(
-            fontWeight: UTitleWeight,
-            fontSize:
-                Get.locale?.languageCode == 'km' ? UBodySize11 : UBodySize,
+        child: Container(
+          height: 65,
+          child: BottomNavigationBar(
+            backgroundColor: UBackgroundColor,
+            onTap: onTap,
+            elevation: 15,
+            currentIndex: currentIndex,
+            selectedItemColor: UPrimaryColor,
+            unselectedItemColor: UGreyColor,
+            unselectedFontSize: Get.locale?.languageCode == 'km' ? UBodySize10 : UBodySize11,
+            selectedLabelStyle: TextStyle(
+              fontWeight: UTitleWeight,
+              fontSize: Get.locale?.languageCode == 'km' ? UBodySize11 : UBodySize,
+            ),
+            items: [
+              BottomNavigationBarItem(
+                icon: const Icon(
+                  Icons.home,
+                  size: 25,
+                ),
+                label: 'ទំព័រដើម'.tr,
+              ),
+              BottomNavigationBarItem(
+                icon: const Icon(
+                  Icons.account_box,
+                  size: 25,
+                ),
+                label: 'ចូលគណនី'.tr,
+              ),
+            ],
           ),
+<<<<<<< HEAD
           items: [
             BottomNavigationBarItem(
               icon: const Icon(
@@ -63,6 +84,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 icon: const Icon(Icons.account_box, size: 25),
                 label: 'ចូលគណនី'.tr),
           ],
+=======
+>>>>>>> bfaf458a0454f129cc8b5372d8ea76ddb173c5c6
         ),
       ),
     );

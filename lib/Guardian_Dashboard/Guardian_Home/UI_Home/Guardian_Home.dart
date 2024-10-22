@@ -21,14 +21,11 @@ class _Guardian_HomeState extends State<Guardian_Home> {
   }
 
   late TabController controller;
-
   int currentIndex = 1;
 
   void onTap(int index) {
     setState(
-      () {
-        currentIndex = index;
-      },
+      () => currentIndex = index,
     );
   }
 
@@ -36,9 +33,7 @@ class _Guardian_HomeState extends State<Guardian_Home> {
   Widget build(BuildContext context) {
     List pages = [
       Guest_Home(),
-      Guardian_Dashboard(
-        data_guardianUser: widget.data_guardianUser,
-      ),
+      Guardian_Dashboard(data_guardianUser: widget.data_guardianUser),
     ];
     return Scaffold(
       body: pages[currentIndex],
@@ -46,12 +41,11 @@ class _Guardian_HomeState extends State<Guardian_Home> {
         data: Theme.of(context).copyWith(
           splashColor: UTransParentColor,
           highlightColor: UTransParentColor,
-          bottomNavigationBarTheme: BottomNavigationBarThemeData(
-            selectedItemColor: UTransParentColor,
-          ),
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(selectedItemColor: UTransParentColor),
         ),
         child: Container(
           color: UTransParentColor,
+          height: 65,
           child: BottomNavigationBar(
             backgroundColor: UBackgroundColor,
             onTap: onTap,
@@ -59,22 +53,21 @@ class _Guardian_HomeState extends State<Guardian_Home> {
             currentIndex: currentIndex,
             selectedItemColor: UPrimaryColor,
             unselectedItemColor: UGreyColor,
-            unselectedFontSize:
-                Get.locale?.languageCode == 'km' ? UBodySize10 : UBodySize11,
+            unselectedFontSize: Get.locale?.languageCode == 'km' ? UBodySize10 : UBodySize11,
             selectedLabelStyle: TextStyle(
               fontWeight: UTitleWeight,
               fontSize: Get.locale?.languageCode == 'km' ? UBodySize11 : UBodySize,
             ),
             items: [
               BottomNavigationBarItem(
-                icon: Icon(
+                icon: const Icon(
                   Icons.home,
                   size: 25,
                 ),
                 label: 'ទំព័រដើម'.tr,
               ),
               BottomNavigationBarItem(
-                icon: Icon(
+                icon: const Icon(
                   Icons.account_box,
                   size: 25,
                 ),

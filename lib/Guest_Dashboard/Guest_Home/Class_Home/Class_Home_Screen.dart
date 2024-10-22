@@ -3,7 +3,7 @@ import '../../../Custom_Widget/CustomText.dart';
 import '../../../theme_builder.dart';
 import '../../Guest_ChangeLanguage/Change_Language.dart';
 import '../../Guest_New_Event/UI_News_Event/News_Event.dart';
-import '../../Guest_Program/UI_Program/Program.dart';
+import '../../Guest_Program/UI_Program/Program/Program.dart';
 import '../../Guest_Scholarship/UI_Scholarship/Scholarship.dart';
 import '../../Guest_AboutUS/UI_AboutUS/AboutUS.dart';
 import '../../Guest_Career/UI_Career/Career.dart';
