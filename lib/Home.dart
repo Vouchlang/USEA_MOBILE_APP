@@ -19,11 +19,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   int currentIndex = 0;
   void onTap(int index) {
-    setState(
-      () {
-        currentIndex = index;
-      },
-    );
+    setState(() {
+      currentIndex = index;
+    });
   }
 
   @override
