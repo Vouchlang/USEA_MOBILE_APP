@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart' as qrScanner;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -167,14 +168,43 @@ class _QRLoginScreenState extends State<QRLoginScreen> with SingleTickerProvider
     return qrCode.isNotEmpty;
   }
 
+  Future<void> _checkCameraPermission() async {
+    var status = await Permission.camera.status;
+
+    if (status.isDenied) {
+      // Request camera permission
+      status = await Permission.camera.request();
+
+      if (status.isPermanentlyDenied) {
+        // The user has permanently denied camera access.
+        // Guide the user to the app settings to manually enable the camera permission.
+        openAppSettings();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Camera permission is permanently denied. Please enable it from settings.')),
+        );
+      } else if (!status.isGranted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Camera permission denied')),
+        );
+      }
+    }
+  }
+
   void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
     log('${DateTime.now().toIso8601String()}_onPermissionSet $p');
     if (!p) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: const Text('No Permission')),
-      );
+      _checkCameraPermission();
     }
   }
+
+  // void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
+  //   log('${DateTime.now().toIso8601String()}_onPermissionSet $p');
+  //   if (!p) {
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       const SnackBar(content: const Text('No Permission')),
+  //     );
+  //   }
+  // }
 
   void _onQRViewCreated(QRViewController controller) {
     if (mounted) {
