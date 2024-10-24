@@ -409,9 +409,7 @@ class _QRLoginScreenState extends State<QRLoginScreen> with SingleTickerProvider
   Future<void> _toggleFlash() async {
     if (controller != null) {
       if (mounted) {
-        setState(
-          () => _isFlashOn = !_isFlashOn,
-        );
+        setState(() => _isFlashOn = !_isFlashOn);
       }
       await controller!.toggleFlash();
     }
