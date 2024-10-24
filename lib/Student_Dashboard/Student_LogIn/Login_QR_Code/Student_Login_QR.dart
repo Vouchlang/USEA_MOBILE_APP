@@ -172,12 +172,9 @@ class _QRLoginScreenState extends State<QRLoginScreen> with SingleTickerProvider
     var status = await Permission.camera.status;
 
     if (status.isDenied) {
-      // Request camera permission
       status = await Permission.camera.request();
 
       if (status.isPermanentlyDenied) {
-        // The user has permanently denied camera access.
-        // Guide the user to the app settings to manually enable the camera permission.
         openAppSettings();
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Camera permission is permanently denied. Please enable it from settings.')),
@@ -196,15 +193,6 @@ class _QRLoginScreenState extends State<QRLoginScreen> with SingleTickerProvider
       _checkCameraPermission();
     }
   }
-
-  // void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
-  //   log('${DateTime.now().toIso8601String()}_onPermissionSet $p');
-  //   if (!p) {
-  //     ScaffoldMessenger.of(context).showSnackBar(
-  //       const SnackBar(content: const Text('No Permission')),
-  //     );
-  //   }
-  // }
 
   void _onQRViewCreated(QRViewController controller) {
     if (mounted) {
