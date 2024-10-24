@@ -111,7 +111,7 @@ class _QRLoginScreenState extends State<QRLoginScreen> with SingleTickerProvider
     controller!.resumeCamera();
   }
 
-  // Pick Image from gallery
+// Pick Image from gallery
   Future<void> _pickImageAndScan() async {
     try {
       final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
@@ -372,7 +372,7 @@ class _QRLoginScreenState extends State<QRLoginScreen> with SingleTickerProvider
     }
   }
 
-  // Build Scanning line on QR Code
+// Build Scanning line on QR Code
   Widget _buildScanningLine(final double cutOutSize) {
     return SizedBox(
       width: cutOutSize,
@@ -409,7 +409,9 @@ class _QRLoginScreenState extends State<QRLoginScreen> with SingleTickerProvider
   Future<void> _toggleFlash() async {
     if (controller != null) {
       if (mounted) {
-        setState(() => _isFlashOn = !_isFlashOn);
+        setState(
+          () => _isFlashOn = !_isFlashOn,
+        );
       }
       await controller!.toggleFlash();
     }
